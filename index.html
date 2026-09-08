@@ -566,14 +566,14 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('recsets',d=>{ REC_SETS=d; localStorage.setItem('moto24_recsets_v1',JSON.stringify(REC_SETS)); });
    ap('cfg',d=>{ CFG=d; localStorage.setItem('moto24_cfg_v3',JSON.stringify(CFG)); });
    ap('pb',d=>{ PB=d; localStorage.setItem('moto24_pb_v1',JSON.stringify(PB)); });
-   ap('watch',d=>{ WATCH=d; localStorage.setItem('moto24_watch_v3',JSON.stringify(WATCH)); });
+   ap('portsnap',d=>{ PORTSNAP=d; try{localStorage.setItem('moto24_portsnap',JSON.stringify(d));}catch(e){} });
    saveCloud(); if(changed){ try{recalcAll();}catch(e){} if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); } }); }
 function cloudSyncNow(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ (เปิดหน้า "เชื่อมต่อ Google Sheet" ก่อน)'); return; }
  Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>alert('ซิงก์ล่าสุดแล้ว')).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
 function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ'); return; }
  if(!confirm('อัปโหลดข้อมูลทั้งหมดในเครื่องนี้ขึ้น Google Sheet? (เคส '+APPS.length+' + ข้อมูลหลังบ้าน)')) return;
  const seq=[]; APPS.forEach(a=>{ a.updatedAt=a.updatedAt||Date.now(); seq.push(()=>cloudCall('upsertCase',{'case':a})); });
- [['occ',OCC_LIST],['vuse',VUSE_PURPOSES],['recsets',REC_SETS],['cfg',CFG],['pb',PB],['watch',WATCH]].forEach(kv=>seq.push(()=>cloudCall('setMaster',{key:kv[0],data:kv[1],by:(SESSION&&SESSION.name)||''})));
+ [['occ',OCC_LIST],['vuse',VUSE_PURPOSES],['recsets',REC_SETS],['cfg',CFG],['pb',PB]].concat((buildPortSnap&&buildPortSnap())?[['portsnap',buildPortSnap()]]:[]).forEach(kv=>seq.push(()=>cloudCall('setMaster',{key:kv[0],data:kv[1],by:(SESSION&&SESSION.name)||''})));
  (function run(i){ if(i>=seq.length){ alert('อัปโหลดครบแล้ว ('+APPS.length+' เคส + ข้อมูลหลังบ้าน)'); return; } seq[i]().then(()=>run(i+1)).catch(e=>alert('หยุดที่รายการ '+(i+1)+': '+e.message)); })(0); }
 function saveCfg(){ try{ localStorage.setItem('moto24_cfg_v3', JSON.stringify(CFG)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('cfg',CFG); }
 
@@ -596,7 +596,20 @@ function loadWatch(){
  try{ WATCH=JSON.parse(localStorage.getItem('moto24_watch_v3')); }catch(e){ WATCH=null; }
  if(!WATCH||!WATCH.custs) WATCH=structuredClone(DEFAULT_WATCH);
 }
-function saveWatch(){ try{ localStorage.setItem('moto24_watch_v3', JSON.stringify(WATCH)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('watch',WATCH); }
+function saveWatch(){ try{ localStorage.setItem('moto24_watch_v3', JSON.stringify(WATCH)); }catch(e){} }
+let PORTSNAP=null; try{ PORTSNAP=JSON.parse(localStorage.getItem('moto24_portsnap'))||null; }catch(e){ PORTSNAP=null; }
+function buildPortSnap(){ const idx=(WATCH&&WATCH.payIdx)||{}; const keys=Object.keys(idx); if(!keys.length) return null;
+ let bad=0,e=0,mid=0,late=0,badMiss=0; const brZone={}; (typeof BRANCHES!=='undefined'?BRANCHES:[]).forEach(b=>brZone[b.code]=b.zone);
+ const zAgg={}; Object.keys(ZONES).forEach(z=>zAgg[z]={n:0,bad:0});
+ keys.forEach(t=>{ const px=idx[t]; const b=isBadPx(px); if(b){ bad++; const ms=+px.m||0; if(ms>0){ badMiss++; if(ms<=6)e++; else if(ms<=24)mid++; else late++; } } const z=brZone[px.br]; if(z&&zAgg[z]){ zAgg[z].n++; if(b)zAgg[z].bad++; } });
+ const zones=Object.keys(ZONES).map(z=>({z,name:ZONES[z].name,n:zAgg[z].n,bad:zAgg[z].bad,pct:zAgg[z].n?zAgg[z].bad/zAgg[z].n*100:0})).filter(x=>x.n).sort((a,b)=>b.bad-a.bad);
+ return { at:(WATCH.lastImport||''), contracts:keys.length, bad, nplPct:keys.length?bad/keys.length*100:0,
+  dpd:{ early:badMiss?e/badMiss*100:0, mid:badMiss?mid/badMiss*100:0, late:badMiss?late/badMiss*100:0 },
+  custs:(WATCH.custs||[]).length, frames:(WATCH.frames||[]).length, zones, by:(SESSION&&SESSION.name)||'' }; }
+function publishPortSnap(silent){ const snap=buildPortSnap(); if(!snap){ if(!silent)alert('ยังไม่มีข้อมูลพอร์ต — นำเข้า balance_report ก่อน'); return; }
+ PORTSNAP=snap; try{ localStorage.setItem('moto24_portsnap',JSON.stringify(snap)); }catch(e){}
+ if(typeof cloudPushMaster==='function')cloudPushMaster('portsnap',snap);
+ if(!silent)alert('เผยแพร่ภาพรวมให้ผู้บริหารแล้ว ✅\nเครื่องอื่นที่เชื่อม Google Sheet จะเห็นภายใน 15 วินาที'); }
 const normDigits = s => String(s||'').replace(/\D/g,'');
 const normFrame = s => String(s||'').replace(/[\s-]/g,'').toUpperCase();
 
@@ -4992,7 +5005,7 @@ function importHCapital(inp){
   Object.keys(payIdx).forEach(tid=>{ const K=kb[tid]; if(K){ payIdx[tid].n=K.n; payIdx[tid].act=K.act||0; payIdx[tid].ins=Math.round(K.ins||0); payIdx[tid].exp=Math.round(K.exp||0); payIdx[tid].dmax=K.dmax||0; payIdx[tid].cts=K.cts||[]; } });
   WATCH.payIdx=payIdx;
   WATCH.lastImport=new Date().toISOString().slice(0,10)+' ('+rows.length.toLocaleString()+' สัญญา)';
-  saveWatch(); saveCfg(); recalcAll();
+  saveWatch(); saveCfg(); recalcAll(); if(typeof publishPortSnap==='function')publishPortSnap(true);
   alert('นำเข้าเรียบร้อย ✅\n• ลูกค้าเฝ้าระวัง '+WATCH.custs.length.toLocaleString()+' คน\n• เลขถังต้องห้าม '+frames.length.toLocaleString()+' คัน\n• พื้นที่เสี่ยง '+areas.length+' ตำบล\nคะแนนทุกเคสถูกคำนวณใหม่แล้ว');
   go('watch');
  };
@@ -7147,6 +7160,23 @@ function agingExport(){ const A=window.__agRows; if(!A||!A.rows.length){ alert('
  const head=['เลขบัตร','สัญญา','ชื่อ','สาขา','วันค้าง','ยอดคงเหลือ','สถานะ','อาชีพ'];
  const aoa=[head]; A.rows.forEach(r=>{ const b=BRANCHES.find(x=>x.code===r.br); aoa.push([r.tid,r.ct,r.nm,b?b.label:r.br,r.days,Math.round(r.exp),r.st,r.occ]); });
  const ws=XLSX.utils.aoa_to_sheet(aoa); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'aging_'+A.key); XLSX.writeFile(wb,'MOTO24_aging_'+A.key+'_'+new Date().toISOString().slice(0,10)+'.xlsx'); }
+function execPublishBar(){ const p=(typeof PORTSNAP!=='undefined'&&PORTSNAP&&PORTSNAP.at)?(' · เผยแพร่ล่าสุด: '+PORTSNAP.at):' · ยังไม่เคยเผยแพร่';
+ return '<div class="card mb" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px solid #f0c08a;background:#fff8ec"><span style="font-size:13px">📤 <b>เผยแพร่ภาพรวมพอร์ตให้ผู้บริหาร</b> (เพื่อให้เครื่องอื่นที่เปิดลิงก์เห็นภาพรวมนี้)</span><button class="btn btn-org btn-sm" onclick="publishPortSnap()">เผยแพร่ภาพรวมล่าสุด</button><span class="mut" style="font-size:12px">'+p+'</span></div>'; }
+function execSnapCard(){ const P=PORTSNAP; if(!P) return '<div class="card"><div class="alert a-warn" style="margin:0">ยังไม่มีภาพรวมพอร์ต — รอ สนญ. นำเข้าไฟล์ + กดเผยแพร่ หรือเครื่องนี้ยังไม่ได้เชื่อม Google Sheet</div></div>';
+ const kc=(bg,fg,n,l)=>'<div class="exkpi" style="background:'+bg+'"><div class="exkpi-n" style="color:'+fg+'">'+n+'</div><div class="exkpi-l" style="color:'+fg+'">'+l+'</div></div>';
+ const zrows=(P.zones||[]).map(z=>'<tr><td>'+z.name+'</td><td class="num b">'+fmt(z.n)+'</td><td class="num" style="color:var(--bad)">'+fmt(z.bad)+'</td><td class="num">'+z.pct.toFixed(0)+'%</td></tr>').join('');
+ return '<div class="card mb" style="border:1.5px solid var(--navy)"><h3 class="exhead">🏦 ภาพรวมพอร์ต H-Cap (สรุปจากส่วนกลาง · ณ '+(P.at||'-')+')</h3>'
+  +'<p class="pill-note" style="margin-bottom:10px">เครื่องนี้ยังไม่ได้นำเข้าไฟล์พอร์ต — แสดงสรุปที่ สนญ. เผยแพร่ล่าสุด</p>'
+  +'<div class="exkpis" style="margin-bottom:12px">'
+   +kc('#fef2f2','#991b1b',P.nplPct.toFixed(1)+'%','หนี้เสีย (NPL)')
+   +kc('#eef1fb','#1e2761',fmt(P.contracts),'สัญญาทั้งพอร์ต')
+   +kc('#fff7ed','#9a3412',fmt(P.bad),'เสียจริง (บอกเลิก/ค้าง≥90วัน)')
+   +kc('#f0fdf4','#166534',fmt(P.custs)+' / '+fmt(P.frames),'เฝ้าระวัง / เลขถังห้าม')
+  +'</div>'
+  +'<div class="grid g3 mb"><div class="card kpi" style="background:#fdecea"><span class="v" style="color:var(--bad)">'+P.dpd.early.toFixed(0)+'%</span><span class="l">ค้างเร็ว งวด 1–6</span></div>'
+   +'<div class="card kpi" style="background:#fff8ec"><span class="v" style="color:#b45309">'+P.dpd.mid.toFixed(0)+'%</span><span class="l">ค้างกลาง งวด 7–24</span></div>'
+   +'<div class="card kpi" style="background:#f8f9fb"><span class="v">'+P.dpd.late.toFixed(0)+'%</span><span class="l">ค้างช้า งวด 25+</span></div></div>'
+  +'<table><thead><tr><th>เขต</th><th class="num">สัญญา</th><th class="num">เสีย</th><th class="num">%เสีย</th></tr></thead><tbody>'+zrows+'</tbody></table></div>'; }
 function viewExec(){
  const APPSF=APPS.filter(inPeriod);
  const s=statCount(APPSF);
@@ -7165,10 +7195,9 @@ function viewExec(){
  return `${dashHero('📊','ภาพรวมผู้บริหาร — ทั้งบริษัท','37 สาขา · 5 เขต · คะแนนเครดิตเฉลี่ย '+avgScore.toFixed(0)+'/100'+timeStr)}
  <div class="card mb">${periodUI()}</div>
  ${dashKpis(s,true)}
- ${execMissCard()}
- ${execAgingCard()}
- ${execTermCard()}
- ${execPayCard()}
+ ${(function(){ const hasPort=Object.keys((WATCH&&WATCH.payIdx)||{}).length>0;
+   if(hasPort) return execPublishBar()+execMissCard()+execAgingCard()+execTermCard()+execPayCard();
+   return (typeof PORTSNAP!=='undefined'&&PORTSNAP)? execSnapCard() : ''; })()}
  <div class="grid g2 mb"><div class="card"><h3 class="exhead">📈 คำขอ / อนุมัติ แยกตามเขต</h3><div class="chartbox"><canvas id="ch-e1"></canvas></div></div>
  <div class="card"><h3 class="exhead org">🍩 สัดส่วนผลิตภัณฑ์</h3><div class="chartbox"><canvas id="ch-e2"></canvas></div></div></div>
  <div class="card mb"><h3 class="exhead">📉 แนวโน้มรายเดือน (คำขอ vs อนุมัติ)</h3><div class="chartbox"><canvas id="ch-e3"></canvas></div></div>
