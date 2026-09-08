@@ -2076,7 +2076,7 @@ function addrFields(prefix, req){
    <input id="${prefix}-${kind}" class="cbx-field req" readonly autocomplete="off" placeholder="${ph}" onclick="cbxToggle('${prefix}','${kind}')">
    <span class="cbx-chev">▼</span>
    <div class="cbx-panel hidden" id="${prefix}-${kind}-panel">
-     <div class="cbx-searchwrap"><input class="cbx-search" id="${prefix}-${kind}-search" placeholder="ค้นหา..." autocomplete="off" oninput="cbxFilter('${prefix}','${kind}')" onclick="event.stopPropagation()"></div>
+     <div class="cbx-searchwrap"><input class="cbx-search" id="${prefix}-${kind}-search" placeholder="ค้นหา / พิมพ์เอง..." autocomplete="off" oninput="cbxFilter('${prefix}','${kind}')" onkeydown="cbxKey(event,'${prefix}','${kind}')" onclick="event.stopPropagation()"></div>
      <div class="cbx-list" id="${prefix}-${kind}-listwrap"></div>
    </div>
  </div>`;
@@ -2086,7 +2086,7 @@ function addrFields(prefix, req){
   ${cbx('sub','ตำบล/แขวง','เลือกอำเภอก่อน')}
   <div class="field"><label>หมู่ที่ <span class="req">*</span></label><input id="${prefix}-moo" class="req" placeholder="เช่น 4" oninput="liveCalc()"></div>
   <div class="field"><label>บ้านเลขที่ ${r}</label><input id="${prefix}-no" placeholder="เช่น 37/1" oninput="liveCalc()"></div>
-  <div class="field"><label>รหัสไปรษณีย์ <span style="font-weight:400;color:#6b7280;font-size:11px">(เติมอัตโนมัติจากตำบล)</span></label><input id="${prefix}-zip" class="auto" readonly placeholder="อัตโนมัติ"></div>
+  <div class="field"><label>รหัสไปรษณีย์ <span style="font-weight:400;color:#6b7280;font-size:11px">(เติมอัตโนมัติจากตำบล)</span></label><input id="${prefix}-zip" placeholder="อัตโนมัติ/พิมพ์เอง" oninput="if(typeof liveCalc==='function')liveCalc()"></div>
  </div>`;
 }
 /* --- Custom searchable dropdown (แบบที่ 2) --- */
@@ -2104,13 +2104,27 @@ function cbxToggle(pfx,kind){ const fld=document.getElementById(pfx+'-'+kind); i
 }
 function cbxFilter(pfx,kind){ const sc=document.getElementById(pfx+'-'+kind+'-search'); cbxRender(pfx,kind,sc?sc.value.trim():''); }
 function cbxRender(pfx,kind,q){ const wrap=document.getElementById(pfx+'-'+kind+'-listwrap'); if(!wrap) return;
- const cur=_av(pfx+'-'+kind); let opts=cbxOptions(pfx,kind);
- if(q){ const ql=q.toLowerCase(); opts=opts.filter(o=>o.toLowerCase().indexOf(ql)>=0); }
- if(!opts.length){ wrap.innerHTML='<div class="cbx-empty">'+(cbxOptions(pfx,kind).length?'ไม่พบรายการ':(kind==='dist'?'เลือกจังหวัดก่อน':kind==='sub'?'เลือกอำเภอก่อน':'ไม่มีข้อมูล'))+'</div>'; return; }
- const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ const cur=_av(pfx+'-'+kind); const all=cbxOptions(pfx,kind); let opts=all;
+ const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ if(q){ const ql=q.toLowerCase(); opts=all.filter(o=>o.toLowerCase().indexOf(ql)>=0); }
  const hl=o=>{ if(!q) return esc(o); const i=o.toLowerCase().indexOf(q.toLowerCase()); if(i<0) return esc(o); return esc(o.slice(0,i))+'<b>'+esc(o.slice(i,i+q.length))+'</b>'+esc(o.slice(i+q.length)); };
- wrap.innerHTML=opts.map(o=>'<div class="cbx-item'+(o===cur?' sel':'')+'" onclick="cbxPick(\''+pfx+'\',\''+kind+'\',this.getAttribute(\'data-v\'))" data-v="'+esc(o)+'">'+hl(o)+'</div>').join('');
+ const allowCustom=(kind==='dist'||kind==='sub');
+ const parentReady = kind==='dist'? !!_av(pfx+'-prov') : (kind==='sub'? (!!_av(pfx+'-prov')&&!!_av(pfx+'-dist')) : true);
+ let html=opts.map(o=>'<div class="cbx-item'+(o===cur?' sel':'')+'" onclick="cbxPick(\''+pfx+'\',\''+kind+'\',this.getAttribute(\'data-v\'))" data-v="'+esc(o)+'">'+hl(o)+'</div>').join('');
+ if(allowCustom && parentReady && q && all.indexOf(q)<0){
+   html='<div class="cbx-item cbx-custom" style="background:#fff7ef;color:#9a3412;font-weight:600" onclick="cbxPick(\''+pfx+'\',\''+kind+'\',this.getAttribute(\'data-v\'))" data-v="'+esc(q)+'">➕ ใช้ “'+esc(q)+'” (พิมพ์เอง)</div>'+html;
+ }
+ if(!html){
+   let msg;
+   if(allowCustom && parentReady) msg=(kind==='sub'?'ไม่มีข้อมูลตำบลของอำเภอนี้':'ไม่มีข้อมูลอำเภอ')+' — พิมพ์ชื่อในช่องค้นหาด้านบน แล้วกด ➕';
+   else if(kind==='dist') msg='เลือกจังหวัดก่อน';
+   else if(kind==='sub') msg='เลือกอำเภอก่อน';
+   else msg='ไม่มีข้อมูล';
+   html='<div class="cbx-empty">'+msg+'</div>';
+ }
+ wrap.innerHTML=html;
 }
+function cbxKey(e,pfx,kind){ if(e.key==='Enter'){ e.preventDefault(); const el=document.getElementById(pfx+'-'+kind+'-search'); const q=el?el.value.trim():''; if(q&&(kind==='dist'||kind==='sub')) cbxPick(pfx,kind,q); } }
 function cbxPick(pfx,kind,val){ const inp=document.getElementById(pfx+'-'+kind); if(inp) inp.value=val;
  if(kind==='prov'){ const d=document.getElementById(pfx+'-dist'),s=document.getElementById(pfx+'-sub'); if(d)d.value=''; if(s)s.value=''; onProvChange(pfx); }
  else if(kind==='dist'){ const s=document.getElementById(pfx+'-sub'); if(s)s.value=''; onDistChange(pfx); }
