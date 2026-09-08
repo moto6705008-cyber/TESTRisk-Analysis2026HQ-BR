@@ -549,11 +549,11 @@ function cloudCall(action, body){ const c=loadCloud(); if(!c.url) return Promise
  const payload=Object.assign({action, token:c.token}, body||{});
  return fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
   .then(r=>r.text()).then(t=>{ let j; try{ j=JSON.parse(t); }catch(e){ throw new Error('ตอบกลับไม่ใช่ JSON: '+String(t).slice(0,120)); } if(!j.ok) throw new Error(j.error||'ไม่สำเร็จ'); return j; }); }
-function cloudPushCase(a){ if(!cloudReady()||!a||!a.id) return; a.updatedAt=Date.now(); a.updatedBy=(SESSION&&SESSION.name)||''; cloudCall('upsertCase',{'case':a}).catch(()=>{}); }
+function cloudPushCase(a){ if(!cloudReady()||!a||!a.id) return; a.updatedBy=(SESSION&&SESSION.name)||''; cloudCall('upsertCase',{'case':a}).then(j=>{ if(j&&j.updatedAt){ a.updatedAt=j.updatedAt; try{saveApps();}catch(e){} } }).catch(()=>{}); }
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
- return cloudCall('getCases',{since:c.lastPull||0}).then(j=>{ let changed=false;
+ return cloudCall('getCases',{since:0}).then(j=>{ let changed=false;
    (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; const i=APPS.findIndex(x=>x.id===sv.id);
      if(i<0){ APPS.push(sv); changed=true; } else if((sv.updatedAt||0)>(APPS[i].updatedAt||0)){ APPS[i]=sv; changed=true; } });
    c.lastPull=j.serverTime||Date.now(); saveCloud();
