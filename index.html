@@ -4956,7 +4956,7 @@ function importHCapital(inp){
     const rank={T:5,A:4,L:3,O:2,E:1};
     const cur=payIdx[tid];
     if(!cur || rank[cls]>=rank[cur.c])
-     payIdx[tid]={c:cls,b:bucket,d:days,m:startMiss,p:paid,insA:instAmt,t:+r['จำนวนงวดทั้งสัญญา']||0,adv:adv,br:brCode,ct:contract,sd:(st0?st0.getTime():0),
+     payIdx[tid]={c:cls,b:bucket,d:days,m:startMiss,p:paid,insA:instAmt,t:+r['จำนวนงวดทั้งสัญญา']||0,adv:adv,br:brCode,ct:contract,sd:(st0||0),
       eir:+r['_eir']||0, price:+r['_price']||0, rp:+r['_repo']||0, st:String(r['สถานะจริง']||status).trim(),
       vh:(String(r['ยี่ห้อรถ']||'')+' '+String(r['รุ่นรถ']||'')).trim(),
       nm:name, ph:phone, ad:String(r['ที่อยู่ลูกค้า']||'').trim(), fin:isFinanceContract(r['ประเภทการขาย'],+r['จำนวนงวดทั้งสัญญา']||0)};
