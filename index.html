@@ -606,10 +606,10 @@ function buildPortSnap(){ const idx=(WATCH&&WATCH.payIdx)||{}; const keys=Object
  return { at:(WATCH.lastImport||''), contracts:keys.length, bad, nplPct:keys.length?bad/keys.length*100:0,
   dpd:{ early:badMiss?e/badMiss*100:0, mid:badMiss?mid/badMiss*100:0, late:badMiss?late/badMiss*100:0 },
   custs:(WATCH.custs||[]).length, frames:(WATCH.frames||[]).length, zones, by:(SESSION&&SESSION.name)||'' }; }
-function publishPortSnap(silent){ const snap=buildPortSnap(); if(!snap){ if(!silent)alert('ยังไม่มีข้อมูลพอร์ต — นำเข้า balance_report ก่อน'); return; }
+function publishPortSnap(silent){ const snap=buildPortSnap(); if(!snap){ if(!silent)alert('ยังไม่มีข้อมูลพอร์ต'); return; }
  PORTSNAP=snap; try{ localStorage.setItem('moto24_portsnap',JSON.stringify(snap)); }catch(e){}
  if(typeof cloudPushMaster==='function')cloudPushMaster('portsnap',snap);
- if(!silent)alert('เผยแพร่ภาพรวมให้ผู้บริหารแล้ว ✅\nเครื่องอื่นที่เชื่อม Google Sheet จะเห็นภายใน 15 วินาที'); }
+ if(!silent)alert('เผยแพร่ภาพรวมให้ผู้บริหารแล้ว ✅'); }
 const normDigits = s => String(s||'').replace(/\D/g,'');
 const normFrame = s => String(s||'').replace(/[\s-]/g,'').toUpperCase();
 
@@ -2086,7 +2086,7 @@ function addrFields(prefix, req){
   ${cbx('sub','ตำบล/แขวง','เลือกอำเภอก่อน')}
   <div class="field"><label>หมู่ที่ <span class="req">*</span></label><input id="${prefix}-moo" class="req" placeholder="เช่น 4" oninput="liveCalc()"></div>
   <div class="field"><label>บ้านเลขที่ ${r}</label><input id="${prefix}-no" placeholder="เช่น 37/1" oninput="liveCalc()"></div>
-  <div class="field"><label>รหัสไปรษณีย์ <span style="font-weight:400;color:#6b7280;font-size:11px">(เติมอัตโนมัติจากตำบล)</span></label><input id="${prefix}-zip" placeholder="อัตโนมัติ/พิมพ์เอง" oninput="if(typeof liveCalc==='function')liveCalc()"></div>
+  <div class="field"><label>รหัสไปรษณีย์ <span style="font-weight:400;color:#6b7280;font-size:11px">(เติมอัตโนมัติจากตำบล)</span></label><input id="${prefix}-zip" placeholder="อัตโนมัติ/พิมพ์เอง" oninput="liveCalc&&liveCalc()"></div>
  </div>`;
 }
 /* --- Custom searchable dropdown (แบบที่ 2) --- */
@@ -2112,7 +2112,7 @@ function cbxRender(pfx,kind,q){ const wrap=document.getElementById(pfx+'-'+kind+
  const parentReady = kind==='dist'? !!_av(pfx+'-prov') : (kind==='sub'? (!!_av(pfx+'-prov')&&!!_av(pfx+'-dist')) : true);
  let html=opts.map(o=>'<div class="cbx-item'+(o===cur?' sel':'')+'" onclick="cbxPick(\''+pfx+'\',\''+kind+'\',this.getAttribute(\'data-v\'))" data-v="'+esc(o)+'">'+hl(o)+'</div>').join('');
  if(allowCustom && parentReady && q && all.indexOf(q)<0){
-   html='<div class="cbx-item cbx-custom" style="background:#fff7ef;color:#9a3412;font-weight:600" onclick="cbxPick(\''+pfx+'\',\''+kind+'\',this.getAttribute(\'data-v\'))" data-v="'+esc(q)+'">➕ ใช้ “'+esc(q)+'” (พิมพ์เอง)</div>'+html;
+   html='<div class="cbx-item cbx-custom" style="background:#fff7ef;color:#9a3412;font-weight:600" onclick="cbxPick(\''+pfx+'\',\''+kind+'\',this.getAttribute(\'data-v\'))" data-v="'+esc(q)+'">➕ ใช้ ‘'+esc(q)+'’ (พิมพ์เอง)</div>'+html;
  }
  if(!html){
    let msg;
@@ -4945,8 +4945,11 @@ function importHCapital(inp){
      frames.push({frameNo:fn2, level:'high', reason:'สัญญาถูกบอกเลิก — เสี่ยงรถถูกยึด/เวียนจำนำ', branch:brCode,
       detail:(String(r['ยี่ห้อรถ']||'')+' '+String(r['รุ่นรถ']||'')+' ทะเบียน '+String(r['เลขที่ทะเบียนรถ']||'-')+' สาขา'+brName).trim()}); }
    }
-   const m=String(r['ที่อยู่ลูกค้า']||'').match(/ตำบล(\S+)\s+อำเภอ(\S+)/);
-   if(m){ const key=m[1]+'|'+m[2]; areaAgg[key]=areaAgg[key]||{n:0,bad:0,br:{}};
+   let _asub='',_adist='';
+   const _rc=(typeof CUSTDB!=='undefined'&&CUSTDB&&CUSTDB.recs&&tid)?CUSTDB.recs[tid]:null;
+   if(_rc&&_rc.sub&&_rc.dist){ _asub=String(_rc.sub).trim(); _adist=String(_rc.dist).trim(); }
+   else { const m=String(r['ที่อยู่ลูกค้า']||'').match(/(?:ตำบล|ต\.)\s*([^\s]+)\s+(?:อำเภอ|อ\.)\s*([^\s]+)/); if(m){ _asub=m[1].trim(); _adist=m[2].trim(); } }
+   if(_asub&&_adist){ const key=_asub+'|'+_adist; areaAgg[key]=areaAgg[key]||{n:0,bad:0,br:{}};
     areaAgg[key].n++; areaAgg[key].br[brCode]=(areaAgg[key].br[brCode]||0)+1;
     if(status==='บอกเลิกสัญญา'||days>=90) areaAgg[key].bad++; }
    brStats[brCode]=brStats[brCode]||{n:0,bad:0};
@@ -5009,7 +5012,7 @@ function importHCapital(inp){
     reason:'หนี้เสีย '+rate.toFixed(0)+'% ('+a.bad+'/'+a.n+' สัญญา) จากพอร์ต H-Capital'});
   });
   areas.sort((x,y)=>(y.level==='high')-(x.level==='high'));
-  CFG.riskAreas=areas;
+  if(areas.length){ CFG.riskAreas=areas; } else if(!Array.isArray(CFG.riskAreas)){ CFG.riskAreas=[]; }
   const multi1=Object.values(kb).filter(k=>k.n===1).length;
   const multi2=Object.values(kb).filter(k=>k.n===2).length;
   const multi3=Object.values(kb).filter(k=>k.n>=3).length;
@@ -7175,7 +7178,7 @@ function agingExport(){ const A=window.__agRows; if(!A||!A.rows.length){ alert('
  const aoa=[head]; A.rows.forEach(r=>{ const b=BRANCHES.find(x=>x.code===r.br); aoa.push([r.tid,r.ct,r.nm,b?b.label:r.br,r.days,Math.round(r.exp),r.st,r.occ]); });
  const ws=XLSX.utils.aoa_to_sheet(aoa); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'aging_'+A.key); XLSX.writeFile(wb,'MOTO24_aging_'+A.key+'_'+new Date().toISOString().slice(0,10)+'.xlsx'); }
 function execPublishBar(){ const p=(typeof PORTSNAP!=='undefined'&&PORTSNAP&&PORTSNAP.at)?(' · เผยแพร่ล่าสุด: '+PORTSNAP.at):' · ยังไม่เคยเผยแพร่';
- return '<div class="card mb" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px solid #f0c08a;background:#fff8ec"><span style="font-size:13px">📤 <b>เผยแพร่ภาพรวมพอร์ตให้ผู้บริหาร</b> (เพื่อให้เครื่องอื่นที่เปิดลิงก์เห็นภาพรวมนี้)</span><button class="btn btn-org btn-sm" onclick="publishPortSnap()">เผยแพร่ภาพรวมล่าสุด</button><span class="mut" style="font-size:12px">'+p+'</span></div>'; }
+ return '<div class="card mb" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px solid #f0c08a;background:#fff8ec"><span style="font-size:13px">📤 <b>เผยแพร่ภาพรวมพอร์ตให้ผู้บริหาร</b> (ให้เครื่องอื่นที่เปิดลิงก์เห็นภาพรวมนี้)</span><button class="btn btn-org btn-sm" onclick="publishPortSnap()">เผยแพร่ภาพรวมล่าสุด</button><span class="mut" style="font-size:12px">'+p+'</span></div>'; }
 function execSnapCard(){ const P=PORTSNAP; if(!P) return '<div class="card"><div class="alert a-warn" style="margin:0">ยังไม่มีภาพรวมพอร์ต — รอ สนญ. นำเข้าไฟล์ + กดเผยแพร่ หรือเครื่องนี้ยังไม่ได้เชื่อม Google Sheet</div></div>';
  const kc=(bg,fg,n,l)=>'<div class="exkpi" style="background:'+bg+'"><div class="exkpi-n" style="color:'+fg+'">'+n+'</div><div class="exkpi-l" style="color:'+fg+'">'+l+'</div></div>';
  const zrows=(P.zones||[]).map(z=>'<tr><td>'+z.name+'</td><td class="num b">'+fmt(z.n)+'</td><td class="num" style="color:var(--bad)">'+fmt(z.bad)+'</td><td class="num">'+z.pct.toFixed(0)+'%</td></tr>').join('');
