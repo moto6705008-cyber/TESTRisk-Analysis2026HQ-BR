@@ -307,7 +307,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0909-B — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -553,11 +553,14 @@ function cloudPushCase(a){ if(!cloudReady()||!a||!a.id) return; a.updatedAt=Date
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
- return cloudCall('getCases',{since:0}).then(j=>{ let changed=false;
+ return cloudCall('getCases',{since:0}).then(j=>{ let changed=false; const chIds=[];
    (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; const i=APPS.findIndex(x=>x.id===sv.id);
-     if(i<0){ APPS.push(sv); changed=true; } else if((sv.updatedAt||0)>(APPS[i].updatedAt||0)){ APPS[i]=sv; changed=true; } });
+     if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); } else if((sv.updatedAt||0)>(APPS[i].updatedAt||0)){ APPS[i]=sv; changed=true; chIds.push(sv.id); } });
    c.lastPull=j.serverTime||Date.now(); saveCloud();
-   if(changed){ try{recalcAll();}catch(e){} saveApps(); if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); } }); }
+   if(changed){ try{recalcAll();}catch(e){} saveApps();
+     const mb=document.getElementById('modal-bg');
+     if(window.__openCaseId && chIds.indexOf(window.__openCaseId)>=0 && mb && !mb.classList.contains('hidden')){ try{ openDetail(window.__openCaseId); }catch(e){} }
+     else if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); } }); }
 function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
  return cloudCall('getMaster').then(j=>{ const m=j.master||{}; let changed=false;
    const ap=(key,fn)=>{ const rec=m[key]; if(rec&&(rec.updatedAt||0)>(c.masterAt[key]||0)&&rec.data!=null){ try{fn(rec.data);}catch(e){} c.masterAt[key]=rec.updatedAt; changed=true; } };
@@ -3828,7 +3831,7 @@ function autoChecks(a){
 }
 function fmtAddr(x){ if(!x) return '-'; return [x.no?'เลขที่ '+x.no:'',x.moo?'ม.'+x.moo:'','ต.'+(x.sub||'-'),'อ.'+(x.dist||'-'),'จ.'+(x.prov||'-'),x.zip].filter(Boolean).join(' '); }
 function openDetail(id){
- const a=APPS.find(x=>x.id===id); if(!a) return;
+ const a=APPS.find(x=>x.id===id); if(!a) return; try{window.__openCaseId=id;}catch(e){}
  const c=a.calc=calcAll(a);
  const b=BRANCHES.find(x=>x.code===a.branch);
  const isHQ = SESSION.role==='analyst';
@@ -4060,7 +4063,7 @@ function openDetail(id){
  </div>`;
  document.getElementById('modal-bg').classList.remove('hidden');
 }
-function closeModal(){ document.getElementById('modal-bg').classList.add('hidden'); }
+function closeModal(){ document.getElementById('modal-bg').classList.add('hidden'); try{window.__openCaseId=null;}catch(e){} }
 function printCase(id){
  const a=APPS.find(x=>x.id===id); if(!a){ alert('ไม่พบเคส'); return; }
  const c=a.calc=calcAll(a); const b=BRANCHES.find(x=>x.code===a.branch);
