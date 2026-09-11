@@ -575,7 +575,7 @@ let CLOUD=null;
    ใส่ URL + TOKEN แล้วบันทึกไฟล์ → สาขาเปิดไฟล์ = เชื่อมชีตให้อัตโนมัติ
    สาขาไม่ต้องตั้งค่าอะไรเลย แค่ล็อกอินแล้วใช้ได้ทันที
    (ถ้าเว้นว่างไว้ = ต้องตั้งค่าเองในหน้า "เชื่อมต่อ Google Sheet") */
-const CLOUD_PRESET = { url:'', token:'', autoOn:true };
+const CLOUD_PRESET = { url:'https://script.google.com/macros/s/xxxxx/exec', token:'BOONCHOO0@5012021TESTrisk##-2569', autoOn:true };
 /* ▲▲▲ จบส่วนที่ สนญ. แก้ ▲▲▲ ======================================== */
 function loadCloud(){ if(CLOUD) return CLOUD; try{ CLOUD=JSON.parse(localStorage.getItem('moto24_cloud'))||{}; }catch(e){ CLOUD={}; }
  /* ถ้ายังไม่เคยตั้งค่าในเครื่องนี้ และมีค่าฝังไว้ในไฟล์ → ใช้ค่าฝัง (สาขาไม่ต้องกรอกเอง) */
