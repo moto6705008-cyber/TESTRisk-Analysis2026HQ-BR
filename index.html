@@ -348,7 +348,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0911-A (เฟส 1: การ์ดตรวจข้อมูล 3 มิติ) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0911-B (เฟส 1: การ์ดตรวจข้อมูล 3 มิติ · แถบสถานะซิงก์) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -575,13 +575,14 @@ let CLOUD=null;
    ใส่ URL + TOKEN แล้วบันทึกไฟล์ → สาขาเปิดไฟล์ = เชื่อมชีตให้อัตโนมัติ
    สาขาไม่ต้องตั้งค่าอะไรเลย แค่ล็อกอินแล้วใช้ได้ทันที
    (ถ้าเว้นว่างไว้ = ต้องตั้งค่าเองในหน้า "เชื่อมต่อ Google Sheet") */
-const CLOUD_PRESET = { url:'https://script.google.com/macros/s/xxxxx/exec', token:'BOONCHOO0@5012021TESTrisk##-2569', autoOn:true };
+const CLOUD_PRESET = { url:'https://script.google.com/macros/s/AKfycby6d8q44cUimcgMX8r2H6UU224DXdjO_HwoLVPZATDsTR_hHlAl3q5cv9q4W6RFUbde/exec', token:'BOONCHOO0@5012021TESTrisk##-2569', autoOn:true };
 /* ▲▲▲ จบส่วนที่ สนญ. แก้ ▲▲▲ ======================================== */
 function loadCloud(){ if(CLOUD) return CLOUD; try{ CLOUD=JSON.parse(localStorage.getItem('moto24_cloud'))||{}; }catch(e){ CLOUD={}; }
  /* ถ้ายังไม่เคยตั้งค่าในเครื่องนี้ และมีค่าฝังไว้ในไฟล์ → ใช้ค่าฝัง (สาขาไม่ต้องกรอกเอง) */
- if((!CLOUD.url||!CLOUD.token) && CLOUD_PRESET && CLOUD_PRESET.url && CLOUD_PRESET.token){
-   CLOUD.url=CLOUD.url||CLOUD_PRESET.url; CLOUD.token=CLOUD.token||CLOUD_PRESET.token;
-   if(CLOUD.on!==false && CLOUD_PRESET.autoOn!==false) CLOUD.on=true;
+ /* 0911-B: ถ้า สนญ. ฝังค่าไว้ในไฟล์ ให้ค่าฝัง "ชนะ" ค่าเก่าในเครื่องเสมอ (กันเครื่องสาขาค้าง URL/token เก่า หรือปิดซิงก์ค้างไว้) */
+ if(CLOUD_PRESET && CLOUD_PRESET.url && CLOUD_PRESET.token){
+   if(CLOUD.url!==CLOUD_PRESET.url || CLOUD.token!==CLOUD_PRESET.token){ CLOUD.url=CLOUD_PRESET.url; CLOUD.token=CLOUD_PRESET.token; CLOUD.masterAt={}; CLOUD.lastPull=0; }
+   if(CLOUD_PRESET.autoOn!==false) CLOUD.on=true;
  }
  CLOUD.url=CLOUD.url||''; CLOUD.token=CLOUD.token||''; CLOUD.on=!!CLOUD.on; CLOUD.lastPull=CLOUD.lastPull||0; CLOUD.masterAt=CLOUD.masterAt||{}; return CLOUD; }
 function saveCloud(){ try{ localStorage.setItem('moto24_cloud', JSON.stringify(CLOUD)); }catch(e){} }
@@ -594,10 +595,11 @@ function cloudPushCase(a){ if(!cloudReady()||!a||!a.id) return; a.updatedAt=Date
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
- return cloudCall('getCases',{since:0}).then(j=>{ let changed=false; const chIds=[];
+ return cloudCall('getCases',{since:0}).catch(e=>{ c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
    (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; const i=APPS.findIndex(x=>x.id===sv.id);
-     if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); } else if((sv.updatedAt||0)>(APPS[i].updatedAt||0)){ APPS[i]=sv; changed=true; chIds.push(sv.id); } });
-   c.lastPull=j.serverTime||Date.now(); saveCloud();
+     if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); }
+     else if((sv.updatedAt||0)>(APPS[i].updatedAt||0) || (sv.status!==APPS[i].status && (sv.decidedAt||0)>(APPS[i].decidedAt||0))){ APPS[i]=sv; changed=true; chIds.push(sv.id); } });
+   c.lastPull=j.serverTime||Date.now(); c.lastOk=Date.now(); c.lastErr=''; saveCloud(); try{ renderSyncChip(); }catch(e){}
    if(changed){ try{recalcAll();}catch(e){} saveApps();
      const mb=document.getElementById('modal-bg');
      if(window.__openCaseId && chIds.indexOf(window.__openCaseId)>=0 && mb && !mb.classList.contains('hidden')){ try{ openDetail(window.__openCaseId); }catch(e){} }
@@ -1596,7 +1598,7 @@ function pickRole(r){
  document.getElementById('zone-pick').classList.toggle('hidden',r!=='zone');
 }
 const ROLE_LABEL={analyst:'ผู้ดูแลระบบ (สนญ.)',zone:'ผู้จัดการเขต',branch:'ผู้จัดการสาขา',basic:'ผู้ใช้ทั่วไป'};
-function enterApp(sess){
+function enterApp(sess){ try{ if(typeof cloudReady==='function'&&cloudReady()){ setTimeout(()=>{ cloudPullMaster().catch(()=>{}); cloudPullCases().catch(()=>{}); },800); } }catch(e){}
  SESSION=sess;
  document.getElementById('login').classList.add('hidden');
  document.getElementById('app').classList.remove('hidden');
@@ -1745,15 +1747,31 @@ function renderAgriReminder(){
  const u=AGRI_EST.updatedAt||0, days=u?Math.floor((Date.now()-u)/86400000):9999, stale=days>=(AGRI_EST.reviewEveryDays||30);
  if(stale){ el.insertAdjacentHTML('afterbegin','<div style="margin:0 0 12px"><div class="alert a-warn" style="margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span>🌾 <b>ราคาอ้างอิงเกษตรยังไม่อัปเดต'+(u?' ('+days+' วัน)':'')+'</b> — ประเมินรายได้อาจคลาดเคลื่อน ควรทบทวนราคาตามลานรับซื้อ/แหล่งทางการ</span><button class="btn btn-red btn-sm" style="margin-left:auto" onclick="go(\'agri\')">ไปหน้าตั้งค่าราคา</button></div></div>'); }
 }
+/* 0911-B: แถบสถานะซิงก์ชีต — ทุกสิทธิ์เห็น (สาขาเช็กเองได้ว่าเชื่อมอยู่ไหม) */
+function syncChipHTML(){
+ const c=loadCloud();
+ if(!c.url||!c.token) return '<div class="alert a-warn" style="margin:0 0 10px;font-size:13px">☁️ <b>ยังไม่เชื่อม Google Sheet</b> — ข้อมูลอยู่แค่ในเครื่องนี้ · แจ้ง สนญ. ให้ฝัง URL/TOKEN ในไฟล์</div>';
+ if(!c.on) return '<div class="alert a-warn" style="margin:0 0 10px;font-size:13px">☁️ <b>ปิดการซิงก์ชีตไว้</b> — ข้อมูลไม่ไหลข้ามเครื่อง</div>';
+ const t=c.lastOk?new Date(c.lastOk):null; const ago=t?Math.round((Date.now()-c.lastOk)/1000):null;
+ const stale = ago==null || ago>90;
+ const when = t? (t.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+(ago!=null?' ('+(ago<60?ago+' วิ':Math.round(ago/60)+' นาที')+'ที่แล้ว)':'')) : 'ยังไม่เคยดึงสำเร็จในรอบนี้';
+ return '<div class="alert '+(c.lastErr||stale?'a-warn':'a-ok')+'" id="syncchip" style="margin:0 0 10px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
+  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 15 วิ</span>'
+  +'<button class="btn btn-line btn-sm noprint" style="margin-left:auto" onclick="syncNowQuiet()">🔄 ซิงก์เดี๋ยวนี้</button></div>';
+}
+function renderSyncChip(){ const el=document.getElementById('backupbar'); if(!el) return; const old=el.querySelector('#syncchip'); if(old){ const tmp=document.createElement('div'); tmp.innerHTML=syncChipHTML(); old.replaceWith(tmp.firstChild); } }
+function syncNowQuiet(){ if(!cloudReady()){ alert('ยังไม่เชื่อม Google Sheet'); return; }
+ Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>{ renderBackupBar(); if(typeof currentTab!=='undefined'&&currentTab) go(currentTab); }).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
 function renderBackupBar(){
  const el=document.getElementById('backupbar'); if(!el) return;
  const nApps=(APPS&&APPS.length)||0;
- if(!nApps){ el.innerHTML=''; return; }
+ const chip=syncChipHTML();
+ if(!nApps){ el.innerHTML=chip; return; }
  const today=new Date().toISOString().slice(0,10);
  const last=localStorage.getItem('moto24_lastbackup_v1')||'';
- if(last===today){ el.innerHTML='<div style="margin:0 0 12px"><div class="alert a-ok" style="margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap">✅ สำรองข้อมูลแล้ววันนี้ ('+last+') · เคสในระบบ '+nApps.toLocaleString()+' รายการ</div></div>'; return; }
+ if(last===today){ el.innerHTML=chip+'<div style="margin:0 0 12px"><div class="alert a-ok" style="margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap">✅ สำรองข้อมูลแล้ววันนี้ ('+last+') · เคสในระบบ '+nApps.toLocaleString()+' รายการ</div></div>'; return; }
  const msg = last? 'สำรองข้อมูลล่าสุดเมื่อ '+last+' — วันนี้ยังไม่ได้สำรอง' : 'ยังไม่เคยสำรองข้อมูล';
- el.innerHTML='<div style="margin:0 0 12px"><div class="alert a-warn" style="margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
+ el.innerHTML=chip+'<div style="margin:0 0 12px"><div class="alert a-warn" style="margin:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
   +'<span>💾 <b>'+msg+'</b> · เคสในระบบ '+nApps.toLocaleString()+' รายการ — ข้อมูลเก็บในเครื่องนี้เท่านั้น ควรสำรองเป็นไฟล์ทุกวันกันข้อมูลหาย</span>'
   +'<button class="btn btn-red btn-sm" style="margin-left:auto" onclick="backupAll()">💾 สำรองข้อมูลตอนนี้</button></div></div>';
 }
@@ -7374,7 +7392,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0911-A';
+const CHK3_BUILD='0911-B';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
