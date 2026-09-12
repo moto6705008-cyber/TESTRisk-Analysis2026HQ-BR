@@ -155,6 +155,7 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 .fh-badge{background:var(--orange);color:#fff;font-weight:700;font-size:12px;padding:2px 8px;border-radius:5px}
 .fh-title{font-size:14px;font-weight:600;flex:1;line-height:1.3}
 .fh-count{background:var(--orange);color:#fff;font-size:12px;padding:3px 11px;border-radius:20px;font-weight:600;white-space:nowrap}
+.fchip.locked{opacity:.45;cursor:not-allowed;filter:grayscale(1)}
 .fstepper{display:flex;gap:2px;overflow-x:auto;margin:0;padding-bottom:2px}
 .fchip{flex:1;min-width:72px;position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;padding:2px}
 .fchip .fbar{position:absolute;top:20px;height:3px;background:rgba(255,255,255,.22);z-index:0}
@@ -348,7 +349,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0912-D (เฟส 1 · ล้างเคสทดสอบทุกเครื่อง) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0912-E (เฟส 1 · ล็อกหัวข้อ 4 ผลิตภัณฑ์ได้) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -598,22 +599,46 @@ function _cloudCallOnce(action, body){ const c=loadCloud(); if(!c.url) return Pr
  const _ac=(typeof AbortController!=='undefined')?new AbortController():null; const _tm=_ac?setTimeout(()=>{ try{_ac.abort();}catch(_){} },25000):null;
  return fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload),signal:_ac?_ac.signal:undefined})
   .then(r=>{ if(_tm)clearTimeout(_tm); return r.text(); }).catch(e=>{ if(_tm)clearTimeout(_tm); throw new Error(e&&e.name==='AbortError'?'หมดเวลารอ Apps Script (25 วิ)':(e&&e.message)||'เชื่อมต่อไม่ได้'); }).then(t=>{ let j; try{ j=JSON.parse(t); }catch(e){ throw new Error('ตอบกลับไม่ใช่ JSON (คำตอบถูกดักกลางทาง — ระบบลองใหม่เอง)'+(/<html/i.test(t)?'':': '+String(t).slice(0,80))); } if(!j.ok) throw new Error(j.error||'ไม่สำเร็จ'); return j; }); }
-function cloudPushCase(a){ if(!cloudReady()||!a||!a.id) return; a.updatedAt=Date.now(); a.updatedBy=(SESSION&&SESSION.name)||''; cloudCall('upsertCase',{'case':a}).then(j=>{ if(j&&j.updatedAt){ a.updatedAt=j.updatedAt; try{saveApps();}catch(e){} } }).catch(()=>{}); }
+/* 0912-D: ธง _dirty = เครื่องนี้แก้เคสแล้วยังส่งขึ้นชีตไม่สำเร็จ → ส่งย้อนหลังแน่นอน ไม่พึ่งนาฬิกาเครื่อง · ค่าในชีต (server) ถือเป็นความจริงเมื่อเครื่องนี้ไม่มีของค้าง */
+function mergeCase(base, other){ const o=Object.assign({}, base); let changed=false; if(!other) return {obj:o, changed};
+ try{
+  /* ทามไลน์ สนญ. (รับงาน/ด่าน/ผลสรุป): เอาอันที่มีหรือใหม่กว่า */
+  const bt=Object.assign({}, base.tl||{}), ot=other.tl||{};
+  Object.keys(ot).forEach(k=>{ const ov=ot[k], bv=bt[k];
+    if(k==='acceptedAt'||k==='acceptedBy'){ if(!bt.acceptedAt && ot.acceptedAt){ bt.acceptedAt=ot.acceptedAt; bt.acceptedBy=ot.acceptedBy; changed=true; } return; }
+    if(ov && typeof ov==='object'){ if(!bv || (ov.at||0)>(bv.at||0)){ bt[k]=ov; changed=true; } } });
+  if(changed || base.tl) o.tl=bt;
+  /* คำตัดสิน: ฝั่งที่ตัดสินใหม่กว่าชนะ */
+  if((other.decidedAt||0)>(base.decidedAt||0) && other.status && other.status!=='pending'){ ['status','decisionNote','decidedAt','decisionDate','analyst'].forEach(k=>{ if(other[k]!==undefined) o[k]=other[k]; }); changed=true; }
+  /* ส่งซ้ำหลังขอข้อมูลเพิ่ม: submittedAt ใหม่กว่าคำตัดสินของฐาน → กลับเป็นรอพิจารณา */
+  if((other.submittedAt||0)>(base.submittedAt||0) && (other.submittedAt||0)>(o.decidedAt||0) && other.status==='pending' && o.status!=='pending'){ o.status='pending'; o.submittedAt=other.submittedAt; changed=true; }
+  if(!base.ack3 && other.ack3){ o.ack3=other.ack3; changed=true; }
+  if(Array.isArray(other.thread)){ const bth=Array.isArray(base.thread)?base.thread.slice():[]; const seen={}; bth.forEach(t=>{ seen[(t.at||0)+'|'+(t.by||'')]=1; });
+    other.thread.forEach(t=>{ const key=(t.at||0)+'|'+(t.by||''); if(!seen[key]){ bth.push(t); seen[key]=1; changed=true; } }); if(bth.length!==(base.thread||[]).length){ bth.sort((x,y)=>(x.at||0)-(y.at||0)); o.thread=bth; } }
+ }catch(e){}
+ return {obj:o, changed}; }
+function _caseWire(a){ const c=Object.assign({},a); delete c._dirty; delete c._dirtyAt; return c; }
+function _pushDone(a, seq, j){ if(j&&j.updatedAt){ a.updatedAt=j.updatedAt; if((a._dirtyAt||0)<=seq){ a._dirty=false; delete a._dirtyAt; } try{saveApps();}catch(e){} } }
+function cloudPushCase(a){ if(!a||!a.id) return; a._dirty=true; a._dirtyAt=Date.now(); a.updatedAt=a._dirtyAt; a.updatedBy=(SESSION&&SESSION.name)||''; try{saveApps();}catch(e){} if(!cloudReady()) return;
+ const seq=a._dirtyAt; cloudCall('upsertCase',{'case':_caseWire(a)}).then(j=>_pushDone(a,seq,j)).catch(()=>{}); }
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
  return cloudCall('getCases',{since:0}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=3) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
-   const _pg=purgeAt();
-   (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; if(_pg && (sv.submittedAt||sv.updatedAt||0)<_pg) return;   /* 0912-D: เคสก่อนจุดล้าง — ไม่รับกลับมา */
-     const i=APPS.findIndex(x=>x.id===sv.id);
+   (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; if(isPurged(sv)) return;   /* 0912-D: เคสที่ล้างแล้ว — ไม่รับกลับมา */
+     delete sv._dirty; delete sv._dirtyAt; const i=APPS.findIndex(x=>x.id===sv.id);
      if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); }
-     else if((sv.updatedAt||0)>(APPS[i].updatedAt||0) || (sv.status!==APPS[i].status && (sv.decidedAt||0)>(APPS[i].decidedAt||0))){ APPS[i]=sv; changed=true; chIds.push(sv.id); } });
+     else { const lc=APPS[i];
+       /* เครื่องนี้ไม่มีของค้างส่ง → ฐานคือค่าในชีต (ต่างกันเมื่อไรรับทันที ไม่เทียบนาฬิกา) · มีของค้าง → ฐานคือของเครื่องนี้
+          แล้ว "ผสาน" ด่านทามไลน์/คำตัดสิน/รับทราบ จากอีกฝั่งที่ใหม่กว่า เพื่อไม่ให้การรับงานของ สนญ. หายเมื่อสาขาส่งย้อนหลังทับ */
+       if(!lc._dirty){ if((sv.updatedAt||0)!==(lc.updatedAt||0)){ const m=mergeCase(sv, lc); APPS[i]=m.obj; if(m.changed){ m.obj._dirty=true; m.obj._dirtyAt=Date.now(); } changed=true; chIds.push(sv.id); } }
+       else { const m=mergeCase(lc, sv); if(m.changed){ APPS[i]=m.obj; m.obj._dirty=true; m.obj._dirtyAt=Date.now(); changed=true; chIds.push(sv.id); } } } });
    c.lastPull=j.serverTime||Date.now(); c.lastOk=Date.now(); c.lastErr=''; c.failN=0; saveCloud(); try{ renderSyncChip(); }catch(e){}
    /* 0911-B: ส่งย้อนหลัง — เคสในเครื่องนี้ที่ใหม่กว่าในชีต (แก้ตอนออฟไลน์/ส่งไม่สำเร็จ) ให้ดันขึ้นชีตอัตโนมัติ */
    try{ const srv={}; (j.cases||[]).forEach(sv=>{ if(sv&&sv.id) srv[sv.id]=sv; });
-     window.__bp=window.__bp||{}; let pushed=0; APPS.forEach(a=>{ const sv=srv[a.id]; const localNewer = !sv || ((a.updatedAt||0)>(sv.updatedAt||0)+1000) || (sv.status!==a.status && (a.decidedAt||0)>(sv.decidedAt||0));
-       const recently = (window.__bp[a.id]||0) > Date.now()-300000;   /* กันยิงซ้ำ: เคสเดิมไม่เกิน 1 ครั้ง/5 นาที */
-       if(localNewer && !recently && pushed<5){ pushed++; window.__bp[a.id]=Date.now(); cloudCall('upsertCase',{'case':a}).then(r=>{ if(r&&r.updatedAt){ a.updatedAt=r.updatedAt; try{saveApps();}catch(_){} } }).catch(()=>{}); } }); }catch(e){}
+     window.__bp=window.__bp||{}; let pushed=0; APPS.forEach(a=>{ const sv=srv[a.id]; const localNewer = !sv || a._dirty || (sv.status!==a.status && (a.decidedAt||0)>(sv.decidedAt||0));
+       const recently = (window.__bp[a.id]||0) > Date.now()-(a._dirty?20000:300000);   /* กันยิงซ้ำ: ของค้างส่งลองทุก 20 วิ · อื่น ๆ 1 ครั้ง/5 นาที */
+       if(localNewer && !recently && pushed<5){ pushed++; window.__bp[a.id]=Date.now(); const seq=a._dirtyAt||0; cloudCall('upsertCase',{'case':_caseWire(a)}).then(r=>_pushDone(a,seq,r)).catch(()=>{}); } }); }catch(e){}
    if(changed){ try{recalcAll();}catch(e){} saveApps();
      const mb=document.getElementById('modal-bg');
      if(window.__openCaseId && chIds.indexOf(window.__openCaseId)>=0 && mb && !mb.classList.contains('hidden')){ try{ openDetail(window.__openCaseId); }catch(e){} }
@@ -630,22 +655,29 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('incref',d=>{ if(d&&d.base){ INCREF=d; try{localStorage.setItem('moto24_incref_v1',JSON.stringify(INCREF));}catch(e){} } });
    ap('doccheck',d=>{ if(d&&d.groups){ DOCCHECK=d; try{localStorage.setItem('moto24_doccheck_v1',JSON.stringify(DOCCHECK));}catch(e){} } });
    ap('users',d=>{ mergeUsersFromCloud(d); });
-   ap('purge',d=>{ if(d&&d.at) applyPurge(+d.at, d.by||''); });
+   ap('purge',d=>{ if(d&&d.at) applyPurge(d, d.by||''); });
    saveCloud(); if(changed){ try{recalcAll();}catch(e){} if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); } }); }
 function cloudSyncNow(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ (เปิดหน้า "เชื่อมต่อ Google Sheet" ก่อน)'); return; }
  Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>alert('ซิงก์ล่าสุดแล้ว')).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
 function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ'); return; }
  if(!confirm('อัปโหลดข้อมูลทั้งหมดในเครื่องนี้ขึ้น Google Sheet? (เคส '+APPS.length+' + ข้อมูลหลังบ้าน)')) return;
- const seq=[]; APPS.forEach(a=>{ a.updatedAt=a.updatedAt||Date.now(); seq.push(()=>cloudCall('upsertCase',{'case':a})); });
+ const seq=[]; APPS.forEach(a=>{ a.updatedAt=a.updatedAt||Date.now(); seq.push(()=>cloudCall('upsertCase',{'case':_caseWire(a)}).then(r=>_pushDone(a,a._dirtyAt||0,r))); });
  [['occ',OCC_LIST],['vuse',VUSE_PURPOSES],['recsets',REC_SETS],['cfg',CFG],['pb',PB],['incref',INCREF],['doccheck',DOCCHECK],['users',USERS.map(u=>Object.assign({},u,{lastLogin:undefined}))]].concat((buildPortSnap&&buildPortSnap())?[['portsnap',buildPortSnap()]]:[]).forEach(kv=>seq.push(()=>cloudCall('setMaster',{key:kv[0],data:kv[1],by:(SESSION&&SESSION.name)||''})));
  (function run(i){ if(i>=seq.length){ alert('อัปโหลดครบแล้ว ('+APPS.length+' เคส + ข้อมูลหลังบ้าน)'); return; } seq[i]().then(()=>run(i+1)).catch(e=>alert('หยุดที่รายการ '+(i+1)+': '+e.message)); })(0); }
 /* ===== 0912-D: ล้างเคสทั้งระบบ (โหมดทดสอบ) =====
    สนญ. กดครั้งเดียว → เครื่องนี้ลบเคสทันที + ส่ง master key `purge` {at,by} ขึ้นชีต
    ทุกเครื่องที่ดึง master จะลบเคสที่ส่งก่อนเวลา at ออกเอง และไม่รับเคสเก่าจากชีตกลับมาอีก (แถวในชีตจะลบทิ้งหรือไม่ก็ได้) */
 function purgeAt(){ try{ return +(localStorage.getItem('moto24_purge_at')||0)||0; }catch(e){ return 0; } }
-function applyPurge(at, by){ at=+at||0; if(!at || at<=purgeAt()) return 0;
- try{ localStorage.setItem('moto24_purge_at', String(at)); localStorage.setItem('moto24_purge_by', by||''); }catch(e){}
- const before=APPS.length; APPS=APPS.filter(a=>(a.submittedAt||a.updatedAt||0)>=at); const n=before-APPS.length;
+function purgeIds(){ try{ const o=JSON.parse(localStorage.getItem('moto24_purge_ids')||'{}'); return (o&&typeof o==='object')?o:{}; }catch(e){ return {}; } }
+/* เกณฑ์ลบ: (1) เลขที่เคสอยู่ในรายชื่อที่ล้าง — ไม่พึ่งนาฬิกาเลย · (2) สำรอง: เคสที่ไม่มีในรายชื่อแต่ส่งก่อนจุดล้างเกิน 6 ชม. (เคสค้างออฟไลน์เก่า ๆ) */
+function isPurged(a){ if(!a) return false; const ids=window.__pgIds||(window.__pgIds=purgeIds()); if(ids[a.id]) return true; const at=purgeAt(); return !!(at && (a.submittedAt||a.updatedAt||0) < at-6*3600000); }
+function applyPurge(p, by){ if(typeof p==='number') p={at:p, ids:[]}; if(!p||!p.at) return 0;
+ const ids=purgeIds(); let nid=0; (p.ids||[]).forEach(id=>{ if(!ids[id]){ ids[id]=1; nid++; } });
+ const newer = p.at>purgeAt();
+ if(!newer && !nid) return 0;
+ try{ if(newer){ localStorage.setItem('moto24_purge_at', String(p.at)); localStorage.setItem('moto24_purge_by', p.by||by||''); } localStorage.setItem('moto24_purge_ids', JSON.stringify(ids)); }catch(e){}
+ window.__pgIds=ids;
+ const before=APPS.length; APPS=APPS.filter(a=>!isPurged(a)); const n=before-APPS.length;
  window.__bp={}; saveApps(); try{recalcAll();}catch(e){}
  if(n>0){ try{ const mb=document.getElementById('modal-bg'); if(mb) mb.classList.add('hidden'); }catch(e){} try{ if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); }catch(e){} }
  return n; }
@@ -653,11 +685,16 @@ function purgeAllCases(){ if(!SESSION||SESSION.role!=='analyst'){ alert('เฉ�
  const n=APPS.length;
  if(!confirm('ล้างเคสทั้งหมด '+n+' รายการออกจากระบบ (ทุกเครื่อง สาขา/เขต/สนญ.)?\n\nใช้สำหรับเคลียร์เคสทดสอบก่อนใช้งานจริง — เคสที่ส่งหลังจากนี้จะไม่ถูกลบ')) return;
  if(!confirm('ยืนยันอีกครั้ง: ลบเคส '+n+' รายการ ย้อนกลับไม่ได้\n(ข้อมูลหลังบ้าน: อาชีพ/เกณฑ์/ผู้ใช้/ค่าอ้างอิง ไม่ถูกลบ)')) return;
- const at=Date.now(); const by=(SESSION&&SESSION.name)||'สนญ.';
- const removed=applyPurge(at, by);
- if(cloudReady()){ cloudCall('setMaster',{key:'purge',data:{at,by},by}).then(j=>{ const c=loadCloud(); c.masterAt.purge=j.updatedAt||at; saveCloud(); alert('ล้างเคสแล้ว '+removed+' รายการ\nเครื่องอื่นจะล้างตามเองภายใน ~1 นาที (หรือกด "ซิงก์เดี๋ยวนี้")'); try{ go('cloud'); }catch(e){} })
-   .catch(e=>alert('ล้างในเครื่องนี้แล้ว '+removed+' รายการ แต่ส่งคำสั่งขึ้นชีตไม่สำเร็จ: '+e.message+'\nกดปุ่มนี้ซ้ำอีกครั้งเมื่อแถบซิงก์เขียว')); }
- else alert('ล้างเคสในเครื่องนี้แล้ว '+removed+' รายการ (ยังไม่ได้เชื่อมต่อชีต จึงล้างเฉพาะเครื่องนี้)'); }
+ const by=(SESSION&&SESSION.name)||'สนญ.';
+ const finish=(idset, at)=>{ const ids=Object.keys(idset); const p={at, by, ids, n:ids.length}; const removed=applyPurge(p, by);
+   if(cloudReady()){ cloudCall('setMaster',{key:'purge',data:p,by}).then(j=>{ const c=loadCloud(); c.masterAt.purge=j.updatedAt||at; saveCloud(); alert('ล้างเคสแล้ว '+ids.length+' รายการ (ในเครื่องนี้ '+removed+')\nเครื่องอื่นจะล้างตามเองภายใน ~1 นาที (หรือกด "ซิงก์เดี๋ยวนี้")'); try{ go('cloud'); }catch(e){} })
+     .catch(e=>alert('ล้างในเครื่องนี้แล้ว '+removed+' รายการ แต่ส่งคำสั่งขึ้นชีตไม่สำเร็จ: '+e.message+'\nกดปุ่มนี้ซ้ำอีกครั้งเมื่อแถบซิงก์เขียว')); }
+   else alert('ล้างเคสในเครื่องนี้แล้ว '+removed+' รายการ (ยังไม่ได้เชื่อมต่อชีต จึงล้างเฉพาะเครื่องนี้)'); };
+ const idset={}; APPS.forEach(a=>{ if(a&&a.id) idset[a.id]=1; });
+ /* รวบรวมเลขที่เคสทั้งหมดในชีตด้วย (รวมที่เครื่องนี้ยังไม่เคยเห็น) — ใช้เวลาของเซิร์ฟเวอร์เป็นจุดอ้างอิง */
+ if(cloudReady()){ cloudCall('getCases',{since:0}).then(j=>{ (j.cases||[]).forEach(sv=>{ if(sv&&sv.id) idset[sv.id]=1; }); finish(idset, j.serverTime||Date.now()); })
+   .catch(e=>{ if(confirm('ดึงรายชื่อเคสจากชีตไม่สำเร็จ ('+e.message+')\nล้างเฉพาะเคสที่เครื่องนี้เห็น '+n+' รายการต่อไปหรือไม่?')) finish(idset, Date.now()); }); }
+ else finish(idset, Date.now()); }
 function saveCfg(){ try{ localStorage.setItem('moto24_cfg_v3', JSON.stringify(CFG)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('cfg',CFG); }
 
 let CUSTDB;
@@ -1807,7 +1844,7 @@ function syncChipHTML(){
  const stale = ago==null || ago>240;
  const when = t? (t.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+(ago!=null?' ('+(ago<60?ago+' วิ':Math.round(ago/60)+' นาที')+'ที่แล้ว)':'')) : 'ยังไม่เคยดึงสำเร็จในรอบนี้';
  return '<div class="alert '+(c.lastErr||stale?'a-warn':'a-ok')+'" id="syncchip" style="margin:0 0 10px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
-  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ</span>'
+  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ'+(function(){ const n=(APPS||[]).filter(a=>a._dirty).length; return n?' · <b style="color:#b45309">⏳ ค้างส่งขึ้นชีต '+n+' เคส</b>':''; })()+'</span>'
   +'<button class="btn btn-line btn-sm noprint" style="margin-left:auto" onclick="syncNowQuiet()">🔄 ซิงก์เดี๋ยวนี้</button></div>';
 }
 function renderSyncChip(){ const el=document.getElementById('backupbar'); if(!el) return; const old=el.querySelector('#syncchip'); if(old){ const tmp=document.createElement('div'); tmp.innerHTML=syncChipHTML(); old.replaceWith(tmp.firstChild); } }
@@ -2302,31 +2339,33 @@ function fstepValidate(n){
 }
 function fstepRender(){
  document.querySelectorAll('.fstep').forEach(el=>{ const n=+el.id.split('-')[1]; el.classList.toggle('hidden', n!==FSTEP); });
- document.querySelectorAll('.fchip').forEach(ch=>{ const n=+ch.dataset.fstep; ch.classList.toggle('cur', n===FSTEP); ch.classList.toggle('done', n<FSTEP);
+ document.querySelectorAll('.fchip').forEach(ch=>{ const n=+ch.dataset.fstep; ch.classList.toggle('cur', n===FSTEP); ch.classList.toggle('done', n<FSTEP&&!stepLocked(n)); ch.classList.toggle('locked', stepLocked(n)); const lb=ch.querySelector('.flabel'); if(lb) lb.innerHTML=stepLocked(n)?'🔒 '+lb.textContent.replace(/^🔒 /,''):lb.textContent.replace(/^🔒 /,'');
    const bl=ch.querySelector('.fbl'), br=ch.querySelector('.fbr'), lit='var(--orange)', dim='rgba(255,255,255,.22)';
    if(bl) bl.style.background = n<=FSTEP?lit:dim;   /* เส้นซ้าย: สว่างเมื่อถึง/ผ่านหัวข้อนี้ */
    if(br) br.style.background = n<FSTEP?lit:dim;    /* เส้นขวา: สว่างเมื่อผ่านหัวข้อนี้ไปแล้ว */
  });
- const fc=document.getElementById('fh-count'); if(fc) fc.textContent=FSTEP+' / '+FSTEP_MAX;
+ const _steps=[1,2,3,4,5].filter(n=>!stepLocked(n)); const fc=document.getElementById('fh-count'); if(fc) fc.textContent=(_steps.indexOf(FSTEP)+1)+' / '+_steps.length;
  const prev=document.getElementById('fbtn-prev'), next=document.getElementById('fbtn-next'), sub=document.getElementById('fbtn-submit'), hint=document.getElementById('fstep-hint');
  if(prev) prev.style.visibility=FSTEP===1?'hidden':'visible';
  if(next) next.style.display=FSTEP<FSTEP_MAX?'':'none';
  if(sub) sub.style.display=FSTEP===FSTEP_MAX?'':'none';
- if(hint) hint.textContent=FSTEP===FSTEP_MAX?'ตรวจข้อมูลครบแล้ว กด "ส่งคำขอไปยัง สนญ." — ผลการพิจารณาเป็นอำนาจของ สนญ.':'กรอกหัวข้อ '+FSTEP+' ให้ครบแล้วกด "ถัดไป" (ขั้นตอน '+FSTEP+' จาก '+FSTEP_MAX+')';
+ if(hint) hint.textContent=FSTEP===FSTEP_MAX?'ตรวจข้อมูลครบแล้ว กด "ส่งคำขอไปยัง สนญ." — ผลการพิจารณาเป็นอำนาจของ สนญ.':'กรอกหัวข้อ '+FSTEP+' ให้ครบแล้วกด "ถัดไป" (ขั้นตอน '+(_steps.indexOf(FSTEP)+1)+' จาก '+_steps.length+(stepLocked(4)?' · หัวข้อ 4 ผลิตภัณฑ์ สนญ. ล็อกไว้':'')+')';
  /* แถบสรุปล่าง + คำนวณ sticky top (แถบสรุปปักใต้เมนู 52px · สเต็ปเลื่อนหายขึ้น ไม่กระตุก) */
  const _nm=['ข้อมูลลูกค้า','อาชีพและการทำงาน','รายได้และภาระหนี้','ผลิตภัณฑ์และเงื่อนไข','ผู้ค้ำประกันและประวัติ'];
  const _ic=['user','job','coin','bike','users'];
  const mt=document.getElementById('fh-mbar-txt'); if(mt) mt.textContent='กำลังกรอก: '+_nm[FSTEP-1];
  const mi=document.getElementById('fh-mbar-ic'); if(mi) mi.innerHTML=svgIco(_ic[FSTEP-1],16);
- const md=document.getElementById('fh-mbar-dots'); if(md) md.innerHTML=[1,2,3,4,5].map(n=>'<i style="background:'+(n<FSTEP?'#22c55e':n===FSTEP?'#e8541e':'rgba(255,255,255,.3)')+'"></i>').join('');
+ const md=document.getElementById('fh-mbar-dots'); if(md) md.innerHTML=_steps.map(n=>'<i style="background:'+(n<FSTEP?'#22c55e':n===FSTEP?'#e8541e':'rgba(255,255,255,.3)')+'"></i>').join('');
  const hero=document.querySelector('.form-hero'), mb=document.getElementById('fh-mbar');
  if(hero&&mb){ const off=mb.offsetTop; if(off>0) hero.style.top=(52-off)+'px'; }
  const fm=document.querySelector('.form-main'); if(fm&&fm.scrollIntoView) fm.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function fstepShow(n){ FSTEP=Math.min(FSTEP_MAX,Math.max(1,n)); fstepRender(); }
-function fstepNext(){ if(!fstepValidate(FSTEP)) return; if(FSTEP<FSTEP_MAX) fstepShow(FSTEP+1); }
-function fstepPrev(){ if(FSTEP>1) fstepShow(FSTEP-1); }
-function fstepGo(n){ if(n>FSTEP){ if(!fstepValidate(FSTEP)) return; } fstepShow(n); }
+/* 0912-E: สนญ. ล็อกหัวข้อ 4 (ผลิตภัณฑ์) ไม่ให้สาขากรอกในเฟสนี้ — สาขาทำ 1 2 3 5 */
+function stepLocked(n){ return n===4 && !!(CFG&&CFG.lockProductStep) && !(SESSION&&SESSION.role==='analyst'); }
+function fstepShow(n, dir){ n=Math.min(FSTEP_MAX,Math.max(1,n)); dir=dir||(n>=FSTEP?1:-1); while(stepLocked(n)&&n>1&&n<FSTEP_MAX) n+=dir; if(stepLocked(n)) n=dir>0?FSTEP_MAX:1; FSTEP=n; fstepRender(); }
+function fstepNext(){ if(!fstepValidate(FSTEP)) return; if(FSTEP<FSTEP_MAX) fstepShow(FSTEP+1, 1); }
+function fstepPrev(){ if(FSTEP>1) fstepShow(FSTEP-1, -1); }
+function fstepGo(n){ if(stepLocked(n)){ alert('หัวข้อ 4 ผลิตภัณฑ์ — สำนักงานใหญ่ล็อกไว้ในเฟสนี้ สาขาไม่ต้องกรอก'); return; } if(n>FSTEP){ if(!fstepValidate(FSTEP)) return; } fstepShow(n); }
 function viewForm(){
  const br=BRANCHES.find(b=>b.code===SESSION.branch);
  const pm=promoOf(SESSION.branch);
@@ -3254,7 +3293,7 @@ function submitApp(){
  a.submittedAt=Date.now();
  a.createdBy=(SESSION&&SESSION.name)||'';
  try{ const _r3=check3(a,a.calc); a.check3=chk3Snap(_r3);
-   if(_noProd && !confirm('ยังไม่ได้เลือกผลิตภัณฑ์/รุ่นรถ — ส่งเคสเพื่อให้ สนญ. ตรวจข้อมูล 3 มิติก่อน แล้วเติมผลิตภัณฑ์ภายหลัง?\n\nผลตรวจตอนนี้: '+(CHK3_LV[_r3.overall]||{}).ic+' '+(CHK3_LV[_r3.overall]||{}).t+' (กรอกครบ '+_r3.filled+'/3 มิติ)')) return;
+   if(_noProd && !stepLocked(4) && !confirm('ยังไม่ได้เลือกผลิตภัณฑ์/รุ่นรถ — ส่งเคสเพื่อให้ สนญ. ตรวจข้อมูล 3 มิติก่อน แล้วเติมผลิตภัณฑ์ภายหลัง?\n\nผลตรวจตอนนี้: '+(CHK3_LV[_r3.overall]||{}).ic+' '+(CHK3_LV[_r3.overall]||{}).t+' (กรอกครบ '+_r3.filled+'/3 มิติ)')) return;
  }catch(e){}
  const hard=a.calc.warns.find(w=> w.m.indexOf('ต่ำกว่าขั้นต่ำตามหลักการ')>=0 || w.m.indexOf('เกินวงเงินสูงสุดของรุ่นนี้')>=0 || w.m.indexOf('เปิดเฉพาะสาขาเกรด A/B')>=0 || w.m.indexOf('ต่ำกว่า 20 ปีบริบูรณ์')>=0 );
  if(hard){ alert('❌ ส่งเคสไม่ได้ — ขัดหลักการขาย:\n'+hard.m); return; }
@@ -6441,6 +6480,7 @@ function viewCfg(){
      <textarea rows="6" onchange="CFG.cancelReasons=this.value.split('\\n').map(s=>s.trim()).filter(Boolean)">${cancelReasonList().join('\n')}</textarea></div>
     <p class="pill-note">แก้ที่นี่แล้วกด "บันทึกเกณฑ์" ด้านล่าง จะไหลไปหน้าบ้านสาขาและซิงก์ขึ้น Google Sheet อัตโนมัติ</p></div>
    <div class="flex" style="flex-wrap:wrap">
+    <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="ปิดหัวข้อ 4 ผลิตภัณฑ์ในฟอร์มสาขา — สาขากรอกแค่ 1 2 3 5"><input type="checkbox" ${CFG.lockProductStep?'checked':''} onchange="CFG.lockProductStep=this.checked;saveCfg();alert(this.checked?'ล็อกหัวข้อ 4 ผลิตภัณฑ์แล้ว — ฟอร์มสาขาจะเหลือ 1 2 3 5 (มีผลทุกเครื่องหลังซิงก์)':'ปลดล็อกหัวข้อ 4 แล้ว — สาขากรอกผลิตภัณฑ์ได้')"> 🔒 ล็อกหัวข้อ 4 ผลิตภัณฑ์ (สาขาไม่ต้องกรอก)</label>
     <button class="btn btn-red" onclick="saveCfg();recalcAll();alert('บันทึกเกณฑ์และคำนวณคะแนนใหม่ทั้งหมดแล้ว')">💾 บันทึกเกณฑ์</button>
     <button class="btn btn-org" onclick="optimizeWeights()">🎯 ปรับน้ำหนักอัตโนมัติ (จาก Backtest)</button>
     <button class="btn btn-line" onclick="if(confirm('คืนค่าเกณฑ์เริ่มต้น?')){CFG=structuredClone(DEFAULT_CFG);saveCfg();recalcAll();go('cfg')}">↩ ค่าเริ่มต้น</button>
@@ -7475,7 +7515,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0912-D';
+const CHK3_BUILD='0912-E';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
