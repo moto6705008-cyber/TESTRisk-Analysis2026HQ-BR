@@ -349,7 +349,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0913-B (เฟส 1 · กระจายพอร์ต H-Cap · ส่งซ้ำอัตโนมัติ) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0913-C (เฟส 1 · พอร์ต H-Cap เก็บถาวรใน IndexedDB) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -749,9 +749,14 @@ async function applyPortBundle(s,gz,meta){ const txt=await ungzB64(s,gz); const 
  try{ localStorage.setItem('moto24_portver',String(meta.ver)); localStorage.setItem('moto24_portmeta',JSON.stringify(meta)); localStorage.setItem('moto24_portsrv',JSON.stringify(meta)); }catch(e){}
  await idbSet('port',{ver:String(meta.ver),gz:!!gz,s,meta}).catch(()=>{});
  try{ recalcAll(); }catch(e){} try{ if(SESSION&&typeof currentTab!=='undefined'&&currentTab) go(currentTab); }catch(e){} }
-async function portBootstrap(){ try{ if(portHas()) return; const rec=await idbGet('port'); if(!rec||!rec.s) return;
- const txt=await ungzB64(rec.s,rec.gz); const o=JSON.parse(txt); if(!o||!o.w) return; WATCH=o.w; if(o.c&&o.c.recs) CUSTDB=o.c;
- try{ recalcAll(); }catch(e){} try{ if(SESSION&&typeof currentTab!=='undefined'&&currentTab) go(currentTab); }catch(e){} _pushLog('กู้พอร์ต H-Cap จาก IndexedDB (ข้อมูล ณ '+((rec.meta&&rec.meta.at)||'-')+')','port'); }catch(e){} }
+async function portBootstrap(){ try{ let changed=false;
+ /* 1) ข้อมูลที่นำเข้าในเครื่องนี้ (saveWatch/saveCustDB เก็บ IndexedDB ไว้) */
+ if(!portHas()){ const w=await idbGet('watch').catch(()=>null); if(w&&w.payIdx&&Object.keys(w.payIdx).length){ WATCH=w; changed=true; } }
+ if(!(CUSTDB&&CUSTDB.recs&&Object.keys(CUSTDB.recs).length)){ const c=await idbGet('custdb').catch(()=>null); if(c&&c.recs&&Object.keys(c.recs).length){ CUSTDB=c; changed=true; } }
+ /* 2) ก้อนที่โหลดจากชีต */
+ if(!portHas()){ const rec=await idbGet('port').catch(()=>null); if(rec&&rec.s){ const txt=await ungzB64(rec.s,rec.gz); const o=JSON.parse(txt); if(o&&o.w){ WATCH=o.w; if(o.c&&o.c.recs) CUSTDB=o.c; changed=true; _pushLog('กู้พอร์ต H-Cap จาก IndexedDB (ข้อมูล ณ '+((rec.meta&&rec.meta.at)||'-')+')','port'); } } }
+ if(changed){ try{ recalcAll(); }catch(e){} try{ if(SESSION&&typeof currentTab!=='undefined'&&currentTab) go(currentTab); }catch(e){} try{ renderSyncChip(); }catch(e){} }
+ }catch(e){} }
 function portCardHTML(){ const m=portLocalMeta(), sv=portSrvMeta(); const has=portHas();
  const local = has? ('ข้อมูล ณ <b>'+_pe(WATCH.lastImport||'-')+'</b> · สัญญา '+Object.keys(WATCH.payIdx||{}).length.toLocaleString()+' · ทะเบียนลูกค้า '+Object.keys((CUSTDB&&CUSTDB.recs)||{}).length.toLocaleString()+' · เฝ้าระวัง '+(WATCH.custs||[]).length.toLocaleString()+' · เลขถัง '+(WATCH.frames||[]).length.toLocaleString()) : '<span class="mut">ยังไม่มีข้อมูลพอร์ตในเครื่องนี้</span>';
  let pub; if(!sv||!sv.ver) pub='<span class="tag t-warn">ยังไม่เคยกระจาย — เครื่องอื่นยังไม่มีพอร์ต</span>';
@@ -794,7 +799,7 @@ function saveCfg(){ try{ localStorage.setItem('moto24_cfg_v3', JSON.stringify(CF
 
 let CUSTDB;
 function loadCustDB(){ try{ CUSTDB=JSON.parse(localStorage.getItem('moto24_custdb_v1'))||{recs:{},updated:''}; }catch(e){ CUSTDB={recs:{},updated:''}; } }
-function saveCustDB(){ try{ localStorage.setItem('moto24_custdb_v1',JSON.stringify(CUSTDB)); }catch(e){} }
+function saveCustDB(){ try{ localStorage.setItem('moto24_custdb_v1',JSON.stringify(CUSTDB)); }catch(e){} try{ if(typeof idbSet==='function') idbSet('custdb', CUSTDB).catch(()=>{}); }catch(e){} }
 let WATCH;
 const DEFAULT_WATCH = {
  custs:[
@@ -811,7 +816,7 @@ function loadWatch(){
  try{ WATCH=JSON.parse(localStorage.getItem('moto24_watch_v3')); }catch(e){ WATCH=null; }
  if(!WATCH||!WATCH.custs) WATCH=structuredClone(DEFAULT_WATCH);
 }
-function saveWatch(){ try{ localStorage.setItem('moto24_watch_v3', JSON.stringify(WATCH)); }catch(e){} }
+function saveWatch(){ try{ localStorage.setItem('moto24_watch_v3', JSON.stringify(WATCH)); }catch(e){} try{ if(typeof idbSet==='function') idbSet('watch', WATCH).catch(()=>{}); }catch(e){} }   /* 0913-C: เก็บ IndexedDB ด้วย — พอร์ตใหญ่เกิน localStorage */
 let PORTSNAP=null; try{ PORTSNAP=JSON.parse(localStorage.getItem('moto24_portsnap'))||null; }catch(e){ PORTSNAP=null; }
 function buildPortSnap(){ const idx=(WATCH&&WATCH.payIdx)||{}; const keys=Object.keys(idx); if(!keys.length) return null;
  let bad=0,e=0,mid=0,late=0,badMiss=0; const brZone={}; (typeof BRANCHES!=='undefined'?BRANCHES:[]).forEach(b=>brZone[b.code]=b.zone);
@@ -7614,7 +7619,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0913-B';
+const CHK3_BUILD='0913-C';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
