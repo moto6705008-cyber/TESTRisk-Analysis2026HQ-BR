@@ -348,7 +348,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0912-C (เฟส 1 · ปรับฟอร์มข้อมูลลูกค้า/GPS) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0912-D (เฟส 1 · ล้างเคสทดสอบทุกเครื่อง) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -603,7 +603,9 @@ function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMast
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
  return cloudCall('getCases',{since:0}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=3) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
-   (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; const i=APPS.findIndex(x=>x.id===sv.id);
+   const _pg=purgeAt();
+   (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; if(_pg && (sv.submittedAt||sv.updatedAt||0)<_pg) return;   /* 0912-D: เคสก่อนจุดล้าง — ไม่รับกลับมา */
+     const i=APPS.findIndex(x=>x.id===sv.id);
      if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); }
      else if((sv.updatedAt||0)>(APPS[i].updatedAt||0) || (sv.status!==APPS[i].status && (sv.decidedAt||0)>(APPS[i].decidedAt||0))){ APPS[i]=sv; changed=true; chIds.push(sv.id); } });
    c.lastPull=j.serverTime||Date.now(); c.lastOk=Date.now(); c.lastErr=''; c.failN=0; saveCloud(); try{ renderSyncChip(); }catch(e){}
@@ -628,6 +630,7 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('incref',d=>{ if(d&&d.base){ INCREF=d; try{localStorage.setItem('moto24_incref_v1',JSON.stringify(INCREF));}catch(e){} } });
    ap('doccheck',d=>{ if(d&&d.groups){ DOCCHECK=d; try{localStorage.setItem('moto24_doccheck_v1',JSON.stringify(DOCCHECK));}catch(e){} } });
    ap('users',d=>{ mergeUsersFromCloud(d); });
+   ap('purge',d=>{ if(d&&d.at) applyPurge(+d.at, d.by||''); });
    saveCloud(); if(changed){ try{recalcAll();}catch(e){} if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); } }); }
 function cloudSyncNow(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ (เปิดหน้า "เชื่อมต่อ Google Sheet" ก่อน)'); return; }
  Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>alert('ซิงก์ล่าสุดแล้ว')).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
@@ -636,6 +639,25 @@ function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้�
  const seq=[]; APPS.forEach(a=>{ a.updatedAt=a.updatedAt||Date.now(); seq.push(()=>cloudCall('upsertCase',{'case':a})); });
  [['occ',OCC_LIST],['vuse',VUSE_PURPOSES],['recsets',REC_SETS],['cfg',CFG],['pb',PB],['incref',INCREF],['doccheck',DOCCHECK],['users',USERS.map(u=>Object.assign({},u,{lastLogin:undefined}))]].concat((buildPortSnap&&buildPortSnap())?[['portsnap',buildPortSnap()]]:[]).forEach(kv=>seq.push(()=>cloudCall('setMaster',{key:kv[0],data:kv[1],by:(SESSION&&SESSION.name)||''})));
  (function run(i){ if(i>=seq.length){ alert('อัปโหลดครบแล้ว ('+APPS.length+' เคส + ข้อมูลหลังบ้าน)'); return; } seq[i]().then(()=>run(i+1)).catch(e=>alert('หยุดที่รายการ '+(i+1)+': '+e.message)); })(0); }
+/* ===== 0912-D: ล้างเคสทั้งระบบ (โหมดทดสอบ) =====
+   สนญ. กดครั้งเดียว → เครื่องนี้ลบเคสทันที + ส่ง master key `purge` {at,by} ขึ้นชีต
+   ทุกเครื่องที่ดึง master จะลบเคสที่ส่งก่อนเวลา at ออกเอง และไม่รับเคสเก่าจากชีตกลับมาอีก (แถวในชีตจะลบทิ้งหรือไม่ก็ได้) */
+function purgeAt(){ try{ return +(localStorage.getItem('moto24_purge_at')||0)||0; }catch(e){ return 0; } }
+function applyPurge(at, by){ at=+at||0; if(!at || at<=purgeAt()) return 0;
+ try{ localStorage.setItem('moto24_purge_at', String(at)); localStorage.setItem('moto24_purge_by', by||''); }catch(e){}
+ const before=APPS.length; APPS=APPS.filter(a=>(a.submittedAt||a.updatedAt||0)>=at); const n=before-APPS.length;
+ window.__bp={}; saveApps(); try{recalcAll();}catch(e){}
+ if(n>0){ try{ const mb=document.getElementById('modal-bg'); if(mb) mb.classList.add('hidden'); }catch(e){} try{ if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); }catch(e){} }
+ return n; }
+function purgeAllCases(){ if(!SESSION||SESSION.role!=='analyst'){ alert('เฉพาะสำนักงานใหญ่'); return; }
+ const n=APPS.length;
+ if(!confirm('ล้างเคสทั้งหมด '+n+' รายการออกจากระบบ (ทุกเครื่อง สาขา/เขต/สนญ.)?\n\nใช้สำหรับเคลียร์เคสทดสอบก่อนใช้งานจริง — เคสที่ส่งหลังจากนี้จะไม่ถูกลบ')) return;
+ if(!confirm('ยืนยันอีกครั้ง: ลบเคส '+n+' รายการ ย้อนกลับไม่ได้\n(ข้อมูลหลังบ้าน: อาชีพ/เกณฑ์/ผู้ใช้/ค่าอ้างอิง ไม่ถูกลบ)')) return;
+ const at=Date.now(); const by=(SESSION&&SESSION.name)||'สนญ.';
+ const removed=applyPurge(at, by);
+ if(cloudReady()){ cloudCall('setMaster',{key:'purge',data:{at,by},by}).then(j=>{ const c=loadCloud(); c.masterAt.purge=j.updatedAt||at; saveCloud(); alert('ล้างเคสแล้ว '+removed+' รายการ\nเครื่องอื่นจะล้างตามเองภายใน ~1 นาที (หรือกด "ซิงก์เดี๋ยวนี้")'); try{ go('cloud'); }catch(e){} })
+   .catch(e=>alert('ล้างในเครื่องนี้แล้ว '+removed+' รายการ แต่ส่งคำสั่งขึ้นชีตไม่สำเร็จ: '+e.message+'\nกดปุ่มนี้ซ้ำอีกครั้งเมื่อแถบซิงก์เขียว')); }
+ else alert('ล้างเคสในเครื่องนี้แล้ว '+removed+' รายการ (ยังไม่ได้เชื่อมต่อชีต จึงล้างเฉพาะเครื่องนี้)'); }
 function saveCfg(){ try{ localStorage.setItem('moto24_cfg_v3', JSON.stringify(CFG)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('cfg',CFG); }
 
 let CUSTDB;
@@ -3694,6 +3716,14 @@ function viewCloud(){
    </div>
    <p class="pill-note" style="margin-top:8px">💡 <b>เครื่องแรกที่ตั้งค่า</b> ให้กด "อัปโหลดข้อมูลในเครื่องนี้ขึ้นชีต" 1 ครั้ง เพื่อส่งข้อมูลปัจจุบันขึ้นไปเป็นจุดเริ่มต้น · เครื่องอื่นแค่กรอก URL+TOKEN แล้วเปิดใช้งาน ระบบจะดึงลงมาเอง</p>
   </div>
+  <div class="card mb" style="border-color:#fca5a5"><h3 class="exhead" style="color:#b91c1c">🧹 ล้างเคสทั้งระบบ (เคลียร์เคสทดสอบ)</h3>
+   <p class="pill-note" style="margin-bottom:10px">ลบเคสที่พิจารณา/ทดลองไว้ทั้งหมดออกจาก<b>ทุกเครื่อง</b> (สาขา · เขต · สนญ.) เพื่อเริ่มทดลองใหม่ · เคสที่ส่งเข้ามา<b>หลังกดปุ่ม</b>จะไม่ถูกลบ · ข้อมูลหลังบ้าน (อาชีพ เกณฑ์ ผู้ใช้ ค่าอ้างอิง พอร์ต) คงเดิม
+   ${purgeAt()?'<br>🕒 ล้างล่าสุด: <b>'+new Date(purgeAt()).toLocaleString('th-TH')+'</b>'+(localStorage.getItem('moto24_purge_by')?' โดย '+localStorage.getItem('moto24_purge_by'):''):''}</p>
+   <div class="flex" style="flex-wrap:wrap;align-items:center">
+    <button class="btn btn-red btn-sm" onclick="purgeAllCases()">🧹 ล้างเคสทั้งหมด ${APPS.length} รายการ (ทุกเครื่อง)</button>
+    <span class="mut" style="font-size:12px">เครื่องอื่นจะล้างตามเองภายใน ~1 นาที · แถวเก่าในชีตแท็บ cases จะลบทิ้งหรือปล่อยไว้ก็ได้ (ระบบไม่ดึงกลับมา)</span>
+   </div>
+  </div>
   <div class="card"><h3 class="exhead">📋 ขั้นตอนย่อ (ถ้ายังไม่ได้ตั้ง Google Sheet)</h3>
    <ol style="font-size:13px;line-height:1.9;margin:6px 0 0;padding-left:22px">
     <li>สร้าง Google Sheet ใหม่ → เมนู <b>Extensions → Apps Script</b></li>
@@ -6414,7 +6444,7 @@ function viewCfg(){
     <button class="btn btn-red" onclick="saveCfg();recalcAll();alert('บันทึกเกณฑ์และคำนวณคะแนนใหม่ทั้งหมดแล้ว')">💾 บันทึกเกณฑ์</button>
     <button class="btn btn-org" onclick="optimizeWeights()">🎯 ปรับน้ำหนักอัตโนมัติ (จาก Backtest)</button>
     <button class="btn btn-line" onclick="if(confirm('คืนค่าเกณฑ์เริ่มต้น?')){CFG=structuredClone(DEFAULT_CFG);saveCfg();recalcAll();go('cfg')}">↩ ค่าเริ่มต้น</button>
-    <button class="btn btn-line" onclick="if(confirm('ล้างเคสทั้งหมด เริ่มจากระบบว่าง?')){APPS=[];saveApps();go('cfg');alert('ล้างเคสทั้งหมดแล้ว')}">🗑 ล้างเคสทั้งหมด</button>
+    <button class="btn btn-line" onclick="purgeAllCases()" title="ล้างเคสทุกเครื่องผ่านชีต (ไม่ใช่แค่เครื่องนี้)">🗑 ล้างเคสทั้งหมด (ทุกเครื่อง)</button>
     <button class="btn btn-line" onclick="if(confirm('สร้างข้อมูลทดสอบ 140 เคส (สำหรับทดลองแดชบอร์ด)?')){APPS=seedData();saveApps();go('cfg');alert('สร้างข้อมูลทดสอบแล้ว')}">🎲 สร้างข้อมูลทดสอบ</button>
     <label class="btn btn-line" style="margin:0">👥 นำเข้าทะเบียนลูกค้า (Customer report .xlsx)<input type="file" accept=".xlsx,.xls" class="hidden" onchange="importCustDB(this)"></label>
     <button class="btn btn-ok" onclick="backupAll()">💾 สำรองข้อมูลทั้งระบบ (ไฟล์เดียว)</button>
@@ -7445,7 +7475,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0912-C';
+const CHK3_BUILD='0912-D';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
