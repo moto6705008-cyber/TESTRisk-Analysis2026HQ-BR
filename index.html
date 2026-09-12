@@ -349,7 +349,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0912-F (เฟส 1 · ตรวจสอบว่าส่งถึงชีตจริง) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0913-A (เฟส 1 · กระจายพอร์ต H-Cap ให้ทุกเครื่อง) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -589,16 +589,16 @@ function loadCloud(){ if(CLOUD) return CLOUD; try{ CLOUD=JSON.parse(localStorage
 function saveCloud(){ try{ localStorage.setItem('moto24_cloud', JSON.stringify(CLOUD)); }catch(e){} }
 function cloudReady(){ const c=loadCloud(); return !!(c.on && c.url && c.token); }
 /* 0912-B: ลองใหม่อัตโนมัติเมื่อคำตอบโดนดักกลางทาง (VPN/McAfee/เน็ตสะดุด) — สูงสุด 3 ครั้ง เว้น 2 → 4 → 7 วิ · upsert ปลอดภัยเพราะอ้างอิงด้วย id เดิม */
-function cloudCall(action, body, _try){ _try=_try||0;
- return _cloudCallOnce(action, body).catch(e=>{ const m=String(e&&e.message||e);
+function cloudCall(action, body, _try, _opt){ _try=_try||0;
+ return _cloudCallOnce(action, body, _opt).catch(e=>{ const m=String(e&&e.message||e);
    const transient = /Failed to fetch|NetworkError|ไม่ใช่ JSON|หมดเวลารอ|เชื่อมต่อไม่ได้|busy|Load failed/i.test(m);
-   if(transient && _try<3){ const wait=[2000,4000,7000][_try]; return new Promise(r=>setTimeout(r,wait)).then(()=>cloudCall(action, body, _try+1)); }
+   if(transient && _try<3){ const wait=[2000,4000,7000][_try]; return new Promise(r=>setTimeout(r,wait)).then(()=>cloudCall(action, body, _try+1, _opt)); }
    throw e; }); }
-function _cloudCallOnce(action, body){ const c=loadCloud(); if(!c.url) return Promise.reject(new Error('ยังไม่ได้ตั้งค่า URL'));
+function _cloudCallOnce(action, body, _opt){ const c=loadCloud(); const _to=(_opt&&_opt.timeout)||25000; if(!c.url) return Promise.reject(new Error('ยังไม่ได้ตั้งค่า URL'));
  const payload=Object.assign({action, token:c.token}, body||{});
- const _ac=(typeof AbortController!=='undefined')?new AbortController():null; const _tm=_ac?setTimeout(()=>{ try{_ac.abort();}catch(_){} },25000):null;
+ const _ac=(typeof AbortController!=='undefined')?new AbortController():null; const _tm=_ac?setTimeout(()=>{ try{_ac.abort();}catch(_){} },_to):null;
  return fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload),signal:_ac?_ac.signal:undefined})
-  .then(r=>{ if(_tm)clearTimeout(_tm); return r.text(); }).catch(e=>{ if(_tm)clearTimeout(_tm); throw new Error(e&&e.name==='AbortError'?'หมดเวลารอ Apps Script (25 วิ)':(e&&e.message)||'เชื่อมต่อไม่ได้'); }).then(t=>{ let j; try{ j=JSON.parse(t); }catch(e){ throw new Error('ตอบกลับไม่ใช่ JSON (คำตอบถูกดักกลางทาง — ระบบลองใหม่เอง)'+(/<html/i.test(t)?'':': '+String(t).slice(0,80))); } if(!j.ok) throw new Error(j.error||'ไม่สำเร็จ'); return j; }); }
+  .then(r=>{ if(_tm)clearTimeout(_tm); return r.text(); }).catch(e=>{ if(_tm)clearTimeout(_tm); throw new Error(e&&e.name==='AbortError'?'หมดเวลารอ Apps Script ('+Math.round(_to/1000)+' วิ)':(e&&e.message)||'เชื่อมต่อไม่ได้'); }).then(t=>{ let j; try{ j=JSON.parse(t); }catch(e){ throw new Error('ตอบกลับไม่ใช่ JSON (คำตอบถูกดักกลางทาง — ระบบลองใหม่เอง)'+(/<html/i.test(t)?'':': '+String(t).slice(0,80))); } if(!j.ok) throw new Error(j.error||'ไม่สำเร็จ'); return j; }); }
 /* 0912-D: ธง _dirty = เครื่องนี้แก้เคสแล้วยังส่งขึ้นชีตไม่สำเร็จ → ส่งย้อนหลังแน่นอน ไม่พึ่งนาฬิกาเครื่อง · ค่าในชีต (server) ถือเป็นความจริงเมื่อเครื่องนี้ไม่มีของค้าง */
 function mergeCase(base, other){ const o=Object.assign({}, base); let changed=false; if(!other) return {obj:o, changed};
  try{
@@ -622,11 +622,16 @@ function _pushLog(msg,id){ try{ const L=JSON.parse(localStorage.getItem('moto24_
 function _pushDone(a, seq, j){ if(j&&j.updatedAt){ a.updatedAt=j.updatedAt; a.__pushedAt=j.updatedAt; _pushLog('ชีตตอบรับ '+(j.updated?'(แก้ไข)':j.inserted?'(เพิ่มใหม่)':'')+' updatedAt='+new Date(j.updatedAt).toLocaleTimeString('th-TH'), a.id); if((a._dirtyAt||0)<=seq){ a._dirty=false; delete a._dirtyAt; } try{saveApps();}catch(e){} try{ const c=loadCloud(); if(c.lastPushErr){ c.lastPushErr=''; saveCloud(); } }catch(e){} try{ renderSyncChip(); }catch(e){} } }
 function _pushFail(e){ _pushLog('ส่งไม่ผ่าน: '+String(e&&e.message||e)); try{ const c=loadCloud(); c.lastPushErr=String(e&&e.message||e).slice(0,90); c.lastPushAt=Date.now(); saveCloud(); renderSyncChip(); }catch(_){} }
 function cloudPushCase(a){ if(!a||!a.id) return; a._dirty=true; a._dirtyAt=Date.now(); a.updatedAt=a._dirtyAt; a.updatedBy=(SESSION&&SESSION.name)||''; try{saveApps();}catch(e){} if(!cloudReady()) return;
+ window.__bp=window.__bp||{}; window.__bp[a.id]=Date.now();   /* กันรอบดึงที่ซ้อนกันส่งซ้ำภายใน 20 วิ */
  const seq=a._dirtyAt; cloudCall('upsertCase',{'case':_caseWire(a)}).then(j=>_pushDone(a,seq,j)).catch(_pushFail); }
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
-function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
- return cloudCall('getCases',{since:0}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=3) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
+/* 0912-G: ดึงแบบเพิ่มเติม — ปกติขอเฉพาะเคสที่ชีตแก้หลังรอบก่อน (เผื่อย้อน 10 นาที) · ดึงเต็มเฉพาะครั้งแรก/ทุก 30 นาที/กดซิงก์เอง → เร็วขึ้นหลายเท่าเมื่อเคสมีรูปแนบ */
+function cloudPullCases(full){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
+ const doFull = !!full || !c.lastPull || !c.lastFull || (Date.now()-c.lastFull > 30*60000);
+ const since = doFull ? 0 : Math.max(0, (c.lastPull||0) - 10*60000);
+ window.__pullFull = doFull;
+ return cloudCall('getCases',{since}, 0, {timeout: doFull?60000:25000}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=3) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
    (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; if(isPurged(sv)) return;   /* 0912-D: เคสที่ล้างแล้ว — ไม่รับกลับมา */
      delete sv._dirty; delete sv._dirtyAt; delete sv.__pushedAt; const i=APPS.findIndex(x=>x.id===sv.id);
      if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); }
@@ -640,10 +645,10 @@ function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=l
          if(phantom || m.changed){ APPS[i]=m.obj; m.obj._dirty=true; m.obj._dirtyAt=Date.now(); delete m.obj.__pushedAt; changed=true; chIds.push(sv.id); _pushLog('ชีตไม่มีข้อมูลที่เครื่องนี้ส่งไป → ส่งใหม่', lc.id); }
          else if((sv.updatedAt||0)!==(lc.updatedAt||0)){ APPS[i]=m.obj; changed=true; chIds.push(sv.id); } }
        else { const m=mergeCase(lc, sv); if(m.changed){ APPS[i]=m.obj; m.obj._dirty=true; m.obj._dirtyAt=Date.now(); changed=true; chIds.push(sv.id); } } } });
-   c.lastPull=j.serverTime||Date.now(); c.lastOk=Date.now(); c.lastErr=''; c.failN=0; saveCloud(); try{ renderSyncChip(); }catch(e){}
+   c.lastPull=j.serverTime||Date.now(); c.lastOk=Date.now(); if(doFull) c.lastFull=Date.now(); c.lastErr=''; c.failN=0; saveCloud(); try{ renderSyncChip(); }catch(e){}
    /* 0911-B: ส่งย้อนหลัง — เคสในเครื่องนี้ที่ใหม่กว่าในชีต (แก้ตอนออฟไลน์/ส่งไม่สำเร็จ) ให้ดันขึ้นชีตอัตโนมัติ */
    try{ const srv={}; (j.cases||[]).forEach(sv=>{ if(sv&&sv.id) srv[sv.id]=sv; });
-     window.__bp=window.__bp||{}; let pushed=0; APPS.forEach(a=>{ const sv=srv[a.id]; const localNewer = !sv || a._dirty || (sv.status!==a.status && (a.decidedAt||0)>(sv.decidedAt||0));
+     window.__bp=window.__bp||{}; let pushed=0; APPS.forEach(a=>{ const sv=srv[a.id]; const localNewer = a._dirty || (doFull && !sv) || (sv && sv.status!==a.status && (a.decidedAt||0)>(sv.decidedAt||0));
        const recently = (window.__bp[a.id]||0) > Date.now()-(a._dirty?20000:300000);   /* กันยิงซ้ำ: ของค้างส่งลองทุก 20 วิ · อื่น ๆ 1 ครั้ง/5 นาที */
        if(localNewer && !recently && pushed<5){ pushed++; window.__bp[a.id]=Date.now(); const seq=a._dirtyAt||0; if(a._dirty) a.updatedBy=(SESSION&&SESSION.name)||a.updatedBy||''; cloudCall('upsertCase',{'case':_caseWire(a)}).then(r=>_pushDone(a,seq,r)).catch(_pushFail); } }); }catch(e){}
    if(changed){ try{recalcAll();}catch(e){} saveApps();
@@ -663,9 +668,10 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('doccheck',d=>{ if(d&&d.groups){ DOCCHECK=d; try{localStorage.setItem('moto24_doccheck_v1',JSON.stringify(DOCCHECK));}catch(e){} } });
    ap('users',d=>{ mergeUsersFromCloud(d); });
    ap('purge',d=>{ if(d&&d.at) applyPurge(d, d.by||''); });
+   try{ const pv=m.portver&&m.portver.data; if(pv&&pv.ver){ try{ localStorage.setItem('moto24_portsrv',JSON.stringify(pv)); }catch(e){} if(String(pv.ver)!==portLocalVer()) loadPortFromCloud(pv); } }catch(e){}
    saveCloud(); if(changed){ try{recalcAll();}catch(e){} if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); } }); }
 function cloudSyncNow(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ (เปิดหน้า "เชื่อมต่อ Google Sheet" ก่อน)'); return; }
- Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>alert('ซิงก์ล่าสุดแล้ว')).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
+ Promise.all([cloudPullMaster(),cloudPullCases(true)]).then(()=>alert('ซิงก์ล่าสุดแล้ว')).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
 function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ'); return; }
  if(!confirm('อัปโหลดข้อมูลทั้งหมดในเครื่องนี้ขึ้น Google Sheet? (เคส '+APPS.length+' + ข้อมูลหลังบ้าน)')) return;
  const seq=[]; APPS.forEach(a=>{ a.updatedAt=a.updatedAt||Date.now(); seq.push(()=>cloudCall('upsertCase',{'case':_caseWire(a)}).then(r=>_pushDone(a,a._dirtyAt||0,r))); });
@@ -674,6 +680,83 @@ function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้�
 /* ===== 0912-D: ล้างเคสทั้งระบบ (โหมดทดสอบ) =====
    สนญ. กดครั้งเดียว → เครื่องนี้ลบเคสทันที + ส่ง master key `purge` {at,by} ขึ้นชีต
    ทุกเครื่องที่ดึง master จะลบเคสที่ส่งก่อนเวลา at ออกเอง และไม่รับเคสเก่าจากชีตกลับมาอีก (แถวในชีตจะลบทิ้งหรือไม่ก็ได้) */
+
+/* ===== 0913-A: กระจายพอร์ต H-Cap (balance_report + Customer_report) ให้ทุกเครื่องผ่านชีตแท็บ port =====
+   สนญ. นำเข้าไฟล์ → กด "กระจาย" → บีบอัด (gzip+base64) แบ่งส่วนละ ~240k ตัวอักษร → putPort ทีละส่วน → setMaster('portver')
+   ทุกเครื่อง: รอบดึง master เช็ก portver (ไม่กี่ไบต์) → ต่างจากในเครื่อง → โหลด getPort ทีละส่วนเบื้องหลัง → คลายบีบอัด → WATCH/CUSTDB
+   เก็บก้อนบีบอัดใน IndexedDB (localStorage เก็บของใหญ่ไม่ไหว) และกู้คืนตอนเปิดแอป */
+const PORT_PART = 240000;
+const _pe=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function idbOpen(){ return new Promise((res,rej)=>{ try{ const r=indexedDB.open('moto24',1); r.onupgradeneeded=()=>{ try{ r.result.createObjectStore('kv'); }catch(e){} }; r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }catch(e){ rej(e); } }); }
+function idbSet(k,v){ return idbOpen().then(db=>new Promise((res,rej)=>{ const t=db.transaction('kv','readwrite'); t.objectStore('kv').put(v,k); t.oncomplete=()=>res(true); t.onerror=()=>rej(t.error); })); }
+function idbGet(k){ return idbOpen().then(db=>new Promise((res,rej)=>{ const t=db.transaction('kv','readonly'); const q=t.objectStore('kv').get(k); q.onsuccess=()=>res(q.result); q.onerror=()=>rej(q.error); })); }
+function b64enc(u8){ let out=''; for(let i=0;i<u8.length;i+=0x8000) out+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000)); return btoa(out); }
+function b64dec(str){ const bin=atob(str); const u8=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) u8[i]=bin.charCodeAt(i); return u8; }
+async function gzB64(str){ if(typeof CompressionStream==='undefined') return {gz:false,s:str};
+ const cs=new CompressionStream('gzip'); const w=cs.writable.getWriter(); w.write(new TextEncoder().encode(str)); w.close();
+ const buf=await new Response(cs.readable).arrayBuffer(); return {gz:true, s:b64enc(new Uint8Array(buf))}; }
+async function ungzB64(s,gz){ if(!gz) return s; const ds=new DecompressionStream('gzip'); const w=ds.writable.getWriter(); w.write(b64dec(s)); w.close(); return await new Response(ds.readable).text(); }
+function portLocalVer(){ try{ return localStorage.getItem('moto24_portver')||''; }catch(e){ return ''; } }
+function portLocalMeta(){ try{ return JSON.parse(localStorage.getItem('moto24_portmeta')||'null'); }catch(e){ return null; } }
+function portSrvMeta(){ try{ return JSON.parse(localStorage.getItem('moto24_portsrv')||'null'); }catch(e){ return null; } }
+function portHas(){ return !!(WATCH&&WATCH.payIdx&&Object.keys(WATCH.payIdx).length); }
+function portChipHTML(){ const L=window.__portLoading; if(L) return ' · <b style="color:#1d4ed8">⬇️ กำลังโหลดพอร์ต H-Cap ครั้งแรก (ส่วน '+(window.__portProg||0)+'/'+(L.total||'?')+')</b>';
+ if(portHas()){ const m=portLocalMeta(); return ' · พอร์ต H-Cap: ข้อมูล ณ <b>'+_pe((m&&m.at)||WATCH.lastImport||'-')+'</b>'+(portSrvMeta()&&m&&portSrvMeta().ver!==m.ver&&portSrvMeta().ver!==portLocalVer()?' <span style="color:#b45309">(มีเวอร์ชันใหม่ รอโหลด)</span>':' ✓'); }
+ const sv=portSrvMeta(); return sv&&sv.ver? ' · <span style="color:#b45309">พอร์ต H-Cap: ยังไม่ได้โหลด</span>' : ' · <span class="mut">พอร์ต H-Cap: สนญ. ยังไม่ได้กระจาย</span>'; }
+function _portProg(msg){ const el=document.getElementById('port-prog'); if(el) el.textContent=msg; }
+async function publishPort(){ if(!SESSION||SESSION.role!=='analyst'){ alert('เฉพาะสำนักงานใหญ่'); return; }
+ if(!portHas()){ alert('ยังไม่มีข้อมูลพอร์ตในเครื่องนี้ — นำเข้าไฟล์ H-Capital ก่อน'); return; }
+ if(!cloudReady()){ alert('ยังไม่เชื่อมต่อ Google Sheet'); return; }
+ const nC=Object.keys(WATCH.payIdx||{}).length, nR=Object.keys((CUSTDB&&CUSTDB.recs)||{}).length;
+ if(!confirm('กระจายพอร์ต H-Cap ให้ทุกเครื่อง?\n\nสัญญา '+nC.toLocaleString()+' · ทะเบียนลูกค้า '+nR.toLocaleString()+' · เฝ้าระวัง '+(WATCH.custs||[]).length.toLocaleString()+' · เลขถัง '+(WATCH.frames||[]).length.toLocaleString()+'\nข้อมูล ณ '+(WATCH.lastImport||'-')+'\n\nใช้เวลาประมาณ 30–90 วินาที อย่าปิดหน้านี้ระหว่างส่ง')) return;
+ if(window.__portPublishing){ alert('กำลังส่งอยู่'); return; } window.__portPublishing=true;
+ try{
+  _portProg('กำลังบีบอัดข้อมูล…');
+  const payload=JSON.stringify({v:1, w:WATCH, c:CUSTDB||{recs:{}}});
+  const z=await gzB64(payload);
+  const parts=[]; for(let i=0;i<z.s.length;i+=PORT_PART) parts.push(z.s.slice(i,i+PORT_PART));
+  const meta={ ver:String(Date.now()), at:WATCH.lastImport||'', contracts:nC, custs:nR, watch:(WATCH.custs||[]).length, frames:(WATCH.frames||[]).length, gz:z.gz, chars:z.s.length, total:parts.length, by:(SESSION&&SESSION.name)||'' };
+  for(let i=0;i<parts.length;i++){ _portProg('กำลังส่งขึ้นชีต ส่วนที่ '+(i+1)+'/'+parts.length+' ('+Math.round(z.s.length/1024)+' KB รวม)…');
+    const r=await cloudCall('putPort',{ver:meta.ver, part:i, total:parts.length, data:parts[i]},0,{timeout:90000}); if(!r||!r.ok) throw new Error((r&&r.error)||'ส่งส่วนที่ '+(i+1)+' ไม่สำเร็จ'); }
+  _portProg('กำลังประกาศเวอร์ชัน…');
+  const j=await cloudCall('setMaster',{key:'portver',data:meta,by:meta.by}); const c=loadCloud(); c.masterAt.portver=(j&&j.updatedAt)||Date.now(); saveCloud();
+  try{ localStorage.setItem('moto24_portver',meta.ver); localStorage.setItem('moto24_portmeta',JSON.stringify(meta)); localStorage.setItem('moto24_portsrv',JSON.stringify(meta)); }catch(e){}
+  idbSet('port',{ver:meta.ver,gz:z.gz,s:z.s,meta}).catch(()=>{});
+  _pushLog('กระจายพอร์ต H-Cap สำเร็จ '+parts.length+' ส่วน · '+Math.round(z.s.length/1024)+' KB','port');
+  _portProg(''); alert('กระจายพอร์ตสำเร็จ ✅\nทุกเครื่อง (สนญ. + สาขา) จะโหลดเองภายใน ~1–2 นาที (ครั้งแรกใช้เวลา ~20–40 วิ)');
+  try{ go(currentTab); }catch(e){}
+ }catch(e){ _pushLog('กระจายพอร์ตไม่สำเร็จ: '+e.message,'port'); _portProg(''); alert('กระจายไม่สำเร็จ: '+e.message+'\nกดกระจายใหม่อีกครั้งได้ (ส่วนที่ส่งแล้วจะถูกเขียนทับ)'); }
+ finally{ window.__portPublishing=false; } }
+async function loadPortFromCloud(meta){ if(!meta||!meta.ver||!meta.total) return; if(window.__portLoading) return; if(String(meta.ver)===portLocalVer()) return;
+ /* เครื่อง สนญ. ที่เพิ่งนำเข้าไฟล์ใหม่กว่า ไม่ให้โดนของเก่าทับ */
+ if(portHas() && WATCH.lastImport && meta.at && String(WATCH.lastImport)>String(meta.at) && SESSION&&SESSION.role==='analyst'){ _pushLog('ข้ามการโหลดพอร์ต — เครื่องนี้มีข้อมูล ณ '+WATCH.lastImport+' ใหม่กว่าที่กระจาย ('+meta.at+') กดกระจายเพื่อส่งให้เครื่องอื่น','port'); try{ localStorage.setItem('moto24_portsrv',JSON.stringify(meta)); }catch(e){} return; }
+ window.__portLoading=meta; window.__portProg=0; try{ renderSyncChip(); }catch(e){}
+ try{ let s=''; for(let i=0;i<meta.total;i++){ window.__portProg=i+1; try{ renderSyncChip(); }catch(e){}
+    const r=await cloudCall('getPort',{part:i},0,{timeout:90000}); if(!r||!r.ok) throw new Error((r&&r.error)||'โหลดส่วนที่ '+(i+1)+' ไม่สำเร็จ');
+    if(String(r.ver)!==String(meta.ver)) throw new Error('เวอร์ชันพอร์ตเปลี่ยนระหว่างโหลด'); s+=r.data; }
+  if(meta.chars && s.length!==meta.chars) throw new Error('ขนาดไม่ครบ ('+s.length+'/'+meta.chars+')');
+  await applyPortBundle(s, !!meta.gz, meta);
+  _pushLog('โหลดพอร์ต H-Cap สำเร็จ ('+meta.total+' ส่วน · ข้อมูล ณ '+(meta.at||'-')+')','port');
+ }catch(e){ _pushLog('โหลดพอร์ตไม่สำเร็จ: '+e.message+' — จะลองใหม่รอบถัดไป','port'); }
+ finally{ window.__portLoading=null; window.__portProg=0; try{ renderSyncChip(); }catch(e){} } }
+async function applyPortBundle(s,gz,meta){ const txt=await ungzB64(s,gz); const o=JSON.parse(txt); if(!o||!o.w||!o.w.payIdx) throw new Error('รูปแบบข้อมูลพอร์ตไม่ถูกต้อง');
+ WATCH=o.w; if(o.c&&o.c.recs) CUSTDB=o.c; try{ saveWatch(); }catch(e){} try{ saveCustDB(); }catch(e){}
+ try{ localStorage.setItem('moto24_portver',String(meta.ver)); localStorage.setItem('moto24_portmeta',JSON.stringify(meta)); localStorage.setItem('moto24_portsrv',JSON.stringify(meta)); }catch(e){}
+ await idbSet('port',{ver:String(meta.ver),gz:!!gz,s,meta}).catch(()=>{});
+ try{ recalcAll(); }catch(e){} try{ if(SESSION&&typeof currentTab!=='undefined'&&currentTab) go(currentTab); }catch(e){} }
+async function portBootstrap(){ try{ if(portHas()) return; const rec=await idbGet('port'); if(!rec||!rec.s) return;
+ const txt=await ungzB64(rec.s,rec.gz); const o=JSON.parse(txt); if(!o||!o.w) return; WATCH=o.w; if(o.c&&o.c.recs) CUSTDB=o.c;
+ try{ recalcAll(); }catch(e){} try{ if(SESSION&&typeof currentTab!=='undefined'&&currentTab) go(currentTab); }catch(e){} _pushLog('กู้พอร์ต H-Cap จาก IndexedDB (ข้อมูล ณ '+((rec.meta&&rec.meta.at)||'-')+')','port'); }catch(e){} }
+function portCardHTML(){ const m=portLocalMeta(), sv=portSrvMeta(); const has=portHas();
+ const local = has? ('ข้อมูล ณ <b>'+_pe(WATCH.lastImport||'-')+'</b> · สัญญา '+Object.keys(WATCH.payIdx||{}).length.toLocaleString()+' · ทะเบียนลูกค้า '+Object.keys((CUSTDB&&CUSTDB.recs)||{}).length.toLocaleString()+' · เฝ้าระวัง '+(WATCH.custs||[]).length.toLocaleString()+' · เลขถัง '+(WATCH.frames||[]).length.toLocaleString()) : '<span class="mut">ยังไม่มีข้อมูลพอร์ตในเครื่องนี้</span>';
+ let pub; if(!sv||!sv.ver) pub='<span class="tag t-warn">ยังไม่เคยกระจาย — เครื่องอื่นยังไม่มีพอร์ต</span>';
+ else if(has && WATCH.lastImport && String(WATCH.lastImport)>String(sv.at||'')) pub='<span class="tag t-warn">เครื่องนี้มีข้อมูลใหม่กว่าที่กระจาย (กระจายแล้ว ณ '+_pe(sv.at||'-')+') — กดกระจายอีกครั้ง</span>';
+ else pub='<span class="tag t-ok">กระจายแล้ว · ข้อมูล ณ '+_pe(sv.at||'-')+' · โดย '+_pe(sv.by||'-')+' · '+new Date(+sv.ver).toLocaleString('th-TH')+'</span>';
+ return `<div class="card mb" style="border:1.5px solid #2563eb"><h3 class="exhead" style="color:#1d4ed8">📡 กระจายพอร์ต H-Cap ให้ทุกเครื่อง (สนญ. + สาขา)</h3>
+  <div class="row" style="display:grid;grid-template-columns:170px 1fr;gap:6px 12px;font-size:13.5px"><b>พอร์ตในเครื่องนี้</b><div>${local}</div><b>เวอร์ชันที่กระจายแล้ว</b><div>${pub}</div></div>
+  <div class="flex" style="margin-top:10px;align-items:center;flex-wrap:wrap"><button class="btn btn-org btn-sm" onclick="publishPort()" ${has?'':'disabled'}>📡 กระจายพอร์ต H-Cap ให้ทุกเครื่อง</button><span id="port-prog" class="mut" style="font-size:12.5px"></span></div>
+  <p class="pill-note" style="margin-top:8px">ทำเดือนละครั้งหลังนำเข้า balance_report + Customer_report · ระบบบีบอัดแล้วส่งขึ้นชีตแท็บ <b>port</b> ครั้งเดียว · เครื่องอื่นโหลดเองครั้งเดียวเมื่อมีเวอร์ชันใหม่ (ไม่กระทบรอบซิงก์เคส 30 วิ) · การ์ด 3 มิติของสาขาจะแสดง "ประวัติกับบริษัท" ได้เหมือน สนญ.</p></div>`; }
+
 function purgeAt(){ try{ return +(localStorage.getItem('moto24_purge_at')||0)||0; }catch(e){ return 0; } }
 function purgeIds(){ try{ const o=JSON.parse(localStorage.getItem('moto24_purge_ids')||'{}'); return (o&&typeof o==='object')?o:{}; }catch(e){ return {}; } }
 /* เกณฑ์ลบ: (1) เลขที่เคสอยู่ในรายชื่อที่ล้าง — ไม่พึ่งนาฬิกาเลย · (2) สำรอง: เคสที่ไม่มีในรายชื่อแต่ส่งก่อนจุดล้างเกิน 6 ชม. (เคสค้างออฟไลน์เก่า ๆ) */
@@ -699,7 +782,7 @@ function purgeAllCases(){ if(!SESSION||SESSION.role!=='analyst'){ alert('เฉ�
    else alert('ล้างเคสในเครื่องนี้แล้ว '+removed+' รายการ (ยังไม่ได้เชื่อมต่อชีต จึงล้างเฉพาะเครื่องนี้)'); };
  const idset={}; APPS.forEach(a=>{ if(a&&a.id) idset[a.id]=1; });
  /* รวบรวมเลขที่เคสทั้งหมดในชีตด้วย (รวมที่เครื่องนี้ยังไม่เคยเห็น) — ใช้เวลาของเซิร์ฟเวอร์เป็นจุดอ้างอิง */
- if(cloudReady()){ cloudCall('getCases',{since:0}).then(j=>{ (j.cases||[]).forEach(sv=>{ if(sv&&sv.id) idset[sv.id]=1; }); finish(idset, j.serverTime||Date.now()); })
+ if(cloudReady()){ cloudCall('getCases',{since:0},0,{timeout:60000}).then(j=>{ (j.cases||[]).forEach(sv=>{ if(sv&&sv.id) idset[sv.id]=1; }); finish(idset, j.serverTime||Date.now()); })
    .catch(e=>{ if(confirm('ดึงรายชื่อเคสจากชีตไม่สำเร็จ ('+e.message+')\nล้างเฉพาะเคสที่เครื่องนี้เห็น '+n+' รายการต่อไปหรือไม่?')) finish(idset, Date.now()); }); }
  else finish(idset, Date.now()); }
 function saveCfg(){ try{ localStorage.setItem('moto24_cfg_v3', JSON.stringify(CFG)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('cfg',CFG); }
@@ -1849,14 +1932,14 @@ function syncChipHTML(){
  if(!c.on) return '<div class="alert a-warn" style="margin:0 0 10px;font-size:13px">☁️ <b>ปิดการซิงก์ชีตไว้</b> — ข้อมูลไม่ไหลข้ามเครื่อง</div>';
  const t=c.lastOk?new Date(c.lastOk):null; const ago=t?Math.round((Date.now()-c.lastOk)/1000):null;
  const stale = ago==null || ago>240;
- const when = t? (t.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+(ago!=null?' ('+(ago<60?ago+' วิ':Math.round(ago/60)+' นาที')+'ที่แล้ว)':'')) : 'ยังไม่เคยดึงสำเร็จในรอบนี้';
+ const when = t? (t.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+(ago!=null?' ('+(ago<60?ago+' วิ':Math.round(ago/60)+' นาที')+'ที่แล้ว)':'')) : 'กำลังดึงครั้งแรก… (เครื่องใหม่อาจใช้ 20–60 วิ)';
  return '<div class="alert '+(c.lastErr||stale?'a-warn':'a-ok')+'" id="syncchip" style="margin:0 0 10px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
-  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ'+(function(){ const n=(APPS||[]).filter(a=>a._dirty).length; return n?' · <b style="color:#b45309">⏳ ค้างส่งขึ้นชีต '+n+' เคส</b>'+(c.lastPushErr?' <span style="color:#b91c1c">(ส่งไม่ผ่าน: '+String(c.lastPushErr).replace(/</g,'&lt;')+' — ระบบลองใหม่ทุก 20–30 วิ)</span>':' <span class="mut">(กำลังส่ง…)</span>'):''; })()+'</span>'
+  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ'+(function(){ try{ return portChipHTML(); }catch(e){ return ''; } })()+(function(){ const n=(APPS||[]).filter(a=>a._dirty).length; return n?' · <b style="color:#b45309">⏳ ค้างส่งขึ้นชีต '+n+' เคส</b>'+(c.lastPushErr?' <span style="color:#b91c1c">(ส่งไม่ผ่าน: '+String(c.lastPushErr).replace(/</g,'&lt;')+' — ระบบลองใหม่ทุก 20–30 วิ)</span>':' <span class="mut">(กำลังส่ง…)</span>'):''; })()+'</span>'
   +'<button class="btn btn-line btn-sm noprint" style="margin-left:auto" onclick="syncNowQuiet()">🔄 ซิงก์เดี๋ยวนี้</button></div>';
 }
 function renderSyncChip(){ const el=document.getElementById('backupbar'); if(!el) return; const old=el.querySelector('#syncchip'); if(old){ const tmp=document.createElement('div'); tmp.innerHTML=syncChipHTML(); old.replaceWith(tmp.firstChild); } }
 function syncNowQuiet(){ if(!cloudReady()){ alert('ยังไม่เชื่อม Google Sheet'); return; }
- Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>{ renderBackupBar(); if(typeof currentTab!=='undefined'&&currentTab) go(currentTab); }).catch(e=>{ const c=loadCloud(); c.lastErr='ซิงก์ไม่สำเร็จ (ลองใหม่ 3 ครั้งแล้ว): '+e.message; saveCloud(); renderBackupBar(); }); }
+ Promise.all([cloudPullMaster(),cloudPullCases(true)]).then(()=>{ renderBackupBar(); if(typeof currentTab!=='undefined'&&currentTab) go(currentTab); }).catch(e=>{ const c=loadCloud(); c.lastErr='ซิงก์ไม่สำเร็จ (ลองใหม่ 3 ครั้งแล้ว): '+e.message; saveCloud(); renderBackupBar(); }); }
 function renderBackupBar(){
  const el=document.getElementById('backupbar'); if(!el) return;
  const nApps=(APPS&&APPS.length)||0;
@@ -3791,7 +3874,7 @@ function cloudTest(){ const c=loadCloud();
  c.url=(document.getElementById('cl-url').value||'').trim();
  c.token=(document.getElementById('cl-token').value||'').trim(); saveCloud();
  const el=document.getElementById('cl-status'); if(el){ el.textContent='กำลังทดสอบ...'; el.style.color='#6b7280'; }
- cloudCall('ping').then(()=>{ if(el){ el.textContent='✅ เชื่อมต่อสำเร็จ — URL/TOKEN ถูกต้อง'; el.style.color='#16a34a'; } })
+ cloudCall('ping').then(j=>{ if(el){ const v=(j&&j.version)||'v1'; el.textContent='✅ เชื่อมต่อสำเร็จ — URL/TOKEN ถูกต้อง · Apps Script '+v+(v==='v3'?' (รองรับเคสมีรูปแนบ ✓)':' ⚠️ ควรอัปเดตเป็น v3 (Code_v3.gs) — เคสที่มีรูปแนบจะซิงก์ไม่ครบ'); el.style.color=v==='v3'?'#16a34a':'#b45309'; } })
   .catch(e=>{ if(el){ el.textContent='❌ ไม่สำเร็จ: '+e.message; el.style.color='#dc2626'; } }); }
 function viewUsers(){
  return `<div class="flex sb" style="align-items:center;flex-wrap:wrap;gap:10px">
@@ -4235,7 +4318,7 @@ function openDetail(id){
        ${row(!k.frameHit,'เลขถังต้องห้าม', k.frameHit? k.frameHit.reason+(k.frameHit.detail?' · '+k.frameHit.detail:'') : (a.frameNo?'ไม่พบในบัญชี '+((WATCH&&WATCH.frames)||[]).length.toLocaleString()+' คัน':'ไม่ได้กรอกเลขถัง'))}
        ${row(!k.frameDup,'เลขถังซ้ำในระบบ (กันเวียนจำนำ)', k.frameDup? 'เคยทำสัญญา '+k.frameDup.id+' สาขา '+k.frameDup.branch : (a.frameNo?'ไม่พบสัญญาซ้ำ':'ไม่ได้กรอกเลขถัง'))}
        ${row(!k.area,'พื้นที่เฝ้าระวัง/เสี่ยงสูง', k.area? 'ต.'+k.area.sub+' อ.'+k.area.dist+' — '+k.area.reason : 'ต.'+((a.addrCur&&a.addrCur.sub)||'-')+' ไม่อยู่ในพื้นที่เฝ้าระวัง '+CFG.riskAreas.length+' ตำบล')}
-       ${row(k.prevApproved<2&&!k.prevRejected,'ประวัติในระบบนี้', k.prevTotal? ('พบ '+k.prevTotal+' เคสเดิม · อนุมัติ '+k.prevApproved+' · ปฏิเสธ '+k.prevRejected+(k.prevApproved>=2?' — เกินเกณฑ์ 2 คัน':'')) : 'ลูกค้าใหม่ ไม่มีเคสเดิม')}
+       ${row(k.prevApproved<2&&!k.prevRejected,'คำขอเดิมในระบบโมโต24 (ไม่ใช่ H-Cap)', k.prevTotal? ('เคยส่งคำขอ '+k.prevTotal+' ครั้ง · อนุมัติ '+k.prevApproved+' · ปฏิเสธ '+k.prevRejected+(k.prevApproved>=2?' — เกินเกณฑ์ 2 คัน':'')) : 'ยังไม่เคยส่งคำขอในระบบนี้ (ระบบเริ่มใช้ ก.ย. 69 — ดูประวัติจริงที่บรรทัด H-Capital ด้านล่าง)')}
        ${row(!k.px||(k.px.act||0)<2,'สัญญากับบริษัท (พอร์ต H-Capital)', k.px? ((k.px.n||1)+' สัญญา · ผ่อนอยู่ '+(k.px.act||0)+' สัญญา · ค่างวดรวม '+fmt(k.px.ins||0)+' บ./เดือน'+((k.px.act||0)>=2?' — ภาระซ้อน':'')) : 'ไม่พบสัญญาเดิมในพอร์ต')}
       </table>${(k.px&&(k.px.cts||[]).length)?'<div style="padding:2px 6px 6px">'+pxContractList(k.px)+'</div>':''}</div>`;})()}
     ${(()=>{ if(!isHQ) return ''; const dm=dataMatch(a); if(!dm) return '';
@@ -4943,6 +5026,7 @@ function viewWatch(){
   <p class="pill-note" style="margin-bottom:10px">เลือกไฟล์ export debt collection (.xlsx) จากระบบ H-Capital ได้เลย — ระบบสร้างให้อัตโนมัติ 3 หมวด: <b>ลูกค้าเฝ้าระวัง</b> (พร้อม Kept/Broke) · <b>เลขถังต้องห้าม</b> · <b>พื้นที่เสี่ยง</b> — อัปโหลดเดือนละครั้ง ระบบเก็บรอบเก่าเป็นประวัติและแทนที่ให้</p>
   <label class="btn btn-red" style="margin:0">📤 เลือกไฟล์ H-Capital (.xlsx)<input type="file" accept=".xlsx,.xls" class="hidden" onchange="importHCapital(this)"></label>
  </div>
+ ${(SESSION&&SESSION.role==='analyst')?portCardHTML():''}
  <div class="exkpis">
   <div class="exkpi"${kpiClick("openListModal('custs',{level:'high'})")} style="background:#fef2f2${isOld?'':';cursor:pointer'}"><span class="exkpi-chip" style="background:#dc2626">⛔</span><div class="exkpi-n" style="color:#dc2626">${fmt(hiAll)}</div><div class="exkpi-l" style="color:#991b1b">ลูกค้าห้ามปล่อย${isOld?'':' · คลิกดูรายชื่อ'}</div></div>
   <div class="exkpi"${kpiClick("openListModal('custs',{level:'watch'})")} style="background:#fff7ed${isOld?'':';cursor:pointer'}"><span class="exkpi-chip" style="background:#f26522">👁</span><div class="exkpi-n" style="color:#c2410c">${fmt(Wc.length-hiAll)}</div><div class="exkpi-l" style="color:#9a3412">ลูกค้าเฝ้าระวัง${isOld?'':' · คลิกดูรายชื่อ'}</div></div>
@@ -7525,7 +7609,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0912-F';
+const CHK3_BUILD='0913-A';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -7847,6 +7931,7 @@ if(typeof Chart!=='undefined'){ Chart.defaults.font.family="'Kanit',sans-serif";
 refreshUserSelect();
 setTimeout(()=>{const el=document.getElementById('wsum'); if(el)updWSum();},0);
 /* 0912-B: ดึงบัญชีผู้ใช้/เกณฑ์ล่าสุดตั้งแต่หน้าล็อกอิน (ก่อนมี SESSION) */
+try{ if(typeof portBootstrap==='function') portBootstrap(); }catch(e){}   /* 0913-A: กู้พอร์ต H-Cap จาก IndexedDB ถ้า localStorage เก็บไม่ไหว */
 try{ if(typeof cloudReady==='function' && cloudReady()) setTimeout(()=>{ cloudPullMaster().catch(()=>{}); }, 500); }catch(e){}
 // เมื่อมีการเปลี่ยนข้อมูลจากแท็บอื่น (เช่น สาขาส่งเคสเข้ามาในอีกแท็บ) → โหลดใหม่ + เด้ง toast
 function _applyExternalApps(raw){
