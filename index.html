@@ -349,7 +349,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0913-A (เฟส 1 · กระจายพอร์ต H-Cap ให้ทุกเครื่อง) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0913-B (เฟส 1 · กระจายพอร์ต H-Cap · ส่งซ้ำอัตโนมัติ) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -591,7 +591,7 @@ function cloudReady(){ const c=loadCloud(); return !!(c.on && c.url && c.token);
 /* 0912-B: ลองใหม่อัตโนมัติเมื่อคำตอบโดนดักกลางทาง (VPN/McAfee/เน็ตสะดุด) — สูงสุด 3 ครั้ง เว้น 2 → 4 → 7 วิ · upsert ปลอดภัยเพราะอ้างอิงด้วย id เดิม */
 function cloudCall(action, body, _try, _opt){ _try=_try||0;
  return _cloudCallOnce(action, body, _opt).catch(e=>{ const m=String(e&&e.message||e);
-   const transient = /Failed to fetch|NetworkError|ไม่ใช่ JSON|หมดเวลารอ|เชื่อมต่อไม่ได้|busy|Load failed/i.test(m);
+   const transient = /Failed to fetch|NetworkError|ไม่ใช่ JSON|หมดเวลารอ|เชื่อมต่อไม่ได้|busy|Load failed|unauthorized/i.test(m);   /* unauthorized ก็ลองใหม่: TOKEN ฝังถูกต้องอยู่แล้ว มักเกิดจากคำขอก้อนใหญ่ถูกตัดกลางทาง */
    if(transient && _try<3){ const wait=[2000,4000,7000][_try]; return new Promise(r=>setTimeout(r,wait)).then(()=>cloudCall(action, body, _try+1, _opt)); }
    throw e; }); }
 function _cloudCallOnce(action, body, _opt){ const c=loadCloud(); const _to=(_opt&&_opt.timeout)||25000; if(!c.url) return Promise.reject(new Error('ยังไม่ได้ตั้งค่า URL'));
@@ -685,7 +685,7 @@ function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้�
    สนญ. นำเข้าไฟล์ → กด "กระจาย" → บีบอัด (gzip+base64) แบ่งส่วนละ ~240k ตัวอักษร → putPort ทีละส่วน → setMaster('portver')
    ทุกเครื่อง: รอบดึง master เช็ก portver (ไม่กี่ไบต์) → ต่างจากในเครื่อง → โหลด getPort ทีละส่วนเบื้องหลัง → คลายบีบอัด → WATCH/CUSTDB
    เก็บก้อนบีบอัดใน IndexedDB (localStorage เก็บของใหญ่ไม่ไหว) และกู้คืนตอนเปิดแอป */
-const PORT_PART = 240000;
+const PORT_PART = 150000;
 const _pe=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 function idbOpen(){ return new Promise((res,rej)=>{ try{ const r=indexedDB.open('moto24',1); r.onupgradeneeded=()=>{ try{ r.result.createObjectStore('kv'); }catch(e){} }; r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }catch(e){ rej(e); } }); }
 function idbSet(k,v){ return idbOpen().then(db=>new Promise((res,rej)=>{ const t=db.transaction('kv','readwrite'); t.objectStore('kv').put(v,k); t.oncomplete=()=>res(true); t.onerror=()=>rej(t.error); })); }
@@ -717,7 +717,12 @@ async function publishPort(){ if(!SESSION||SESSION.role!=='analyst'){ alert('เ
   const parts=[]; for(let i=0;i<z.s.length;i+=PORT_PART) parts.push(z.s.slice(i,i+PORT_PART));
   const meta={ ver:String(Date.now()), at:WATCH.lastImport||'', contracts:nC, custs:nR, watch:(WATCH.custs||[]).length, frames:(WATCH.frames||[]).length, gz:z.gz, chars:z.s.length, total:parts.length, by:(SESSION&&SESSION.name)||'' };
   for(let i=0;i<parts.length;i++){ _portProg('กำลังส่งขึ้นชีต ส่วนที่ '+(i+1)+'/'+parts.length+' ('+Math.round(z.s.length/1024)+' KB รวม)…');
-    const r=await cloudCall('putPort',{ver:meta.ver, part:i, total:parts.length, data:parts[i]},0,{timeout:90000}); if(!r||!r.ok) throw new Error((r&&r.error)||'ส่งส่วนที่ '+(i+1)+' ไม่สำเร็จ'); }
+    let r=null, lastErr=null;
+    for(let att=1; att<=6; att++){ try{ r=await cloudCall('putPort',{ver:meta.ver, part:i, total:parts.length, data:parts[i]},0,{timeout:90000}); if(r&&r.ok){ lastErr=null; break; } lastErr=new Error((r&&r.error)||'ส่งส่วนที่ '+(i+1)+' ไม่สำเร็จ'); }
+      catch(e){ lastErr=e; }
+      _portProg('ส่วนที่ '+(i+1)+'/'+parts.length+' ส่งไม่ผ่าน ('+String(lastErr.message||lastErr).slice(0,40)+') — ลองใหม่ครั้งที่ '+att+'…'); _pushLog('พอร์ต ส่วนที่ '+(i+1)+' ส่งไม่ผ่าน: '+String(lastErr.message||lastErr)+' (ลองใหม่ '+att+')','port');
+      await new Promise(res=>setTimeout(res, 2000*att)); }
+    if(lastErr) throw lastErr; }
   _portProg('กำลังประกาศเวอร์ชัน…');
   const j=await cloudCall('setMaster',{key:'portver',data:meta,by:meta.by}); const c=loadCloud(); c.masterAt.portver=(j&&j.updatedAt)||Date.now(); saveCloud();
   try{ localStorage.setItem('moto24_portver',meta.ver); localStorage.setItem('moto24_portmeta',JSON.stringify(meta)); localStorage.setItem('moto24_portsrv',JSON.stringify(meta)); }catch(e){}
@@ -7609,7 +7614,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0913-A';
+const CHK3_BUILD='0913-B';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
