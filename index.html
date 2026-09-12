@@ -330,7 +330,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
   <div class="login-box">
     <div class="brand"><span class="logo">โมโต<span style="color:var(--orange)">24</span></span><h1>ระบบวิเคราะห์สินเชื่อรถจักรยานยนต์</h1></div>
     <div class="field"><label>อีเมล</label><input id="login-email" type="email" autocomplete="username" placeholder="เช่น ranot1@moto24.co.th" onkeydown="if(event.key==='Enter'){var p=document.getElementById('login-pass');if(p)p.focus();}"></div>
-    <div class="field"><label>รหัสผ่าน</label><input id="login-pass" type="password" autocomplete="current-password" placeholder="รหัสผ่าน (สนญ.กำหนดให้ครั้งแรก)" onkeydown="if(event.key==='Enter')loginAsUser()"></div>
+    <div class="field"><label>รหัสผ่าน</label><input id="login-pass" type="password" autocomplete="current-password" placeholder="รหัสผ่าน (สนญ.กำหนดให้ครั้งแรก)" onkeydown="if(event.key==='Enter')loginAsUser()"><div id="login-syncnote" class="mut" style="display:none;font-size:12.5px;margin-top:4px"></div></div>
     <button class="btn btn-red" style="width:100%" onclick="loginAsUser()">🔐 เข้าสู่ระบบ</button>
     <p class="pill-note" style="margin-top:8px">สาขา / เขต / บทบาท จะดึงจากบัญชีอัตโนมัติ — ไม่ต้องเลือกเอง</p>
   </div>
@@ -348,7 +348,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0912-A (เฟส 1 · ซิงก์บัญชีผู้ใช้ · ประหยัดโควตาชีต) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0912-C (เฟส 1 · ปรับฟอร์มข้อมูลลูกค้า/GPS) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -587,16 +587,22 @@ function loadCloud(){ if(CLOUD) return CLOUD; try{ CLOUD=JSON.parse(localStorage
  CLOUD.url=CLOUD.url||''; CLOUD.token=CLOUD.token||''; CLOUD.on=!!CLOUD.on; CLOUD.lastPull=CLOUD.lastPull||0; CLOUD.masterAt=CLOUD.masterAt||{}; return CLOUD; }
 function saveCloud(){ try{ localStorage.setItem('moto24_cloud', JSON.stringify(CLOUD)); }catch(e){} }
 function cloudReady(){ const c=loadCloud(); return !!(c.on && c.url && c.token); }
-function cloudCall(action, body){ const c=loadCloud(); if(!c.url) return Promise.reject(new Error('ยังไม่ได้ตั้งค่า URL'));
+/* 0912-B: ลองใหม่อัตโนมัติเมื่อคำตอบโดนดักกลางทาง (VPN/McAfee/เน็ตสะดุด) — สูงสุด 3 ครั้ง เว้น 2 → 4 → 7 วิ · upsert ปลอดภัยเพราะอ้างอิงด้วย id เดิม */
+function cloudCall(action, body, _try){ _try=_try||0;
+ return _cloudCallOnce(action, body).catch(e=>{ const m=String(e&&e.message||e);
+   const transient = /Failed to fetch|NetworkError|ไม่ใช่ JSON|หมดเวลารอ|เชื่อมต่อไม่ได้|busy|Load failed/i.test(m);
+   if(transient && _try<3){ const wait=[2000,4000,7000][_try]; return new Promise(r=>setTimeout(r,wait)).then(()=>cloudCall(action, body, _try+1)); }
+   throw e; }); }
+function _cloudCallOnce(action, body){ const c=loadCloud(); if(!c.url) return Promise.reject(new Error('ยังไม่ได้ตั้งค่า URL'));
  const payload=Object.assign({action, token:c.token}, body||{});
  const _ac=(typeof AbortController!=='undefined')?new AbortController():null; const _tm=_ac?setTimeout(()=>{ try{_ac.abort();}catch(_){} },25000):null;
  return fetch(c.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload),signal:_ac?_ac.signal:undefined})
-  .then(r=>{ if(_tm)clearTimeout(_tm); return r.text(); }).catch(e=>{ if(_tm)clearTimeout(_tm); throw new Error(e&&e.name==='AbortError'?'หมดเวลารอ Apps Script (25 วิ)':(e&&e.message)||'เชื่อมต่อไม่ได้'); }).then(t=>{ let j; try{ j=JSON.parse(t); }catch(e){ throw new Error('ตอบกลับไม่ใช่ JSON: '+String(t).slice(0,120)); } if(!j.ok) throw new Error(j.error||'ไม่สำเร็จ'); return j; }); }
+  .then(r=>{ if(_tm)clearTimeout(_tm); return r.text(); }).catch(e=>{ if(_tm)clearTimeout(_tm); throw new Error(e&&e.name==='AbortError'?'หมดเวลารอ Apps Script (25 วิ)':(e&&e.message)||'เชื่อมต่อไม่ได้'); }).then(t=>{ let j; try{ j=JSON.parse(t); }catch(e){ throw new Error('ตอบกลับไม่ใช่ JSON (คำตอบถูกดักกลางทาง — ระบบลองใหม่เอง)'+(/<html/i.test(t)?'':': '+String(t).slice(0,80))); } if(!j.ok) throw new Error(j.error||'ไม่สำเร็จ'); return j; }); }
 function cloudPushCase(a){ if(!cloudReady()||!a||!a.id) return; a.updatedAt=Date.now(); a.updatedBy=(SESSION&&SESSION.name)||''; cloudCall('upsertCase',{'case':a}).then(j=>{ if(j&&j.updatedAt){ a.updatedAt=j.updatedAt; try{saveApps();}catch(e){} } }).catch(()=>{}); }
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
- return cloudCall('getCases',{since:0}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=2) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
+ return cloudCall('getCases',{since:0}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=3) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
    (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; const i=APPS.findIndex(x=>x.id===sv.id);
      if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); }
      else if((sv.updatedAt||0)>(APPS[i].updatedAt||0) || (sv.status!==APPS[i].status && (sv.decidedAt||0)>(APPS[i].decidedAt||0))){ APPS[i]=sv; changed=true; chIds.push(sv.id); } });
@@ -1379,6 +1385,14 @@ function _exifGPS(buf){
   return null;
  }catch(e){ return null; }
 }
+/* 0912-C: พิกัดบ้าน — ใช้ GPS เครื่อง (มือถือ/โน้ตบุ๊ก) + เปิดแผนที่ตรวจ */
+function useMyLocation(){ const el=document.getElementById('f-houseloc'), info=document.getElementById('loc-hint2');
+ if(!navigator.geolocation){ if(info) info.textContent='เบราว์เซอร์นี้ไม่รองรับ GPS'; return; }
+ if(info){ info.textContent='⏳ กำลังอ่านตำแหน่ง… (อนุญาตให้เว็บใช้ตำแหน่งเมื่อถูกถาม)'; info.style.color=''; }
+ navigator.geolocation.getCurrentPosition(pos=>{ const la=+pos.coords.latitude.toFixed(6), lo=+pos.coords.longitude.toFixed(6);
+   if(el){ el.value=la+','+lo; el.style.background='#ecfdf3'; } if(info) info.textContent='📍 ใช้ตำแหน่งปัจจุบัน ('+la+','+lo+' · คลาดเคลื่อน ~'+Math.round(pos.coords.accuracy||0)+' ม.)'; try{ liveCalc(); }catch(e){} },
+  err=>{ if(info){ info.textContent='อ่านตำแหน่งไม่ได้: '+(err&&err.message||'ไม่อนุญาต')+' — พิมพ์พิกัดจากภาพแทนได้'; info.style.color='#b45309'; } }, {enableHighAccuracy:true,timeout:15000,maximumAge:0}); }
+function openHouseMap(){ const v=((document.getElementById('f-houseloc')||{}).value||'').trim(); const m=v.match(/(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)/); if(!m){ alert('ยังไม่มีพิกัด'); return; } window.open('https://www.google.com/maps?q='+m[1]+','+m[2],'_blank'); }
 function onHousePhoto(inp){
  readImageInput(inp,d=>{ _hpd=d; liveCalc(); });
  const f=inp.files&&inp.files[0]; if(!f) return;
@@ -1630,13 +1644,21 @@ function doLogin(){
  if(pickedRole==='zone'){ sess.zone=document.getElementById('sel-zone').value; }
  enterApp(sess);
 }
-function loginAsUser(){
+/* 0912-B: ถ้าล็อกอินไม่ผ่านในเครื่องนี้ → ดึงบัญชีล่าสุดจากชีตก่อน แล้วลองใหม่ 1 ครั้ง (รองรับกรณีเปลี่ยนรหัสจากเครื่องอื่น / บัญชีใหม่ที่ สนญ. เพิ่งสร้าง) */
+function loginAsUser(_retried){
  const emEl=document.getElementById('login-email');
  const em=(emEl?emEl.value:'').trim().toLowerCase();
  if(!em){ alert('กรุณากรอกอีเมล'); if(emEl)emEl.focus(); return; }
- const u=USERS.find(x=>(x.email||'').toLowerCase()===em);
- if(!u){ alert('ไม่พบบัญชีอีเมลนี้ในระบบ — ตรวจสอบอีเมล หรือให้ สนญ. สร้าง/นำเข้าบัญชีก่อน'); return; }
  const pw=(document.getElementById('login-pass').value||'');
+ let u=USERS.find(x=>(x.email||'').toLowerCase()===em);
+ const bad = !u || (u.pass && pw!==u.pass);
+ if(bad && !_retried && typeof cloudReady==='function' && cloudReady()){
+   const btn=document.querySelector('#login-pass') ? document.querySelector('.login-card button, #app .btn-red') : null;
+   const hint=document.getElementById('login-syncnote'); if(hint){ hint.textContent='⏳ กำลังตรวจบัญชีกับฐานข้อมูลกลาง…'; hint.style.display=''; }
+   cloudPullMaster().catch(()=>{}).then(()=>{ if(hint) hint.style.display='none'; loginAsUser(true); });
+   return;
+ }
+ if(!u){ alert('ไม่พบบัญชีอีเมลนี้ในระบบ — ตรวจสอบอีเมล หรือให้ สนญ. สร้าง/นำเข้าบัญชีก่อน'); return; }
  if(u.pass && pw!==u.pass){ alert('รหัสผ่านไม่ถูกต้อง'); return; }
  u.lastLogin=Date.now(); saveUsers();
  const el=document.getElementById('login-pass'); if(el) el.value='';
@@ -1760,7 +1782,7 @@ function syncChipHTML(){
  if(!c.url||!c.token) return '<div class="alert a-warn" style="margin:0 0 10px;font-size:13px">☁️ <b>ยังไม่เชื่อม Google Sheet</b> — ข้อมูลอยู่แค่ในเครื่องนี้ · แจ้ง สนญ. ให้ฝัง URL/TOKEN ในไฟล์</div>';
  if(!c.on) return '<div class="alert a-warn" style="margin:0 0 10px;font-size:13px">☁️ <b>ปิดการซิงก์ชีตไว้</b> — ข้อมูลไม่ไหลข้ามเครื่อง</div>';
  const t=c.lastOk?new Date(c.lastOk):null; const ago=t?Math.round((Date.now()-c.lastOk)/1000):null;
- const stale = ago==null || ago>150;
+ const stale = ago==null || ago>240;
  const when = t? (t.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+(ago!=null?' ('+(ago<60?ago+' วิ':Math.round(ago/60)+' นาที')+'ที่แล้ว)':'')) : 'ยังไม่เคยดึงสำเร็จในรอบนี้';
  return '<div class="alert '+(c.lastErr||stale?'a-warn':'a-ok')+'" id="syncchip" style="margin:0 0 10px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
   +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ</span>'
@@ -1768,7 +1790,7 @@ function syncChipHTML(){
 }
 function renderSyncChip(){ const el=document.getElementById('backupbar'); if(!el) return; const old=el.querySelector('#syncchip'); if(old){ const tmp=document.createElement('div'); tmp.innerHTML=syncChipHTML(); old.replaceWith(tmp.firstChild); } }
 function syncNowQuiet(){ if(!cloudReady()){ alert('ยังไม่เชื่อม Google Sheet'); return; }
- Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>{ renderBackupBar(); if(typeof currentTab!=='undefined'&&currentTab) go(currentTab); }).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
+ Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>{ renderBackupBar(); if(typeof currentTab!=='undefined'&&currentTab) go(currentTab); }).catch(e=>{ const c=loadCloud(); c.lastErr='ซิงก์ไม่สำเร็จ (ลองใหม่ 3 ครั้งแล้ว): '+e.message; saveCloud(); renderBackupBar(); }); }
 function renderBackupBar(){
  const el=document.getElementById('backupbar'); if(!el) return;
  const nApps=(APPS&&APPS.length)||0;
@@ -2310,9 +2332,17 @@ function viewForm(){
    <div class="field"><label>ประเภทบัตร <span class="req">*</span></label><select id="f-cardtype"><option>บัตรประชาชน</option><option>บัตรข้าราชการ</option><option>อื่น ๆ</option></select></div>
    <div class="field"><label>เลขที่บัตร (13 หลัก) <span class="req">*</span></label><input id="f-idcard" maxlength="17" placeholder="เสียบบัตรผ่านเครื่องอ่าน H-Capital" oninput="liveCalc()">
    </div>
-   <div class="field"><label>ออกโดย</label><input id="f-cardissuer" placeholder="เช่น อำเภอลานสกา/นครศรีธรรมราช"></div>
-   <div class="field"><label>วันออกบัตร <span style="font-weight:400;color:#6b7280;font-size:11px">(พิมพ์/วางได้)</span></label><input id="f-cardissue" type="text" placeholder="วว/ดด/ปปปป" onblur="smartDate(this)"></div>
-   <div class="field"><label>วันบัตรหมดอายุ <span style="font-weight:400;color:#6b7280;font-size:11px">(พิมพ์/วางได้)</span></label><input id="f-cardexp" type="text" placeholder="วว/ดด/ปปปป" onblur="smartDate(this)"></div>
+   <!-- 0912-C: ตัดช่อง ออกโดย/วันออกบัตร/วันหมดอายุ ออกจากฟอร์มตามคำขอ (คง input ซ่อนไว้ให้โค้ดเดิม/ข้อมูลเก่าทำงานต่อ) -->
+   <div style="display:none"><input id="f-cardissuer"><input id="f-cardissue" type="text"><input id="f-cardexp" type="text"></div>
+   <!-- 0912-C: ข้อมูลคู่สมรส ย้ายมาอยู่ข้อ 1 · โผล่เมื่อสถานภาพ = สมรส -->
+   <div id="spouse-block" class="hidden" style="grid-column:1/-1;border:1px dashed #c7c9d9;background:#f7f8fb;border-radius:8px;padding:8px 12px">
+    <div style="font-weight:600;color:#2b3990;font-size:12.5px;margin-bottom:6px">💍 ข้อมูลคู่สมรส</div>
+    <div class="fgrid3">
+     <div class="field"><label>ชื่อ-นามสกุลคู่สมรส</label><input id="f-spouse-name" placeholder="เช่น นางสมศรี พุ่มเงิน"></div>
+     <div class="field"><label>ชื่อเล่นคู่สมรส</label><input id="f-spouse-nick" placeholder="เช่น ศรี"></div>
+     <div class="field"><label>เบอร์โทรคู่สมรส</label><input id="f-spouse-phone" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
+    </div>
+   </div>
    <div class="field" style="grid-column:1/-1"><label>เบอร์โทรลูกค้า <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:12px">— เพิ่มได้หลายเบอร์ · เลือก "หลัก" = เบอร์ที่ติดต่อได้จริง (ใช้ตรวจซ้ำ) · ผูก LINE ได้</span>
     <div id="phone-list"></div>
     <button type="button" onclick="addPhoneRow()" style="margin-top:2px;font-size:12px;padding:5px 12px;border:1px dashed #2b3990;background:#eef1fb;color:#2b3990;border-radius:6px;cursor:pointer">+ เพิ่มเบอร์</button>
@@ -2323,19 +2353,27 @@ function viewForm(){
   <div class="subhead">1.2 ที่อยู่ปัจจุบัน &nbsp; <label style="display:inline;font-weight:400;color:var(--txt)"><input type="checkbox" id="f-sameaddr" onchange="copyAddr()"> ใช้ที่อยู่เดียวกับตามบัตร</label></div>
   ${addrFields('fp',true)}
   <div class="fgrid3">
-   <div class="field"><label>ลักษณะที่อยู่</label><select id="f-housetype" onchange="onHouseType()"><option>บ้านเดี่ยว (ปลอดภาระ)</option><option>บ้านเดี่ยว (ผ่อนอยู่)</option><option>บ้านเดี่ยว</option><option>ทาวน์เฮาส์/ตึกแถว</option><option>บ้านเช่า</option><option>หอพัก/อพาร์ตเมนต์</option><option>อาศัยกับญาติ</option></select></div>
+   <div class="field"><label>ลักษณะที่อยู่</label><select id="f-housetype" onchange="onHouseType()"><option>บ้านเดี่ยว (ปลอดภาระ)</option><option>บ้านเดี่ยว (ผ่อนอยู่)</option><option>ทาวน์เฮาส์/ตึกแถว (ปลอดภาระ)</option><option>ทาวน์เฮาส์/ตึกแถว (ผ่อนอยู่)</option><option>บ้านเช่า</option><option>หอพัก/อพาร์ตเมนต์</option><option>อาศัยกับญาติ</option></select></div>
    <div class="field hidden" id="w-housepay"><label>ยอดผ่อนบ้าน/เดือน (บาท) <span style="font-weight:400;color:#6b7280;font-size:11px">— รวมเข้าภาระผ่อนหนี้อัตโนมัติ</span></label><input id="f-housepay" type="number" min="0" value="0" oninput="liveCalc()"></div>
    <div class="field"><label>การถือครอง</label><select id="f-tenure" onchange="liveCalc()"><option>เจ้าของ</option><option>คู่สมรส</option><option>เช่า</option><option>อาศัยกับครอบครัว</option></select></div>
    <div class="field"><label>ระยะเวลาอยู่อาศัย (ปี)</label><select id="f-stayyears" onchange="liveCalc()"><option>น้อยกว่า 1 ปี</option><option>1-3 ปี</option><option>3-5 ปี</option><option selected>5 ปีขึ้นไป</option></select></div>
+   <div class="field"><label>ลำดับที่ในทะเบียนบ้าน <span style="font-weight:400;color:#6b7280;font-size:11px">(ลูกค้าอยู่ลำดับที่เท่าไร)</span></label><input id="f-houseorder" type="number" min="1" placeholder="เช่น 2"></div>
    <div class="field"><label>📷 ภาพบ้านจริง (สาขาถ่ายตอนลงพื้นที่) <span class="req">*</span></label><input id="f-housephoto" type="file" accept="image/*" onchange="onHousePhoto(this)"></div>
    <div class="field"><label>ระยะทางจากสาขาถึงบ้านลูกค้า (กม.)</label><input id="f-distkm" type="number" min="0" step="0.1" placeholder="เช่น 8"></div>
+   <div class="field" style="grid-column:1/-1"><label>📍 พิกัด GPS บ้าน <span style="font-weight:400;color:#6b7280;font-size:11px">(ดึงจากภาพอัตโนมัติถ้ามี · หรือกดปุ่มใช้ตำแหน่งปัจจุบันตอนอยู่หน้าบ้าน · หรือพิมพ์ ละติจูด,ลองจิจูด)</span></label>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+     <input id="f-houseloc" placeholder="เช่น 8.061312,99.930562" style="flex:1;min-width:220px" oninput="locHint()">
+     <button type="button" class="btn btn-line btn-sm" onclick="useMyLocation()">📡 ใช้ตำแหน่งปัจจุบัน</button>
+     <button type="button" class="btn btn-line btn-sm" onclick="openHouseMap()">🗺️ เปิดแผนที่</button>
+    </div>
+    <div id="loc-hint2" class="mut" style="font-size:12px;margin-top:3px"></div></div>
   </div>
-  <p class="pill-note">บังคับแนบภาพบ้านจริงก่อนส่งเคส (ผูกเคสถาวร ตรวจย้อนหลังได้) · <span style="color:#6b7280">พิกัด GPS จะเพิ่มในเฟสถัดไป</span></p>
+  <p class="pill-note">บังคับแนบภาพบ้านจริงก่อนส่งเคส (ผูกเคสถาวร ตรวจย้อนหลังได้) · พิกัดจากภาพจะอ่านได้เมื่อถ่ายด้วยกล้องที่เปิด GPS และ<b>ส่งไฟล์ต้นฉบับ</b> (ส่งผ่าน LINE จะถูกลบพิกัด) — ถ้าไม่มี ให้กด "ใช้ตำแหน่งปัจจุบัน" ขณะอยู่หน้าบ้านลูกค้า</p>
   <div class="subhead" style="margin-top:14px">1.3 บุคคลอ้างอิง (คนรู้จักผู้ซื้อ) <span style="font-weight:400;color:#6b7280;font-size:12px">— 2 คน</span></div>
   <div style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:6px">
    <div style="font-weight:600;font-size:13px;color:#2b3990;margin-bottom:6px">คนอ้างอิงคนที่ 1</div>
    <div class="fgrid3">
-    <div class="field"><label>ชื่อเล่น <span class="req">*</span></label><input id="f-ref1-nick" placeholder="เช่น พี่หน่อย"></div>
+    <div class="field"><label>ชื่อ-นามสกุล <span class="req">*</span></label><input id="f-ref1-nick" placeholder="เช่น นายสมชาย ใจดี"></div>
     <div class="field"><label>ความสัมพันธ์กับผู้ซื้อ <span class="req">*</span></label><select id="f-ref1-rel"><option value="">— เลือกความสัมพันธ์ —</option><option>บิดา</option><option>มารดา</option><option>พี่/น้อง</option><option>คู่สมรส</option><option>ญาติ</option><option>เพื่อนสนิท</option><option>เพื่อนบ้าน</option><option>เพื่อนร่วมงาน</option><option>นายจ้าง/หัวหน้างาน</option><option>อื่นๆ</option></select></div>
     <div class="field"><label>เบอร์โทร <span class="req">*</span></label><input id="f-ref1-phone" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
    </div>
@@ -2343,7 +2381,7 @@ function viewForm(){
   <div style="border:1px solid var(--line);border-radius:8px;padding:10px 12px">
    <div style="font-weight:600;font-size:13px;color:#2b3990;margin-bottom:6px">คนอ้างอิงคนที่ 2</div>
    <div class="fgrid3">
-    <div class="field"><label>ชื่อเล่น <span class="req">*</span></label><input id="f-ref2-nick" placeholder="เช่น น้าสมชาย"></div>
+    <div class="field"><label>ชื่อ-นามสกุล <span class="req">*</span></label><input id="f-ref2-nick" placeholder="เช่น นางสมศรี มีสุข"></div>
     <div class="field"><label>ความสัมพันธ์กับผู้ซื้อ <span class="req">*</span></label><select id="f-ref2-rel"><option value="">— เลือกความสัมพันธ์ —</option><option>บิดา</option><option>มารดา</option><option>พี่/น้อง</option><option>คู่สมรส</option><option>ญาติ</option><option>เพื่อนสนิท</option><option>เพื่อนบ้าน</option><option>เพื่อนร่วมงาน</option><option>นายจ้าง/หัวหน้างาน</option><option>อื่นๆ</option></select></div>
     <div class="field"><label>เบอร์โทร <span class="req">*</span></label><input id="f-ref2-phone" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
    </div>
@@ -2368,14 +2406,7 @@ function viewForm(){
     <div class="field"><label>เบอร์โทรผู้ใช้รถ</label><input id="f-vu-phone" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
    </div>
   </div>
-  <div id="spouse-block" class="hidden">
-   <div style="font-weight:600;color:#2b3990;font-size:12.5px;margin-bottom:6px">💍 ข้อมูลคู่สมรส</div>
-   <div class="fgrid3">
-    <div class="field"><label>ชื่อ-สกุลคู่สมรส</label><input id="f-spouse-name"></div>
-    <div class="field"><label>เบอร์โทรคู่สมรส</label><input id="f-spouse-phone" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
-    <div class="field"></div>
-   </div>
-  </div>
+
   <div style="font-weight:600;color:var(--navy);font-size:12.5px;margin:10px 0 6px;display:flex;align-items:center;gap:6px">📍 ซื้อรถไปใช้ที่ไหน</div>
   <label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:12.5px;color:#374151;margin-bottom:8px"><input type="checkbox" id="f-vuse-same" onchange="copyUseAddr()" style="width:15px;height:15px"> ใช้สถานที่เดียวกับที่อยู่ปัจจุบัน (1.2)</label>
   <div class="fgrid3">
@@ -2625,7 +2656,7 @@ function pullCustomer(){
   if(Array.isArray(a.phones)&&a.phones.length) restorePhones(a.phones);
   ['no','moo','sub','dist','prov','zip'].forEach(k=>{ S('fc-'+k,(a.addrCard||{})[k]); S('fp-'+k,(a.addrCur||{})[k]); }); thRefresh('fc'); thRefresh('fp');
   S('f-housetype',(a.addrCur||{}).houseType); S('f-tenure',(a.addrCur||{}).tenure); S('f-stayyears',(a.addrCur||{}).stayYears); S('f-housepay',a.housePay); if(typeof onHouseType==='function') onHouseType();
-  S('f-houseloc',(a.addrCur||{}).houseLoc);
+  S('f-houseloc',(a.addrCur||{}).houseLoc); S('f-houseorder',(a.addrCur||{}).houseOrder||'');
   if(a.vehUse){ const psel=document.getElementById('f-vuse-purpose'); if(psel&&a.vehUse.purpose&&![...psel.options].some(o=>o.value===a.vehUse.purpose)){ const op=document.createElement('option'); op.value=op.textContent=a.vehUse.purpose; psel.appendChild(op); } S('f-vuse-purpose',a.vehUse.purpose); S('fu-prov',a.vehUse.prov); S('fu-dist',a.vehUse.dist); const cb=document.getElementById('f-vuse-same'); if(cb){cb.checked=!!a.vehUse.sameAsCur; copyUseAddr();} }
   if(a.occupation!=null&&OCC_LIST[a.occupation]){ S('f-occg',OCC_LIST[a.occupation].g); onOccGroup(); S('f-occ',String(a.occupation)); onOccSub(); S('f-occex',a.occExtra); }
   S('f-workplace',a.workplace); S('f-workaddr',a.workAddr); S('f-workphone',a.workPhone); S('f-workstart',a.workStart);
@@ -2635,7 +2666,7 @@ function pullCustomer(){
   const r=f.r;
   S('f-prefix',r.prefix); S('f-name',r.first); S('f-lname',r.last);
   S('f-birth',r.birth); S('f-idcard',r.idcard); S('f-phone',r.phone);
-  S('f-cardissue',r.cardIssue); S('f-cardexp',r.cardExpiry);
+  S('f-cardissue',r.cardIssue); S('f-cardexp',r.cardExpiry); S('f-spouse-nick',(r.spouse||{}).nick||'');
   ['no','moo','sub','dist','prov','zip'].forEach(k=>{ S('fc-'+k,r[k]); S('fp-'+k,r[k]); }); thRefresh('fc'); thRefresh('fp');
   if(OCC_LIST[r.occIdx]){ S('f-occg',OCC_LIST[r.occIdx].g); onOccGroup(); S('f-occ',String(r.occIdx)); onOccSub(); }
   S('f-workplace',r.workplace);
@@ -2982,7 +3013,7 @@ function readForm(){
   cardType:g('f-cardtype'), idcard:g('f-idcard').trim(), cardIssuer:g('f-cardissuer').trim(), cardIssue:g('f-cardissue'), cardExpiry:g('f-cardexp'),
   phone:_ph.phone, phones:_ph.phones,
   vehUser:{mode:((document.querySelector('input[name="vehuser"]:checked')||{}).value||'self'), name:g('f-vu-name').trim(), nick:g('f-vu-nick').trim(), rel:g('f-vu-rel').trim(), phone:normDigits(g('f-vu-phone')), idcard:normDigits(g('f-vu-idcard'))},
-  spouse:{name:g('f-spouse-name').trim(), phone:normDigits(g('f-spouse-phone'))},
+  spouse:{name:g('f-spouse-name').trim(), nick:g('f-spouse-nick').trim(), phone:normDigits(g('f-spouse-phone'))},
   vehUse:{purpose:g('f-vuse-purpose'), prov:g('fu-prov').trim(), dist:g('fu-dist').trim(), sameAsCur:!!(document.getElementById('f-vuse-same')||{}).checked},
   distKm:+g('f-distkm')||0,
   prevWork:{company:g('f-pw-company').trim(), position:g('f-pw-position').trim(), years:+g('f-pw-years')||0, phone:normDigits(g('f-pw-phone'))},
@@ -2994,7 +3025,7 @@ function readForm(){
   addrCur:{no:g('fp-no').trim(),moo:g('fp-moo').trim(),sub:g('fp-sub').trim(),dist:g('fp-dist').trim(),prov:g('fp-prov').trim(),zip:g('fp-zip').trim(),
     sameAsCard:document.getElementById('f-sameaddr')?.checked||false,
     houseType:g('f-housetype'), tenure:g('f-tenure'), stayYears:g('f-stayyears'),
-    housePhoto:gf('f-housephoto'), houseLoc:g('f-houseloc').trim()},
+    housePhoto:gf('f-housephoto'), houseLoc:g('f-houseloc').trim(), houseOrder:+g('f-houseorder')||0},
   occupation:+g('f-occ')||0, occExtra:g('f-occex').trim(), rai:+g('f-rai')||0, docChk:(window.__docChk||[]).slice(),
   healthRight:(occHealthRight(+g('f-occ')||0)? (g('f-health')||'unchecked') : null),
   workplace:g('f-workplace').trim(), workAddr:g('f-workaddr').trim(), workPhone:g('f-workphone').trim(),
@@ -3185,7 +3216,7 @@ function submitApp(){
  }
  if(a.guar){ if(!a.guar.nameOnly) missing.push('ชื่อผู้ค้ำ'); if(!a.guar.lastNameOnly) missing.push('นามสกุลผู้ค้ำ'); if(!a.guar.idcard) missing.push('เลขบัตรผู้ค้ำ'); if(!a.guar.phone) missing.push('เบอร์โทรผู้ค้ำ'); }
  (a.refs||[]).forEach((r,i)=>{ const n=i+1;
-   if(!r.nick) missing.push('ชื่อเล่นบุคคลอ้างอิงคนที่ '+n);
+   if(!r.nick) missing.push('ชื่อ-นามสกุลบุคคลอ้างอิงคนที่ '+n);
    if(!r.rel) missing.push('ความสัมพันธ์บุคคลอ้างอิงคนที่ '+n);
    if(!r.phone) missing.push('เบอร์โทรบุคคลอ้างอิงคนที่ '+n);
    else if(r.phone.length<9) missing.push('เบอร์บุคคลอ้างอิงคนที่ '+n+' ไม่ครบ (อย่างน้อย 9 หลัก)');
@@ -3943,7 +3974,7 @@ function openDetail(id){
    <tr><td class="mut">ที่ทำงาน</td><td>${a.guar.workplace||'-'}</td><td class="mut">รายได้</td><td>${fmt(a.guar.income)} บ./ด.</td></tr>
    <tr><td class="mut">พื้นที่</td><td colspan="3">ต.${a.guar.sub||'-'} ${a.guar.dist||''}</td></tr></table></div>`:'';
  const refsHtml = (a.refs && a.refs.some(r=>r&&(r.nick||r.phone))) ? `<div class="card mb"><h3>บุคคลอ้างอิง (คนรู้จักผู้ซื้อ)</h3><table>
-   <tr><td class="mut">คนที่</td><td class="mut">ชื่อเล่น</td><td class="mut">ความสัมพันธ์</td><td class="mut">เบอร์โทร</td></tr>
+   <tr><td class="mut">คนที่</td><td class="mut">ชื่อ-นามสกุล</td><td class="mut">ความสัมพันธ์</td><td class="mut">เบอร์โทร</td></tr>
    ${a.refs.map((r,i)=>`<tr><td>${i+1}</td><td>${r.nick||'-'}</td><td>${r.rel||'-'}</td><td>${r.phone||'-'}</td></tr>`).join('')}
    </table></div>` : '';
  const pm=promoOf(a.branch);
@@ -4002,10 +4033,11 @@ function openDetail(id){
      <tr><td class="mut">ที่อยู่ปัจจุบัน</td><td colspan="3">${fmtAddr(a.addrCur)} · ${a.addrCur?.houseType||'-'} (${a.addrCur?.tenure||'-'}, อยู่มา ${a.addrCur?.stayYears||'-'})</td></tr>
      ${a.vehUse&&(a.vehUse.purpose||a.vehUse.prov)?`<tr><td class="mut">ซื้อรถไปใช้</td><td colspan="3">${a.vehUse.purpose||'-'}${a.vehUse.prov?' · ใช้ที่ '+(a.vehUse.dist?'อ.'+a.vehUse.dist+' ':'')+'จ.'+a.vehUse.prov:''}${a.vehUse.sameAsCur?' <span class="mut">(เดียวกับที่อยู่ปัจจุบัน)</span>':''}</td></tr>`:''}
      <tr><td class="mut">หลักฐานบ้าน</td><td colspan="3">${a.housePhotoData?`<img src="${a.housePhotoData}" style="height:70px;border-radius:8px;cursor:zoom-in;vertical-align:middle;margin-right:8px" onclick="showImg('${a.id}','house')" title="คลิกเพื่อดูรูปเต็ม">`:(a.addrCur?.housePhoto?'📷 '+a.addrCur.housePhoto+' <span class="mut">(ไฟล์ไม่ใช่รูปภาพ/ไม่ได้บันทึก)</span>':'')} ${a.addrCur?.houseLoc?`📍 <a href="${/^https?:/.test(a.addrCur.houseLoc)?a.addrCur.houseLoc:'https://www.google.com/maps?q='+encodeURIComponent(a.addrCur.houseLoc)}" target="_blank">${a.addrCur.houseLoc}</a>`:''} ${(!a.housePhotoData&&!a.addrCur?.housePhoto&&!a.addrCur?.houseLoc)?'<span class="tag t-warn">ไม่มีหลักฐาน</span>':''}</td></tr>
+     ${a.addrCur&&a.addrCur.houseOrder?`<tr><td class="mut">ลำดับในทะเบียนบ้าน</td><td colspan="3">ลำดับที่ ${a.addrCur.houseOrder}</td></tr>`:''}
     </table></div>
     ${(function(){ const parts=[];
       if(a.vehUser&&a.vehUser.mode==='other') parts.push(`<tr><td class="mut">ผู้ใช้รถ (ไม่ใช่ผู้ซื้อ)</td><td colspan="3" style="color:var(--bad)">${a.vehUser.name||'-'}${a.vehUser.nick?' ('+a.vehUser.nick+')':''} · ${a.vehUser.rel||'-'} · ${a.vehUser.phone||'-'}</td></tr>`);
-      if(a.spouse&&(a.spouse.name||a.spouse.phone)) parts.push(`<tr><td class="mut">คู่สมรส</td><td colspan="3">${a.spouse.name||'-'} · ${a.spouse.phone||'-'}</td></tr>`);
+      if(a.spouse&&(a.spouse.name||a.spouse.phone)) parts.push(`<tr><td class="mut">คู่สมรส</td><td colspan="3">${a.spouse.name||'-'}${a.spouse.nick?' ('+a.spouse.nick+')':''} · ${a.spouse.phone||'-'}</td></tr>`);
       if(a.distKm) parts.push(`<tr><td class="mut">ระยะทางสาขา→บ้าน</td><td colspan="3">${a.distKm} กม.</td></tr>`);
       let extra='';
       if(isHQ && a.vehUser && a.vehUser.mode==='other'){
@@ -4182,7 +4214,7 @@ function printCase(id){
  // บุคคลอ้างอิง
  let refsHtml='';
  if(a.refs && a.refs.some(r=>r&&(r.nick||r.phone))){
-   refsHtml='<h2>บุคคลอ้างอิง (คนรู้จักผู้ซื้อ)</h2><table><tr><td class="k">คนที่</td><td class="k">ชื่อเล่น</td><td class="k">ความสัมพันธ์</td><td class="k">เบอร์โทร</td></tr>'
+   refsHtml='<h2>บุคคลอ้างอิง (คนรู้จักผู้ซื้อ)</h2><table><tr><td class="k">คนที่</td><td class="k">ชื่อ-นามสกุล</td><td class="k">ความสัมพันธ์</td><td class="k">เบอร์โทร</td></tr>'
      +a.refs.map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.nick)||'-'}</td><td>${esc(r.rel)||'-'}</td><td>${esc(r.phone)||'-'}</td></tr>`).join('')+'</table>';
  }
  // ผู้ค้ำ
@@ -4225,7 +4257,7 @@ function printCase(id){
  let prUserHtml='';
  { const parts=[];
    if(a.vehUser&&a.vehUser.mode==='other') parts.push(row('ผู้ใช้รถ (ไม่ใช่ผู้ซื้อ)', esc(a.vehUser.name)+' '+(a.vehUser.nick?'('+esc(a.vehUser.nick)+')':'')+' · '+(esc(a.vehUser.rel)||'-')+' · '+(esc(a.vehUser.phone)||'-')));
-   if(a.spouse&&(a.spouse.name||a.spouse.phone)) parts.push(row('คู่สมรส',(esc(a.spouse.name)||'-')+' · '+(esc(a.spouse.phone)||'-')));
+   if(a.spouse&&(a.spouse.name||a.spouse.phone)) parts.push(row('คู่สมรส',(esc(a.spouse.name)||'-')+(a.spouse.nick?' ('+esc(a.spouse.nick)+')':'')+' · '+(esc(a.spouse.phone)||'-')));
    if(a.distKm) parts.push(row('ระยะทางสาขา→บ้าน', a.distKm+' กม.'));
    if(parts.length) prUserHtml=sec('ผู้ใช้รถ / คู่สมรส / ระยะทาง', parts.join('')); }
  const houseImg = a.housePhotoData? `<div style="margin:6px 0"><b>หลักฐานบ้าน:</b><br><img src="${a.housePhotoData}" style="max-height:130px;border:1px solid #cbd5e1;border-radius:6px"></div>` : '';
@@ -4265,7 +4297,8 @@ function printCase(id){
      +row('ที่อยู่ตามบัตร',fmtAddr(a.addrCard))
      +row('ที่อยู่ปัจจุบัน',fmtAddr(a.addrCur)+' · '+((a.addrCur&&a.addrCur.houseType)||'-')+' ('+((a.addrCur&&a.addrCur.tenure)||'-')+', อยู่มา '+((a.addrCur&&a.addrCur.stayYears)||'-')+')')
      +(a.vehUse&&(a.vehUse.purpose||a.vehUse.prov)?row('ซื้อรถไปใช้',(esc(a.vehUse.purpose)||'-')+(a.vehUse.prov?' · ใช้ที่ '+(a.vehUse.dist?'อ.'+esc(a.vehUse.dist)+' ':'')+'จ.'+esc(a.vehUse.prov):'')):'')
-     +(a.addrCur&&a.addrCur.houseLoc?row('พิกัดบ้าน',esc(a.addrCur.houseLoc)):''))}
+     +(a.addrCur&&a.addrCur.houseLoc?row('พิกัดบ้าน',esc(a.addrCur.houseLoc)):'')
+     +(a.addrCur&&a.addrCur.houseOrder?row('ลำดับในทะเบียนบ้าน','ลำดับที่ '+esc(a.addrCur.houseOrder)):''))}
   ${houseImg}
   ${sec('อาชีพ / รายได้',
      row('อาชีพ',occL_(a))
@@ -7412,7 +7445,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0912-A';
+const CHK3_BUILD='0912-C';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -7438,15 +7471,30 @@ function defIncRef(){
   [/เลี้ยง(วัว|ควาย|หมู|ไก่|เป็ด|แพะ|กุ้ง|ปลา)/,7000,20000],[/ประมง/,10000,25000],
   [/แผงลอย|ตลาดนัด/,9000,30000],[/ร้านมีหน้าร้าน/,12000,35000],[/รับจ้างทั่วไป\/รายวัน/,9000,16000]
  ];
+ /* 0912-C: อาชีพที่สเปกไม่ได้ระบุ → ใช้ช่วง P10–P90 ของ "รายได้ที่ลูกค้าแจ้ง" จากพอร์ต H-Cap จริง (Customer_report 8 ก.ย. 69, 11,794 ราย) ตามกลุ่มใกล้เคียง · ติดป้ายที่มาให้ สนญ. ทบทวน/แก้ได้ */
+ const HC=[
+  [/ปลูกผัก|พืชไร่/,10000,20000,'พอร์ต H-Cap กลุ่มเกษตร n=2,176'],
+  [/รถเข็น|ออนไลน์/,10000,20000,'พอร์ต H-Cap กลุ่มค้าขาย n=1,078'],
+  [/ขายส่ง|ตัวแทนจำหน่าย/,12000,30000,'พอร์ต H-Cap กลุ่มเจ้าของกิจการ n=159'],
+  [/เจ้าของรถ/,12000,30000,'พอร์ต H-Cap กลุ่มเจ้าของกิจการ n=159'],
+  [/วินมอเตอร์ไซค์|ไรเดอร์|แท็กซี่|ลูกจ้าง\)/,9000,20000,'พอร์ต H-Cap กลุ่มรับจ้าง/อิสระ n=5,828'],
+  [/ก่อสร้าง|รปภ|ลูกจ้างร้าน/,9000,16000,'พอร์ต H-Cap กลุ่มรับจ้าง n=4,094'],
+  [/แม่บ้าน/,9000,16000,'พอร์ต H-Cap แม่บ้าน n=71'],
+  [/^ช่าง/,10000,20000,'พอร์ต H-Cap กลุ่มช่าง/อิสระ n=1,747'],
+  [/เจ้าของกิจการ|หอพัก|บ้านเช่า/,12000,30000,'พอร์ต H-Cap กลุ่มเจ้าของกิจการ n=159'],
+  [/ฟรีแลนซ์/,10000,20000,'พอร์ต H-Cap อาชีพอิสระ n=1,734']
+ ];
  OCC_LIST.forEach(o=>{ const k=occKey(o);
   if(/พนักงานประจำ|ราชการ|วิชาชีพ/.test(o.g)){ base[k]={slip:true}; return; }
-  const r=RULES.find(x=>x[0].test(o.s)); if(r) base[k]={min:r[1],max:r[2]}; });
+  const r=RULES.find(x=>x[0].test(o.s)); if(r){ base[k]={min:r[1],max:r[2],src:'สเปกเฟส 1'}; return; }
+  const h=HC.find(x=>x[0].test(o.s)); if(h) base[k]={min:h[1],max:h[2],src:h[3]}; });
  return {ver:1, updatedAt:0, tolPct:20, base, prov:{}, zone:{}, branch:{}};
 }
 function loadIncRef(){ try{ INCREF=JSON.parse(localStorage.getItem('moto24_incref_v1')); }catch(e){ INCREF=null; }
  if(!INCREF||!INCREF.base){ INCREF=defIncRef(); }
+ else { /* 0912-C: เติมค่าตั้งต้นให้อาชีพที่ยังว่าง (ไม่ทับค่าที่ สนญ. ตั้งไว้) */ try{ const d=defIncRef().base; let add=0; Object.keys(d).forEach(k=>{ const cur=INCREF.base[k]; if(!cur||(!cur.slip&&!cur.min&&!cur.max)){ INCREF.base[k]=d[k]; add++; } }); if(add){ INCREF.pendingDefaults=add; } }catch(e){} }
  INCREF.prov=INCREF.prov||{}; INCREF.zone=INCREF.zone||{}; INCREF.branch=INCREF.branch||{}; if(INCREF.tolPct==null) INCREF.tolPct=20; INCREF.ver=INCREF.ver||1; }
-function saveIncRef(bump){ if(bump){ INCREF.ver=(INCREF.ver||1)+1; INCREF.updatedAt=Date.now(); INCREF.by=(SESSION&&SESSION.name)||''; }
+function saveIncRef(bump){ delete INCREF.pendingDefaults; if(bump){ INCREF.ver=(INCREF.ver||1)+1; INCREF.updatedAt=Date.now(); INCREF.by=(SESSION&&SESSION.name)||''; }
  try{ localStorage.setItem('moto24_incref_v1',JSON.stringify(INCREF)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('incref',INCREF); }
 /* เลือกชั้นที่เจาะจงที่สุดที่มี: สาขา → โซน → จังหวัด → ภาคใต้ */
 function incRefResolve(occIdx, prov, branchCode){
@@ -7666,9 +7714,10 @@ function viewChk3Cfg(){
      <td><input type="number" style="width:105px" value="${r.min!=null&&!r.slip?r.min:''}" placeholder="${ph('min')}" onchange="irSet('${esc(k)}','min',this.value)" ${r.slip?'disabled':''}></td>
      <td><input type="number" style="width:105px" value="${r.max!=null&&!r.slip?r.max:''}" placeholder="${ph('max')}" onchange="irSet('${esc(k)}','max',this.value)" ${r.slip?'disabled':''}></td>
      <td style="text-align:center"><input type="checkbox" ${r.slip?'checked':''} onchange="irSet('${esc(k)}','slip',this.checked)" title="ใช้สลิปจริง (ไม่เทียบช่วง)"></td>
-     <td class="mut" style="font-size:12px">${r.slip?'ใช้สลิปจริง': (r.min||r.max)?'กำหนดที่ชั้นนี้': ih? (ih.slip?'สืบทอด: ใช้สลิปจริง':'สืบทอดจาก'+TN[ih.from]+' '+fmt(ih.min)+'–'+fmt(ih.max)) : '<span style="color:#b45309">ยังไม่มีค่าอ้างอิง</span>'}</td></tr>`; });
+     <td class="mut" style="font-size:12px">${r.slip?'ใช้สลิปจริง': (r.min||r.max)?('กำหนดที่ชั้นนี้'+(tier==='base'&&r.src?' · <span style="color:#6b7280">'+esc(r.src)+'</span>':'')): ih? (ih.slip?'สืบทอด: ใช้สลิปจริง':'สืบทอดจาก'+TN[ih.from]+' '+fmt(ih.min)+'–'+fmt(ih.max)) : '<span style="color:#b45309">ยังไม่มีค่าอ้างอิง</span>'}</td></tr>`; });
  const docRows=Object.keys(DOCCHECK.groups).concat(OCC_GROUPS.filter(g=>!DOCCHECK.groups[g])).map(g=>`<div class="field"><label>${esc(g)}</label><textarea rows="4" onchange="dcSet('${esc(g)}',this.value)" placeholder="พิมพ์ 1 รายการต่อบรรทัด">${esc((DOCCHECK.groups[g]||[]).join('\n'))}</textarea></div>`).join('');
  return `<div class="card mb"><h3 class="exhead">🧭 ตั้งค่าการ์ดผลตรวจข้อมูล 3 มิติ</h3>
+  ${INCREF.pendingDefaults?`<div class="alert a-warn" style="margin-bottom:10px">🆕 ระบบเติมค่าอ้างอิงตั้งต้นให้อาชีพที่เคยว่าง <b>${INCREF.pendingDefaults} รายการ</b> (อ้างอิงจากรายได้ที่ลูกค้าแจ้งในพอร์ต H-Cap) — ทบทวนตัวเลขแล้วกด <b>💾 บันทึกค่าอ้างอิงรายได้</b> เพื่อส่งให้ทุกสาขา</div>`:''}
   <p class="pill-note">เวอร์ชันเกณฑ์ปัจจุบัน: <b>${esc(chk3Version())}</b> · ค่าอ้างอิงรายได้ อัปเดต ${INCREF.updatedAt?fmtDT(INCREF.updatedAt)+' โดย '+esc(INCREF.by||''):'ยังไม่เคยแก้ (ค่าตั้งต้น)'} · checklist เอกสาร อัปเดต ${DOCCHECK.updatedAt?fmtDT(DOCCHECK.updatedAt):'ยังไม่เคยแก้'}</p></div>
  <div class="card mb"><h3>⭐ ค่าอ้างอิงรายได้ — 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา)</h3>
   <p class="mut" style="font-size:13px">ระบบเลือก "ชั้นที่เจาะจงที่สุดที่มี" อัตโนมัติ: <b>สาขา</b> → โซน → จังหวัด (จากที่อยู่ปัจจุบันลูกค้า หรือจังหวัดของสาขา) → ภาคใต้ · เว้นว่าง = สืบทอดจากชั้นบน · ติ๊ก "สลิป" = อาชีพเงินเดือน ใช้สลิปจริงไม่เทียบช่วง</p>
@@ -7717,6 +7766,8 @@ if(typeof Chart!=='undefined'){ Chart.defaults.font.family="'Kanit',sans-serif";
   const _sz=document.getElementById('sel-zone'); if(_sz) _sz.innerHTML = Object.keys(ZONES).map(z=>`<option value="${z}">${ZONES[z].name}</option>`).join(''); }
 refreshUserSelect();
 setTimeout(()=>{const el=document.getElementById('wsum'); if(el)updWSum();},0);
+/* 0912-B: ดึงบัญชีผู้ใช้/เกณฑ์ล่าสุดตั้งแต่หน้าล็อกอิน (ก่อนมี SESSION) */
+try{ if(typeof cloudReady==='function' && cloudReady()) setTimeout(()=>{ cloudPullMaster().catch(()=>{}); }, 500); }catch(e){}
 // เมื่อมีการเปลี่ยนข้อมูลจากแท็บอื่น (เช่น สาขาส่งเคสเข้ามาในอีกแท็บ) → โหลดใหม่ + เด้ง toast
 function _applyExternalApps(raw){
  if(raw==null) return;
