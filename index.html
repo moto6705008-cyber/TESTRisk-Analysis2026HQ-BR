@@ -349,7 +349,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0912-E (เฟส 1 · ล็อกหัวข้อ 4 ผลิตภัณฑ์ได้) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0912-E (เฟส 1 · ล็อกหัวข้อ 4 · ชิปค้างส่งบอกสาเหตุ) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -618,9 +618,10 @@ function mergeCase(base, other){ const o=Object.assign({}, base); let changed=fa
  }catch(e){}
  return {obj:o, changed}; }
 function _caseWire(a){ const c=Object.assign({},a); delete c._dirty; delete c._dirtyAt; return c; }
-function _pushDone(a, seq, j){ if(j&&j.updatedAt){ a.updatedAt=j.updatedAt; if((a._dirtyAt||0)<=seq){ a._dirty=false; delete a._dirtyAt; } try{saveApps();}catch(e){} } }
+function _pushDone(a, seq, j){ if(j&&j.updatedAt){ a.updatedAt=j.updatedAt; if((a._dirtyAt||0)<=seq){ a._dirty=false; delete a._dirtyAt; } try{saveApps();}catch(e){} try{ const c=loadCloud(); if(c.lastPushErr){ c.lastPushErr=''; saveCloud(); } }catch(e){} try{ renderSyncChip(); }catch(e){} } }
+function _pushFail(e){ try{ const c=loadCloud(); c.lastPushErr=String(e&&e.message||e).slice(0,90); c.lastPushAt=Date.now(); saveCloud(); renderSyncChip(); }catch(_){} }
 function cloudPushCase(a){ if(!a||!a.id) return; a._dirty=true; a._dirtyAt=Date.now(); a.updatedAt=a._dirtyAt; a.updatedBy=(SESSION&&SESSION.name)||''; try{saveApps();}catch(e){} if(!cloudReady()) return;
- const seq=a._dirtyAt; cloudCall('upsertCase',{'case':_caseWire(a)}).then(j=>_pushDone(a,seq,j)).catch(()=>{}); }
+ const seq=a._dirtyAt; cloudCall('upsertCase',{'case':_caseWire(a)}).then(j=>_pushDone(a,seq,j)).catch(_pushFail); }
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
@@ -638,7 +639,7 @@ function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=l
    try{ const srv={}; (j.cases||[]).forEach(sv=>{ if(sv&&sv.id) srv[sv.id]=sv; });
      window.__bp=window.__bp||{}; let pushed=0; APPS.forEach(a=>{ const sv=srv[a.id]; const localNewer = !sv || a._dirty || (sv.status!==a.status && (a.decidedAt||0)>(sv.decidedAt||0));
        const recently = (window.__bp[a.id]||0) > Date.now()-(a._dirty?20000:300000);   /* กันยิงซ้ำ: ของค้างส่งลองทุก 20 วิ · อื่น ๆ 1 ครั้ง/5 นาที */
-       if(localNewer && !recently && pushed<5){ pushed++; window.__bp[a.id]=Date.now(); const seq=a._dirtyAt||0; cloudCall('upsertCase',{'case':_caseWire(a)}).then(r=>_pushDone(a,seq,r)).catch(()=>{}); } }); }catch(e){}
+       if(localNewer && !recently && pushed<5){ pushed++; window.__bp[a.id]=Date.now(); const seq=a._dirtyAt||0; cloudCall('upsertCase',{'case':_caseWire(a)}).then(r=>_pushDone(a,seq,r)).catch(_pushFail); } }); }catch(e){}
    if(changed){ try{recalcAll();}catch(e){} saveApps();
      const mb=document.getElementById('modal-bg');
      if(window.__openCaseId && chIds.indexOf(window.__openCaseId)>=0 && mb && !mb.classList.contains('hidden')){ try{ openDetail(window.__openCaseId); }catch(e){} }
@@ -1844,7 +1845,7 @@ function syncChipHTML(){
  const stale = ago==null || ago>240;
  const when = t? (t.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+(ago!=null?' ('+(ago<60?ago+' วิ':Math.round(ago/60)+' นาที')+'ที่แล้ว)':'')) : 'ยังไม่เคยดึงสำเร็จในรอบนี้';
  return '<div class="alert '+(c.lastErr||stale?'a-warn':'a-ok')+'" id="syncchip" style="margin:0 0 10px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
-  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ'+(function(){ const n=(APPS||[]).filter(a=>a._dirty).length; return n?' · <b style="color:#b45309">⏳ ค้างส่งขึ้นชีต '+n+' เคส</b>':''; })()+'</span>'
+  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ'+(function(){ const n=(APPS||[]).filter(a=>a._dirty).length; return n?' · <b style="color:#b45309">⏳ ค้างส่งขึ้นชีต '+n+' เคส</b>'+(c.lastPushErr?' <span style="color:#b91c1c">(ส่งไม่ผ่าน: '+String(c.lastPushErr).replace(/</g,'&lt;')+' — ระบบลองใหม่ทุก 20–30 วิ)</span>':' <span class="mut">(กำลังส่ง…)</span>'):''; })()+'</span>'
   +'<button class="btn btn-line btn-sm noprint" style="margin-left:auto" onclick="syncNowQuiet()">🔄 ซิงก์เดี๋ยวนี้</button></div>';
 }
 function renderSyncChip(){ const el=document.getElementById('backupbar'); if(!el) return; const old=el.querySelector('#syncchip'); if(old){ const tmp=document.createElement('div'); tmp.innerHTML=syncChipHTML(); old.replaceWith(tmp.firstChild); } }
