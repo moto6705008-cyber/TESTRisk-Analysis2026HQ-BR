@@ -348,7 +348,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0911-B (เฟส 1: การ์ดตรวจข้อมูล 3 มิติ · แถบสถานะซิงก์) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0912-A (เฟส 1 · ซิงก์บัญชีผู้ใช้ · ประหยัดโควตาชีต) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -596,15 +596,16 @@ function cloudPushCase(a){ if(!cloudReady()||!a||!a.id) return; a.updatedAt=Date
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 function cloudPullCases(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
- return cloudCall('getCases',{since:0}).catch(e=>{ c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
+ return cloudCall('getCases',{since:0}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=2) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
    (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; const i=APPS.findIndex(x=>x.id===sv.id);
      if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); }
      else if((sv.updatedAt||0)>(APPS[i].updatedAt||0) || (sv.status!==APPS[i].status && (sv.decidedAt||0)>(APPS[i].decidedAt||0))){ APPS[i]=sv; changed=true; chIds.push(sv.id); } });
-   c.lastPull=j.serverTime||Date.now(); c.lastOk=Date.now(); c.lastErr=''; saveCloud(); try{ renderSyncChip(); }catch(e){}
+   c.lastPull=j.serverTime||Date.now(); c.lastOk=Date.now(); c.lastErr=''; c.failN=0; saveCloud(); try{ renderSyncChip(); }catch(e){}
    /* 0911-B: ส่งย้อนหลัง — เคสในเครื่องนี้ที่ใหม่กว่าในชีต (แก้ตอนออฟไลน์/ส่งไม่สำเร็จ) ให้ดันขึ้นชีตอัตโนมัติ */
    try{ const srv={}; (j.cases||[]).forEach(sv=>{ if(sv&&sv.id) srv[sv.id]=sv; });
-     let pushed=0; APPS.forEach(a=>{ const sv=srv[a.id]; const localNewer = !sv || ((a.updatedAt||0)>(sv.updatedAt||0)+1000) || (sv.status!==a.status && (a.decidedAt||0)>(sv.decidedAt||0));
-       if(localNewer && pushed<20){ pushed++; cloudCall('upsertCase',{'case':a}).then(r=>{ if(r&&r.updatedAt){ a.updatedAt=r.updatedAt; try{saveApps();}catch(_){} } }).catch(()=>{}); } }); }catch(e){}
+     window.__bp=window.__bp||{}; let pushed=0; APPS.forEach(a=>{ const sv=srv[a.id]; const localNewer = !sv || ((a.updatedAt||0)>(sv.updatedAt||0)+1000) || (sv.status!==a.status && (a.decidedAt||0)>(sv.decidedAt||0));
+       const recently = (window.__bp[a.id]||0) > Date.now()-300000;   /* กันยิงซ้ำ: เคสเดิมไม่เกิน 1 ครั้ง/5 นาที */
+       if(localNewer && !recently && pushed<5){ pushed++; window.__bp[a.id]=Date.now(); cloudCall('upsertCase',{'case':a}).then(r=>{ if(r&&r.updatedAt){ a.updatedAt=r.updatedAt; try{saveApps();}catch(_){} } }).catch(()=>{}); } }); }catch(e){}
    if(changed){ try{recalcAll();}catch(e){} saveApps();
      const mb=document.getElementById('modal-bg');
      if(window.__openCaseId && chIds.indexOf(window.__openCaseId)>=0 && mb && !mb.classList.contains('hidden')){ try{ openDetail(window.__openCaseId); }catch(e){} }
@@ -620,13 +621,14 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('portsnap',d=>{ PORTSNAP=d; try{localStorage.setItem('moto24_portsnap',JSON.stringify(d));}catch(e){} });
    ap('incref',d=>{ if(d&&d.base){ INCREF=d; try{localStorage.setItem('moto24_incref_v1',JSON.stringify(INCREF));}catch(e){} } });
    ap('doccheck',d=>{ if(d&&d.groups){ DOCCHECK=d; try{localStorage.setItem('moto24_doccheck_v1',JSON.stringify(DOCCHECK));}catch(e){} } });
+   ap('users',d=>{ mergeUsersFromCloud(d); });
    saveCloud(); if(changed){ try{recalcAll();}catch(e){} if(typeof currentTab!=='undefined'&&currentTab&&SESSION) go(currentTab); } }); }
 function cloudSyncNow(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ (เปิดหน้า "เชื่อมต่อ Google Sheet" ก่อน)'); return; }
  Promise.all([cloudPullMaster(),cloudPullCases()]).then(()=>alert('ซิงก์ล่าสุดแล้ว')).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
 function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ'); return; }
  if(!confirm('อัปโหลดข้อมูลทั้งหมดในเครื่องนี้ขึ้น Google Sheet? (เคส '+APPS.length+' + ข้อมูลหลังบ้าน)')) return;
  const seq=[]; APPS.forEach(a=>{ a.updatedAt=a.updatedAt||Date.now(); seq.push(()=>cloudCall('upsertCase',{'case':a})); });
- [['occ',OCC_LIST],['vuse',VUSE_PURPOSES],['recsets',REC_SETS],['cfg',CFG],['pb',PB],['incref',INCREF],['doccheck',DOCCHECK]].concat((buildPortSnap&&buildPortSnap())?[['portsnap',buildPortSnap()]]:[]).forEach(kv=>seq.push(()=>cloudCall('setMaster',{key:kv[0],data:kv[1],by:(SESSION&&SESSION.name)||''})));
+ [['occ',OCC_LIST],['vuse',VUSE_PURPOSES],['recsets',REC_SETS],['cfg',CFG],['pb',PB],['incref',INCREF],['doccheck',DOCCHECK],['users',USERS.map(u=>Object.assign({},u,{lastLogin:undefined}))]].concat((buildPortSnap&&buildPortSnap())?[['portsnap',buildPortSnap()]]:[]).forEach(kv=>seq.push(()=>cloudCall('setMaster',{key:kv[0],data:kv[1],by:(SESSION&&SESSION.name)||''})));
  (function run(i){ if(i>=seq.length){ alert('อัปโหลดครบแล้ว ('+APPS.length+' เคส + ข้อมูลหลังบ้าน)'); return; } seq[i]().then(()=>run(i+1)).catch(e=>alert('หยุดที่รายการ '+(i+1)+': '+e.message)); })(0); }
 function saveCfg(){ try{ localStorage.setItem('moto24_cfg_v3', JSON.stringify(CFG)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('cfg',CFG); }
 
@@ -1669,7 +1671,7 @@ function saveChangePass(forced){
  if(!nw || nw.length<4){ alert('รหัสผ่านใหม่ต้องอย่างน้อย 4 ตัวอักษร'); return; }
  if(nw!==nw2){ alert('รหัสผ่านใหม่ทั้งสองช่องไม่ตรงกัน'); return; }
  if(nw===u.pass){ alert('รหัสผ่านใหม่ต้องต่างจากรหัสเดิม'); return; }
- u.pass=nw; u.mustChangePass=false; saveUsers();
+ u.pass=nw; u.mustChangePass=false; u.updatedAt=Date.now(); saveUsers(true);
  closeModal();
  toast('✅ เปลี่ยนรหัสผ่านแล้ว','บัญชี '+u.email+' ใช้รหัสใหม่ในการเข้าครั้งต่อไป','','#0f766e');
 }
@@ -1758,10 +1760,10 @@ function syncChipHTML(){
  if(!c.url||!c.token) return '<div class="alert a-warn" style="margin:0 0 10px;font-size:13px">☁️ <b>ยังไม่เชื่อม Google Sheet</b> — ข้อมูลอยู่แค่ในเครื่องนี้ · แจ้ง สนญ. ให้ฝัง URL/TOKEN ในไฟล์</div>';
  if(!c.on) return '<div class="alert a-warn" style="margin:0 0 10px;font-size:13px">☁️ <b>ปิดการซิงก์ชีตไว้</b> — ข้อมูลไม่ไหลข้ามเครื่อง</div>';
  const t=c.lastOk?new Date(c.lastOk):null; const ago=t?Math.round((Date.now()-c.lastOk)/1000):null;
- const stale = ago==null || ago>90;
+ const stale = ago==null || ago>150;
  const when = t? (t.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+(ago!=null?' ('+(ago<60?ago+' วิ':Math.round(ago/60)+' นาที')+'ที่แล้ว)':'')) : 'ยังไม่เคยดึงสำเร็จในรอบนี้';
  return '<div class="alert '+(c.lastErr||stale?'a-warn':'a-ok')+'" id="syncchip" style="margin:0 0 10px;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">'
-  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 15 วิ</span>'
+  +'<span>☁️ <b>ซิงก์ Google Sheet: '+(c.lastErr?'มีปัญหา':stale?'รอดึงข้อมูล':'เชื่อมต่อแล้ว')+'</b> · ดึงล่าสุด '+when+(c.lastErr?' · <span style="color:#b91c1c">'+String(c.lastErr).replace(/</g,'&lt;').slice(0,90)+'</span>':'')+' · อัตโนมัติทุก 30 วิ</span>'
   +'<button class="btn btn-line btn-sm noprint" style="margin-left:auto" onclick="syncNowQuiet()">🔄 ซิงก์เดี๋ยวนี้</button></div>';
 }
 function renderSyncChip(){ const el=document.getElementById('backupbar'); if(!el) return; const old=el.querySelector('#syncchip'); if(old){ const tmp=document.createElement('div'); tmp.innerHTML=syncChipHTML(); old.replaceWith(tmp.firstChild); } }
@@ -3526,7 +3528,20 @@ let USERS=[];
 let UM={q:'',role:''};
 function uid(){ return 'U'+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
 function loadUsers(){ try{USERS=JSON.parse(localStorage.getItem('moto24_users_v1'))||[];}catch(e){USERS=[];} if(!USERS.length) seedUsers(); }
-function saveUsers(){ try{localStorage.setItem('moto24_users_v1',JSON.stringify(USERS));}catch(e){} }
+function saveUsers(push){ try{localStorage.setItem('moto24_users_v1',JSON.stringify(USERS));}catch(e){}
+ /* 0912-A: ซิงก์บัญชีผู้ใช้ผ่านชีต (key users) — ดันขึ้นเฉพาะเมื่อมีการแก้บัญชี (ไม่ใช่แค่ล็อกอิน) */
+ if(push && typeof cloudPushMaster==='function') cloudPushMaster('users', USERS.map(u=>Object.assign({},u,{lastLogin:undefined}))); }
+function mergeUsersFromCloud(list){ if(!Array.isArray(list)||!list.length) return false; let changed=false; const byId={}; USERS.forEach(u=>byId[u.id]=u);
+ list.forEach(sv=>{ if(!sv||!sv.id) return; const lc=byId[sv.id];
+   if(!lc){ const sameMail=USERS.find(u=>u.email&&sv.email&&u.email.toLowerCase()===sv.email.toLowerCase());
+     if(sameMail){ /* บัญชีตั้งต้นในเครื่อง (id คนละตัว) → ใช้ของชีตแทน */ const ll=sameMail.lastLogin; Object.assign(sameMail,sv,{lastLogin:ll}); byId[sv.id]=sameMail; changed=true; }
+     else if(!sv.deleted){ USERS.push(Object.assign({},sv,{lastLogin:0})); changed=true; } }
+   else if((sv.updatedAt||0)>(lc.updatedAt||0)){ const ll=lc.lastLogin; Object.assign(lc,sv,{lastLogin:ll}); changed=true; } });
+ /* บัญชีที่ สนญ. ลบ (tombstone) */
+ const del=USERS.filter(u=>u.deleted); if(del.length){ USERS=USERS.filter(u=>!u.deleted); changed=true; }
+ /* บัญชีในเครื่องที่ไม่มีในชีตและไม่เคยแก้ → คงไว้ (กันล็อกเอาต์ตัวเอง) */
+ if(changed){ try{localStorage.setItem('moto24_users_v1',JSON.stringify(USERS));}catch(e){} try{ if(typeof refreshUserSelect==='function') refreshUserSelect(); }catch(e){} }
+ return changed; }
 /* ===== นำเข้าผู้ใช้จำนวนมาก (CSV/วาง + สร้างสาขาอัตโนมัติ) ===== */
 function parseImportText(txt){
  const lines=String(txt||'').split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
@@ -3588,7 +3603,7 @@ function doImportUsers(){
  const rows=parseImportText((document.getElementById('imp-text')||{}).value||'').filter(r=>!r.err);
  if(!rows.length){ alert('ไม่มีรายการที่พร้อมนำเข้า'); return; }
  rows.forEach(r=>{ USERS.push({id:uid(),name:r.name,email:r.email,roles:[r.rk],branch:r.rk==='branch'?r.code:'',zone:r.rk==='zone'?r.code:'',company:'บริษัท โมโต24 จำกัด',pass:r.pass,mustChangePass:true,createdAt:Date.now(),lastLogin:0}); });
- saveUsers(); refreshUserSelect(); closeModal();
+ USERS.forEach(x=>{ if(!x.updatedAt) x.updatedAt=Date.now(); }); saveUsers(true); refreshUserSelect(); closeModal();
  alert('✅ นำเข้าผู้ใช้ '+rows.length+' บัญชีเรียบร้อย (รหัสผ่านเริ่มต้นตามที่ระบุ · บังคับเปลี่ยนรหัสครั้งแรก)');
  go('users');
 }
@@ -3743,9 +3758,9 @@ function saveUser(id){
  const branch=roles.includes('branch')?(document.getElementById('uf-branch').value||''):'';
  const zone=roles.includes('zone')?(document.getElementById('uf-zone').value||''):'';
  const company=document.getElementById('uf-co').checked?'บริษัท โมโต24 จำกัด':'';
- if(u){ Object.assign(u,{name,email,roles,branch,zone,company}); if(pass){ u.pass=pass; u.mustChangePass=true; } }
- else { USERS.push({id:uid(),name,email,roles,branch,zone,company,pass,mustChangePass:true,createdAt:Date.now(),lastLogin:0}); }
- saveUsers(); refreshUserSelect(); closeModal();
+ if(u){ Object.assign(u,{name,email,roles,branch,zone,company,updatedAt:Date.now()}); if(pass){ u.pass=pass; u.mustChangePass=true; } }
+ else { USERS.push({id:uid(),name,email,roles,branch,zone,company,pass,mustChangePass:true,createdAt:Date.now(),updatedAt:Date.now(),lastLogin:0}); }
+ saveUsers(true); refreshUserSelect(); closeModal();
  if(currentTab==='users') go('users');
  toast('✅ บันทึกผู้ใช้แล้ว', name+' · '+roles.map(r=>(ROLES.find(x=>x.k===r)||{}).label).join('/'), '', '#0f766e');
 }
@@ -3754,7 +3769,7 @@ function deleteUser(id){
  const admins=USERS.filter(x=>(x.roles||[]).includes('admin'));
  if((u.roles||[]).includes('admin') && admins.length<=1){ alert('ลบไม่ได้ — ต้องมีผู้ดูแลระบบอย่างน้อย 1 คน'); return; }
  if(!confirm('ยืนยันลบผู้ใช้ "'+u.name+'" ?')) return;
- USERS=USERS.filter(x=>x.id!==id); saveUsers(); refreshUserSelect();
+ u.deleted=true; u.updatedAt=Date.now(); const _tomb=USERS.slice(); USERS=USERS.filter(x=>x.id!==id); try{localStorage.setItem('moto24_users_v1',JSON.stringify(USERS));}catch(e){} if(typeof cloudPushMaster==='function') cloudPushMaster('users',_tomb.map(x=>Object.assign({},x,{lastLogin:undefined}))); refreshUserSelect();
  if(currentTab==='users') go('users');
 }
 
@@ -7397,7 +7412,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0911-B';
+const CHK3_BUILD='0912-A';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -7724,11 +7739,15 @@ setInterval(function(){
  let raw; try{ raw=localStorage.getItem('moto24_apps_v4'); }catch(_){ return; }
  _applyExternalApps(raw);
 }, 2500);
-/* 3) ซิงก์คลาวด์ (Google Sheet): ดึงของใหม่จากชีตทุก 15 วิ เมื่อเปิดใช้งาน */
+/* 3) ซิงก์คลาวด์ (Google Sheet) — 0912-A: ดึงเคสทุก 30 วิ เฉพาะตอนแท็บเปิดดูอยู่ · ข้อมูลหลังบ้านทุก 60 วิ · (การ "ส่ง" เคส/ผลพิจารณา ขึ้นชีตทันทีอยู่แล้ว) */
+window.__syncTick=0;
 setInterval(function(){
  if(!SESSION) return;
- try{ if(typeof cloudReady==='function' && cloudReady()){ cloudPullCases().catch(function(){}); cloudPullMaster().catch(function(){}); } }catch(_){}
-}, 15000);
+ if(document.hidden) return;   /* แท็บไม่ได้เปิดดู → ไม่ยิงชีต ประหยัดโควตา */
+ window.__syncTick++;
+ try{ if(typeof cloudReady==='function' && cloudReady()){ cloudPullCases().catch(function(){}); if(window.__syncTick%2===0) cloudPullMaster().catch(function(){}); } }catch(_){}
+}, 30000);
+document.addEventListener('visibilitychange', function(){ if(!document.hidden && SESSION){ try{ if(cloudReady()){ cloudPullCases().catch(function(){}); cloudPullMaster().catch(function(){}); } }catch(_){} } });
 </script>
 <div id="print-area"></div>
 </body>
