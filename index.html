@@ -349,7 +349,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0914-L (เฟส 1 · สนญ. ตรวจ+แนะนำก่อนสาขาเห็นการ์ด · ผลขายล็อก) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0914-M (เฟส 1 · Flow สนญ. แนะนำก่อน · หนี้/รายได้เสริม มี-ไม่มี) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -427,9 +427,9 @@ function isFinanceContract(saleStr, term){ const raw=String(saleStr||'').indexOf
 function occLabel(a){const o=OCC_LIST[a.occupation];return o? o.g+" — "+o.s+(a.occExtra?" ("+a.occExtra+")":"") : "-";}
 
 const HISTORY = [
- ['old_good','ลูกค้าเก่า ผ่อนดี',100],
+ ['old_good','ลูกค้าเก่า',100],
  ['new','ลูกค้าใหม่',70],
- ['old_late','ลูกค้าเก่า เคยล่าช้า',30],
+ ['old_late','ลูกค้าเก่า เคยค้างชำระ',30],
  ['old_bad','เคยมีปัญหา / เคยถูกยึดรถ',0]
 ];
 const GUAR = [
@@ -2687,9 +2687,9 @@ function viewForm(){
    <div id="spouse-block" class="hidden" style="grid-column:1/-1;border:1px dashed #c7c9d9;background:#f7f8fb;border-radius:8px;padding:8px 12px">
     <div style="font-weight:600;color:#2b3990;font-size:12.5px;margin-bottom:6px">💍 ข้อมูลคู่สมรส</div>
     <div class="fgrid3">
-     <div class="field"><label>ชื่อ-นามสกุลคู่สมรส</label><input id="f-spouse-name" placeholder="เช่น นางสมศรี พุ่มเงิน"></div>
+     <div class="field"><label>ชื่อ-นามสกุลคู่สมรส <span class="req">*</span></label><input id="f-spouse-name" placeholder="เช่น นางสมศรี พุ่มเงิน"></div>
      <div class="field"><label>ชื่อเล่นคู่สมรส</label><input id="f-spouse-nick" placeholder="เช่น ศรี"></div>
-     <div class="field"><label>เบอร์โทรคู่สมรส</label><input id="f-spouse-phone" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
+     <div class="field"><label>เบอร์โทรคู่สมรส <span class="req">*</span></label><input id="f-spouse-phone" inputmode="tel" placeholder="08x-xxx-xxxx"></div>
     </div>
    </div>
    <div class="field" style="grid-column:1/-1"><label>เบอร์โทรลูกค้า <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:12px">— เพิ่มได้หลายเบอร์ · เลือก "หลัก" = เบอร์ที่ติดต่อได้จริง (ใช้ตรวจซ้ำ) · ผูก LINE ได้</span>
@@ -2819,19 +2819,21 @@ function viewForm(){
    <div class="field"><label>รายได้เฉลี่ย/เดือน ที่ลูกค้าแจ้ง <span class="req">*</span></label><input id="f-income" type="number" placeholder="กรอกรายได้จริง (บาท)" oninput="liveCalc()"></div>
    <div class="field hqfield"><label>รายได้ที่ใช้ประเมิน (อัตโนมัติ)</label><input id="f-incomeassess" class="auto" readonly></div>
    <div class="field"><label>ภาระหนี้กับบริษัท/เดือน <span style="font-weight:400;color:#6b7280;font-size:11px">(อัตโนมัติจากพอร์ต H-Cap)</span></label><input id="f-debthc" class="auto" readonly placeholder="- (ไม่มีสัญญาที่ผ่อนอยู่)"></div>
-   <div class="field"><label>ภาระผ่อนหนี้เดิม/เดือน <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:11px">(ที่อื่น ไม่รวมบริษัท/ค่าบ้าน · ไม่มีใส่ 0)</span></label><input id="f-debt" type="number" min="0" placeholder="กรอกยอด หรือ 0" oninput="liveCalc();debtItemsToggle()"></div>
+   <div class="field"><label>ภาระผ่อนหนี้เดิม/เดือน <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:11px">(ที่อื่น ไม่รวมบริษัท/ค่าบ้าน)</span></label>
+    <div style="display:flex;gap:6px"><select id="f-debthas" style="width:110px" onchange="debtHasToggle()"><option value="">— เลือก —</option><option value="none">ไม่มี</option><option value="has">มี</option></select><input id="f-debt" type="number" min="1" placeholder="ยอดผ่อน/เดือน (บาท)" style="flex:1;display:none" oninput="liveCalc();debtItemsToggle()"></div></div>
    <div class="field" id="debt-items-w" style="display:none"><label>ผ่อนรายการอะไรบ้าง <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:11px">(เลือกได้หลายรายการ)</span></label>
     <details id="debt-items" class="ddm"><summary id="debt-items-sum" style="border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;background:#fff;cursor:pointer;font-size:13px;list-style:none">— เลือกรายการที่ผ่อน —</summary>
      <div style="border:1px solid #cbd5e1;border-top:none;border-radius:0 0 8px 8px;background:#fff;padding:6px 10px;display:flex;flex-direction:column;gap:4px;font-size:13px">
      ${['รถยนต์/จักรยานยนต์ (ที่อื่น)','บัตรเครดิต/บัตรกดเงินสด','สินเชื่อส่วนบุคคล/นาโนไฟแนนซ์','เครื่องใช้ไฟฟ้า/มือถือ','สหกรณ์/กองทุน','หนี้นอกระบบ','อื่นๆ'].map((t,i)=>`<label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" class="debt-item" id="f-di-${i}" value="${t}" onchange="liveCalc();debtItemsToggle()"> ${t}</label>`).join('')}
      </div></details></div>
    <div class="field"><label>ค่าใช้จ่ายส่วนตัว/ครัวเรือน ต่อเดือน <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:11px">(กิน/อยู่/เดินทาง/ลูก ไม่รวมค่างวด)</span></label><input id="f-expense" type="number" min="1" placeholder="เช่น 6000" oninput="liveCalc()"></div>
-   <div class="field"><label>รายได้เสริมครัวเรือน/เดือน</label><input id="f-incomeextra" type="number" value="0" oninput="liveCalc()"></div>
-   <div class="field"><label>รายได้เสริมมาจาก</label>
+   <div class="field"><label>รายได้เสริมครัวเรือน <span class="req">*</span></label>
+    <div style="display:flex;gap:6px"><select id="f-incextrahas" style="width:110px" onchange="incExtraToggle()"><option value="">— เลือก —</option><option value="none">ไม่มี</option><option value="has">มี</option></select><input id="f-incomeextra" type="number" min="1" placeholder="บาท/เดือน" style="flex:1;display:none" oninput="liveCalc()"></div></div>
+   <div class="field incx" style="display:none"><label>รายได้เสริมมาจาก <span class="req">*</span></label>
     <select id="f-incomeextrasrc" onchange="liveCalc();(function(){const o=document.getElementById('f-incomeextrasrc-other'); if(o) o.style.display=(document.getElementById('f-incomeextrasrc').value==='อื่นๆ')?'':'none';})()"><option value="">ไม่มี</option><option>คู่สมรส/คนในบ้านทำงาน</option><option>ค้าขาย/อาชีพเสริม</option><option>ค่าเช่า (บ้าน/ห้อง/ที่ดิน)</option><option>เกษตร/ปศุสัตว์เสริม</option><option>เงินโอนจากลูก/ญาติ</option><option>เบี้ยยังชีพ/บำนาญ</option><option>อื่นๆ</option></select>
     <input id="f-incomeextrasrc-other" placeholder="ระบุที่มา" style="display:none;margin-top:4px">
    </div>
-   <div class="field"><label>📷 แนบภาพรายได้เสริม (สลิป/บัญชีร้าน/สัญญาเช่า)</label><input id="f-incomeextradoc" type="file" accept="image/*,.pdf" onchange="onIncExtraDoc(this)"><span id="ied-note" class="mut" style="font-size:12px"></span></div>
+   <div class="field incx" style="display:none"><label>📷 แนบภาพรายได้เสริม (สลิป/บัญชีร้าน/สัญญาเช่า)</label><input id="f-incomeextradoc" type="file" accept="image/*,.pdf" onchange="onIncExtraDoc(this)"><span id="ied-note" class="mut" style="font-size:12px"></span></div>
    <div class="field hqfield"><label>รายได้ช่วงฤดูต่ำสุด/เดือน (คำนวณอัตโนมัติ)</label><input id="f-incomelow" class="auto" readonly placeholder="- (เฉพาะอาชีพตามฤดูกาล)"></div>
    <div class="field"><label>เอกสาร</label><select id="f-doclevel"><option>ครบถ้วน</option><option>บางส่วน</option><option>ไม่มี</option></select></div>
    <div class="field"><label>หลักฐานรายได้</label><select id="f-incomeproof"><option>Statement / สลิป</option><option>ภาพถ่ายหน้างาน/กิจการ</option><option>คำบอกกล่าว (ไม่มีเอกสาร)</option></select></div>
@@ -3023,7 +3025,7 @@ function pullCustomer(){
   if(a.vehUse){ const psel=document.getElementById('f-vuse-purpose'); if(psel&&a.vehUse.purpose&&![...psel.options].some(o=>o.value===a.vehUse.purpose)){ const op=document.createElement('option'); op.value=op.textContent=a.vehUse.purpose; psel.appendChild(op); } S('f-vuse-purpose',a.vehUse.purpose); S('fu-prov',a.vehUse.prov); S('fu-dist',a.vehUse.dist); const cb=document.getElementById('f-vuse-same'); if(cb){cb.checked=!!a.vehUse.sameAsCur; copyUseAddr();} }
   if(a.occupation!=null&&OCC_LIST[a.occupation]){ S('f-occg',OCC_LIST[a.occupation].g); onOccGroup(); S('f-occ',String(a.occupation)); onOccSub(); S('f-occex',a.occExtra); }
   S('f-workplace',a.workplace); S('f-workaddr',a.workAddr); S('f-workphone',a.workPhone); if(a.workYears>0){ S('f-workyrs',Math.floor(a.workYears)); S('f-workmos',Math.round((a.workYears%1)*12)); }
-  S('f-income',a.incomeClaimed); S('f-incomeextra',a.incomeExtra); S('f-incomeextrasrc',a.incomeExtraSrc||''); _ied=a.incomeExtraData||''; if(a.incomeExtraData){const el=document.getElementById('ied-note'); if(el){el.textContent='✓ มีภาพรายได้เสริมแนบไว้';el.style.color='#16a34a';}} S('f-debt',a.debt);
+  S('f-income',a.incomeClaimed); S('f-incextrahas',(+a.incomeExtra>0)?'has':'none'); S('f-incomeextra',a.incomeExtra); S('f-debthas',(+a.debt>0)?'has':'none'); S('f-debt',a.debt); S('f-incomeextrasrc',a.incomeExtraSrc||''); _ied=a.incomeExtraData||''; if(a.incomeExtraData){const el=document.getElementById('ied-note'); if(el){el.textContent='✓ มีภาพรายได้เสริมแนบไว้';el.style.color='#16a34a';}} S('f-debt',a.debt);
   S('f-hist', a.status==='approved'?'old_good':'new');
  } else if(f.src==='cust'){
   const r=f.r;
@@ -3397,7 +3399,7 @@ function fdApply(d){
  for(let pass=0;pass<3;pass++){ for(const id in d.f){ try{ setv(id,d.f[id]); }catch(e){} } }
  try{ const box=document.getElementById('phone-list'); if(box&&d.phones&&d.phones.length){ box.innerHTML=''; d.phones.forEach((p,i)=>{ box.insertAdjacentHTML('beforeend', phoneRowHTML(i===0)); const r=box.lastElementChild; r.querySelector('.ph-no').value=p.no||''; r.querySelector('.ph-line').value=p.line||''; r.querySelector('.ph-active').checked=!!p.active; }); if(!box.querySelector('.ph-active:checked')){ const a=box.querySelector('.ph-active'); if(a) a.checked=true; } } }catch(e){}
  try{ thRefresh('fc'); thRefresh('fp'); }catch(e){}
- try{ debtItemsToggle(); updatePrevWork(); }catch(e){}
+ try{ debtHasToggle(); debtItemsToggle(); incExtraToggle(); updatePrevWork(); }catch(e){}
  try{ liveCalc(); }catch(e){}
 }
 /* ===== 0914-E: สนญ. แก้ไขข้อมูลเคสได้ทุกช่อง (เปิดฟอร์มเดิมพร้อมข้อมูล → บันทึกทับ ไม่เปลี่ยนสถานะ/ทามไลน์ · บันทึกประวัติ) ===== */
@@ -3438,7 +3440,9 @@ function _formBranch(){ if(window.__editCase){ const a=APPS.find(x=>x.id===windo
 /* 0914-K: อายุงานกรอกเอง (ปี+เดือน) แทนวันเริ่มงาน — คำนวณ workYears/workStart ให้ตรรกะเดิมใช้ต่อได้ */
 function _workYearsFromDur(){ const y=document.getElementById('f-workyrs'), m=document.getElementById('f-workmos'); if(!y&&!m) return 0; const yy=+((y||{}).value)||0, mm=+((m||{}).value)||0; return Math.round((yy+mm/12)*1000)/1000; }
 function _workStartFromDur(){ const y=document.getElementById('f-workyrs'), m=document.getElementById('f-workmos'); if(!y||(y.value===''&&(!m||m.value===''))) return ''; const d=new Date(); d.setMonth(d.getMonth()-Math.round(_workYearsFromDur()*12)); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
-function debtItemsToggle(){ const d=document.getElementById('f-debt'), w=document.getElementById('debt-items-w'); if(!d||!w) return; const on=(+d.value||0)>0; w.style.display=on?'':'none';
+function incExtraToggle(){ const h=document.getElementById('f-incextrahas'), n=document.getElementById('f-incomeextra'); if(!h||!n) return; const has=h.value==='has'; n.style.display=has?'':'none'; document.querySelectorAll('#view .field.incx').forEach(e=>{ e.style.display=has?'':'none'; }); if(!has){ n.value=''; const sv=document.getElementById('f-incomeextrasrc'); if(sv) sv.value=''; const o=document.getElementById('f-incomeextrasrc-other'); if(o) o.style.display='none'; _ied=''; } liveCalc(); }
+function debtHasToggle(){ const h=document.getElementById('f-debthas'), d=document.getElementById('f-debt'); if(!h||!d) return; const has=h.value==='has'; d.style.display=has?'':'none'; if(!has) d.value=''; debtItemsToggle(); liveCalc(); }
+function debtItemsToggle(){ const d=document.getElementById('f-debt'), w=document.getElementById('debt-items-w'); if(!d||!w) return; const h=document.getElementById('f-debthas'); const on=(!h||h.value==='has')&&(+d.value||0)>0; w.style.display=on?'':'none';
  if(!on){ document.querySelectorAll('#debt-items .debt-item').forEach(e=>{ e.checked=false; }); }
  const sel=[...document.querySelectorAll('#debt-items .debt-item:checked')].map(e=>e.value); const sm=document.getElementById('debt-items-sum'); if(sm){ sm.textContent=sel.length?sel.join(', '):'— เลือกรายการที่ผ่อน —'; sm.style.color=sel.length?'#1d2333':'#6b7280'; } }
 function readForm(){
@@ -3510,7 +3514,7 @@ function liveCalc(){
  s('f-age', a.birth? a.age+' ปี':'');
  try{ const gb=document.getElementById('g-hist'); if(gb){ const gt=guarHcapText(a.guar&&a.guar.hcap); gb.textContent=gt.t; gb.style.background=gt.lv==='bad'?'#fef2f2':gt.lv==='warn'?'#fffbeb':gt.lv==='ok'?'#f0fdf4':'#f8fafc'; gb.style.borderColor=gt.lv==='bad'?'#fca5a5':gt.lv==='warn'?'#fcd34d':gt.lv==='ok'?'#86efac':'#dfe3ec'; } }catch(e){}
  try{ const _hc=hcapFind(a); const _ins=_hc&&_hc.px?(+_hc.px.ins||0):0;
-  const _he=document.getElementById('f-hist'), _hn=document.getElementById('hist-note'); if(_he){ let hv='new', ht='ไม่พบประวัติในพอร์ต H-Cap — ลูกค้าใหม่'; if(_hc&&_hc.px){ const px=_hc.px; const cts=px.cts||[]; const term=cts.some(x=>x.st==='บอกเลิกสัญญา')||/บอกเลิก/.test(px.st||''); const repo=(+px.rp||0)>0||/ยึด/.test(px.st||''); const maxD=Math.max(+px.dmax||0,+px.d||0,...cts.map(x=>+x.d||0)); if(repo||term){ hv='old_bad'; ht='พบประวัติบอกเลิกสัญญา/ยึดรถ — ควรตรวจสอบก่อนขาย'; } else if(maxD>=30){ hv='old_late'; ht='ลูกค้าเก่า เคยค้างชำระสูงสุด '+maxD+' วัน'; } else { hv='old_good'; ht='ลูกค้าเก่า '+(px.n||cts.length||1)+' สัญญา ประวัติชำระปกติ'; } } if(_he.value!==hv) _he.value=hv; if(_hn) _hn.textContent='🏢 '+ht; } s('f-debthc', _ins>0? fmt(_ins)+' บ. ('+(_hc.px.act||1)+' สัญญา)':(a.idcard&&normDigits(a.idcard).length===13?'0 (ไม่มีสัญญาที่ผ่อนอยู่)':'')); }catch(e){}
+  const _he=document.getElementById('f-hist'), _hn=document.getElementById('hist-note'); if(_he){ let hv='new', ht='ไม่พบประวัติในพอร์ต H-Cap — ลูกค้าใหม่'; if(_hc&&_hc.px){ const px=_hc.px; const cts=px.cts||[]; const term=cts.some(x=>x.st==='บอกเลิกสัญญา')||/บอกเลิก/.test(px.st||''); const repo=(+px.rp||0)>0||/ยึด/.test(px.st||''); const maxD=Math.max(+px.dmax||0,+px.d||0,...cts.map(x=>+x.d||0)); if(repo||term){ hv='old_bad'; ht='พบประวัติบอกเลิกสัญญา/ยึดรถ — ควรตรวจสอบก่อนขาย'; } else if(maxD>=30){ hv='old_late'; ht='ลูกค้าเก่า เคยค้างชำระสูงสุด '+maxD+' วัน — ตรวจก่อนขาย'; } else { hv='old_good'; ht='ลูกค้าเก่า '+(px.n||cts.length||1)+' สัญญา'+((+px.act||0)>0?' · ผ่อนอยู่ '+px.act+' สัญญา':' · ปิดสัญญาแล้ว'); } } if(_he.value!==hv) _he.value=hv; if(_hn) _hn.textContent='🏢 '+ht; } s('f-debthc', _ins>0? fmt(_ins)+' บ. ('+(_hc.px.act||1)+' สัญญา)':(a.idcard&&normDigits(a.idcard).length===13?'0 (ไม่มีสัญญาที่ผ่อนอยู่)':'')); }catch(e){}
  { const wl=document.getElementById('f-workyears'); if(wl){ wl.textContent = a.workDur&&a.workDur.set ? ('รวม '+(a.workYears>=1?a.workYears.toFixed(1)+' ปี':Math.round(a.workYears*12)+' เดือน')+(a.workYears<0.5?' ⚠ น้อยกว่า 6 เดือน — ต้องกรอกที่ทำงานเดิมด้านล่าง':'')) : ''; wl.style.color=a.workYears<0.5&&a.workDur&&a.workDur.set?'#b45309':''; } }
  { const _ef=(CFG&&CFG.incExtraNoProofFactor!=null)?CFG.incExtraNoProofFactor:0.5;
    const _ee=Math.round((a.incomeExtra||0)*(a.incomeExtraData?1:_ef));
@@ -3675,8 +3679,10 @@ function submitApp(){
  const _cp=[a.phone].concat((a.phones||[]).map(p=>p.no)).map(x=>normDigits(String(x||''))).filter(Boolean);
  _rp.forEach((p,i)=>{ if(_cp.includes(p)) missing.push('เบอร์บุคคลอ้างอิงคนที่ '+(i+1)+' ซ้ำกับเบอร์ผู้ซื้อ'); });
  if(!_noProd && pbModelsList().length && !a.pbCode) missing.push('รุ่นรถตามหลักการขาย');
+ if(String(a.marital||'').indexOf('สมรส')>=0){ if(!String((a.spouse||{}).name||'').trim()) missing.push('ชื่อ-นามสกุลคู่สมรส (สถานภาพสมรส)'); if(!String((a.spouse||{}).phone||'').trim()) missing.push('เบอร์โทรคู่สมรส (สถานภาพสมรส)'); }
  { const ss=(document.getElementById('f-salestate')||{}).value||''; if(!ss) missing.push('สถานะการขายตอนส่งเคส (ข้อ 5)'); else if(ss==='sold'&&!String((document.getElementById('f-saledate')||{}).value||'').trim()) missing.push('วันที่ขาย (ข้อ 5)'); }
- { const dv=(document.getElementById('f-debt')||{}).value; if(dv===''||dv==null) missing.push('ภาระผ่อนหนี้เดิม/เดือน (ไม่มีใส่ 0)'); else if((+dv||0)>0&&!(a.debtItems&&a.debtItems.length)) missing.push('ผ่อนรายการอะไรบ้าง (เลือกอย่างน้อย 1 รายการ)'); if(!(+a.expense>0)) missing.push('ค่าใช้จ่ายส่วนตัว/ครัวเรือน ต่อเดือน'); }
+ { const dh=(document.getElementById('f-debthas')||{}).value||''; const dv=(document.getElementById('f-debt')||{}).value; if(!dh) missing.push('ภาระผ่อนหนี้เดิม/เดือน (เลือก มี/ไม่มี)'); else if(dh==='has'&&!(+dv>0)) missing.push('ยอดภาระผ่อนหนี้เดิม/เดือน'); else if(dh==='has'&&!(a.debtItems&&a.debtItems.length)) missing.push('ผ่อนรายการอะไรบ้าง (เลือกอย่างน้อย 1 รายการ)'); if(!(+a.expense>0)) missing.push('ค่าใช้จ่ายส่วนตัว/ครัวเรือน ต่อเดือน');
+   const ih=(document.getElementById('f-incextrahas')||{}).value||''; if(!ih) missing.push('รายได้เสริมครัวเรือน (เลือก มี/ไม่มี)'); else if(ih==='has'){ if(!(+a.incomeExtra>0)) missing.push('ยอดรายได้เสริมครัวเรือน/เดือน'); if(!String(a.incomeExtraSrc||'').replace(/^อื่นๆ:\s*/,'').trim()) missing.push('รายได้เสริมมาจาก'); } }
  if(!(a.workDur&&a.workDur.set)) missing.push('อายุงาน/อายุกิจการ (ปี และ/หรือ เดือน)');
  if(!String(a.workplace||'').trim()) missing.push('สถานที่ทำงาน / ชื่อกิจการ'); if(!String(a.workAddr||'').trim()) missing.push('ที่ตั้งที่ทำงาน (ตำบล/อำเภอ)'); if(!String(a.workPhone||'').trim()) missing.push('เบอร์โทรที่ทำงาน');
  { const oe=document.getElementById('w-occex'); if(oe&&!oe.classList.contains('hidden')&&oe.style.display!=='none'&&!String(a.occExtra||'').trim()) missing.push('ข้อมูลเพิ่มเติมอาชีพ'); const wr=document.getElementById('w-rai'); if(wr&&!wr.classList.contains('hidden')&&!(+a.rai>0)) missing.push('จำนวนไร่โดยประมาณ'); }
@@ -7938,7 +7944,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0914-L';
+const CHK3_BUILD='0914-M';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
