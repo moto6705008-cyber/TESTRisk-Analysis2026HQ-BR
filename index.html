@@ -349,7 +349,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0914-M (เฟส 1 · Flow สนญ. แนะนำก่อน · หนี้/รายได้เสริม มี-ไม่มี) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0914-N (เฟส 1 · Flow สนญ. แนะนำก่อน · แจ้งสาขาเมื่อ สนญ. ส่งกลับ) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -1325,6 +1325,7 @@ function bellItems(){
  if(!SESSION) return [];
  if(SESSION.role==='branch'){
   const seen=+localStorage.getItem('moto24_seen_b_'+SESSION.branch)||0;
+  if(p1()) return APPS.filter(a=>a.branch===SESSION.branch&&a.status!=='cancelled'&&hqSent(a)&&(a.hqAdvice.sentAt||0)>seen&&!a.ack3);   /* เฟส 1: สนญ. ส่งการ์ด+คำแนะนำมาแล้ว ยังไม่รับทราบ */
   return APPS.filter(a=>a.branch===SESSION.branch&&(a.decidedAt||0)>seen&&a.status!=='pending');
  }
  const seen=+localStorage.getItem('moto24_seen_hq')||0;
@@ -1348,7 +1349,8 @@ function updateBell(){
    const add=n-(window._bellPrev||0);
    const latest=items[items.length-1];
    if(SESSION.role==='branch'){
-     toast('🔔 ผลพิจารณาใหม่ '+add+' รายการ', (latest? latest.id+' · '+latest.name+' — '+statusPlain(latest.status) : 'กดดูในกระดิ่ง'), latest?latest.id:'', '#0f766e');
+     if(p1()) toast('📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว '+add+' เคส', (latest? latest.id+' · '+latest.name+' — เปิดดูแล้วกดรับทราบ' : 'กดดูในกระดิ่ง'), latest?latest.id:'', '#1d4ed8');
+     else toast('🔔 ผลพิจารณาใหม่ '+add+' รายการ', (latest? latest.id+' · '+latest.name+' — '+statusPlain(latest.status) : 'กดดูในกระดิ่ง'), latest?latest.id:'', '#0f766e');
    } else {
      const b=latest?BRANCHES.find(x=>x.code===latest.branch):null;
      toast('📥 มีงานเข้าใหม่ '+add+' เคส', (latest? latest.id+' · '+latest.name+(b?' · สาขา '+b.label:'') : 'กดดูในคิวรอพิจารณา'), latest?latest.id:'', '#1e2761');
@@ -1486,7 +1488,7 @@ function openBell(){
  document.getElementById('modal-bg').innerHTML='<div class="modal" style="width:680px">'
  +'<button class="x" onclick="closeModal()">✕</button>'
  +'<h2 class="pagetitle">🔔 การแจ้งเตือน ('+items.length+')</h2>'
- +'<p class="pagesub">'+(SESSION.role==='branch'?'ผลการพิจารณาจาก สนญ. ที่ยังไม่ได้เปิดดู':'เคสใหม่ที่สาขาส่งเข้ามา')+'</p>'
+ +'<p class="pagesub">'+(SESSION.role==='branch'?(p1()?'สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว — เปิดดูแล้วกด "รับทราบ"':'ผลการพิจารณาจาก สนญ. ที่ยังไม่ได้เปิดดู'):'เคสใหม่ที่สาขาส่งเข้ามา')+'</p>'
  +(items.length? '<div style="max-height:50vh;overflow-y:auto"><table><tbody>'+items.map(a=>{
    const b=BRANCHES.find(x=>x.code===a.branch);
    return '<tr class="click" data-id="'+a.id+'" onclick="openDetail(this.dataset.id)"><td class="b">'+a.id+'</td><td>'+a.name+'</td><td>'+(SESSION.role==='branch'?'':'สาขา '+(b?b.label:'')+' · ')+phaseLabel(a)+'</td><td class="mut">'+(a.date||'')+'</td></tr>';
@@ -1901,7 +1903,7 @@ function saveChangePass(forced){
  toast('✅ เปลี่ยนรหัสผ่านแล้ว','บัญชี '+u.email+' ใช้รหัสใหม่ในการเข้าครั้งต่อไป','','#0f766e');
 }
 function logout(){ SESSION=null; document.getElementById('app').classList.add('hidden'); document.getElementById('login').classList.remove('hidden'); refreshUserSelect(); }
-const NAVG = {
+function NAVG_(){ return {
  branch: [ {items:[['form','ส่งคำขอสินเชื่อ','filenew'],['list','รายการ/ติดตามคำขอ','list'],['dash','แดชบอร์ดสาขา','dash']]} ],
  zone: [
    {items:[['zov','ภาพรวมเขต','dash']]},
@@ -1918,7 +1920,7 @@ const NAVG = {
    {label:'ตั้งค่าระบบ', ico:'sliders', items:[['cfg','ตั้งค่าเกณฑ์','sliders'],['promo','หลักการขาย/เกรดสาขา','tag'],['sim','ดอกผล/เพดาน','percent'],['agri','ค่าอ้างอิงรายได้เกษตร','plant'],['chk3cfg','การ์ดตรวจ 3 มิติ / ค่าอ้างอิงรายได้','shield']]},
    {label:'ผู้ดูแลระบบ', ico:'users', items:[['users','การจัดการผู้ใช้','users'],['cloud','เชื่อมต่อ Google Sheet','db']]}
  ]
-};
+}; }
 function navBtn(x){ return `<button class="snav-item" id="tab-${x[0]}" onclick="go('${x[0]}')"><span class="snav-ic">${svgIco(x[2]||'flag',17)}</span><span>${x[1]}</span>${x[0]==='queue'?'<span class="snav-badge" id="queueBadge" style="display:none"></span>':''}</button>`; }
 function toggleGrp(gi){
  const el=document.querySelector('.snav-grp[data-g="'+gi+'"]'); if(!el)return;
@@ -1926,7 +1928,7 @@ function toggleGrp(gi){
  const st=JSON.parse(localStorage.getItem('moto24_navopen')||'{}'); st['g'+gi]=!el.classList.contains('closed'); localStorage.setItem('moto24_navopen',JSON.stringify(st));
 }
 function buildTabs(){
- const groups = SESSION.role==='branch' ? NAVG.branch : SESSION.role==='zone' ? NAVG.zone : SESSION.role==='basic' ? NAVG.basic : NAVG.analyst;
+ const NAVG=NAVG_(); const groups = SESSION.role==='branch' ? NAVG.branch : SESSION.role==='zone' ? NAVG.zone : SESSION.role==='basic' ? NAVG.basic : NAVG.analyst;
  const openState = JSON.parse(localStorage.getItem('moto24_navopen')||'{}');
  let html='';
  groups.forEach((g,gi)=>{
@@ -2158,14 +2160,17 @@ function p1State(a){ if(!a) return 'sent'; if(a.status==='cancelled') return 'ca
  if(overdue) return 'overdue';
  return 'reviewed'; }
 function p1Tag(a){ const s=p1State(a);
- const hqLate=!hqSent(a)&&!a.sale&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
+ const hqLate=!hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
  const M={sold:['🛒 ขายแล้ว'+(a.sale&&a.sale.beforeSubmit?' (ก่อนส่งเคส)':a.sale&&a.sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''),'#dcfce7','#166534'],notsold:['✋ ไม่ขาย','#e5e7eb','#374151'],cancelled:['🚶 ลูกค้ายกเลิก','#e5e7eb','#374151'],waiting:['⏳ รอลูกค้าตัดสินใจ','#fef9c3','#854d0e'],overdue:['⚠ ค้างบันทึกผลขาย','#fee2e2','#b91c1c'],reviewed:['✅ รับทราบแล้ว · รอบันทึกผลขาย','#dbeafe','#1d4ed8'],ackwait:['🧭 สนญ. ส่งการ์ดแล้ว · รอสาขารับทราบ','#fef3c7','#b45309'],sent:[hqLate?'⚠ รอ สนญ. ตรวจ (เกินวัน)':'👁 รอ สนญ. ตรวจ+แนะนำ',hqLate?'#fee2e2':'#dbeafe',hqLate?'#b91c1c':'#1d4ed8']};
- const m=M[s]||M.sent; return `<span class="tag" style="background:${m[1]};color:${m[2]}">${m[0]}</span>`; }
+ const m=M[s]||M.sent; let extra='';
+ if(a.sale&&a.status!=='cancelled'){ if(!hqSent(a)) extra=`<span class="tag" style="background:${hqLateSale(a)?'#fee2e2':'#dbeafe'};color:${hqLateSale(a)?'#b91c1c':'#1d4ed8'};margin-left:4px">👁 ${hqLateSale(a)?'รอ สนญ. ตรวจ (เกินวัน)':'รอ สนญ. ตรวจ+แนะนำ'}</span>`; else if(!a.ack3) extra='<span class="tag" style="background:#fef3c7;color:#b45309;margin-left:4px">🧭 สนญ. ส่งการ์ดแล้ว · กดรับทราบ</span>'; else extra='<span class="tag" style="background:#dcfce7;color:#166534;margin-left:4px">✅ รับทราบแล้ว</span>'; }
+ return `<span class="tag" style="background:${m[1]};color:${m[2]}">${m[0]}</span>`+extra; }
+function hqLateSale(a){ return !hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()); }
 function p1Accent(a){ const s=p1State(a); return s==='sold'?'#16a34a':s==='overdue'?'#dc2626':(s==='reviewed'||s==='sent')?'#2563eb':(s==='notsold'||s==='cancelled')?'#9ca3af':'#eab308'; }
-function p1Count(list){ const c={total:list.length,sent:0,ackwait:0,reviewed:0,overdue:0,sold:0,notsold:0,waiting:0,hqLate:0,beforeSubmit:0,beforeHQ:0}; list.forEach(a=>{ const s=p1State(a); if(s==='sold')c.sold++; else if(s==='notsold'||s==='cancelled')c.notsold++; else if(s==='overdue')c.overdue++; else if(s==='waiting')c.waiting++; else if(s==='reviewed')c.reviewed++; else if(s==='ackwait')c.ackwait++; else c.sent++; if(!hqSent(a)&&!a.sale&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now())) c.hqLate++; if(a.sale&&a.sale.beforeSubmit) c.beforeSubmit++; else if(a.sale&&a.sale.beforeHQ) c.beforeHQ++; }); c.pendingSale=c.sent+c.ackwait+c.reviewed+c.waiting+c.overdue; return c; }
+function p1Count(list){ const c={total:list.length,sent:0,ackwait:0,reviewed:0,overdue:0,sold:0,notsold:0,waiting:0,hqLate:0,beforeSubmit:0,beforeHQ:0}; list.forEach(a=>{ const s=p1State(a); if(s==='sold')c.sold++; else if(s==='notsold'||s==='cancelled')c.notsold++; else if(s==='overdue')c.overdue++; else if(s==='waiting')c.waiting++; else if(s==='reviewed')c.reviewed++; else if(s==='ackwait')c.ackwait++; else c.sent++; if(!hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now())) c.hqLate++; if(!hqSent(a)) c.hqPending=(c.hqPending||0)+1; if(hqSent(a)&&!a.ack3) c.ackPending=(c.ackPending||0)+1; if(a.sale&&a.sale.beforeSubmit) c.beforeSubmit++; else if(a.sale&&a.sale.beforeHQ) c.beforeHQ++; }); c.pendingSale=c.sent+c.ackwait+c.reviewed+c.waiting+c.overdue; return c; }
 function p1Chips(s){ return `<div class="qchips">
-  <div class="qchip" style="background:#dbeafe"><div class="n" style="color:#1d4ed8">${s.sent}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
-  <div class="qchip" style="background:#fef3c7"><div class="n" style="color:#b45309">${s.ackwait}</div><div class="l" style="color:#b45309">🧭 รอสาขารับทราบ</div></div>
+  <div class="qchip" style="background:#dbeafe"><div class="n" style="color:#1d4ed8">${s.hqPending||0}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ+แนะนำ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
+  <div class="qchip" style="background:#fef3c7"><div class="n" style="color:#b45309">${s.ackPending||0}</div><div class="l" style="color:#b45309">🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ</div></div>
   <div class="qchip" style="background:#fef9c3"><div class="n" style="color:#854d0e">${s.reviewed+s.waiting+s.overdue}</div><div class="l" style="color:#854d0e">⏳ รอบันทึกผลขาย${s.overdue?' <span style="color:#b91c1c">(ค้าง '+s.overdue+')</span>':''}</div></div>
   <div class="qchip" style="background:#f0fdf4"><div class="n" style="color:#166534">${s.sold}</div><div class="l" style="color:#166534">🛒 ขายแล้ว</div></div>
   <div class="qchip" style="background:#f3f4f6"><div class="n" style="color:#374151">${s.notsold}</div><div class="l" style="color:#374151">✋ ไม่ขาย/ยกเลิก</div></div>
@@ -3728,7 +3733,7 @@ function viewBranchList(){
  const s=statCount(list);
  const body=list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0)).map(a=>appCard(a,false)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>';
  return dashHero('📋','รายการ / ติดตามคำขอของสาขา ('+list.length+')','คลิกการ์ดเพื่อดูรายละเอียดและหมายเหตุจากฝ่ายวิเคราะห์')
- +`<div class="card">${p1()?p1Chips(p1Count(list)):qChips(s)}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap">${periodUI()}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${body}</div>`;
+ +`<div class="card">${p1()?p1Chips(p1Count(list)):qChips(s)}${p1()&&(p1Count(list).ackPending||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(list).ackPending}</b> เคส — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap">${periodUI()}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${body}</div>`;
 }
 function statCount(list){ return {
  total:list.length,
@@ -7944,7 +7949,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0914-M';
+const CHK3_BUILD='0914-N';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
