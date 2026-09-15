@@ -218,6 +218,29 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 .qpill{font-size:10.5px;padding:2px 9px;border-radius:12px;font-weight:600;white-space:nowrap;flex-shrink:0}
 .p-wait{background:#fef9c3;color:#854d0e}.p-more{background:#fff7ed;color:#c2410c}.p-ok{background:#f0fdf4;color:#166534}.p-bad{background:#fef2f2;color:#dc2626}.p-eval{background:#eff6ff;color:#1d4ed8}
 .qsc{font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;flex-shrink:0}
+
+/* 0915-B รายงานประเมินเกณฑ์ */
+.rfbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--card);border-radius:10px;padding:8px 12px;margin-bottom:10px;border:0.5px solid var(--line)}
+.rfbar label{font-size:11.5px;color:var(--mut)}.rfbar select{max-width:190px}
+.rkpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-bottom:10px}
+.rkpi{border-radius:10px;padding:10px 12px}.rkpi .v{font-size:22px;font-weight:800;line-height:1.1}.rkpi .l{font-size:11px;margin-top:3px}.rkpi .d{font-size:10.5px;opacity:.8;margin-top:2px}
+.rkpi.b1{background:#eef1fb;color:#1e2761}.rkpi.b2{background:#f0fdf4;color:#166534}.rkpi.b3{background:#fffbeb;color:#92400e}.rkpi.b4{background:#fef2f2;color:#991b1b}.rkpi.b5{background:#f8fafc;color:#334155}
+.rsec .rn,#rpt-pin .rn,#print-area .rn{background:#1e2761;color:#fff;border-radius:6px;font-size:11px;padding:1px 7px;margin-right:8px;vertical-align:middle}
+.rtb{width:100%;border-collapse:collapse;font-size:12px}.rtb th{background:#f8fafc;color:#475569;font-weight:600;text-align:left;padding:7px 8px;border-bottom:1px solid #e2e8f0;font-size:11px;line-height:1.3}.rtb td{padding:7px 8px;border-bottom:1px solid #f1f5f9;vertical-align:middle}.rtb .num,.rtb th.num{text-align:right;white-space:nowrap}.rtb tr.click:hover td{background:#eef1fb;cursor:pointer}
+.rtb .ok{color:#166534;font-weight:700}.rtb .bad{color:#b91c1c;font-weight:700}.rtb .mid{color:#b45309;font-weight:700}.lift{font-weight:800}.nb{white-space:nowrap}
+.rbar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:#e2e8f0;min-width:120px}.rbar i{display:block;height:100%}
+.rrec{background:#fffbeb;border-left:4px solid #f59e0b;padding:6px 10px;border-radius:6px;font-size:11.5px;margin-top:8px;line-height:1.5}
+.rmx{display:grid;grid-template-columns:150px repeat(3,1fr);gap:4px;font-size:12px}.rmx .h{font-weight:700;color:#475569;text-align:center;padding:4px;white-space:nowrap}.rmx .rh{font-weight:700;padding:8px 4px}.rmx .c{border-radius:8px;padding:8px;text-align:center}.rmx .c b{display:block;font-size:16px}.rmx .c small{color:#475569}
+.rcal{display:flex;align-items:flex-end;gap:6px;height:150px;padding:20px 4px 0;border-bottom:1px solid #e2e8f0}.rcal div{flex:1;text-align:center;font-size:10.5px;color:#475569}.rcal i{display:block;margin:0 auto 3px;width:70%;border-radius:4px 4px 0 0}
+.rtwo{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}.rquad{display:grid;grid-template-columns:1fr 1fr;gap:8px}.rq{border-radius:10px;padding:10px;font-size:12px}.rq b{font-size:18px;display:block}.rq .rr{font-size:11px;color:#475569}
+@media(max-width:820px){.rtwo,.rquad{grid-template-columns:1fr}.rmx{grid-template-columns:110px repeat(3,1fr)}}
+#rpt-present{display:none;position:fixed;inset:0;z-index:9000;background:#0f172a;color:#0f172a;overflow:auto;font-family:'Sarabun','Noto Sans Thai',system-ui,sans-serif;word-break:keep-all;overflow-wrap:normal}
+#rpt-present .pbar{display:flex;justify-content:space-between;align-items:center;color:#cbd5e1;font-size:15px;padding:14px 34px}#rpt-present .pbar b{color:#fff;font-size:17px}
+#rpt-present .pstage{margin:0 34px;background:#fff;border-radius:16px;padding:22px 28px;height:calc(100vh - 130px);overflow:hidden;display:flex;align-items:center}
+#rpt-pin{width:100%;font-size:18px}#rpt-pin h2{font-size:1.3em;margin:0 0 .8em}#rpt-pin .rtb{font-size:.85em}#rpt-pin .rtb th{font-size:.78em}#rpt-pin .rtb td{padding:.5em .6em}#rpt-pin .rmx{font-size:.9em;grid-template-columns:190px repeat(3,1fr);gap:8px}#rpt-pin .rmx .c b{font-size:1.7em}#rpt-pin .rmx .c small{font-size:.8em}#rpt-pin .rrec{font-size:.85em;padding:.7em 1em;margin-top:.8em}#rpt-pin .rcal{height:200px}#rpt-pin .rcal div{font-size:.8em}#rpt-pin .rq{font-size:.85em;padding:1em}#rpt-pin .rq b{font-size:1.9em}#rpt-pin .rq .rr{font-size:.85em}#rpt-pin .rkpi .l,#rpt-pin .rkpi .d{font-size:.8em}#rpt-pin .rbar{min-width:140px;height:14px}#rpt-pin .mut{font-size:.85em}#rpt-pin .tag{white-space:nowrap}#rpt-pin td:first-child{min-width:200px}#rpt-pin td[colspan]{white-space:normal}
+#rpt-present .pnav{position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;user-select:none}
+#rpt-present .pdots{display:flex;gap:6px;justify-content:center;padding:14px}#rpt-present .pdots i{width:9px;height:9px;border-radius:50%;background:#334155;display:block;cursor:pointer}#rpt-present .pdots i.on{background:#fff;width:26px;border-radius:5px}
+#print-area .rtb{font-size:10.5px}#print-area .rmx{font-size:10.5px}#print-area .rtwo{display:block}#print-area .rquad{display:grid;grid-template-columns:1fr 1fr;gap:6px}#print-area .rrec{font-size:10px}#print-area .rcal{height:90px}
 /* เฟส 1: แถวลูกค้า 4 คอลัมน์ (ลูกค้า+ไทม์ไลน์ · การ์ด · สนญ. · สาขา) */
 .p1hd,.p1row{display:grid;grid-template-columns:1.7fr 1fr 1.15fr 1.3fr;gap:10px}
 .p1hd{font-size:11px;color:var(--mut);padding:2px 10px 6px 14px;border-bottom:0.5px solid var(--line);margin-bottom:6px}
@@ -368,7 +391,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0915-A (เฟส 1 · รายการแบบ 4 คอลัมน์ สนญ./สาขา + ไทม์ไลน์จิ๋ว) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0915-B (เฟส 1 · รายงานประเมินเกณฑ์รายเดือน + ภาพข้อมูลสิ้นเดือน) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -696,6 +719,7 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('doccheck',d=>{ if(d&&d.groups){ DOCCHECK=d; try{localStorage.setItem('moto24_doccheck_v1',JSON.stringify(DOCCHECK));}catch(e){} } });
    ap('users',d=>{ mergeUsersFromCloud(d); });
    ap('purge',d=>{ if(d&&d.at) applyPurge(d, d.by||''); });
+   ap('snaps',d=>{ if(d&&typeof d==='object'){ PSNAP=d; try{ localStorage.setItem('moto24_snaps',JSON.stringify(PSNAP)); }catch(e){} } });
    try{ const pv=m.portver&&m.portver.data; if(pv&&pv.ver){ try{ localStorage.setItem('moto24_portsrv',JSON.stringify(pv)); }catch(e){} if(String(pv.ver)!==portLocalVer()) loadPortFromCloud(pv); } }catch(e){}
    saveCloud(); if(changed){ try{recalcAll();}catch(e){} _bgRefresh(); } }); }
 function cloudSyncNow(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ (เปิดหน้า "เชื่อมต่อ Google Sheet" ก่อน)'); return; }
@@ -1927,7 +1951,7 @@ function NAVG_(){ return {
  zone: [
    {items:[['zov','ภาพรวมเขต','dash']]},
    {label:'งานของสาขาในเขต', ico:'inbox', items:[['queue',p1()?'การ์ดรอตรวจดู':'คำขอที่รอ/กำลังพิจารณา','clock'],['done',p1()?'ตรวจดูแล้ว':'ผลพิจารณาแล้ว','check']]},
-   {items:[['dq','คุณภาพข้อมูลสาขา','db'],['cxstat','สถิติการยกเลิกคำขอ','ban']]}
+   {items:[['rpt_zone','รายงานประเมินเกณฑ์ (เขต)','target'],['dq','คุณภาพข้อมูลสาขา','db'],['cxstat','สถิติการยกเลิกคำขอ','ban']]}
  ],
  basic: [ {items:[['me','หน้าหลัก','home2']]} ],
  analyst: [
@@ -1935,7 +1959,7 @@ function NAVG_(){ return {
    {items:[['exec','ภาพรวมผู้บริหาร','dash']]},
    {label:p1()?'การ์ดที่สาขาส่ง':'งานพิจารณา', ico:'inbox', items:p1()?[['queue','รอตรวจ + แนะนำ','clock'],['done','ส่งให้สาขาแล้ว','check']]:[['queue','รอพิจารณา','clock'],['done','พิจารณาแล้ว','check']]},
    {label:'การเฝ้าระวัง', ico:'shield', items:[['watch','ลูกค้า/เลขถังเฝ้าระวัง','shield'],['risk','พื้นที่เฝ้าระวัง','pin']]},
-   {label:'ติดตามผลการวิเคราะห์', ico:'target', items:[['acc','ความแม่นเกณฑ์','target'],['recon','กระทบยอด H-Cap','back'],['dq','คุณภาพข้อมูล','db'],['track','ติดตามผล/ทดลอง','flask'],['cxstat','สถิติการยกเลิกคำขอ','ban']]},
+   {label:'รายงานประเมินเกณฑ์ (รายเดือน)', ico:'target', items:[['rpt_month','รายงานประจำเดือน','target'],['rpt_zone','เจาะลึก เขต → สาขา','pin'],['rpt_tune','โต๊ะปรับเกณฑ์ (สนญ.)','sliders'],['recon','กระทบยอด H-Cap','back'],['dq','คุณภาพข้อมูล','db'],['cxstat','สถิติการยกเลิกคำขอ','ban']].concat(p1()?[]:[['acc','ความแม่นเกณฑ์','flask'],['track','ติดตามผล/ทดลอง','flask']])},
    {label:'ตั้งค่าระบบ', ico:'sliders', items:[['cfg','ตั้งค่าเกณฑ์','sliders'],['promo','หลักการขาย/เกรดสาขา','tag'],['sim','ดอกผล/เพดาน','percent'],['agri','ค่าอ้างอิงรายได้เกษตร','plant'],['chk3cfg','การ์ดตรวจ 3 มิติ / ค่าอ้างอิงรายได้','shield']]},
    {label:'ผู้ดูแลระบบ', ico:'users', items:[['users','การจัดการผู้ใช้','users'],['cloud','เชื่อมต่อ Google Sheet','db']]}
  ]
@@ -1985,6 +2009,9 @@ function go(tab){
  if(tab==='dq') v.innerHTML=viewDQ();
  if(tab==='cxstat') v.innerHTML=viewCancelStats();
  if(tab==='recon') v.innerHTML=viewRecon();
+ if(tab==='rpt_month') v.innerHTML=viewRptMonth();
+ if(tab==='rpt_zone') v.innerHTML=viewRptZone();
+ if(tab==='rpt_tune') v.innerHTML=viewRptTune();
  if(tab==='track'){ v.innerHTML=viewTrack(); drawTrackChart(); }
  if(tab==='cfg'){ v.innerHTML=viewCfg(); cfgEnhance(); }
  if(tab==='agri') v.innerHTML=viewAgriCfg();
@@ -5730,7 +5757,7 @@ function importHCapital(inp){
   Object.keys(payIdx).forEach(tid=>{ const K=kb[tid]; if(K){ payIdx[tid].n=K.n; payIdx[tid].act=K.act||0; payIdx[tid].ins=Math.round(K.ins||0); payIdx[tid].exp=Math.round(K.exp||0); payIdx[tid].dmax=K.dmax||0; payIdx[tid].cts=K.cts||[]; } });
   WATCH.payIdx=payIdx;
   WATCH.lastImport=new Date().toISOString().slice(0,10)+' ('+rows.length.toLocaleString()+' สัญญา)';
-  saveWatch(); saveCfg(); recalcAll(); if(typeof publishPortSnap==='function')publishPortSnap(true);
+  saveWatch(); saveCfg(); recalcAll(); if(typeof publishPortSnap==='function')publishPortSnap(true); try{ if(typeof snapTake==='function') snapTake(true); }catch(e){}
   alert('นำเข้าเรียบร้อย ✅\n• ลูกค้าเฝ้าระวัง '+WATCH.custs.length.toLocaleString()+' คน\n• เลขถังต้องห้าม '+frames.length.toLocaleString()+' คัน\n• พื้นที่เสี่ยง '+areas.length+' ตำบล\nคะแนนทุกเคสถูกคำนวณใหม่แล้ว');
   go('watch');
  };
@@ -8024,7 +8051,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0915-A';
+const CHK3_BUILD='0915-B';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -8152,7 +8179,7 @@ function check3(a, c){
  c=c||a.calc||calcAll(a);
  const items={person:[],occ:[],income:[],hcap:[]};
  const _hqv=!!(typeof SESSION!=='undefined'&&SESSION&&(SESSION.role==='analyst'||SESSION.role==='zone'));
- const P=(d,lv,m,hq,mh)=>items[d].push({lv,m:(_hqv&&mh)?mh:m,hq:!!hq});
+ const P=(d,lv,m,hq,mh)=>items[d].push({lv,m:(_hqv&&mh)?mh:m,hq:!!hq,k:m});
  const idN=normDigits(a.idcard||''), phN=normDigits(a.phone||'');
  /* ---- มิติ 1 บุคคล ---- 🔴 เฉพาะติดถังห้าม/แบล็กลิสต์ · พื้นที่เสี่ยง = 🟡 */
  const pFilled=!!(String(a.firstName||a.nameOnly||'').trim() && idN && a.birth);
@@ -8301,7 +8328,8 @@ function check3(a, c){
          noProduct:!!(c&&c.noProduct)};
 }
 /* snapshot เล็ก ๆ เก็บติดเคสตอนส่ง (ย้อนตรวจได้) */
-function chk3Snap(r){ return {overall:r.overall,lv:{person:r.dims.person.lv,occ:r.dims.occ.lv,income:r.dims.income.lv,hcap:r.hcap.lv},filled:r.filled,ver:r.ver,at:r.at,hcapFound:!!r.hcap.found}; }
+function chk3Snap(r){ const rules=[]; try{ [['person',r.dims.person.items],['occ',r.dims.occ.items],['income',r.dims.income.items],['hcap',r.hcap.items]].forEach(([d,arr])=>(arr||[]).forEach(it=>{ if(it.lv==='warn'||it.lv==='bad') rules.push({d,lv:it.lv,k:String(it.k||it.m||'').replace(/[🔴🟡🟢⚪]/g,'').replace(/\s*[—–:(].*$/,'').trim().slice(0,60)}); })); }catch(e){}
+ return {overall:r.overall,lv:{person:r.dims.person.lv,occ:r.dims.occ.lv,income:r.dims.income.lv,hcap:r.hcap.lv},filled:r.filled,ver:r.ver,at:r.at,hcapFound:!!r.hcap.found,rules}; }
 
 /* ======================= UI การ์ด (A2+A3 รวม · Kanit) ======================= */
 /* 0914-C: สาขาเห็นการ์ดเฉพาะบล็อก H-Cap (สวิตช์ HQ ในตั้งค่าเกณฑ์ · ค่าเริ่มต้นเปิด) */
@@ -8430,6 +8458,252 @@ function renderDocChk(){
 function onDocChk(){ window.__docChk=[...document.querySelectorAll('#docchk-box input[type=checkbox]:checked')].map(x=>x.value); liveCalc(); }
 function onRaiInput(){ liveCalc(); }
 /* ▲▲▲ จบส่วนเฟส 1 ▲▲▲ */
+
+/* ================== 0915-B: รายงานประเมินเกณฑ์ (รายเดือน) ==================
+   แสดงผลจากข้อมูลที่มีอยู่ (APPS + WATCH/CUSTDB + ภาพข้อมูลสิ้นเดือน PSNAP) — ไม่แตะโครงเคส/merge/รอบซิงก์
+   PSNAP = ภาพผลผ่อนของสัญญาที่จับคู่กับเคส เก็บทุกครั้งที่ สนญ. นำเข้า balance_report → master 'snaps' (อ่านอย่างเดียวที่เครื่องอื่น) */
+let PSNAP={}; try{ PSNAP=JSON.parse(localStorage.getItem('moto24_snaps')||'{}')||{}; }catch(e){ PSNAP={}; }
+function saveSnaps(push){ try{ localStorage.setItem('moto24_snaps',JSON.stringify(PSNAP)); }catch(e){} if(push&&typeof cloudPushMaster==='function'){ try{ cloudPushMaster('snaps',PSNAP); }catch(e){} } }
+const RPT={ym:'',zone:'',branch:'',occ:'',open:{},present:false,pidx:0,tab:'rpt_month'};
+const RPT_MIN_N=20;
+function _ymOf(ts){ const d=new Date(ts||Date.now()); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+function _ymTh(ym){ if(!ym) return 'ทุกเดือน'; const [y,m]=ym.split('-'); const TH=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.']; return TH[(+m)-1]+' '+(+y+543); }
+function _sdMs(s){ if(!s) return 0; if(typeof s==='number') return s; const m=String(s).match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(!m) return 0; const y=+m[3]>2400?+m[3]-543:+m[3]; return new Date(y,+m[2]-1,+m[1]).getTime(); }
+function _dd(a,b){ return Math.round((a-b)/86400000); }
+function _pc(n,d){ return d? (Math.round(n/d*1000)/10)+'%' : '—'; }
+function _lift(badA,nA,badB,nB){ if(!nA||!nB||!badB) return null; const ra=badA/nA, rb=badB/nB; if(!rb) return null; return Math.round(ra/rb*10)/10; }
+function _liftTxt(l){ return l==null?'—':(l+' เท่า'); }
+function _liftCls(l){ return l==null?'':l>=3?'ok':l>=1.5?'':'bad'; }
+function _q(arr,p){ if(!arr.length) return null; const s=arr.slice().sort((a,b)=>a-b); const i=(s.length-1)*p; const lo=Math.floor(i), hi=Math.ceil(i); return Math.round(s[lo]+(s[hi]-s[lo])*(i-lo)); }
+function _esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+const RPT_LV={ok:'🟢 สอดคล้อง',warn:'🟡 ควรตรวจเพิ่ม',bad:'🔴 ควรตรวจสอบ',na:'⚪ ยังไม่ครบ'};
+/* ---- จับคู่เคส ↔ สัญญาใน H-Cap: เลขสัญญาก่อน → เลขบัตร+วันเริ่มสัญญา −7…+45 วันจากวันส่งเคส ---- */
+function caseContract(a){ const idx=(typeof WATCH!=='undefined'&&WATCH&&WATCH.payIdx)||{}; const tid=normDigits(a.idcard||''); const px=tid?idx[tid]:null; if(!px) return null;
+ const cts=(px.cts&&px.cts.length)?px.cts:[{ct:px.ct,st:px.st,d:px.d,sd:px.sd,fin:px.fin,ins:px.ins}];
+ const want=normDigits((a.sale&&a.sale.contract)||''); if(want){ const m=cts.find(c=>normDigits(c.ct||'')===want); if(m) return Object.assign({how:'contract'},m); }
+ const sub=a.submittedAt||0; const cand=cts.map(c=>({c,sd:_sdMs(c.sd)})).filter(x=>x.sd&&_dd(x.sd,sub)>=-7&&_dd(x.sd,sub)<=45).sort((x,y)=>Math.abs(_dd(x.sd,sub))-Math.abs(_dd(y.sd,sub)));
+ if(cand.length) return Object.assign({how:'infer',mismatch:!!want},cand[0].c);
+ return null; }
+function ctClass(c){ if(!c) return null; const st=String(c.st||''); if(/บอกเลิก|ยึด/.test(st)) return 'bad'; const d=+c.d||0; if(d>=30) return 'bad'; if(d>0) return 'late'; return 'ok'; }
+/* ---- ภาพข้อมูลสิ้นเดือน: เรียกหลังนำเข้า balance_report (สนญ.) ---- */
+function snapTake(silent){ if(!(SESSION&&SESSION.role==='analyst')) return 0; const ym=_ymOf(Date.now()); let n=0;
+ (APPS||[]).forEach(a=>{ if(a.status==='cancelled'||!a.submittedAt) return; const c=caseContract(a); if(!c) return; PSNAP[a.id]=PSNAP[a.id]||{}; PSNAP[a.id][ym]={ct:c.ct,d:+c.d||0,st:String(c.st||'').slice(0,20),cls:ctClass(c),at:Date.now()}; n++; });
+ PSNAP._meta={at:Date.now(),ym,by:(SESSION&&SESSION.name)||'',n}; saveSnaps(true);
+ if(!silent) try{ _pushLog('เก็บภาพผลผ่อนสิ้นเดือน '+_ymTh(ym)+' — จับคู่ได้ '+n+' เคส','snap'); }catch(e){}
+ return n; }
+function snapLast(a){ const s=PSNAP[a.id]; if(!s) return null; const yms=Object.keys(s).filter(k=>k!=='_meta').sort(); if(!yms.length) return null; return Object.assign({ym:yms[yms.length-1]},s[yms[yms.length-1]]); }
+/* ---- แถวข้อมูลต่อเคส ---- */
+function rptCases(){ let L=(APPS||[]).filter(a=>a.status!=='cancelled'&&a.submittedAt);
+ if(SESSION&&SESSION.role==='zone'){ L=L.filter(a=>zoneOfBranch(a.branch)===SESSION.zone); }
+ if(RPT.zone) L=L.filter(a=>zoneOfBranch(a.branch)===RPT.zone); if(RPT.branch) L=L.filter(a=>a.branch===RPT.branch); if(RPT.ym) L=L.filter(a=>_ymOf(a.submittedAt)===RPT.ym); return L; }
+function rptRow(a){ const light=(a.check3&&a.check3.overall)||'na'; const ct=caseContract(a); const sn=snapLast(a);
+ const out=sn?sn.cls:(ct?ctClass(ct):null); const h=a.hqAdvice||{}; const sent=!!h.sentAt;
+ const advDims=['person','occ','income'].filter(k=>!((h.none||{})[k])&&String((h.text||{})[k]||'').trim());
+ const advText=advDims.map(k=>String(h.text[k]||'')).join(' ');
+ const o=(typeof OCC_LIST!=='undefined'&&OCC_LIST[a.occupation])||null;
+ const rc=(typeof CUSTDB!=='undefined'&&CUSTDB&&CUSTDB.recs)?CUSTDB.recs[normDigits(a.idcard||'')]:null;
+ return {a,light,ct,sn,out,bad:out==='bad',sent,advN:advDims.length,advText,score:(a.calc&&a.calc.score!=null)?+a.calc.score:null,
+  sold:!!(a.sale&&a.sale.result==='sold'),notsold:!!(a.sale&&(a.sale.result==='notsold'||a.sale.result==='cancelled')),
+  before:!!(a.sale&&a.sale.beforeSubmit),against:!!(a.sale&&a.sale.against),
+  occG:o?o.g:'ไม่ระบุ',occS:o?(o.g+' — '+o.s):'ไม่ระบุ',occSc:o?+o.sc:null,inc:+a.incomeClaimed||0,hcInc:rc?(+rc.income||0):0,hcOcc:rc?rc.occIdx:null,
+  zone:zoneOfBranch(a.branch)||'',br:a.branch,rules:(a.check3&&a.check3.rules)||[],parts:(a.calc&&a.calc.parts)||[]}; }
+function rptRows(){ return rptCases().map(rptRow); }
+/* ---- คำนวณส่วนต่าง ๆ ---- */
+function rptStats(R){ const M=R.filter(r=>r.out); const by=(f)=>{ const g={}; M.forEach(r=>{ const k=f(r); if(k==null) return; g[k]=g[k]||{n:0,bad:0,late:0,ok:0}; g[k].n++; g[k][r.out]++; }); return g; };
+ const light=by(r=>r.light); const okG=light.ok||{n:0,bad:0}, badG=light.bad||{n:0,bad:0};
+ const bands=by(r=>r.score==null?null:r.score<55?'<55':r.score<65?'55–64':r.score<75?'65–74':r.score<85?'75–84':'85+');
+ const quad={agreeGood:{n:0,bad:0},hqWarn:{n:0,bad:0},agreeBad:{n:0,bad:0},hqRelax:{n:0,bad:0}};
+ M.filter(r=>r.sent).forEach(r=>{ const sysBad=r.light==='bad'; const hqAdv=r.advN>0; const k=!sysBad?(hqAdv?'hqWarn':'agreeGood'):(hqAdv?'agreeBad':'hqRelax'); quad[k].n++; if(r.bad) quad[k].bad++; });
+ const misses=M.filter(r=>(r.light==='ok'||r.light==='warn')&&r.bad);
+ return {n:R.length,matched:M.length,light,okG,badG,lift:_lift(badG.bad,badG.n,okG.bad,okG.n),bands,quad,misses,
+  sold:R.filter(r=>r.sold).length,before:R.filter(r=>r.before).length,against:R.filter(r=>r.against).length,sent:R.filter(r=>r.sent).length,notsold:R.filter(r=>r.notsold).length}; }
+function rptVars(R){ const M=R.filter(r=>r.out&&r.parts.length); const keys={}; M.forEach(r=>r.parts.forEach(p=>{ keys[p.key]=keys[p.key]||{label:p.label,w:p.w,vals:[]}; keys[p.key].vals.push({raw:+p.raw||0,bad:r.bad}); }));
+ return Object.keys(keys).map(k=>{ const K=keys[k]; const vs=K.vals.slice().sort((a,b)=>a.raw-b.raw); const t=Math.floor(vs.length/3)||1; const lo=vs.slice(0,t), mid=vs.slice(t,2*t), hi=vs.slice(2*t);
+  const rate=g=>g.length?g.filter(x=>x.bad).length/g.length:null; const rl=rate(lo), rh=rate(hi); const lift=(rl!=null&&rh)?Math.round(rl/rh*10)/10:(rl&&!rh&&hi.length?9.9:null);
+  return {key:k,label:K.label,w:K.w,n:vs.length,lo:rl,mid:rate(mid),hi:rh,lift}; }).sort((a,b)=>(b.lift||0)-(a.lift||0)); }
+function rptRules(R){ const M=R.filter(r=>r.out); const tot={n:M.length,bad:M.filter(r=>r.bad).length}; const g={};
+ M.forEach(r=>{ const seen={}; (r.rules||[]).forEach(ru=>{ if(seen[ru.k]) return; seen[ru.k]=1; g[ru.k]=g[ru.k]||{k:ru.k,lv:ru.lv,d:ru.d,n:0,bad:0}; g[ru.k].n++; if(r.bad) g[ru.k].bad++; }); });
+ return Object.values(g).map(x=>{ const nN=tot.n-x.n, bN=tot.bad-x.bad; return Object.assign(x,{rateF:x.n?x.bad/x.n:null,rateN:nN?bN/nN:null,lift:_lift(x.bad,x.n,bN,nN)}); }).sort((a,b)=>b.n-a.n); }
+function rptOcc(R){ const g={}; R.forEach(r=>{ const k=r.occG; g[k]=g[k]||{k,n:0,m:0,bad:0,inc:[],hc:[],sc:[]}; g[k].n++; if(r.out){ g[k].m++; if(r.bad) g[k].bad++; } if(r.inc) g[k].inc.push(r.inc); if(r.hcInc) g[k].hc.push(r.hcInc); if(r.occSc!=null) g[k].sc.push(r.occSc); });
+ return Object.values(g).map(x=>Object.assign(x,{rate:x.m?x.bad/x.m:null,p25:_q(x.inc,.25),p50:_q(x.inc,.5),p75:_q(x.inc,.75),hc50:_q(x.hc,.5),sc:_q(x.sc,.5)})).sort((a,b)=>b.n-a.n); }
+function rptIncomeArea(R,occ){ const S=R.filter(r=>r.occG===occ&&r.inc); const mk=(k,list)=>({k,n:list.length,p10:_q(list.map(r=>r.inc),.1),p25:_q(list.map(r=>r.inc),.25),p50:_q(list.map(r=>r.inc),.5),p75:_q(list.map(r=>r.inc),.75),p90:_q(list.map(r=>r.inc),.9),m:list.filter(r=>r.out).length,bad:list.filter(r=>r.bad).length});
+ const rows=[Object.assign(mk('ทั้งบริษัท',S),{lvl:0})]; const zones={}; S.forEach(r=>{ (zones[r.zone]=zones[r.zone]||[]).push(r); });
+ Object.keys(zones).sort().forEach(z=>{ rows.push(Object.assign(mk((ZONES[z]||{}).name||z,zones[z]),{lvl:1,zone:z})); const brs={}; zones[z].forEach(r=>{ (brs[r.br]=brs[r.br]||[]).push(r); }); Object.keys(brs).sort().forEach(b=>{ const B=BRANCHES.find(x=>x.code===b); rows.push(Object.assign(mk(B?B.label:b,brs[b]),{lvl:2})); }); });
+ return rows; }
+const RPT_KW=[['ที่อยู่ / บ้านเช่า',/ที่อยู่|บ้านเช่า|เช่า|ย้าย/],['ที่ทำงาน / โทรยืนยัน',/โทร|ที่ทำงาน|เบอร์|ติดต่อ/],['ผู้ค้ำ',/ค้ำ/],['สลิป / หลักฐานรายได้',/สลิป|สเตทเม|หลักฐาน|statement|เอกสาร/i],['ภาระหนี้',/หนี้|ภาระ|ผ่อน.*อื่น|บัตร/],['รายได้ไม่สมเหตุสมผล',/รายได้|เงินเดือน|สูงเกิน|ไม่สมเหตุ/],['อายุงาน / ความมั่นคง',/อายุงาน|เพิ่งเริ่ม|ไม่มั่นคง|เปลี่ยนงาน/],['ดาวน์เพิ่ม / ลดยอด',/ดาวน์|ลดยอด|วางเงิน/]];
+function rptWords(R){ const G=R.filter(r=>r.out&&r.sent&&r.light!=='bad'&&r.advN>0); const rows=RPT_KW.map(([label,re])=>{ const hit=G.filter(r=>re.test(r.advText)); return {label,n:hit.length,bad:hit.filter(r=>r.bad).length}; }).filter(x=>x.n>0).sort((a,b)=>b.n-a.n);
+ const vague=G.filter(r=>/^\s*(ระวัง|ตรวจสอบเพิ่ม|ดูเพิ่ม|เช็ค)\s*$/.test(r.advText.trim())||r.advText.trim().length<12); return {rows,vague:vague.length,total:G.length}; }
+function rptDQ(R){ const g={}; R.forEach(r=>{ const k=r.zone||'—'; g[k]=g[k]||{k,n:0,cmp:0,sumPct:0,hi50:0,occDiff:0,hqWarn:0,sent:0}; const x=g[k]; x.n++; if(r.hcInc&&r.inc){ x.cmp++; const p=(r.inc-r.hcInc)/r.hcInc; x.sumPct+=p; if(p>0.5) x.hi50++; } if(r.hcOcc!=null&&r.a.occupation!=null&&r.hcOcc!==r.a.occupation) x.occDiff++; if(r.sent){ x.sent++; if(r.advN>0) x.hqWarn++; } });
+ return Object.values(g).map(x=>Object.assign(x,{avgPct:x.cmp?x.sumPct/x.cmp:null})).sort((a,b)=>(b.avgPct||0)-(a.avgPct||0)); }
+/* ---- ชิ้นส่วน HTML ---- */
+function _bar(g,y,r,k){ return `<div class="rbar"><i style="width:${g}%;background:#22c55e"></i><i style="width:${y}%;background:#f59e0b"></i><i style="width:${r}%;background:#ef4444"></i><i style="width:${k||0}%;background:#cbd5e1"></i></div>`; }
+function _kpi(cls,v,l,d){ return `<div class="rkpi ${cls}"><div class="v">${v}</div><div class="l">${l}</div>${d?`<div class="d">${d}</div>`:''}</div>`; }
+function _nsmall(n){ return n<RPT_MIN_N?` <span class="tag" style="background:#f1f5f9;color:#64748b">เคสน้อยกว่า ${RPT_MIN_N} — ยังสรุปไม่ได้</span>`:''; }
+function _rec(t){ return `<div class="rrec">${t}</div>`; }
+function _empty(t){ return `<div class="mut" style="text-align:center;padding:18px">${t}</div>`; }
+function rptGloss(){ return `<div class="card" style="padding:8px 12px;font-size:11.5px;color:#334155"><b>คำที่ใช้ในรายงาน:</b> <b>ค้างเกิน 30 วัน</b> = ค้างชำระตั้งแต่ 30 วันขึ้นไป หรือถูกบอกเลิก/ยึดรถ (นับเป็น "ผ่อนมีปัญหา") · <b>เสี่ยงกว่ากลุ่มดี (เท่า)</b> = อัตราค้างของกลุ่มที่ระบบเตือน หารด้วย อัตราค้างของกลุ่มที่ระบบบอกว่าดี — ยิ่งมากแปลว่าเกณฑ์แยกลูกค้าดี-เสียได้ชัด (เป้า อย่างน้อย 3 เท่า · ใกล้ 1 เท่า = เตือนไปก็ไม่ต่างจากไม่เตือน) · <b>ค่ากลาง</b> = ค่าที่ครึ่งหนึ่งต่ำกว่า ครึ่งหนึ่งสูงกว่า · <b>ต่ำสุด 1 ใน 4 / สูงสุด 1 ใน 4</b> = ค่าที่ลูกค้า 1 ใน 4 ต่ำกว่า / สูงกว่า · <b>ช่วงที่ครอบคลุมลูกค้า 80%</b> = ตัดคนที่ต่ำสุด 10% และสูงสุด 10% ออก · <b>ภาพข้อมูลสิ้นเดือน</b> = สำเนาผลผ่อนจาก H-Cap ที่เก็บไว้ทุกครั้งที่นำเข้า ไม่เขียนทับ · <b>จำนวนเคส</b> น้อยกว่า ${RPT_MIN_N} ถือว่ายังสรุปไม่ได้</div>`; }
+function rptFilterBar(){ const all=(APPS||[]).filter(a=>a.submittedAt&&a.status!=='cancelled'); const yms=[...new Set(all.map(a=>_ymOf(a.submittedAt)))].sort().reverse();
+ const zoneSel=SESSION.role==='zone'?`<span class="tag" style="background:#eef2ff;color:#3730a3">${(ZONES[SESSION.zone]||{}).name||'เขต'}</span>`:`<select onchange="RPT.zone=this.value;RPT.branch='';go(RPT.tab)"><option value="">ทุกเขต</option>${Object.keys(ZONES).map(z=>`<option value="${z}" ${RPT.zone===z?'selected':''}>${ZONES[z].name}</option>`).join('')}</select>`;
+ const brs=BRANCHES.filter(b=>SESSION.role==='zone'?b.zone===SESSION.zone:(!RPT.zone||b.zone===RPT.zone));
+ const meta=PSNAP._meta; const R=rptRows(); const m=R.filter(r=>r.out).length;
+ return `<div class="rfbar"><label>เดือนที่ส่งเคส</label><select onchange="RPT.ym=this.value;go(RPT.tab)"><option value="">ทุกเดือน (${all.length})</option>${yms.map(y=>`<option value="${y}" ${RPT.ym===y?'selected':''}>${_ymTh(y)}</option>`).join('')}</select>
+  <label>เขต</label>${zoneSel}<label>สาขา</label><select onchange="RPT.branch=this.value;go(RPT.tab)"><option value="">ทุกสาขา</option>${brs.map(b=>`<option value="${b.code}" ${RPT.branch===b.code?'selected':''}>${b.label}</option>`).join('')}</select>
+  <span class="tag" style="background:#eef2ff;color:#3730a3">เคส ${R.length} · ตามผลผ่อนได้ ${m}</span><span style="flex:1"></span>
+  <span class="mut" style="font-size:11.5px">${meta?('ภาพข้อมูลสิ้นเดือนล่าสุด '+_ymTh(meta.ym)+' ('+fmtDT(meta.at)+')'):'ยังไม่มีภาพข้อมูลสิ้นเดือน — ใช้ผลผ่อนปัจจุบันจากพอร์ต'+(WATCH&&WATCH.lastImport?' ('+WATCH.lastImport+')':'')}</span>
+  ${SESSION.role==='analyst'?`<button class="btn btn-line btn-sm" onclick="if(confirm('เก็บภาพผลผ่อนของเคสทั้งหมด ณ ตอนนี้เป็นภาพข้อมูลเดือน ${_ymTh(_ymOf(Date.now()))}?')){const n=snapTake();alert('เก็บแล้ว '+n+' เคส');go(RPT.tab)}">📸 เก็บภาพสิ้นเดือน</button>`:''}
+  <button class="btn btn-line btn-sm" onclick="rptCSV()">⬇ ส่งออก Excel</button><button class="btn btn-line btn-sm" onclick="rptPrint()">🖨 พิมพ์ฉบับย่อ</button><button class="btn btn-sm" style="background:#1e2761;color:#fff" onclick="rptPresent(0)">▣ โหมดนำเสนอ</button></div>`; }
+/* ---- ส่วนที่ 1: การ์ด × ผลผ่อน + คะแนน ---- */
+function rptSec1(R,S){ if(!S.matched) return _empty('ยังไม่มีเคสที่จับคู่กับสัญญาใน H-Cap ได้ — จะเริ่มมีข้อมูลเมื่อสาขาบันทึกเลขสัญญาและ สนญ. นำเข้า balance_report รอบถัดไป');
+ const L=['ok','warn','bad']; const cell=(g,k,bg)=>{ const v=g?g[k]||0:0; return `<div class="c" style="background:${bg}"><b>${v}</b><small>${_pc(v,g?g.n:0)}</small></div>`; };
+ const mx=`<div class="rmx"><div></div><div class="h">ผ่อนปกติ</div><div class="h">ค้าง 1–29 วัน</div><div class="h">ค้างเกิน 30 วัน / ยึดรถ</div>`+L.map(l=>{ const g=S.light[l]; return `<div class="rh">${RPT_LV[l]}<br><span class="mut" style="font-size:11px">${g?g.n:0} เคส</span></div>${cell(g,'ok',l==='ok'?'#dcfce7':l==='warn'?'#f0fdf4':'#fef3c7')}${cell(g,'late',l==='bad'?'#fed7aa':'#fef3c7')}${cell(g,'bad',l==='bad'?'#fecaca':'#fee2e2')}`; }).join('')+`</div>`;
+ const ob=S.okG.n?S.okG.bad/S.okG.n:null, bb=S.badG.n?S.badG.bad/S.badG.n:null;
+ const read=S.lift!=null?`🔴 ค้างเกิน 30 วัน ${_pc(S.badG.bad,S.badG.n)} เทียบ 🟢 ${_pc(S.okG.bad,S.okG.n)} → <b>🔴 ค้างมากกว่า 🟢 ${S.lift} เท่า</b> ${S.lift>=3?'การ์ดแยกดี-เสียได้จริง':'ยังแยกไม่ชัด — รอข้อมูลเพิ่มหรือดูรายกฎ'}`:`ยังคำนวณ "เสี่ยงกว่ากลุ่มดี" ไม่ได้ (กลุ่ม 🟢 หรือ 🔴 ยังไม่มีเคสค้าง/ไม่มีเคสพอ)`;
+ const bandKeys=['<55','55–64','65–74','75–84','85+']; const bmax=Math.max(0.05,...bandKeys.map(k=>{ const g=S.bands[k]; return g&&g.n?g.bad/g.n:0; }));
+ const cal=`<div class="rcal">`+bandKeys.map(k=>{ const g=S.bands[k]; const r=g&&g.n?g.bad/g.n:0; const h=Math.round(r/bmax*150); const col=r>=0.15?'#ef4444':r>=0.08?'#f59e0b':'#22c55e'; return `<div><i style="height:${Math.max(4,h)}px;background:${g?col:'#e2e8f0'}"></i>${k}<br><b>${g?_pc(g.bad,g.n):'—'}</b><br>${g?g.n:0} เคส</div>`; }).join('')+`</div>`;
+ return `<div class="rtwo"><div>${mx}${_rec('อ่านค่า: '+read+(S.misses.length?` · 🟢/🟡 ที่ค้าง ${S.misses.length} เคส = จุดที่ "ตัวแปรยังไม่ครบ" (ดูส่วน 3)`:'')+(S.badG.n&&S.badG.ok?` · 🔴 ที่ขายไปแล้วผ่อนปกติ ${_pc(S.badG.ok,S.badG.n)} → ถ้าสูงมาก บางกฎอาจเข้มเกิน (ดูส่วน 5)`:''))+_nsmall(S.matched)}</div>
+ <div><div class="mut" style="font-size:12px;margin-bottom:4px">คะแนนเครดิต (12 ตัวแปร) เทียบอัตราค้างเกิน 30 วัน — ควรลาดลงจากซ้ายไปขวา</div>${cal}${_rec('ลาดลงสม่ำเสมอ = คะแนนใช้ได้ · ถ้าช่วงคะแนนสูงกลับค้างมากกว่าช่วงต่ำ = น้ำหนักบางตัวแปรผิด (ดูส่วน 4)')}</div></div>`; }
+/* ---- ส่วนที่ 2: สนญ. เทียบระบบ ---- */
+function rptSec2(R,S){ const q=S.quad; const tot=q.agreeGood.n+q.hqWarn.n+q.agreeBad.n+q.hqRelax.n; if(!tot) return _empty('ยังไม่มีเคสที่ สนญ. ส่งคำแนะนำแล้วและตามผลผ่อนได้');
+ const box=(g,bg,t,sub)=>`<div class="rq" style="background:${bg}"><b>${g.n}</b>${t}<div class="rr">ค้างเกิน 30 วัน <b>${_pc(g.bad,g.n)}</b> — ${sub}</div></div>`;
+ const lw=_lift(q.hqWarn.bad,q.hqWarn.n,q.agreeGood.bad,q.agreeGood.n);
+ return `<div class="rquad">${box(q.agreeGood,'#f0fdf4','ระบบบอกดี (🟢/🟡) · สนญ. ไม่มีข้อเสนอแนะ','เห็นตรงกันว่าดี')}${box(q.hqWarn,'#fef3c7','ระบบบอกดี (🟢/🟡) · <b>แต่ สนญ. เตือนเพิ่ม</b>','สนญ. เห็นสิ่งที่ระบบไม่เห็น → ตัวแปรที่ขาด (ดูส่วน 2ข)')}${box(q.agreeBad,'#fee2e2','ระบบบอกเสี่ยง 🔴 · สนญ. เห็นด้วยว่าเสี่ยง','ขายสวนไฟ — ดูเหตุผลที่สาขาให้')}${box(q.hqRelax,'#eef2ff','ระบบบอกเสี่ยง 🔴 · <b>แต่ สนญ. บอกรับได้</b>','ถ้าค้างต่ำ = กฎที่ทำให้ 🔴 กลุ่มนี้เข้มเกิน')}</div>`
+ +_rec(`ตารางนี้ตอบว่า "คำแนะนำของ สนญ. เพิ่มคุณค่าจากระบบไหม" — กลุ่ม "สนญ. เตือนเพิ่ม" ค้าง${lw!=null?('มากกว่ากลุ่มที่ไม่เตือน <b>'+lw+' เท่า</b>'):'(ยังเทียบไม่ได้)'} → ${lw!=null&&lw>=1.5?'สนญ. เห็นสิ่งที่ระบบยังไม่มีตัวแปร นำคำที่ สนญ. พิมพ์บ่อยมาเป็นตัวแปรใหม่':'ยังไม่เห็นความต่างชัด รอข้อมูลเพิ่ม'}`+_nsmall(tot)); }
+/* ---- ส่วนที่ 2ข: คำที่ สนญ. พิมพ์ ---- */
+function rptSec2b(R){ const W=rptWords(R); if(!W.total) return _empty('ยังไม่มีเคสในกลุ่ม "ระบบบอกดีแต่ สนญ. เตือนเพิ่ม" ที่ตามผลผ่อนได้');
+ const rows=W.rows.map(x=>`<tr><td>${x.label}</td><td class="num">${x.n}</td><td class="num ${x.n&&x.bad/x.n>=0.12?'bad':x.n&&x.bad/x.n>=0.08?'mid':''}">${_pc(x.bad,x.n)}</td></tr>`).join('');
+ return `<div class="rtwo"><div><table class="rtb"><tr><th>เรื่องที่ สนญ. เขียนบ่อยในกลุ่ม "ระบบบอกดี แต่ สนญ. เตือนเพิ่ม" (${W.total} เคส)</th><th class="num">กี่เคส</th><th class="num">ค้างเกิน 30 วัน ในเคสที่มีเรื่องนี้</th></tr>${rows||'<tr><td colspan="3" class="mut">ยังจับคำสำคัญไม่ได้</td></tr>'}<tr><td>"ระวัง" / สั้นมาก ไม่ระบุว่าเห็นอะไร</td><td class="num">${W.vague}</td><td class="mut">ใช้ต่อไม่ได้ — ไม่รู้ว่าเห็นอะไร</td></tr></table></div>
+ <div class="rkpi b3" style="height:100%"><div class="l" style="font-weight:700;font-size:13px">📝 ขอความร่วมมือ สนญ. ตอนพิมพ์คำแนะนำ</div><div class="d" style="font-size:12px;line-height:1.6;margin-top:6px">เขียนเป็นประโยคที่บอก <b>"เห็นอะไร"</b> ไม่ใช่แค่ "ระวัง" เช่น<br>✅ "ที่อยู่ปัจจุบันเป็นบ้านเช่า อยู่มา 3 เดือน ควรขอเบอร์เจ้าของบ้าน"<br>❌ "ระวังเรื่องที่อยู่"<br><br>ระบบนับเรื่องที่ สนญ. พิมพ์ในกลุ่มที่ค้างจริง แล้วเสนอเป็นตัวแปรใหม่ให้อัตโนมัติ</div></div></div>`; }
+/* ---- ส่วนที่ 2ค: ความน่าเชื่อถือของข้อมูลที่กรอก รายเขต ---- */
+function rptSec2c(R){ const D=rptDQ(R); if(!D.length) return _empty('ยังไม่มีข้อมูล');
+ const rows=D.map(x=>{ const p=x.avgPct; const cls=p==null?'':p>0.25?'bad':p>0.15?'mid':'ok'; const read=p==null?'ไม่มีข้อมูล H-Cap เทียบ':p>0.25?'กรอกไม่ตรง → แก้ที่กระบวนการสาขา ไม่ใช่เกณฑ์':p>0.15?'เริ่มสูง — ติดตาม':'ข้อมูลน่าเชื่อถือ';
+  return `<tr><td>${(ZONES[x.k]||{}).name||x.k}</td><td class="num">${x.n}</td><td class="num ${cls}">${p==null?'—':(p>=0?'+':'')+Math.round(p*100)+'%'}</td><td class="num">${_pc(x.hi50,x.cmp)}</td><td class="num">${_pc(x.occDiff,x.n)}</td><td class="num">${_pc(x.hqWarn,x.sent)}</td><td class="${cls}">${read}</td></tr>`; }).join('');
+ return `<table class="rtb"><tr><th>เขต</th><th class="num">เคส</th><th class="num">รายได้ที่กรอก สูงกว่าที่ H-Cap เคยบันทึก (เฉลี่ย)</th><th class="num">กรอกสูงกว่า 50% ขึ้นไป</th><th class="num">อาชีพที่กรอก ต่างจาก H-Cap</th><th class="num">สนญ. ต้องเตือนเพิ่ม</th><th>อ่านค่า</th></tr>${rows}</table>`+_rec('ตารางนี้แยก "เกณฑ์ผิด" ออกจาก "ข้อมูลที่กรอกไม่ตรง" — เขตที่กรอกรายได้สูงกว่าที่ H-Cap เคยบันทึกมาก การ์ดจะดูเหมือนพยากรณ์ผิดทั้งที่ข้อมูลเข้าไม่ตรง ต้องอบรม/ตรวจสาขาก่อน ไม่ควรเอาเขตนี้มาปรับเกณฑ์ (เทียบได้เฉพาะลูกค้าเก่าที่มีข้อมูลใน Customer_report)'); }
+/* ---- ส่วนที่ 3: ตัวแปรครบไหม — เคสที่การ์ดพลาด ---- */
+function rptSec3(R,S){ const M=S.misses; if(!M.length) return _empty('ยังไม่มีเคส 🟢/🟡 ที่ค้างเกิน 30 วัน — ดีมาก หรือยังไม่ถึงงวดที่จะเห็นผล');
+ const okR=R.filter(r=>r.out&&!r.bad); const freq=(list,f)=>{ const g={}; list.forEach(r=>{ const ks=f(r); [...new Set(ks)].forEach(k=>g[k]=(g[k]||0)+1); }); return g; };
+ const fm=freq(M,r=>r.rules.map(x=>x.k)), fo=freq(okR,r=>r.rules.map(x=>x.k));
+ const traits=Object.keys(fm).map(k=>({k,n:fm[k],pm:fm[k]/M.length,po:okR.length?(fo[k]||0)/okR.length:0})).filter(x=>x.n>=2&&x.pm>=x.po*2).sort((a,b)=>b.n-a.n).slice(0,8);
+ const wm=freq(M.filter(r=>r.advText),r=>RPT_KW.filter(([l,re])=>re.test(r.advText)).map(([l])=>'สนญ. เขียนถึง: '+l)), wo=freq(okR.filter(r=>r.advText),r=>RPT_KW.filter(([l,re])=>re.test(r.advText)).map(([l])=>'สนญ. เขียนถึง: '+l));
+ const traits2=Object.keys(wm).map(k=>({k,n:wm[k],pm:wm[k]/M.length,po:okR.length?(wo[k]||0)/okR.length:0})).filter(x=>x.n>=2).sort((a,b)=>b.n-a.n).slice(0,5);
+ const brs={}; M.forEach(r=>brs[r.br]=(brs[r.br]||0)+1); const topBr=Object.entries(brs).sort((a,b)=>b[1]-a[1])[0];
+ const rows=traits.concat(traits2).map(x=>`<tr><td>${_esc(x.k)}</td><td class="num">${x.n}/${M.length}</td><td class="num">${Math.round(x.po*100)}%</td><td>${x.k.startsWith('สนญ.')?'<span class="tag" style="background:#fee2e2;color:#991b1b">ไม่มี → ตัวแปรใหม่</span>':'<span class="tag" style="background:#fef3c7;color:#92400e">มี แต่เป็นแค่ 🟡</span>'}</td></tr>`).join('');
+ const list=M.slice(0,12).map(r=>`<span class="tag" style="background:#f1f5f9;color:#334155;cursor:pointer" onclick="openDetail('${r.a.id}')">${r.a.id} · ${(BRANCHES.find(b=>b.code===r.br)||{}).label||r.br} · ${RPT_LV[r.light].slice(0,2)}</span>`).join(' ');
+ return `<table class="rtb"><tr><th>ลักษณะร่วมของเคส 🟢/🟡 ที่ค้างเกิน 30 วัน (${M.length} เคส)</th><th class="num">พบใน</th><th class="num">พบในเคสที่ผ่อนปกติ</th><th>ระบบมีตัวแปรนี้?</th></tr>${rows||'<tr><td colspan="4" class="mut">ยังไม่พบลักษณะร่วมที่ชัด (ต้องพบบ่อยกว่าเคสปกติอย่างน้อย 2 เท่า)</td></tr>'}${topBr&&topBr[1]>=3?`<tr><td>สาขาเดียวกัน ${(BRANCHES.find(b=>b.code===topBr[0])||{}).label||topBr[0]} (${topBr[1]} เคส)</td><td class="num">${topBr[1]}/${M.length}</td><td></td><td><span class="tag" style="background:#f1f5f9;color:#475569">ตรวจกระบวนการสาขา ไม่ใช่เกณฑ์</span></td></tr>`:''}</table>
+ <div style="margin-top:8px;font-size:12px"><b>เคสที่การ์ดพลาด:</b> ${list}${M.length>12?' … อีก '+(M.length-12):''}</div>`+_rec('"ตัวแปรครบไหม" วัดจากเคสที่การ์ดบอกดีแต่ค้างจริง: ดึงกฎที่เตือน (ระดับ 🟡) และเรื่องที่ สนญ. เขียน ที่พบบ่อยกว่าเคสปกติอย่างชัด → รายชื่อตัวแปรที่ควรเพิ่มหรือยกระดับในเฟส 2'); }
+/* ---- ส่วนที่ 4: 12 ตัวแปร ---- */
+function rptRuleNote(){ return `<div class="rkpi b1" style="margin-bottom:10px"><div class="l" style="font-weight:700;font-size:12.5px">หลักการปรับเกณฑ์</div><div class="d" style="font-size:12px;line-height:1.6">ปรับ <b>น้ำหนักตัวแปร · กฎการ์ด · คะแนนอาชีพ</b> จากข้อมูล<b>ทั้งบริษัท</b>เท่านั้น (30 เคส/เขต/เดือน ไม่พอสำหรับปรับแยกเขต) · ตัวเลขรายเขต/รายสาขาใช้เพื่อ<b>หาความผิดปกติ</b> · ข้อยกเว้นเดียวคือ <b>ค่าอ้างอิงรายได้</b> ที่ต้องแยกตามพื้นที่จริง</div></div>`; }
+function rptSec4(R){ const V=rptVars(R); if(!V.length) return _empty('ยังไม่มีเคสที่ตามผลผ่อนได้ (องค์ประกอบคะแนนเก็บอยู่ในเคสแล้ว รอผลผ่อน)');
+ const n=V[0].n; const rows=V.map(v=>{ const read=v.lift==null?'—':v.lift>=3?'<span class="ok">แรง — คงหรือเพิ่มน้ำหนัก</span>':v.lift>=1.5?'<span class="ok">ใช้ได้</span>':v.lift>=1.2?'<span class="mid">อ่อน</span>':'<span class="bad">แทบไม่แยก — น้ำหนักเกินจริง</span>';
+  const prop=v.lift==null?v.w:v.lift>=3?Math.min(25,v.w+3):v.lift>=1.5?v.w:v.lift>=1.2?Math.max(2,v.w-2):Math.max(2,Math.round(v.w/2));
+  return `<tr><td>${_esc(v.label)} (${v.w})</td><td>${v.lo==null?'—':Math.round(v.lo*100)+'%'} ▸ ${v.mid==null?'—':Math.round(v.mid*100)+'%'} ▸ ${v.hi==null?'—':Math.round(v.hi*100)+'%'}</td><td class="num lift ${_liftCls(v.lift)}">${_liftTxt(v.lift)}</td><td>${read}</td><td class="num">${prop}${prop!==v.w?' <span class="mut">(จาก '+v.w+')</span>':''}</td></tr>`; }).join('');
+ return rptRuleNote()+`<table class="rtb"><tr><th>ตัวแปร (น้ำหนักตอนนี้)</th><th>ค้างเกิน 30 วัน เมื่อคะแนนตัวแปรนี้ ต่ำ ▸ กลาง ▸ สูง</th><th class="num">เสี่ยงกว่ากลุ่มดี (เท่า)</th><th>อ่านค่า</th><th class="num">เสนอน้ำหนัก</th></tr>${rows}</table>`+_rec(`แบ่งเคสตามคะแนนของตัวแปรนั้นเป็น 3 กลุ่มเท่า ๆ กัน แล้วดูอัตราค้างของกลุ่มคะแนนต่ำเทียบกลุ่มคะแนนสูง · คำนวณจาก ${n} เคส`+_nsmall(n)+' · ข้อเสนอเป็นแนวทางเบื้องต้น ตัดสินใจจริงที่ "โต๊ะปรับเกณฑ์"'); }
+/* ---- ส่วนที่ 5: กฎการ์ด ---- */
+function rptSec5(R){ const Q=rptRules(R); if(!Q.length) return _empty('ยังไม่มีกฎที่เตือนในเคสที่ตามผลผ่อนได้ (รหัสกฎเริ่มเก็บตั้งแต่ build 0915-B)');
+ const rows=Q.slice(0,14).map(x=>{ const ic=x.lv==='bad'?'🔴':'🟡'; let str='รอ',prop='<span class="tag" style="background:#f1f5f9;color:#475569">สะสมต่อ</span>';
+  if(x.n>=RPT_MIN_N&&x.lift!=null){ if(x.lift>=3){ str='<span class="ok">พอดี</span>'; prop=x.lv==='bad'?'<span class="tag" style="background:#f1f5f9;color:#475569">คง 🔴</span>':'<span class="tag" style="background:#dbeafe;color:#1e40af">ยกเป็น 🔴</span>'; if(x.lv==='warn') str='<span class="mid">หย่อน</span>'; }
+   else if(x.lift>=1.5){ str='<span class="ok">พอดี</span>'; prop='<span class="tag" style="background:#f1f5f9;color:#475569">คง</span>'; }
+   else if(x.lift>=1.2){ str='<span class="mid">เข้มเกินเล็กน้อย</span>'; prop=x.lv==='bad'?'<span class="tag" style="background:#fef3c7;color:#92400e">ลดเป็น 🟡</span>':'<span class="tag" style="background:#f1f5f9;color:#475569">คง</span>'; }
+   else { str='<span class="bad">ไม่มีผล</span>'; prop=x.lv==='bad'?'<span class="tag" style="background:#fef3c7;color:#92400e">ลดเป็น 🟡</span>':'<span class="tag" style="background:#fef3c7;color:#92400e">ลดเป็น "แจ้งเพื่อทราบ"</span>'; } }
+  return `<tr><td>${ic} ${_esc(x.k)}</td><td class="num">${x.n}</td><td>${x.rateF==null?'—':Math.round(x.rateF*100)+'%'} เทียบ ${x.rateN==null?'—':Math.round(x.rateN*100)+'%'}</td><td class="num lift ${_liftCls(x.lift)}">${x.n>=RPT_MIN_N?_liftTxt(x.lift):'— (เคสน้อย)'}</td><td>${str}</td><td>${prop}</td></tr>`; }).join('');
+ return `<table class="rtb"><tr><th>กฎที่ทำให้เกิด 🔴 / 🟡</th><th class="num">เตือน (เคส)</th><th>ค้างเกิน 30 วัน เมื่อเตือน เทียบ ไม่เตือน</th><th class="num">เสี่ยงกว่ากลุ่มดี (เท่า)</th><th>ความเข้ม</th><th>ข้อเสนอ</th></tr>${rows}</table>`+_rec('กฎที่เตือนแล้วค้างจริงมากกว่าไม่เตือนอย่างน้อย 3 เท่า = พอดี/หย่อน (ถ้าเป็น 🟡 ควรยกเป็น 🔴) · ใกล้ 1 เท่า = เตือนไปก็ไม่ต่างจากไม่เตือน · ต้องเตือนอย่างน้อย '+RPT_MIN_N+' เคสจึงสรุป'); }
+/* ---- ส่วนที่ 6: คะแนนอาชีพ + รายได้ ---- */
+function rptSec6(R){ const O=rptOcc(R); if(!O.length) return _empty('ยังไม่มีข้อมูล');
+ const all=R.filter(r=>r.out); const base=all.length?all.filter(r=>r.bad).length/all.length:0;
+ const rows=O.slice(0,12).map(x=>{ let str='—',prop='<span class="tag" style="background:#f1f5f9;color:#475569">รอ</span>'; const hasSc=x.sc!=null;
+  if(x.m>=RPT_MIN_N&&x.rate!=null&&base){ const rel=x.rate/base; if(hasSc){ if(rel<=0.6&&x.sc<80){ str='<span class="mid">ตั้งต่ำไป</span>'; prop=`<span class="tag" style="background:#dbeafe;color:#1e40af">${x.sc} → ${Math.min(95,x.sc+7)}</span>`; } else if(rel>=1.6&&x.sc>=50){ str='<span class="mid">ตั้งสูงไป</span>'; prop=`<span class="tag" style="background:#dbeafe;color:#1e40af">${x.sc} → ${Math.max(30,x.sc-6)}</span>`; } else { str='<span class="ok">ตรง</span>'; prop='<span class="tag" style="background:#f1f5f9;color:#475569">คง</span>'; } } }
+  else if(x.m<RPT_MIN_N) str=`<span class="mut">เคสน้อยกว่า ${RPT_MIN_N}</span>`;
+  const diff=(x.p50&&x.hc50)?Math.round((x.p50-x.hc50)/x.hc50*100):null;
+  return `<tr><td>${_esc(x.k)}${hasSc?' ('+x.sc+')':''}</td><td class="num">${x.n}</td><td class="num ${x.rate!=null&&x.rate>=0.12?'bad':x.rate!=null&&x.rate<=0.04?'ok':''}">${x.m?_pc(x.bad,x.m):'—'}</td><td>${str}</td><td>${x.p25!=null?`${fmt(x.p25)} / <b>${fmt(x.p50)}</b> / ${fmt(x.p75)}`:'—'}</td><td>${x.hc50?fmt(x.hc50)+(diff!=null&&Math.abs(diff)>=30?` <span class="tag" style="background:#fef3c7;color:#92400e">กรอก${diff>0?'สูง':'ต่ำ'}กว่าเคย ${diff>0?'+':''}${diff}%</span>`:''):'—'}</td><td>${prop}</td></tr>`; }).join('');
+ return `<table class="rtb"><tr><th>กลุ่มอาชีพ (คะแนนตั้ง)</th><th class="num">จำนวนเคส</th><th class="num">ค้างเกิน 30 วัน</th><th>ความเข้มคะแนน</th><th>รายได้ที่กรอก ต่ำสุด 1 ใน 4 / ค่ากลาง / สูงสุด 1 ใน 4</th><th>H-Cap เคยบันทึก (ค่ากลาง)</th><th>ข้อเสนอ</th></tr>${rows}</table>`+_rec(`เทียบอัตราค้างของกลุ่มอาชีพกับอัตราค้างรวม (${_pc(Math.round(base*1000),1000)}) · อาชีพที่ค้างน้อยกว่าครึ่งของค่ารวมแต่คะแนนตั้งต่ำ = ตั้งต่ำไป · ค้างมากกว่า 1.6 เท่าแต่คะแนนสูง = ตั้งสูงไป · แสดงเมื่อจำนวนเคสตามผลได้ ≥ ${RPT_MIN_N} · เกษตร/ยางพารา ต้องดูข้ามฤดู (12 เดือน) ก่อนสรุป`); }
+/* ---- ส่วนที่ 7: คลังรายได้ อาชีพ × เขต × สาขา ---- */
+function rptSec7(R){ const O=rptOcc(R); if(!O.length) return _empty('ยังไม่มีข้อมูล'); const occ=RPT.occ&&O.some(o=>o.k===RPT.occ)?RPT.occ:O[0].k; const rows=rptIncomeArea(R,occ);
+ const sel=`<select onchange="RPT.occ=this.value;go(RPT.tab)" style="max-width:320px">${O.map(o=>`<option value="${_esc(o.k)}" ${o.k===occ?'selected':''}>${_esc(o.k)} (${o.n})</option>`).join('')}</select>`;
+ const ref=(typeof INCREF!=='undefined'&&INCREF&&INCREF.base)?null:null;
+ const tr=rows.map(x=>{ const pad=x.lvl*18; const prop=x.n>=RPT_MIN_N&&x.lvl>0?`<span class="nb">${fmt(x.p10)} – ${fmt(x.p90)}</span> <button class="btn btn-line btn-sm" onclick="alert('เฟส 2: บันทึกเป็นค่าอ้างอิงรายพื้นที่ (ยังไม่เปิดใช้)')">รับ</button>`:(x.lvl>0?`<span class="mut">เคสน้อยกว่า ${RPT_MIN_N} ใช้ค่าเขต/บริษัท</span>`:'—');
+  return `<tr ${x.lvl===0?'style="background:#f8fafc;font-weight:700"':''}><td style="padding-left:${8+pad}px">${_esc(x.k)}</td><td class="num">${x.n}</td><td class="nb">${x.p25!=null?`${fmt(x.p25)} / <b>${fmt(x.p50)}</b> / ${fmt(x.p75)}`:'—'}</td><td class="num">${x.m?_pc(x.bad,x.m):'—'}</td><td>${prop}</td></tr>`; }).join('');
+ return `<div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><label class="mut" style="font-size:12px">อาชีพ:</label>${sel}</div><table class="rtb"><tr><th>อาชีพ × พื้นที่</th><th class="num">จำนวนเคส</th><th>รายได้ที่กรอก ต่ำสุด 1 ใน 4 / ค่ากลาง / สูงสุด 1 ใน 4</th><th class="num">ค้างเกิน 30 วัน</th><th>เสนอค่าอ้างอิงพื้นที่ (ครอบคลุม 80%)</th></tr>${tr}</table>`+_rec('ระบบเก็บ "รายได้ที่กรอก + อาชีพ + ตำบล/อำเภอ/จังหวัด + สาขา + เขต + เดือน + ผลผ่อน" ทุกเคส → ตารางนี้สร้างได้ทุกอาชีพ ทุกระดับพื้นที่ · ค่าอ้างอิงรายพื้นที่จะทำให้ตัวแปร "รายได้เทียบค่าอ้างอิง" แยกดี-เสียได้แรงขึ้น'); }
+/* ---- สรุปข้อเสนออัตโนมัติ ---- */
+function rptSummary(R,S){ const V=rptVars(R), Q=rptRules(R); const parts=[];
+ Q.filter(x=>x.n>=RPT_MIN_N&&x.lift!=null).forEach(x=>{ if(x.lv==='warn'&&x.lift>=3) parts.push(`ยก "${x.k}" เป็น 🔴`); else if(x.lv==='bad'&&x.lift<1.2) parts.push(`ลด "${x.k}" เป็น 🟡`); else if(x.lv==='warn'&&x.lift<1.2) parts.push(`ลด "${x.k}" เป็นแจ้งเพื่อทราบ`); });
+ V.filter(v=>v.n>=RPT_MIN_N&&v.lift!=null).forEach(v=>{ if(v.lift>=3&&v.w<25) parts.push(`น้ำหนัก ${v.label} ${v.w}→${Math.min(25,v.w+3)}`); else if(v.lift<1.2) parts.push(`น้ำหนัก ${v.label} ${v.w}→${Math.max(2,Math.round(v.w/2))}`); });
+ const txt=parts.length?parts.join(' · '):'ยังไม่มีข้อเสนอที่ข้อมูลรองรับพอ (ต้องมีเคสที่ตามผลผ่อนได้อย่างน้อย '+RPT_MIN_N+' เคสต่อรายการ) — ข้อมูลกำลังสะสม';
+ return `<div class="card" style="background:#1e2761;color:#fff"><b>สรุปข้อเสนอเกณฑ์รุ่นถัดไป (สร้างอัตโนมัติจากส่วน 4–7):</b> ${_esc(txt)} &nbsp; <button class="btn btn-sm" style="background:#fff;color:#1e2761" onclick="go('rpt_tune')">⚖️ ไปโต๊ะปรับเกณฑ์</button></div>`; }
+/* ---- โครงหน้า: ส่วน + พับ/กาง ---- */
+function rptSections(R,S){ return [
+ {id:'1',n:'1',t:'การ์ด 3 มิติ และคะแนน เทียบผลผ่อนจริง',open:true,sum:()=>S.matched?`ตามผลได้ ${S.matched} เคส · 🔴 ค้างมากกว่า 🟢 ${S.lift!=null?S.lift+' เท่า':'—'}`:'รอข้อมูล',f:()=>rptSec1(R,S)},
+ {id:'2',n:'2',t:'คำแนะนำ สนญ. เทียบระบบ — สนญ. เพิ่มคุณค่าตรงไหน',open:true,sum:()=>`สนญ. เตือนเพิ่ม ${S.quad.hqWarn.n} · เห็นตรงกัน ${S.quad.agreeGood.n}`,f:()=>rptSec2(R,S)},
+ {id:'2b',n:'2ข',t:'สิ่งที่ สนญ. เห็นแต่ระบบยังไม่มีตัวแปร — จากคำที่ สนญ. พิมพ์',sum:()=>{ const W=rptWords(R); return W.total?`${W.rows.length} เรื่องที่พบบ่อย · เขียนสั้น/ไม่ระบุ ${W.vague} เคส`:'รอข้อมูล'; },f:()=>rptSec2b(R)},
+ {id:'2c',n:'2ค',t:'ความน่าเชื่อถือของข้อมูลที่กรอก รายเขต (แยก "เกณฑ์ผิด" ออกจาก "กรอกไม่ตรง")',sum:()=>{ const D=rptDQ(R).filter(x=>x.avgPct!=null); const hi=D.filter(x=>x.avgPct>0.25); return D.length?(hi.length?`${hi.length} เขตกรอกรายได้สูงกว่า H-Cap เกิน 25%`:'ทุกเขตอยู่ในเกณฑ์ปกติ'):'ยังไม่มีข้อมูลเทียบ'; },f:()=>rptSec2c(R)},
+ {id:'3',n:'3',t:'ตัวแปรครบไหม — เคสที่การ์ดบอกดีแต่ค้างจริง มีอะไรร่วมกัน',sum:()=>`การ์ดพลาด ${S.misses.length} เคส`,f:()=>rptSec3(R,S)},
+ {id:'4',n:'4',t:'ความเข้มของ 12 ตัวแปร',sum:()=>{ const V=rptVars(R).filter(v=>v.lift!=null); return V.length?`แรง ${V.filter(v=>v.lift>=3).length} · ใช้ได้ ${V.filter(v=>v.lift>=1.5&&v.lift<3).length} · อ่อน ${V.filter(v=>v.lift<1.5).length}`:'รอข้อมูล'; },f:()=>rptSec4(R)},
+ {id:'5',n:'5',t:'ความเข้มของกฎการ์ด (ที่ทำให้ 🔴/🟡)',sum:()=>{ const Q=rptRules(R); return Q.length?`กฎที่เตือน ${Q.length} · สรุปได้ ${Q.filter(x=>x.n>=RPT_MIN_N).length}`:'รอข้อมูล'; },f:()=>rptSec5(R)},
+ {id:'6',n:'6',t:'คะแนนอาชีพ และรายได้ที่กรอกจริง',sum:()=>{ const O=rptOcc(R); return `${O.length} กลุ่มอาชีพ · สรุปได้ ${O.filter(o=>o.m>=RPT_MIN_N).length}`; },f:()=>rptSec6(R)},
+ {id:'7',n:'7',t:'คลังรายได้จริง อาชีพ × เขต × สาขา',sum:()=>'เลือกอาชีพเพื่อดูรายพื้นที่',f:()=>rptSec7(R)} ]; }
+function rptToggle(id){ RPT.open[id]=!RPT.open[id]; go(RPT.tab); }
+function rptExpandAll(){ rptSections([], {matched:0}).forEach(s=>RPT.open[s.id]=true); go(RPT.tab); }
+function rptSecCard(s){ const open=s.open||RPT.open[s.id]; let sum=''; try{ sum=s.sum(); }catch(e){}
+ if(!open) return `<div class="card rsec" style="padding:9px 14px"><h2 style="margin:0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:14px" onclick="rptToggle('${s.id}')"><span><span class="rn">${s.n}</span>${s.t}</span><span class="mut" style="font-size:11.5px;flex:1;margin:0 14px;text-align:right">${_esc(sum)}</span><span class="mut">▸ กางดู</span></h2></div>`;
+ let body=''; try{ body=s.f(); }catch(e){ body=_empty('คำนวณไม่ได้: '+_esc(e.message)); }
+ return `<div class="card rsec"><h2 style="display:flex;justify-content:space-between;align-items:center;font-size:14px;margin:0 0 8px"><span><span class="rn">${s.n}</span>${s.t}</span>${s.open?'':`<span class="mut" style="cursor:pointer;font-size:12px" onclick="rptToggle('${s.id}')">▾ พับ</span>`}</h2>${body}</div>`; }
+function rptKpis(R,S){ return `<div class="rkpis">${_kpi('b1',S.matched,'เคสที่ตามผลผ่อนได้',`จาก ${S.n} เคส · จับคู่ H-Cap ${_pc(S.matched,S.n)}`)}${_kpi('b2',S.lift!=null?S.lift+' เท่า':'—','🔴 ค้างมากกว่า 🟢','เป้า อย่างน้อย 3 เท่า')}${_kpi('b3',S.misses.length,'เคส 🟢/🟡 ที่ค้าง (การ์ดพลาด)',S.okG.n?_pc(S.misses.filter(r=>r.light==='ok').length,S.okG.n)+' ของ 🟢':'')}${_kpi('b4',S.badG.n?_pc(S.badG.ok,S.badG.n):'—','🔴 ที่ขายแล้วผ่อนปกติ',`ขาย ${S.against} เคสทั้งที่ 🔴`)}${_kpi('b5',S.sent?_pc(S.quad.hqWarn.n+S.quad.agreeBad.n,S.sent):'—','สนญ. มีคำแนะนำจริง',`ส่งก่อนขาย ${_pc(S.n-S.before,S.n)} · ไม่ขาย/ยกเลิก ${S.notsold}`)}</div>`; }
+/* ---- หน้า 1: รายงานประจำเดือน ---- */
+function viewRptMonth(){ RPT.tab='rpt_month'; const R=rptRows(); const S=rptStats(R); const secs=rptSections(R,S);
+ return dashHero('📊','รายงานประเมินเกณฑ์ประจำเดือน','ระบบแนะนำอะไร · สนญ. แนะนำอะไร · ลูกค้าผ่อนจริงอย่างไร — ตัวกรองด้านบนมีผลทุกส่วน · ส่วน 3–7 พับไว้ กดกางเฉพาะที่จะคุย')
+ +rptFilterBar()+`<div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap"><button class="btn btn-line btn-sm" onclick="rptExpandAll()">กางทั้งหมด</button><button class="btn btn-line btn-sm" onclick="RPT.open={};go(RPT.tab)">พับทั้งหมด</button></div>`+rptGloss()+rptKpis(R,S)+secs.map(rptSecCard).join('')+rptSummary(R,S); }
+/* ---- หน้า 2: เจาะลึก เขต → สาขา ---- */
+function viewRptZone(){ RPT.tab='rpt_zone'; const R=rptRows(); const S=rptStats(R);
+ const grp=(f)=>{ const g={}; R.forEach(r=>{ const k=f(r); if(!k) return; g[k]=g[k]||[]; g[k].push(r); }); return g; };
+ const rowOf=(k,label,list,click)=>{ const s=rptStats(list); const n=list.length; const lights={ok:list.filter(r=>r.light==='ok').length,warn:list.filter(r=>r.light==='warn').length,bad:list.filter(r=>r.light==='bad').length};
+  const dq=rptDQ(list)[0]; return `<tr ${click?`class="click" onclick="${click}"`:''}><td><b>${_esc(label)}</b>${click?' <span class="mut" style="font-size:11px">▸</span>':''}</td><td class="num">${n}</td><td>${_bar(n?lights.ok/n*100:0,n?lights.warn/n*100:0,n?lights.bad/n*100:0,n?(n-lights.ok-lights.warn-lights.bad)/n*100:0)}</td><td class="num">${s.matched}</td><td class="num">${s.okG.n?_pc(s.okG.bad,s.okG.n):'—'}</td><td class="num">${s.badG.n?_pc(s.badG.bad,s.badG.n):'—'}</td><td class="num lift ${_liftCls(s.lift)}">${_liftTxt(s.lift)}</td><td class="num">${s.sent?_pc(s.quad.hqWarn.n,s.sent):'—'}</td><td class="num">${s.against}</td><td class="num">${dq&&dq.avgPct!=null?((dq.avgPct>=0?'+':'')+Math.round(dq.avgPct*100)+'%'):'—'}</td><td class="num">${_pc(n-s.before,n)}</td></tr>`; };
+ const head=`<tr><th>${RPT.zone?'สาขา':'เขต'}</th><th class="num">เคส</th><th>สัดส่วนไฟ 🟢/🟡/🔴</th><th class="num">ตามผลได้</th><th class="num">ค้างเกิน 30 วัน ของ 🟢</th><th class="num">ของ 🔴</th><th class="num">เสี่ยงกว่ากลุ่มดี (เท่า)</th><th class="num">สนญ. เตือนเพิ่ม</th><th class="num">ขายสวน 🔴</th><th class="num">รายได้กรอก เทียบ H-Cap</th><th class="num">ส่งก่อนขาย</th></tr>`;
+ let table; if(!RPT.zone&&SESSION.role!=='zone'){ const G=grp(r=>r.zone); table=Object.keys(G).sort().map(z=>rowOf(z,(ZONES[z]||{}).name||z,G[z],`RPT.zone='${z}';go('rpt_zone')`)).join(''); }
+ else { const G=grp(r=>r.br); table=Object.keys(G).sort().map(b=>rowOf(b,(BRANCHES.find(x=>x.code===b)||{}).label||b,G[b],`RPT.branch='${b}';go('rpt_zone')`)).join(''); }
+ const crumb=`<div style="font-size:12.5px;margin-bottom:8px"><span class="${RPT.zone?'click':''}" style="color:#1d4ed8;cursor:pointer" onclick="RPT.zone='';RPT.branch='';go('rpt_zone')">🏢 ทั้งบริษัท</span>${RPT.zone?' › <span style="color:#1d4ed8;cursor:pointer" onclick="RPT.branch=\'\';go(\'rpt_zone\')">'+((ZONES[RPT.zone]||{}).name||RPT.zone)+'</span>':''}${RPT.branch?' › <b>'+((BRANCHES.find(x=>x.code===RPT.branch)||{}).label||RPT.branch)+'</b>':''}</div>`;
+ const secs=rptSections(R,S).filter(s=>['1','2','2c','3','7'].includes(s.id)).map(s=>Object.assign({},s,{open:s.id==='1'}));
+ return dashHero('🗂','เจาะลึก เขต → สาขา','เปรียบเทียบทุกเขตในตารางเดียว คลิกเขตเพื่อดูสาขา คลิกสาขาเพื่อดูภาพของสาขานั้น · ส่วนปรับเกณฑ์คิดจากทั้งบริษัทเสมอ (อยู่ที่ "โต๊ะปรับเกณฑ์")')
+ +rptFilterBar()+`<div class="card">${crumb}<div style="overflow-x:auto"><table class="rtb">${head}${table||'<tr><td colspan="11" class="mut" style="text-align:center">ยังไม่มีเคส</td></tr>'}</table></div>${_rec('ใช้ตารางนี้เพื่อหา "ความผิดปกติ": เขต/สาขาที่ 🟢 ค้างสูง, ขายสวน 🔴 บ่อย, หรือกรอกรายได้สูงกว่า H-Cap มาก — ก่อนสรุปว่าเกณฑ์ผิด ให้ดูว่าเป็นปัญหาการกรอกหรือกระบวนการของที่นั่นก่อน')}</div>`+secs.map(rptSecCard).join(''); }
+/* ---- หน้า 3: โต๊ะปรับเกณฑ์ (สนญ.) ---- */
+function viewRptTune(){ RPT.tab='rpt_tune'; if(!(SESSION&&SESSION.role==='analyst')) return dashHero('🔒','เฉพาะสำนักงานใหญ่','โต๊ะปรับเกณฑ์เปิดให้เฉพาะ สนญ.');
+ const keepZone=RPT.zone, keepBr=RPT.branch; RPT.zone=''; RPT.branch=''; const R=rptRows(); RPT.zone=keepZone; RPT.branch=keepBr; const S=rptStats(R);
+ const W=(typeof CFG!=='undefined'&&CFG&&CFG.weights)||null;
+ const V=rptVars(R); const wi=V.map(v=>`<tr><td>${_esc(v.label)}</td><td class="num">${v.w}</td><td class="num lift ${_liftCls(v.lift)}">${_liftTxt(v.lift)}</td><td class="num"><input type="number" id="tw-${v.key}" value="${v.w}" min="0" max="30" style="width:64px" oninput="rptWhatIf()"></td></tr>`).join('');
+ const secs=rptSections(R,S).filter(s=>['4','5','6','7','3','2b'].includes(s.id)).map(s=>Object.assign({},s,{open:true}));
+ return dashHero('⚖️','โต๊ะปรับเกณฑ์ (สนญ.)','หลักฐานจากทั้งบริษัท · ลองปรับน้ำหนักแล้วคำนวณย้อนหลังกับเคสจริงก่อนตัดสินใจ · การบันทึกเป็นเกณฑ์รุ่นใหม่จะเปิดใช้ในเฟส 2')
+ +rptFilterBar()+rptGloss()+rptKpis(R,S)+secs.map(rptSecCard).join('')
+ +`<div class="card"><h2 style="font-size:14px;margin:0 0 8px">🔁 ลองคำนวณย้อนหลัง — ปรับน้ำหนักแล้วดูว่าจับเคสค้างจริงได้เพิ่มไหม</h2><div class="rtwo"><div><table class="rtb"><tr><th>ตัวแปร</th><th class="num">น้ำหนักตอนนี้</th><th class="num">เสี่ยงกว่ากลุ่มดี</th><th class="num">น้ำหนักลอง</th></tr>${wi||'<tr><td colspan="4" class="mut">ยังไม่มีองค์ประกอบคะแนนในเคสที่ตามผลได้</td></tr>'}</table></div><div id="rpt-whatif">${rptWhatIfHTML(R)}</div></div>${_rec('วิธีคิด: คำนวณคะแนนใหม่จากองค์ประกอบเดิมของแต่ละเคสด้วยน้ำหนักที่ลอง แล้วดูว่าเคสที่ค้างจริงมีคะแนนต่ำกว่า 65 กี่ % (จับได้) และเคสที่ผ่อนปกติถูกดึงลงต่ำกว่า 65 กี่ % (ต้นทุน) · ยังไม่บันทึกอะไรลงระบบ')}</div>`; }
+function rptWhatIfHTML(R,weights){ const M=R.filter(r=>r.out&&r.parts.length); if(!M.length) return _empty('รอเคสที่ตามผลผ่อนได้');
+ const sc=(r,w)=>{ let s=0,t=0; r.parts.forEach(p=>{ const ww=w?(w[p.key]!=null?+w[p.key]:p.w):p.w; s+=(+p.raw||0)*ww; t+=ww; }); return t?Math.round(s/t):0; };
+ const cut=65; const bad=M.filter(r=>r.bad), good=M.filter(r=>!r.bad);
+ const cap0=bad.length?bad.filter(r=>sc(r,null)<cut).length/bad.length:0, cost0=good.length?good.filter(r=>sc(r,null)<cut).length/good.length:0;
+ const cap1=bad.length?bad.filter(r=>sc(r,weights)<cut).length/bad.length:0, cost1=good.length?good.filter(r=>sc(r,weights)<cut).length/good.length:0;
+ const arrow=(a,b,goodUp)=>`${Math.round(a*100)}% → <span class="${b>a?(goodUp?'ok':'bad'):b<a?(goodUp?'bad':'ok'):''}">${Math.round(b*100)}%</span>`;
+ return `<div class="rkpis" style="grid-template-columns:1fr 1fr"><div class="rkpi b5"><div class="v" style="font-size:20px">${arrow(cap0,cap1,true)}</div><div class="l">เคสค้างจริงที่ถูกจับ (คะแนน &lt; ${cut})</div><div class="d">${bad.length} เคสค้าง</div></div><div class="rkpi b5"><div class="v" style="font-size:20px">${arrow(cost0,cost1,false)}</div><div class="l">ลูกค้าผ่อนดีที่ติดคะแนนต่ำ (ต้นทุนความเข้ม)</div><div class="d">${good.length} เคสปกติ</div></div></div>${_nsmall(M.length)}`; }
+function rptWhatIf(){ const keepZone=RPT.zone, keepBr=RPT.branch; RPT.zone=''; RPT.branch=''; const R=rptRows(); RPT.zone=keepZone; RPT.branch=keepBr; const w={}; document.querySelectorAll('input[id^="tw-"]').forEach(i=>{ w[i.id.slice(3)]=+i.value||0; }); const el=document.getElementById('rpt-whatif'); if(el) el.innerHTML=rptWhatIfHTML(R,w); }
+/* ---- ส่งออก Excel (CSV) ---- */
+function rptCSV(){ const R=rptRows(); const H=['เลขที่เคส','วันที่ส่ง','เดือน','เขต','สาขา','ลูกค้า','กลุ่มอาชีพ','อาชีพ','คะแนนอาชีพ','รายได้ที่กรอก','รายได้ H-Cap เคยบันทึก','คะแนนเครดิต','ไฟการ์ด','กฎที่เตือน','สนญ. ส่งคำแนะนำ','จำนวนส่วนที่มีคำแนะนำ','คำแนะนำ สนญ.','ผลขาย','ขายก่อนส่งเคส','ขายทั้งที่ 🔴','เลขสัญญาที่กรอก','เลขสัญญา H-Cap','วิธีจับคู่','วันค้าง','สถานะสัญญา','ผลผ่อน','ภาพข้อมูลเดือน'];
+ const q=s=>'"'+String(s==null?'':s).replace(/"/g,'""')+'"';
+ const rows=R.map(r=>[r.a.id,fmtDT(r.a.submittedAt),_ymOf(r.a.submittedAt),(ZONES[r.zone]||{}).name||r.zone,(BRANCHES.find(b=>b.code===r.br)||{}).label||r.br,r.a.name,r.occG,r.occS,r.occSc,r.inc,r.hcInc,r.score,RPT_LV[r.light],(r.rules||[]).map(x=>(x.lv==='bad'?'🔴':'🟡')+x.k).join(' | '),r.sent?'ส่งแล้ว':'ยังไม่ส่ง',r.advN,r.advText,r.a.sale?saleLabel(r.a.sale.result):'',r.before?'ใช่':'',r.against?'ใช่':'',(r.a.sale&&r.a.sale.contract)||'',r.ct?r.ct.ct:'',r.ct?(r.ct.how==='contract'?'เลขสัญญา':'เลขบัตร+วัน'):'',r.ct?r.ct.d:'',r.ct?r.ct.st:'',r.out==='bad'?'ค้างเกิน 30 วัน/ยึด':r.out==='late'?'ค้าง 1–29 วัน':r.out==='ok'?'ปกติ':'',r.sn?r.sn.ym:''].map(q).join(','));
+ const csv='﻿'+H.map(q).join(',')+'\n'+rows.join('\n'); const bl=new Blob([csv],{type:'text/csv;charset=utf-8'}); const u=URL.createObjectURL(bl); const el=document.createElement('a'); el.href=u; el.download='MOTO24_รายงานประเมินเกณฑ์_'+(RPT.ym||'ทุกเดือน')+'.csv'; document.body.appendChild(el); el.click(); setTimeout(()=>{ URL.revokeObjectURL(u); el.remove(); },500); }
+/* ---- พิมพ์ฉบับย่อ ---- */
+function rptPrint(){ const R=rptRows(); const S=rptStats(R); let pa=document.getElementById('print-area'); if(!pa){ pa=document.createElement('div'); pa.id='print-area'; document.body.appendChild(pa); }
+ const scope=(RPT.branch?(BRANCHES.find(x=>x.code===RPT.branch)||{}).label:RPT.zone?(ZONES[RPT.zone]||{}).name:'ทั้งบริษัท');
+ pa.innerHTML=`<div class="pr-wrap"><h1>รายงานประเมินเกณฑ์ประจำเดือน — ${_ymTh(RPT.ym)} · ${scope}</h1><div style="font-size:11px;color:#555">พิมพ์ ${fmtDT(Date.now())} · เคส ${S.n} · ตามผลผ่อนได้ ${S.matched}${PSNAP._meta?' · ภาพข้อมูลสิ้นเดือน '+_ymTh(PSNAP._meta.ym):''}</div>
+ <div style="display:flex;gap:8px;margin:8px 0">${[['เคสตามผลได้',S.matched],['🔴 ค้างมากกว่า 🟢',S.lift!=null?S.lift+' เท่า':'—'],['การ์ดพลาด',S.misses.length],['🔴 ขายแล้วปกติ',S.badG.n?_pc(S.badG.ok,S.badG.n):'—'],['ส่งก่อนขาย',_pc(S.n-S.before,S.n)]].map(x=>`<div style="flex:1;border:1px solid #ccc;border-radius:6px;padding:6px;text-align:center"><div style="font-size:18px;font-weight:700">${x[1]}</div><div style="font-size:10.5px">${x[0]}</div></div>`).join('')}</div>
+ <h2>1. การ์ด 3 มิติ เทียบผลผ่อนจริง</h2>${rptSec1(R,S)}<h2>2. คำแนะนำ สนญ. เทียบระบบ</h2>${rptSec2(R,S)}<h2>4. ความเข้มของตัวแปร</h2>${rptSec4(R)}<h2>5. กฎการ์ด</h2>${rptSec5(R)}<h2>6. คะแนนอาชีพ</h2>${rptSec6(R)}${rptSummary(R,S).replace('style="background:#1e2761;color:#fff"','style="border:2px solid #1e2761;padding:8px"')}</div>`;
+ setTimeout(()=>window.print(),150); }
+/* ---- โหมดนำเสนอ ---- */
+function rptPresent(i){ const R=rptRows(); const S=rptStats(R); const secs=rptSections(R,S); RPT.present=true; RPT.pidx=Math.max(0,Math.min(secs.length-1,i||0)); const s=secs[RPT.pidx];
+ let body=''; try{ body=s.f(); }catch(e){ body=_empty(_esc(e.message)); }
+ const scope=(RPT.branch?(BRANCHES.find(x=>x.code===RPT.branch)||{}).label:RPT.zone?(ZONES[RPT.zone]||{}).name:'ทั้งบริษัท');
+ let ov=document.getElementById('rpt-present'); if(!ov){ ov=document.createElement('div'); ov.id='rpt-present'; document.body.appendChild(ov); document.addEventListener('keydown',rptPresentKey); }
+ ov.innerHTML=`<div class="pbar"><span><b>📊 รายงานประเมินเกณฑ์</b> &nbsp; ${_ymTh(RPT.ym)} · ${_esc(scope)}${PSNAP._meta?' · ภาพข้อมูลสิ้นเดือน '+_ymTh(PSNAP._meta.ym):''}</span><span>ส่วน ${RPT.pidx+1} / ${secs.length} &nbsp;·&nbsp; ← → เลื่อน &nbsp;·&nbsp; Esc ออก <button class="btn btn-sm" style="margin-left:10px" onclick="rptPresentClose()">✕ ออก</button></span></div>
+ <div class="pnav" style="left:8px" onclick="rptPresent(${RPT.pidx-1})">‹</div><div class="pnav" style="right:8px" onclick="rptPresent(${RPT.pidx+1})">›</div>
+ <div class="pstage"><div id="rpt-pin"><h2><span class="rn">${s.n}</span>${s.t}</h2>${body}</div></div><div class="pdots">${secs.map((x,j)=>`<i class="${j===RPT.pidx?'on':''}" onclick="rptPresent(${j})"></i>`).join('')}</div>`;
+ ov.style.display='block'; document.body.style.overflow='hidden'; rptFit(); }
+function rptFit(){ const st=document.querySelector('#rpt-present .pstage'), inner=document.getElementById('rpt-pin'); if(!st||!inner) return; let fs=18; inner.style.fontSize=fs+'px';
+ for(let k=0;k<8;k++){ const tooWide=[...inner.querySelectorAll('table,.rmx,.rquad,.rtwo')].some(e=>e.scrollWidth>e.clientWidth+2)||inner.scrollWidth>st.clientWidth; const tooTall=inner.scrollHeight>st.clientHeight-36; if(!tooWide&&!tooTall) break; fs-=1; if(fs<12) break; inner.style.fontSize=fs+'px'; } }
+function rptPresentClose(){ const ov=document.getElementById('rpt-present'); if(ov) ov.style.display='none'; RPT.present=false; document.body.style.overflow=''; }
+function rptPresentKey(e){ if(!RPT.present) return; if(e.key==='Escape') rptPresentClose(); else if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') rptPresent(RPT.pidx+1); else if(e.key==='ArrowLeft'||e.key==='PageUp') rptPresent(RPT.pidx-1); }
 
 /* ================== INIT ================== */
 loadCustDB();
