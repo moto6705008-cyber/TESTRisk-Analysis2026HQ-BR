@@ -391,7 +391,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0915-B (เฟส 1 · รายงานประเมินเกณฑ์รายเดือน + ภาพข้อมูลสิ้นเดือน) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0915-C (เฟส 1 · ดรอปดาวน์ว่างทุกช่อง · ที่อยู่เดียวกันตามบัตรอัปเดตสด · ปิดภาพบ้าน/GPS) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -446,7 +446,7 @@ function saveOcc(){ try{ localStorage.setItem('moto24_occ_v1', JSON.stringify(OC
 /* ล็อค/ปิดใช้งาน — หน้าบ้าน (สาขา/เขต) เห็นเฉพาะที่เปิด · สนญ.(analyst) เห็นทั้งหมดเพื่อจัดการ */
 function occFrontOnly(){ return !SESSION || SESSION.role!=='analyst'; }
 function occGroupsVisible(){ const front=occFrontOnly(); const gs=[...new Set(OCC_LIST.map(o=>o.g))]; return front? gs.filter(g=>OCC_LIST.some(o=>o.g===g&&!o.off)) : gs; }
-function occOptionsHTML(g){ const front=occFrontOnly(); return OCC_LIST.map((o,i)=>(o.g===g&&(!front||!o.off))?`<option value="${i}">${o.s}</option>`:'').join(''); }
+function occOptionsHTML(g){ const front=occFrontOnly(); return '<option value="">— เลือก —</option>'+OCC_LIST.map((o,i)=>(o.g===g&&(!front||!o.off))?`<option value="${i}">${o.s}</option>`:'').join(''); }
 /* วัตถุประสงค์การใช้รถ — จัดการหลังบ้าน (สนญ.) แล้วไหลไปหน้าบ้านสาขา · {name,off} */
 let VUSE_PURPOSES=[{name:"ใช้ส่วนตัว/ครอบครัว"},{name:"ไปทำงาน"},{name:"รับจ้าง/วินมอเตอร์ไซค์"},{name:"ส่งของ/เดลิเวอรี"},{name:"การเกษตร"},{name:"ค้าขาย"}];
 (function loadVuse(){ try{ const raw=localStorage.getItem('moto24_vuse_v1'); if(raw){ const s=JSON.parse(raw); if(Array.isArray(s)&&s.length) VUSE_PURPOSES=s.map(x=> typeof x==='string'?{name:x.trim()}:{name:String(x.name||'').trim(),off:!!x.off}).filter(x=>x.name); } }catch(e){} })();
@@ -1997,7 +1997,7 @@ function go(tab){
  if(tab==='users') v.innerHTML=viewUsers();
  if(tab==='cloud') v.innerHTML=viewCloud();
  if(tab==='me') v.innerHTML=viewMe();
- if(tab==='form'){ _hpd=''; _wdd=''; _ied=''; _vehP={}; window.__modelQ=''; window.__formStale=false; v.innerHTML=viewForm(); renderPhones(); onOccGroup(); onProduct(); toggleGuar(); onHouseType(); liveCalc(); onVehUser(); onMarital(); updatePrevWork(); if(SESSION.role==='branch') document.querySelectorAll('#view .hqfield').forEach(e=>e.style.display='none'); fstepShow(1); if(window.__editCase){ try{ hqEditFill(); }catch(e){ console.error(e); } } else { try{ fdRestore(); fdBind(); }catch(e){} } }
+ if(tab==='form'){ _hpd=''; _wdd=''; _ied=''; _vehP={}; window.__modelQ=''; window.__formStale=false; v.innerHTML=viewForm(); try{ formBlankSelects(); }catch(e){} renderPhones(); onOccGroup(); onProduct(); toggleGuar(); onHouseType(); liveCalc(); onVehUser(); onMarital(); updatePrevWork(); if(SESSION.role==='branch') document.querySelectorAll('#view .hqfield').forEach(e=>e.style.display='none'); fstepShow(1); if(window.__editCase){ try{ hqEditFill(); }catch(e){ console.error(e); } } else { try{ fdRestore(); fdBind(); }catch(e){} } }
  if(tab==='list') v.innerHTML=viewBranchList();
  if(tab==='dash'){ v.innerHTML=viewBranchDash(); drawBranchCharts(); }
  if(tab==='queue') v.innerHTML=viewQueue(true);
@@ -2621,9 +2621,10 @@ function cbxPick(pfx,kind,val){ const inp=document.getElementById(pfx+'-'+kind);
  if(kind==='prov'){ const d=document.getElementById(pfx+'-dist'),s=document.getElementById(pfx+'-sub'); if(d)d.value=''; if(s)s.value=''; onProvChange(pfx); }
  else if(kind==='dist'){ const s=document.getElementById(pfx+'-sub'); if(s)s.value=''; onDistChange(pfx); }
  else { onSubChange(pfx); }
- cbxCloseAll(); if(typeof liveCalc==='function') liveCalc();
+ cbxCloseAll(); if(pfx==='fc'){ try{ const sm=document.getElementById('f-sameaddr'); if(sm&&sm.checked) copyAddr(); }catch(e){} } if(typeof liveCalc==='function') liveCalc();
 }
 document.addEventListener('click',function(e){ if(!e.target.closest('.cbx')) cbxCloseAll(); });
+document.addEventListener('input',function(e){ const t=e.target; if(t&&/^fc-(no|moo|zip)$/.test(t.id||'')){ const sm=document.getElementById('f-sameaddr'); if(sm&&sm.checked){ const d=document.getElementById('fp-'+t.id.slice(3)); if(d) d.value=t.value; } } });
 /* ไอคอนเส้น (inline SVG) — คมเหมือน mockup ทำงานออฟไลน์ ไม่พึ่ง CDN */
 function svgIco(n,sz){const p={
  user:'<circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4"/><path d="M15 19l2 2l4-4"/>',
@@ -2659,7 +2660,7 @@ function svgIco(n,sz){const p={
 }
 /* ===== ฟอร์มสาขาแบบทีละขั้นตอน (wizard) ===== */
 let FSTEP=1; const FSTEP_MAX=5;
-function fHiddenIn(el,stopId){ let n=el; while(n&&n.id!==stopId){ if(n.classList&&n.classList.contains('hidden')) return true; n=n.parentElement; } return false; }
+function fHiddenIn(el,stopId){ let n=el; while(n&&n.id!==stopId){ if(n.classList&&n.classList.contains('hidden')) return true; if(n.style&&n.style.display==='none') return true; n=n.parentElement; } try{ if(el.offsetParent===null&&getComputedStyle(el).position!=='fixed') return true; }catch(e){} return false; }
 function fstepValidate(n){
  const box=document.getElementById('fstep-'+n); if(!box) return true;
  const miss=[]; let firstEl=null;
@@ -2759,8 +2760,8 @@ function viewForm(){
    <div class="field"><label>ระยะเวลาอยู่อาศัย (ปี)</label><select id="f-stayyears" onchange="liveCalc()"><option>น้อยกว่า 1 ปี</option><option>1-3 ปี</option><option>3-5 ปี</option><option selected>5 ปีขึ้นไป</option></select></div>
    <div class="field"><label>ลำดับที่ในทะเบียนบ้าน <span style="font-weight:400;color:#6b7280;font-size:11px">(ลูกค้าอยู่ลำดับที่เท่าไร)</span></label><input id="f-houseorder" type="number" min="1" placeholder="เช่น 2"></div>
    <div class="field"><label>จำนวนผู้อยู่อาศัยในบ้าน (คน) <span style="font-weight:400;color:#6b7280;font-size:11px">(รวมลูกค้า)</span></label><input id="f-houseppl" type="number" min="1" placeholder="เช่น 4"></div>
-   <div class="field"><label>📷 ภาพบ้านจริง (สาขาถ่ายตอนลงพื้นที่) <span class="req">*</span></label><input id="f-housephoto" type="file" accept="image/*" onchange="onHousePhoto(this)"></div>
-   <div class="field" style="grid-column:1/-1"><label>📍 พิกัด GPS บ้าน <span style="font-weight:400;color:#6b7280;font-size:11px">(ดึงจากภาพอัตโนมัติถ้ามี · หรือกดปุ่มใช้ตำแหน่งปัจจุบันตอนอยู่หน้าบ้าน · หรือพิมพ์ ละติจูด,ลองจิจูด)</span></label>
+   <div class="field ${showHouseGeo()?'':'hidden'}"><label>📷 ภาพบ้านจริง (สาขาถ่ายตอนลงพื้นที่) <span class="req">*</span></label><input id="f-housephoto" type="file" accept="image/*" onchange="onHousePhoto(this)"></div>
+   <div class="field ${showHouseGeo()?'':'hidden'}" style="grid-column:1/-1"><label>📍 พิกัด GPS บ้าน <span style="font-weight:400;color:#6b7280;font-size:11px">(ดึงจากภาพอัตโนมัติถ้ามี · หรือกดปุ่มใช้ตำแหน่งปัจจุบันตอนอยู่หน้าบ้าน · หรือพิมพ์ ละติจูด,ลองจิจูด)</span></label>
     <div style="display:flex;gap:6px;flex-wrap:wrap">
      <input id="f-houseloc" placeholder="เช่น 8.061312,99.930562" style="flex:1;min-width:220px" oninput="locHint()">
      <button type="button" class="btn btn-line btn-sm" onclick="useMyLocation()">📡 ใช้ตำแหน่งปัจจุบัน</button>
@@ -2768,7 +2769,7 @@ function viewForm(){
     </div>
     <div id="loc-hint2" class="mut" style="font-size:12px;margin-top:3px"></div></div>
   </div>
-  <p class="pill-note">บังคับแนบภาพบ้านจริงก่อนส่งเคส (ผูกเคสถาวร ตรวจย้อนหลังได้) · ระบบดึงพิกัดจากภาพให้ 2 ทาง: (1) พิกัดฝังในไฟล์ต้นฉบับ (2) อ่านตัวหนังสือ Lat/Long ที่แอป <b>GPS Map Camera</b> พิมพ์ทับบนภาพ (ใช้ได้แม้ส่งผ่าน LINE) — ถ้าไม่ได้ทั้งคู่ ให้กด "ใช้ตำแหน่งปัจจุบัน" ขณะอยู่หน้าบ้านลูกค้า</p>
+  <p class="pill-note ${showHouseGeo()?'':'hidden'}">บังคับแนบภาพบ้านจริงก่อนส่งเคส (ผูกเคสถาวร ตรวจย้อนหลังได้) · ระบบดึงพิกัดจากภาพให้ 2 ทาง: (1) พิกัดฝังในไฟล์ต้นฉบับ (2) อ่านตัวหนังสือ Lat/Long ที่แอป <b>GPS Map Camera</b> พิมพ์ทับบนภาพ (ใช้ได้แม้ส่งผ่าน LINE) — ถ้าไม่ได้ทั้งคู่ ให้กด "ใช้ตำแหน่งปัจจุบัน" ขณะอยู่หน้าบ้านลูกค้า</p>
   <div class="subhead" style="margin-top:14px">1.3 บุคคลอ้างอิง (คนรู้จักผู้ซื้อ) <span style="font-weight:400;color:#6b7280;font-size:12px">— 2 คน</span></div>
   <div style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:6px">
    <div style="font-weight:600;font-size:13px;color:#2b3990;margin-bottom:6px">คนอ้างอิงคนที่ 1</div>
@@ -3100,7 +3101,8 @@ function pullCustomer(){
  alert('✅ ดึงข้อมูลลูกค้าเดิมเรียบร้อย — กรุณาตรวจทานความถูกต้องและกรอกส่วนที่เหลือ');
 }
 function copyAddr(){
- if(!document.getElementById('f-sameaddr').checked) return;
+ const _same=document.getElementById('f-sameaddr'); ['prov','dist','sub','moo','no','zip'].forEach(k=>{ const d=document.getElementById('fp-'+k); if(d){ const on=!!(_same&&_same.checked); d.style.background=on?'#f3f4f6':''; if(k==='moo'||k==='no'||k==='zip') d.readOnly=on; else d.style.pointerEvents=on?'none':''; } });
+ if(!_same||!_same.checked) return;
  ['prov','dist','sub','moo','no','zip'].forEach(k=>{
   const src=document.getElementById('fc-'+k), dst=document.getElementById('fp-'+k);
   if(src&&dst) dst.value=src.value;
@@ -3204,6 +3206,13 @@ function autoZip(prefix){
  if(!z){ const idx=buildZipIndex(); z=idx[S+'|'+A+'|'+P] || idx['*|'+A+'|'+P]; if(z) from='ทะเบียน'; }
  if(z){ zipEl.value=z; zipEl.style.background='#ecfdf3'; zipEl.title='เติมอัตโนมัติจาก'+from; }
 }
+/* 0915-C: ดรอปดาวน์ในฟอร์มเริ่มเป็นช่องว่าง "— เลือก —" ทุกช่อง (สาขาต้องเลือกเอง) + ช่องที่เข้าคะแนน/การ์ดเป็นช่องบังคับ */
+const FORM_BLANK_SELECTS=['f-prefix','f-gender','f-marital','f-nation','f-ethnic','f-cardtype','f-housetype','f-tenure','f-stayyears','f-occg','f-doclevel','f-incomeproof','g-prefix','g-relation','g-occg'];
+const FORM_BLANK_REQ=['f-prefix','f-gender','f-marital','f-nation','f-ethnic','f-cardtype','f-housetype','f-tenure','f-stayyears','f-occg','f-doclevel','f-incomeproof'];
+function formBlankSelects(){ FORM_BLANK_SELECTS.forEach(id=>{ const sel=document.getElementById(id); if(!sel) return;
+  if(!sel.querySelector('option[value=""]')){ const o=document.createElement('option'); o.value=''; o.textContent='— เลือก —'; sel.insertBefore(o,sel.firstChild); }
+  sel.value='';
+  if(FORM_BLANK_REQ.indexOf(id)>=0){ const f=sel.closest('.field'); const lb=f&&f.querySelector('label'); if(lb&&!lb.querySelector('.req')) lb.insertAdjacentHTML('beforeend',' <span class="req">*</span>'); } }); }
 function onOccGroup(){
  const g=document.getElementById('f-occg').value;
  const sel=document.getElementById('f-occ');
@@ -3228,7 +3237,7 @@ function onPrefix(){ const p=(document.getElementById('f-prefix')||{}).value||''
 function updatePrevWork(){ const el=document.getElementById('f-workstart'); const b=document.getElementById('prevwork-block'); if(!b) return;
  const yEl=document.getElementById('f-workyrs'), mEl=document.getElementById('f-workmos'); const set=!!((yEl&&yEl.value!=='')||(mEl&&mEl.value!=='')); const ys=set?_workYearsFromDur():null; b.classList.toggle('hidden', !(set&&ys!=null&&ys<0.5)); }
 function onOccSub(){
- const i=+document.getElementById('f-occ').value;
+ const _ov=document.getElementById('f-occ').value; const i=_ov===''?-1:+_ov;
  const o=OCC_LIST[i]||{};
  const w=document.getElementById('w-occex');
  const _agc=occAgri(i);
@@ -3526,7 +3535,7 @@ function readForm(){
     sameAsCard:document.getElementById('f-sameaddr')?.checked||false,
     houseType:g('f-housetype'), tenure:g('f-tenure'), stayYears:g('f-stayyears'),
     housePhoto:gf('f-housephoto'), houseLoc:g('f-houseloc').trim(), houseOrder:+g('f-houseorder')||0, housePeople:+g('f-houseppl')||0},
-  occupation:+g('f-occ')||0, occExtra:g('f-occex').trim(), rai:+g('f-rai')||0, docChk:(window.__docChk||[]).slice(),
+  occupation:(g('f-occ')===''?null:(+g('f-occ')||0)), occExtra:g('f-occex').trim(), rai:+g('f-rai')||0, docChk:(window.__docChk||[]).slice(),
   healthRight:(occHealthRight(+g('f-occ')||0)? (g('f-health')||'unchecked') : null),
   workplace:g('f-workplace').trim(), workAddr:g('f-workaddr').trim(), workPhone:g('f-workphone').trim(),
   workStart:_workStartFromDur(), workYears:_workYearsFromDur(), workDur:{y:+g('f-workyrs')||0,m:+g('f-workmos')||0,set:!!(g('f-workyrs')!==''||g('f-workmos')!=='')}, workDoc:gf('f-workdoc'),
@@ -3535,7 +3544,7 @@ function readForm(){
   guarantor:guarType,
   guar: hasGuar? {nameOnly:g('g-name').trim(),lastNameOnly:g('g-lname').trim(),firstName:g('g-name').trim(),lastName:g('g-lname').trim(),
     name:((g('g-prefix')||'')+g('g-name').trim()+' '+g('g-lname').trim()).trim(),idcard:g('g-idcard').trim(),birth:g('g-birth'),age:ageFrom(g('g-birth')),
-    phone:g('g-phone').trim(),relation:g('g-relation'),occupation:+g('g-occ')||0,workplace:g('g-workplace').trim(),
+    phone:g('g-phone').trim(),relation:g('g-relation'),occupation:(g('g-occ')===''?null:(+g('g-occ')||0)),workplace:g('g-workplace').trim(),
     income:+g('g-income')||0,sub:g('g-sub').trim(),dist:g('g-dist').trim(),hcap:guarHcapSummary(g('g-idcard'),g('g-phone'),(g('g-name')+' '+g('g-lname')).trim())} : null,
   history:g('f-hist'),
   product, payType:g('f-paytype'), saleType:g('f-saletype'),
@@ -3706,7 +3715,7 @@ function submitApp(){
  if(!a.addrCur.moo||!a.addrCur.sub||!a.addrCur.dist||!a.addrCur.prov) missing.push('ที่อยู่ปัจจุบัน (หมู่ที่/ตำบล/อำเภอ/จังหวัด)');
  if(!a.vehUse||!a.vehUse.purpose) missing.push('วัตถุประสงค์การใช้รถ (1.4)');
  if(!a.vehUse||!a.vehUse.prov) missing.push('จังหวัดที่ใช้รถ (1.4)');
- if(!a.housePhotoData&&!a.addrCur.housePhoto&&!a.addrCur.houseLoc) missing.push('ภาพบ้านจริง (สาขาถ่ายตอนลงพื้นที่)');
+ if(showHouseGeo()&&!a.housePhotoData&&!a.addrCur.housePhoto&&!a.addrCur.houseLoc) missing.push('ภาพบ้านจริง (สาขาถ่ายตอนลงพื้นที่)');
  if(a.incomeClaimed<=0) missing.push('รายได้');
 { const _ag=occAgri(a.occupation);
    /* เฟส 1: จำนวนไร่/ตัว ไม่บังคับ (ช่อง "จำนวนไร่" แยกต่างหาก) */
@@ -7016,6 +7025,7 @@ function viewCfg(){
    <div class="flex" style="flex-wrap:wrap">
     <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="ปิดหัวข้อ 4 ผลิตภัณฑ์ในฟอร์มสาขา — สาขากรอกแค่ 1 2 3 5"><input type="checkbox" ${lockProductOn()?'checked':''} onchange="CFG.lockProductStep=this.checked;saveCfg();alert(this.checked?'ล็อกหัวข้อ 4 ผลิตภัณฑ์แล้ว — ฟอร์มสาขาจะเหลือ 1 2 3 5 (มีผลทุกเครื่องหลังซิงก์)':'ปลดล็อกหัวข้อ 4 แล้ว — สาขากรอกผลิตภัณฑ์ได้')"> 🔒 ล็อกหัวข้อ 4 ผลิตภัณฑ์ (สาขาไม่ต้องกรอก)</label>
     <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="สาขาเห็นการ์ดเฉพาะบล็อกประวัติกับบริษัท (H-Cap) — ผล 🔴🟡🟢 3 มิติ ดูได้เฉพาะ สนญ./เขต"><input type="checkbox" ${CFG.branchCardHcapOnly!==false?'checked':''} onchange="CFG.branchCardHcapOnly=this.checked;saveCfg();alert(this.checked?'สาขาจะเห็นเฉพาะประวัติกับบริษัท (H-Cap) — ผล 3 มิติดูได้เฉพาะหลังบ้าน (มีผลทุกเครื่องหลังซิงก์)':'สาขาจะเห็นผลตรวจ 3 มิติเต็มรูปแบบ')"> 🏢 ตอนสาขากรอกฟอร์ม เห็นเฉพาะ H-Cap (ผล 3 มิติ เห็นหลังส่งเคสแล้ว)</label>
+    <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="แสดงช่อง 📷 ภาพบ้านจริง และ 📍 พิกัด GPS บ้าน ในฟอร์มสาขา (เฟส 1 ปิดไว้ · เปิดเมื่อเริ่มเฟส 2)"><input type="checkbox" ${showHouseGeo()?'checked':''} onchange="CFG.showHouseGeo=this.checked;saveCfg();alert(this.checked?'เปิดช่องภาพบ้าน + พิกัด GPS ในฟอร์มสาขาแล้ว (บังคับแนบก่อนส่ง)':'ปิดช่องภาพบ้าน + พิกัด GPS แล้ว — สาขาไม่ต้องกรอกในเฟส 1')"> 📷 ภาพบ้าน/พิกัด GPS ในฟอร์มสาขา</label>
     <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="เฟส 1: ระบบให้การ์ดอย่างเดียว ไม่มีรับงาน/ผ่านด่าน/อนุมัติ · สาขาบันทึกผลการขายเอง · ปิดสวิตช์นี้เมื่อเริ่มเฟส 2 (ม.ค.)"><input type="checkbox" ${CFG.phase1Mode!==false?'checked':''} onchange="CFG.phase1Mode=this.checked;saveCfg();alert(this.checked?'เปิดโหมดเฟส 1 — การ์ดอย่างเดียว ไม่มีอนุมัติ (มีผลทุกเครื่องหลังซิงก์)':'ปิดโหมดเฟส 1 — เปิดใช้รับงาน/ผ่านด่าน/อนุมัติ (เฟส 2)')"> 🧭 เฟส 1: การ์ดอย่างเดียว (ไม่มีอนุมัติ/ตีกลับ)</label>
     <button class="btn btn-red" onclick="saveCfg();recalcAll();alert('บันทึกเกณฑ์และคำนวณคะแนนใหม่ทั้งหมดแล้ว')">💾 บันทึกเกณฑ์</button>
     <button class="btn btn-org" onclick="optimizeWeights()">🎯 ปรับน้ำหนักอัตโนมัติ (จาก Backtest)</button>
@@ -8051,7 +8061,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0915-B';
+const CHK3_BUILD='0915-C';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -8333,6 +8343,7 @@ function chk3Snap(r){ const rules=[]; try{ [['person',r.dims.person.items],['occ
 
 /* ======================= UI การ์ด (A2+A3 รวม · Kanit) ======================= */
 /* 0914-C: สาขาเห็นการ์ดเฉพาะบล็อก H-Cap (สวิตช์ HQ ในตั้งค่าเกณฑ์ · ค่าเริ่มต้นเปิด) */
+function showHouseGeo(){ return !!(CFG&&CFG.showHouseGeo===true); }   /* 0915-C: ภาพบ้าน+พิกัด GPS ปิดไว้ในเฟส 1 (เปิดในตั้งค่าเกณฑ์) */
 function branchHcapOnly(){ return !!(SESSION&&SESSION.role==='branch') && (CFG&&CFG.branchCardHcapOnly!==false); }
 function chk3Card(a, r, opt){
  opt=opt||{}; const live=!!opt.live; const isHQ=!!(SESSION&&SESSION.role==='analyst'); const hcapOnly=(branchHcapOnly()&&live)||(!live&&!cardVisibleToBranch(a));   /* 0914-L: สาขาเห็นการ์ดเต็มเมื่อ สนญ. ส่งแล้ว */   /* 0914-E: ซ่อนเฉพาะตอนกรอก — หลังส่งแล้วสาขาเห็นการ์ดเต็ม */
