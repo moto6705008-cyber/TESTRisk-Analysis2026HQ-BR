@@ -218,6 +218,25 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 .qpill{font-size:10.5px;padding:2px 9px;border-radius:12px;font-weight:600;white-space:nowrap;flex-shrink:0}
 .p-wait{background:#fef9c3;color:#854d0e}.p-more{background:#fff7ed;color:#c2410c}.p-ok{background:#f0fdf4;color:#166534}.p-bad{background:#fef2f2;color:#dc2626}.p-eval{background:#eff6ff;color:#1d4ed8}
 .qsc{font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;flex-shrink:0}
+/* เฟส 1: แถวลูกค้า 4 คอลัมน์ (ลูกค้า+ไทม์ไลน์ · การ์ด · สนญ. · สาขา) */
+.p1hd,.p1row{display:grid;grid-template-columns:1.7fr 1fr 1.15fr 1.3fr;gap:10px}
+.p1hd{font-size:11px;color:var(--mut);padding:2px 10px 6px 14px;border-bottom:0.5px solid var(--line);margin-bottom:6px}
+.p1hd .hq{color:#1d4ed8}.p1hd .br{color:#b45309}
+.p1row{align-items:center;padding:10px 12px 10px 10px;border:0.5px solid var(--line);border-left:5px solid #94a3b8;border-radius:10px;background:var(--card);margin-bottom:8px;cursor:pointer}
+.p1row:hover{border-color:#c7d2fe;background:#fafbff}
+.p1row>div{min-width:0}
+.p1nm{font-size:13.5px;font-weight:700}.p1nm .qid{margin-left:3px}
+.p1meta{font-size:11px;color:var(--mut);margin-top:1px}
+.p1tl{display:flex;align-items:center;margin-top:7px}
+.p1tl .d{width:11px;height:11px;border-radius:50%;border:2px solid #cbd5e1;background:#fff;box-sizing:border-box;flex:none}
+.p1tl .d.on{background:#22c55e;border-color:#22c55e}.p1tl .d.wait{border-color:#f59e0b;border-width:3px}.p1tl .d.late{background:#ef4444;border-color:#ef4444}
+.p1tl .l{height:2px;width:30px;background:#cbd5e1;flex:none}.p1tl .l.on{background:#22c55e}
+.p1tx{font-size:10.5px;color:var(--mut);margin-top:3px;line-height:1.35}.p1tx b{color:var(--ink,#0f172a)}.p1tx .late{color:#dc2626;font-weight:700}.p1tx .wait{color:#b45309;font-weight:700}.p1tx .done{color:#166534;font-weight:700}
+.p1sc{font-size:11.5px;color:#334155;margin-top:4px}
+.p1st{display:flex;gap:8px;align-items:flex-start}
+.p1ic{width:24px;height:24px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;background:#cbd5e1}
+.p1st .t{font-weight:700;font-size:12.5px;line-height:1.3}.p1st .s{font-size:11px;color:var(--mut);margin-top:1px;line-height:1.4}
+@media(max-width:820px){.p1hd{display:none}.p1row{grid-template-columns:1fr 1fr}.p1row>div:first-child{grid-column:1/-1}}
 .sc-ok{background:#f0fdf4;color:#166534}.sc-mid{background:#fff7ed;color:#c2410c}.sc-bad{background:#fef2f2;color:#dc2626}
 .qtable{width:100%;border-collapse:collapse}
 .qtable th{background:var(--navy);color:#fff;font-size:11px;font-weight:500;padding:9px 11px;text-align:left}
@@ -349,7 +368,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0914-N (เฟส 1 · Flow สนญ. แนะนำก่อน · แจ้งสาขาเมื่อ สนญ. ส่งกลับ) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0915-A (เฟส 1 · รายการแบบ 4 คอลัมน์ สนญ./สาขา + ไทม์ไลน์จิ๋ว) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -3731,7 +3750,7 @@ function appRow(a, showBranch){
 function viewBranchList(){
  const list=myApps().filter(inPeriod);
  const s=statCount(list);
- const body=list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0)).map(a=>appCard(a,false)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>';
+ const _srt=list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0)); const body=(p1()&&_srt.some(a=>a.status==='pending')?p1RowHead():'')+(_srt.map(a=>appCard(a,false)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>');
  return dashHero('📋','รายการ / ติดตามคำขอของสาขา ('+list.length+')','คลิกการ์ดเพื่อดูรายละเอียดและหมายเหตุจากฝ่ายวิเคราะห์')
  +`<div class="card">${p1()?p1Chips(p1Count(list)):qChips(s)}${p1()&&(p1Count(list).ackPending||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(list).ackPending}</b> เคส — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap">${periodUI()}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${body}</div>`;
 }
@@ -4352,7 +4371,7 @@ function viewQueueP1(pendingOnly){
    <div class="flex"><label class="mut" style="font-size:13px">เขต:</label><select style="width:200px" onchange="fZone=this.value;go(currentTab)"><option value="">— ทุกเขต —</option>${Object.keys(ZONES).map(z=>`<option value="${z}" ${fZone===z?'selected':''}>${ZONES[z].name}</option>`).join('')}</select></div>
    <div class="flex"><label class="mut" style="font-size:13px">ไฟการ์ด:</label><select style="width:190px" onchange="fLight=this.value;go(currentTab)"><option value="">— ทุกสี —</option><option value="bad" ${fLight==='bad'?'selected':''}>🔴 ควรตรวจสอบ (${lc.bad})</option><option value="warn" ${fLight==='warn'?'selected':''}>🟡 ควรตรวจเพิ่ม (${lc.warn})</option><option value="ok" ${fLight==='ok'?'selected':''}>🟢 สอดคล้อง (${lc.ok})</option></select></div>
    <button class="btn btn-line btn-sm" onclick="exportCSV(APPS,'MOTO24_all_apps')">⬇ Export ทั้งหมด (CSV)</button></div>`;
- const body=list.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">'+(pendingOnly?'✅ ไม่มีเคสรอตรวจดู':'ยังไม่มี')+'</div>';
+ const body=(list.length?p1RowHead():'')+(list.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">'+(pendingOnly?'✅ ไม่มีเคสรอตรวจดู':'ยังไม่มี')+'</div>');
  return dashHero(pendingOnly?'👁':'✓', title+' ('+list.length+')', 'เฟส 1 · รอ สนญ. ตรวจ '+nRev+(s.hqLate?' (เกินวัน '+s.hqLate+')':'')+' · รอสาขารับทราบ '+s.ackwait+' · รอบันทึกผลขาย '+(s.reviewed+s.waiting+s.overdue)+' · ขายแล้ว '+s.sold+' (ก่อนส่งเคส '+s.beforeSubmit+' · ก่อน สนญ. ตรวจ '+s.beforeHQ+') · ไม่ขาย/ยกเลิก '+s.notsold)
   +`<div class="card">${p1Chips(s)}${filterBar}${body}</div>`;
 }
@@ -4362,7 +4381,63 @@ function qChips(s){ return `<div class="qchips">
   <div class="qchip" style="background:#f0fdf4"><div class="n" style="color:#166534">${s.approved}</div><div class="l" style="color:#166534">✓ อนุมัติ</div></div>
   <div class="qchip" style="background:#fef2f2"><div class="n" style="color:#dc2626">${s.rejected}</div><div class="l" style="color:#dc2626">✕ ปฏิเสธ</div></div>
  </div>`; }
+/* ===== เฟส 1: แถวลูกค้า 4 คอลัมน์ + ไทม์ไลน์จิ๋ว (แสดงผลอย่างเดียว ไม่แตะข้อมูล/ซิงก์) ===== */
+function p1RowHead(){ return `<div class="p1hd"><div>ลูกค้า / เคส</div><div>การ์ด 3 มิติ</div><div class="hq">🏢 สนญ. (ตรวจ + แนะนำ)</div><div class="br">🏪 สาขา (รับทราบ · ผลขาย)</div></div>`; }
+function _p1Esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function _p1Contract(c){ c=String(c||'').trim(); if(!c) return ''; return c.length>14?c.slice(0,4)+'…'+c.slice(-4):c; }
+function _p1SaleDone(a){ return !!(a.sale&&a.sale.result&&a.sale.result!=='waiting'); }
+function _p1Overdue(a){ return !!(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now())); }
+function p1Steps(a,isBr){
+ const sent=hqSent(a), ack=!!a.ack3, late=_p1Overdue(a), sale=a.sale||null;
+ const st=[{s:'on',t:'ส่งแล้ว'}];
+ if(sent) st.push({s:'on',t:'สนญ. ส่งคำแนะนำ'}); else st.push(hqLateSale(a)?{s:'late',t:'รอ สนญ. (เกินวัน)'}:{s:'wait',t:'รอ สนญ. ตรวจ+แนะนำ'});
+ if(ack) st.push({s:'on',t:'รับทราบ'}); else if(sent) st.push({s:'wait',t:isBr?'กดรับทราบ (ถึงคิวเรา)':'รอสาขารับทราบ'}); else st.push({s:'off',t:'รอรับทราบ'});
+ if(_p1SaleDone(a)){ const r=sale.result; st.push({s:'on',t:r==='sold'?'ขายแล้ว'+(sale.beforeSubmit?' (ก่อนส่งเคส)':sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''):r==='notsold'?'ไม่ขาย':'ลูกค้ายกเลิก'}); }
+ else if(sale&&sale.result==='waiting') st.push(late?{s:'late',t:'รอลูกค้าตัดสินใจ (เกินวัน)'}:{s:'wait',t:'รอลูกค้าตัดสินใจ'});
+ else if(ack) st.push(late?{s:'late',t:'ค้างบันทึกผลขาย (เกินวัน)'}:{s:'wait',t:'บันทึกผลขาย'});
+ else st.push({s:'off',t:'ผลขาย'});
+ return st; }
+function p1MiniTL(a,isBr){ const st=p1Steps(a,isBr); const allOn=st.every(x=>x.s==='on');
+ const dots=st.map((x,i)=>(i?`<span class="l ${x.s==='on'&&st[i-1].s==='on'?'on':''}"></span>`:'')+`<span class="d ${x.s==='off'?'':x.s}"></span>`).join('');
+ const tx=st.map(x=>x.s==='late'?`<span class="late">${x.t}</span>`:x.s==='wait'?`<span class="wait">${x.t}</span>`:x.s==='on'&&x.t!=='ส่งแล้ว'&&x.t!=='รับทราบ'&&x.t!=='สนญ. ส่งคำแนะนำ'?`<b>${x.t}</b>`:x.t).join(' → ');
+ return `<div class="p1tl">${dots}</div><div class="p1tx">${tx}${allOn?' · <span class="done">ครบทุกขั้น</span>':''}</div>`; }
+function p1RowAccent(a){ if(_p1SaleDone(a)&&a.sale.result!=='sold') return '#94a3b8'; const st=p1Steps(a,false); if(st.every(x=>x.s==='on')) return '#22c55e'; if(!hqSent(a)) return '#3b82f6'; return '#f59e0b'; }
+function p1CardCell(a,isBr){
+ if(isBr&&!hqSent(a)) return `<span class="tag" style="background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0">⏳ รอการ์ดจาก สนญ.</span>`;
+ let sub='';
+ if(!isBr){ sub='คะแนน '+(a.calc&&a.calc.score!=null?a.calc.score:'-'); }
+ else { const h=a.hqAdvice||{}; const n=ADV_DIMS.filter(([k])=>!((h.none||{})[k])&&String((h.text||{})[k]||'').trim()).length; sub=(n?'มีคำแนะนำ '+n+' ส่วน':'ไม่มีข้อเสนอแนะเพิ่ม')+(!a.ack3?' · 📨 ใหม่':''); }
+ return lightBadge(a)+`<div class="p1sc">${sub}</div>`; }
+function _p1Cell(ic,bg,t,s){ return `<div class="p1st"><div class="p1ic" style="background:${bg}">${ic}</div><div><div class="t">${t}</div>${s?`<div class="s">${s}</div>`:''}</div></div>`; }
+function p1HqCell(a,isBr){
+ if(!hqSent(a)){ const late=hqLateSale(a); const dur=a.submittedAt?fmtDur(Date.now()-a.submittedAt):'-';
+  return _p1Cell('👁',late?'#ef4444':'#f59e0b','รอ สนญ. ตรวจ+แนะนำ',late?'⚠ เกินวัน ('+(isBr?'ส่งไปแล้ว ':'ส่งมา ')+dur+')':(isBr?'ส่งไปแล้ว ':'ส่งมา ')+dur); }
+ const h=a.hqAdvice||{}; const allNone=ADV_DIMS.every(([k])=>(h.none||{})[k]);
+ const dims=allNone?'ไม่มีข้อเสนอแนะเพิ่ม':ADV_DIMS.map(([k,l])=>l.split(' ')[0]+((h.none||{})[k]?'—':'✓')).join(' ');
+ return _p1Cell('✓','#22c55e',isBr?'ส่งคำแนะนำมาแล้ว':'ส่งคำแนะนำแล้ว',fmtDT(h.sentAt)+(!isBr&&h.sentBy?' · '+_p1Esc(h.sentBy):'')+' · '+dims); }
+function p1BrCell(a,isBr){
+ const sent=hqSent(a), ack=!!a.ack3, sale=a.sale||null, late=_p1Overdue(a);
+ const ackPre=ack?'รับทราบแล้ว · ':'';
+ if(_p1SaleDone(a)){
+  if(sale.result==='sold'){ const c=_p1Contract(sale.contract);
+   const ackTx=ack?'รับทราบ '+fmtDT(a.ack3.at):(sent?'ยังไม่กดรับทราบการ์ด':(isBr?'จะกดรับทราบได้เมื่อ สนญ. ส่งการ์ดมา':'ยังไม่รับทราบการ์ด (รอ สนญ. ส่งก่อน)'));
+   return _p1Cell('🛒','#22c55e',ackPre+'ขายแล้ว'+(sale.beforeSubmit?' (ก่อนส่งเคส)':sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''),'บันทึก '+fmtDT(sale.at)+(c?' · สัญญา '+_p1Esc(c):'')+' · '+ackTx+(sale.against?' · ⚠ ขายทั้งที่การ์ด 🔴':'')+' · 🔒'); }
+  if(sale.result==='notsold') return _p1Cell('✋','#6366f1',ackPre+'ไม่ขาย',sale.reason?'เหตุผล: '+_p1Esc(sale.reason):fmtDT(sale.at));
+  return _p1Cell('🚶','#94a3b8',ackPre+'ลูกค้ายกเลิก',sale.reason?'เหตุผล: '+_p1Esc(sale.reason):fmtDT(sale.at)); }
+ if(!sent) return _p1Cell('⏳','#cbd5e1','รอการ์ดจาก สนญ.',isBr?'ยังไม่มีสิ่งที่ต้องทำ':'สาขายังไม่มีสิ่งที่ต้องทำ');
+ if(!ack) return isBr?_p1Cell('👉','#f59e0b','กดรับทราบ','เปิดดูการ์ด + คำแนะนำ แล้วกดรับทราบ'):_p1Cell('⏳','#f59e0b','รอสาขารับทราบ','สนญ. ส่งมา '+fmtDur(Date.now()-(a.hqAdvice.sentAt||0))+' แล้ว');
+ if(sale&&sale.result==='waiting') return _p1Cell('⏳',late?'#ef4444':'#f59e0b','รับทราบแล้ว · รอลูกค้าตัดสินใจ',(late?'⚠ เกินวัน · ':'')+(sale.reason?_p1Esc(sale.reason):fmtDT(sale.at)));
+ if(late) return _p1Cell('⏰','#ef4444','รับทราบแล้ว · ค้างบันทึกผลขาย','⚠ เกินวัน — '+(isBr?'กดบันทึกผลขายวันนี้':'ต้องบันทึกวันต่อวัน'));
+ return _p1Cell('✓','#22c55e','รับทราบแล้ว · รอบันทึกผลขาย','รับทราบ '+fmtDT(a.ack3.at)); }
+function appCardP1(a,showBranch){
+ const b=BRANCHES.find(x=>x.code===a.branch); const isBr=SESSION.role==='branch';
+ const reply=(a.thread&&a.thread.length&&a.thread[a.thread.length-1].by==='branch'&&!a.thread[a.thread.length-1].st)?' <span class="tag t-info" style="font-size:10px">↩ สาขาตอบกลับ</span>':'';
+ return `<div class="p1row" style="border-left-color:${p1RowAccent(a)}" onclick="openDetail('${a.id}')">
+  <div><div class="p1nm">${a.name}<span class="qid">· ${a.id}</span>${reply}</div>
+   <div class="p1meta">${showBranch&&b?b.label+' · ':''}${PRODUCTS[a.product].label} · ยอดจัด ${fmt(a.calc.finance)} · ส่ง ${fmtDT(a.submittedAt)}</div>${p1MiniTL(a,isBr)}</div>
+  <div>${p1CardCell(a,isBr)}</div><div>${p1HqCell(a,isBr)}</div><div>${p1BrCell(a,isBr)}</div></div>`; }
 function appCard(a, showBranch){
+ if(p1()&&a.status==='pending') return appCardP1(a,showBranch);
  const b=BRANCHES.find(x=>x.code===a.branch); const showScore=SESSION.role!=='branch';
  const waitStr = (a.status==='pending'||a.status==='moreinfo')&&a.submittedAt? ' · รอ '+fmtDur(Date.now()-a.submittedAt)
    : (a.decidedAt&&a.submittedAt? ' · ใช้เวลา '+fmtDur(a.decidedAt-a.submittedAt):'');
@@ -7949,7 +8024,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0914-N';
+const CHK3_BUILD='0915-A';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
