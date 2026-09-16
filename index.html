@@ -404,7 +404,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0915-F (เฟส 1 · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด · คำใหม่ ควรตรวจสอบเพิ่มเติม/ข้อมูลน่าสงสัย) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0916-A (เฟส 1 · ช่องข้อความในเคส สาขา ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -1943,7 +1943,6 @@ function openChangePass(forced){
      <div style="position:relative"><input id="cp-new" type="password" placeholder="อย่างน้อย 4 ตัวอักษร" style="padding-right:38px"><span onclick="ufTogglePass('cp-new')" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer">👁️</span></div></div>
    <div class="field"><label>ยืนยันรหัสผ่านใหม่ <span class="req">*</span></label>
      <div style="position:relative"><input id="cp-new2" type="password" placeholder="พิมพ์รหัสใหม่อีกครั้ง" style="padding-right:38px"><span onclick="ufTogglePass('cp-new2')" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer">👁️</span></div></div>
-   <p class="pill-note" style="margin:2px 0 12px">🔒 เดโม: เก็บในเครื่องเท่านั้น — ระบบจริงจะเข้ารหัส (hash) ที่เซิร์ฟเวอร์</p>
    <div class="flex" style="gap:10px">${forced?'':'<button class="btn btn-line" style="flex:1" onclick="closeModal()">ยกเลิก</button>'}
      <button class="btn btn-red" style="flex:2" onclick="saveChangePass(${forced?'true':'false'})">บันทึกรหัสผ่านใหม่</button></div>
   </div>`;
@@ -4866,12 +4865,13 @@ function openDetail(id){
      <p class="pill-note" style="margin-bottom:8px">ระบบเลือกจากปัจจัยที่ลูกค้ารายนี้ได้คะแนน<b>ต่ำสุด</b> — ขอเอกสารเหล่านี้ครบช่วยลดความเสี่ยงและมีโอกาสผ่านมากขึ้น (ไม่ต้องปฏิเสธ)${isHQ?'':' · หากไม่แน่ใจสอบถาม สนญ.'}</p>
      ${c.docSuggest.map(d=>`<div class="alert a-warn" style="margin-bottom:6px">☐ <b>${d.label}${isHQ?` <span class="mut">(${d.raw} คะแนน)</span>`:''}</b><br>${d.text}</div>`).join('')}
      </div>`:''}
-    ${a.thread&&a.thread.length?`<div class="card mb"><h3>💬 ประวัติการขอ/ตอบข้อมูล</h3>
-     ${a.thread.map((t,ti)=>`<div class="alert ${t.by==='hq'?(t.st==='moreinfo'?'a-warn':'a-info'):'a-ok'}" style="margin-bottom:6px">
-      <b>${t.by==='hq'?'สนญ. '+(t.st==='moreinfo'?'ขอข้อมูลเพิ่ม':t.st==='approved'?'อนุมัติ':t.st==='rejected'?'ปฏิเสธ':''):'สาขาตอบกลับ'}</b>
-      <span class="mut" style="font-size:11.5px">· ${fmtDT(t.at)}</span><br>${t.msg||''}
+    ${(a.thread&&a.thread.length)||caseMsgOn(a)?`<div class="card mb" id="case-thread"><h3>💬 ${p1()?'ข้อความในเคส (สาขา ↔ สนญ.)':'ประวัติการขอ/ตอบข้อมูล'}</h3>
+     ${(a.thread||[]).map((t,ti)=>`<div class="alert ${t.by==='hq'?(t.st==='moreinfo'?'a-warn':'a-info'):'a-ok'}" style="margin-bottom:6px">
+      <b>${t.by==='hq'?'สนญ. '+(t.st==='moreinfo'?'ขอข้อมูลเพิ่ม':t.st==='approved'?'อนุมัติ':t.st==='rejected'?'ปฏิเสธ':''):(t.st?'สาขา':'สาขาแจ้ง')}</b>
+      <span class="mut" style="font-size:11.5px">· ${fmtDT(t.at)}${t.name?' · '+_escH(t.name):''}</span><br>${_escH(t.msg||'')}
       ${t.img?`<br><img src="${t.img}" style="height:60px;border-radius:6px;cursor:zoom-in;margin-top:4px" onclick="showThreadImg('${a.id}',${ti})">`:''}
-     </div>`).join('')}</div>`
+     </div>`).join('')}
+     ${caseMsgOn(a)?`<div style="display:flex;gap:8px;align-items:flex-start;margin-top:8px"><textarea id="cm-msg" rows="2" style="flex:1" placeholder="${isHQ?'ข้อความถึงสาขา (เช่น แก้อาชีพให้แล้ว / ขอให้ตรวจ…)':'แจ้ง สนญ. (เช่น กรอกรายได้ผิด ที่ถูกคือ 12,000 / บันทึกผลขายผิด ขอแก้เป็น…)'}"></textarea><button class="btn" onclick="caseMsgSend('${a.id}')">ส่งข้อความ</button></div><p class="mut" style="font-size:11.5px;margin:4px 0 0">${isHQ?'สาขาจะเห็นข้อความนี้ในเคสภายใน 1 นาที':'สนญ. จะเห็นป้าย "↩ สาขาตอบกลับ" ในรายการ · ใช้แจ้งแก้ข้อมูล/ผลขายที่บันทึกผิด (สาขาแก้เองไม่ได้)'}</p>`:''}</div>`
     :(a.decisionNote?`<div class="alert a-info"><b>หมายเหตุจากฝ่ายวิเคราะห์:</b> ${a.decisionNote} ${a.decisionDate?'('+a.decisionDate+')':''}</div>`:'')}
     ${(SESSION.role==='branch'&&a.status==='moreinfo'&&!appLocked(a))?((a.reqItems&&a.reqItems.length)?reqFulfillCard(a):`<div class="card mb" id="branch-reply-card" style="border:1.5px solid var(--orange)"><h3>📎 ตอบกลับข้อมูลที่ สนญ. ขอ</h3>
      <div class="alert a-warn">สนญ. ขอ: ${a.decisionNote||'-'}</div>
@@ -5033,6 +5033,12 @@ function branchReply(id){
  saveApps(); if(typeof cloudPushCase==='function')cloudPushCase(a); closeModal(); go(currentTab);
  alert('✅ ส่งข้อมูลกลับ สนญ. แล้ว — เคสกลับเข้าคิววิเคราะห์');
 }
+function _escH(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+/* 0916-A: ข้อความในเคส สาขา ↔ สนญ. (เฟส 1) — ใช้ a.thread เดิม (mergeCase รวมแบบ union อยู่แล้ว) */
+function caseMsgOn(a){ try{ return p1() && a && a.status==='pending' && SESSION && (SESSION.role==='branch'||SESSION.role==='analyst'||SESSION.role==='zone'); }catch(e){ return false; } }
+function caseMsgSend(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const el=document.getElementById('cm-msg'); const msg=(el&&el.value||'').trim(); if(!msg){ alert('พิมพ์ข้อความก่อนส่ง'); return; }
+ a.thread=a.thread||[]; a.thread.push({by:SESSION.role==='branch'?'branch':'hq',msg,name:(SESSION&&SESSION.name)||'',at:Date.now()}); a.updatedAt=Date.now(); saveApps(); try{ cloudPushCase(a); }catch(e){}
+ try{ toast&&toast('ส่งข้อความแล้ว'); }catch(e){} openDetail(id); setTimeout(()=>{ const c=document.getElementById('case-thread'); if(c) c.scrollIntoView({block:'center'}); },50); }
 function showThreadImg(id,idx){
  const a=APPS.find(x=>x.id===id); if(!a||!a.thread||!a.thread[idx]||!a.thread[idx].img) return;
  let ov=document.getElementById('imgview');
@@ -8149,7 +8155,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0915-F';
+const CHK3_BUILD='0916-A';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
