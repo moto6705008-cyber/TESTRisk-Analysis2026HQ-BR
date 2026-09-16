@@ -242,10 +242,22 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 #rpt-present .pdots{display:flex;gap:6px;justify-content:center;padding:14px}#rpt-present .pdots i{width:9px;height:9px;border-radius:50%;background:#334155;display:block;cursor:pointer}#rpt-present .pdots i.on{background:#fff;width:26px;border-radius:5px}
 #print-area .rtb{font-size:10.5px}#print-area .rmx{font-size:10.5px}#print-area .rtwo{display:block}#print-area .rquad{display:grid;grid-template-columns:1fr 1fr;gap:6px}#print-area .rrec{font-size:10px}#print-area .rcal{height:90px}
 /* เฟส 1: แถวลูกค้า 4 คอลัมน์ (ลูกค้า+ไทม์ไลน์ · การ์ด · สนญ. · สาขา) */
-.p1hd,.p1row{display:grid;grid-template-columns:1.7fr 1fr 1.15fr 1.3fr;gap:10px}
+.p1hd,.p1row{display:grid;grid-template-columns:1.55fr 1.05fr 1.25fr 1.2fr;gap:10px}
+.p1hd .rs{color:var(--navy);font-weight:700}
+.p1rc{padding:8px 12px;border-left:0.5px solid var(--line);border-radius:0 8px 8px 0;display:flex;flex-direction:column;justify-content:center;gap:5px;align-self:stretch}
+.p1rc.ok{background:linear-gradient(90deg,#f6fff8,#dcfce7)}.p1rc.warn{background:linear-gradient(90deg,#fffdf5,#fff3c4)}.p1rc.bad{background:linear-gradient(90deg,#fff7f7,#ffe1e1)}.p1rc.na{background:#f8fafc}
+.p1lamp{display:flex;align-items:center;gap:9px}
+.p1disc{width:30px;height:30px;border-radius:50%;flex:0 0 30px;box-shadow:inset 0 -3px 6px rgba(0,0,0,.18),0 0 0 3px rgba(255,255,255,.9),0 0 0 4px rgba(0,0,0,.06)}
+.p1disc.ok{background:radial-gradient(circle at 35% 30%,#86efac,#16a34a)}.p1disc.warn{background:radial-gradient(circle at 35% 30%,#fde68a,#f59e0b)}.p1disc.bad{background:radial-gradient(circle at 35% 30%,#fca5a5,#dc2626);animation:p1pulse 1.8s infinite}.p1disc.na{background:radial-gradient(circle at 35% 30%,#e5e7eb,#9ca3af)}
+@keyframes p1pulse{0%{box-shadow:inset 0 -3px 6px rgba(0,0,0,.18),0 0 0 3px rgba(255,255,255,.9),0 0 0 4px rgba(220,38,38,.35)}70%{box-shadow:inset 0 -3px 6px rgba(0,0,0,.18),0 0 0 3px rgba(255,255,255,.9),0 0 0 10px rgba(220,38,38,0)}100%{box-shadow:inset 0 -3px 6px rgba(0,0,0,.18),0 0 0 3px rgba(255,255,255,.9),0 0 0 4px rgba(220,38,38,0)}}
+.p1lw{font-weight:800;font-size:13.5px;line-height:1.15}.p1lw.ok{color:#166534}.p1lw.warn{color:#92400e}.p1lw.bad{color:#991b1b}.p1lw.na{color:#6b7280}
+.p1lw small{display:block;font-weight:400;font-size:11px;color:#6b7280}
+.p1adv{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;border:1px solid;width:max-content;max-width:100%}
+.p1adv.has{background:#dbeafe;color:#1d4ed8;border-color:#bfdbfe}.p1adv.none{background:#f3f4f6;color:#6b7280;border-color:#e5e7eb;font-weight:600}.p1adv.wait{background:#f3f4f6;color:#9ca3af;border-color:#e5e7eb;font-weight:500}.p1adv.draft{background:#f3f4f6;color:#6b7280;border-color:#e5e7eb;font-weight:600}
+.p1adv .nw{background:#1d4ed8;color:#fff;font-size:10px;padding:0 6px;border-radius:999px;font-weight:700}
 .p1hd{font-size:11px;color:var(--mut);padding:2px 10px 6px 14px;border-bottom:0.5px solid var(--line);margin-bottom:6px}
 .p1hd .hq{color:#1d4ed8}.p1hd .br{color:#b45309}
-.p1row{align-items:center;padding:10px 12px 10px 10px;border:0.5px solid var(--line);border-left:5px solid #94a3b8;border-radius:10px;background:var(--card);margin-bottom:8px;cursor:pointer}
+.p1row{align-items:stretch;padding:10px 0 10px 10px;border:0.5px solid var(--line);border-left:5px solid #94a3b8;border-radius:10px;background:var(--card);margin-bottom:8px;cursor:pointer}
 .p1row:hover{border-color:#c7d2fe;background:#fafbff}
 .p1row>div{min-width:0}
 .p1nm{font-size:13.5px;font-weight:700}.p1nm .qid{margin-left:3px}
@@ -259,7 +271,7 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 .p1st{display:flex;gap:8px;align-items:flex-start}
 .p1ic{width:24px;height:24px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;background:#cbd5e1}
 .p1st .t{font-weight:700;font-size:12.5px;line-height:1.3}.p1st .s{font-size:11px;color:var(--mut);margin-top:1px;line-height:1.4}
-@media(max-width:820px){.p1hd{display:none}.p1row{grid-template-columns:1fr 1fr}.p1row>div:first-child{grid-column:1/-1}}
+@media(max-width:820px){.p1hd{display:none}.p1row{grid-template-columns:1fr 1fr;padding-right:10px}.p1row>div:first-child{grid-column:1/-1}.p1rc{grid-column:1/-1;border-left:0;border-radius:8px}}
 .sc-ok{background:#f0fdf4;color:#166534}.sc-mid{background:#fff7ed;color:#c2410c}.sc-bad{background:#fef2f2;color:#dc2626}
 .qtable{width:100%;border-collapse:collapse}
 .qtable th{background:var(--navy);color:#fff;font-size:11px;font-weight:500;padding:9px 11px;text-align:left}
@@ -350,6 +362,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
 .c3items li.c3-bad{color:#991b1b;font-weight:600}
 .c3items li.c3-warn{color:#92400e}
 .c3items li.c3-ok{color:#374151}
+.c3items li.c3-info{color:#64748b;font-style:italic}
 .c3ref{font-size:11.5px;color:var(--mut);margin-top:6px;border-top:1px solid rgba(0,0,0,.06);padding-top:4px}
 .c3cts{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .c3ct{font-size:11.5px;background:#f4f6fb;border-left:3px solid var(--red);border-radius:6px;padding:2px 8px}
@@ -391,7 +404,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0915-D (เฟส 1 · ทะเบียนบ้านบังคับ · เบอร์ที่ทำงานเฉพาะพนักงาน/ราชการ · ปิดช่องเอกสารถึงเฟส 2 · ประเภทหนี้ขึ้นเมื่อเลือกมี · ล้างยอดผ่อนบ้าน) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0915-F (เฟส 1 · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด · คำใหม่ ควรตรวจสอบเพิ่มเติม/ข้อมูลน่าสงสัย) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -658,6 +671,8 @@ function mergeCase(base, other){ const o=Object.assign({}, base); let changed=fa
   if((other.submittedAt||0)>(base.submittedAt||0) && (other.submittedAt||0)>(o.decidedAt||0) && other.status==='pending' && o.status!=='pending'){ o.status='pending'; o.submittedAt=other.submittedAt; changed=true; }
   if(!base.ack3 && other.ack3){ o.ack3=other.ack3; changed=true; }
   ['hqReview','sale','hqAdvice'].forEach(k=>{ if(other[k]&&(other[k].at||0)>((base[k]&&base[k].at)||0)){ o[k]=other[k]; changed=true; } });
+  /* 0915-F: hqChecks (health/cosmos) แยกต่อรายการ at ใหม่ชนะ */
+  try{ if(other.hqChecks){ o.hqChecks=Object.assign({},base.hqChecks||{}); ['health','cosmos'].forEach(k=>{ const ov=other.hqChecks[k], bv=(base.hqChecks||{})[k]; if(ov&&(ov.at||0)>((bv&&bv.at)||0)){ o.hqChecks[k]=ov; changed=true; if(k==='health') o.healthRight=ov.r; } }); } }catch(e){}
   if(Array.isArray(other.revisions)){ const br=Array.isArray(base.revisions)?base.revisions.slice():[]; const seen={}; br.forEach(r=>{ seen[(r.at||0)+'|'+(r.type||'')]=1; }); let add=false; other.revisions.forEach(r=>{ const k=(r.at||0)+'|'+(r.type||''); if(!seen[k]){ br.push(r); seen[k]=1; add=true; } }); if(add){ br.sort((x,y)=>(x.at||0)-(y.at||0)); o.revisions=br; changed=true; } }
   if(Array.isArray(other.thread)){ const bth=Array.isArray(base.thread)?base.thread.slice():[]; const seen={}; bth.forEach(t=>{ seen[(t.at||0)+'|'+(t.by||'')]=1; });
     other.thread.forEach(t=>{ const key=(t.at||0)+'|'+(t.by||''); if(!seen[key]){ bth.push(t); seen[key]=1; changed=true; } }); if(bth.length!==(base.thread||[]).length){ bth.sort((x,y)=>(x.at||0)-(y.at||0)); o.thread=bth; } }
@@ -1839,7 +1854,7 @@ function extCopyId(){
  if(ok){ toast('📋 คัดลอกแล้ว','เลขบัตรอยู่ในคลิปบอร์ด นำไปวางในเว็บได้','','#0f766e'); return; }
  if(navigator.clipboard){ navigator.clipboard.writeText(el.value).then(()=>toast('📋 คัดลอกแล้ว','เลขบัตรอยู่ในคลิปบอร์ด','','#0f766e')).catch(()=>{}); }
 }
-function setHealthRight(id,val){ const a=APPS.find(x=>x.id===id); if(!a) return; a.healthRight=val; saveApps(); openDetail(id); }
+/* setHealthRight → 0915-F (hqChecks) */
 function extCheck(id,kind){
  const a=APPS.find(x=>x.id===id); if(!a) return;
  const seed=normDigits(a.idcard).split('').reduce((s,d)=>s+(+d||0),0)+(a.idcard||'').length;
@@ -2169,7 +2184,8 @@ function cardVisibleToBranch(a){ if(!p1()) return true; if(!(SESSION&&SESSION.ro
 function _advSave(a,send){ const h=a.hqAdvice||{text:{},none:{}}; h.text=h.text||{}; h.none=h.none||{};
  ADV_DIMS.forEach(([k])=>{ const t=document.getElementById('adv-'+k), n=document.getElementById('advn-'+k); if(t) h.text[k]=t.value.trim(); if(n) h.none[k]=!!n.checked; });
  h.at=Date.now(); h.by=(SESSION&&SESSION.name)||'';
- if(send){ if(!advComplete(h)){ alert('กรุณาใส่คำแนะนำ หรือติ๊ก "ไม่มีข้อเสนอแนะ" ให้ครบทั้ง 3 ส่วนก่อนส่ง'); return false; }
+ if(send){ const _need=hqChecksNeeded(a); if(_need.length){ alert('กรุณาติ๊กผลตรวจในกล่อง "ตรวจโดย สนญ." ให้ครบก่อนส่ง: '+_need.join(' · ')); return false; }
+  if(!advComplete(h)){ alert('กรุณาใส่คำแนะนำ หรือติ๊ก "ไม่มีข้อเสนอแนะ" ให้ครบทั้ง 3 ส่วนก่อนส่ง'); return false; }
   const first=!h.sentAt; h.sentAt=Date.now(); h.sentBy=h.by; a.hqReview={at:h.sentAt,by:h.by,note:ADV_DIMS.map(([k,l])=>h.none[k]?'':(l+': '+h.text[k])).filter(Boolean).join(' · ')};
   a.thread=a.thread||[]; a.thread.push({by:'hq',st:'advice',msg:(first?'📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำให้สาขา':'✏️ สนญ. แก้คำแนะนำ')+(a.hqReview.note?' — '+a.hqReview.note:' (ไม่มีข้อเสนอแนะเพิ่ม)'),at:Date.now()}); }
  a.hqAdvice=h; saveApps(); if(typeof cloudPushCase==='function')cloudPushCase(a); return true; }
@@ -2192,6 +2208,68 @@ function hqAdvicePanel(a){ if(!(p1()&&SESSION&&SESSION.role==='analyst'&&a.statu
 /* กล่องรอ สนญ. (ฝั่งสาขา) */
 function branchWaitCard(a){ const esc=s=>String(s==null?'':s).replace(/</g,'&lt;');
  return `<div class="card mb" style="border:1px dashed #93c5fd;background:#f8fafc;text-align:center;padding:18px"><div style="font-size:15px;font-weight:600;color:#1d4ed8">🔒 การ์ด 3 มิติจะแสดงเมื่อ สนญ. ตรวจสอบและส่งคำแนะนำกลับมา</div><div class="mut" style="margin-top:4px">ส่งเคสเมื่อ ${a.submittedAt?fmtDT(a.submittedAt):esc(a.date)} · สนญ. ตรวจภายในวันเดียวกัน · ระหว่างนี้บันทึกผลการขายได้ถ้าลูกค้าตัดสินใจแล้ว (ระบบจะติดธง "ขายก่อน สนญ. ตรวจ")</div></div>`; }
+/* ===================== 0915-F: ค่าแรงขั้นต่ำ (รับจ้างรายวัน) ===================== */
+const MW_DEFAULT={ver:'ประกาศคณะกรรมการค่าจ้าง ฉบับที่ 14 · มีผล 1 ก.ค. 2568',rates:{
+ 'กรุงเทพมหานคร':400,'ชลบุรี':400,'ระยอง':400,'ฉะเชิงเทรา':400,'ภูเก็ต':400,'สุราษฎร์ธานี@เกาะสมุย':400,
+ 'เชียงใหม่@เมืองเชียงใหม่':380,'สงขลา@หาดใหญ่':380,
+ 'นนทบุรี':372,'ปทุมธานี':372,'สมุทรปราการ':372,'นครปฐม':372,'สมุทรสาคร':372,
+ 'นครราชสีมา':359,'สมุทรสงคราม':358,
+ 'ขอนแก่น':357,'เชียงใหม่':357,'ปราจีนบุรี':357,'พระนครศรีอยุธยา':357,'สระบุรี':357,
+ 'ลพบุรี':356,'นครนายก':355,'สุพรรณบุรี':355,'หนองคาย':355,
+ 'กระบี่':354,'ตราด':354,
+ 'กาญจนบุรี':352,'จันทบุรี':352,'เชียงราย':352,'ตาก':352,'นครพนม':352,'บุรีรัมย์':352,'ประจวบคีรีขันธ์':352,'พังงา':352,'พิษณุโลก':352,'มุกดาหาร':352,'สกลนคร':352,'สงขลา':352,'สระแก้ว':352,'สุราษฎร์ธานี':352,'อุบลราชธานี':352,
+ 'ชุมพร':351,'เพชรบุรี':351,'สุรินทร์':351,
+ 'นครสวรรค์':350,'ยโสธร':350,'ลำพูน':350,
+ 'กาฬสินธุ์':349,'นครศรีธรรมราช':349,'บึงกาฬ':349,'เพชรบูรณ์':349,'ร้อยเอ็ด':349,
+ 'ชัยนาท':348,'ชัยภูมิ':348,'พัทลุง':348,'สิงห์บุรี':348,'อ่างทอง':348,
+ 'กำแพงเพชร':347,'พิจิตร':347,'มหาสารคาม':347,'แม่ฮ่องสอน':347,'ระนอง':347,'ราชบุรี':347,'ลำปาง':347,'เลย':347,'ศรีสะเกษ':347,'สตูล':347,'สุโขทัย':347,'หนองบัวลำภู':347,'อำนาจเจริญ':347,'อุดรธานี':347,'อุตรดิตถ์':347,'อุทัยธานี':347,
+ 'ตรัง':345,'น่าน':345,'พะเยา':345,'แพร่':345,
+ 'นราธิวาส':337,'ปัตตานี':337,'ยะลา':337}};
+function mwCfg(){ CFG.minWage=CFG.minWage||{}; const m=CFG.minWage; if(!m.rates||!Object.keys(m.rates).length){ m.rates=Object.assign({},MW_DEFAULT.rates); m.ver=m.ver||MW_DEFAULT.ver; } if(m.days==null) m.days=26; if(m.tolPct==null) m.tolPct=10; if(m.yellowPct==null) m.yellowPct=20; if(m.softFirst==null) m.softFirst=true; return m; }
+/* อาชีพย่อยที่ใช้ค่าแรงขั้นต่ำ (ไม่รวมเกษตร/ปศุสัตว์แบบรับจ้าง/แบ่ง % — ใช้ช่วงอ้างอิง+ประเมินจากไร่/ตัวตามเดิม) */
+const MW_OCC_RE=/รับจ้างทั่วไป\/รายวัน|ก่อสร้าง\/กรรมกร|ลูกจ้างร้าน\/ลูกจ้างเกษตร|แม่บ้าน\/ทำความสะอาด|พนักงานโรงงาน\/ฝ่ายผลิต \(รายวัน\)/;
+function mwOcc(o){ return !!(o&&MW_OCC_RE.test(o.s||'')&&!/เกษตร|ปศุสัตว์/.test(o.g||'')); }
+function mwProvOf(a){ const ac=a.addrCur||{}; const pv=(typeof normProv==='function'?normProv(ac.prov):ac.prov)||BRANCH_PROV[a.branch]||''; return {pv,dist:String(ac.dist||'')}; }
+function mwRate(pv,dist){ const m=mwCfg(); if(!pv) return null; const sp=m.rates[pv+'@'+dist]; if(dist&&sp!=null) return {wage:+sp,label:pv+' (อ.'+dist+')'}; if(m.rates[pv]!=null) return {wage:+m.rates[pv],label:pv}; return null; }
+function mwBase(a){ const {pv,dist}=mwProvOf(a); const r=mwRate(pv,dist); return r? r.wage*(+mwCfg().days||26) : 0; }
+function mwEval(a){ const m=mwCfg(); const {pv,dist}=mwProvOf(a); const r=mwRate(pv,dist)||{wage:0,label:pv||'-'}; const base=r.wage*(+m.days||26); const inc=+a.incomeClaimed||0;
+ const pct=base>0?Math.round((inc/base-1)*100):0; const tol=+m.tolPct||10, yellow=+m.yellowPct||20; let lv='ok';
+ if(pct<-tol) lv='warn'; else if(pct>yellow) lv=m.softFirst?'warn':'bad'; else if(pct>tol) lv='warn';
+ return {base,wage:r.wage,days:+m.days||26,prov:r.label,pct,tol,yellow,lv,soft:!!m.softFirst}; }
+function mwSettingsHTML(){ const m=mwCfg(); const south=['สงขลา@หาดใหญ่','สงขลา','นครศรีธรรมราช','สตูล','พัทลุง','ตรัง','กระบี่','สุราษฎร์ธานี','สุราษฎร์ธานี@เกาะสมุย','พังงา','ภูเก็ต','ชุมพร','ระนอง','นราธิวาส','ปัตตานี','ยะลา'];
+ const keys=Object.keys(m.rates).sort((x,y)=>{ const sx=south.indexOf(x), sy=south.indexOf(y); if(sx>=0&&sy>=0) return sx-sy; if(sx>=0) return -1; if(sy>=0) return 1; return x.localeCompare(y,'th'); });
+ const row=k=>{ const [pv,d]=k.split('@'); return `<tr${south.indexOf(k)>=0?' style="background:#fff7ed"':''}><td>${pv}${d?' <span class="mut">(เฉพาะ อ.'+d+')</span>':''}</td><td><input type="number" style="width:80px" value="${m.rates[k]}" onchange="CFG.minWage.rates['${k}']=+this.value||0"></td><td class="mut">${fmt((+m.rates[k]||0)*(+m.days||26))}</td></tr>`; };
+ return `<details class="card mb" style="padding:12px 16px"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">💵 ค่าแรงขั้นต่ำ — รับจ้างรายวัน/ก่อสร้าง/ลูกจ้างร้าน/แม่บ้าน/โรงงานรายวัน (${keys.length} พื้นที่ · ${m.ver||''})</summary>
+  <div class="flex" style="gap:14px;flex-wrap:wrap;margin:10px 0;align-items:flex-end">
+   <div class="field" style="margin:0"><label>วันทำงาน/เดือน ที่ใช้คูณ</label><input type="number" style="width:90px" value="${m.days}" onchange="CFG.minWage.days=+this.value||26"></div>
+   <div class="field" style="margin:0"><label>ช่วงปกติ 🟢 ±%</label><input type="number" style="width:90px" value="${m.tolPct}" onchange="CFG.minWage.tolPct=+this.value||10"></div>
+   <div class="field" style="margin:0"><label>สูงกว่าได้ถึง 🟡 +%</label><input type="number" style="width:90px" value="${m.yellowPct}" onchange="CFG.minWage.yellowPct=+this.value||20"></div>
+   <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="เดือนแรก: เกินเพดาน 🟡 แสดงเป็นเหลืองแทนแดง ให้สาขาปรับวิธีกรอกก่อน"><input type="checkbox" ${m.softFirst?'checked':''} onchange="CFG.minWage.softFirst=this.checked"> 🕐 ผ่อนผันเดือนแรก (เกินเพดานเป็นเหลืองแทนแดง)</label>
+   <div class="field" style="margin:0;flex:1;min-width:220px"><label>ประกาศที่ใช้</label><input value="${(m.ver||'').replace(/"/g,'&quot;')}" onchange="CFG.minWage.ver=this.value"></div>
+  </div>
+  <div class="mut" style="font-size:12px;margin-bottom:6px">แถบส้ม = พื้นที่ขายภาคใต้ · ใช้จังหวัดของที่อยู่ปัจจุบันลูกค้า (อ.หาดใหญ่/เกาะสมุยแยกอัตโนมัติ) ถ้าไม่มีใช้จังหวัดสาขา · เกษตร/ปศุสัตว์แบบรับจ้างไม่ใช้ตารางนี้ · กด 💾 บันทึกเกณฑ์ เพื่อให้มีผลทุกเครื่อง</div>
+  <div style="max-height:320px;overflow:auto"><table class="tbl" style="font-size:12.5px"><tr><th>จังหวัด / พื้นที่</th><th>บาท/วัน</th><th>× ${m.days} วัน</th></tr>${keys.map(row).join('')}</table></div></details>`; }
+/* ===================== 0915-F: กล่อง "ตรวจโดย สนญ." (ประกันสังคม + COSMOS) ===================== */
+function hqChecksNeeded(a){ const need=[]; if(occHealthRight(a.occupation)&&(a.healthRight==null||a.healthRight==='unchecked')) need.push('สิทธิรักษา/ประกันสังคม'); const cz=(a.hqChecks||{}).cosmos; if(!cz||!cz.r||cz.r==='unchecked') need.push('COSMOS'); return need; }
+function _hqCheckSave(a){ try{ a.calc=a.calc||calcAll(a); a.check3=chk3Snap(check3(a,a.calc)); }catch(e){} saveApps(); if(typeof cloudPushCase==='function') cloudPushCase(a); }
+function setHealthRight(id,val){ const a=APPS.find(x=>x.id===id); if(!a) return; a.healthRight=val; a.hqChecks=a.hqChecks||{}; a.hqChecks.health={r:val,at:Date.now(),by:(SESSION&&SESSION.name)||''}; _hqCheckSave(a); openDetail(id); }
+function setCosmos(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const g=k=>{ const e=document.getElementById(k); return e?String(e.value||'').trim():''; }; const r=g('cz-r')||'unchecked';
+ a.hqChecks=a.hqChecks||{}; a.hqChecks.cosmos={r,date:g('cz-date'),shop:g('cz-shop'),note:g('cz-note'),at:Date.now(),by:(SESSION&&SESSION.name)||''}; _hqCheckSave(a); openDetail(id); }
+function hqChecksPanel(a){ if(!(SESSION&&SESSION.role==='analyst'&&a.status!=='cancelled')) return ''; const hr=occHealthRight(a.occupation); const cz=(a.hqChecks||{}).cosmos||{}; const mo=+((CFG&&CFG.cosmosMonths)||6); const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); const need=hqChecksNeeded(a);
+ const opt=(v,t)=>`<option value="${v}"${(cz.r||'unchecked')===v?' selected':''}>${t}</option>`;
+ return `<div class="card mb noprint" style="border:1.5px dashed #94a3b8;background:#f8fafc"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center"><b style="color:var(--navy)">🔎 ตรวจโดย สนญ. <span class="mut" style="font-weight:400;font-size:12px">— ติ๊กก่อนส่งการ์ด มีผลต่อไฟทันที · สาขาไม่เห็นกล่องนี้</span></b>${need.length?`<span class="tag" style="background:#fef9c3;color:#854d0e">ยังไม่ตรวจ: ${need.join(' · ')}</span>`:'<span class="tag t-ok">ตรวจครบแล้ว</span>'}</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+   <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:8px 10px"><div style="font-weight:600;font-size:13px">🩺 สิทธิการรักษาตามอาชีพ</div>
+    ${hr?`<div class="mut" style="font-size:12px;margin:2px 0 6px">อาชีพนี้ควรมี <b>${hr.expect}</b> — ไม่พบ = 🟡 อาจไม่ได้เป็นตามที่แจ้ง</div>
+    <select style="max-width:320px" onchange="setHealthRight('${a.id}',this.value)"><option value="unchecked"${(a.healthRight==null||a.healthRight==='unchecked')?' selected':''}>ยังไม่ได้ตรวจ</option><option value="ok"${a.healthRight==='ok'?' selected':''}>พบสิทธิ ตรงกับอาชีพ 🟢</option><option value="none"${a.healthRight==='none'?' selected':''}>ไม่พบสิทธิตามอาชีพ 🟡</option></select>
+    <div style="margin-top:4px"><a href="#" onclick="openHealthCheck();return false" style="font-size:12px">🔗 เปิดหน้าตรวจสิทธิ สปสช./ประกันสังคม</a>${(a.hqChecks||{}).health&&a.hqChecks.health.by?` <span class="mut" style="font-size:11.5px">· ตรวจโดย ${esc(a.hqChecks.health.by)} ${fmtDT(a.hqChecks.health.at)}</span>`:''}</div>`
+    :'<div class="mut" style="font-size:12px;margin-top:4px">อาชีพกลุ่มนี้ไม่ต้องตรวจสิทธิ (เฉพาะพนักงานประจำ/ราชการ)</div>'}</div>
+   <div style="background:#fff;border:1px solid #f26522;border-radius:10px;padding:8px 10px"><div style="font-weight:600;font-size:13px">🏍 ประวัติซื้อรถจากร้านอื่น (COSMOS)</div>
+    <div class="mut" style="font-size:12px;margin:2px 0 6px">ค้นเลขบัตรใน COSMOS แล้วเลือกผล — พบภายใน ${mo} เดือน = 🟡 มิติบุคคล</div>
+    <select id="cz-r" style="max-width:320px" onchange="const on=this.value==='recent'||this.value==='old'; document.getElementById('cz-more').style.display=on?'':'none'; if(!on) setCosmos('${a.id}')">${opt('unchecked','ยังไม่ได้ตรวจ')}${opt('none','ไม่พบประวัติซื้อรถจากร้านอื่น 🟢')}${opt('recent','พบซื้อรถจากร้านอื่น ภายใน '+mo+' เดือน 🟡')}${opt('old','พบ แต่เกิน '+mo+' เดือน (แจ้งเพื่อทราบ)')}</select>
+    <div id="cz-more" style="display:${(cz.r==='recent'||cz.r==='old')?'':'none'};margin-top:6px"><div class="flex" style="gap:6px;flex-wrap:wrap"><input id="cz-date" placeholder="วันที่ซื้อล่าสุด เช่น 12/07/2569" value="${esc(cz.date)}" style="width:190px"><input id="cz-shop" placeholder="ร้าน/ไฟแนนซ์" value="${esc(cz.shop)}" style="width:170px"><input id="cz-note" placeholder="หมายเหตุ (ไม่บังคับ)" value="${esc(cz.note)}" style="flex:1;min-width:140px"><button class="btn btn-line btn-sm" onclick="setCosmos('${a.id}')">บันทึก</button></div></div>
+    ${cz.by?`<div class="mut" style="font-size:11.5px;margin-top:4px">ตรวจโดย ${esc(cz.by)} ${fmtDT(cz.at)}</div>`:''}</div>
+  </div></div>`; }
 /* ===================== 0914-J: เฟส 1 — การ์ดอย่างเดียว (ไม่มีอนุมัติ/ตีกลับ) ===================== */
 function p1(){ return !!(CFG&&CFG.phase1Mode!==false); }
 function _dayKey(ts){ const d=new Date(ts||Date.now()); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -3482,7 +3560,7 @@ function hqEditFill(){
  const sb=document.getElementById('fbtn-submit'); if(sb){ sb.textContent='💾 บันทึกการแก้ไข (สนญ.)'; sb.style.display=''; }
  document.querySelectorAll('#view .hqfield').forEach(e=>e.style.display='');
 }
-const _EDIT_KEEP=['id','branch','zone','status','tl','thread','hqReview','sale','hqAdvice','submittedAt','createdBy','date','decidedAt','decisionNote','decisionDate','analyst','ack3','resubmit','revisions','prevDecision','cancelReq','check3','_dirty','_dirtyAt','__pushedAt','updatedAt','_form','calc','term'];
+const _EDIT_KEEP=['id','branch','zone','status','tl','thread','hqReview','sale','hqAdvice','hqChecks','healthRight','submittedAt','createdBy','date','decidedAt','decisionNote','decisionDate','analyst','ack3','resubmit','revisions','prevDecision','cancelReq','check3','_dirty','_dirtyAt','__pushedAt','updatedAt','_form','calc','term'];
 const _EDIT_LABEL={name:'ชื่อลูกค้า',firstName:'ชื่อ',lastName:'นามสกุล',nameOnly:'ชื่อ',lastNameOnly:'นามสกุล',nickname:'ชื่อเล่น',idcard:'เลขบัตร',phone:'เบอร์โทร',birth:'วันเกิด',age:'อายุ',addrCard:'ที่อยู่ตามบัตร',addrCur:'ที่อยู่ปัจจุบัน',occupation:'อาชีพ',occExtra:'รายละเอียดอาชีพ',workplace:'ที่ทำงาน',workYears:'อายุงาน',incomeClaimed:'รายได้',incomeExtra:'รายได้เสริม',debt:'ภาระหนี้',incomeProof:'หลักฐานรายได้',doclevel:'เอกสาร',product:'ผลิตภัณฑ์',pbCode:'รุ่นรถ',price:'ราคา',down:'เงินดาวน์',term:'จำนวนงวด',guarType:'ผู้ค้ำ',guar:'ข้อมูลผู้ค้ำ',refs:'บุคคลอ้างอิง',phones:'เบอร์โทร',housePay:'ผ่อนบ้าน',vehUse:'ผู้ใช้รถ',housePhotoData:'ภาพบ้าน',workDocData:'ภาพเอกสารงาน',incomeExtraData:'ภาพรายได้เสริม',vehPhotos:'ภาพรถ',saleType:'ประเภทการขาย',marital:'สถานภาพ',children:'จำนวนบุตร',hist:'ประวัติ'};
 function hqSaveEdit(){
  const a=APPS.find(x=>x.id===window.__editCase); if(!a){ window.__editCase=null; alert('ไม่พบเคส'); return; }
@@ -4422,7 +4500,7 @@ function qChips(s){ return `<div class="qchips">
   <div class="qchip" style="background:#fef2f2"><div class="n" style="color:#dc2626">${s.rejected}</div><div class="l" style="color:#dc2626">✕ ปฏิเสธ</div></div>
  </div>`; }
 /* ===== เฟส 1: แถวลูกค้า 4 คอลัมน์ + ไทม์ไลน์จิ๋ว (แสดงผลอย่างเดียว ไม่แตะข้อมูล/ซิงก์) ===== */
-function p1RowHead(){ return `<div class="p1hd"><div>ลูกค้า / เคส</div><div>การ์ด 3 มิติ</div><div class="hq">🏢 สนญ. (ตรวจ + แนะนำ)</div><div class="br">🏪 สาขา (รับทราบ · ผลขาย)</div></div>`; }
+function p1RowHead(){ return `<div class="p1hd"><div>ลูกค้า / เคส</div><div class="hq">🏢 สนญ. (ตรวจ + แนะนำ)</div><div class="br">🏪 สาขา (รับทราบ · ผลขาย)</div><div class="rs">ผลวิเคราะห์เบื้องต้น</div></div>`; }
 function _p1Esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 function _p1Contract(c){ c=String(c||'').trim(); if(!c) return ''; return c.length>14?c.slice(0,4)+'…'+c.slice(-4):c; }
 function _p1SaleDone(a){ return !!(a.sale&&a.sale.result&&a.sale.result!=='waiting'); }
@@ -4442,16 +4520,26 @@ function p1MiniTL(a,isBr){ const st=p1Steps(a,isBr); const allOn=st.every(x=>x.s
  const tx=st.map(x=>x.s==='late'?`<span class="late">${x.t}</span>`:x.s==='wait'?`<span class="wait">${x.t}</span>`:x.s==='on'&&x.t!=='ส่งแล้ว'&&x.t!=='รับทราบ'&&x.t!=='สนญ. ส่งคำแนะนำ'?`<b>${x.t}</b>`:x.t).join(' → ');
  return `<div class="p1tl">${dots}</div><div class="p1tx">${tx}${allOn?' · <span class="done">ครบทุกขั้น</span>':''}</div>`; }
 function p1RowAccent(a){ if(_p1SaleDone(a)&&a.sale.result!=='sold') return '#94a3b8'; const st=p1Steps(a,false); if(st.every(x=>x.s==='on')) return '#22c55e'; if(!hqSent(a)) return '#3b82f6'; return '#f59e0b'; }
-function p1CardCell(a,isBr){
- if(isBr&&!hqSent(a)) return `<span class="tag" style="background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0">⏳ รอการ์ดจาก สนญ.</span>`;
- let sub='';
- if(!isBr){ sub='คะแนน '+(a.calc&&a.calc.score!=null?a.calc.score:'-'); }
- else { const h=a.hqAdvice||{}; const n=ADV_DIMS.filter(([k])=>!((h.none||{})[k])&&String((h.text||{})[k]||'').trim()).length; sub=(n?'มีคำแนะนำ '+n+' ส่วน':'ไม่มีข้อเสนอแนะเพิ่ม')+(!a.ack3?' · 📨 ใหม่':''); }
- return lightBadge(a)+`<div class="p1sc">${sub}</div>`; }
+/* 0915-F: คอลัมน์ "ผลวิเคราะห์เบื้องต้น" (ท้ายสุด) — ไฟสี + คำ + มิติที่ติด + ป้ายข้อเสนอแนะ สนญ. */
+const P1_DIM_TH={person:'บุคคล',occ:'อาชีพ',income:'รายได้',hcap:'ประวัติบริษัท'};
+function p1ResultCell(a,isBr){
+ const sent=hqSent(a);
+ if(isBr&&!sent) return `<div class="p1rc na"><div class="p1lamp"><span class="p1disc na"></span><div class="p1lw na">รอผลจาก สนญ.<small>จะแสดงเมื่อ สนญ. ส่งการ์ด</small></div></div><span class="p1adv wait">⏳ ยังไม่มีข้อเสนอแนะ</span></div>`;
+ const lv=lightOf(a); const L=CHK3_LV[lv]||CHK3_LV.na; const snap=a.check3||{}; const lvs=snap.lv||{};
+ const hit=Object.keys(lvs).filter(k=>lvs[k]===lv&&lv!=='ok'&&lv!=='na').map(k=>P1_DIM_TH[k]||k);
+ const sub=lv==='ok'?'ครบ 3 มิติ':lv==='na'?'ยังกรอกไม่ครบ':(hit.join(' · ')||'');
+ const h=a.hqAdvice||{}; const n=ADV_DIMS.filter(([k])=>!((h.none||{})[k])&&String((h.text||{})[k]||'').trim()).length;
+ let adv;
+ if(!sent) adv=`<span class="p1adv draft">✎ ${n?'ร่างข้อเสนอแนะ '+n+' ส่วน':'ยังไม่มีร่าง'} · ยังไม่ส่ง</span>`;
+ else if(n) adv=`<span class="p1adv has">💬 สนญ. มีข้อเสนอแนะ ${n} ส่วน${(!a.ack3&&isBr)?' <span class="nw">ใหม่</span>':''}</span>`;
+ else adv=`<span class="p1adv none">— สนญ. ไม่มีข้อเสนอแนะ</span>`;
+ return `<div class="p1rc ${lv}"><div class="p1lamp"><span class="p1disc ${lv}"></span><div class="p1lw ${lv}">${L.t}<small>${sub}${(!isBr&&!sent)?' · ยังไม่ส่งให้สาขา':''}</small></div></div>${adv}</div>`; }
+function p1CardCell(a,isBr){ return p1ResultCell(a,isBr); }
 function _p1Cell(ic,bg,t,s){ return `<div class="p1st"><div class="p1ic" style="background:${bg}">${ic}</div><div><div class="t">${t}</div>${s?`<div class="s">${s}</div>`:''}</div></div>`; }
 function p1HqCell(a,isBr){
  if(!hqSent(a)){ const late=hqLateSale(a); const dur=a.submittedAt?fmtDur(Date.now()-a.submittedAt):'-';
-  return _p1Cell('👁',late?'#ef4444':'#f59e0b','รอ สนญ. ตรวจ+แนะนำ',late?'⚠ เกินวัน ('+(isBr?'ส่งไปแล้ว ':'ส่งมา ')+dur+')':(isBr?'ส่งไปแล้ว ':'ส่งมา ')+dur); }
+  const needTx=(!isBr&&typeof hqChecksNeeded==='function'&&hqChecksNeeded(a).length)?' · ต้องติ๊ก '+hqChecksNeeded(a).join('/')+' ก่อนส่ง':'';
+  return _p1Cell('👁',late?'#ef4444':'#f59e0b','รอ สนญ. ตรวจ+แนะนำ',(late?'⚠ เกินวัน ('+(isBr?'ส่งไปแล้ว ':'ส่งมา ')+dur+')':(isBr?'ส่งไปแล้ว ':'ส่งมา ')+dur)+needTx); }
  const h=a.hqAdvice||{}; const allNone=ADV_DIMS.every(([k])=>(h.none||{})[k]);
  const dims=allNone?'ไม่มีข้อเสนอแนะเพิ่ม':ADV_DIMS.map(([k,l])=>l.split(' ')[0]+((h.none||{})[k]?'—':'✓')).join(' ');
  return _p1Cell('✓','#22c55e',isBr?'ส่งคำแนะนำมาแล้ว':'ส่งคำแนะนำแล้ว',fmtDT(h.sentAt)+(!isBr&&h.sentBy?' · '+_p1Esc(h.sentBy):'')+' · '+dims); }
@@ -4475,7 +4563,7 @@ function appCardP1(a,showBranch){
  return `<div class="p1row" style="border-left-color:${p1RowAccent(a)}" onclick="openDetail('${a.id}')">
   <div><div class="p1nm">${a.name}<span class="qid">· ${a.id}</span>${reply}</div>
    <div class="p1meta">${showBranch&&b?b.label+' · ':''}${PRODUCTS[a.product].label} · ยอดจัด ${fmt(a.calc.finance)} · ส่ง ${fmtDT(a.submittedAt)}</div>${p1MiniTL(a,isBr)}</div>
-  <div>${p1CardCell(a,isBr)}</div><div>${p1HqCell(a,isBr)}</div><div>${p1BrCell(a,isBr)}</div></div>`; }
+  <div>${p1HqCell(a,isBr)}</div><div>${p1BrCell(a,isBr)}</div>${p1ResultCell(a,isBr)}</div>`; }
 function appCard(a, showBranch){
  if(p1()&&a.status==='pending') return appCardP1(a,showBranch);
  const b=BRANCHES.find(x=>x.code===a.branch); const showScore=SESSION.role!=='branch';
@@ -4634,7 +4722,8 @@ function openDetail(id){
    }
    if(cr.status==='rejected') return `<div class="alert a-info" style="margin-bottom:12px">คำขอยกเลิกก่อนหน้าถูก<b>ไม่อนุมัติ</b>โดย สนญ.${cr.hqNote?' — '+cr.hqNote:''} · ใบทำงานต่อได้ตามปกติ</div>`;
    return ''; })()}
-  ${_sumBar}
+  ${p1()?(isHQ?'<div class="mut noprint" style="font-size:11.5px;padding:5px 9px;border:1px dashed #e5e7eb;border-radius:6px;background:#fafafa;margin-bottom:8px">ℹ️ คะแนนเครดิตปิดแสดงในเฟส 1 — ระบบยังคำนวณและเก็บไว้ทุกเคส ดูรวมได้ที่ "รายงานประเมินเกณฑ์" · เปิดคืนเมื่อเริ่มเฟส 2</div>':''):_sumBar}
+  ${(function(){ try{ return (p1()&&isHQ)?hqChecksPanel(a):''; }catch(e){ return ''; } })()}
   ${(function(){ try{ return chk3Card(a, check3(a,c)); }catch(e){ return ''; } })()}
   ${(function(){ try{ return hqAdvicePanel(a); }catch(e){ return ''; } })()}
   ${tlCard(a,c,isHQ)}
@@ -4677,15 +4766,7 @@ function openDetail(id){
     </table>${isHQ?seasonHtml:''}</div>
     ${guarHtml}
     ${refsHtml}
-    ${(isHQ && occHealthRight(a.occupation))?`<div class="card"><h3>🩺 ตรวจสิทธิการรักษาตามอาชีพ <span class="tag t-info">เฉพาะ สนญ.</span></h3>
-     <p class="pill-note" style="margin-top:0">อาชีพนี้ควรมี <b>${occHealthRight(a.occupation).expect}</b> — ใช้ยืนยันว่าลูกค้าเป็นลูกจ้าง/ข้าราชการจริงตามที่แจ้ง (สาขามองไม่เห็นหัวข้อนี้)</p>
-     <div class="field" style="max-width:340px"><label>ผลตรวจสิทธิ</label>
-      <select onchange="setHealthRight('${a.id}',this.value)">
-       <option value="unchecked"${(a.healthRight==null||a.healthRight==='unchecked')?' selected':''}>ยังไม่ได้ตรวจ</option>
-       <option value="ok"${a.healthRight==='ok'?' selected':''}>พบสิทธิ ตรงอาชีพ</option>
-       <option value="none"${a.healthRight==='none'?' selected':''}>ไม่พบสิทธิตามอาชีพ (ต้องยืนยันเพิ่ม)</option>
-      </select></div>
-    </div>`:''}
+    ${(isHQ && !p1() && occHealthRight(a.occupation))?`<div class="card"><h3>🩺 ตรวจสิทธิการรักษาตามอาชีพ <span class="tag t-info">เฉพาะ สนญ.</span></h3><div class="field" style="max-width:340px"><label>ผลตรวจสิทธิ (${occHealthRight(a.occupation).expect})</label><select onchange="setHealthRight('${a.id}',this.value)"><option value="unchecked"${(a.healthRight==null||a.healthRight==='unchecked')?' selected':''}>ยังไม่ได้ตรวจ</option><option value="ok"${a.healthRight==='ok'?' selected':''}>พบสิทธิ ตรงอาชีพ</option><option value="none"${a.healthRight==='none'?' selected':''}>ไม่พบสิทธิตามอาชีพ</option></select></div></div>`:''}
     <div class="card"><h3>เช็คข้อมูลภายนอก <span class="tag t-info">โหมดจำลอง — รอเชื่อม API จริง</span></h3>
      ${isHQ?`<div class="flex" style="flex-wrap:wrap;gap:8px">
       ${EXT_LIST.map(x=>`<span style="display:inline-flex;align-items:center;gap:3px">
@@ -6964,6 +7045,7 @@ function viewCfg(){
  const wRow=(k,l)=>`<div class="wconf"><span>${l}</span><input type="range" min="0" max="40" value="${W[k]}" oninput="CFG.weights.${k}=+this.value;refreshWLabels()"><span class="wpts" id="wv-${k}"><b>${Math.round(W[k]/_tW*100)} แต้ม</b><span class="pc">(${W[k]}%)</span></span></div>`;
  return `<h2 class="pagetitle">ตั้งค่าเกณฑ์การพิจารณา (ปรับจูนตรรกะได้)</h2>
  <p class="pagesub">น้ำหนักคะแนน เพดาน LTV/DSR และอัตราดอกเบี้ยมีผลกับทุกคำขอทันทีที่บันทึก — ใช้ทดสอบว่าตรรกะที่ตั้งไว้ถูกต้องหรือไม่</p>
+ ${(function(){ try{ return mwSettingsHTML(); }catch(e){ return ''; } })()}
  <div class="grid g2" style="align-items:start">
   <div class="card"><h3>น้ำหนักคะแนน — คะแนนเต็ม 100 แต้ม</h3><p class="pill-note" style="margin:2px 0 12px">เลข <b style="color:var(--navy)">"X แต้ม"</b> = คะแนนเต็มที่หมวดนั้นให้ได้ (ยิ่งมาก = ยิ่งสำคัญ) · <b>(X%)</b> = น้ำหนักดิบที่ตั้งไว้ · <span id="wsum"></span></p>
    ${[['occupation','อาชีพ / ความมั่นคง'],['income','ระดับรายได้'],['workYears','อายุงาน'],['dsr','ภาระหนี้ (DSR)'],['ltv','เงินดาวน์ / LTV'],['area','พื้นที่อยู่อาศัย'],['history','ประวัติกับบริษัท'],['guarantor','ผู้ค้ำ / เอกสาร'],['housing','การถือครองที่อยู่ (เช่า/เจ้าของ)'],['discipline','วินัยชำระ Kept/Broke (ประวัติจริง)'],['saletype','ประเภทการขาย (ไฟแนนซ์/ขายรถ)'],['term','ระยะสัญญา (จำนวนงวด)']].sort((a,b)=>(W[b[0]]||0)-(W[a[0]]||0)).map(x=>wRow(x[0],x[1])).join('')}
@@ -7031,6 +7113,7 @@ function viewCfg(){
     <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="สาขาเห็นการ์ดเฉพาะบล็อกประวัติกับบริษัท (H-Cap) — ผล 🔴🟡🟢 3 มิติ ดูได้เฉพาะ สนญ./เขต"><input type="checkbox" ${CFG.branchCardHcapOnly!==false?'checked':''} onchange="CFG.branchCardHcapOnly=this.checked;saveCfg();alert(this.checked?'สาขาจะเห็นเฉพาะประวัติกับบริษัท (H-Cap) — ผล 3 มิติดูได้เฉพาะหลังบ้าน (มีผลทุกเครื่องหลังซิงก์)':'สาขาจะเห็นผลตรวจ 3 มิติเต็มรูปแบบ')"> 🏢 ตอนสาขากรอกฟอร์ม เห็นเฉพาะ H-Cap (ผล 3 มิติ เห็นหลังส่งเคสแล้ว)</label>
     <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="แสดงช่อง 📷 ภาพบ้านจริง และ 📍 พิกัด GPS บ้าน ในฟอร์มสาขา (เฟส 1 ปิดไว้ · เปิดเมื่อเริ่มเฟส 2)"><input type="checkbox" ${showHouseGeo()?'checked':''} onchange="CFG.showHouseGeo=this.checked;saveCfg();alert(this.checked?'เปิดช่องภาพบ้าน + พิกัด GPS ในฟอร์มสาขาแล้ว (บังคับแนบก่อนส่ง)':'ปิดช่องภาพบ้าน + พิกัด GPS แล้ว — สาขาไม่ต้องกรอกในเฟส 1')"> 📷 ภาพบ้าน/พิกัด GPS ในฟอร์มสาขา</label>
     <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="แสดงช่องแนบเอกสารการทำงาน · รายการเอกสารที่ควรขอ · แนบภาพรายได้เสริม · เอกสาร · หลักฐานรายได้ ในฟอร์มสาขา (เฟส 1 ปิดไว้ · เปิดเมื่อเริ่มเฟส 2)"><input type="checkbox" ${showDocsP2()?'checked':''} onchange="CFG.showDocsP2=this.checked;saveCfg();alert(this.checked?'เปิดช่องแนบเอกสาร/หลักฐานรายได้ในฟอร์มสาขาแล้ว (มีผลทุกเครื่องหลังซิงก์)':'ปิดช่องแนบเอกสาร/หลักฐานรายได้แล้ว — สาขาไม่ต้องกรอกในเฟส 1')"> 📎 ช่องแนบเอกสาร/หลักฐานรายได้ในฟอร์มสาขา (เฟส 2)</label>
+    <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px" title="COSMOS: พบซื้อรถจากร้านอื่นภายในกี่เดือน = 🟡">🏍 COSMOS ภายใน <input type="number" min="1" max="36" style="width:60px" value="${(CFG.cosmosMonths||6)}" onchange="CFG.cosmosMonths=+this.value||6;saveCfg()"> เดือน = 🟡</label>
     <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:8px;cursor:pointer" title="เฟส 1: ระบบให้การ์ดอย่างเดียว ไม่มีรับงาน/ผ่านด่าน/อนุมัติ · สาขาบันทึกผลการขายเอง · ปิดสวิตช์นี้เมื่อเริ่มเฟส 2 (ม.ค.)"><input type="checkbox" ${CFG.phase1Mode!==false?'checked':''} onchange="CFG.phase1Mode=this.checked;saveCfg();alert(this.checked?'เปิดโหมดเฟส 1 — การ์ดอย่างเดียว ไม่มีอนุมัติ (มีผลทุกเครื่องหลังซิงก์)':'ปิดโหมดเฟส 1 — เปิดใช้รับงาน/ผ่านด่าน/อนุมัติ (เฟส 2)')"> 🧭 เฟส 1: การ์ดอย่างเดียว (ไม่มีอนุมัติ/ตีกลับ)</label>
     <button class="btn btn-red" onclick="saveCfg();recalcAll();alert('บันทึกเกณฑ์และคำนวณคะแนนใหม่ทั้งหมดแล้ว')">💾 บันทึกเกณฑ์</button>
     <button class="btn btn-org" onclick="optimizeWeights()">🎯 ปรับน้ำหนักอัตโนมัติ (จาก Backtest)</button>
@@ -8066,7 +8149,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0915-D';
+const CHK3_BUILD='0915-F';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -8154,8 +8237,9 @@ function chk3Version(){ if(!INCREF) loadIncRef(); if(!DOCCHECK) loadDocCheck();
  return CHK3_BUILD+' · รายได้ v'+(INCREF.ver||1)+' · เอกสาร v'+(DOCCHECK.ver||1)+' · อาชีพ '+OCC_LIST.length+' รายการ'; }
 
 /* ======================= เอนจินตรวจ 3 มิติ ======================= */
-const CHK3_RANK={bad:3,warn:2,ok:1,na:0};
-const CHK3_LV={bad:{ic:'🔴',t:'ควรตรวจสอบก่อนขาย',col:'#dc2626',bg:'#fef2f2',bd:'#fecaca'},warn:{ic:'🟡',t:'มีจุดที่ควรตรวจเพิ่ม',col:'#b45309',bg:'#fffbeb',bd:'#fde68a'},ok:{ic:'🟢',t:'ข้อมูลสอดคล้อง',col:'#15803d',bg:'#f0fdf4',bd:'#bbf7d0'},na:{ic:'⚪',t:'ยังไม่กรอก',col:'#6b7280',bg:'#f9fafb',bd:'#e5e7eb'}};
+const CHK3_RANK={bad:3,warn:2,ok:1,na:0,info:0};
+const C3_ORD={ok:0,na:1,info:1,warn:2,bad:3}; function c3Sort(arr){ return (arr||[]).slice().sort((a,b)=>(C3_ORD[a.lv]??1)-(C3_ORD[b.lv]??1)); }   /* 0915-E: เรียง 🟢 → 🟡 → 🔴 ในการ์ด */
+const CHK3_LV={bad:{ic:'🔴',t:'ข้อมูลน่าสงสัย',col:'#dc2626',bg:'#fef2f2',bd:'#fecaca'},warn:{ic:'🟡',t:'ควรตรวจสอบเพิ่มเติม',col:'#b45309',bg:'#fffbeb',bd:'#fde68a'},ok:{ic:'🟢',t:'ข้อมูลสอดคล้อง',col:'#15803d',bg:'#f0fdf4',bd:'#bbf7d0'},na:{ic:'⚪',t:'ยังไม่กรอก',col:'#6b7280',bg:'#f9fafb',bd:'#e5e7eb'},info:{ic:'ℹ️',t:'แจ้งเพื่อทราบ',col:'#475569',bg:'#f8fafc',bd:'#e5e7eb'}};   /* 0915-F: คำใหม่ + ระดับ info (ไม่กระทบไฟ) */
 function chk3Worst(levels){ let w='na'; levels.forEach(l=>{ if(CHK3_RANK[l]>CHK3_RANK[w]) w=l; }); return w; }
 /* หา H-Cap: เลขบัตร → สำรอง ชื่อ+เบอร์ */
 /* 0914-I: สรุปประวัติผู้ค้ำกับบริษัท (จากพอร์ต H-Cap + บัญชีเฝ้าระวัง) */
@@ -8217,6 +8301,13 @@ function check3(a, c){
  if(a.addrCur&&a.addrCur.stayYears==='น้อยกว่า 1 ปี') P('person','warn','อยู่ที่อยู่ปัจจุบันน้อยกว่า 1 ปี — ตรวจความมั่นคงของที่อยู่/บุคคลอ้างอิง');
  if(typeof APPS!=='undefined'&&Array.isArray(APPS)){ const prev=APPS.filter(x=>x.id!==a.id&&((idN&&normDigits(x.idcard)===idN)||(phN&&normDigits(x.phone)===phN)));
   const rej=prev.filter(x=>x.status==='rejected').length; if(rej) P('person','warn','เคยถูกปฏิเสธในระบบ '+rej+' ครั้ง — ดูเหตุผลเดิมก่อน'); }
+  /* 0915-F: COSMOS (สนญ. ติ๊ก) — ประวัติซื้อรถจากร้านอื่น */
+  try{ const cz=(a.hqChecks||{}).cosmos; const mo=+((CFG&&CFG.cosmosMonths)||6);
+   if(!cz||!cz.r||cz.r==='unchecked'){ if(p1()) P('person','info','สนญ. ยังไม่ตรวจ COSMOS (ประวัติซื้อรถจากร้านอื่น) — ติ๊กก่อนส่งการ์ด',true); }
+   else if(cz.r==='none') P('person','ok','COSMOS: ไม่พบประวัติซื้อรถจากร้านอื่น'+(cz.by?' (ตรวจโดย '+cz.by+')':''));
+   else if(cz.r==='recent') P('person','warn','COSMOS: ซื้อรถจากร้านอื่นภายใน '+mo+' เดือน'+(cz.date?' (เมื่อ '+cz.date+')':'')+(cz.shop?' · '+cz.shop:'')+' — ตรวจว่ารถคันก่อนยังผ่อนอยู่/เหตุผลที่ซื้อเพิ่ม'+(cz.note?' · '+cz.note:''));
+   else if(cz.r==='old') P('person','info','COSMOS: เคยซื้อรถจากร้านอื่น แต่เกิน '+mo+' เดือน'+(cz.date?' (เมื่อ '+cz.date+')':'')+(cz.shop?' · '+cz.shop:''));
+  }catch(e){}
  /* ---- มิติ 2 อาชีพ / ความมั่นคง ---- โชว์กลุ่ม+อาชีพย่อย · ซ่อนคะแนน · ไม่มีแดง */
  const o=OCC_LIST[a.occupation]||null; const oFilled=!!o;
  const sc=o?(+o.sc||0):0;
@@ -8225,10 +8316,10 @@ function check3(a, c){
  if(o && sc>=85 && !String(a.workplace||'').trim() && !a.workDocData) P('occ','warn','อาชีพนี้ควรระบุสถานที่ทำงาน/แนบเอกสารยืนยัน (พอร์ตจริงพบกลุ่มนี้กรอกไม่ตรงบ่อย)');
  else if(o && String(a.workplace||'').trim()) P('occ','ok','ระบุที่ทำงาน/กิจการ: '+a.workplace);
  const wy=+a.workYears||0; if(a.workStart){ if(wy<0.5) P('occ','warn','อายุงาน/กิจการ '+wy.toFixed(1)+' ปี (น้อยกว่า 6 เดือน) — ตรวจที่ทำงานเดิม/ความต่อเนื่อง'); else if(wy<1) P('occ','warn','อายุงาน '+wy.toFixed(1)+' ปี — ยังสั้น ควรมีหลักฐานรายได้'); else P('occ','ok','อายุงาน/กิจการ '+wy.toFixed(1)+' ปี'); }
- if(o){ const hr=occHealthRight(a.occupation); if(hr&&a.healthRight==='none') P('occ','warn','ตรวจสิทธิการรักษาไม่พบตาม'+hr.expect+' — ยืนยันการเป็นลูกจ้าง/ขรก. ด้วยสลิป'); else if(hr&&a.healthRight==='ok') P('occ','ok','สิทธิการรักษาตรงอาชีพ ('+hr.expect+')'); }
+ if(o){ const hr=occHealthRight(a.occupation); if(hr&&(a.healthRight==null||a.healthRight==='unchecked')&&p1()) P('occ','info','สนญ. ยังไม่ตรวจ'+hr.expect+' — ติ๊กในกล่อง "ตรวจโดย สนญ." ก่อนส่งการ์ด',true); if(hr&&a.healthRight==='none') P('occ','warn','ตรวจสิทธิการรักษาไม่พบตาม'+hr.expect+' — ยืนยันการเป็นลูกจ้าง/ขรก. ด้วยสลิป'); else if(hr&&a.healthRight==='ok') P('occ','ok','สิทธิการรักษาตรงอาชีพ ('+hr.expect+')'); }
  if(o && a.workDocData) P('occ','ok','แนบเอกสารการทำงานแล้ว');
  const docs=o?docListFor(o.g):[]; const ticked=(a.docChk||[]).filter(d=>docs.indexOf(d)>=0);
- if(docs.length){ if(ticked.length>=docs.length) P('occ','ok','เอกสารตามกลุ่มอาชีพครบ '+ticked.length+'/'+docs.length); else P('occ', ticked.length?'ok':'warn', 'เอกสารตามกลุ่มอาชีพ '+ticked.length+'/'+docs.length+' — ยังขาด: '+docs.filter(d=>ticked.indexOf(d)<0).join(', ')); }
+ if(docs.length&&showDocsP2()){ if(ticked.length>=docs.length) P('occ','ok','เอกสารตามกลุ่มอาชีพครบ '+ticked.length+'/'+docs.length); else P('occ', ticked.length?'ok':'warn', 'เอกสารตามกลุ่มอาชีพ '+ticked.length+'/'+docs.length+' — ยังขาด: '+docs.filter(d=>ticked.indexOf(d)<0).join(', ')); }
  /* ---- มิติ 3 รายได้ ---- เทียบค่าอ้างอิง · คำแนะนำเชิงตรวจสอบ ไม่ฟันธง · ไม่มีแดง */
  const inc=+a.incomeClaimed||0; const iFilled=inc>0;
  const ref=o?incRefResolve(a.occupation,(a.addrCur&&a.addrCur.prov)||'',a.branch):null;
@@ -8241,7 +8332,13 @@ function check3(a, c){
    if(_over){}
    else if(cap&&inc>cap*2) P('income','bad','รายได้ที่แจ้งสูงผิดปกติสำหรับอาชีพนี้ — ต้องมีสลิปเงินเดือน + statement ยืนยัน และตรวจว่าพิมพ์เลขเกิน', false, 'รายได้แจ้ง '+fmt(inc)+' บ./ด. เกิน 2 เท่าของเพดานอ้างอิงอาชีพนี้ (~'+fmt(cap)+') — ตรวจว่าพิมพ์เลขเกิน/เป็นรายปี · ถ้าจริงต้องมีสลิป+statement');
    else if(cap&&inc>cap) P('income','warn','รายได้ที่แจ้งสูงกว่าปกติของอาชีพนี้ — ต้องมีสลิป/statement ยืนยัน', false, 'รายได้แจ้ง '+fmt(inc)+' บ./ด. สูงกว่าเพดานอ้างอิงอาชีพนี้ (~'+fmt(cap)+') — ต้องมีสลิป/statement ยืนยัน');
-   P('income', proofOk?'ok':'warn', 'อาชีพกลุ่มเงินเดือนประจำ — ใช้สลิป/statement จริง'+(proofOk?' ✓ ระบุว่ามีสลิป/statement':' — ยังไม่ระบุว่ามีสลิป/statement ต้องขอก่อนอนุมัติ')); }
+   if(!showDocsP2()) P('income','info','อาชีพกลุ่มเงินเดือนประจำ — สนญ. ควรขอสลิป/statement ประกอบ (ช่องหลักฐานเปิดเฟส 2)'); else P('income', proofOk?'ok':'warn', 'อาชีพกลุ่มเงินเดือนประจำ — ใช้สลิป/statement จริง'+(proofOk?' ✓ ระบุว่ามีสลิป/statement':' — ยังไม่ระบุว่ามีสลิป/statement ต้องขอก่อนอนุมัติ')); }   /* 0915-F: เฟส 1 ช่องหลักฐานปิด ไม่เตือน */
+  else if(mwOcc(o)&&mwBase(a)>0){ const mw=mwEval(a); incRef={mode:'minwage',base:mw.base,prov:mw.prov,tier:'ค่าแรงขั้นต่ำ'};
+   if(_over){}
+   else if(mw.lv==='bad') P('income','bad','รายได้ที่แจ้งไม่สมกับรับจ้างรายวัน — ตรวจประเภทอาชีพ (อาจเป็นช่าง/รับเหมา/หลายอาชีพ) หรือตัวเลข · โอที/งานที่สองให้กรอกที่รายได้เสริม', false, 'รายได้แจ้ง '+fmt(inc)+' บ./ด. สูงกว่าค่าแรงขั้นต่ำ '+mw.prov+' ('+fmt(mw.base)+' = '+mw.wage+' บ. × '+mw.days+' วัน) '+mw.pct+'% — เกิน '+mw.yellow+'% ไม่สมกับรับจ้างรายวัน');
+   else if(mw.lv==='warn'&&mw.pct>0) P('income','warn','รายได้ที่แจ้งสูงกว่าค่าแรงขั้นต่ำพื้นที่ — มีโอที/ทำหลายที่? ขอหลักฐานรับค่าจ้าง · โอทีให้กรอกที่รายได้เสริม', false, 'รายได้แจ้ง '+fmt(inc)+' บ./ด. สูงกว่าค่าแรงขั้นต่ำ '+mw.prov+' ('+fmt(mw.base)+' = '+mw.wage+' × '+mw.days+') '+mw.pct+'%'+(mw.soft&&mw.pct>mw.yellow?' — เกิน '+mw.yellow+'% (ผ่อนผันเดือนแรก แสดงเหลืองแทนแดง)':' — ขอหลักฐาน'));
+   else if(mw.lv==='warn') P('income','warn','รายได้ที่แจ้งต่ำกว่าค่าแรงขั้นต่ำพื้นที่ — ทำงานไม่ครบเดือน? ตรวจวันทำงานจริง', false, 'รายได้แจ้ง '+fmt(inc)+' บ./ด. ต่ำกว่าค่าแรงขั้นต่ำ '+mw.prov+' ('+fmt(mw.base)+') '+mw.pct+'% — ตรวจวันทำงานจริง');
+   else P('income','ok','รายได้ที่แจ้งตรงกับค่าแรงขั้นต่ำพื้นที่', false, 'รายได้แจ้ง '+fmt(inc)+' บ./ด. อยู่ในช่วง ±'+mw.tol+'% ของค่าแรงขั้นต่ำ '+mw.prov+' ('+fmt(mw.base)+' = '+mw.wage+' × '+mw.days+')'); }
   else if(ref&&(ref.min||ref.max)){ const tol=(INCREF.tolPct||20)/100; incRef={mode:'range',min:ref.min,max:ref.max,tier:ref.tier,scope:ref.scope}; const rg=' ('+fmt(ref.min)+'–'+fmt(ref.max)+')';
    if(_over){}
    else if(inc>ref.max*3) P('income','bad','รายได้ที่แจ้งสูงผิดปกติมากสำหรับอาชีพนี้ — ตรวจว่าพิมพ์เลขเกิน/เป็นรายปี · ถ้าจริงต้องมีหลักฐานรายได้ชัดเจน', false, 'รายได้แจ้ง '+fmt(inc)+' บ./ด. เกิน 3 เท่าของช่วงอ้างอิง'+ref.tier+rg+' — ไม่น่าเป็นไปได้ ตรวจว่าพิมพ์เลขเกิน/เป็นรายปี');
@@ -8255,7 +8352,7 @@ function check3(a, c){
     if(inc>est.expected*(1+tol)) P('income','warn','รายได้ที่แจ้งสูงกว่าที่ประเมินจากปริมาณผลผลิต ('+est.detail+') — แนะนำตรวจแปลง/บิลขาย', false, 'ประเมินจากปริมาณ ~'+fmt(est.expected)+' บ./ด. ('+est.detail+') — รายได้แจ้งสูงกว่าเกิน '+(AGRI_EST.tolPct||35)+'% แนะนำตรวจแปลง/บิลขาย');
     else P('income','ok','รายได้ที่แจ้งสอดคล้องกับปริมาณผลผลิต ('+est.detail+')', false, 'ประเมินจากปริมาณ ~'+fmt(est.expected)+' บ./ด. ('+est.detail+') — สอดคล้อง'); }
    else if(est&&est.missing) P('income','ok','ยังไม่ระบุจำนวน'+(est.unit==='rai'?'ไร่':'ตัว')+' — กรอกเพื่อให้เทียบรายได้แม่นขึ้น (ไม่บังคับ)'); }catch(e){}
-  if((a.incomeExtra||0)>0&&!a.incomeExtraData) P('income','warn','รายได้เสริม '+fmt(a.incomeExtra)+' บ. ยังไม่มีภาพหลักฐาน — แนบเพื่อให้นับเต็ม');
+  if((a.incomeExtra||0)>0){ if(showDocsP2()&&!a.incomeExtraData) P('income','warn','รายได้เสริม '+fmt(a.incomeExtra)+' บ. ยังไม่มีภาพหลักฐาน — แนบเพื่อให้นับเต็ม'); else if(!showDocsP2()) P('income','ok','รายได้เสริม '+fmt(a.incomeExtra)+' บ./เดือน'+(String(a.incomeExtraSrc||'').trim()?' ('+String(a.incomeExtraSrc).trim()+')':'')); }   /* 0915-F: เฟส 1 ไม่เตือนเรื่องภาพ */
   if(/คำบอกกล่าว/.test(a.incomeProof||'')&&!(ref&&ref.slip)) P('income','warn','หลักฐานรายได้ = คำบอกกล่าว — ควรมีภาพหน้างาน/บิลขาย/statement อย่างน้อย 1 อย่าง');
   if(o&&(o.g==='ค้าขาย'||o.g==='เจ้าของกิจการ')&&!a.workDocData) P('income','warn','กลุ่มค้าขาย/กิจการ — แนะนำแนบรูปร้าน/หน้างานประกอบรายได้');
  }
@@ -8330,13 +8427,13 @@ function check3(a, c){
   if((hcap.act||0)>=1&&(hcap.ins||0)>0) P('hcap','ok','ค่างวดกับบริษัท '+fmt(hcap.ins)+' บ./เดือน ถูกนับเป็นภาระหนี้ให้อัตโนมัติแล้ว');
  } else { P('hcap','ok','ลูกค้าใหม่ — ไม่พบประวัติในพอร์ต H-Cap'+(WATCH&&WATCH.lastImport?' (ข้อมูล ณ '+WATCH.lastImport+')':'')); }
   try{ const gh=a.guar&&a.guar.hcap; if(gh&&gh.checked){ const gt=guarHcapText(gh); P('hcap', gt.lv==='na'?'ok':gt.lv, 'ผู้ค้ำ: '+gt.t.replace(/^\S+\s/,'')); } }catch(e){}
- const lvOf=(arr,filled)=> !filled? 'na' : (arr.length? chk3Worst(arr.map(x=>x.lv)) : 'ok');
+ const lvOf=(arr,filled)=>{ if(!filled) return 'na'; const l=arr.filter(x=>x.lv!=='info').map(x=>x.lv); return l.length? chk3Worst(l) : 'ok'; };
  const dims={
   person:{key:'person',title:'บุคคล',ic:'👤',filled:pFilled,lv:lvOf(items.person,pFilled),items:items.person,sub:(a.name||'-')},
   occ:{key:'occ',title:'อาชีพ / ความมั่นคง',ic:'💼',filled:oFilled,lv:lvOf(items.occ,oFilled),items:items.occ,sub:o?(o.g+' — '+o.s+(a.occExtra?' ('+a.occExtra+')':'')):'-'},
   income:{key:'income',title:'รายได้',ic:'💰',filled:iFilled,lv:lvOf(items.income,iFilled),items:items.income,sub:iFilled?(fmt(inc)+' บ./เดือน'+((a.incomeExtra||0)>0?' + เสริม '+fmt(a.incomeExtra):'')):'-',ref:incRef}
  };
- const hlv=items.hcap.length?chk3Worst(items.hcap.map(x=>x.lv)):'ok';
+ const hlv=items.hcap.filter(x=>x.lv!=='info').length?chk3Worst(items.hcap.filter(x=>x.lv!=='info').map(x=>x.lv)):'ok';
  const filled=[dims.person,dims.occ,dims.income].filter(d=>d.filled).length;
  const overall=chk3Worst([dims.person.lv,dims.occ.lv,dims.income.lv,hlv]);
  return {dims,hcap:Object.assign(hcap,{lv:hlv,items:items.hcap}),overall,filled,ver:chk3Version(),at:Date.now(),
@@ -8358,7 +8455,7 @@ function chk3Card(a, r, opt){
  const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
  const L=CHK3_LV[r.overall]||CHK3_LV.na;
  const br=BRANCHES.find(b=>b.code===a.branch);
- const dimBox=d=>{ const l=CHK3_LV[d.lv]||CHK3_LV.na; const its=d.items.filter(x=>isHQ||!x.hq);
+ const dimBox=d=>{ const l=CHK3_LV[d.lv]||CHK3_LV.na; const its=c3Sort(d.items.filter(x=>isHQ||!x.hq));
   return `<div class="c3dim" style="border-color:${l.bd};background:${l.bg}">
     <div class="c3dim-h"><span class="c3dim-ic">${d.ic}</span><span class="c3dim-t">${d.title}</span><span class="c3lv" style="color:${l.col}">${l.ic} ${d.filled?l.t:'ยังไม่กรอก'}</span></div>
     <div class="c3dim-s">${esc(d.sub)}</div>
@@ -8370,7 +8467,7 @@ function chk3Card(a, r, opt){
  const hcapBox=`<div class="c3dim c3hcap" style="border-color:${hl.bd};background:${hl.bg}">
    <div class="c3dim-h"><span class="c3dim-ic">🏢</span><span class="c3dim-t">ประวัติกับบริษัท (H-Cap)</span><span class="c3lv" style="color:${hl.col}">${hl.ic} ${H.found?(H.repo||H.term?'พบประวัติต้องตรวจ':'ลูกค้าเก่า'):'ลูกค้าใหม่'}</span></div>
    ${H.found?`<div class="c3dim-s">${H.n} สัญญา · ผ่อนอยู่ ${H.act||0} · คงเหลือรวม ${fmt(H.exp)} บ.${H.br?' · สาขาเดิม '+esc((BRANCHES.find(b=>b.code===H.br)||{}).label||H.br):''}</div>`:''}
-   <ul class="c3items">${H.items.map(x=>`<li class="c3-${x.lv}">${CHK3_LV[x.lv].ic} ${esc(x.m)}</li>`).join('')}</ul>
+   <ul class="c3items">${c3Sort(H.items).map(x=>`<li class="c3-${x.lv}">${CHK3_LV[x.lv].ic} ${esc(x.m)}</li>`).join('')}</ul>
    ${H.found&&H.cts&&H.cts.length?`<div class="c3cts">${H.cts.slice(0,6).map(ct=>{ const bad=ct.st==='บอกเลิกสัญญา'||(+ct.d||0)>=90; return `<span class="c3ct ${bad?'bad':''}">${esc(ct.ct)} · ${ct.fin?'ไฟแนนซ์':'ขายรถ'}${ct.sd?' · '+esc(ct.sd):''} · ${ct.st==='บอกเลิกสัญญา'?'บอกเลิก':(+ct.d||0)>0?'ค้าง '+ct.d+' วัน':'ปกติ'}</span>`; }).join('')}${H.cts.length>6?'<span class="mut"> …อีก '+(H.cts.length-6)+' สัญญา</span>':''}</div>`:''}
  </div>`;
  const head= live? `<div class="c3head"><div><div class="c3title">🧭 ผลตรวจข้อมูล 3 มิติ <span class="c3tag">ตัวอย่างสด</span></div><div class="c3meta">อัปเดตขณะกรอก · กรอกครบ <b>${r.filled}/3</b> มิติ</div></div><div class="c3over" style="color:${L.col};background:${L.bg};border-color:${L.bd}">${L.ic} ${r.filled?L.t:'เริ่มกรอกข้อมูล'}</div></div>`
@@ -8381,7 +8478,7 @@ function chk3Card(a, r, opt){
  const foot= live? `<div class="c3foot"><span>เกณฑ์ ${esc(r.ver)}</span><span class="mut">ระบบแนะนำ · สาขาตัดสินใจขายเอง</span></div>`
   : `<div class="c3foot"><span>ตรวจเมื่อ ${fmtDT(r.at)} · เกณฑ์ <b>${esc(r.ver)}</b>${a.check3&&a.check3.ver&&a.check3.ver!==r.ver?' · <span class="mut">ตอนส่งเคส: '+esc(a.check3.ver)+' ('+(CHK3_LV[a.check3.overall]||{}).ic+')</span>':''}</span>
      <span>${ack?`<span class="c3ack">✓ รับทราบแล้ว — ${esc(ack.by)} · ${fmtDT(ack.at)}</span>`:(canAck?`<button class="btn btn-sm btn-org noprint" onclick="ack3('${esc(a.id)}')">รับทราบแล้ว</button>`:'')}</span></div>`;
- const noP = r.noProduct? `<div class="c3np">ℹ️ ยังไม่กรอกผลิตภัณฑ์ — DSR / LTV / จุดคุ้มทุน จะคำนวณเมื่อเลือกรุ่นรถและราคา</div>`:'';
+ const noP = (r.noProduct&&!(typeof lockProductOn==='function'&&lockProductOn()))? `<div class="c3np">ℹ️ ยังไม่กรอกผลิตภัณฑ์ — DSR / LTV / จุดคุ้มทุน จะคำนวณเมื่อเลือกรุ่นรถและราคา</div>`:'';
  if(hcapOnly){ /* 0914-C: สาขาเห็นเฉพาะประวัติกับบริษัท (H-Cap) · 🔴🟡🟢 3 มิติ ดูได้เฉพาะหลังบ้าน */
   const hmeta=(!live?branchWaitCard(a):'')+`<div class="c3meta" style="margin-bottom:6px">${live?'ตรวจจากเลขบัตร 13 หลักที่กรอก · อัปเดตขณะกรอก':`เลขที่ <b>${esc(a.id)}</b> · ลูกค้า <b>${esc(a.name)}</b> · ${a.submittedAt?fmtDT(a.submittedAt):esc(a.date)}`}</div>`;
   return `<div class="c3card ${live?'c3live':''}" style="border-color:${hl.bd}">${hmeta}${hcapBox}<div class="c3note">ข้อมูลจากพอร์ต H-Capital${WATCH&&WATCH.lastImport?' ณ '+esc(WATCH.lastImport):''} · ใช้ประกอบการพิจารณาของสาขา</div></div>`; }
