@@ -405,7 +405,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0917-B (เฟส 1 · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0917-F (เฟส 1 · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · ปิดเบอร์คู่สมรสซ้ำ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -1439,14 +1439,16 @@ function toast(title, body, goId, color){
  setTimeout(()=>{ d.style.transition='opacity .4s'; d.style.opacity='0'; setTimeout(()=>d.remove(),400); }, 8000);
 }
 function viewHome(){
- const pend=(APPS||[]).filter(a=>a.status==='pending').length;
- const more=(APPS||[]).filter(a=>a.status==='moreinfo').length;
- const todayDone=(APPS||[]).filter(a=>a.decidedAt&&new Date(a.decidedAt).toISOString().slice(0,10)===new Date().toISOString().slice(0,10)).length;
+ const _P1=p1(); const _today=new Date().toISOString().slice(0,10);   /* 0917-E: หน้าเริ่มภาษาเฟส 1 */
+ const pend=_P1?(APPS||[]).filter(a=>a.status==='pending'&&!hqSent(a)).length:(APPS||[]).filter(a=>a.status==='pending').length;
+ const more=_P1?(APPS||[]).filter(a=>a.status==='pending'&&hqSent(a)&&!a.ack3&&!(a.sale&&a.sale.result&&a.sale.result!=='waiting')).length:(APPS||[]).filter(a=>a.status==='moreinfo').length;
+ const todayDone=_P1?(APPS||[]).filter(a=>a.hqAdvice&&a.hqAdvice.sentAt&&new Date(a.hqAdvice.sentAt).toISOString().slice(0,10)===_today).length:(APPS||[]).filter(a=>a.decidedAt&&new Date(a.decidedAt).toISOString().slice(0,10)===_today).length;
+ const L1=_P1?'รอ สนญ. ตรวจ+แนะนำ':'รอพิจารณา · เคสใหม่', L2=_P1?'สนญ. ส่งแล้ว · รอสาขารับทราบ':'ขอข้อมูลเพิ่ม (ตีกลับ)', L3=_P1?'ส่งการ์ด+คำแนะนำแล้ววันนี้':'พิจารณาแล้ววันนี้', LQ=_P1?'คิวรอตรวจ+แนะนำ':'คิวรอพิจารณา';
  const nm=(SESSION&&SESSION.name)||'ฝ่ายวิเคราะห์';
- const totalWait=pend+more;
+ const totalWait=_P1?pend:pend+more;
  const nowD=new Date(); const thDate=nowD.toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
  /* คิวที่ต้องทำ: รอพิจารณา + ตีกลับรอสาขาตอบ — เรียงตามเวลาส่งเข้าเก่าสุดก่อน */
- const queue=(APPS||[]).filter(a=>a.status==='pending'||a.status==='moreinfo')
+ const queue=(APPS||[]).filter(a=>_P1?(a.status==='pending'&&!hqSent(a)):(a.status==='pending'||a.status==='moreinfo'))
    .sort((x,y)=>(x.submittedAt||0)-(y.submittedAt||0)).slice(0,5);
  const kbig=(ic,v,lb,bg,fg,sub)=>`<div style="background:${bg};border-radius:12px;padding:14px">
    <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:19px">${ic}</span><span style="font-size:28px;font-weight:700;color:${fg};line-height:1">${v}</span></div>
@@ -1455,7 +1457,7 @@ function viewHome(){
  const qRow=a=>{ const b=BRANCHES.find(x=>x.code===a.branch);
    const isMore=a.status==='moreinfo'; const dot=isMore?'#f26522':'#dc2626';
    const pill=isMore?'<span style="font-size:10.5px;background:#fff7ed;color:#c2410c;padding:2px 8px;border-radius:12px;flex-shrink:0">รอตอบ</span>'
-                    :'<span style="font-size:10.5px;background:#fef2f2;color:#dc2626;padding:2px 8px;border-radius:12px;flex-shrink:0">ใหม่</span>';
+                    :'<span style="font-size:10.5px;background:#fef2f2;color:#dc2626;padding:2px 8px;border-radius:12px;flex-shrink:0">'+(_P1?'รอตรวจ':'ใหม่')+'</span>';
    const wait=a.submittedAt?fmtDur(Date.now()-a.submittedAt):'';
    const prod=(PRODUCTS[a.product]||{}).label||'';
    return `<div onclick="openDetail('${a.id}')" style="display:flex;align-items:center;gap:9px;padding:9px 10px;background:#f8fafc;border-radius:8px;cursor:pointer">
@@ -1472,14 +1474,14 @@ function viewHome(){
   </div>
   <div style="padding:16px;background:var(--bg,#fff)">
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
-      ${kbig('⏳',pend,'รอพิจารณา · เคสใหม่','#fef2f2','#dc2626','#991b1b')}
-      ${kbig('📄',more,'ขอข้อมูลเพิ่ม (ตีกลับ)','#fff7ed','#c2410c','#9a3412')}
-      ${kbig('✅',todayDone,'พิจารณาแล้ววันนี้','#f0fdf4','#16a34a','#166534')}
+      ${kbig(_P1?'👁':'⏳',pend,L1,'#fef2f2','#dc2626','#991b1b')}
+      ${kbig(_P1?'🧭':'📄',more,L2,'#fff7ed','#c2410c','#9a3412')}
+      ${kbig('✅',todayDone,L3,'#f0fdf4','#16a34a','#166534')}
     </div>
     <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:12px" class="home-grid">
       <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-          <span style="font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px">📥 คิวรอพิจารณา</span>
+          <span style="font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px">📥 ${LQ}</span>
           <span style="font-size:11.5px;color:var(--orange);font-weight:700;cursor:pointer" onclick="go('queue')">ดูทั้งหมด →</span></div>
         <div style="display:flex;flex-direction:column;gap:7px">
           ${queue.length?queue.map(qRow).join(''):'<div style="text-align:center;font-size:12.5px;color:var(--mut);padding:14px">✅ ตอนนี้ไม่มีเคสค้างในคิว</div>'}
@@ -1487,13 +1489,13 @@ function viewHome(){
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <div style="font-size:12px;font-weight:700;color:var(--mut);padding-left:2px">ทางลัด</div>
-        ${short('queue','📥','ไปที่คิวรอพิจารณา')}
+        ${short('queue','📥','ไปที่'+LQ)}
         ${short('exec','📊','ภาพรวมผู้บริหาร')}
         ${short('watch','🛡️','ลูกค้า/เลขถังเฝ้าระวัง')}
         ${short('cfg','⚙️','ตั้งค่าเกณฑ์')}
       </div>
     </div>
-    ${pend? `<div class="alert a-warn" style="margin-top:12px">⚠️ มี <b>${pend}</b> เคสรอพิจารณา — <a href="#" onclick="go('queue');return false" style="font-weight:700">เปิดคิวรอพิจารณา →</a></div>`:''}
+    ${pend? `<div class="alert a-warn" style="margin-top:12px">⚠️ มี <b>${pend}</b> เคส${_P1?'รอ สนญ. ตรวจ+แนะนำ':'รอพิจารณา'} — <a href="#" onclick="go('queue');return false" style="font-weight:700">เปิด${LQ} →</a></div>`:(_P1&&more?`<div class="alert a-info" style="margin-top:12px">✅ ไม่มีเคสรอตรวจ · มี <b>${more}</b> เคสที่ส่งการ์ดแล้ว รอสาขากดรับทราบ</div>`:'')}
   </div>
  </div>
  ${DEMO_MODE?`<div style="margin-top:4px;padding-top:12px;border-top:1px dashed var(--line)">
@@ -2749,8 +2751,8 @@ function fstepValidate(n){
   if(fHiddenIn(f,'fstep-'+n)) return;                  /* ข้ามช่องที่ถูกซ่อน */
   const inp=f.querySelector('input,select,textarea'); if(!inp) return;
   if(inp.type==='file'||inp.type==='radio'||inp.type==='checkbox') return;  /* ไฟล์/รูป-เลือกอย่างใดอย่างหนึ่ง ตรวจตอนส่งจริง */
-  const v=String(inp.value||'').trim();
-  if(!v){ const lb=f.querySelector('label'); miss.push(lb?lb.textContent.replace('*','').trim().slice(0,60):'ช่องบังคับ'); inp.style.borderColor='#dc2626'; inp.style.background='#fff5f5'; if(!firstEl)firstEl=inp; }
+  const v=String(inp.value||'').trim(); const _ph=(PLACEHOLDER_FIELDS[inp.id]&&v&&isPlaceholderVal(v));
+  if(!v||_ph){ const lb=f.querySelector('label'); miss.push((lb?lb.textContent.replace('*','').trim().slice(0,60):'ช่องบังคับ')+(_ph?' — กรุณาระบุชื่อจริง ไม่ใช่ขีดหรือ "ไม่มี"':'')); inp.style.borderColor='#dc2626'; inp.style.background='#fff5f5'; if(!firstEl)firstEl=inp; }
   else { inp.style.borderColor=''; inp.style.background=''; }
  });
  if(miss.length){ alert('⚠ ยังกรอกไม่ครบในหัวข้อนี้ — ต้องกรอกช่องที่มี * ให้ครบก่อนกด "ถัดไป":\n\n• '+miss.join('\n• ')); if(firstEl&&firstEl.focus)firstEl.focus(); return false; }
@@ -3297,17 +3299,40 @@ function formBlankSelects(){ FORM_BLANK_SELECTS.forEach(id=>{ const sel=document
 const OCC_ROLE_GROUPS={
  'ราชการ/รัฐวิสาหกิจ':{wp:'หน่วยงาน / สังกัด',wpPh:'เช่น โรงเรียนบ้านท่าศาลา · อบต.ระโนด · สภ.หาดใหญ่ · การไฟฟ้าส่วนภูมิภาค',ex:'ตำแหน่ง / ยศ',exPh:'เช่น ครู คศ.2 · ส.ต.ท. · นักวิชาการปฏิบัติการ · พนักงานธุรการ',addr:'ที่ตั้งหน่วยงาน (ตำบล/อำเภอ)',ph:'เบอร์โทรหน่วยงาน'},
  'พนักงานประจำ':{wp:'บริษัท / นายจ้าง',wpPh:'เช่น บริษัท ก. จำกัด · โรงงาน ข. · ธนาคาร ค. สาขาท่าศาลา',ex:'ตำแหน่งงาน',exPh:'เช่น หัวหน้าไลน์ผลิต · พนักงานขาย · แคชเชียร์ · ผู้จัดการสาขา',addr:'ที่ตั้งบริษัท (ตำบล/อำเภอ)',ph:'เบอร์โทรบริษัท'},
+ 'รับจ้าง/แรงงาน':{wp:'ชื่อนายจ้าง / สถานที่ที่ไปทำงาน',wpPh:'เช่น บ้านคุณสมศรี ท่าศาลา · โรงแรม ก. · ไซต์ก่อสร้าง บ.ข. · สวนยางนายดำ',addr:'ที่ตั้งที่ทำงาน (ตำบล/อำเภอ)',ph:'เบอร์โทรนายจ้าง'},
  'วิชาชีพ':{wp:'สถานที่ทำงาน / สังกัด',wpPh:'เช่น โรงพยาบาลท่าศาลา · คลินิก ก. · สำนักงานบัญชี ข.',ex:'ตำแหน่ง / สาขาวิชา',exPh:'เช่น พยาบาลวิชาชีพ · ผู้ช่วยพยาบาล · วิศวกรโยธา · ผู้สอบบัญชี',addr:'ที่ตั้งที่ทำงาน (ตำบล/อำเภอ)',ph:'เบอร์โทรที่ทำงาน'}
 };
+function isPlaceholderVal(v){ const t=String(v==null?'':v).trim(); if(!t) return true; if(/^[\s\-–—_.,\/*#]+$/.test(t)) return true; if(/^(ไม่มี|ไม่ระบุ|ไม่ทราบ|ไม่รู้|ไม่|na|n\/a|none|null|nil|x|xx|xxx|0)$/i.test(t)) return true; return t.replace(/[\s\-–—_.,\/]/g,'').length<2; }   /* 0917-D: ค่าขีด/ไม่มี = ว่าง */
+const PLACEHOLDER_FIELDS={'f-workplace':1,'f-workaddr':1,'f-occex':1,'f-incomeextrasrc-other':1,'g-workplace':1};
+function houseCfg(){ const h=(CFG&&CFG.house)||{}; return {maxPeople:+h.maxPeople||10, dormPeople:+h.dormPeople||6, orderTail:+h.orderTail||8, ownerOrder:+h.ownerOrder||3}; }   /* 0917-F: ค่าเริ่มต้น 10 / 8 (หัวหน้าเคาะ 17 ก.ย.) */
+function hcapCmpMode(){ const m=CFG&&CFG.hcapCmpMode; if(m==='off'||m==='warn'||m==='info') return m; return p1()?'info':'warn'; }   /* 0917-F: เทียบข้อมูลเดิม H-Cap: off / info (เฟส 1) / warn */   /* 0917-C: เกณฑ์ทะเบียนบ้าน ตั้งค่าได้ */
+function personCfgHTML(){ const h=houseCfg(); const N=(lab,get,set,title,w)=>`<label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="${title}">${lab} <input type="number" min="1" style="width:${w||64}px" value="${get}" onchange="${set};saveCfg()"></label>`;
+ return `<div class="card mb"><h3>👤 เกณฑ์มิติบุคคล / ทะเบียนบ้าน <span class="mut" style="font-weight:400;font-size:12px">— ตัวเลขที่ทำให้ขึ้น 🟡/🔴 · มีผลทุกเครื่องหลังซิงก์ · เคสเก่าคำนวณใหม่เมื่อ สนญ. เปิดดู</span></h3>
+  <div class="flex" style="gap:8px;flex-wrap:wrap;margin-top:6px">
+   ${N('อายุต่ำกว่า',(+CFG.ageMin||20),'CFG.ageMin=+this.value||20','อายุต่ำกว่านี้ = 🔴 ผู้ปกครองเป็นผู้ซื้อ+ผู้ค้ำ')} <span class="mut">ปี = 🔴</span>
+   ${N('อายุตั้งแต่',(+CFG.ageSenior||60),'CFG.ageSenior=+this.value||60','อายุตั้งแต่นี้: ไม่มีผู้ค้ำ = 🔴 · มีผู้ค้ำ = 🟡')} <span class="mut">ปี = 🔴/🟡 (ผู้ค้ำ)</span>
+   ${N('รายได้เกิน',(+CFG.incomeHardMax||150000),'CFG.incomeHardMax=+this.value||150000','รายได้แจ้งเกินเพดานนี้ = 🔴 ทุกอาชีพ',90)} <span class="mut">บ./ด. = 🔴</span>
+  </div>
+  <div class="flex" style="gap:8px;flex-wrap:wrap;margin-top:8px">
+   ${N('ผู้อยู่อาศัย ≥',h.maxPeople,'CFG.house=CFG.house||{};CFG.house.maxPeople=+this.value||10','จำนวนผู้อยู่อาศัยตั้งแต่นี้ = 🟡 มากผิดปกติ')} <span class="mut">คน = 🟡</span>
+   ${N('หอพัก/ทาวน์เฮาส์ ≥',h.dormPeople,'CFG.house=CFG.house||{};CFG.house.dormPeople=+this.value||6','หอพัก/ทาวน์เฮาส์ แต่ผู้อยู่อาศัยตั้งแต่นี้ = 🟡')} <span class="mut">คน = 🟡</span>
+   ${N('ลำดับในทะเบียนบ้าน ≥',h.orderTail,'CFG.house=CFG.house||{};CFG.house.orderTail=+this.value||8','ลูกค้าอยู่ลำดับตั้งแต่นี้ = 🟡 มักเป็นผู้อาศัย')} <span class="mut">= 🟡</span>
+   ${N('เจ้าของแต่ลำดับ ≥',h.ownerOrder,'CFG.house=CFG.house||{};CFG.house.ownerOrder=+this.value||3','ระบุเป็นเจ้าของบ้าน แต่ลำดับตั้งแต่นี้ = 🟡')} <span class="mut">= 🟡</span>
+  </div>
+  <div class="flex" style="gap:8px;flex-wrap:wrap;margin-top:8px">
+   <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="รายได้/อาชีพ/จังหวัด ที่แจ้ง ต่างจากที่ H-Cap เคยบันทึก (Customer_report) — off = ไม่แสดง · info = ℹ️ สนญ. เห็น ไฟไม่เปลี่ยน · warn = 🟡">เทียบข้อมูลเดิม H-Cap <select onchange="CFG.hcapCmpMode=this.value;saveCfg()"><option value="info" ${hcapCmpMode()==='info'?'selected':''}>ℹ️ แจ้งเพื่อทราบ (สนญ.)</option><option value="off" ${hcapCmpMode()==='off'?'selected':''}>ปิด</option><option value="warn" ${hcapCmpMode()==='warn'?'selected':''}>🟡 เตือน (เฟส 2)</option></select></label>
+   <label class="btn btn-line" style="margin:0" title="เฟส 1 ปิดบรรทัด 'เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า'"><input type="checkbox" ${CFG.p1SpousePhone===true?'checked':''} onchange="CFG.p1SpousePhone=this.checked;saveCfg()"> แสดงบรรทัดเบอร์คู่สมรสซ้ำ (เฟส 2)</label>
+  </div>
+  <p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น: อายุ 20 / 60 · รายได้ 150,000 · ผู้อยู่อาศัย 10 · หอพัก 6 · ลำดับ 8 · เจ้าของลำดับ 3 · "ลำดับมากกว่าจำนวนคน" = 🔴 เสมอ (กรอกผิด)</p></div>`; }
 function occRoleGroup(g){ return OCC_ROLE_GROUPS[g]||null; }
 function occRoleApply(){ try{
  const g=(document.getElementById('f-occg')||{}).value||''; const r=occRoleGroup(g);
  const T=(id,t)=>{ const e=document.getElementById(id); if(e) e.textContent=t; };
  T('lbl-workplace', r?r.wp:'ชื่อกิจการ'); T('lbl-workaddr', r?r.addr:'ที่ตั้งที่ทำงาน (ตำบล/อำเภอ)'); T('lbl-workphone', r?r.ph:'เบอร์โทรที่ทำงาน');
  const wp=document.getElementById('f-workplace'); if(wp) wp.placeholder=r?r.wpPh:'เช่น บริษัท ก. จำกัด / ร้านป้าแดง / สวนยางตนเอง';
- if(r){ const w=document.getElementById('w-occex'); if(w) w.classList.remove('hidden'); const l=document.getElementById('lbl-occex'); if(l) l.innerHTML=r.ex+' <span class="req">*</span>'; const ex=document.getElementById('f-occex'); if(ex) ex.placeholder=r.exPh; }
+ if(r&&r.ex){ const w=document.getElementById('w-occex'); if(w) w.classList.remove('hidden'); const l=document.getElementById('lbl-occex'); if(l) l.innerHTML=r.ex+' <span class="req">*</span>'; const ex=document.getElementById('f-occex'); if(ex) ex.placeholder=r.exPh; }
 }catch(e){} }
-function occRoleLabels(a){ const o=OCC_LIST[a&&a.occupation]; const r=o?occRoleGroup(o.g):null; return r?{wp:r.wp,ex:r.ex}:{wp:'ที่ทำงาน',ex:'ข้อมูลเพิ่มเติม'}; }
+function occRoleLabels(a){ const o=OCC_LIST[a&&a.occupation]; const r=o?occRoleGroup(o.g):null; return r?{wp:r.wp,ex:r.ex||'ข้อมูลเพิ่มเติม'}:{wp:'ที่ทำงาน',ex:'ข้อมูลเพิ่มเติม'}; }
 function onOccGroup(){
  const g=document.getElementById('f-occg').value;
  const sel=document.getElementById('f-occ');
@@ -3846,9 +3871,9 @@ function submitApp(){
  { const dh=(document.getElementById('f-debthas')||{}).value||''; const dv=(document.getElementById('f-debt')||{}).value; if(!dh) missing.push('ภาระผ่อนหนี้เดิม/เดือน (เลือก มี/ไม่มี)'); else if(dh==='has'&&!(+dv>0)) missing.push('ยอดภาระผ่อนหนี้เดิม/เดือน'); else if(dh==='has'&&!(a.debtItems&&a.debtItems.length)) missing.push('ผ่อนรายการอะไรบ้าง (เลือกอย่างน้อย 1 รายการ)'); if(!(+a.expense>0)) missing.push('ค่าใช้จ่ายส่วนตัว/ครัวเรือน ต่อเดือน');
    const ih=(document.getElementById('f-incextrahas')||{}).value||''; if(!ih) missing.push('รายได้เสริมครัวเรือน (เลือก มี/ไม่มี)'); else if(ih==='has'){ if(!(+a.incomeExtra>0)) missing.push('ยอดรายได้เสริมครัวเรือน/เดือน'); if(!String(a.incomeExtraSrc||'').replace(/^อื่นๆ:\s*/,'').trim()) missing.push('รายได้เสริมมาจาก'); } }
  if(!(a.workDur&&a.workDur.set)) missing.push('อายุงาน/อายุกิจการ (ปี และ/หรือ เดือน)');
- if(!String(a.workplace||'').trim()) missing.push('ชื่อกิจการ'); if(!String(a.workAddr||'').trim()) missing.push('ที่ตั้งที่ทำงาน (ตำบล/อำเภอ)');
+ if(isPlaceholderVal(a.workplace)) missing.push(((document.getElementById('lbl-workplace')||{}).textContent||'ชื่อกิจการ')+' — กรุณาระบุชื่อจริง (เช่น บ้านคุณสมศรี ท่าศาลา · ร้านป้าแดง) ไม่ใช่ขีดหรือ "ไม่มี"'); if(isPlaceholderVal(a.workAddr)) missing.push('ที่ตั้งที่ทำงาน (ตำบล/อำเภอ) — ระบุตำบล/อำเภอจริง');
  { const ho=+((a.addrCur||{}).houseOrder||0), hp=+((a.addrCur||{}).housePeople||0); if(!(ho>0)) missing.push('ลำดับที่ในทะเบียนบ้าน'); if(!(hp>0)) missing.push('จำนวนผู้อยู่อาศัยในบ้าน (คน)'); if(ho>0&&hp>0&&ho>hp) missing.push('ลำดับที่ในทะเบียนบ้าน ('+ho+') เกินจำนวนผู้อยู่อาศัย ('+hp+') — ตรวจตัวเลข'); }
- { const oe=document.getElementById('w-occex'); if(oe&&!oe.classList.contains('hidden')&&oe.style.display!=='none'&&!String(a.occExtra||'').trim()) missing.push(((document.getElementById('lbl-occex')||{}).textContent||'ข้อมูลเพิ่มเติมอาชีพ').replace(/\s*\*\s*$/,'').trim()); const wr=document.getElementById('w-rai'); if(wr&&!wr.classList.contains('hidden')&&!(+a.rai>0)) missing.push('จำนวนไร่โดยประมาณ'); }
+ { const oe=document.getElementById('w-occex'); if(oe&&!oe.classList.contains('hidden')&&oe.style.display!=='none'&&isPlaceholderVal(a.occExtra)) missing.push(((document.getElementById('lbl-occex')||{}).textContent||'ข้อมูลเพิ่มเติมอาชีพ').replace(/\s*\*\s*$/,'').trim()); const wr=document.getElementById('w-rai'); if(wr&&!wr.classList.contains('hidden')&&!(+a.rai>0)) missing.push('จำนวนไร่โดยประมาณ'); }
  if(a.workDur&&a.workDur.set&&a.workYears<0.5){ const pw=a.prevWork||{}; if(!String(pw.company||'').trim()) missing.push('ที่ทำงานเดิม — ชื่อบริษัท (อายุงานปัจจุบันน้อยกว่า 6 เดือน)'); if(!String(pw.position||'').trim()) missing.push('ที่ทำงานเดิม — ตำแหน่ง/ลักษณะงาน'); if(!(+pw.years>0)) missing.push('ที่ทำงานเดิม — อายุงานเดิม (ปี)'); }
  if(missing.length){ alert('กรุณากรอก:\n• '+missing.join('\n• ')); return; }
  a.calc=calcAll(a);
@@ -4804,7 +4829,7 @@ function openDetail(id){
       return (parts.length||extra)?`<div class="card mb"><h3>ผู้ใช้รถ / คู่สมรส / ระยะทาง</h3><table>${parts.join('')}</table>${extra}</div>`:''; })()}
     <div class="card mb"><h3>อาชีพ / รายได้</h3><table>
      <tr><td class="mut">อาชีพ</td><td colspan="3">${occL}</td></tr>
-     <tr><td class="mut">${occRoleLabels(a).wp}</td><td>${a.workplace||'-'}</td><td class="mut">ที่ตั้ง/โทร</td><td>${a.workAddr||'-'} ${a.workPhone?'· '+a.workPhone:''}</td></tr>${occRoleGroup((OCC_LIST[a.occupation]||{}).g)?`<tr><td class="mut">${occRoleLabels(a).ex}</td><td colspan="3">${a.occExtra||'<span style="color:#b45309">ยังไม่ระบุ</span>'}</td></tr>`:''}
+     <tr><td class="mut">${occRoleLabels(a).wp}</td><td>${a.workplace||'-'}</td><td class="mut">ที่ตั้ง/โทร</td><td>${a.workAddr||'-'} ${a.workPhone?'· '+a.workPhone:''}</td></tr>${(occRoleGroup((OCC_LIST[a.occupation]||{}).g)||{}).ex?`<tr><td class="mut">${occRoleLabels(a).ex}</td><td colspan="3">${a.occExtra||'<span style="color:#b45309">ยังไม่ระบุ</span>'}</td></tr>`:''}
      <tr><td class="mut">เริ่มงาน</td><td>${a.workStart||'-'}</td><td class="mut">อายุงาน</td><td>${(a.workYears||0).toFixed? (a.workYears||0).toFixed(1):a.workYears} ปี ${a.workDocData?`<img src="${a.workDocData}" style="height:44px;border-radius:6px;cursor:zoom-in;vertical-align:middle" onclick="showImg('${a.id}','work')" title="เอกสารงาน — คลิกดูเต็ม">`:(a.workDoc?'· 📎 '+a.workDoc:'')}</td></tr>
      <tr><td class="mut">รายได้แจ้ง</td><td>${fmt(a.incomeClaimed)} บ.</td><td class="mut">รายได้เสริม</td><td>${fmt(a.incomeExtra)} บ.${a.incomeExtraSrc?' · <span class="mut">'+a.incomeExtraSrc+'</span>':''} ${a.incomeExtraData?`<img src="${a.incomeExtraData}" style="height:40px;border-radius:6px;cursor:zoom-in;vertical-align:middle" onclick="showImg('${a.id}','incextra')" title="ภาพรายได้เสริม — คลิกดูเต็ม">`:(a.incomeExtra>0&&!a.incomeExtraData?'<span class="tag t-gray" style="font-size:10px">ไม่มีหลักฐาน</span>':'')}</td></tr>
      <tr><td class="mut">หนี้เดิม/เดือน</td><td>${fmt(a.debt)} บ.${(a.debtItems&&a.debtItems.length)?' <span class="mut">('+a.debtItems.join(', ')+')</span>':''}${(a._debtHC||0)>0?' <span class="mut">+ ค่างวดบริษัท '+fmt(a._debtHC)+' บ.</span>':''}${(/ผ่อน/.test((a.addrCur&&a.addrCur.houseType)||'')&&(+a.housePay||0)>0)?' <span class="mut">+ ผ่อนบ้าน '+fmt(a.housePay)+' บ.</span>':''}${(+a.expense||0)>0?' <span class="mut">· ค่าใช้จ่าย '+fmt(a.expense)+' บ.</span>':''}</td><td class="mut">เอกสาร</td><td>${a.incomeDocLevel||'-'} · ${a.incomeProof||'-'}</td></tr>
@@ -5047,7 +5072,7 @@ function printCase(id){
   ${sec('อาชีพ / รายได้',
      row('อาชีพ',occL_(a))
      +row(occRoleLabels(a).wp,esc(a.workplace)||'-','ที่ตั้ง/โทร',(esc(a.workAddr)||'-')+(a.workPhone?' · '+esc(a.workPhone):''))
-     +(occRoleGroup((OCC_LIST[a.occupation]||{}).g)?row(occRoleLabels(a).ex, esc(a.occExtra)||'<span style="color:#b45309">ยังไม่ระบุ</span>'):'')
+     +((occRoleGroup((OCC_LIST[a.occupation]||{}).g)||{}).ex?row(occRoleLabels(a).ex, esc(a.occExtra)||'<span style="color:#b45309">ยังไม่ระบุ</span>'):'')
      +row('เริ่มงาน',esc(a.workStart)||'-','อายุงาน',((a.workYears||0).toFixed?(a.workYears||0).toFixed(1):a.workYears)+' ปี')
      +row('รายได้แจ้ง',money(a.incomeClaimed),'รายได้เสริม',money(a.incomeExtra)+(a.incomeExtraSrc?(' · '+esc(a.incomeExtraSrc)):''))
      +row('หนี้เดิม/เดือน',money(a.debt),'เอกสารรายได้',(esc(a.incomeDocLevel)||'-')+' · '+(esc(a.incomeProof)||'-'))
@@ -7159,7 +7184,8 @@ function viewCfg(){
     <div class="field"><label>ค่าใช้จ่ายยึด/ติดตาม/ซ่อม (บ./คัน)</label><input type="number" value="${(CFG.recovery||{}).cost||5000}" onchange="CFG.recovery.cost=+this.value"></div>
     <div class="field"><label>วงเงินไฟแนนซ์แนะนำ (% ของคุ้มครอง)</label><input type="number" value="${(CFG.recovery||{}).finPct||55}" onchange="CFG.recovery.finPct=+this.value"></div>
    </div><p class="pill-note">ฐานข้อมูล: รถใหม่ ${Object.keys(activeRec().new).length} รุ่น (ปี 1–3) · มือสอง ${Object.keys(activeRec().used).length} รุ่น (ปี 1–8) จากไฟล์ฮอนด้าพลัส</p>${recVersionUI()}</div>
-   <div class="card mb"><h3>🚫 เหตุผลการขอยกเลิกคำขอ (สาขาเลือกจากรายการนี้)</h3>
+   ${personCfgHTML()}
+  <div class="card mb"><h3>🚫 เหตุผลการขอยกเลิกคำขอ (สาขาเลือกจากรายการนี้)</h3>
     <div class="field"><label>รายการเหตุผล — 1 บรรทัดต่อ 1 เหตุผล (สาขาจะเห็นเป็น dropdown)</label>
      <textarea rows="6" onchange="CFG.cancelReasons=this.value.split('\\n').map(s=>s.trim()).filter(Boolean)">${cancelReasonList().join('\n')}</textarea></div>
     <p class="pill-note">แก้ที่นี่แล้วกด "บันทึกเกณฑ์" ด้านล่าง จะไหลไปหน้าบ้านสาขาและซิงก์ขึ้น Google Sheet อัตโนมัติ</p></div>
@@ -8206,7 +8232,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0917-B';
+const CHK3_BUILD='0917-F';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -8291,7 +8317,8 @@ function docListFor(group){ if(!DOCCHECK) loadDocCheck(); return (DOCCHECK.group
 
 /* เวอร์ชันเกณฑ์ที่ใช้ตรวจ (ย้อนตรวจได้) */
 function chk3Version(){ if(!INCREF) loadIncRef(); if(!DOCCHECK) loadDocCheck();
- return CHK3_BUILD+' · รายได้ v'+(INCREF.ver||1)+' · เอกสาร v'+(DOCCHECK.ver||1)+' · อาชีพ '+OCC_LIST.length+' รายการ'; }
+ let _cs=''; try{ const c=CFG||{}; const h=houseCfg(); const str=[+c.ageMin||20,+c.ageSenior||60,+c.incomeHardMax||150000,h.maxPeople,h.dormPeople,h.orderTail,h.ownerOrder,c.p1AreaRisk===true?1:0,c.p1OccStab===true?1:0,c.p1SpousePhone===true?1:0,hcapCmpMode()].join(','); let x=0; for(let i=0;i<str.length;i++){ x=((x<<5)-x+str.charCodeAt(i))|0; } _cs=' · เกณฑ์ '+(Math.abs(x)%100000).toString(36); }catch(e){}   /* 0917-C: ค่าตั้งค่าเปลี่ยน → เคสเก่าคำนวณใหม่เมื่อเปิดดู */
+ return CHK3_BUILD+' · รายได้ v'+(INCREF.ver||1)+' · เอกสาร v'+(DOCCHECK.ver||1)+' · อาชีพ '+OCC_LIST.length+' รายการ'+_cs; }
 
 /* ======================= เอนจินตรวจ 3 มิติ ======================= */
 const CHK3_RANK={bad:3,warn:2,ok:1,na:0,info:0};
@@ -8453,6 +8480,7 @@ function check3(a, c){
  const band= sc>=70?'มั่นคงสูง': sc>=45?'มั่นคงปานกลาง':'ควรตรวจความต่อเนื่องของรายได้';
  if(o&&(!p1()||(CFG&&CFG.p1OccStab===true))){ P('occ', sc>=45?'ok':'warn', 'ระดับความมั่นคงของอาชีพ: '+band+(sc<45?' — แนะนำมีผู้ค้ำ/หลักฐานรายได้ต่อเนื่อง':''), false); }   /* 0916-D: เฟส 1 ปิดไว้ (สวิตช์ p1OccStab) */
  if(o && sc>=85 && !String(a.workplace||'').trim() && !a.workDocData) P('occ','warn','อาชีพนี้ควรระบุสถานที่ทำงานให้ชัด (พอร์ตจริงพบกลุ่มนี้กรอกไม่ตรงบ่อย)');
+ else if(o && String(a.workplace||'').trim() && isPlaceholderVal(a.workplace)) P('occ','warn','ระบุที่ทำงาน/กิจการเป็นขีด/ไม่ระบุ ("'+String(a.workplace).trim()+'") — สาขาระบุชื่อที่ทำงาน/นายจ้างให้ชัด');   /* 0917-D */
  else if(o && String(a.workplace||'').trim()) P('occ','ok','ระบุที่ทำงาน/กิจการ: '+a.workplace);
  const wy=+a.workYears||0; if(a.workStart){ if(wy<0.5) P('occ','warn','อายุงาน/กิจการ '+wy.toFixed(1)+' ปี (น้อยกว่า 6 เดือน) — ตรวจที่ทำงานเดิม/ความต่อเนื่อง'); else if(wy<1) P('occ','warn','อายุงาน '+wy.toFixed(1)+' ปี — ยังสั้น ควรมีหลักฐานรายได้'); else P('occ','ok','อายุงาน/กิจการ '+wy.toFixed(1)+' ปี'); }
  if(o){ const hr=occHealthRight(a.occupation); if(hr&&(a.healthRight==null||a.healthRight==='unchecked')&&p1()) P('occ','info','สนญ. ยังไม่ตรวจ'+hr.expect+' — ติ๊กในกล่อง "ตรวจโดย สนญ." ก่อนส่งการ์ด',true); if(hr&&a.healthRight==='none') P('occ','warn','ตรวจสิทธิการรักษาไม่พบตาม'+hr.expect+' — สาขาขอดูสลิป/บัตรพนักงานจากลูกค้ายืนยันการเป็นลูกจ้าง/ขรก. (ยังไม่ต้องแนบในระบบ)'); else if(hr&&a.healthRight==='ok') P('occ','ok','สิทธิการรักษาตรงอาชีพ ('+hr.expect+')'); }
@@ -8500,10 +8528,10 @@ function check3(a, c){
   const age=a.birth?(a.age||ageFrom(a.birth)):0; const ac=a.addrCur||{}; const ho=+ac.houseOrder||0, hp=+ac.housePeople||0; const ht=String(ac.houseType||''), tn=String(ac.tenure||'');
   /* ทะเบียนบ้าน */
   if(ho&&hp&&ho>hp) P('person','bad','ลำดับในทะเบียนบ้าน (ที่ '+ho+') มากกว่าจำนวนผู้อยู่อาศัย ('+hp+' คน) — เป็นไปไม่ได้ ตรวจการกรอก');
-  else { if(hp>=8) P('person','warn','ผู้อยู่อาศัย '+hp+' คน มากผิดปกติ'+(/หอพัก|ทาวน์เฮาส์|เช่า/.test(ht)?' สำหรับ'+ht:'')+' — สาขาตรวจว่าเป็นบ้านญาติรวมหรือบ้านเช่ารวม');
-   else if(hp>=6&&/หอพัก|ทาวน์เฮาส์/.test(ht)) P('person','warn',ht+' แต่ผู้อยู่อาศัย '+hp+' คน — ตรวจสภาพที่อยู่จริง');
-   if(ho>=5) P('person','warn','ลูกค้าอยู่ลำดับที่ '+ho+' ในทะเบียนบ้าน — มักเป็นผู้อาศัย ไม่ใช่เจ้าบ้าน ตรวจความสัมพันธ์กับเจ้าบ้าน/ความมั่นคงของที่อยู่');
-   else if(ho>=3&&tn==='เจ้าของ') P('person','warn','ระบุเป็นเจ้าของบ้าน แต่อยู่ลำดับที่ '+ho+' ในทะเบียนบ้าน — ตรวจว่าเป็นเจ้าบ้านจริง (ขอดูทะเบียนบ้านหน้าแรก)'); }
+  else { const _hc=houseCfg(); if(hp>=_hc.maxPeople) P('person','warn','ผู้อยู่อาศัย '+hp+' คน มากผิดปกติ'+(/หอพัก|ทาวน์เฮาส์|เช่า/.test(ht)?' สำหรับ'+ht:'')+' — สาขาตรวจว่าเป็นบ้านญาติรวมหรือบ้านเช่ารวม');
+   else if(hp>=_hc.dormPeople&&/หอพัก|ทาวน์เฮาส์/.test(ht)) P('person','warn',ht+' แต่ผู้อยู่อาศัย '+hp+' คน — ตรวจสภาพที่อยู่จริง');
+   if(ho>=_hc.orderTail) P('person','warn','ลูกค้าอยู่ลำดับที่ '+ho+' ในทะเบียนบ้าน — มักเป็นผู้อาศัย ไม่ใช่เจ้าบ้าน ตรวจความสัมพันธ์กับเจ้าบ้าน/ความมั่นคงของที่อยู่');
+   else if(ho>=_hc.ownerOrder&&tn==='เจ้าของ') P('person','warn','ระบุเป็นเจ้าของบ้าน แต่อยู่ลำดับที่ '+ho+' ในทะเบียนบ้าน — ตรวจว่าเป็นเจ้าบ้านจริง (ขอดูทะเบียนบ้านหน้าแรก)'); }
   if(ho&&hp&&ho===1&&hp===1&&age&&age<25) P('person','warn','อายุ '+age+' ปี เป็นเจ้าบ้านและอยู่คนเดียว — สาขาตรวจทะเบียนบ้าน/ที่อยู่จริงว่าเป็นของลูกค้าจริง');
   /* ประเภทที่อยู่ ↔ การถือครอง ↔ ค่าผ่อนบ้าน */
   if(tn==='เจ้าของ'&&/เช่า|หอพัก|อาศัยกับญาติ/.test(ht)) P('person','warn','การถือครอง "เจ้าของ" ขัดกับลักษณะที่อยู่ "'+ht+'" — แก้ให้ตรง');
@@ -8521,7 +8549,7 @@ function check3(a, c){
   const gI=normDigits((a.guar||{}).idcard||''), gP=normDigits((a.guar||{}).phone||'');
   if(gI&&idN&&gI===idN) P('person','bad','เลขบัตรผู้ค้ำเป็นเลขเดียวกับลูกค้า — ค้ำตัวเองไม่ได้');
   if(gP&&phN&&gP===phN) P('person','warn','เบอร์โทรผู้ค้ำเป็นเบอร์เดียวกับลูกค้า — ต้องเป็นเบอร์ที่ติดต่อผู้ค้ำได้จริง');
-  const _sp=normDigits((a.spouse||{}).phone||''); if(_sp&&phN&&_sp===phN) P('person','warn','เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า — ขอเบอร์ที่ติดต่อได้จริง');
+  const _sp=normDigits((a.spouse||{}).phone||''); if(_sp&&phN&&_sp===phN&&(!p1()||(CFG&&CFG.p1SpousePhone===true))) P('person','warn','เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า — ขอเบอร์ที่ติดต่อได้จริง');   /* 0917-F: เฟส 1 ปิด (สวิตช์ p1SpousePhone) */
   /* อาชีพ ↔ อายุ/หลักฐาน */
   const wy2=+a.workYears||0;
   if(age&&wy2&&wy2>age-15) P('occ','bad','อายุงาน/กิจการ '+wy2.toFixed(1)+' ปี แต่ลูกค้าอายุ '+age+' ปี — เป็นไปไม่ได้ ตรวจวันเริ่มงาน');
@@ -8548,10 +8576,17 @@ function check3(a, c){
   /* รายได้/อาชีพ/ที่อยู่ ↔ ที่ H-Cap เคยบันทึก (Customer_report) */
   const cr=(typeof CUSTDB!=='undefined'&&CUSTDB&&CUSTDB.recs&&idN.length===13)?CUSTDB.recs[idN]:null;
   if(cr){ const hi=+cr.income||0;
+   const _cm=hcapCmpMode();   /* 0917-F: off / info (สนญ. เท่านั้น ไฟไม่เปลี่ยน) / warn */
+   if(_cm==='warn'){
    if(iFilled&&hi>0){ const d=Math.abs(inc-hi)/hi; if(d>0.5) P('income','warn','รายได้ที่แจ้งต่างจากที่เคยแจ้งกับบริษัทไว้มาก — ตรวจว่าเปลี่ยนงาน/ตำแหน่งจริง ขอหลักฐานรายได้ปัจจุบัน', false, 'รายได้แจ้ง '+fmt(inc)+' บ. ต่างจากที่ H-Cap เคยบันทึก '+fmt(hi)+' บ. ('+(inc>hi?'+':'−')+Math.round(d*100)+'%) — ตรวจว่าเปลี่ยนงาน/ตำแหน่งจริง');
     else P('income','ok','รายได้ที่แจ้งใกล้เคียงกับที่เคยแจ้งกับบริษัทไว้ ✓', false, 'รายได้แจ้งใกล้เคียงที่ H-Cap เคยบันทึก ('+fmt(hi)+' บ.) ✓'); }
    if(o&&cr.occFromWork&&OCC_LIST[cr.occIdx]&&OCC_LIST[cr.occIdx].g!==o.g) P('occ','warn','อาชีพที่แจ้ง ('+o.g+') ต่างจากที่เคยแจ้งกับบริษัทไว้ ('+OCC_LIST[cr.occIdx].g+(cr.workplace?' — '+cr.workplace:'')+') — ตรวจว่าเปลี่ยนอาชีพจริง');
-   if(cr.prov&&ac.prov&&normProv(cr.prov)!==normProv(ac.prov)) P('person','warn','จังหวัดที่อยู่ปัจจุบัน ('+ac.prov+') ต่างจากที่เคยแจ้งกับบริษัท ('+cr.prov+') — สาขาตรวจว่าย้ายที่อยู่จริง'); }
+   if(cr.prov&&ac.prov&&normProv(cr.prov)!==normProv(ac.prov)) P('person','warn','จังหวัดที่อยู่ปัจจุบัน ('+ac.prov+') ต่างจากที่เคยแจ้งกับบริษัท ('+cr.prov+') — สาขาตรวจว่าย้ายที่อยู่จริง');
+   } else if(_cm==='info'){
+   if(iFilled&&hi>0){ const d=Math.abs(inc-hi)/hi; if(d>0.5) P('income','info','H-Cap เคยบันทึกรายได้ '+fmt(hi)+' บ. — ตอนนี้แจ้ง '+fmt(inc)+' บ. ('+(inc>hi?'+':'−')+Math.round(d*100)+'%)', true); }
+   if(o&&cr.occFromWork&&OCC_LIST[cr.occIdx]&&OCC_LIST[cr.occIdx].g!==o.g) P('occ','info','H-Cap เคยบันทึกอาชีพ '+OCC_LIST[cr.occIdx].g+(cr.workplace?' ('+cr.workplace+')':'')+' — ตอนนี้ '+o.g, true);
+   if(cr.prov&&ac.prov&&normProv(cr.prov)!==normProv(ac.prov)) P('person','info','H-Cap เคยบันทึกที่อยู่ จ.'+cr.prov+' — ตอนนี้ จ.'+ac.prov, true);
+   } }
  }catch(e){}
  /* ---- บล็อก 4 ประวัติกับบริษัท (H-Cap) ---- */
  const hc=hcapFind(a); let hcap={found:false};
