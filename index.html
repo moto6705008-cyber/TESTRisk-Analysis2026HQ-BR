@@ -405,7 +405,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0917-F (เฟส 1 · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · ปิดเบอร์คู่สมรสซ้ำ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0921-B (เฟส 1 · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -866,7 +866,10 @@ function purgeAllCases(){ if(!SESSION||SESSION.role!=='analyst'){ alert('เฉ�
 function saveCfg(){ try{ localStorage.setItem('moto24_cfg_v3', JSON.stringify(CFG)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('cfg',CFG); }
 
 let CUSTDB;
-function loadCustDB(){ try{ CUSTDB=JSON.parse(localStorage.getItem('moto24_custdb_v1'))||{recs:{},updated:''}; }catch(e){ CUSTDB={recs:{},updated:''}; } }
+function loadCustDB(){ try{ CUSTDB=JSON.parse(localStorage.getItem('moto24_custdb_v1'))||{recs:{},updated:''}; }catch(e){ CUSTDB={recs:{},updated:''}; } try{ custOccFix(); }catch(e){} }
+function custOccFix(){   /* 0921-A: ซ่อมหมวดอาชีพในพอร์ต — รายที่ช่อง 'ที่ทำงาน' ว่างเคยถูกตีเป็น index 0 (เกษตร-พืช) · ทำครั้งเดียว (occFix=2) ไม่ต้องนำเข้าใหม่ */
+ try{ if(!CUSTDB||!CUSTDB.recs||CUSTDB.occFix===2) return 0; let n=0; Object.keys(CUSTDB.recs).forEach(k=>{ const r=CUSTDB.recs[k]; if(!r) return; const iWork=occMatch(r.workplace), iOcc=occMatch(r.occText); const idx=iWork>=0?iWork:(iOcc>=0?iOcc:-1); const src=iWork>=0?'work':(iOcc>=0?'occ':''); if(r.occIdx!==idx||r.occFromWork!==(iWork>=0)||r.occSrc!==src){ r.occIdx=idx; r.occFromWork=iWork>=0; r.occSrc=src; r.occConflict=(iWork>=0&&iOcc>=0&&OCC_LIST[iWork].g!==OCC_LIST[iOcc].g); n++; } });
+  CUSTDB.occFix=2; CUSTDB.occFixN=n; CUSTDB.occFixAt=Date.now(); saveCustDB(); if(n>0){ try{ _pushLog&&_pushLog('ซ่อมหมวดอาชีพในพอร์ต H-Cap แล้ว '+n.toLocaleString()+' ราย (บั๊กช่องที่ทำงานว่าง) — ไม่ต้องนำเข้าใหม่'); }catch(e){} } return n; }catch(e){ return 0; } }
 function saveCustDB(){ try{ localStorage.setItem('moto24_custdb_v1',JSON.stringify(CUSTDB)); }catch(e){} try{ if(typeof idbSet==='function') idbSet('custdb', CUSTDB).catch(()=>{}); }catch(e){} }
 let WATCH;
 const DEFAULT_WATCH = {
@@ -1440,8 +1443,9 @@ function toast(title, body, goId, color){
 }
 function viewHome(){
  const _P1=p1(); const _today=new Date().toISOString().slice(0,10);   /* 0917-E: หน้าเริ่มภาษาเฟส 1 */
- const pend=_P1?(APPS||[]).filter(a=>a.status==='pending'&&!hqSent(a)).length:(APPS||[]).filter(a=>a.status==='pending').length;
- const more=_P1?(APPS||[]).filter(a=>a.status==='pending'&&hqSent(a)&&!a.ack3&&!(a.sale&&a.sale.result&&a.sale.result!=='waiting')).length:(APPS||[]).filter(a=>a.status==='moreinfo').length;
+ const _pc=_P1?p1Count((APPS||[]).filter(a=>a.status==='pending')):null;   /* 0921-B: สูตรเดียวกับหน้าคิว */
+ const pend=_P1?_pc.hqPending:(APPS||[]).filter(a=>a.status==='pending').length;
+ const more=_P1?_pc.ackPending:(APPS||[]).filter(a=>a.status==='moreinfo').length;
  const todayDone=_P1?(APPS||[]).filter(a=>a.hqAdvice&&a.hqAdvice.sentAt&&new Date(a.hqAdvice.sentAt).toISOString().slice(0,10)===_today).length:(APPS||[]).filter(a=>a.decidedAt&&new Date(a.decidedAt).toISOString().slice(0,10)===_today).length;
  const L1=_P1?'รอ สนญ. ตรวจ+แนะนำ':'รอพิจารณา · เคสใหม่', L2=_P1?'สนญ. ส่งแล้ว · รอสาขารับทราบ':'ขอข้อมูลเพิ่ม (ตีกลับ)', L3=_P1?'ส่งการ์ด+คำแนะนำแล้ววันนี้':'พิจารณาแล้ววันนี้', LQ=_P1?'คิวรอตรวจ+แนะนำ':'คิวรอพิจารณา';
  const nm=(SESSION&&SESSION.name)||'ฝ่ายวิเคราะห์';
@@ -2280,25 +2284,33 @@ function _dayKey(ts){ const d=new Date(ts||Date.now()); return d.getFullYear()+'
 const SALE_RESULTS=[['sold','🛒 ขายแล้ว (ทำสัญญา)'],['notsold','✋ ไม่ขาย (สาขาพิจารณาไม่ผ่าน)'],['cancelled','🚶 ลูกค้ายกเลิก/เปลี่ยนใจ'],['waiting','⏳ รอลูกค้าตัดสินใจ']];
 function saleLabel(r){ const x=SALE_RESULTS.find(s=>s[0]===r); return x?x[1]:r||''; }
 function p1State(a){ if(!a) return 'sent'; if(a.status==='cancelled') return 'cancelled_req';
+ if(!hqSent(a)) return 'sent';          /* 0921-B: รอ สนญ. ตรวจ+แนะนำ — รวมเคสที่ขายก่อนส่ง/ก่อน สนญ. ตรวจ (ยังต้องตรวจ) จนกว่า สนญ. จะส่งการ์ด */
  if(a.sale&&a.sale.result&&a.sale.result!=='waiting') return a.sale.result;
  const overdue=a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
+ if(!a.ack3) return 'ackwait';           /* 0921-B: ยังไม่รับทราบ = รอรับทราบเสมอ (ไม่ย้ายไป 'ค้าง' ตามวัน) */
  if(a.sale&&a.sale.result==='waiting') return overdue?'overdue':'waiting';
- if(!hqSent(a)) return 'sent';          /* รอ สนญ. ตรวจ+แนะนำ */
- if(!a.ack3) return overdue?'overdue':'ackwait';
  if(overdue) return 'overdue';
  return 'reviewed'; }
 function p1Tag(a){ const s=p1State(a);
  const hqLate=!hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
- const M={sold:['🛒 ขายแล้ว'+(a.sale&&a.sale.beforeSubmit?' (ก่อนส่งเคส)':a.sale&&a.sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''),'#dcfce7','#166534'],notsold:['✋ ไม่ขาย','#e5e7eb','#374151'],cancelled:['🚶 ลูกค้ายกเลิก','#e5e7eb','#374151'],waiting:['⏳ รอลูกค้าตัดสินใจ','#fef9c3','#854d0e'],overdue:['⚠ ค้างบันทึกผลขาย','#fee2e2','#b91c1c'],reviewed:['✅ รับทราบแล้ว · รอบันทึกผลขาย','#dbeafe','#1d4ed8'],ackwait:['🧭 สนญ. ส่งการ์ดแล้ว · รอสาขารับทราบ','#fef3c7','#b45309'],sent:[hqLate?'⚠ รอ สนญ. ตรวจ (เกินวัน)':'👁 รอ สนญ. ตรวจ+แนะนำ',hqLate?'#fee2e2':'#dbeafe',hqLate?'#b91c1c':'#1d4ed8']};
+ const M={sold:['🛒 ขายแล้ว'+(a.sale&&a.sale.beforeSubmit?' (ก่อนส่งเคส)':a.sale&&a.sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''),'#dcfce7','#166534'],notsold:['✋ ไม่ขาย','#e5e7eb','#374151'],cancelled:['🚶 ลูกค้ายกเลิก','#e5e7eb','#374151'],waiting:['⏳ รอลูกค้าตัดสินใจ','#fef9c3','#854d0e'],overdue:['⚠ ค้างบันทึกผลขาย','#fee2e2','#b91c1c'],reviewed:['✅ รับทราบแล้ว · รอบันทึกผลขาย','#dbeafe','#1d4ed8'],ackwait:[(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'⚠ สนญ. ส่งการ์ดแล้ว · สาขายังไม่รับทราบ (ค้างข้ามวัน)':'🧭 สนญ. ส่งการ์ดแล้ว · รอสาขารับทราบ',(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'#fee2e2':'#fef3c7',(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'#b91c1c':'#b45309'],sent:[hqLate?'⚠ รอ สนญ. ตรวจ (เกินวัน)':'👁 รอ สนญ. ตรวจ+แนะนำ',hqLate?'#fee2e2':'#dbeafe',hqLate?'#b91c1c':'#1d4ed8']};
  const m=M[s]||M.sent; let extra='';
  if(a.sale&&a.status!=='cancelled'){ if(!hqSent(a)) extra=`<span class="tag" style="background:${hqLateSale(a)?'#fee2e2':'#dbeafe'};color:${hqLateSale(a)?'#b91c1c':'#1d4ed8'};margin-left:4px">👁 ${hqLateSale(a)?'รอ สนญ. ตรวจ (เกินวัน)':'รอ สนญ. ตรวจ+แนะนำ'}</span>`; else if(!a.ack3) extra='<span class="tag" style="background:#fef3c7;color:#b45309;margin-left:4px">🧭 สนญ. ส่งการ์ดแล้ว · กดรับทราบ</span>'; else extra='<span class="tag" style="background:#dcfce7;color:#166534;margin-left:4px">✅ รับทราบแล้ว</span>'; }
  return `<span class="tag" style="background:${m[1]};color:${m[2]}">${m[0]}</span>`+extra; }
 function hqLateSale(a){ return !hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()); }
 function p1Accent(a){ const s=p1State(a); return s==='sold'?'#16a34a':s==='overdue'?'#dc2626':(s==='reviewed'||s==='sent')?'#2563eb':(s==='notsold'||s==='cancelled')?'#9ca3af':'#eab308'; }
-function p1Count(list){ const c={total:list.length,sent:0,ackwait:0,reviewed:0,overdue:0,sold:0,notsold:0,waiting:0,hqLate:0,beforeSubmit:0,beforeHQ:0}; list.forEach(a=>{ const s=p1State(a); if(s==='sold')c.sold++; else if(s==='notsold'||s==='cancelled')c.notsold++; else if(s==='overdue')c.overdue++; else if(s==='waiting')c.waiting++; else if(s==='reviewed')c.reviewed++; else if(s==='ackwait')c.ackwait++; else c.sent++; if(!hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now())) c.hqLate++; if(!hqSent(a)) c.hqPending=(c.hqPending||0)+1; if(hqSent(a)&&!a.ack3) c.ackPending=(c.ackPending||0)+1; if(a.sale&&a.sale.beforeSubmit) c.beforeSubmit++; else if(a.sale&&a.sale.beforeHQ) c.beforeHQ++; }); c.pendingSale=c.sent+c.ackwait+c.reviewed+c.waiting+c.overdue; return c; }
+function p1Count(list){ const c={total:list.length,sent:0,ackwait:0,ackLate:0,reviewed:0,overdue:0,sold:0,notsold:0,waiting:0,hqLate:0,beforeSubmit:0,beforeHQ:0,soldAmt:0}; const _td=_dayKey(Date.now());
+ list.forEach(a=>{ const st=p1State(a); const late=a.submittedAt&&_dayKey(a.submittedAt)<_td;
+  if(st==='sold'){ c.sold++; try{ c.soldAmt+=+((a.calc||{}).finance)||0; }catch(e){} }
+  else if(st==='notsold'||st==='cancelled'||st==='cancelled_req') c.notsold++;
+  else if(st==='overdue') c.overdue++; else if(st==='waiting') c.waiting++; else if(st==='reviewed') c.reviewed++;
+  else if(st==='ackwait'){ c.ackwait++; if(late) c.ackLate++; }
+  else { c.sent++; if(late) c.hqLate++; }
+  if(a.sale&&a.sale.beforeSubmit) c.beforeSubmit++; else if(a.sale&&a.sale.beforeHQ) c.beforeHQ++; });
+ c.hqPending=c.sent; c.ackPending=c.ackwait; c.saleWait=c.reviewed+c.waiting+c.overdue; c.pendingSale=c.sent+c.ackwait+c.saleWait; return c; }   /* 0921-B: สูตรเดียวทุกหน้า (เริ่ม/คิว/รายการสาขา/ภาพรวมเขต/ผู้บริหาร): sent+ackwait+saleWait+sold+notsold = total */
 function p1Chips(s){ return `<div class="qchips">
   <div class="qchip" style="background:#dbeafe"><div class="n" style="color:#1d4ed8">${s.hqPending||0}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ+แนะนำ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
-  <div class="qchip" style="background:#fef3c7"><div class="n" style="color:#b45309">${s.ackPending||0}</div><div class="l" style="color:#b45309">🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ</div></div>
+  <div class="qchip" style="background:#fef3c7"><div class="n" style="color:#b45309">${s.ackPending||0}</div><div class="l" style="color:#b45309">🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ${s.ackLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackLate+')</span>':''}</div></div>
   <div class="qchip" style="background:#fef9c3"><div class="n" style="color:#854d0e">${s.reviewed+s.waiting+s.overdue}</div><div class="l" style="color:#854d0e">⏳ รอบันทึกผลขาย${s.overdue?' <span style="color:#b91c1c">(ค้าง '+s.overdue+')</span>':''}</div></div>
   <div class="qchip" style="background:#f0fdf4"><div class="n" style="color:#166534">${s.sold}</div><div class="l" style="color:#166534">🛒 ขายแล้ว</div></div>
   <div class="qchip" style="background:#f3f4f6"><div class="n" style="color:#374151">${s.notsold}</div><div class="l" style="color:#374151">✋ ไม่ขาย/ยกเลิก</div></div>
@@ -3305,6 +3317,9 @@ const OCC_ROLE_GROUPS={
 function isPlaceholderVal(v){ const t=String(v==null?'':v).trim(); if(!t) return true; if(/^[\s\-–—_.,\/*#]+$/.test(t)) return true; if(/^(ไม่มี|ไม่ระบุ|ไม่ทราบ|ไม่รู้|ไม่|na|n\/a|none|null|nil|x|xx|xxx|0)$/i.test(t)) return true; return t.replace(/[\s\-–—_.,\/]/g,'').length<2; }   /* 0917-D: ค่าขีด/ไม่มี = ว่าง */
 const PLACEHOLDER_FIELDS={'f-workplace':1,'f-workaddr':1,'f-occex':1,'f-incomeextrasrc-other':1,'g-workplace':1};
 function houseCfg(){ const h=(CFG&&CFG.house)||{}; return {maxPeople:+h.maxPeople||10, dormPeople:+h.dormPeople||6, orderTail:+h.orderTail||8, ownerOrder:+h.ownerOrder||3}; }   /* 0917-F: ค่าเริ่มต้น 10 / 8 (หัวหน้าเคาะ 17 ก.ย.) */
+function ownerOrderMode(){ const m=CFG&&CFG.ownerOrderMode; if(m==='off'||m==='warn'||m==='info') return m; return p1()?'info':'warn'; }   /* 0921-A: ระบุเจ้าของแต่ลำดับ ≥ownerOrder: off / info (เฟส 1, hq-only) / warn */
+function hcapLateCfg(){ const c=(CFG&&CFG.hcapLate)||{}; return {okMax:+c.okMax>0?+c.okMax:30, badMin:+c.badMin>0?+c.badMin:90}; }   /* 0921-A: วันค้างสัญญาที่ผ่อนอยู่: ≤okMax 🟢 · <badMin 🟡 · ≥badMin 🔴 */
+function spousePhoneMode(){ const m=CFG&&CFG.spousePhoneMode; if(m==='off'||m==='warn'||m==='info') return m; if(CFG&&CFG.p1SpousePhone===true) return 'warn'; return p1()?'info':'warn'; }   /* 0918-A: เบอร์คู่สมรสซ้ำ: off / info (เฟส 1) / warn (เฟส 2) · ค่าเก่า p1SpousePhone ติ๊ก = warn */
 function hcapCmpMode(){ const m=CFG&&CFG.hcapCmpMode; if(m==='off'||m==='warn'||m==='info') return m; return p1()?'info':'warn'; }   /* 0917-F: เทียบข้อมูลเดิม H-Cap: off / info (เฟส 1) / warn */   /* 0917-C: เกณฑ์ทะเบียนบ้าน ตั้งค่าได้ */
 function personCfgHTML(){ const h=houseCfg(); const N=(lab,get,set,title,w)=>`<label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="${title}">${lab} <input type="number" min="1" style="width:${w||64}px" value="${get}" onchange="${set};saveCfg()"></label>`;
  return `<div class="card mb"><h3>👤 เกณฑ์มิติบุคคล / ทะเบียนบ้าน <span class="mut" style="font-weight:400;font-size:12px">— ตัวเลขที่ทำให้ขึ้น 🟡/🔴 · มีผลทุกเครื่องหลังซิงก์ · เคสเก่าคำนวณใหม่เมื่อ สนญ. เปิดดู</span></h3>
@@ -3317,13 +3332,13 @@ function personCfgHTML(){ const h=houseCfg(); const N=(lab,get,set,title,w)=>`<l
    ${N('ผู้อยู่อาศัย ≥',h.maxPeople,'CFG.house=CFG.house||{};CFG.house.maxPeople=+this.value||10','จำนวนผู้อยู่อาศัยตั้งแต่นี้ = 🟡 มากผิดปกติ')} <span class="mut">คน = 🟡</span>
    ${N('หอพัก/ทาวน์เฮาส์ ≥',h.dormPeople,'CFG.house=CFG.house||{};CFG.house.dormPeople=+this.value||6','หอพัก/ทาวน์เฮาส์ แต่ผู้อยู่อาศัยตั้งแต่นี้ = 🟡')} <span class="mut">คน = 🟡</span>
    ${N('ลำดับในทะเบียนบ้าน ≥',h.orderTail,'CFG.house=CFG.house||{};CFG.house.orderTail=+this.value||8','ลูกค้าอยู่ลำดับตั้งแต่นี้ = 🟡 มักเป็นผู้อาศัย')} <span class="mut">= 🟡</span>
-   ${N('เจ้าของแต่ลำดับ ≥',h.ownerOrder,'CFG.house=CFG.house||{};CFG.house.ownerOrder=+this.value||3','ระบุเป็นเจ้าของบ้าน แต่ลำดับตั้งแต่นี้ = 🟡')} <span class="mut">= 🟡</span>
+   <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="ระบุเป็นเจ้าของบ้าน แต่ลำดับตั้งแต่นี้ — ปิด / ℹ️ สนญ. เห็น ไฟไม่เปลี่ยน / 🟡 เตือน · หัวหน้า 21 ก.ย.: เจ้าบ้านอยู่ลำดับ 2–5 ได้ปกติ">เจ้าของแต่ลำดับ ≥ <input type="number" min="1" style="width:64px" value="${h.ownerOrder}" onchange="CFG.house=CFG.house||{};CFG.house.ownerOrder=+this.value||3;saveCfg()"> <select style="padding:4px 6px" onchange="CFG.ownerOrderMode=this.value;saveCfg()"><option value="info" ${ownerOrderMode()==='info'?'selected':''}>ℹ️ แจ้งเพื่อทราบ (สนญ.)</option><option value="off" ${ownerOrderMode()==='off'?'selected':''}>ปิด</option><option value="warn" ${ownerOrderMode()==='warn'?'selected':''}>🟡 เตือน</option></select></label>
   </div>
   <div class="flex" style="gap:8px;flex-wrap:wrap;margin-top:8px">
    <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="รายได้/อาชีพ/จังหวัด ที่แจ้ง ต่างจากที่ H-Cap เคยบันทึก (Customer_report) — off = ไม่แสดง · info = ℹ️ สนญ. เห็น ไฟไม่เปลี่ยน · warn = 🟡">เทียบข้อมูลเดิม H-Cap <select onchange="CFG.hcapCmpMode=this.value;saveCfg()"><option value="info" ${hcapCmpMode()==='info'?'selected':''}>ℹ️ แจ้งเพื่อทราบ (สนญ.)</option><option value="off" ${hcapCmpMode()==='off'?'selected':''}>ปิด</option><option value="warn" ${hcapCmpMode()==='warn'?'selected':''}>🟡 เตือน (เฟส 2)</option></select></label>
-   <label class="btn btn-line" style="margin:0" title="เฟส 1 ปิดบรรทัด 'เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า'"><input type="checkbox" ${CFG.p1SpousePhone===true?'checked':''} onchange="CFG.p1SpousePhone=this.checked;saveCfg()"> แสดงบรรทัดเบอร์คู่สมรสซ้ำ (เฟส 2)</label>
+   <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า — ปิด = ไม่แสดง · แจ้งเพื่อทราบ = ℹ️ สนญ. เห็น ไฟไม่เปลี่ยน สาขาไม่เห็น · เตือน = 🟡 ทั้งสองฝั่ง (เฟส 2)">เบอร์คู่สมรสซ้ำกับลูกค้า <select onchange="CFG.spousePhoneMode=this.value;saveCfg()"><option value="info" ${spousePhoneMode()==='info'?'selected':''}>ℹ️ แจ้งเพื่อทราบ (สนญ.)</option><option value="off" ${spousePhoneMode()==='off'?'selected':''}>ปิด</option><option value="warn" ${spousePhoneMode()==='warn'?'selected':''}>🟡 เตือน (เฟส 2)</option></select></label>
   </div>
-  <p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น: อายุ 20 / 60 · รายได้ 150,000 · ผู้อยู่อาศัย 10 · หอพัก 6 · ลำดับ 8 · เจ้าของลำดับ 3 · "ลำดับมากกว่าจำนวนคน" = 🔴 เสมอ (กรอกผิด)</p></div>`; }
+  <p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น: อายุ 20 / 60 · รายได้ 150,000 · ผู้อยู่อาศัย 10 · หอพัก 6 · ลำดับ 8 · เจ้าของลำดับ 3 · "ลำดับมากกว่าจำนวนคน" = 🔴 เสมอ (กรอกผิด)</p></div>`+`<div class="card mb"><h3>🏢 เกณฑ์ประวัติชำระ H-Cap <span class="mut" style="font-weight:400;font-size:12px">— นับเฉพาะสัญญาที่ผ่อนอยู่ · ใช้จำนวนวันค้างชำระ ณ วันข้อมูลพอร์ต · รถยึด/บอกเลิกสัญญา = 🔴 เสมอ</span></h3><div class="flex" style="gap:8px;flex-wrap:wrap">${N('ค้างไม่เกิน',hcapLateCfg().okMax,'CFG.hcapLate=CFG.hcapLate||{};CFG.hcapLate.okMax=+this.value||30','ค้างชำระไม่เกินกี่วัน = 🟢 ปกติ',56)} <span class="mut">วัน = 🟢</span>${N('ค้างตั้งแต่',hcapLateCfg().okMax+1,'CFG.hcapLate=CFG.hcapLate||{};CFG.hcapLate.okMax=Math.max(0,(+this.value||31)-1)','ค้างตั้งแต่กี่วัน = 🟡 (= ค่าเขียว+1)',56)} <span class="mut">วัน = 🟡</span>${N('ค้างตั้งแต่',hcapLateCfg().badMin,'CFG.hcapLate=CFG.hcapLate||{};CFG.hcapLate.badMin=+this.value||90','ค้างตั้งแต่กี่วัน = 🔴',56)} <span class="mut">วัน = 🔴</span></div><p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น 30 / 31 / 90 (หัวหน้า 21 ก.ย.) · เคสเก่าคำนวณใหม่เองเมื่อ สนญ. เปิดดู</p></div>`; }
 function occRoleGroup(g){ return OCC_ROLE_GROUPS[g]||null; }
 function occRoleApply(){ try{
  const g=(document.getElementById('f-occg')||{}).value||''; const r=occRoleGroup(g);
@@ -3939,9 +3954,18 @@ function kpiCards(s){
 }
 /* ===== แดชบอร์ดแบบ 1: Hero + KPI ไอคอนชิปสี (ใช้ร่วม สนญ./สาขา/เขต) ===== */
 function dashHero(ic,title,sub){ return `<div class="exhero"><div><div class="exhero-t"><span>${ic}</span>${title}</div><div class="exhero-s">${sub}</div></div></div>`; }
-function dashKpis(s, withTotal, totalLbl){
+function dashKpis(s, withTotal, totalLbl, p1list){
  const rate = s.total? (s.approved/((s.approved+s.rejected)||1)*100):0;
  const cell=(bg,chip,fg,sub,ic,val,lbl)=>`<div class="exkpi" style="background:${bg}"><span class="exkpi-chip" style="background:${chip}">${ic}</span><div class="exkpi-n" style="color:${fg}">${val}</div><div class="exkpi-l" style="color:${sub}">${lbl}</div></div>`;
+ if(p1()&&p1list){ const c=p1Count(p1list.filter(a=>a.status==='pending'||a.status==='cancelled'));   /* 0921-B: KPI เฟส 1 (ผู้บริหาร/สาขา) สูตรเดียวกับหน้าเริ่ม/คิว */
+  let h1=`<div class="exkpis">
+  ${cell('#eef1fb','#1e2761','#1e2761','#3a4791','📄',c.total,'คำขอทั้งหมด (เฟส 1)')}
+  ${cell('#eff6ff','#2563eb','#1d4ed8','#1e40af','👁',c.sent,'รอ สนญ. ตรวจ+แนะนำ'+(c.hqLate?' · เกินวัน '+c.hqLate:''))}
+  ${cell('#fffbeb','#f59e0b','#b45309','#92400e','🧭',c.ackwait+c.saleWait,'รอสาขา · รับทราบ '+c.ackwait+' · บันทึกผลขาย '+c.saleWait)}
+  ${cell('#f0fdf4','#16a34a','#16a34a','#166534','🛒',c.sold,'ขายแล้ว · ไม่ขาย/ยกเลิก '+c.notsold)}
+ </div>`;
+  if(withTotal) h1+=`<div class="extotal"><span style="font-size:22px">💰</span><div><b>${fmt(c.soldAmt)} บาท</b><div class="es">ยอดจัดรวมของเคสที่ขายแล้ว (${c.sold} เคส) · เฟส 1 ไม่มีอนุมัติ/ปฏิเสธ</div></div></div>`;
+  return h1; }
  let h=`<div class="exkpis">
   ${cell('#eef1fb','#1e2761','#1e2761','#3a4791','📄',s.total,'คำขอทั้งหมด')}
   ${cell('#f0fdf4','#16a34a','#16a34a','#166534','✓',s.approved,'อนุมัติ · '+rate.toFixed(0)+'% ของที่พิจารณา')}
@@ -4059,7 +4083,7 @@ function viewBranchDash(){
  const s=statCount(myApps().filter(inPeriod));
  return `${dashHero('🏪','แดชบอร์ดสาขา — '+BRANCHES.find(b=>b.code===SESSION.branch).label,'สรุปผลการส่งคำขอของสาขาคุณ')}
  <div class="card mb">${periodUI()}</div>
- ${dashKpis(s,true)}
+ ${dashKpis(s,true,'',myApps().filter(inPeriod))}
  <div class="grid g2"><div class="card"><h3 class="exhead org">🍩 สัดส่วนผลพิจารณา</h3><div class="chartbox"><canvas id="ch-b1"></canvas></div></div>
  <div class="card"><h3 class="exhead">📊 คำขอรายเดือน</h3><div class="chartbox"><canvas id="ch-b2"></canvas></div></div></div>`;
 }
@@ -4475,10 +4499,10 @@ function viewZoneP1(){
  const zname=(ZONES[SESSION.zone]&&ZONES[SESSION.zone].name)||'เขต';
  const brs=BRANCHES.filter(b=>b.zone===SESSION.zone);
  const list=scopedApps().filter(inPeriod).filter(a=>a.status==='pending'||a.status==='cancelled');
- const c=p1Count(list); c.hqPending=list.filter(a=>!hqSent(a)&&a.status==='pending').length; c.ackPending=list.filter(a=>hqSent(a)&&!a.ack3&&a.status==='pending').length;
+ const c=p1Count(list);   /* 0921-B: สูตรเดียวกับทุกหน้า */
  const lt=a=>hqSent(a)?lightOf(a):null;
- const rows=brs.map(b=>{ const bl=list.filter(a=>a.branch===b.code); const bc=p1Count(bl); const sent=bl.filter(hqSent); const g=sent.filter(a=>lt(a)==='ok').length,y=sent.filter(a=>lt(a)==='warn').length,r=sent.filter(a=>lt(a)==='bad').length; const before=bl.filter(a=>a.sale&&(a.sale.beforeSubmit||a.sale.beforeHQ)).length; const hqP=bl.filter(a=>!hqSent(a)&&a.status==='pending').length; const ackP=bl.filter(a=>hqSent(a)&&!a.ack3&&a.status==='pending').length;
-  return `<tr><td class="b">${b.label}</td><td class="num">${bl.length}</td><td class="num" style="color:#1d4ed8">${hqP}</td><td class="num" style="color:#b45309">${ackP}</td><td class="num" style="color:${bc.overdue?'#b91c1c':'#854d0e'}">${bc.reviewed+bc.waiting+bc.overdue}${bc.overdue?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.overdue+')</span>':''}</td><td class="num" style="color:#166534">${bc.sold}</td><td class="num">${bc.notsold}</td><td class="num">${sent.length?`<span title="ข้อมูลสอดคล้อง">🟢${g}</span> <span title="ควรตรวจสอบเพิ่มเติม">🟡${y}</span> <span title="ข้อมูลน่าสงสัย">🔴${r}</span>`:'<span class="mut">—</span>'}</td><td class="num" style="color:${before?'#b45309':'#374151'}">${before}</td></tr>`; }).join('')||'<tr><td colspan="9" class="mut">ยังไม่มีเคสในเขตนี้</td></tr>';
+ const rows=brs.map(b=>{ const bl=list.filter(a=>a.branch===b.code); const bc=p1Count(bl); const sent=bl.filter(hqSent); const g=sent.filter(a=>lt(a)==='ok').length,y=sent.filter(a=>lt(a)==='warn').length,r=sent.filter(a=>lt(a)==='bad').length; const before=bl.filter(a=>a.sale&&(a.sale.beforeSubmit||a.sale.beforeHQ)).length; const hqP=bc.hqPending; const ackP=bc.ackPending;
+  return `<tr><td class="b">${b.label}</td><td class="num">${bl.length}</td><td class="num" style="color:#1d4ed8">${hqP}</td><td class="num" style="color:#b45309">${ackP}${bc.ackLate?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.ackLate+')</span>':''}</td><td class="num" style="color:${bc.overdue?'#b91c1c':'#854d0e'}">${bc.reviewed+bc.waiting+bc.overdue}${bc.overdue?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.overdue+')</span>':''}</td><td class="num" style="color:#166534">${bc.sold}</td><td class="num">${bc.notsold}</td><td class="num">${sent.length?`<span title="ข้อมูลสอดคล้อง">🟢${g}</span> <span title="ควรตรวจสอบเพิ่มเติม">🟡${y}</span> <span title="ข้อมูลน่าสงสัย">🔴${r}</span>`:'<span class="mut">—</span>'}</td><td class="num" style="color:${before?'#b45309':'#374151'}">${before}</td></tr>`; }).join('')||'<tr><td colspan="9" class="mut">ยังไม่มีเคสในเขตนี้</td></tr>';
  const _srt=list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0));
  const body=(_srt.some(a=>a.status==='pending')?p1RowHead():'')+(_srt.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>');
  return `${dashHero('🗺️','ภาพรวมเขต — '+zname,'เห็นเฉพาะสาขาในเขตของคุณ ('+brs.length+' สาขา) · ดูอย่างเดียว — เฟส 1 ไม่มีการอนุมัติ สาขาตัดสินใจขายเอง · ส่งข้อความในเคสถึง สนญ./สาขาได้')}
@@ -4557,7 +4581,7 @@ function viewQueueP1(pendingOnly){
    <div class="flex"><label class="mut" style="font-size:13px">ไฟการ์ด:</label><select style="width:190px" onchange="fLight=this.value;go(currentTab)"><option value="">— ทุกสี —</option><option value="bad" ${fLight==='bad'?'selected':''}>🔴 ควรตรวจสอบ (${lc.bad})</option><option value="warn" ${fLight==='warn'?'selected':''}>🟡 ควรตรวจเพิ่ม (${lc.warn})</option><option value="ok" ${fLight==='ok'?'selected':''}>🟢 สอดคล้อง (${lc.ok})</option></select></div>
    <button class="btn btn-line btn-sm" onclick="exportCSV(APPS,'MOTO24_all_apps')">⬇ Export ทั้งหมด (CSV)</button></div>`;
  const body=(list.length?p1RowHead():'')+(list.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">'+(pendingOnly?'✅ ไม่มีเคสรอตรวจดู':'ยังไม่มี')+'</div>');
- return dashHero(pendingOnly?'👁':'✓', title+' ('+list.length+')', 'เฟส 1 · รอ สนญ. ตรวจ '+nRev+(s.hqLate?' (เกินวัน '+s.hqLate+')':'')+' · รอสาขารับทราบ '+s.ackwait+' · รอบันทึกผลขาย '+(s.reviewed+s.waiting+s.overdue)+' · ขายแล้ว '+s.sold+' (ก่อนส่งเคส '+s.beforeSubmit+' · ก่อน สนญ. ตรวจ '+s.beforeHQ+') · ไม่ขาย/ยกเลิก '+s.notsold)
+ return dashHero(pendingOnly?'👁':'✓', title+' ('+list.length+')', 'เฟส 1 · ทั้งหมด '+s.total+' = รอ สนญ. ตรวจ '+s.sent+(s.hqLate?' (เกินวัน '+s.hqLate+')':'')+' · รอสาขารับทราบ '+s.ackwait+(s.ackLate?' (ค้างข้ามวัน '+s.ackLate+')':'')+' · รอบันทึกผลขาย '+s.saleWait+' · ขายแล้ว '+s.sold+' (ขายก่อนส่งเคส '+s.beforeSubmit+' · ก่อน สนญ. ตรวจ '+s.beforeHQ+' — นับเมื่อ สนญ. ตรวจแล้ว) · ไม่ขาย/ยกเลิก '+s.notsold)
   +`<div class="card">${p1Chips(s)}${filterBar}${body}</div>`;
 }
 function qChips(s){ return `<div class="qchips">
@@ -5685,10 +5709,19 @@ function viewWatch(){
   </div>
  </details>`}`;
 }
+const OCC_TEXT_SYN=[   /* 0921-A: คำอาชีพที่ Customer_report ใช้จริง (คอลัมน์ E) → หมวด/รายการใน OCC_LIST · เรียงจากเฉพาะ→กว้าง */
+ {re:/^รับจ้างตัดปาล์ม|ตัดปาล์ม/,g:'เกษตร-พืช',s:'สวนปาล์ม (รับจ้าง'},{re:/กรีดยาง|รับจ้างกรีด/,g:'เกษตร-พืช',s:'กรีดยาง (รับจ้าง'},
+ {re:/^ทำสวน|สวนยาง|สวนปาล์ม|สวนผลไม้|เกษตรกร|ทำนา|ทำไร่|ปลูก/,g:'เกษตร-พืช'},{re:/ประมง|เลี้ยง/,g:'ปศุสัตว์/ประมง'},
+ {re:/^ค้าขาย|แม่ค้า|พ่อค้า|ขายของ/,g:'ค้าขาย'},{re:/รัฐวิสาหกิจ/,g:'ราชการ/รัฐวิสาหกิจ',s:'รัฐวิสาหกิจ'},{re:/^ครู|อาจารย์/,g:'ราชการ/รัฐวิสาหกิจ',s:'ครู/อาจารย์'},{re:/ทหาร|ตำรวจ/,g:'ราชการ/รัฐวิสาหกิจ',s:'ทหาร/ตำรวจ'},{re:/ข้าราชการ|ราชการ|อบต|เทศบาล|กำนัน|ผู้ใหญ่บ้าน/,g:'ราชการ/รัฐวิสาหกิจ'},
+ {re:/พยาบาล|แพทย์|หมอ|สาธารณสุข/,g:'วิชาชีพ'},{re:/เจ้าของกิจการ|ธุรกิจส่วนตัว|ประกอบธุรกิจ/,g:'เจ้าของกิจการ'},
+ {re:/ลูกจ้างประจำ|พนักงานบริษัท|พนักงานประจำ|พนักงานเอกชน|พนักงานโรงงาน|บริษัท/,g:'พนักงานประจำ'},{re:/ลูกจ้างชั่วคราว|ลูกจ้าง|กรรมกร|ก่อสร้าง|แม่บ้าน|รปภ/,g:'รับจ้าง/แรงงาน'},
+ {re:/วินมอเตอร์ไซค์|ขับรถ|ไรเดอร์|ส่งของ|รถรับจ้าง/,g:'ขนส่ง/ขับขี่'},{re:/^ช่าง/,g:'ช่างฝีมือ'},{re:/^รับจ้าง/,g:'รับจ้าง/แรงงาน',s:'รับจ้างทั่วไป'},
+ {re:/อาชีพอิสระ|อิสระ|ฟรีแลนซ์|ทั่วไป/,g:'อิสระ/อื่น ๆ'} ];
 function occMatch(txt){
  txt=String(txt||'').trim();
- if(!txt) return 0;
+ if(!txt) return -1;   /* 0921-A: ว่าง = ไม่พบ (เดิมคืน 0 = เกษตร-พืช ทำให้พอร์ต 77% ติดหมวดผิด) */
  const t=txt.replace(/\s/g,'');
+ const _syn=OCC_TEXT_SYN.find(x=>x.re.test(t)); if(_syn){ const gi=OCC_LIST.findIndex(o=>o.g===_syn.g&&(!_syn.s||o.s.indexOf(_syn.s)>=0)); if(gi>=0) return gi; }
  let best=0, bestScore=-1;
  OCC_LIST.forEach((o,i)=>{
   const s=o.s.replace(/\s/g,''), g=o.g.replace(/\s/g,'');
@@ -5733,7 +5766,7 @@ function importCustDB(inp){
      const iOcc=occMatch(r['อาชีพ']);        /* คอลัมน์ E dropdown — อาจมั่ว */
      const idx=iWork>=0?iWork:(iOcc>=0?iOcc:0);
      const conflict=(iWork>=0&&iOcc>=0&&OCC_LIST[iWork].g!==OCC_LIST[iOcc].g);
-     return {occIdx:idx, occFromWork:iWork>=0, occConflict:conflict};
+     return {occIdx:idx, occFromWork:iWork>=0, occSrc:iWork>=0?'work':(iOcc>=0?'occ':''), occConflict:conflict};   /* 0921-A: occSrc */
     })(),
     income:numTH(r['รายได้ต่อเดือน ']||r['รายได้ต่อเดือน']), incomeExtra:numTH(r['รายได้พิเศษ']),
     creditLimit:numTH(r['วงเงินเครดิต']),
@@ -5745,7 +5778,7 @@ function importCustDB(inp){
   });
   let incZero=0; Object.values(CUSTDB.recs).forEach(r=>{ if(!(r.income>0)) incZero++; });
   CUSTDB.dq={ rows:rows.length, custs:Object.keys(CUSTDB.recs).length, incZero, at:new Date().toISOString().slice(0,10) };
-  CUSTDB.updated=new Date().toISOString().slice(0,10)+' ('+n.toLocaleString()+' ราย)';
+  CUSTDB.updated=new Date().toISOString().slice(0,10)+' ('+n.toLocaleString()+' ราย)'; CUSTDB.occFix=2;   /* 0921-A: นำเข้าด้วยตัวจับคู่ที่แก้แล้ว ไม่ต้องซ่อมซ้ำ */
   saveCustDB();
   alert('นำเข้าทะเบียนลูกค้าเรียบร้อย ✅\nเพิ่ม/อัปเดต '+n.toLocaleString()+' ราย (รวมในฐาน '+Object.keys(CUSTDB.recs).length.toLocaleString()+' ราย)\nสาขาพิมพ์เลขบัตร → ดึงข้อมูลอัตโนมัติได้ทันที');
   go(currentTab);
@@ -8130,7 +8163,7 @@ function viewExec(){
  const timeStr = (()=>{const dd=APPSF.filter(a=>a.decidedAt&&a.submittedAt); if(!dd.length)return ''; const av=dd.reduce((x,a)=>x+(a.decidedAt-a.submittedAt),0)/dd.length; return ' · ⏱ วิเคราะห์เฉลี่ย '+fmtDur(av)+' ('+dd.length+' เคส)';})();
  return `${dashHero('📊','ภาพรวมผู้บริหาร — ทั้งบริษัท','37 สาขา · 5 เขต · คะแนนเครดิตเฉลี่ย '+avgScore.toFixed(0)+'/100'+timeStr)}
  <div class="card mb">${periodUI()}</div>
- ${dashKpis(s,true)}
+ ${dashKpis(s,true,'',APPSF)}
  ${(function(){ const hasPort=Object.keys((WATCH&&WATCH.payIdx)||{}).length>0;
    if(hasPort) return execPublishBar()+execMissCard()+execAgingCard()+execTermCard()+execPayCard();
    return (typeof PORTSNAP!=='undefined'&&PORTSNAP)? execSnapCard() : ''; })()}
@@ -8232,7 +8265,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0917-F';
+const CHK3_BUILD='0921-B';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -8317,7 +8350,7 @@ function docListFor(group){ if(!DOCCHECK) loadDocCheck(); return (DOCCHECK.group
 
 /* เวอร์ชันเกณฑ์ที่ใช้ตรวจ (ย้อนตรวจได้) */
 function chk3Version(){ if(!INCREF) loadIncRef(); if(!DOCCHECK) loadDocCheck();
- let _cs=''; try{ const c=CFG||{}; const h=houseCfg(); const str=[+c.ageMin||20,+c.ageSenior||60,+c.incomeHardMax||150000,h.maxPeople,h.dormPeople,h.orderTail,h.ownerOrder,c.p1AreaRisk===true?1:0,c.p1OccStab===true?1:0,c.p1SpousePhone===true?1:0,hcapCmpMode()].join(','); let x=0; for(let i=0;i<str.length;i++){ x=((x<<5)-x+str.charCodeAt(i))|0; } _cs=' · เกณฑ์ '+(Math.abs(x)%100000).toString(36); }catch(e){}   /* 0917-C: ค่าตั้งค่าเปลี่ยน → เคสเก่าคำนวณใหม่เมื่อเปิดดู */
+ let _cs=''; try{ const c=CFG||{}; const h=houseCfg(); const str=[+c.ageMin||20,+c.ageSenior||60,+c.incomeHardMax||150000,h.maxPeople,h.dormPeople,h.orderTail,h.ownerOrder,c.p1AreaRisk===true?1:0,c.p1OccStab===true?1:0,spousePhoneMode(),hcapCmpMode(),ownerOrderMode(),hcapLateCfg().okMax,hcapLateCfg().badMin].join(','); let x=0; for(let i=0;i<str.length;i++){ x=((x<<5)-x+str.charCodeAt(i))|0; } _cs=' · เกณฑ์ '+(Math.abs(x)%100000).toString(36); }catch(e){}   /* 0917-C: ค่าตั้งค่าเปลี่ยน → เคสเก่าคำนวณใหม่เมื่อเปิดดู */
  return CHK3_BUILD+' · รายได้ v'+(INCREF.ver||1)+' · เอกสาร v'+(DOCCHECK.ver||1)+' · อาชีพ '+OCC_LIST.length+' รายการ'+_cs; }
 
 /* ======================= เอนจินตรวจ 3 มิติ ======================= */
@@ -8440,7 +8473,7 @@ function slipCap(o,extra){ if(!o) return 0; const t=(o.s||'')+' '+(o.g||'')+' '+
  if(/ราชการ|รัฐวิสาหกิจ|ครู|ทหาร|ตำรวจ|พยาบาล/.test(t)) return 60000;
  if(/ปั๊ม|ร้าน|โรงงาน|รปภ|แม่บ้าน|พนักงานขาย|ห้าง|บริการ|ขับรถ|คลัง|ก่อสร้าง|ลูกจ้าง/.test(t)) return 30000;
  return 50000; }
-function check3(a, c){
+function check3(a, c){ try{ custOccFix(); }catch(e){}   /* 0921-A: ซ่อมพอร์ตครั้งเดียว (idempotent) */
  c=c||a.calc||calcAll(a);
  const items={person:[],occ:[],income:[],hcap:[]};
  const _hqv=!!(typeof SESSION!=='undefined'&&SESSION&&SESSION.role==='analyst'); /* 0916-B: เขตเห็นข้อความแบบสาขา */
@@ -8531,7 +8564,7 @@ function check3(a, c){
   else { const _hc=houseCfg(); if(hp>=_hc.maxPeople) P('person','warn','ผู้อยู่อาศัย '+hp+' คน มากผิดปกติ'+(/หอพัก|ทาวน์เฮาส์|เช่า/.test(ht)?' สำหรับ'+ht:'')+' — สาขาตรวจว่าเป็นบ้านญาติรวมหรือบ้านเช่ารวม');
    else if(hp>=_hc.dormPeople&&/หอพัก|ทาวน์เฮาส์/.test(ht)) P('person','warn',ht+' แต่ผู้อยู่อาศัย '+hp+' คน — ตรวจสภาพที่อยู่จริง');
    if(ho>=_hc.orderTail) P('person','warn','ลูกค้าอยู่ลำดับที่ '+ho+' ในทะเบียนบ้าน — มักเป็นผู้อาศัย ไม่ใช่เจ้าบ้าน ตรวจความสัมพันธ์กับเจ้าบ้าน/ความมั่นคงของที่อยู่');
-   else if(ho>=_hc.ownerOrder&&tn==='เจ้าของ') P('person','warn','ระบุเป็นเจ้าของบ้าน แต่อยู่ลำดับที่ '+ho+' ในทะเบียนบ้าน — ตรวจว่าเป็นเจ้าบ้านจริง (ขอดูทะเบียนบ้านหน้าแรก)'); }
+   else if(ho>=_hc.ownerOrder&&tn==='เจ้าของ'){ const _om=ownerOrderMode(); if(_om==='warn') P('person','warn','ระบุเป็นเจ้าของบ้าน แต่อยู่ลำดับที่ '+ho+' ในทะเบียนบ้าน — ตรวจว่าเป็นเจ้าบ้านจริง (ขอดูทะเบียนบ้านหน้าแรก)'); else if(_om==='info') P('person','info','ระบุเป็นเจ้าของบ้าน · อยู่ลำดับที่ '+ho+(hp?' จาก '+hp+' คน':'')+' — เจ้าบ้านอยู่ลำดับ 2–5 ได้ตามปกติ',true); } }   /* 0921-A: ownerOrderMode */
   if(ho&&hp&&ho===1&&hp===1&&age&&age<25) P('person','warn','อายุ '+age+' ปี เป็นเจ้าบ้านและอยู่คนเดียว — สาขาตรวจทะเบียนบ้าน/ที่อยู่จริงว่าเป็นของลูกค้าจริง');
   /* ประเภทที่อยู่ ↔ การถือครอง ↔ ค่าผ่อนบ้าน */
   if(tn==='เจ้าของ'&&/เช่า|หอพัก|อาศัยกับญาติ/.test(ht)) P('person','warn','การถือครอง "เจ้าของ" ขัดกับลักษณะที่อยู่ "'+ht+'" — แก้ให้ตรง');
@@ -8549,7 +8582,7 @@ function check3(a, c){
   const gI=normDigits((a.guar||{}).idcard||''), gP=normDigits((a.guar||{}).phone||'');
   if(gI&&idN&&gI===idN) P('person','bad','เลขบัตรผู้ค้ำเป็นเลขเดียวกับลูกค้า — ค้ำตัวเองไม่ได้');
   if(gP&&phN&&gP===phN) P('person','warn','เบอร์โทรผู้ค้ำเป็นเบอร์เดียวกับลูกค้า — ต้องเป็นเบอร์ที่ติดต่อผู้ค้ำได้จริง');
-  const _sp=normDigits((a.spouse||{}).phone||''); if(_sp&&phN&&_sp===phN&&(!p1()||(CFG&&CFG.p1SpousePhone===true))) P('person','warn','เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า — ขอเบอร์ที่ติดต่อได้จริง');   /* 0917-F: เฟส 1 ปิด (สวิตช์ p1SpousePhone) */
+  const _sp=normDigits((a.spouse||{}).phone||''); if(_sp&&phN&&_sp===phN){ const _spm=spousePhoneMode(); if(_spm==='warn') P('person','warn','เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า — ขอเบอร์ที่ติดต่อได้จริง'); else if(_spm==='info') P('person','info','เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า ('+_sp.replace(/^(\d{3})(\d{3})(\d{4})$/,'$1-$2-$3')+') — สนญ. พิจารณาว่าจะให้สาขาขอเบอร์ที่ติดต่อได้จริงหรือไม่',true); }   /* 0918-A: off / info (เฟส 1, hq-only) / warn (เฟส 2) */
   /* อาชีพ ↔ อายุ/หลักฐาน */
   const wy2=+a.workYears||0;
   if(age&&wy2&&wy2>age-15) P('occ','bad','อายุงาน/กิจการ '+wy2.toFixed(1)+' ปี แต่ลูกค้าอายุ '+age+' ปี — เป็นไปไม่ได้ ตรวจวันเริ่มงาน');
@@ -8580,11 +8613,11 @@ function check3(a, c){
    if(_cm==='warn'){
    if(iFilled&&hi>0){ const d=Math.abs(inc-hi)/hi; if(d>0.5) P('income','warn','รายได้ที่แจ้งต่างจากที่เคยแจ้งกับบริษัทไว้มาก — ตรวจว่าเปลี่ยนงาน/ตำแหน่งจริง ขอหลักฐานรายได้ปัจจุบัน', false, 'รายได้แจ้ง '+fmt(inc)+' บ. ต่างจากที่ H-Cap เคยบันทึก '+fmt(hi)+' บ. ('+(inc>hi?'+':'−')+Math.round(d*100)+'%) — ตรวจว่าเปลี่ยนงาน/ตำแหน่งจริง');
     else P('income','ok','รายได้ที่แจ้งใกล้เคียงกับที่เคยแจ้งกับบริษัทไว้ ✓', false, 'รายได้แจ้งใกล้เคียงที่ H-Cap เคยบันทึก ('+fmt(hi)+' บ.) ✓'); }
-   if(o&&cr.occFromWork&&OCC_LIST[cr.occIdx]&&OCC_LIST[cr.occIdx].g!==o.g) P('occ','warn','อาชีพที่แจ้ง ('+o.g+') ต่างจากที่เคยแจ้งกับบริษัทไว้ ('+OCC_LIST[cr.occIdx].g+(cr.workplace?' — '+cr.workplace:'')+') — ตรวจว่าเปลี่ยนอาชีพจริง');
+   if(o&&(cr.occSrc||cr.occFromWork)&&OCC_LIST[cr.occIdx]&&OCC_LIST[cr.occIdx].g!==o.g) P('occ','warn','อาชีพที่แจ้ง ('+o.g+') ต่างจากที่เคยแจ้งกับบริษัทไว้ ('+OCC_LIST[cr.occIdx].g+(cr.workplace?' — '+cr.workplace:'')+') — ตรวจว่าเปลี่ยนอาชีพจริง');
    if(cr.prov&&ac.prov&&normProv(cr.prov)!==normProv(ac.prov)) P('person','warn','จังหวัดที่อยู่ปัจจุบัน ('+ac.prov+') ต่างจากที่เคยแจ้งกับบริษัท ('+cr.prov+') — สาขาตรวจว่าย้ายที่อยู่จริง');
    } else if(_cm==='info'){
    if(iFilled&&hi>0){ const d=Math.abs(inc-hi)/hi; if(d>0.5) P('income','info','H-Cap เคยบันทึกรายได้ '+fmt(hi)+' บ. — ตอนนี้แจ้ง '+fmt(inc)+' บ. ('+(inc>hi?'+':'−')+Math.round(d*100)+'%)', true); }
-   if(o&&cr.occFromWork&&OCC_LIST[cr.occIdx]&&OCC_LIST[cr.occIdx].g!==o.g) P('occ','info','H-Cap เคยบันทึกอาชีพ '+OCC_LIST[cr.occIdx].g+(cr.workplace?' ('+cr.workplace+')':'')+' — ตอนนี้ '+o.g, true);
+   if(o&&(cr.occSrc||cr.occFromWork)&&OCC_LIST[cr.occIdx]&&OCC_LIST[cr.occIdx].g!==o.g) P('occ','info','H-Cap เคยบันทึกอาชีพ '+((cr.occText&&cr.occText.trim()&&cr.occText.trim()!==OCC_LIST[cr.occIdx].g)?'"'+cr.occText.trim()+'" ('+OCC_LIST[cr.occIdx].g+')':OCC_LIST[cr.occIdx].g)+(cr.workplace?' · ที่ทำงาน '+cr.workplace:'')+' — ตอนนี้ '+o.g, true);   /* 0921-A: โชว์คำเดิมจากรายงาน */
    if(cr.prov&&ac.prov&&normProv(cr.prov)!==normProv(ac.prov)) P('person','info','H-Cap เคยบันทึกที่อยู่ จ.'+cr.prov+' — ตอนนี้ จ.'+ac.prov, true);
    } }
  }catch(e){}
@@ -8597,7 +8630,11 @@ function check3(a, c){
   try{ if(!hc.weak&&px.nm&&_nmKey(px.nm)!==_nmKey(a.name||'')&&_nmKey(a.name||'').length>=4) P('hcap','info','ชื่อ-สกุลในเคสไม่ตรงกับเจ้าของเลขบัตรนี้ในพอร์ต ('+String(px.nm).trim()+') — ตรวจเลขบัตรที่กรอก'+(a.idConfirm?' · สาขายืนยันแล้ว: '+(a.idConfirm.reason||'')+' ('+(a.idConfirm.by||'')+')':''), true); }catch(e){}   /* 0917-A */
   if(repo) P('hcap','bad','ประวัติรถยึด/รอจำหน่ายกับบริษัท — ควรตรวจสอบก่อนขาย');
   if(term) P('hcap','bad','เคยถูกบอกเลิกสัญญา '+term+' สัญญา');
-  if(!repo&&!term){ if(maxD>=90) P('hcap','warn','เคยค้างชำระสูงสุด '+maxD+' วัน'); else if(maxD>0) P('hcap','warn','เคยชำระล่าช้าสูงสุด '+maxD+' วัน'); else P('hcap','ok','ประวัติชำระปกติ ไม่พบการค้าง'); }
+  if(!repo&&!term){ const _act=cts.filter(x=>x.st!=='บอกเลิกสัญญา'&&!/ยึด/.test(x.st||'')); if(_act.length){ const _hl=hcapLateCfg(); const aD=Math.max(0,...(_act.map(x=>+x.d||0))); const _sfx=_act.length>1?'สูงสุด ':' ';
+    if(aD>=_hl.badMin) P('hcap','bad','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน (ตั้งแต่ '+_hl.badMin+' วัน) — สาขาปรึกษา สนญ. ก่อนดำเนินการต่อ');
+    else if(aD>_hl.okMax) P('hcap','warn','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน ('+(_hl.okMax+1)+'–'+(_hl.badMin-1)+' วัน) — สาขาสอบถามสาเหตุ ดูความสม่ำเสมอช่วงหลัง');
+    else if(aD>0) P('hcap','ok','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน (ไม่เกิน '+_hl.okMax+' วัน) — ปกติ');
+    else P('hcap','ok','สัญญาที่ผ่อนอยู่ชำระปกติ ไม่มีค้าง'); } }   /* 0921-A: ไล่ระดับตามวันค้าง เฉพาะสัญญาที่ผ่อนอยู่ (เดิม maxD>0 → 🟡 ทุกกรณี) */
   if((hcap.act||0)>=1) P('hcap', hcap.act>=2?'warn':'ok', 'ผ่อนอยู่ '+hcap.act+' สัญญา · ค่างวดรวม ~'+fmt(hcap.ins)+' บ./เดือน'+(hcap.act>=2?' — ภาระซ้อน ตรวจความสามารถผ่อนรวม':''));
   if((hcap.act||0)>=1&&(hcap.ins||0)>0) P('hcap','ok','ค่างวดกับบริษัท '+fmt(hcap.ins)+' บ./เดือน ถูกนับเป็นภาระหนี้ให้อัตโนมัติแล้ว');
  } else { P('hcap','ok','ลูกค้าใหม่ — ไม่พบประวัติในพอร์ต H-Cap'+(WATCH&&WATCH.lastImport?' (ข้อมูล ณ '+WATCH.lastImport+')':''));
