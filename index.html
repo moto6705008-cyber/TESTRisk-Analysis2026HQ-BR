@@ -379,6 +379,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
 #docchk-box{border:1px dashed #94a3b8;background:#f8fafc;border-radius:8px;padding:8px 12px;margin-top:8px}
 .docchk-it{display:block;font-size:13px;padding:2px 0;cursor:pointer}
 @media print{.c3card{break-inside:avoid}}
+.qchip[onclick]{cursor:pointer;transition:transform .08s}.qchip[onclick]:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}.qchip[data-act]{outline:2px solid #f26522;outline-offset:2px}
 </style>
 </head>
 <body>
@@ -405,7 +406,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note">Prototype v3 · build 0921-B (เฟส 1 · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
+      <footer class="note">Prototype v3 · build 0922-A (เฟส 1 · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</footer>
     </div>
   </div>
 </div>
@@ -2299,22 +2300,63 @@ function p1Tag(a){ const s=p1State(a);
  return `<span class="tag" style="background:${m[1]};color:${m[2]}">${m[0]}</span>`+extra; }
 function hqLateSale(a){ return !hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()); }
 function p1Accent(a){ const s=p1State(a); return s==='sold'?'#16a34a':s==='overdue'?'#dc2626':(s==='reviewed'||s==='sent')?'#2563eb':(s==='notsold'||s==='cancelled')?'#9ca3af':'#eab308'; }
-function p1Count(list){ const c={total:list.length,sent:0,ackwait:0,ackLate:0,reviewed:0,overdue:0,sold:0,notsold:0,waiting:0,hqLate:0,beforeSubmit:0,beforeHQ:0,soldAmt:0}; const _td=_dayKey(Date.now());
+function p1Count(list){ const c={total:list.length,cancelled:0,sent:0,ackwait:0,ackLate:0,reviewed:0,overdue:0,sold:0,notsold:0,waiting:0,hqLate:0,beforeSubmit:0,beforeHQ:0,soldAmt:0}; const _td=_dayKey(Date.now());
  list.forEach(a=>{ const st=p1State(a); const late=a.submittedAt&&_dayKey(a.submittedAt)<_td;
   if(st==='sold'){ c.sold++; try{ c.soldAmt+=+((a.calc||{}).finance)||0; }catch(e){} }
-  else if(st==='notsold'||st==='cancelled'||st==='cancelled_req') c.notsold++;
+  else if(st==='notsold'||st==='cancelled'||st==='cancelled_req'){ c.notsold++; if(a.status==='cancelled') c.cancelled=(c.cancelled||0)+1; }
   else if(st==='overdue') c.overdue++; else if(st==='waiting') c.waiting++; else if(st==='reviewed') c.reviewed++;
   else if(st==='ackwait'){ c.ackwait++; if(late) c.ackLate++; }
   else { c.sent++; if(late) c.hqLate++; }
   if(a.sale&&a.sale.beforeSubmit) c.beforeSubmit++; else if(a.sale&&a.sale.beforeHQ) c.beforeHQ++; });
  c.hqPending=c.sent; c.ackPending=c.ackwait; c.saleWait=c.reviewed+c.waiting+c.overdue; c.pendingSale=c.sent+c.ackwait+c.saleWait; return c; }   /* 0921-B: สูตรเดียวทุกหน้า (เริ่ม/คิว/รายการสาขา/ภาพรวมเขต/ผู้บริหาร): sent+ackwait+saleWait+sold+notsold = total */
-function p1Chips(s){ return `<div class="qchips">
-  <div class="qchip" style="background:#dbeafe"><div class="n" style="color:#1d4ed8">${s.hqPending||0}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ+แนะนำ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
-  <div class="qchip" style="background:#fef3c7"><div class="n" style="color:#b45309">${s.ackPending||0}</div><div class="l" style="color:#b45309">🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ${s.ackLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackLate+')</span>':''}</div></div>
-  <div class="qchip" style="background:#fef9c3"><div class="n" style="color:#854d0e">${s.reviewed+s.waiting+s.overdue}</div><div class="l" style="color:#854d0e">⏳ รอบันทึกผลขาย${s.overdue?' <span style="color:#b91c1c">(ค้าง '+s.overdue+')</span>':''}</div></div>
-  <div class="qchip" style="background:#f0fdf4"><div class="n" style="color:#166534">${s.sold}</div><div class="l" style="color:#166534">🛒 ขายแล้ว</div></div>
-  <div class="qchip" style="background:#f3f4f6"><div class="n" style="color:#374151">${s.notsold}</div><div class="l" style="color:#374151">✋ ไม่ขาย/ยกเลิก</div></div>
- </div>`; }
+
+/* ===== 0922-A: ตัวกรองสาขา · ป๊อปอัปจากกล่อง · เรียงลำดับ · หัวหน้าลงตัว 3 บทบาท (แสดงผลอย่างเดียว) ===== */
+window.fBranch=window.fBranch||''; window.fState=window.fState||'';
+function p1Group(a){ const st=p1State(a); return st==='sent'?'sent':st==='ackwait'?'ack':(st==='reviewed'||st==='waiting'||st==='overdue')?'sale':st==='sold'?'sold':'not'; }
+const P1G={sent:{ic:'👁',t:'รอ สนญ. ตรวจ+แนะนำ',col:'#1d4ed8'},ack:{ic:'🧭',t:'สนญ. ส่งแล้ว · รอสาขารับทราบ',col:'#b45309'},sale:{ic:'⏳',t:'รอบันทึกผลขาย',col:'#854d0e'},sold:{ic:'🛒',t:'ขายแล้ว',col:'#166534'},not:{ic:'✋',t:'ไม่ขาย/ยกเลิก',col:'#374151'}};
+function p1SortMode(key,def){ try{ const m=(JSON.parse(localStorage.getItem('moto24_p1sort')||'{}')||{})[key]; return (m==='fifo'||m==='new'||m==='work')?m:def; }catch(e){ return def; } }
+function p1SortSet(key,m){ try{ const o=JSON.parse(localStorage.getItem('moto24_p1sort')||'{}')||{}; o[key]=m; localStorage.setItem('moto24_p1sort',JSON.stringify(o)); }catch(e){} go(currentTab); }
+function p1IsWork(a){ const g=p1Group(a); return g==='sent'||g==='ack'||g==='sale'; }
+function p1SortApply(list,mode){ const t=a=>a.submittedAt||0;
+ if(mode==='new') return list.slice().sort((x,y)=>t(y)-t(x));
+ if(mode==='fifo') return list.slice().sort((x,y)=>t(x)-t(y));
+ const w=list.filter(p1IsWork).sort((x,y)=>t(x)-t(y)), d=list.filter(a=>!p1IsWork(a)).sort((x,y)=>t(y)-t(x)); return w.concat(d); }   /* work: งานถึงคิว มาก่อนอยู่บน แล้วตามด้วยเคสจบแล้ว ใหม่สุดอยู่บน */
+function p1SortBtn(key,def){ const m=p1SortMode(key,def); const other=(m==='new')?(def==='new'?'fifo':def):'new'; const L={fifo:'มาก่อนอยู่บน',new:'ใหม่สุดอยู่บน',work:'งานถึงคิวก่อน · มาก่อนอยู่บน'};
+ return `<button class="btn btn-line btn-sm" title="คลิกเพื่อสลับเป็น: ${L[other]}" onclick="p1SortSet('${key}','${other}')">⇅ เรียง: <b>${L[m]}</b></button>`; }
+function p1HeadLine(s,tag){ return 'เฟส 1 · ทั้งหมด '+s.total+' = รอ สนญ. ตรวจ '+s.sent+(s.hqLate?' (เกินวัน '+s.hqLate+')':'')+' · รอสาขารับทราบ '+s.ackwait+(s.ackLate?' (ค้างข้ามวัน '+s.ackLate+')':'')+' · รอบันทึกผลขาย '+s.saleWait+(s.overdue?' (ค้าง '+s.overdue+')':'')+' · ขายแล้ว '+s.sold+' · ไม่ขาย/ยกเลิก '+s.notsold+(s.cancelled?' (ยกเลิกคำขอ '+s.cancelled+')':'')+(tag?' · <span style="background:rgba(255,255,255,.15);border-radius:6px;padding:1px 7px">'+tag+'</span>':''); }
+function p1ScopeList(ctx,brCode){ let L;
+ if(ctx==='br') L=myApps().filter(inPeriod);
+ else if(ctx==='zone') L=scopedApps().filter(inPeriod).filter(a=>a.status==='pending'||a.status==='cancelled');
+ else L=scopedApps().filter(inPeriod).filter(a=>a.status==='pending'||a.status==='cancelled').filter(a=>!fZone||a.zone===fZone);
+ const bc=brCode||((ctx==='hq'||ctx==='zone')?fBranch:''); if(bc) L=L.filter(a=>a.branch===bc); return L; }
+function p1BranchSelect(ctx){ const zone=ctx==='zone'?SESSION.zone:fZone; const brs=BRANCHES.filter(b=>!zone||b.zone===zone).slice().sort((a,b)=>String(a.code).localeCompare(String(b.code)));
+ if(fBranch&&!brs.some(b=>b.code===fBranch)) fBranch='';
+ return `<div class="flex"><label class="mut" style="font-size:13px">สาขา:</label><select style="width:210px" onchange="fBranch=this.value;go(currentTab)"><option value="">— ${zone?'ทุกสาขาในเขต ('+brs.length+' สาขา)':'ทุกสาขา ('+brs.length+')'} —</option>${brs.map(b=>`<option value="${b.code}" ${fBranch===b.code?'selected':''}>${b.label}</option>`).join('')}</select></div>`; }
+function p1ScopeTag(ctx){ if(ctx==='br') return (typeof fMonth!=='undefined'&&fMonth)?'เดือนที่เลือก':'ช่วงที่เลือก'; const z=ctx==='zone'?(ZONES[SESSION.zone]||{}).name:(fZone?(ZONES[fZone]||{}).name:'ทุกเขต'); const b=fBranch?((BRANCHES.find(x=>x.code===fBranch)||{}).label||fBranch):(ctx==='zone'?'ทุกสาขาในเขต':'ทุกสาขา'); return z+' · '+b; }
+function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p1ScopeList(ctx,brCode).filter(a=>p1Group(a)===grp); const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+ const tOf=a=>grp==='sent'?(a.submittedAt||0):grp==='ack'?((a.hqAdvice&&a.hqAdvice.sentAt)||a.submittedAt||0):grp==='sale'?((a.ack3&&a.ack3.at)||(a.hqAdvice&&a.hqAdvice.sentAt)||a.submittedAt||0):grp==='sold'?((a.sale&&a.sale.at)||a.submittedAt||0):((a.cancelledAt||(a.sale&&a.sale.at)||a.submittedAt)||0);
+ const list=src.slice().sort((x,y)=>(grp==='sold'||grp==='not')?(tOf(y)-tOf(x)):(tOf(x)-tOf(y)));
+ const isBr=ctx==='br', isHQ=ctx==='hq'; const tCol=grp==='sent'?'ยื่นเมื่อ':grp==='ack'?'สนญ. ส่งการ์ด':grp==='sale'?'สาขารับทราบ':grp==='sold'?'ขายเมื่อ':'เมื่อ';
+ const late=a=>a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
+ const advTxt=a=>{ const h=a.hqAdvice||{}; if(!h.sentAt) return '—'; const t=Object.keys(h.text||{}).filter(k=>h.text[k]&&!(h.none||{})[k]); return t.length?t.map(k=>({person:'👤',occ:'💼',income:'💰'}[k]||'')+' '+esc(h.text[k]).slice(0,40)).join(' · '):'ไม่มีข้อเสนอแนะ'; };
+ const notTxt=a=>a.status==='cancelled'?'🚫 ยกเลิกคำขอ'+(a.cancelReq&&a.cancelReq.reason?' · '+esc(a.cancelReq.reason):''):(a.sale&&a.sale.result==='notsold'?'✋ ไม่ขาย'+(a.sale.reason?' · '+esc(a.sale.reason):''):'🚶 ลูกค้ายกเลิก');
+ const rows=list.map(a=>{ const b=BRANCHES.find(x=>x.code===a.branch); const L=hqSent(a)?(CHK3_LV[lightOf(a)]||CHK3_LV.na):null; const w=p1IsWork(a)?fmtDur(Date.now()-tOf(a)):''; const lt=p1IsWork(a)&&late(a);
+  return `<tr class="click" style="${lt?'background:#fff5f5':''}" onclick="closeModal();openDetail('${a.id}')"><td><b>${esc(a.name)}</b> <span class="mut">· ${a.id}</span></td>${isBr?'':`<td>${b?esc(b.label):esc(a.branch)}</td>`}${isHQ?`<td class="mut">${esc((ZONES[a.zone]||{}).name||a.zone||'')}</td>`:''}<td class="mut">${tOf(a)?fmtDT(tOf(a)):'-'}</td>${p1IsWork(a)?`<td><span class="tag" style="background:${lt?'#fee2e2':'#fef3c7'};color:${lt?'#b91c1c':'#b45309'}">${w}${lt?' · ค้างข้ามวัน':''}</span></td>`:`<td class="mut" style="font-size:12px">${grp==='not'?notTxt(a):(a.sale&&a.sale.contract?'สัญญา '+esc(a.sale.contract):'')}</td>`}<td>${L?L.ic:'<span class="mut">—</span>'}</td><td style="font-size:12px">${advTxt(a)}</td><td><button class="btn btn-sm ${isBr&&(grp==='ack'||grp==='sale')?'btn-primary':'btn-line'}" onclick="event.stopPropagation();closeModal();openDetail('${a.id}')">${isBr&&grp==='ack'?'เปิดเคส → กดรับทราบ':isBr&&grp==='sale'?'เปิดเคส → บันทึกผลขาย':'เปิดเคส →'}</button></td></tr>`; }).join('');
+ const brName=brCode?((BRANCHES.find(x=>x.code===brCode)||{}).label||brCode):'';
+ const foot=(isHQ||ctx==='zone')?`<div class="flex sb mt" style="flex-wrap:wrap;gap:8px"><span class="mut" style="font-size:12px">${(grp==='sold'||grp==='not')?'เรียงใหม่สุดอยู่บน':'เรียงจากรอนานสุด · แถวแดง = ค้างข้ามวัน'}</span><div>${list.length?`<button class="btn btn-line btn-sm" onclick="exportCSV(p1ScopeList('${ctx}','${brCode||''}').filter(a=>p1Group(a)==='${grp}'),'MOTO24_${grp}_${brCode||ctx}')">⬇ CSV รายการนี้</button>`:''}${isHQ?` <button class="btn btn-sm btn-primary" onclick="fState='${grp}';closeModal();go(currentTab)">กรองรายการด้านล่างตามนี้</button>`:''}</div></div>`:`<div class="mut mt" style="font-size:12px">${grp==='ack'?'กดรับทราบทำในหน้าเคส (ต้องเห็นการ์ดก่อน) — ป๊อปอัปนี้พาไปให้เร็วขึ้น':grp==='sale'?'บันทึกผลขายทำในหน้าเคส':'เรียงจาก'+((grp==='sold'||grp==='not')?'ใหม่สุด':'รอนานสุด')+'อยู่บน'}</div>`;
+ document.getElementById('modal-bg').innerHTML=`<div class="modal" style="width:${isBr?'760px':'920px'};max-width:96vw"><button class="x" onclick="closeModal()">✕</button>
+  <h2 class="pagetitle" style="color:${G.col}">${G.ic} ${isBr&&grp==='ack'?'ถึงคิวเรา: กดรับทราบการ์ด':isBr&&grp==='sale'?'ถึงคิวเรา: บันทึกผลขาย':G.t}${brName?' — '+esc(brName):''} — ${list.length} เคส</h2>
+  <p class="pagesub">${esc(p1ScopeTag(ctx))}${brName&&!fBranch?' → '+esc(brName):''}</p>
+  ${list.length?`<div style="max-height:60vh;overflow:auto"><table><thead><tr><th>ลูกค้า / เคส</th>${isBr?'':'<th>สาขา</th>'}${isHQ?'<th>เขต</th>':''}<th>${tCol}</th><th>${(grp==='sold'||grp==='not')?'หมายเหตุ':'รอมา'}</th><th>ไฟการ์ด</th><th>คำแนะนำ สนญ.</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`:'<p class="mut" style="text-align:center;padding:16px">ไม่มีเคสในสถานะนี้</p>'}
+  ${foot}</div>`;
+ document.getElementById('modal-bg').classList.remove('hidden'); }
+function p1Chips(s,ctx){ ctx=ctx||''; const on=(g)=>ctx?`title="คลิกดูรายชื่อเคส" onclick="p1ChipPop('${ctx}','${g}')" ${(ctx==='hq'&&fState===g)?'data-act="1"':''}`:''; return `<div class="qchips">
+  <div class="qchip sent" style="background:#dbeafe" ${on('sent')}><div class="n" style="color:#1d4ed8">${s.hqPending||0}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ+แนะนำ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
+  <div class="qchip ack" style="background:#fef3c7" ${on('ack')}><div class="n" style="color:#b45309">${s.ackPending||0}</div><div class="l" style="color:#b45309">${ctx==='br'?'👉 ถึงคิวเรา: กดรับทราบ':'🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ'}${s.ackLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackLate+')</span>':''}</div></div>
+  <div class="qchip sale" style="background:#fef9c3" ${on('sale')}><div class="n" style="color:#854d0e">${s.reviewed+s.waiting+s.overdue}</div><div class="l" style="color:#854d0e">${ctx==='br'?'⏳ ถึงคิวเรา: บันทึกผลขาย':'⏳ รอบันทึกผลขาย'}${s.overdue?' <span style="color:#b91c1c">(ค้าง '+s.overdue+')</span>':''}</div></div>
+  <div class="qchip sold" style="background:#f0fdf4" ${on('sold')}><div class="n" style="color:#166534">${s.sold}</div><div class="l" style="color:#166534">🛒 ขายแล้ว</div></div>
+  <div class="qchip not" style="background:#f3f4f6" ${on('not')}><div class="n" style="color:#374151">${s.notsold}</div><div class="l" style="color:#374151">✋ ไม่ขาย/ยกเลิก${s.cancelled?' <span class="mut" style="font-size:10.5px">(ยกเลิกคำขอ '+s.cancelled+')</span>':''}</div></div>
+ </div>${ctx?'<div class="mut" style="font-size:11px;margin:-4px 0 8px;text-align:right">คลิกกล่องเพื่อดูรายชื่อเคส</div>':''}`; }
 function lightOf(a){ try{ const r=(a.check3&&a.check3.overall)||(check3(a,a.calc||calcAll(a)).overall); return r||'na'; }catch(e){ return 'na'; } }
 function lightBadge(a){ const L=CHK3_LV[lightOf(a)]||CHK3_LV.na; return `<span class="tag" style="background:${L.bg};color:${L.col};border:1px solid ${L.bd}">${L.ic} ${L.t}</span>`; }
 /* สนญ. ตรวจดูแล้ว (ไม่ล็อกเคส) */
@@ -3930,9 +3972,10 @@ function appRow(a, showBranch){
 function viewBranchList(){
  const list=myApps().filter(inPeriod);
  const s=statCount(list);
- const _srt=list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0)); const body=(p1()&&_srt.some(a=>a.status==='pending')?p1RowHead():'')+(_srt.map(a=>appCard(a,false)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>');
- return dashHero('📋','รายการ / ติดตามคำขอของสาขา ('+list.length+')','คลิกการ์ดเพื่อดูรายละเอียดและหมายเหตุจากฝ่ายวิเคราะห์')
- +`<div class="card">${p1()?p1Chips(p1Count(list)):qChips(s)}${p1()&&(p1Count(list).ackPending||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(list).ackPending}</b> เคส — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap">${periodUI()}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${body}</div>`;
+ const _srt=p1()?p1SortApply(list,p1SortMode('brl','work')):list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0)); const body=(p1()&&_srt.some(a=>a.status==='pending')?p1RowHead():'')+(_srt.map(a=>appCard(a,false)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>');   /* 0922-A: งานถึงคิวก่อน มาก่อนอยู่บน */
+ const _pc=p1()?p1Count(list):null;
+ return dashHero('📋','รายการ / ติดตามคำขอของสาขา ('+list.length+')',p1()?p1HeadLine(_pc,p1ScopeTag('br')):'คลิกการ์ดเพื่อดูรายละเอียดและหมายเหตุจากฝ่ายวิเคราะห์')
+ +`<div class="card">${p1()?p1Chips(_pc,'br'):qChips(s)}${p1()&&(p1Count(list).ackPending||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(list).ackPending}</b> เคส — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap;gap:8px">${periodUI()}${p1()?p1SortBtn('brl','work'):''}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${body}</div>`;
 }
 function statCount(list){ return {
  total:list.length,
@@ -4498,17 +4541,18 @@ function deleteUser(id){
 function viewZoneP1(){
  const zname=(ZONES[SESSION.zone]&&ZONES[SESSION.zone].name)||'เขต';
  const brs=BRANCHES.filter(b=>b.zone===SESSION.zone);
- const list=scopedApps().filter(inPeriod).filter(a=>a.status==='pending'||a.status==='cancelled');
+ const list=p1ScopeList('zone');   /* 0922-A: กรองสาขาในเขต */
  const c=p1Count(list);   /* 0921-B: สูตรเดียวกับทุกหน้า */
  const lt=a=>hqSent(a)?lightOf(a):null;
  const rows=brs.map(b=>{ const bl=list.filter(a=>a.branch===b.code); const bc=p1Count(bl); const sent=bl.filter(hqSent); const g=sent.filter(a=>lt(a)==='ok').length,y=sent.filter(a=>lt(a)==='warn').length,r=sent.filter(a=>lt(a)==='bad').length; const before=bl.filter(a=>a.sale&&(a.sale.beforeSubmit||a.sale.beforeHQ)).length; const hqP=bc.hqPending; const ackP=bc.ackPending;
-  return `<tr><td class="b">${b.label}</td><td class="num">${bl.length}</td><td class="num" style="color:#1d4ed8">${hqP}</td><td class="num" style="color:#b45309">${ackP}${bc.ackLate?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.ackLate+')</span>':''}</td><td class="num" style="color:${bc.overdue?'#b91c1c':'#854d0e'}">${bc.reviewed+bc.waiting+bc.overdue}${bc.overdue?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.overdue+')</span>':''}</td><td class="num" style="color:#166534">${bc.sold}</td><td class="num">${bc.notsold}</td><td class="num">${sent.length?`<span title="ข้อมูลสอดคล้อง">🟢${g}</span> <span title="ควรตรวจสอบเพิ่มเติม">🟡${y}</span> <span title="ข้อมูลน่าสงสัย">🔴${r}</span>`:'<span class="mut">—</span>'}</td><td class="num" style="color:${before?'#b45309':'#374151'}">${before}</td></tr>`; }).join('')||'<tr><td colspan="9" class="mut">ยังไม่มีเคสในเขตนี้</td></tr>';
- const _srt=list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0));
+  const Z=(g,v)=>v?`<a href="#" style="text-decoration:underline dotted" onclick="event.preventDefault();p1ChipPop('zone','${g}','${b.code}')" title="คลิกดูรายชื่อ">${v}</a>`:v;
+  return `<tr><td class="b">${b.label}</td><td class="num">${bl.length}</td><td class="num" style="color:#1d4ed8">${Z('sent',hqP)}</td><td class="num" style="color:#b45309">${Z('ack',ackP)}${bc.ackLate?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.ackLate+')</span>':''}</td><td class="num" style="color:${bc.overdue?'#b91c1c':'#854d0e'}">${Z('sale',bc.reviewed+bc.waiting+bc.overdue)}${bc.overdue?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.overdue+')</span>':''}</td><td class="num" style="color:#166534">${Z('sold',bc.sold)}</td><td class="num">${Z('not',bc.notsold)}${bc.cancelled?' <span class="mut" style="font-size:10.5px">(ยกเลิก '+bc.cancelled+')</span>':''}</td><td class="num">${sent.length?`<span title="ข้อมูลสอดคล้อง">🟢${g}</span> <span title="ควรตรวจสอบเพิ่มเติม">🟡${y}</span> <span title="ข้อมูลน่าสงสัย">🔴${r}</span>`:'<span class="mut">—</span>'}</td><td class="num" style="color:${before?'#b45309':'#374151'}">${before}</td></tr>`; }).join('')||'<tr><td colspan="9" class="mut">ยังไม่มีเคสในเขตนี้</td></tr>';
+ const _srt=p1SortApply(list.filter(a=>a.status!=='cancelled'),p1SortMode('zonl','work'));   /* 0922-A: งานถึงคิวก่อน · ไม่ขึ้นแถวเคสยกเลิก */
  const body=(_srt.some(a=>a.status==='pending')?p1RowHead():'')+(_srt.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>');
- return `${dashHero('🗺️','ภาพรวมเขต — '+zname,'เห็นเฉพาะสาขาในเขตของคุณ ('+brs.length+' สาขา) · ดูอย่างเดียว — เฟส 1 ไม่มีการอนุมัติ สาขาตัดสินใจขายเอง · ส่งข้อความในเคสถึง สนญ./สาขาได้')}
-  <div class="card mb">${periodUI()}</div>
-  ${p1Chips(c)}
-  <div class="card mt"><h3 style="margin:0 0 8px">สรุปรายสาขาในเขต <span class="mut" style="font-weight:400;font-size:12px">— งานที่สาขาต้องทำคือคอลัมน์ "รอรับทราบ" และ "รอบันทึกผลขาย" ควรเป็น 0 ทุกวัน</span></h3>
+ return `${dashHero('🗺️','ภาพรวมเขต — '+zname,p1HeadLine(c,p1ScopeTag('zone'))+' · <span style="opacity:.8">'+brs.length+' สาขา · ดูอย่างเดียว</span>')}
+  <div class="card mb"><div class="flex sb" style="flex-wrap:wrap;gap:8px">${periodUI()}${p1BranchSelect('zone')}${p1SortBtn('zonl','work')}</div></div>
+  ${p1Chips(c,'zone')}
+  <div class="card mt"><h3 style="margin:0 0 8px">สรุปรายสาขาในเขต <span class="mut" style="font-weight:400;font-size:12px">— งานที่สาขาต้องทำคือคอลัมน์ "รอรับทราบ" และ "รอบันทึกผลขาย" ควรเป็น 0 ทุกวัน · <b>คลิกตัวเลข</b>เพื่อดูรายชื่อเคส</span></h3>
    <div style="overflow:auto"><table><tr><th>สาขา</th><th class="num">เคส</th><th class="num">👁 รอ สนญ.</th><th class="num">🧭 รอรับทราบ</th><th class="num">⏳ รอบันทึกผลขาย</th><th class="num">🛒 ขายแล้ว</th><th class="num">✋ ไม่ขาย/ยกเลิก</th><th class="num">ผลวิเคราะห์ (ที่ สนญ. ส่งแล้ว)</th><th class="num">ขายก่อนส่ง/ก่อน สนญ. ตอบ</th></tr>${rows}</table></div>
   </div>
   <div class="card mt"><h3 style="margin:0 0 8px">รายการเคสในเขต</h3>${body}</div>`;
@@ -4571,18 +4615,23 @@ function qAccent(a){ if(p1()&&a.status==='pending') return p1Accent(a); return a
 function scoreCls(v){ return v>=70?'sc-ok':v>=50?'sc-mid':'sc-bad'; }
 window.fLight=window.fLight||'';
 function viewQueueP1(pendingOnly){
- const all=scopedApps().filter(inPeriod).filter(a=>a.status!=='cancelled').filter(a=>!fZone||a.zone===fZone);
- const list=all.filter(a=> pendingOnly ? !hqSent(a) : hqSent(a)).filter(a=>!fLight||lightOf(a)===fLight).sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0));
- const s=p1Count(all); const nRev=all.filter(a=>!hqSent(a)).length;
+ const all=p1ScopeList('hq');   /* 0922-A: รวมเคสยกเลิกในตัวเลข (ไม่ขึ้นแถว) · กรองเขต+สาขา */
+ const live=all.filter(a=>a.status!=='cancelled');
+ const sortKey=pendingOnly?'hqq':'hqd', sortDef=pendingOnly?'fifo':'new';
+ const list=p1SortApply(live.filter(a=> pendingOnly ? !hqSent(a) : hqSent(a)).filter(a=>!fLight||lightOf(a)===fLight).filter(a=>!fState||p1Group(a)===fState), p1SortMode(sortKey,sortDef));
+ const s=p1Count(all); const nRev=live.filter(a=>!hqSent(a)).length;
  const title=pendingOnly?'เคสรอ สนญ. ตรวจ + ให้คำแนะนำ':'เคสที่ส่งคำแนะนำให้สาขาแล้ว';
- const lc={bad:0,warn:0,ok:0}; all.forEach(a=>{ const l=lightOf(a); if(lc[l]!=null) lc[l]++; });
+ const lc={bad:0,warn:0,ok:0}; live.forEach(a=>{ const l=lightOf(a); if(lc[l]!=null) lc[l]++; });
  const filterBar=`<div class="flex sb mb" style="flex-wrap:wrap;gap:8px">${periodUI()}
-   <div class="flex"><label class="mut" style="font-size:13px">เขต:</label><select style="width:200px" onchange="fZone=this.value;go(currentTab)"><option value="">— ทุกเขต —</option>${Object.keys(ZONES).map(z=>`<option value="${z}" ${fZone===z?'selected':''}>${ZONES[z].name}</option>`).join('')}</select></div>
+   <div class="flex"><label class="mut" style="font-size:13px">เขต:</label><select style="width:200px" onchange="fZone=this.value;fBranch='';go(currentTab)"><option value="">— ทุกเขต —</option>${Object.keys(ZONES).map(z=>`<option value="${z}" ${fZone===z?'selected':''}>${ZONES[z].name}</option>`).join('')}</select></div>
    <div class="flex"><label class="mut" style="font-size:13px">ไฟการ์ด:</label><select style="width:190px" onchange="fLight=this.value;go(currentTab)"><option value="">— ทุกสี —</option><option value="bad" ${fLight==='bad'?'selected':''}>🔴 ควรตรวจสอบ (${lc.bad})</option><option value="warn" ${fLight==='warn'?'selected':''}>🟡 ควรตรวจเพิ่ม (${lc.warn})</option><option value="ok" ${fLight==='ok'?'selected':''}>🟢 สอดคล้อง (${lc.ok})</option></select></div>
+   ${p1BranchSelect('hq')}
+   ${p1SortBtn(sortKey,sortDef)}
+   ${fState?`<span class="tag" style="background:#fff7ed;color:#c2410c;border:1px solid #fdba74;padding:4px 9px">กรอง: ${P1G[fState].ic} ${P1G[fState].t} <a href="#" style="color:#c2410c;margin-left:4px" onclick="event.preventDefault();fState='';go(currentTab)">✕ เลิกกรอง</a></span>`:''}
    <button class="btn btn-line btn-sm" onclick="exportCSV(APPS,'MOTO24_all_apps')">⬇ Export ทั้งหมด (CSV)</button></div>`;
  const body=(list.length?p1RowHead():'')+(list.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">'+(pendingOnly?'✅ ไม่มีเคสรอตรวจดู':'ยังไม่มี')+'</div>');
- return dashHero(pendingOnly?'👁':'✓', title+' ('+list.length+')', 'เฟส 1 · ทั้งหมด '+s.total+' = รอ สนญ. ตรวจ '+s.sent+(s.hqLate?' (เกินวัน '+s.hqLate+')':'')+' · รอสาขารับทราบ '+s.ackwait+(s.ackLate?' (ค้างข้ามวัน '+s.ackLate+')':'')+' · รอบันทึกผลขาย '+s.saleWait+' · ขายแล้ว '+s.sold+' (ขายก่อนส่งเคส '+s.beforeSubmit+' · ก่อน สนญ. ตรวจ '+s.beforeHQ+' — นับเมื่อ สนญ. ตรวจแล้ว) · ไม่ขาย/ยกเลิก '+s.notsold)
-  +`<div class="card">${p1Chips(s)}${filterBar}${body}</div>`;
+ return dashHero(pendingOnly?'👁':'✓', title+' ('+list.length+')', p1HeadLine(s,p1ScopeTag('hq'))+(s.beforeSubmit||s.beforeHQ?' · <span style="opacity:.8">ขายก่อนส่งเคส '+s.beforeSubmit+' · ก่อน สนญ. ตรวจ '+s.beforeHQ+' (นับ "ขายแล้ว" เมื่อ สนญ. ตรวจแล้ว)</span>':''))
+  +`<div class="card">${p1Chips(s,'hq')}${filterBar}${body}</div>`;
 }
 function qChips(s){ return `<div class="qchips">
   <div class="qchip" style="background:#fef9c3"><div class="n" style="color:#854d0e">${s.pending}</div><div class="l" style="color:#854d0e">⏳ รอวิเคราะห์</div></div>
@@ -8265,7 +8314,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0921-B';
+const CHK3_BUILD='0922-A';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
