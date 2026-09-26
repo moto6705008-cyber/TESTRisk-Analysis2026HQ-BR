@@ -79,6 +79,8 @@ main{max-width:1280px;margin:0 auto;padding:20px 16px 60px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
 .card h3{font-size:15.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .sechead{border-left:4px solid var(--orange);padding-left:10px;color:var(--orange);font-weight:700;font-size:15px;margin:4px 0 14px}
+.grel-chips{display:flex;flex-wrap:wrap;gap:6px;padding:4px;border:1px solid transparent;border-radius:10px}.grel-chips.bad{border-color:#fca5a5;background:#fff5f5}
+.grel-chip{border:1px solid #d1d5db;background:#fff;border-radius:999px;padding:6px 14px;font-size:14px;cursor:pointer;font-family:inherit;color:#111827}.grel-chip.on{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}.grel-chip:disabled{opacity:.6;cursor:not-allowed}
 .subhead{border-left:3px solid var(--orange);padding-left:8px;color:var(--orange);font-weight:600;font-size:13.5px;margin:14px 0 10px}
 .kpi{display:flex;flex-direction:column;gap:2px}
 .kpi .v{font-size:26px;font-weight:700}
@@ -410,7 +412,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-D (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-D (เฟส 1 · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
+      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-F (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-F (เฟส 1 · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
     </div>
   </div>
 </div>
@@ -2783,8 +2785,8 @@ function hardFixHint(m){ m=String(m||'');
 
 /* ================== BRANCH — FORM ================== */
 function opt(list,sel){ return list.map(o=>`<option value="${o[0]}" ${o[0]===sel?'selected':''}>${o[1]}</option>`).join(''); }
-function addrFields(prefix, req){
- const r = req?'<span class="req">*</span>':'';
+function addrFields(prefix, req, opt){
+ const r = req?'<span class="req">*</span>':''; opt=opt||{};
  const cbx=(kind,lab,ph)=>`<div class="field cbx" id="${prefix}-${kind}-cbx">
    <label>${lab} ${r}</label>
    <input id="${prefix}-${kind}" class="cbx-field req" readonly autocomplete="off" placeholder="${ph}" onclick="cbxToggle('${prefix}','${kind}')">
@@ -2799,7 +2801,7 @@ function addrFields(prefix, req){
   ${cbx('dist','อำเภอ/เขต','เลือกจังหวัดก่อน')}
   ${cbx('sub','ตำบล/แขวง','เลือกอำเภอก่อน')}
   <div class="field"><label>บ้านเลขที่ ${r}</label><input id="${prefix}-no" placeholder="เช่น 37/1" oninput="liveCalc()"></div>
-  <div class="field"><label>หมู่ที่ <span class="req">*</span></label><input id="${prefix}-moo" class="req" placeholder="เช่น 4" oninput="liveCalc()"></div>
+  <div class="field"><label><span id="${prefix}-moo-lb">หมู่ที่</span> <span class="req">*</span></label><input id="${prefix}-moo" class="req" placeholder="เช่น 4" oninput="liveCalc()">${opt.noMoo?`<label style="display:flex;gap:6px;align-items:center;font-weight:400;font-size:12px;color:#4b5563;margin-top:4px"><input type="checkbox" id="${prefix}-nomoo" style="width:auto" onchange="addrNoMooToggle('${prefix}')">ในเขตเทศบาล ไม่มีหมู่</label>`:''}</div>
   <div class="field"><label>รหัสไปรษณีย์ <span style="font-weight:400;color:#6b7280;font-size:11px">(เติมอัตโนมัติจากตำบล)</span></label><input id="${prefix}-zip" placeholder="อัตโนมัติ/พิมพ์เอง" oninput="liveCalc&&liveCalc()"></div>
  </div>`;
 }
@@ -3266,18 +3268,20 @@ function viewForm(){
      <div style="display:flex;gap:6px"><select id="g-prefix" style="max-width:105px"><option>นาย</option><option>นาง</option><option>นางสาว</option><option>Mr.</option><option>Mrs.</option><option>Miss</option></select><input id="g-name"></div></div>
     <div class="field"><label>นามสกุล <span class="req">*</span></label><input id="g-lname"></div>
     <div class="field"><label>เลขบัตรประชาชน <span class="req">*</span></label><input id="g-idcard" maxlength="17" oninput="liveCalc()"></div>
-    <div class="field"><label>วัน/เดือน/ปี เกิด</label><input id="g-birth" type="date" onchange="document.getElementById('g-age').value=ageFrom(this.value)+' ปี'"></div>
+    <div class="field"><label>วัน/เดือน/ปี เกิด <span class="req">*</span></label><input id="g-birth" type="date" onchange="document.getElementById('g-age').value=ageFrom(this.value)+' ปี'"></div>
     <div class="field"><label>อายุ (อัตโนมัติ)</label><input id="g-age" class="auto" readonly></div>
     <div class="field"><label>เบอร์โทร <span class="req">*</span></label><input id="g-phone" oninput="liveCalc()"></div>
     <div class="field" style="grid-column:1/-1"><label>ประวัติผู้ค้ำกับบริษัท <span style="font-weight:400;color:#6b7280;font-size:11px">(อัตโนมัติจากพอร์ต H-Cap ตามเลขบัตร/เบอร์ผู้ค้ำ)</span></label><div id="g-hist" style="border:1px solid #dfe3ec;background:#f8fafc;border-radius:8px;padding:8px 12px;font-size:13px;color:#4b5568;min-height:36px">— กรอกเลขบัตรผู้ค้ำเพื่อตรวจ —</div></div>
-    <div class="field"><label>ความสัมพันธ์กับผู้ซื้อ</label><select id="g-relation"><option>บิดา/มารดา</option><option>คู่สมรส</option><option>พี่/น้อง</option><option>ญาติ</option><option>เพื่อน/เพื่อนร่วมงาน</option></select></div>
-    <div class="field"><label>กลุ่มอาชีพ</label><select id="g-occg" onchange="onGOccGroup()">${occGroupsVisible().map(g=>`<option value="${g}">${g}</option>`).join('')}</select></div>
-    <div class="field"><label>ประเภทย่อยอาชีพ</label><select id="g-occ"></select></div>
-    <div class="field"><label>สถานที่ทำงาน</label><input id="g-workplace"></div>
-    <div class="field"><label>รายได้/เดือน (บาท)</label><input id="g-income" type="number" value="0"></div>
-    <div class="field"><label>ตำบล</label><input id="g-sub"></div>
-    <div class="field"><label>อำเภอ / จังหวัด</label><input id="g-dist"></div>
+    <div class="field" style="grid-column:1/-1"><label>ความสัมพันธ์กับผู้ซื้อ <span class="req">*</span></label><select id="g-relation" style="display:none" onchange="guarRelRender()"><option>บิดา/มารดา</option><option>คู่สมรส</option><option>พี่/น้อง</option><option>ญาติ</option><option>เพื่อน/เพื่อนร่วมงาน</option></select><div id="g-relchips" class="grel-chips"></div></div>
+    <div class="field"><label>กลุ่มอาชีพ <span class="req">*</span></label><select id="g-occg" onchange="onGOccGroup()">${occGroupsVisible().map(g=>`<option value="${g}">${g}</option>`).join('')}</select></div>
+    <div class="field"><label>ประเภทย่อยอาชีพ <span class="req">*</span></label><select id="g-occ"></select></div>
+    <div class="field"><label>สถานที่ทำงาน <span class="req">*</span></label><input id="g-workplace"></div>
+    <div class="field"><label>รายได้/เดือน (บาท) <span class="req">*</span></label><input id="g-income" type="number" value="0"></div>
+    <input id="g-sub" type="hidden"><input id="g-dist" type="hidden">
    </div>
+   <div class="subhead">ที่อยู่ผู้ค้ำประกัน <span class="req">*</span></div>
+   ${addrFields('ga', true, {noMoo:true})}
+   <div id="ga-legacy" class="mut" style="display:none;font-size:12px;margin-top:4px"></div>
   </div>
  </div>
 
@@ -3491,7 +3495,7 @@ function autoZip(prefix){
  if(z){ zipEl.value=z; zipEl.style.background='#ecfdf3'; zipEl.title='เติมอัตโนมัติจาก'+from; }
 }
 /* 0915-C: ดรอปดาวน์ในฟอร์มเริ่มเป็นช่องว่าง "— เลือก —" ทุกช่อง (สาขาต้องเลือกเอง) + ช่องที่เข้าคะแนน/การ์ดเป็นช่องบังคับ */
-const FORM_BLANK_SELECTS=['f-prefix','f-gender','f-marital','f-nation','f-ethnic','f-cardtype','f-housetype','f-tenure','f-stayyears','f-occg','f-doclevel','f-incomeproof','g-prefix','g-relation','g-occg'];
+const FORM_BLANK_SELECTS=['f-guar','f-prefix','f-gender','f-marital','f-nation','f-ethnic','f-cardtype','f-housetype','f-tenure','f-stayyears','f-occg','f-doclevel','f-incomeproof','g-prefix','g-relation','g-occg'];
 const FORM_BLANK_REQ=['f-prefix','f-gender','f-marital','f-nation','f-ethnic','f-cardtype','f-housetype','f-tenure','f-stayyears','f-occg','f-doclevel','f-incomeproof'];
 function formBlankSelects(){ FORM_BLANK_SELECTS.forEach(id=>{ const sel=document.getElementById(id); if(!sel) return;
   if(!sel.querySelector('option[value=""]')){ const o=document.createElement('option'); o.value=''; o.textContent='— เลือก —'; sel.insertBefore(o,sel.firstChild); }
@@ -3930,7 +3934,32 @@ function toggleGuar(){
  const show = v==='g_doc'||v==='g';
  document.getElementById('guar-form').classList.toggle('hidden',!show);
  if(show) onGOccGroup();
+ try{ guarRelRender(); }catch(e){}
 }
+/* 0925-E: ความสัมพันธ์ผู้ค้ำแบบปุ่มกด (ไม่มีค่าเริ่มต้น · ค่าเก็บใน select#g-relation ที่ซ่อนไว้) */
+function guarRelRender(){ const sel=document.getElementById('g-relation'), box=document.getElementById('g-relchips'); if(!sel||!box) return;
+ const opts=[...sel.options].filter(o=>o.value!==''); const v=sel.value||'';
+ box.innerHTML=opts.map((o,i)=>`<button type="button" id="g-relchip-${i}" class="grel-chip${o.value===v?' on':''}" onclick="guarRelPick(${i})">${String(o.textContent).replace(/[<>&]/g,'')}</button>`).join('');
+ box.classList.toggle('bad',!v); }
+function guarRelPick(i){ const sel=document.getElementById('g-relation'); if(!sel) return; const opts=[...sel.options].filter(o=>o.value!==''); const o=opts[i]; if(!o) return; sel.value=o.value; sel.dispatchEvent(new Event('change',{bubbles:true})); try{ liveCalc(); }catch(e){} }
+/* 0925-E: ติ๊ก "ในเขตเทศบาล ไม่มีหมู่" → ช่องหมู่เปลี่ยนเป็น ซอย/ถนน/ชุมชน (ยังบังคับ) */
+function addrNoMooToggle(pfx){ const cb=document.getElementById(pfx+'-nomoo'), lb=document.getElementById(pfx+'-moo-lb'), inp=document.getElementById(pfx+'-moo'); const on=!!(cb&&cb.checked);
+ if(lb) lb.textContent=on?'ซอย / ถนน / ชุมชน':'หมู่ที่'; if(inp) inp.placeholder=on?'เช่น ถ.ศรีธรรมราช ซ.3':'เช่น 4'; }
+/* 0925-E: รายการช่องผู้ค้ำที่ยังไม่ครบ (จากข้อมูลเคส) — ใช้ในการ์ด */
+function guarMissing(a){ const g=a&&a.guar; if(!g||!(a.guarantor==='g_doc'||a.guarantor==='g')) return [];
+ const m=[]; const ph=v=>isPlaceholderVal(v);
+ if(ph(g.nameOnly||g.firstName)||ph(g.lastNameOnly||g.lastName)) m.push('ชื่อ-นามสกุล');
+ const gi=normDigits(g.idcard||''); if(gi.length!==13||!thaiIDValid(gi)) m.push('เลขบัตร');
+ if(!g.birth) m.push('วันเกิด');
+ if(normDigits(g.phone||'').length<9) m.push('เบอร์โทร');
+ if(!String(g.relation||'').trim()) m.push('ความสัมพันธ์');
+ if(g.occupation==null||g.occupation==='') m.push('อาชีพ');
+ if(ph(g.workplace)) m.push('สถานที่ทำงาน');
+ if(!(+g.income>0)) m.push('รายได้');
+ const ad=g.addr; if(ad){ if(!ad.prov||!ad.dist||!ad.sub||addrPh(ad.no)||addrPh(ad.noMoo?ad.road:ad.moo)) m.push('ที่อยู่'); } else if(ph(g.sub)||ph(g.dist)) m.push('ที่อยู่');
+ return m; }
+function addrPh(v){ const t=String(v==null?'':v).trim(); if(!t) return true; if(/^[\s\-–—_.,\/*#]+$/.test(t)) return true; return /^(ไม่มี|ไม่ระบุ|ไม่ทราบ|ไม่รู้|ไม่|na|n\/a|none|null|x|0+)$/i.test(t); }   /* 0925-E: บ้านเลขที่/หมู่ ตัวเลขหลักเดียวได้ */
+function guarIsNewRule(a){ try{ return !!(a&&a.build&&cmpBuild(a.build,'0925-E')>=0); }catch(e){ return false; } }
 function pbFormType(){
  const p=document.getElementById('f-product').value;
  const pt=document.getElementById('f-paytype').value;
@@ -4092,7 +4121,7 @@ function onDownMode(){
 /* ===== 0914-B: ร่างฟอร์มอัตโนมัติ (กันข้อมูลหายเมื่อรีเฟรช/ปิดแท็บ/ไฟดับ) — เก็บต่อผู้ใช้ในเครื่องนี้ ===== */
 function fdKey(){ return 'moto24_draft_'+((SESSION&&SESSION.email)||'anon'); }
 function fdCollect(){ const f={};
- document.querySelectorAll('#view input[id],#view select[id],#view textarea[id]').forEach(e=>{ const id=e.id; if(!/^(f|g|fc|fp|fu)-/.test(id)) return; if(e.type==='file'||e.type==='button') return;
+ document.querySelectorAll('#view input[id],#view select[id],#view textarea[id]').forEach(e=>{ const id=e.id; if(!/^(f|g|fc|fp|fu|ga)-/.test(id)) return; if(e.type==='file'||e.type==='button') return;
   if(e.type==='checkbox'||e.type==='radio') f[id]=e.checked?1:0; else if(e.value!=='') f[id]=e.value; });
  const phones=[...document.querySelectorAll('#phone-list .phone-row')].map(r=>({no:(r.querySelector('.ph-no')||{}).value||'',line:(r.querySelector('.ph-line')||{}).value||'',active:!!(r.querySelector('.ph-active')||{}).checked}));
  return {t:Date.now(), step:(typeof FSTEP!=='undefined'?FSTEP:1), f, phones}; }
@@ -4129,7 +4158,7 @@ function fdApply(d){
  for(let pass=0;pass<3;pass++){ for(const id in d.f){ try{ setv(id,d.f[id]); }catch(e){} } }
  try{ debtItemsToggle(); s3Refresh(); }catch(e){}
  try{ const box=document.getElementById('phone-list'); if(box&&d.phones&&d.phones.length){ box.innerHTML=''; d.phones.forEach((p,i)=>{ box.insertAdjacentHTML('beforeend', phoneRowHTML(i===0)); const r=box.lastElementChild; r.querySelector('.ph-no').value=p.no||''; r.querySelector('.ph-line').value=p.line||''; r.querySelector('.ph-active').checked=!!p.active; }); if(!box.querySelector('.ph-active:checked')){ const a=box.querySelector('.ph-active'); if(a) a.checked=true; } } }catch(e){}
- try{ thRefresh('fc'); thRefresh('fp'); }catch(e){}
+ try{ thRefresh('fc'); thRefresh('fp'); thRefresh('ga'); addrNoMooToggle('ga'); guarRelRender(); }catch(e){}
  try{ debtHasToggle(); debtItemsToggle(); incExtraToggle(); updatePrevWork(); }catch(e){}
  try{ agriAskApply(''); agriAskApply('occ2'); }catch(e){}   /* 0925-A: ชิปเลี้ยงอะไร/ขนาดกระชัง กลับมาตามค่า */
  try{ if(!window.__editCase&&typeof occSaidLock==='function'){ ['','o2'].forEach(p=>{ const said=(document.getElementById(p?'f-occ2said':'f-occsaid')||{}).value; const o=(document.getElementById(p?'f-occ2':'f-occ')||{}).value; if(String(said||'').trim()&&o!==''&&o!=null) occSaidLock(p,true); occSaidDim(p); occSaidWarn(p); }); } }catch(e){}   /* 0924-I: กู้ร่าง → ล็อกกลุ่ม/แถบเตือนกลับมาเหมือนเดิม */
@@ -4145,7 +4174,9 @@ function hqEditFill(){
  let how='';
  if(a._form&&a._form.f){ fdApply({f:a._form.f,phones:a._form.phones||[]}); how='ครบทุกช่องตามที่สาขากรอก'; try{ if(a.debtItems&&a.debtItems.length) debtApplyCase(a); }catch(e){} try{ if(a.incomeExtraItems&&a.incomeExtraItems.length) incApplyCase(a); else incItemsToggle(); }catch(e){} try{ occSaidApplyCase(a); }catch(e){} try{ aquaApplyCase(a); }catch(e){} }
  else { window._foundCust={src:'app',a}; try{ pullCustomer(); }catch(e){} how='เคสเก่าก่อนมีระบบแก้ไข — เติมได้เฉพาะข้อมูลลูกค้า/อาชีพ/รายได้ ช่องอื่นต้องกรอกเอง'; }
+ try{ const fg=document.getElementById('f-guar'); if(fg&&!fg.value&&a.guarantor){ fg.value=a.guarantor; toggleGuar(); } }catch(e){}   /* 0925-F: เคสเก่าไม่มีภาพฟอร์ม → คงค่าผู้ค้ำเดิม */
  try{ liveCalc(); }catch(e){}
+ try{ const G=a.guar; const lg=document.getElementById('ga-legacy'); if(G&&!G.addr&&lg&&(String(G.sub||'').trim()||String(G.dist||'').trim())){ lg.style.display=''; lg.textContent='ที่อยู่ผู้ค้ำเดิม (เคสก่อน 0925-E): ต.'+(G.sub||'-')+' '+(G.dist||'')+' — ถ้าจะแก้ ให้เลือกในช่องด้านบน (ไม่แก้ = คงค่าเดิม)'; } }catch(e){}   /* 0925-E */
  const br=BRANCHES.find(b=>b.code===a.branch);
  const fh=document.querySelector('#view .fh-top'); const bar=document.createElement('div'); bar.id='hqedit-bar'; bar.style.cssText='background:#e0f2fe;border:1px solid #7dd3fc;color:#0c4a6e;border-radius:8px;padding:8px 12px;margin:8px 0;font-size:13px;display:flex;gap:10px;align-items:center;flex-wrap:wrap';
  bar.innerHTML='<div>✏️ <b>สนญ. กำลังแก้ไขเคส '+a.id+'</b> · สาขา '+(br?br.label:a.branch)+' · ลูกค้า '+(a.name||'')+' — เติมข้อมูล: '+how+'<br><span class="mut" style="font-size:12px">เมื่อบันทึก: สถานะ/ทามไลน์/ผลด่านคงเดิม · คำนวณคะแนนและการ์ดใหม่ · บันทึกประวัติการแก้ไข (สาขาเห็น)</span></div><button type="button" class="btn btn-line btn-sm" style="margin-left:auto" onclick="hqEditCancel()">✖ ยกเลิกการแก้ไข</button>';
@@ -4226,6 +4257,7 @@ function readForm(){
  const product=g('f-product');
  const guarType=g('f-guar');
  const hasGuar=guarType==='g_doc'||guarType==='g';
+ const _gaAny=['ga-prov','ga-dist','ga-sub','ga-no','ga-moo'].some(id=>g(id).trim());   /* 0925-E: ที่อยู่ผู้ค้ำแบบใหม่ (เคสเก่าที่ไม่ได้แตะ → คงค่าเดิม) */
  const _ph=(typeof readPhones==='function')?readPhones():{phone:g('f-phone').trim(),phones:[]};
  return {
   id:'A'+Date.now().toString().slice(-6), date:new Date().toISOString().slice(0,10),
@@ -4260,7 +4292,8 @@ function readForm(){
   guar: hasGuar? {nameOnly:g('g-name').trim(),lastNameOnly:g('g-lname').trim(),firstName:g('g-name').trim(),lastName:g('g-lname').trim(),
     name:((g('g-prefix')||'')+g('g-name').trim()+' '+g('g-lname').trim()).trim(),idcard:g('g-idcard').trim(),birth:g('g-birth'),age:ageFrom(g('g-birth')),
     phone:g('g-phone').trim(),relation:g('g-relation'),occupation:(g('g-occ')===''?null:(+g('g-occ')||0)),workplace:g('g-workplace').trim(),
-    income:+g('g-income')||0,sub:g('g-sub').trim(),dist:g('g-dist').trim(),hcap:guarHcapSummary(g('g-idcard'),g('g-phone'),(g('g-name')+' '+g('g-lname')).trim())} : null,
+    income:+g('g-income')||0,sub:(_gaAny?g('ga-sub').trim():g('g-sub').trim()),dist:(_gaAny?[g('ga-dist').trim(),g('ga-prov').trim()].filter(Boolean).join(' / '):g('g-dist').trim()),hcap:guarHcapSummary(g('g-idcard'),g('g-phone'),(g('g-name')+' '+g('g-lname')).trim()),
+    ...(_gaAny?{addr:(function(){ const nm=!!(document.getElementById('ga-nomoo')||{}).checked; const mv=g('ga-moo').trim(); return {no:g('ga-no').trim(),moo:nm?'':mv,noMoo:nm,road:nm?mv:'',sub:g('ga-sub').trim(),dist:g('ga-dist').trim(),prov:g('ga-prov').trim(),zip:g('ga-zip').trim()}; })()}:{})} : null,
   history:g('f-hist'),
   product, payType:g('f-paytype'), saleType:g('f-saletype'),
   ...(function(){ const sel=document.getElementById('f-model'); const mv=sel?sel.value:''; 
@@ -4446,7 +4479,20 @@ function submitApp(){
   if(a.price<=0) missing.push(a.product==='pawn'?'ราคาประเมิน':'ราคาขายสด');
   if(a.product==='pawn'&&a.finance<=0) missing.push('วงเงินที่ขอ');
  }
- if(a.guar){ if(!a.guar.nameOnly) missing.push('ชื่อผู้ค้ำ'); if(!a.guar.lastNameOnly) missing.push('นามสกุลผู้ค้ำ'); if(!a.guar.idcard) missing.push('เลขบัตรผู้ค้ำ'); if(!a.guar.phone) missing.push('เบอร์โทรผู้ค้ำ'); }
+ if(!a.guarantor) missing.push('ผู้ค้ำประกัน / เอกสาร (เลือก มี/ไม่มีผู้ค้ำ)');   /* 0925-F: ช่องนี้เริ่มว่าง ต้องเลือกเอง */
+ if(a.guar){ const G=a.guar, _v=id=>String((document.getElementById(id)||{}).value||'').trim(), _ph=v=>isPlaceholderVal(v);   /* 0925-E: มีผู้ค้ำ → ต้องกรอกทุกช่อง · ไม่รับขีด/"ไม่มี" */
+   if(!_v('g-prefix')) missing.push('คำนำหน้าผู้ค้ำ');
+   if(_ph(G.nameOnly)) missing.push('ชื่อผู้ค้ำ (ต้องเป็นชื่อจริง ไม่ใช่ขีด/"ไม่มี")');
+   if(_ph(G.lastNameOnly)) missing.push('นามสกุลผู้ค้ำ (ต้องเป็นชื่อจริง ไม่ใช่ขีด/"ไม่มี")');
+   { const gi=normDigits(G.idcard||''); if(!gi) missing.push('เลขบัตรผู้ค้ำ'); else if(gi.length!==13||!thaiIDValid(gi)) missing.push('เลขบัตรผู้ค้ำไม่ถูกต้อง (ต้อง 13 หลักตามบัตรจริง)'); else if(gi===normDigits(a.idcard||'')) missing.push('เลขบัตรผู้ค้ำซ้ำกับผู้ซื้อ — ค้ำตัวเองไม่ได้'); }
+   if(!G.birth) missing.push('วันเกิดผู้ค้ำ');
+   { const gp=normDigits(G.phone||''); if(!gp) missing.push('เบอร์โทรผู้ค้ำ'); else if(gp.length<9) missing.push('เบอร์โทรผู้ค้ำไม่ครบ (อย่างน้อย 9 หลัก)'); else if(gp===normDigits(a.phone||'')) missing.push('เบอร์โทรผู้ค้ำซ้ำกับเบอร์ผู้ซื้อ'); }
+   if(!_v('g-relation')||/\(ค่าเดิม\)/.test(((document.getElementById('g-relation')||{}).selectedOptions||[{}])[0].textContent||'')) missing.push('ความสัมพันธ์ผู้ค้ำกับผู้ซื้อ (กดเลือก 1 ปุ่ม)');
+   if(!_v('g-occg')||G.occupation==null) missing.push('อาชีพผู้ค้ำ (กลุ่ม + ประเภทย่อย)');
+   if(_ph(G.workplace)) missing.push('สถานที่ทำงานผู้ค้ำ');
+   if(!(+G.income>0)) missing.push('รายได้/เดือนของผู้ค้ำ (มากกว่า 0)');
+   { const ad=G.addr||{}; const mm=[]; if(!ad.prov) mm.push('จังหวัด'); if(!ad.dist) mm.push('อำเภอ'); if(!ad.sub) mm.push('ตำบล'); if(addrPh(ad.no)) mm.push('บ้านเลขที่'); if(addrPh(ad.noMoo?ad.road:ad.moo)) mm.push(ad.noMoo?'ซอย/ถนน/ชุมชน':'หมู่ที่'); if(mm.length) missing.push('ที่อยู่ผู้ค้ำ: '+mm.join(' · ')); }
+ }
  (a.refs||[]).forEach((r,i)=>{ const n=i+1;
    if(!r.nick) missing.push('ชื่อ-นามสกุลบุคคลอ้างอิงคนที่ '+n);
    if(!r.rel) missing.push('ความสัมพันธ์บุคคลอ้างอิงคนที่ '+n);
@@ -5388,6 +5434,7 @@ function autoChecks(a){
   prevRejected:prev.filter(x=>x.status==='rejected').length,
   prevTotal:prev.length};
 }
+function guarAddrTxt(x){ if(!x) return '-'; return [x.no?'เลขที่ '+x.no:'', x.noMoo?(x.road||''):(x.moo?'ม.'+x.moo:''),'ต.'+(x.sub||'-'),'อ.'+(x.dist||'-'),'จ.'+(x.prov||'-'),x.zip].filter(Boolean).join(' ').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }   /* 0925-E */
 function fmtAddr(x){ if(!x) return '-'; return [x.no?'เลขที่ '+x.no:'',x.moo?'ม.'+x.moo:'','ต.'+(x.sub||'-'),'อ.'+(x.dist||'-'),'จ.'+(x.prov||'-'),x.zip].filter(Boolean).join(' '); }
 function openDetail(id){ window.__detailId=id;
  const a=APPS.find(x=>x.id===id); if(!a) return; try{window.__openCaseId=id;}catch(e){}
@@ -5407,7 +5454,7 @@ function openDetail(id){ window.__detailId=id;
    <tr><td class="mut">อายุ</td><td>${a.guar.age||'-'} ปี</td><td class="mut">โทร</td><td>${a.guar.phone||'-'}</td></tr>
    <tr><td class="mut">ความสัมพันธ์</td><td>${a.guar.relation||'-'}</td><td class="mut">อาชีพ</td><td>${(OCC_LIST[a.guar.occupation]||{}).s||'-'}</td></tr>
    <tr><td class="mut">ที่ทำงาน</td><td>${a.guar.workplace||'-'}</td><td class="mut">รายได้</td><td>${fmt(a.guar.income)} บ./ด.</td></tr>
-   <tr><td class="mut">พื้นที่</td><td colspan="3">ต.${a.guar.sub||'-'} ${a.guar.dist||''}</td></tr></table></div>`:'';
+   <tr><td class="mut">${a.guar.addr?'ที่อยู่':'พื้นที่'}</td><td colspan="3">${a.guar.addr?guarAddrTxt(a.guar.addr):('ต.'+(a.guar.sub||'-')+' '+(a.guar.dist||''))}</td></tr></table></div>`:'';
  const refsHtml = (a.refs && a.refs.some(r=>r&&(r.nick||r.phone))) ? `<div class="card mb"><h3>บุคคลอ้างอิง (คนรู้จักผู้ซื้อ)</h3><table>
    <tr><td class="mut">คนที่</td><td class="mut">ชื่อ-นามสกุล</td><td class="mut">ความสัมพันธ์</td><td class="mut">เบอร์โทร</td></tr>
    ${a.refs.map((r,i)=>`<tr><td>${i+1}</td><td>${r.nick||'-'}</td><td>${r.rel||'-'}</td><td>${r.phone||'-'}</td></tr>`).join('')}
@@ -5661,7 +5708,7 @@ function printCase(id){
    +row('อายุ',(a.guar.age||'-')+' ปี','โทร',esc(a.guar.phone)||'-')
    +row('ความสัมพันธ์',esc(a.guar.relation)||'-','อาชีพ',(OCC_LIST[a.guar.occupation]||{}).s||'-')
    +row('ที่ทำงาน',esc(a.guar.workplace)||'-','รายได้',money(a.guar.income))
-   +row('พื้นที่','ต.'+(esc(a.guar.sub)||'-')+' '+(esc(a.guar.dist)||''))); }
+   +(a.guar.addr?row('ที่อยู่',guarAddrTxt(a.guar.addr)):row('พื้นที่','ต.'+(esc(a.guar.sub)||'-')+' '+(esc(a.guar.dist)||'')))); }
  // เงื่อนไขสินเชื่อ
  const loanRows=
    row('ผลิตภัณฑ์',PRODUCTS[a.product].label,'งวด',(PAYTYPES[a.payType]||'-')+' · '+(c.termUsed||a.term)+' เดือน')
@@ -8913,7 +8960,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0925-D';
+const CHK3_BUILD='0925-F';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -9031,7 +9078,7 @@ const EDIT_FIELDS=[
  ['s1','หัวข้อ 1 ผู้ขอ',[['idcard','เลขบัตรประชาชน',['#f-idcard','#f-cardtype']],['name','ชื่อ-สกุล/ชื่อเล่น',['#f-prefix','#f-name','#f-lname','#f-nick','#f-gender']],['birth','วันเกิด/อายุ',['#f-birth','#f-age']],['phone','เบอร์โทร',['#phone-list']],['marital','สถานภาพ/คู่สมรส/บุตร',['#f-marital','#spouse-block','#f-children']],['addrCard','ที่อยู่ตามบัตร (1.1)',['[id^=fc-]']],['addrCur','ที่อยู่ปัจจุบัน/ทะเบียนบ้าน (1.2)',['[id^=fp-]','#f-sameaddr','#f-housetype','#w-housepay','#f-tenure','#f-stayyears','#f-houseorder','#f-houseppl','#f-houseloc']],['refs','บุคคลอ้างอิง (1.3)',['[id^=f-ref]']],['vehUse','ผู้ใช้รถ/วัตถุประสงค์ (1.4)',['[id^=f-vu]']]]],
  ['s2','หัวข้อ 2 อาชีพ',[['occupation','อาชีพ/ประเภทย่อย',['#f-occg','#f-occ','#w-occex','#w-rai','#f-occex','#f-rai']],['workplace','ชื่อกิจการ/ที่ตั้ง/เบอร์ที่ทำงาน',['#f-workplace','#f-workaddr','#w-workphone','[id^=f-pw-]']],['workyears','อายุงาน',['#f-workyrs','#f-workmos','#f-workstart']]]],
  ['s3','หัวข้อ 3 รายได้',[['income','รายได้หลัก',['#f-income']],['incomeExtra','รายได้เสริม/ที่มา',['#f-incextrahas','.incx','#f-incomeextra','#f-incomeextrasrc','#f-incomeextrasrc-other']],['debt','ภาระหนี้เดิม/รายการ',['#f-debthas','#f-debt','#debt-items-w','#debt-items']],['expense','ค่าใช้จ่ายส่วนตัว',['#f-expense']]]],
- ['s5','หัวข้อ 5 ผู้ค้ำ/การขาย',[['guar','ผู้ค้ำ',['#f-guar','[id^=g-]']],['sale','สถานะการขาย/วันที่ขาย/เลขสัญญาตอนส่ง',['#f-salestate','#f-salesold-w','#f-saledate','#f-salecontract']]]]
+ ['s5','หัวข้อ 5 ผู้ค้ำ/การขาย',[['guar','ผู้ค้ำ',['#f-guar','[id^=g-]','[id^=ga-]']],['sale','สถานะการขาย/วันที่ขาย/เลขสัญญาตอนส่ง',['#f-salestate','#f-salesold-w','#f-saledate','#f-salecontract']]]]
 ];
 function efLabel(k){ for(const g of EDIT_FIELDS) for(const f of g[2]) if(f[0]===k) return f[1]; return k; }
 function efSels(keys){ const out=[]; for(const g of EDIT_FIELDS) for(const f of g[2]) if(keys.indexOf(f[0])>=0) out.push(...f[2]); return out; }
@@ -9300,6 +9347,7 @@ function check3(a, c){ try{ custOccFix(); }catch(e){}   /* 0921-A: ซ่อม�
   const gI=normDigits((a.guar||{}).idcard||''), gP=normDigits((a.guar||{}).phone||'');
   if(gI&&idN&&gI===idN) P('person','bad','เลขบัตรผู้ค้ำเป็นเลขเดียวกับลูกค้า — ค้ำตัวเองไม่ได้');
   if(gP&&phN&&gP===phN) P('person','warn','เบอร์โทรผู้ค้ำเป็นเบอร์เดียวกับลูกค้า — ต้องเป็นเบอร์ที่ติดต่อผู้ค้ำได้จริง');
+  try{ const gm=guarMissing(a); if(gm.length){ if(guarIsNewRule(a)) P('person','warn','ผู้ค้ำ: ข้อมูลไม่ครบ — ขอข้อมูลผู้ค้ำเพิ่ม ('+gm.join(' · ')+')'); else P('person','info','ผู้ค้ำ: ข้อมูลไม่ครบ (เคสก่อน 0925-E — ยังไม่บังคับกรอก) · ขาด: '+gm.join(' · '),true); } }catch(e){}   /* 0925-E */
   const _sp=normDigits((a.spouse||{}).phone||''); if(_sp&&phN&&_sp===phN){ const _spm=spousePhoneMode(); if(_spm==='warn') P('person','warn','เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า — ขอเบอร์ที่ติดต่อได้จริง'); else if(_spm==='info') P('person','info','เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า ('+_sp.replace(/^(\d{3})(\d{3})(\d{4})$/,'$1-$2-$3')+') — สนญ. พิจารณาว่าจะให้สาขาขอเบอร์ที่ติดต่อได้จริงหรือไม่',true); }   /* 0918-A: off / info (เฟส 1, hq-only) / warn (เฟส 2) */
   /* อาชีพ ↔ อายุ/หลักฐาน */
   const wy2=+a.workYears||0;
