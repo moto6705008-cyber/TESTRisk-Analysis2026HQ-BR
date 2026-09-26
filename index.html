@@ -273,6 +273,16 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 .qb .bx .h{font-size:12.5px;font-weight:700}.qb .bx .v{font-size:26px;font-weight:800;line-height:1.15;margin-top:2px}.qb .bx .v small{font-size:14px;font-weight:600}.qb .bx .s{font-size:12px;color:#4b5563;margin-top:2px}
 .qb .go{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;border-radius:999px;padding:3px 12px;color:#fff;border:0;cursor:pointer;font-family:inherit}
 .qb .ft{margin-top:8px;font-size:11.5px;color:#6b7280;display:flex;gap:8px;flex-wrap:wrap;align-items:center}.qb .ft b{color:#374151}.qb .ft2{margin-top:8px;font-size:12.5px;color:#374151}
+.qb .qclick{cursor:pointer}.qb .qclick:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}.qb .hint{font-size:11px;color:#6b7280;margin-top:6px}
+.qln{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #fed7aa;border-radius:8px;padding:4px 8px;margin-top:5px;cursor:pointer;font-size:12.5px}.qln>b{font-size:18px;color:#c2410c;min-width:22px;text-align:center}.qln>div{flex:1}.qln .mut{font-size:11.5px}.qln>span{color:#c2410c;font-weight:700}
+.qb .qchips2{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;align-items:center}.qb .qchips2 .qchipb{padding:3px 10px}
+.qstrip{margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:#9a3412;border-top:1px dashed #fed7aa;padding-top:8px}
+.qchipb{border:1px solid #fdba74;background:#fff7ed;color:#9a3412;border-radius:999px;padding:4px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}.qchipb b{font-size:14px;color:#c2410c}.qchipb span{color:#6b7280;font-size:11.5px}.qchipb em{color:#b91c1c;font-style:normal;font-weight:700}.qchipb:hover{background:#ffedd5}
+.qun{margin-left:6px;border:1px solid #fdba74;background:#fff;color:#c2410c;border-radius:999px;padding:0 8px;font-size:11px;cursor:pointer;font-family:inherit}
+.qnum{display:inline-block;color:#fff;border-radius:6px;padding:0 7px;font-weight:700;font-size:12px}.qsec{background:#fff7ed;font-weight:700;font-size:12.5px}
+.qtabs{display:flex;gap:6px;margin:4px 0 10px}.qtabs button{border:1px solid #fed7aa;background:#fff;color:#c2410c;border-radius:999px;padding:3px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}.qtabs button.on{background:#c2410c;color:#fff;border-color:#c2410c}
+.qret-btn{background:#fff7ed;border:1.5px solid #c2410c;color:#c2410c;font-weight:700}.qret-tag{display:inline-block;background:#c2410c;color:#fff;border-radius:999px;padding:0 8px;font-size:11px;font-weight:700;margin-left:4px}
+.qr-k{border:1.5px solid #d1d5db;background:#fff;color:#374151;border-radius:999px;padding:5px 12px;margin:3px 6px 3px 0;font-size:13px;cursor:pointer;font-family:inherit}.qr-k.on{background:#c2410c;border-color:#c2410c;color:#fff;font-weight:700}
 .qb .lg{display:inline-flex;align-items:center;border:1px solid;border-radius:999px;padding:1px 9px;font-weight:600}
 @media(max-width:820px){.qb .g{grid-template-columns:1fr}.qtf{flex-wrap:wrap;margin-right:0}.qtf .rt{text-align:left}.p1row>div:not(.qtf){border-left:0!important;padding-left:0!important}}
 
@@ -428,7 +438,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-G (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-G (เฟส 1 · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
+      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-I (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-I (เฟส 1 · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง + ตีกลับ/รับทราบ/เลขสัญญา/ป๊อปอัป · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
     </div>
   </div>
 </div>
@@ -1486,7 +1496,7 @@ function viewHome(){
  const _P1=p1(); const _today=new Date().toISOString().slice(0,10);   /* 0917-E: หน้าเริ่มภาษาเฟส 1 */
  const _pc=_P1?p1Count((APPS||[]).filter(a=>a.status==='pending')):null;   /* 0921-B: สูตรเดียวกับหน้าคิว */
  const pend=_P1?_pc.hqPending:(APPS||[]).filter(a=>a.status==='pending').length;
- const more=_P1?_pc.ackPending:(APPS||[]).filter(a=>a.status==='moreinfo').length;
+ const more=_P1?_pc.ackAll:(APPS||[]).filter(a=>a.status==='moreinfo').length;
  const todayDone=_P1?(APPS||[]).filter(a=>a.hqAdvice&&a.hqAdvice.sentAt&&new Date(a.hqAdvice.sentAt).toISOString().slice(0,10)===_today).length:(APPS||[]).filter(a=>a.decidedAt&&new Date(a.decidedAt).toISOString().slice(0,10)===_today).length;
  const L1=_P1?'รอ สนญ. ตรวจ+แนะนำ':'รอพิจารณา · เคสใหม่', L2=_P1?'สนญ. ส่งแล้ว · รอสาขารับทราบ':'ขอข้อมูลเพิ่ม (ตีกลับ)', L3=_P1?'ส่งการ์ด+คำแนะนำแล้ววันนี้':'พิจารณาแล้ววันนี้', LQ=_P1?'คิวรอตรวจ+แนะนำ':'คิวรอพิจารณา';
  const nm=(SESSION&&SESSION.name)||'ฝ่ายวิเคราะห์';
@@ -2257,7 +2267,7 @@ function hqAdvicePanel(a){ if(!(p1()&&SESSION&&SESSION.role==='analyst'&&a.statu
     <label style="display:flex;align-items:center;gap:6px;font-size:12px;margin-top:4px;cursor:pointer"><input type="checkbox" id="advn-${k}" ${g.none?'checked':''} onchange="if(this.checked){ document.getElementById('adv-${k}').value=''; }"> ไม่มีข้อเสนอแนะส่วนนี้</label></div>`; }).join('')}
   </div>
   <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap"><span id="adv-status" class="mut" style="font-size:12px">${h.at&&!sent?'ร่างล่าสุด '+fmtDT(h.at):''}</span>
-   <span style="margin-left:auto"></span><button class="btn btn-line btn-sm" onclick="hqAdviceSave('${a.id}')">💾 บันทึกร่าง</button><button class="btn btn-red btn-sm" onclick="hqAdviceSend('${a.id}')">${sent?'📨 ส่งฉบับแก้ไขให้สาขา':'📨 ส่งการ์ด + คำแนะนำให้สาขา'}</button></div></div>`; }
+   <span style="margin-left:auto"></span><button class="btn btn-line btn-sm" onclick="hqAdviceSave('${a.id}')">💾 บันทึกร่าง</button>${sent?'':`<button class="btn btn-sm qret-btn" onclick="qReturnDlg('${a.id}')" title="ใช้เมื่อยังส่งการ์ดไม่ได้ — ต้องให้สาขาถามลูกค้าเพิ่ม/แก้ช่องที่กรอกผิดก่อน">↩ ตีกลับให้สาขาแก้/ตอบ</button>`}<button class="btn btn-red btn-sm" onclick="hqAdviceSend('${a.id}')">${sent?'📨 ส่งฉบับแก้ไขให้สาขา':'📨 ส่งการ์ด + คำแนะนำให้สาขา'}</button></div></div>`; }
 /* กล่องรอ สนญ. (ฝั่งสาขา) */
 function branchWaitCard(a){ const esc=s=>String(s==null?'':s).replace(/</g,'&lt;');
  return `<div class="card mb" style="border:1px dashed #93c5fd;background:#f8fafc;text-align:center;padding:18px"><div style="font-size:15px;font-weight:600;color:#1d4ed8">🔒 การ์ด 3 มิติจะแสดงเมื่อ สนญ. ตรวจสอบและส่งคำแนะนำกลับมา</div><div class="mut" style="margin-top:4px">ส่งเคสเมื่อ ${a.submittedAt?fmtDT(a.submittedAt):esc(a.date)} · สนญ. ตรวจภายในวันเดียวกัน · ระหว่างนี้บันทึกผลการขายได้ถ้าลูกค้าตัดสินใจแล้ว (ระบบจะติดธง "ขายก่อน สนญ. ตรวจ")</div></div>`; }
@@ -2397,6 +2407,7 @@ function p1Count(list){ const c={total:list.length,cancelled:0,sent:0,ackwait:0,
   else if(st==='ackwait'){ c.ackwait++; if(late) c.ackLate++; }
   else { c.sent++; if(late) c.hqLate++; }
   if(a.sale&&a.sale.beforeSubmit) c.beforeSubmit++; else if(a.sale&&a.sale.beforeHQ) c.beforeHQ++; });
+ list.forEach(a=>{ if(a.status!=='cancelled'&&hqSent(a)&&!a.ack3){ c.ackAll=(c.ackAll||0)+1; if(a.sale&&a.sale.result&&a.sale.result!=='waiting') c.ackDone=(c.ackDone||0)+1; } if(a.status!=='cancelled'&&a.sale&&a.sale.result==='sold'&&!String(a.sale.contract||'').trim()) c.noCt=(c.noCt||0)+1; }); c.ackAll=c.ackAll||0; c.ackDone=c.ackDone||0; c.noCt=c.noCt||0;   /* 0925-H: ยังไม่รับทราบทั้งหมด (รวมเคสที่บันทึกผลขายแล้ว) */
  c.hqPending=c.sent; c.ackPending=c.ackwait; c.saleWait=c.reviewed+c.waiting+c.overdue; c.pendingSale=c.sent+c.ackwait+c.saleWait; return c; }   /* 0921-B: สูตรเดียวทุกหน้า (เริ่ม/คิว/รายการสาขา/ภาพรวมเขต/ผู้บริหาร): sent+ackwait+saleWait+sold+notsold = total */
 
 /* ===== 0922-A: ตัวกรองสาขา · ป๊อปอัปจากกล่อง · เรียงลำดับ · หัวหน้าลงตัว 3 บทบาท (แสดงผลอย่างเดียว) ===== */
@@ -2437,7 +2448,7 @@ function p1BranchSelect(ctx){ const zone=ctx==='zone'?SESSION.zone:fZone; const 
  if(fBranch&&!brs.some(b=>b.code===fBranch)) fBranch='';
  return `<div class="flex"><label class="mut" style="font-size:13px">สาขา:</label><select style="width:210px" onchange="fBranch=this.value;go(currentTab)"><option value="">— ${zone?'ทุกสาขาในเขต ('+brs.length+' สาขา)':'ทุกสาขา ('+brs.length+')'} —</option>${brs.map(b=>`<option value="${b.code}" ${fBranch===b.code?'selected':''}>${b.label}</option>`).join('')}</select></div>`; }
 function p1ScopeTag(ctx){ if(ctx==='br') return (typeof fMonth!=='undefined'&&fMonth)?'เดือนที่เลือก':'ช่วงที่เลือก'; const z=ctx==='zone'?(ZONES[SESSION.zone]||{}).name:(fZone?(ZONES[fZone]||{}).name:'ทุกเขต'); const b=fBranch?((BRANCHES.find(x=>x.code===fBranch)||{}).label||fBranch):(ctx==='zone'?'ทุกสาขาในเขต':'ทุกสาขา'); return z+' · '+b; }
-function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p1ScopeList(ctx,brCode).filter(a=>p1Group(a)===grp); const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p1ScopeList(ctx,brCode).filter(a=>grp==='ack'?(a.status!=='cancelled'&&hqSent(a)&&!a.ack3):p1Group(a)===grp);   /* 0925-H: รอรับทราบ รวมเคสบันทึกผลขายแล้ว */ const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
  const tOf=a=>grp==='sent'?(a.submittedAt||0):grp==='ack'?((a.hqAdvice&&a.hqAdvice.sentAt)||a.submittedAt||0):grp==='sale'?((a.ack3&&a.ack3.at)||(a.hqAdvice&&a.hqAdvice.sentAt)||a.submittedAt||0):grp==='sold'?((a.sale&&a.sale.at)||a.submittedAt||0):((a.cancelledAt||(a.sale&&a.sale.at)||a.submittedAt)||0);
  const list=src.slice().sort((x,y)=>(grp==='sold'||grp==='not')?(tOf(y)-tOf(x)):(tOf(x)-tOf(y)));
  const isBr=ctx==='br', isHQ=ctx==='hq'; const tCol=grp==='sent'?'ยื่นเมื่อ':grp==='ack'?'สนญ. ส่งการ์ด':grp==='sale'?'สาขารับทราบ':grp==='sold'?'ขายเมื่อ':'เมื่อ';
@@ -2456,7 +2467,7 @@ function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p
  document.getElementById('modal-bg').classList.remove('hidden'); }
 function p1Chips(s,ctx){ ctx=ctx||''; const on=(g)=>ctx?`title="คลิกดูรายชื่อเคส" onclick="p1ChipPop('${ctx}','${g}')" ${(ctx==='hq'&&fState===g)?'data-act="1"':''}`:''; return `<div class="qchips">
   <div class="qchip sent" style="background:#dbeafe" ${on('sent')}><div class="n" style="color:#1d4ed8">${s.hqPending||0}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ+แนะนำ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
-  <div class="qchip ack" style="background:#fef3c7" ${on('ack')}><div class="n" style="color:#b45309">${s.ackPending||0}</div><div class="l" style="color:#b45309">${ctx==='br'?'👉 ถึงคิวเรา: กดรับทราบ':'🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ'}${s.ackLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackLate+')</span>':''}</div></div>
+  <div class="qchip ack" style="background:#fef3c7" ${on('ack')}><div class="n" style="color:#b45309">${s.ackAll!=null?s.ackAll:(s.ackPending||0)}</div><div class="l" style="color:#b45309">${ctx==='br'?'👉 ถึงคิวเรา: กดรับทราบ':'🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ'}${s.ackDone?' <span style="color:#6b7280">(รวมเคสบันทึกผลขายแล้ว '+s.ackDone+')</span>':''}${s.ackLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackLate+')</span>':''}</div></div>
   <div class="qchip sale" style="background:#fef9c3" ${on('sale')}><div class="n" style="color:#854d0e">${s.reviewed+s.waiting+s.overdue}</div><div class="l" style="color:#854d0e">${ctx==='br'?'⏳ ถึงคิวเรา: บันทึกผลขาย':'⏳ รอบันทึกผลขาย'}${s.overdue?' <span style="color:#b91c1c">(ค้าง '+s.overdue+')</span>':''}</div></div>
   <div class="qchip sold" style="background:#f0fdf4" ${on('sold')}><div class="n" style="color:#166534">${s.sold}</div><div class="l" style="color:#166534">🛒 ขายแล้ว</div></div>
   <div class="qchip not" style="background:#f3f4f6" ${on('not')}><div class="n" style="color:#374151">${s.notsold}</div><div class="l" style="color:#374151">✋ ไม่ขาย/ยกเลิก${s.cancelled?' <span class="mut" style="font-size:10.5px">(ยกเลิกคำขอ '+s.cancelled+')</span>':''}</div></div>
@@ -4578,7 +4589,7 @@ function viewBranchList(){
  const _srt=p1()?p1SortApply(list,p1SortMode('brl','work')):list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0)); const _pg=pgApply('brl',_srt,[p1SortMode('brl','work'),fYear+'/'+fMonth].join('|')); const body=(p1()&&_pg.rows.some(a=>a.status==='pending')?p1RowHead():'')+(_pg.rows.map(a=>appCard(a,false)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>')+_pg.bar;   /* 0923-C: แบ่งหน้า */   /* 0922-A: งานถึงคิวก่อน มาก่อนอยู่บน */
  const _pc=p1()?p1Count(list):null;
  return dashHero('📋','รายการ / ติดตามคำขอของสาขา ('+list.length+')',p1()?p1HeadLine(_pc,p1ScopeTag('br')):'คลิกการ์ดเพื่อดูรายละเอียดและหมายเหตุจากฝ่ายวิเคราะห์')
- +`<div class="card">${p1()?p1Chips(_pc,'br'):qChips(s)}${p1()&&(p1Count(list).ackPending||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(list).ackPending}</b> เคส — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap;gap:8px">${periodUI()}${p1()?p1SortBtn('brl','work'):''}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${p1()?qBoard(myApps()):''}${body}</div>`;
+ +`<div class="card">${p1()?p1Chips(_pc,'br'):qChips(s)}${p1()&&(p1Count(list).ackAll||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(list).ackAll}</b> เคส ที่ยังไม่กดรับทราบ${p1Count(list).ackDone?' (รวมเคสที่บันทึกผลขายไปแล้ว '+p1Count(list).ackDone+')':''} — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&(p1Count(list).noCt||0)?`<div style="background:#fff7ed;border:1px solid #fdba74;color:#c2410c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">🧾 ขายแล้วแต่ยังไม่ใส่เลขที่สัญญา <b>${p1Count(list).noCt}</b> เคส — เปิดเคส แล้วกด "เติมเลขที่สัญญา"</div>`:''}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap;gap:8px">${periodUI()}${p1()?p1SortBtn('brl','work'):''}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${p1()?qBoard(myApps()):''}${body}</div>`;
 }
 function statCount(list){ return {
  total:list.length,
@@ -5197,7 +5208,7 @@ function viewZoneP1(){
  const list=p1ScopeList('zone');   /* 0922-A: กรองสาขาในเขต */
  const c=p1Count(list);   /* 0921-B: สูตรเดียวกับทุกหน้า */
  const lt=a=>hqSent(a)?lightOf(a):null;
- const rows=brs.map(b=>{ const bl=list.filter(a=>a.branch===b.code); const bc=p1Count(bl); const sent=bl.filter(hqSent); const g=sent.filter(a=>lt(a)==='ok').length,y=sent.filter(a=>lt(a)==='warn').length,r=sent.filter(a=>lt(a)==='bad').length; const before=bl.filter(a=>a.sale&&(a.sale.beforeSubmit||a.sale.beforeHQ)).length; const hqP=bc.hqPending; const ackP=bc.ackPending;
+ const rows=brs.map(b=>{ const bl=list.filter(a=>a.branch===b.code); const bc=p1Count(bl); const sent=bl.filter(hqSent); const g=sent.filter(a=>lt(a)==='ok').length,y=sent.filter(a=>lt(a)==='warn').length,r=sent.filter(a=>lt(a)==='bad').length; const before=bl.filter(a=>a.sale&&(a.sale.beforeSubmit||a.sale.beforeHQ)).length; const hqP=bc.hqPending; const ackP=bc.ackAll;
   const Z=(g,v)=>v?`<a href="#" style="text-decoration:underline dotted" onclick="event.preventDefault();p1ChipPop('zone','${g}','${b.code}')" title="คลิกดูรายชื่อ">${v}</a>`:v;
   return `<tr><td class="b">${b.label}</td><td class="num">${bl.length}</td><td class="num" style="color:#1d4ed8">${Z('sent',hqP)}</td><td class="num" style="color:#b45309">${Z('ack',ackP)}${bc.ackLate?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.ackLate+')</span>':''}</td><td class="num" style="color:${bc.overdue?'#b91c1c':'#854d0e'}">${Z('sale',bc.reviewed+bc.waiting+bc.overdue)}${bc.overdue?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.overdue+')</span>':''}</td><td class="num" style="color:#166534">${Z('sold',bc.sold)}</td><td class="num">${Z('not',bc.notsold)}${bc.cancelled?' <span class="mut" style="font-size:10.5px">(ยกเลิก '+bc.cancelled+')</span>':''}</td><td class="num">${sent.length?`<span title="ข้อมูลสอดคล้อง">🟢${g}</span> <span title="ควรตรวจสอบเพิ่มเติม">🟡${y}</span> <span title="ข้อมูลน่าสงสัย">🔴${r}</span>`:'<span class="mut">—</span>'}</td><td class="num" style="color:${before?'#b45309':'#374151'}">${before}</td></tr>`; }).join('')||'<tr><td colspan="9" class="mut">ยังไม่มีเคสในเขตนี้</td></tr>';
  const _srt=p1SortApply(list.filter(a=>a.status!=='cancelled'),p1SortMode('zonl','work'));   /* 0922-A: งานถึงคิวก่อน · ไม่ขึ้นแถวเคสยกเลิก */
@@ -5671,10 +5682,10 @@ function openDetail(id){ window.__detailId=id;
      ${(function(){ try{ return editReqPanel(a); }catch(e){ return ''; } })()}
      ${(a.thread||[]).map((t,ti)=>`<div class="alert ${t.by==='hq'?(t.st==='moreinfo'?'a-warn':'a-info'):(t.by==='zone'?'a-warn':'a-ok')}" style="margin-bottom:6px">
       <b>${t.by==='hq'?'สนญ. '+(t.st==='moreinfo'?'ขอข้อมูลเพิ่ม':t.st==='approved'?'อนุมัติ':t.st==='rejected'?'ปฏิเสธ':t.st==='override'?'ปรับไฟการ์ด':''):t.by==='zone'?'ผจก.เขต':(t.st==='editreq'?'สาขาขอแก้ข้อมูล':t.st==='edit'?'สาขาแก้ข้อมูล':t.st?'สาขา':'สาขาแจ้ง')}</b>
-      <span class="mut" style="font-size:11.5px">· ${fmtDT(t.at)}${t.name?' · '+_escH(t.name):''}</span><br>${_escH(t.msg||'')}
+      ${t.by==='hq'&&t.ret===true?' <span class="qret-tag">↩ ตีกลับ · รอสาขาตอบ</span>':t.by==='hq'&&t.ret===false?' <span class="mut" style="font-size:11px">(แจ้งเฉยๆ ไม่ตีกลับ)</span>':''}<span class="mut" style="font-size:11.5px">· ${fmtDT(t.at)}${t.name?' · '+_escH(t.name):''}</span><br>${_escH(t.msg||'')}
       ${t.img?`<br><img src="${t.img}" style="height:60px;border-radius:6px;cursor:zoom-in;margin-top:4px" onclick="showThreadImg('${a.id}',${ti})">`:''}
      </div>`).join('')}
-     ${caseMsgOn(a)?`<div style="display:flex;gap:8px;align-items:flex-start;margin-top:8px"><textarea id="cm-msg" rows="2" style="flex:1" placeholder="${isHQ?'ข้อความถึงสาขา (เช่น แก้อาชีพให้แล้ว / ขอให้ตรวจ…)':SESSION.role==='zone'?'ข้อความจาก ผจก.เขต ถึง สนญ./สาขา (เช่น ขอให้ตรวจผู้ค้ำเพิ่ม)':'แจ้ง สนญ. (เช่น กรอกรายได้ผิด ที่ถูกคือ 12,000 / บันทึกผลขายผิด ขอแก้เป็น…)'}"></textarea><button class="btn" onclick="caseMsgSend('${a.id}')">ส่งข้อความ</button>${(editReqOn(a)&&document.getElementById&&true)?`<button class="btn btn-org" onclick="const b=document.getElementById('er-box'); if(b){ b.style.display=''; b.scrollIntoView({behavior:'smooth',block:'center'}); } else alert('มีคำขอแก้ไขที่ยังไม่จบอยู่ — ดูด้านบน')" title="ขอแก้ข้อมูลที่กรอกผิด (เลือกช่อง → สนญ. อนุมัติ → แก้ได้เฉพาะช่องนั้น)">🔓 ขอแก้ข้อมูลที่กรอกผิด</button>`:''}</div><p class="mut" style="font-size:11.5px;margin:4px 0 0">${isHQ?'สาขาจะเห็นข้อความนี้ในเคสภายใน 1 นาที':SESSION.role==='zone'?'สนญ. จะเห็นป้าย "↩ เขตแจ้ง" ในรายการ · สาขาเห็นข้อความนี้ในเคสด้วย':'สนญ. จะเห็นป้าย "↩ สาขาตอบกลับ" ในรายการ · ใช้แจ้งแก้ข้อมูล/ผลขายที่บันทึกผิด (สาขาแก้เองไม่ได้)'}</p>`:''}</div>`
+     ${caseMsgOn(a)?`<div style="display:flex;gap:8px;align-items:flex-start;margin-top:8px"><textarea id="cm-msg" rows="2" style="flex:1" placeholder="${isHQ?'ข้อความถึงสาขา (เช่น แก้อาชีพให้แล้ว / ขอให้ตรวจ…)':SESSION.role==='zone'?'ข้อความจาก ผจก.เขต ถึง สนญ./สาขา (เช่น ขอให้ตรวจผู้ค้ำเพิ่ม)':'แจ้ง สนญ. (เช่น กรอกรายได้ผิด ที่ถูกคือ 12,000 / บันทึกผลขายผิด ขอแก้เป็น…)'}"></textarea>${(isHQ&&p1()&&a.status==='pending'&&!hqSent(a))?`<div style="display:flex;flex-direction:column;gap:6px;min-width:220px"><button class="btn btn-sm" style="background:#c2410c;color:#fff;font-weight:700" onclick="caseMsgSend('${a.id}',true)" title="ต้องให้สาขาตอบ/แก้ก่อน สนญ. ส่งการ์ด — เคสออกจากคิวจนกว่าสาขาจะตอบ">↩ ส่ง + ตีกลับให้สาขาตอบ</button><button class="btn btn-line btn-sm" onclick="caseMsgSend('${a.id}',false)" title="แจ้งเฉยๆ — เคสอยู่ในคิวตามเดิม">💬 ส่งข้อความ (ไม่ตีกลับ)</button></div>`:`<button class="btn" onclick="caseMsgSend('${a.id}')">ส่งข้อความ</button>`}${(editReqOn(a)&&document.getElementById&&true)?`<button class="btn btn-org" onclick="const b=document.getElementById('er-box'); if(b){ b.style.display=''; b.scrollIntoView({behavior:'smooth',block:'center'}); } else alert('มีคำขอแก้ไขที่ยังไม่จบอยู่ — ดูด้านบน')" title="ขอแก้ข้อมูลที่กรอกผิด (เลือกช่อง → สนญ. อนุมัติ → แก้ได้เฉพาะช่องนั้น)">🔓 ขอแก้ข้อมูลที่กรอกผิด</button>`:''}</div><p class="mut" style="font-size:11.5px;margin:4px 0 0">${isHQ?'สาขาจะเห็นข้อความนี้ในเคสภายใน 1 นาที':SESSION.role==='zone'?'สนญ. จะเห็นป้าย "↩ เขตแจ้ง" ในรายการ · สาขาเห็นข้อความนี้ในเคสด้วย':'สนญ. จะเห็นป้าย "↩ สาขาตอบกลับ" ในรายการ · ใช้แจ้งแก้ข้อมูล/ผลขายที่บันทึกผิด (สาขาแก้เองไม่ได้)'}</p>`:''}</div>`
     :(a.decisionNote?`<div class="alert a-info"><b>หมายเหตุจากฝ่ายวิเคราะห์:</b> ${a.decisionNote} ${a.decisionDate?'('+a.decisionDate+')':''}</div>`:'')}
     ${(SESSION.role==='branch'&&a.status==='moreinfo'&&!appLocked(a))?((a.reqItems&&a.reqItems.length)?reqFulfillCard(a):`<div class="card mb" id="branch-reply-card" style="border:1.5px solid var(--orange)"><h3>📎 ตอบกลับข้อมูลที่ สนญ. ขอ</h3>
      <div class="alert a-warn">สนญ. ขอ: ${a.decisionNote||'-'}</div>
@@ -5843,8 +5854,8 @@ function branchReply(id){
 function _escH(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 /* 0916-A: ข้อความในเคส สาขา ↔ สนญ. (เฟส 1) — ใช้ a.thread เดิม (mergeCase รวมแบบ union อยู่แล้ว) */
 function caseMsgOn(a){ try{ return p1() && a && a.status==='pending' && SESSION && (SESSION.role==='branch'||SESSION.role==='analyst'||SESSION.role==='zone'); }catch(e){ return false; } }
-function caseMsgSend(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const el=document.getElementById('cm-msg'); const msg=(el&&el.value||'').trim(); if(!msg){ alert('พิมพ์ข้อความก่อนส่ง'); return; }
- a.thread=a.thread||[]; a.thread.push({by:SESSION.role==='branch'?'branch':(SESSION.role==='zone'?'zone':'hq'),msg,name:(SESSION&&SESSION.name)||'',at:Date.now()}); a.updatedAt=Date.now(); saveApps(); try{ cloudPushCase(a); }catch(e){}
+function caseMsgSend(id,ret){ const a=APPS.find(x=>x.id===id); if(!a) return; const el=document.getElementById('cm-msg'); const msg=(el&&el.value||'').trim(); if(!msg){ alert('พิมพ์ข้อความก่อนส่ง'); return; }
+ a.thread=a.thread||[]; const _tm={by:SESSION.role==='branch'?'branch':(SESSION.role==='zone'?'zone':'hq'),msg,name:(SESSION&&SESSION.name)||'',at:Date.now()}; if(_tm.by==='hq'&&(ret===true||ret===false)) _tm.ret=ret; a.thread.push(_tm); a.updatedAt=Date.now(); try{ qReset(); }catch(e){} saveApps(); try{ cloudPushCase(a); }catch(e){}
  try{ toast&&toast('ส่งข้อความแล้ว'); }catch(e){} openDetail(id); setTimeout(()=>{ const c=document.getElementById('case-thread'); if(c) c.scrollIntoView({block:'center'}); },50); }
 function showThreadImg(id,idx){
  const a=APPS.find(x=>x.id===id); if(!a||!a.thread||!a.thread[idx]||!a.thread[idx].img) return;
@@ -8977,7 +8988,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0925-G';
+const CHK3_BUILD='0925-I';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -10245,7 +10256,7 @@ document.addEventListener('input',e=>{ const id=e.target&&e.target.id; if(id==='
 document.addEventListener('change',e=>{ const id=e.target&&e.target.id; if(id==='f-saledate'||id==='f-salecontract'||id==='f-salestate') saleDateRender(); },true);
 document.addEventListener('blur',e=>{ const id=e.target&&e.target.id; if(id==='f-saledate') setTimeout(saleDateRender,30); },true);
 
-/* ================== 0925-G: คิวรอ สนญ. ตรวจ (สาขา · สนญ. · เขต) ==================
+/* ================== 0925-G/H: คิวรอ สนญ. ตรวจ (สาขา · สนญ. · เขต) ==================
    - คิว = เคสเฟส 1 ที่ pending · ยังไม่ส่งการ์ด · ไม่ได้รอสาขาตอบ (ตีกลับ)
    - ลำดับ: งานที่สาขาแก้แล้วส่งกลับ / สาขาตอบแล้ว ขึ้นก่อน (เรียงตามเวลาเข้าคิว) → เคสใหม่ (ตามเวลาส่ง)
    - ตีกลับ = ข้อความล่าสุดเป็นของ สนญ. (ยังไม่ส่งการ์ด) หรือ สนญ. อนุญาตให้แก้แล้ว รอสาขาส่งกลับ → ไม่นับคิว
@@ -10254,22 +10265,33 @@ document.addEventListener('blur',e=>{ const id=e.target&&e.target.id; if(id==='f
    - ไม่เก็บอะไรลงเคส (คำนวณสดทุกครั้ง) · ตั้งค่าใน CFG.queue (ซิงก์ผ่าน cfg เดิม) */
 function qCfg(){ const q=(CFG&&CFG.queue)||{}; const n=(v,d,lo)=>{ v=+v; return (v>=lo)?v:d; };
  const tm=(v,d)=>/^\d{1,2}:\d{2}$/.test(String(v||''))?String(v):d;
- return {min:n(q.min,5,1), rev:n(q.rev,2,1), late:n(q.late,15,1), open:tm(q.open,'08:30'), close:tm(q.close,'17:30'), sat:q.sat!==false, sun:!!q.sun}; }
+ return {min:n(q.min,5,1), rev:n(q.rev,2,1), late:n(q.late,15,1), open:tm(q.open,'08:30'), close:tm(q.close,'17:30'), sat:q.sat!==false, sun:!!q.sun, ctDays:n(q.ctDays,1,0)}; }
 function qOpenNow(t){ const c=qCfg(); const d=new Date(t||Date.now()); const wd=d.getDay(); if(wd===0&&!c.sun) return false; if(wd===6&&!c.sat) return false;
  const m=d.getHours()*60+d.getMinutes(); const hm=s=>{ const p=s.split(':'); return (+p[0])*60+(+p[1]); }; return m>=hm(c.open)&&m<hm(c.close); }
 function qMins(ms){ return Math.max(0,Math.round(ms/60000)); }
 function qMinTxt(m){ return m>=60?Math.floor(m/60)+' ชม. '+(m%60)+' นาที':m+' นาที'; }
 function qEta(pos){ const c=qCfg(); if(!qOpenNow()) return 'เมื่อเปิดทำการ'; const lo=Math.ceil(pos/c.rev)*c.min, hi=pos*c.min; return lo===hi?lo+' นาที':lo+'–'+hi+' นาที'; }
-function _qLastMsg(a){ const th=(a.thread||[]).filter(t=>t&&(t.by==='hq'||t.by==='branch')&&(!t.st||t.st==='moreinfo')); return th.length?th[th.length-1]:null; }
 function _qFields(a){ const f=((a.editReq||{}).fields)||[]; try{ return f.map(k=>efLabel(k)).join(', '); }catch(e){ return f.join(', '); } }
+/* 0925-H: ข้อความ สนญ. ที่นับเป็น "ตีกลับ" = ข้อความ สนญ. (ไม่มี st) ที่ไม่ได้ติ๊ก "ไม่ตีกลับ" (ret!==false) — ข้อความเก่าก่อน 0925-H นับเป็นตีกลับเหมือนเดิม */
+function _qIsRet(t){ return !!(t&&t.by==='hq'&&(!t.st||t.st==='moreinfo')&&t.ret!==false); }
+function _qThreadInfo(a){ const th=(a.thread||[]).filter(Boolean); let hq=null,br=null,un=0;
+ th.forEach(t=>{ const at=t.at||0; if(_qIsRet(t)&&(!hq||at>=(hq.at||0))) hq=t; else if(t.by==='branch'&&(!t.st||t.st==='edit')&&(!br||at>=(br.at||0))) br=t; else if(t.by==='hq'&&t.st==='unret'&&at>un) un=at; });
+ return {hq,br,un}; }
 /* สถานะคิวของเคส (ไม่รวมคำขอแก้ไข) */
-function qState(a){ if(!a||a.status!=='pending'||hqSent(a)) return null; if(typeof eomIsOut==='function'&&false) return null;
- const er=a.editReq||{}; const lm=_qLastMsg(a);
- if(er.st==='granted'&&!((er.grant||{}).until&&er.grant.until<Date.now())) return {k:'wait',at:(er.grant||{}).at||er.at||a.submittedAt||0,granted:true};
- if(lm&&lm.by==='hq') return {k:'wait',at:lm.at||a.submittedAt||0,msg:lm.msg||''};
+function qState(a){ if(!a||a.status!=='pending'||hqSent(a)) return null;
+ const er=a.editReq||{};
+ if(er.st==='granted'&&!((er.grant||{}).until&&er.grant.until<Date.now())) return {k:'wait',at:(er.grant||{}).at||er.at||a.submittedAt||0,granted:true,hqInit:!!er.hqInit};
+ const T=_qThreadInfo(a); const hqT=T.hq?(T.hq.at||0):0, brT=T.br?(T.br.at||0):0, doneT=er.st==='done'?(er.doneAt||a.lastBranchEditAt||0):0;
+ if(hqT&&hqT>Math.max(brT,T.un,doneT)) return {k:'wait',at:hqT,msg:T.hq.msg||''};
  if(er.st==='done'&&(a.hqAdvice||{}).resetBy) return {k:'back',at:a.lastBranchEditAt||er.doneAt||a.submittedAt||0};
- if(lm&&lm.by==='branch'&&(a.thread||[]).some(t=>t&&t.by==='hq'&&(!t.st||t.st==='moreinfo'))) return {k:'reply',at:lm.at||a.submittedAt||0,msg:lm.msg||''};
+ if(hqT&&brT>hqT&&T.br&&!T.br.st) return {k:'reply',at:brT,msg:T.br.msg||''};
  return {k:'new',at:a.submittedAt||0}; }
+/* 0925-H: งานของสาขาหลัง สนญ. ส่งการ์ด — กดรับทราบ · ใส่เลขที่สัญญา (นับทุกเคสขายแล้วที่สาขายังไม่พิมพ์เลข) */
+function qBrTask(a){ if(!a||a.status==='cancelled') return null; const ack=hqSent(a)&&!a.ack3; const s=a.sale||{};
+ const ct=s.result==='sold'&&!String(s.contract||'').trim(); if(!ack&&!ct) return null;
+ const ctAt=ct?(s.recordedAt||s.at||a.submittedAt||0):0; const ackAt=ack?((a.hqAdvice||{}).sentAt||0):0; const now=Date.now();
+ const ctDays=ct?Math.floor((now-ctAt)/864e5):0; const c=qCfg();
+ return {ack,ct,ackAt,ctAt,ctDays,ctLate:ct&&ctDays>=Math.max(1,c.ctDays)&&(now-ctAt)>c.ctDays*864e5,ackLate:ack&&_dayKey(ackAt)<_dayKey(now),res:s.result||''}; }
 /* คำนวณคิวทั้งระบบ (ลำดับคิวเป็นลำดับรวมทุกสาขา) — เก็บไว้ 2 วินาที */
 let _QC=null;
 function qCompute(){ const now=Date.now(); if(_QC&&now-_QC.t<2000&&_QC.n===APPS.length) return _QC;
@@ -10287,7 +10309,7 @@ function qRole(){ const r=SESSION&&SESSION.role; return r==='analyst'?'hq':r==='
 function _qBr(a){ const b=BRANCHES.find(x=>x.code===a.branch); return b?b.label:(a.branch||''); }
 /* แถบตั๋วบนหัวการ์ดเคส */
 function qTicket(a){ if(!p1()) return ''; const Q=qCompute(); const role=qRole(); const E=_p1Esc;
- let s=Q.R[a.id]?Object.assign({},Q.R[a.id]):(Q.M[a.id]||null); if(!s) return '';
+ let s=Q.R[a.id]?Object.assign({},Q.R[a.id]):(Q.M[a.id]||null); if(!s) return qTaskTicket(a,role);
  const k=(s.k==='new'&&s.late&&role==='hq')?'late':s.k; const [c,bg,bd]=Q_COL[k];
  const br=role==='branch'?'':_qBr(a); const pre=br?br+' · ':'';
  let lab='คิวที่',n=s.pos,tag='',t='',sub='',rl='',rv='';
@@ -10297,53 +10319,141 @@ function qTicket(a){ if(!p1()) return ''; const Q=qCompute(); const role=qRole()
  else if(k==='wait'){ lab=role==='hq'?'รอสาขา':'ถึงคิวสาขา'; n=role==='hq'?'–':'!';
   if(s.granted){ tag=role==='hq'?'อนุญาตให้แก้แล้ว':'สนญ. อนุญาตให้แก้'; t=role==='branch'?'แก้ข้อมูลแล้วกดบันทึกส่งกลับ':'รอสาขาแก้แล้วส่งกลับ · ไม่นับในคิว'; sub=pre+'ช่องที่แก้ได้: '+E(_qFields(a)); }
   else { const m=String(s.msg||'').slice(0,80); tag=role==='hq'?'ตีกลับแล้ว':'สนญ. ตีกลับ'; t=role==='branch'?'สนญ. ขอข้อมูลเพิ่ม · สาขาต้องตอบ':role==='zone'?'สาขาต้องตอบ สนญ. · ไม่นับในคิว':'รอสาขาตอบ · ไม่นับในคิว'; sub=pre+(m?'สนญ. ถาม: "'+E(m)+'"':'')+(role==='branch'?' · ตอบในเคสแล้วจะกลับเข้าคิวเอง':''); }
-  if(role==='branch'){ rl='ไม่นับคิว'; rv='ตอบเลย →'; } else { rl=role==='hq'?'ถามไปแล้ว':'ค้างมาแล้ว'; rv=qMinTxt(s.wait); } }
+  if(role==='branch'){ rl='ไม่นับคิว'; rv=s.granted?'แก้ข้อมูล →':'ตอบเลย →'; } else { rl=role==='hq'?(s.granted?'อนุญาตไปแล้ว':'ถามไปแล้ว'):'ค้างมาแล้ว'; rv=qMinTxt(s.wait); }
+  if(role==='hq'&&!s.granted) sub+=` <button type="button" class="qun" onclick="event.stopPropagation();qUnreturn('${a.id}')" title="ใช้เมื่อข้อความที่ส่งไปแค่แจ้งเฉยๆ ไม่ต้องรอสาขาตอบ">↺ ยกเลิกตีกลับ (กลับเข้าคิว)</button>`; }
  else if(k==='back'){ tag='แก้แล้วส่งกลับ'; t=role==='hq'?'สาขาแก้ '+E(_qFields(a))+' · ตรวจเฉพาะช่องที่แก้':'สาขาแก้ข้อมูลแล้ว · ได้ขึ้นคิวก่อน'; sub=role==='hq'?br:(pre+'สนญ. จะตรวจเฉพาะช่องที่แก้'); role==='hq'?waited():eta(); }
  else if(k==='reply'){ const m=String(s.msg||'').slice(0,80); tag='สาขาตอบแล้ว'; t=role==='hq'?'สาขาตอบ: "'+E(m)+'"':'ตอบ สนญ. แล้ว · ได้ขึ้นคิวก่อน'; sub=role==='hq'?br:(pre+'สนญ. จะตรวจต่อจากที่ถาม'); role==='hq'?waited():eta(); }
  else { tag=k==='late'?'เคสใหม่ · รอนาน':'เคสใหม่'; t='รอ สนญ. ตรวจ'; sub=role==='hq'?br:(pre+(s.pos>1?'มีเคสก่อนหน้า '+(s.pos-1)+' เคส':'เคสถัดไปที่ สนญ. จะตรวจ')); role==='hq'?waited():eta(); }
  return `<div class="qtf" style="background:${bg};border-color:${bd}"><div class="nb" style="background:${c}"><div class="l">${lab}</div><div class="v">${n}</div></div><div class="mid"><div class="tl"><span class="tg" style="background:${c}">${tag}</span><span class="t" style="color:${c}">${t}</span></div>${sub?`<div class="s">${sub}</div>`:''}</div><div class="rt"><div class="l">${rl}</div><div class="v" style="color:${c}">${rv}</div></div></div>`; }
-/* แถบคิวด้านบนของรายการ — scope: รายการเคสที่ผู้ใช้เห็น (สาขาตัวเอง / สาขาในเขต / ทั้งหมด) */
+function qTaskTicket(a,role){ const T=qBrTask(a); if(!T) return ''; const [c,bg,bd]=Q_COL.wait; const E=_p1Esc; const br=role==='branch'?'':_qBr(a)+' · ';
+ const rs=T.res==='sold'?'ขายแล้ว':T.res==='notsold'?'ไม่ขาย':T.res==='cancelled'?'ลูกค้ายกเลิก':'';
+ let tag,t,sub,rv;
+ if(T.ack&&T.ct){ tag='กดรับทราบ + ใส่เลขสัญญา'; t=(role==='branch'?'':'สาขายัง')+'ไม่รับทราบการ์ด · ขายแล้วยังไม่ใส่เลขที่สัญญา'; sub=br+(role==='branch'?'เปิดเคส → อ่านคำแนะนำ กด "รับทราบ" แล้วกด "เติมเลขที่สัญญา"':'สนญ. ส่งการ์ดเมื่อ '+fmtDT(T.ackAt)); rv=role==='branch'?'ทำเลย →':T.ctDays+' วัน'; }
+ else if(T.ack){ tag='กดรับทราบ'; t=(rs?rs+' · ':'')+(role==='branch'?'ยังไม่รับทราบการ์ด':'สาขายังไม่รับทราบการ์ด'); sub=br+(role==='branch'?'เปิดเคส อ่านคำแนะนำ แล้วกด "รับทราบ"':'สนญ. ส่งการ์ดเมื่อ '+fmtDT(T.ackAt))+(T.ackLate?' · <b style="color:#b91c1c">ค้างข้ามวัน</b>':''); rv=role==='branch'?'รับทราบ →':qMinTxt(qMins(Date.now()-T.ackAt)); }
+ else { tag='ใส่เลขสัญญา'; t='ขายแล้ว · '+(role==='branch'?'':'สาขา')+'ยังไม่ใส่เลขที่สัญญา'; sub=br+'ขายเมื่อ '+(E((a.sale||{}).soldDate||'')||fmtDT(T.ctAt))+(role==='branch'?' · เปิดเคส → กด "เติมเลขที่สัญญา"':''); rv=role==='branch'?'ใส่เลข →':(T.ctDays?T.ctDays+' วัน':'วันนี้'); }
+ const late=T.ctLate||T.ackLate; const rl=role==='branch'?'ถึงคิวสาขา':'ค้างมาแล้ว';
+ return `<div class="qtf" style="background:${bg};border-color:${bd}"><div class="nb" style="background:${c}"><div class="l">ถึงคิวสาขา</div><div class="v">👉</div></div><div class="mid"><div class="tl"><span class="tg" style="background:${c}">${tag}</span><span class="t" style="color:${c}">${t}</span></div><div class="s">${sub}</div></div><div class="rt"><div class="l">${rl}</div><div class="v" style="color:${late&&role!=='branch'?'#b91c1c':c}">${rv}</div></div></div>`; }
+/* 0925-H: ยกเลิกตีกลับ (สนญ.) — ข้อความที่ส่งไปแค่แจ้ง ไม่ต้องรอสาขาตอบ */
+function qUnreturn(id){ const a=APPS.find(x=>x.id===id); if(!a||!(SESSION&&SESSION.role==='analyst')) return; if(!confirm('ยกเลิกตีกลับเคส '+id+'?\nเคสจะกลับเข้าคิว สนญ. (ไม่ต้องรอสาขาตอบ)')) return;
+ const now=Date.now(); a.thread=a.thread||[]; a.thread.push({by:'hq',st:'unret',name:(SESSION&&SESSION.name)||'',msg:'↺ สนญ. ยกเลิกตีกลับ — เคสกลับเข้าคิว สนญ.',at:now}); a.updatedAt=now; saveApps(); if(typeof cloudPushCase==='function')cloudPushCase(a); qReset(); go(currentTab); }
+/* งานสาขาค้างในขอบเขต */
+function qTasks(scope){ const L=[]; (scope||[]).forEach(a=>{ const T=qBrTask(a); if(T) L.push({a,T}); }); return L; }
+/* แถบคิวด้านบนของรายการ — scope: รายการเคสที่ผู้ใช้เห็น (สาขาตัวเอง / สาขาในเขต / ทั้งหมด)
+   0925-I: 3 กล่องทุกฝั่ง · ในกล่องเป็นปุ่มเล็ก (chip) กดแล้วเด้งรายชื่อ · สนญ./เขต กล่องที่ 3 "รอฝั่งสาขา" รวมตีกลับ/ยังไม่รับทราบ/เลขสัญญา (แทนแถบสาขายังค้าง) */
 function qBoard(scope){ if(!p1()) return ''; const Q=qCompute(); const role=qRole(); const c=qCfg(); const ids={}; (scope||[]).forEach(a=>{ if(a) ids[a.id]=1; });
+ window.__qScope=(scope||[]).map(a=>a.id);
  const q=Q.q.filter(s=>ids[s.id]), w=Q.w.filter(s=>ids[s.id]), r=Q.r.filter(s=>ids[s.id]);
- const bx=(k,h,v,sub,btn)=>{ const [cl,bg,bd]=Q_COL[k]; return `<div class="bx" style="background:${bg};border-color:${bd}"><div class="h" style="color:${cl}">${h}</div><div class="v" style="color:${cl}">${v} <small>เคส</small></div><div class="s">${sub}</div>${btn||''}</div>`; };
- const go=(k,t,id)=>id?`<button type="button" class="go" style="background:${Q_COL[k][0]}" onclick="openDetail('${id}')">${t}</button>`:'';
+ const tk=qTasks(scope); const ack=tk.filter(x=>x.T.ack), ct=tk.filter(x=>x.T.ct);
+ const E=_p1Esc;
+ const chip=(k,pop,t,n,red)=>{ const cl=Q_COL[k][0], bd=Q_COL[k][2]; return (n===0||n==='')?'':`<button type="button" class="qchipb" style="color:${cl};border-color:${bd};background:#fff" onclick="event.stopPropagation();qPop('${pop}')">${t}${n!=null?` <b style="color:${red?'#b91c1c':cl}">${n}</b>`:''} ›</button>`; };
+ const bx=(k,h,v,unit,body,btn,pop)=>{ const [cl,bg,bd]=Q_COL[k]; return `<div class="bx${pop?' qclick':''}" style="background:${bg};border-color:${bd}" ${pop?`onclick="qPop('${pop}')" title="คลิกดูรายชื่อ"`:''}><div class="h" style="color:${cl}">${h}</div><div class="v" style="color:${cl}">${v} <small>${unit||'เคส'}</small></div>${body?`<div class="qchips2">${body}</div>`:''}${btn||''}</div>`; };
+ const big=(k,t,onclick)=>`<button type="button" class="go" style="background:${Q_COL[k][0]}" onclick="event.stopPropagation();${onclick}">${t}</button>`;
  const open=qOpenNow(); const hrs=`สนญ. ทำการ ${c.open}–${c.close} ${c.sun?'ทุกวัน':c.sat?'จ.–ส.':'จ.–ศ.'}`;
- const legend=`<div class="ft"><b>สีเคส:</b>`+[['new','เคสใหม่ · รอ สนญ. ตรวจ'],['back','แก้แล้วส่งกลับ'],['reply','สาขาตอบแล้ว'],['late','รอนานเกิน '+c.late+' นาที'],['wait','ตีกลับ · รอสาขาตอบ'],['req','คำขอแก้ไข']].map(([k,t])=>`<span class="lg" style="background:${Q_COL[k][1]};border-color:${Q_COL[k][2]};color:${Q_COL[k][0]}">● ${t}</span>`).join('')+`<span>· เวลาเป็นค่าประมาณ · ${hrs}${open?'':' · <b style="color:#c2410c">ตอนนี้นอกเวลาทำการ</b>'}</span></div>`;
+ const legend=`<div class="ft"><b>สีเคส:</b>`+[['new','เคสใหม่ · รอ สนญ. ตรวจ'],['back','แก้แล้วส่งกลับ'],['reply','สาขาตอบแล้ว'],['late','รอนานเกิน '+c.late+' นาที'],['wait','ถึงคิวสาขา · ตีกลับ/รับทราบ/เลขสัญญา'],['req','คำขอแก้ไข']].map(([k,t])=>`<span class="lg" style="background:${Q_COL[k][1]};border-color:${Q_COL[k][2]};color:${Q_COL[k][0]}">● ${t}</span>`).join('')+`<span>· เวลาเป็นค่าประมาณ · ${hrs}${open?'':' · <b style="color:#c2410c">ตอนนี้นอกเวลาทำการ</b>'}</span></div>`;
+ const nb=L=>new Set(L.map(x=>(x.a||x).branch)).size;
+ const lateN=ack.filter(x=>x.T.ackLate).length+ct.filter(x=>x.T.ctLate).length;
+ /* กล่อง 3 ของ สนญ./เขต: รอฝั่งสาขา */
+ const brBox=()=>{ const n=w.length+ack.length+ct.length; return bx('wait','🏪 รอฝั่งสาขา (ติดตาม)',n,'งาน',
+   chip('wait','wait','⏳ ตีกลับ รอตอบ',w.length)+chip('wait','ack','✅ ยังไม่รับทราบ',ack.length)+chip('wait','ct','🧾 ยังไม่ใส่เลขสัญญา',ct.length)
+   +(n?`<div class="mut" style="font-size:11.5px;margin-top:3px;width:100%">${lateN?`ค้างข้ามวัน/เกินกำหนด <b style="color:#b91c1c">${lateN}</b> · `:''}${nb([...w.map(s=>s.a),...ack.map(x=>x.a),...ct.map(x=>x.a)])} สาขา · ไม่นับในคิว สนญ.</div>`:'<span class="mut">ไม่มีงานค้างฝั่งสาขา</span>'),
+   n?big('wait','ดูทั้งหมดแยกสาขา →',"qPop('brall')"):'',''); };
  let h;
- if(role==='branch'){ const f=q[0];
-  h=`<h4>🎫 คิวงานของสาขากับ สนญ. <small>อัปเดตอัตโนมัติ</small></h4><div class="g">`
-  +bx('new','🕒 รอ สนญ. ตรวจ',q.length,q.length?`เร็วสุด <b>คิวที่ ${f.pos}</b> · ${open?'อีกประมาณ <b>'+qEta(f.pos)+'</b>':'ตรวจเมื่อเปิดทำการ'}`+(q.length>1?`<br>อีก ${q.length-1} เคส: คิวที่ ${q.slice(1).map(s=>s.pos).join(', ')}`:''):'ไม่มีเคสรอ สนญ. ตรวจ')
-  +bx('wait','👉 ถึงคิวสาขา — ต้องตอบ สนญ.',w.length,w.length?'สนญ. ขอข้อมูลเพิ่ม (ตีกลับ)<br>ตอบแล้วเคสจะกลับเข้าคิวเอง':'ไม่มีเคสค้างตอบ',go('wait','ไปตอบ →',w[0]&&w[0].id))
-  +bx('req','📝 คำขอแก้ไขที่สาขาส่ง',r.length,r.length?`รอ สนญ. อนุมัติ · ลำดับที่ ${r.map(s=>s.pos).join(', ')}`+(open?`<br>อีกประมาณ ${qEta(r[0].pos)}`:''):'ไม่มีคำขอค้าง')+`</div>`; }
- else if(role==='hq'){ const f=q[0]; const pri=q.filter(s=>s.k==='back'||s.k==='reply').length; const old=q.filter(s=>s.k==='new').sort((x,y)=>y.wait-x.wait)[0];
+ if(role==='branch'){ const f=q[0]; const nT=ack.length+w.length+ct.length;
+  h=`<h4>🎫 คิวงานของสาขากับ สนญ. <small>อัปเดตอัตโนมัติ · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small></h4><div class="g">`
+  +bx('new','🕒 รอ สนญ. ตรวจ',q.length,'เคส',q.length?`<div class="s" style="width:100%">เร็วสุด <b>คิวที่ ${f.pos}</b> · ${open?'อีกประมาณ <b>'+qEta(f.pos)+'</b>':'ตรวจเมื่อเปิดทำการ'}`+(q.length>1?`<br>อีก ${q.length-1} เคส: คิวที่ ${q.slice(1).map(s=>s.pos).join(', ')}`:'')+'</div>':'<span class="mut">ไม่มีเคสรอ สนญ. ตรวจ</span>','',q.length?'q':'')
+  +bx('wait','👉 ถึงคิวสาขา — ต้องทำ',nT,'งาน',nT?chip('wait','ack','✅ กดรับทราบ',ack.length)+chip('wait','wait','💬 ตอบ สนญ.',w.length)+chip('wait','ct','🧾 ใส่เลขสัญญา',ct.length):'<span class="mut">ไม่มีงานค้าง</span>',nT?big('wait',`ดูงานทั้งหมด (${nT}) →`,"qPop('brall')"):'','')
+  +bx('req','📝 คำขอแก้ไขที่สาขาส่ง',r.length,'เคส',r.length?`<div class="s" style="width:100%">รอ สนญ. อนุมัติ · ลำดับที่ ${r.map(s=>s.pos).join(', ')}`+(open?`<br>อีกประมาณ ${qEta(r[0].pos)}`:'')+'</div>':'<span class="mut">ไม่มีคำขอค้าง</span>','',r.length?'req':'')+`</div>`; }
+ else if(role==='hq'){ const f=q[0]; const pri=q.filter(s=>s.k==='back'||s.k==='reply').length; const nw=q.length-pri; const lt=q.filter(s=>s.k==='new'&&s.late).length; const old=q.filter(s=>s.k==='new').sort((x,y)=>y.wait-x.wait)[0];
   const t0=new Date(); t0.setHours(0,0,0,0); const done=(APPS||[]).filter(a=>hqSent(a)&&((a.hqAdvice||{}).sentAt||0)>=t0.getTime()&&a.submittedAt&&(a.hqAdvice.sentAt-a.submittedAt)<6*3600e3);
   const avg=done.length?Math.round(done.reduce((x,a)=>x+(a.hqAdvice.sentAt-a.submittedAt),0)/done.length/60000):null;
-  const kn={back:'สาขาแก้แล้ว',reply:'สาขาตอบแล้ว',new:'เคสใหม่'};
-  h=`<h4>📥 คิวงาน สนญ. <small>เรียงตามคิว · งานที่สาขาแก้/ตอบกลับได้ขึ้นก่อน · คนตรวจ ${c.rev} คน</small></h4><div class="g">`
-  +bx('new','🕒 ต้องตรวจ (อยู่ในคิว)',q.length,q.length?`แก้/ตอบกลับ ${pri} · เคสใหม่ ${q.length-pri}<br>คิวถัดไป: <b>#1 ${f.id}</b> (${kn[f.k]})`:'ไม่มีเคสรอตรวจ',go('new','เปิดคิวถัดไป →',f&&f.id))
-  +bx('req','📝 ต้องอนุมัติคำขอแก้ไข',r.length,r.length?r.slice(0,2).map(s=>`${s.id} · ${_p1Esc(_qBr(s.a))} ขอแก้ ${_p1Esc(_qFields(s.a))}`).join('<br>'):'ไม่มีคำขอค้าง',go('req','ไปอนุมัติ →',r[0]&&r[0].id))
-  +bx('wait','⏳ ตีกลับแล้ว — รอสาขาตอบ',w.length,w.length?w.slice(0,2).map(s=>`${s.id} · ${s.granted?'อนุญาตให้แก้แล้ว':'ถามไปแล้ว'} ${qMinTxt(s.wait)}`).join('<br>')+'<br>ไม่นับในคิวจนกว่าสาขาจะตอบ':'ไม่มีเคสรอสาขา')+`</div>`
+  const r0=r[0];
+  h=`<h4>📥 คิวงาน สนญ. <small>เรียงตามคิว · งานที่สาขาแก้/ตอบกลับได้ขึ้นก่อน · คนตรวจ ${c.rev} คน · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small></h4><div class="g">`
+  +bx('new','🕒 ต้องตรวจ (อยู่ในคิว)',q.length,'เคส',q.length?chip('new','q','↩ แก้/ตอบกลับ',pri)+chip('new','q','🆕 เคสใหม่',nw)+chip('new','q','⏱ รอนาน ≥'+c.late+' นาที',lt,true):'<span class="mut">ไม่มีเคสรอตรวจ</span>',f?big('new','เปิดคิวถัดไป #1 →',`openDetail('${f.id}')`):'',q.length?'q':'')
+  +bx('req','📝 ต้องอนุมัติคำขอแก้ไข',r.length,'เคส',r.length?chip('req','req','เก่าสุด '+qMinTxt(r0.wait),r0.id)+chip('req','req',nb(r.map(s=>s.a))+' สาขา',null):'<span class="mut">ไม่มีคำขอค้าง</span>',r.length?big('req',`ดูคำขอทั้งหมด (${r.length}) →`,"qPop('req')"):'',r.length?'req':'')
+  +brBox()+`</div>`
   +`<div class="ft2">⏱ รอนานสุด ${old?`<b style="color:${old.late?'#b91c1c':'#374151'}">${qMinTxt(old.wait)}</b> (${old.id})`:'—'} · ⚡ วันนี้ส่งการ์ดแล้ว <b>${done.length}</b> เคส${avg!=null?` · เฉลี่ยส่ง→ได้การ์ด <b>${avg} นาที</b>`:''}</div>`; }
  else { const by={}; q.forEach(s=>{ const b=_qBr(s.a); (by[b]=by[b]||[]).push(s.pos); });
-  h=`<h4>🗂 คิวงานของสาขาในเขตกับ สนญ. <small>เห็นเฉพาะสาขาในเขต</small></h4><div class="g">`
-  +bx('new','🕒 รอ สนญ. ตรวจ',q.length,q.length?Object.keys(by).map(b=>`${_p1Esc(b)} ${by[b].length} (คิว ${by[b].join(', ')})`).join('<br>'):'ไม่มีเคสรอ สนญ. ตรวจ')
-  +bx('wait','👉 สาขาต้องตอบ สนญ.',w.length,w.length?w.slice(0,2).map(s=>`${_p1Esc(_qBr(s.a))} · ค้างมาแล้ว ${qMinTxt(s.wait)}`).join('<br>')+'<br>ช่วยติดตามสาขาให้ตอบ':'ไม่มีเคสค้างตอบ',go('wait','ดูเคส →',w[0]&&w[0].id))
-  +bx('req','📝 คำขอแก้ไข',r.length,r.length?r.slice(0,2).map(s=>`${_p1Esc(_qBr(s.a))} · รอ สนญ. อนุมัติ`).join('<br>'):'ไม่มีคำขอค้าง')+`</div>`; }
+  h=`<h4>🗂 คิวงานของสาขาในเขตกับ สนญ. <small>เห็นเฉพาะสาขาในเขต · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small></h4><div class="g">`
+  +bx('new','🕒 รอ สนญ. ตรวจ',q.length,'เคส',q.length?Object.keys(by).map(b=>chip('new','q',E(b)+' (คิว '+by[b].join(', ')+')',by[b].length)).join(''):'<span class="mut">ไม่มีเคสรอ สนญ. ตรวจ</span>','',q.length?'q':'')
+  +bx('req','📝 คำขอแก้ไข',r.length,'เคส',r.length?chip('req','req','รอ สนญ. อนุมัติ · '+nb(r.map(s=>s.a))+' สาขา',null):'<span class="mut">ไม่มีคำขอค้าง</span>','',r.length?'req':'')
+  +brBox()+`</div>`; }
  return `<div class="qb">${h}${legend}</div>`; }
+/* 0925-H: ป๊อปอัปรายชื่อ — กดกล่อง/บรรทัด → รายการเคส → กดแถวเพื่อเปิดเคส */
+function qPop(kind,view){ const Q=qCompute(); const role=qRole(); const E=_p1Esc; const ids={}; (window.__qScope||[]).forEach(id=>ids[id]=1); const inS=id=>ids[id];
+ const scope=APPS.filter(a=>inS(a.id)); const showBr=role!=='branch'; const now=Date.now();
+ const btn=(id,t,col)=>`<button type="button" class="btn btn-sm" style="background:${col};color:#fff;white-space:nowrap" onclick="event.stopPropagation();closeModal();openDetail('${id}')">${t}</button>`;
+ const num=(n,col)=>`<span class="qnum" style="background:${col}">${n}</span>`;
+ const row=(n,col,a,todo,wait,bt)=>`<tr class="click" onclick="closeModal();openDetail('${a.id}')"><td>${num(n,col)}</td><td><b>${E(a.name||'')}</b> <span class="mut">· ${a.id}</span></td>${showBr?`<td>${E(_qBr(a))}</td>`:''}<td>${todo}</td><td class="mut">${wait}</td><td>${bt}</td></tr>`;
+ const sec=(t,col)=>`<tr><td colspan="${showBr?6:5}" class="qsec" style="color:${col}">${t}</td></tr>`;
+ let title='',col='',rows='',first=null,sub='',extra='';
+ const ctRows=L=>L.map((x,i)=>row(i+1,Q_COL.wait[0],x.a,'ขาย '+(E((x.a.sale||{}).soldDate||'')||fmtDT(x.T.ctAt))+' · ยังไม่มีเลขสัญญา',x.T.ctDays?`<b style="color:${x.T.ctLate?'#b91c1c':'inherit'}">${x.T.ctDays} วัน</b>`:'วันนี้',btn(x.a.id,role==='branch'?'ใส่เลข →':'ดูเคส →',Q_COL.wait[0]))).join('');
+ const ackRows=L=>L.map((x,i)=>{ const h=x.a.hqAdvice||{}; const n=ADV_DIMS.filter(([k])=>!((h.none||{})[k])&&String((h.text||{})[k]||'').trim()).length; const rs={sold:'ขายแล้ว',notsold:'ไม่ขาย',cancelled:'ลูกค้ายกเลิก',waiting:'รอลูกค้าตัดสินใจ'}[x.T.res]||'ยังไม่บันทึกผลขาย'; return row(i+1,Q_COL.wait[0],x.a,rs+' · '+(n?'สนญ. มีข้อเสนอแนะ '+n+' ส่วน':'ไม่มีข้อเสนอแนะ'),`<span style="color:${x.T.ackLate?'#b91c1c':'inherit'}">ส่งมา ${fmtDur(now-x.T.ackAt)}</span>`,btn(x.a.id,role==='branch'?'รับทราบ →':'ดูเคส →',Q_COL.wait[0])); }).join('');
+ const waitRows=L=>L.map((s,i)=>row(i+1,Q_COL.wait[0],s.a,s.granted?'สนญ. อนุญาตให้แก้: '+E(_qFields(s.a)):'สนญ. ถาม: "'+E(String(s.msg||'').slice(0,70))+'"',(role==='hq'?'ถามไปแล้ว ':'')+qMinTxt(s.wait),btn(s.id,role==='branch'?(s.granted?'แก้ข้อมูล →':'ตอบ →'):'ดูเคส →',Q_COL.wait[0]))).join('');
+ const bySort=L=>{ const c={}; L.forEach(x=>{ c[x.a.branch]=(c[x.a.branch]||0)+1; }); return L.slice().sort((x,y)=>(c[y.a.branch]-c[x.a.branch])||String(x.a.branch).localeCompare(String(y.a.branch))||((x.T.ctAt||x.T.ackAt)-(y.T.ctAt||y.T.ackAt))); };
+ const brTable=(L,key)=>{ const by={}; L.forEach(x=>{ const b=x.a.branch; (by[b]=by[b]||[]).push(x); }); const ks=Object.keys(by).sort((x,y)=>by[y].length-by[x].length);
+  return `<table><thead><tr><th>สาขา</th><th style="text-align:center">ค้าง (เคส)</th><th>ค้างนานสุด</th><th>เคส</th><th></th></tr></thead><tbody>${ks.map(b=>{ const L2=by[b]; const mx=Math.max(...L2.map(x=>now-(key==='ct'?x.T.ctAt:x.T.ackAt))); const lateAny=L2.some(x=>key==='ct'?x.T.ctLate:x.T.ackLate); return `<tr class="click" onclick="closeModal();openDetail('${L2[0].a.id}')"><td><b>${E(_qBr(L2[0].a))}</b></td><td style="text-align:center"><b style="color:#c2410c;font-size:16px">${L2.length}</b></td><td style="color:${lateAny?'#b91c1c':'inherit'};font-weight:${lateAny?700:400}">${fmtDur(mx)}</td><td class="mut" style="font-size:12px">${L2.map(x=>`<a href="#" onclick="event.preventDefault();event.stopPropagation();closeModal();openDetail('${x.a.id}')">${x.a.id}</a>`).join(' · ')}</td><td>${btn(L2[0].a.id,'ดูเคส →',Q_COL.wait[0])}</td></tr>`; }).join('')}</tbody></table>`; };
+ const tk=qTasks(scope);
+ if(kind==='q'){ const L=Q.q.filter(s=>inS(s.id)); col=Q_COL.new[0]; title='🕒 '+(role==='hq'?'ต้องตรวจ (อยู่ในคิว)':'รอ สนญ. ตรวจ')+' — '+L.length+' เคส'; sub='เรียงตามลำดับคิว · งานแก้/ตอบกลับขึ้นก่อน';
+  rows=L.map(s=>{ const k=(s.k==='new'&&s.late&&role==='hq')?'late':s.k; return row(s.pos,Q_COL[k][0],s.a,{new:'เคสใหม่',back:'สาขาแก้แล้วส่งกลับ',reply:'สาขาตอบแล้ว'}[s.k]+(k==='late'?' · <b style="color:#b91c1c">รอนาน</b>':''),role==='hq'?'รอมาแล้ว '+qMinTxt(s.wait):'อีกประมาณ '+qEta(s.pos),btn(s.id,role==='hq'?'เปิดตรวจ →':'ดูเคส →',Q_COL[k][0])); }).join(''); first=L[0]&&L[0].id; }
+ else if(kind==='req'){ const L=Q.r.filter(s=>inS(s.id)); col=Q_COL.req[0]; title='📝 '+(role==='hq'?'ต้องอนุมัติคำขอแก้ไข':'คำขอแก้ไข')+' — '+L.length+' เคส'; sub='เรียงตามเวลาที่สาขาขอ (ขอก่อนอยู่บน)'+(role==='hq'?' · คลิกแถวเพื่อเปิดเคส → อนุมัติ/ไม่อนุมัติ':'');
+  rows=L.map(s=>row(s.pos,col,s.a,'<b>'+E(_qFields(s.a))+'</b><div class="mut" style="font-size:11.5px">เหตุผล: '+E((s.a.editReq||{}).reason||'')+'</div>','ขอมาแล้ว '+qMinTxt(s.wait),btn(s.id,role==='hq'?'เปิด/อนุมัติ →':'ดูเคส →',col))).join(''); first=L[0]&&L[0].id; }
+ else if(kind==='wait'){ const L=Q.w.filter(s=>inS(s.id)); col=Q_COL.wait[0]; title=(role==='hq'?'⏳ ตีกลับแล้ว — รอสาขาตอบ':'💬 ตอบ สนญ. / แก้ข้อมูล (ตีกลับ)')+' — '+L.length+' เคส'; sub='เรียงจากรอนานสุด'; rows=waitRows(L); first=L[0]&&L[0].id; }
+ else if(kind==='ack'||kind==='ct'){ const L=tk.filter(x=>kind==='ack'?x.T.ack:x.T.ct); col=Q_COL.wait[0]; const nb=new Set(L.map(x=>x.a.branch)).size;
+  title=(kind==='ack'?'✅ ยังไม่กดรับทราบการ์ด':'🧾 ขายแล้ว ยังไม่ใส่เลขที่สัญญา')+' — '+L.length+' เคส'+(showBr?' · '+nb+' สาขา':'');
+  sub=(kind==='ct'?'นับทุกเคสที่สาขายังไม่พิมพ์เลขสัญญา (ไม่ใช้เลขที่ระบบเดาจากพอร์ต) · แดง = เกิน '+qCfg().ctDays+' วัน':'รวมเคสที่บันทึกผลขายไปแล้ว · แดง = ค้างข้ามวัน');
+  const v=view||(showBr?'br':'case');
+  if(showBr) extra=`<div class="qtabs"><button type="button" class="${v==='br'?'on':''}" onclick="qPop('${kind}','br')">แยกตามสาขา</button><button type="button" class="${v==='case'?'on':''}" onclick="qPop('${kind}','case')">รายเคสทั้งหมด</button></div>`;
+  const S=bySort(L).sort((x,y)=>showBr?0:((kind==='ct'?x.T.ctAt:x.T.ackAt)-(kind==='ct'?y.T.ctAt:y.T.ackAt)));
+  if(v==='br'&&showBr){ rows=null; extra+=brTable(L,kind); } else rows=kind==='ct'?ctRows(S):ackRows(S); first=S[0]&&S[0].a.id; }
+ else if(kind==='brall'){ const A=tk.filter(x=>x.T.ack), W=Q.w.filter(s=>inS(s.id)), C=tk.filter(x=>x.T.ct); col=Q_COL.wait[0]; const n=A.length+W.length+C.length; title=role==='branch'?'👉 ถึงคิวสาขา — งานที่ต้องทำ '+n+' งาน':'🏪 รอฝั่งสาขา — '+n+' งาน · '+new Set([...A.map(x=>x.a.branch),...W.map(s=>s.a.branch),...C.map(x=>x.a.branch)]).size+' สาขา'; sub='คลิกแถวเพื่อเปิดเคส ทำเสร็จแล้วรายการจะหายเอง';
+  let i=0; const re=h=>h.replace(/<span class="qnum" style="background:[^"]*">\d+<\/span>/,()=>num(++i,col));
+  rows=(A.length?sec('✅ กดรับทราบการ์ด ('+A.length+')',col)+ackRows(A).split('</tr>').filter(Boolean).map(x=>re(x+'</tr>')).join(''):'')
+   +(W.length?sec('💬 ตอบ สนญ. / แก้ข้อมูล — ตีกลับ ('+W.length+')',col)+waitRows(W).split('</tr>').filter(Boolean).map(x=>re(x+'</tr>')).join(''):'')
+   +(C.length?sec('🧾 ใส่เลขที่สัญญา — ขายแล้ว ('+C.length+')',col)+ctRows(C).split('</tr>').filter(Boolean).map(x=>re(x+'</tr>')).join(''):'');
+  first=(A[0]&&A[0].a.id)||(W[0]&&W[0].id)||(C[0]&&C[0].a.id); }
+ const head=`<tr><th>#</th><th>ลูกค้า / เคส</th>${showBr?'<th>สาขา</th>':''}<th>รายละเอียด / ต้องทำ</th><th>เวลา</th><th></th></tr>`;
+ const body=rows===null?'':(rows?`<table><thead>${head}</thead><tbody>${rows}</tbody></table>`:'<p class="mut" style="text-align:center;padding:16px">ไม่มีรายการ</p>');
+ document.getElementById('modal-bg').innerHTML=`<div class="modal" style="width:960px;max-width:96vw"><button class="x" onclick="closeModal()">✕</button><h2 class="pagetitle" style="color:${col}">${title}</h2><p class="pagesub">${sub}</p>${extra}<div style="max-height:62vh;overflow:auto">${body}</div><div class="flex sb mt" style="flex-wrap:wrap;gap:8px"><span class="mut" style="font-size:12px">ปิดหน้าต่างได้ตลอด · ข้อมูลอัปเดตทุก ~30 วิ</span>${first?`<button type="button" class="btn btn-sm" style="background:${col};color:#fff" onclick="closeModal();openDetail('${first}')">เปิดเคสแรก →</button>`:''}</div></div>`;
+ document.getElementById('modal-bg').classList.remove('hidden'); }
 /* เรียงรายการหน้า สนญ. ตามลำดับคิว (ใช้เมื่อเรียง "มาก่อนอยู่บน") */
 function qSortList(list){ const Q=qCompute(); const key=a=>{ const s=Q.M[a.id]; if(!s) return [2,0]; if(s.k==='wait') return [1,s.at]; return [0,s.pos]; };
  return list.slice().sort((x,y)=>{ const a=key(x),b=key(y); return a[0]-b[0]||a[1]-b[1]; }); }
 /* การ์ดตั้งค่า (สนญ.) */
 function qCfgCard(){ const c=qCfg(); const set=(k,v)=>`CFG.queue=Object.assign({},CFG.queue||{},{${k}:${v}});saveCfg();qReset()`;
- return `<div class="card mb"><h3>🎫 คิวรอ สนญ. ตรวจ (0925-G) <span class="mut" style="font-weight:400;font-size:12px">— สาขา/เขต/สนญ. เห็นลำดับคิว + เวลาโดยประมาณ · ไม่เก็บลงเคส</span></h3><div class="flex" style="gap:10px;flex-wrap:wrap;align-items:center;font-size:12.5px">
+ return `<div class="card mb"><h3>🎫 คิวรอ สนญ. ตรวจ (0925-G/H) <span class="mut" style="font-weight:400;font-size:12px">— สาขา/เขต/สนญ. เห็นลำดับคิว + เวลาโดยประมาณ · ไม่เก็บลงเคส</span></h3><div class="flex" style="gap:10px;flex-wrap:wrap;align-items:center;font-size:12.5px">
   <label class="mut">นาทีต่อเคส <input id="cfg-q-min" type="number" min="1" value="${c.min}" style="width:60px" onchange="${set('min','Math.max(1,+this.value||5)')}"></label>
   <label class="mut">คนตรวจ <input id="cfg-q-rev" type="number" min="1" value="${c.rev}" style="width:60px" onchange="${set('rev','Math.max(1,+this.value||2)')}"></label>
   <label class="mut">รอนาน (แดง) ≥ <input id="cfg-q-late" type="number" min="1" value="${c.late}" style="width:60px" onchange="${set('late','Math.max(1,+this.value||15)')}"> นาที</label>
   <label class="mut">เวลาทำการ <input id="cfg-q-open" value="${c.open}" style="width:64px" onchange="${set('open','(/^\\d{1,2}:\\d{2}$/.test(this.value)?this.value:\'08:30\')')}"> – <input id="cfg-q-close" value="${c.close}" style="width:64px" onchange="${set('close','(/^\\d{1,2}:\\d{2}$/.test(this.value)?this.value:\'17:30\')')}"></label>
+  <label class="mut">เลขสัญญาค้าง (แดง) เกิน <input id="cfg-q-ct" type="number" min="0" value="${c.ctDays}" style="width:56px" onchange="${set('ctDays','Math.max(0,+this.value||0)')}"> วัน</label>
   <label class="mut"><input type="checkbox" ${c.sat?'checked':''} onchange="${set('sat','this.checked')}"> วันเสาร์</label>
   <label class="mut"><input type="checkbox" ${c.sun?'checked':''} onchange="${set('sun','this.checked')}"> วันอาทิตย์</label></div>
-  <p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น 5 นาที · 2 คน · แดงเมื่อรอ ≥15 นาที · 08:30–17:30 จ.–ส. (ผู้ใช้ 26 ก.ย.) · เวลาโดยประมาณ = ⌈ลำดับ÷คนตรวจ⌉×นาที ถึง ลำดับ×นาที · งานแก้/ตอบกลับขึ้นก่อนเคสใหม่ · ตีกลับ (ข้อความล่าสุดเป็นของ สนญ.) ไม่นับคิว</p></div>`; }
+  <p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น 5 นาที · 2 คน · แดงเมื่อรอ ≥15 นาที · 08:30–17:30 จ.–ส. (ผู้ใช้ 26 ก.ย.) · เวลาโดยประมาณ = ⌈ลำดับ÷คนตรวจ⌉×นาที ถึง ลำดับ×นาที · งานแก้/ตอบกลับขึ้นก่อนเคสใหม่ · ตีกลับ (ข้อความ สนญ. แบบ "ส่ง + ตีกลับ" / อนุญาตให้แก้) ไม่นับคิว · เลขสัญญาค้าง แดงเมื่อเกิน 1 วัน (ผู้ใช้ 26 ก.ย.)</p></div>`; }
 
+/* ================== 0925-H: ตีกลับให้สาขาแก้/ตอบ (สนญ.) ==================
+   - ช่องข้อความในเคส: "↩ ส่ง + ตีกลับ" (ret:true) / "💬 ส่งข้อความ (ไม่ตีกลับ)" (ret:false) · ข้อความเก่า (ไม่มี ret) นับเป็นตีกลับตามเดิม
+   - ปุ่มในแผงคำแนะนำ → หน้าต่าง: ตีกลับเพราะ (ขอข้อมูลเพิ่ม / แก้ข้อมูลที่กรอกผิด) · ปลดล็อกช่อง (editReq granted 24 ชม. · hqInit) · ข้อความ (บังคับ)
+   - ไม่แก้ Apps Script: ใช้ thread + editReq เดิม */
+function qReturnDlg(id){ const a=APPS.find(x=>x.id===id); if(!a||!(SESSION&&SESSION.role==='analyst')) return; if(hqSent(a)){ alert('ส่งการ์ดให้สาขาแล้ว — ใช้ช่องข้อความในเคสแทน'); return; }
+ const E=_p1Esc; const opts=EDIT_FIELDS.map(g=>'<div style="font-weight:700;margin:6px 0 2px;color:#374151;font-size:12.5px">'+g[1]+'</div>'+g[2].map(f=>'<label style="display:inline-flex;align-items:center;gap:5px;margin:2px 14px 2px 0;font-size:13px;font-weight:400"><input type="checkbox" class="qr-f" value="'+f[0]+'" style="width:auto">'+E(f[1])+'</label>').join('')).join('');
+ const d=document.createElement('div'); d.id='qr-dlg'; d.style.cssText='position:fixed;inset:0;background:rgba(10,12,18,.55);z-index:300;display:flex;align-items:flex-start;justify-content:center;padding:30px 10px;overflow:auto';
+ d.innerHTML=`<div style="background:#fff;border-radius:14px;width:740px;max-width:96vw;padding:18px 20px;box-shadow:0 10px 30px rgba(0,0,0,.25)"><div style="font-size:18px;font-weight:800;color:#c2410c">↩ ตีกลับให้สาขาแก้/ตอบ — ${a.id} · ${E(a.name||'')}</div><div class="mut" style="font-size:12.5px;margin:2px 0 12px">สาขา ${E(_qBr(a))} · เคสออกจากคิว สนญ. จนกว่าสาขาจะตอบ/แก้แล้วส่งกลับ → กลับเข้าคิวแบบ "ขึ้นก่อน"</div>
+  <div style="font-weight:700;font-size:13px;margin-bottom:4px">1. ตีกลับเพราะ <span style="color:#dc2626">*</span></div><div id="qr-kind"><button type="button" class="qr-k" data-k="ask" onclick="qReturnKind('ask')">❓ ขอข้อมูลเพิ่ม (ถามลูกค้า)</button><button type="button" class="qr-k" data-k="edit" onclick="qReturnKind('edit')">✏️ แก้ข้อมูลที่กรอกผิด</button></div>
+  <div id="qr-fw" style="display:none"><div style="font-weight:700;font-size:13px;margin:12px 0 4px">2. ปลดล็อกช่องให้สาขาแก้ <span style="color:#dc2626">*</span> <span class="mut" style="font-weight:400">(ช่องอื่นล็อก · ภายใน 24 ชม. · สาขาไม่ต้องขอแก้อีก)</span></div><div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:6px 10px;max-height:220px;overflow:auto">${opts}</div></div>
+  <div style="font-weight:700;font-size:13px;margin:12px 0 4px"><span id="qr-n3">2</span>. ข้อความถึงสาขา <span style="color:#dc2626">*</span></div><textarea id="qr-msg" style="width:100%;min-height:64px;border:1px solid #d1d5db;border-radius:8px;padding:8px;font-family:inherit;font-size:13px" placeholder="เช่น ขอชื่อร้านจริง + ตำบลที่ตั้ง / ตรวจกลุ่มอาชีพว่าเป็นร้านมีหน้าร้านหรือแผงลอย"></textarea>
+  <div id="qr-see" style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:8px 12px;margin-top:10px;font-size:12.5px;color:#9a3412">เลือกเหตุผลก่อน</div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px"><button type="button" class="btn btn-line" onclick="document.getElementById('qr-dlg').remove()">ยกเลิก</button><button type="button" class="btn" style="background:#c2410c;color:#fff;font-weight:700" onclick="qReturnDo('${a.id}')">↩ ตีกลับให้สาขา</button></div></div>`;
+ document.body.appendChild(d); window.__qrKind=''; }
+function qReturnKind(k){ window.__qrKind=k; document.querySelectorAll('#qr-kind .qr-k').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); const fw=document.getElementById('qr-fw'); if(fw) fw.style.display=k==='edit'?'':'none'; const n3=document.getElementById('qr-n3'); if(n3) n3.textContent=k==='edit'?'3':'2';
+ const see=document.getElementById('qr-see'); if(see) see.innerHTML='<b>สาขาจะเห็น:</b> '+(k==='edit'?'ตั๋วสีส้ม "สนญ. อนุญาตให้แก้" + ข้อความนี้ + ปุ่ม "แก้ไขช่องที่ สนญ. อนุมัติ" (แก้ได้เฉพาะช่องที่ติ๊ก ภายใน 24 ชม.)':'ตั๋วสีส้ม "สนญ. ตีกลับ — สาขาต้องตอบ" + ข้อความนี้ (ตอบในช่องข้อความของเคส)')+' · กล่อง "ถึงคิวสาขา — ต้องทำ" +1'; }
+function qReturnDo(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const k=window.__qrKind; const msg=String((document.getElementById('qr-msg')||{}).value||'').trim();
+ if(!k){ alert('เลือกเหตุผลที่ตีกลับก่อน'); return; } const fields=[...document.querySelectorAll('.qr-f:checked')].map(e=>e.value);
+ if(k==='edit'&&!fields.length){ alert('เลือกช่องที่ให้สาขาแก้อย่างน้อย 1 ช่อง'); return; } if(!msg){ alert('กรุณาพิมพ์ข้อความถึงสาขา'); return; }
+ if(k==='edit'&&a.editReq&&a.editReq.st==='pending'&&!confirm('เคสนี้มีคำขอแก้ไขจากสาขาค้างอยู่ — ตีกลับแบบนี้จะแทนคำขอเดิม ดำเนินการต่อ?')) return;
+ const now=Date.now(), nm=(SESSION&&SESSION.name)||''; a.thread=a.thread||[];
+ a.thread.push({by:'hq',name:nm,msg:(k==='edit'?'✏️ ตีกลับให้แก้ข้อมูล ('+fields.map(efLabel).join(', ')+'): ':'❓ ตีกลับ ขอข้อมูลเพิ่ม: ')+msg,ret:true,rk:k,at:now});
+ if(k==='edit'){ a.editReq={fields,reason:msg,at:now,by:nm,st:'granted',hqInit:true,grant:{at:now,by:nm,until:now+24*3600*1000,used:false}}; }
+ a.updatedAt=now; saveApps(); if(typeof cloudPushCase==='function')cloudPushCase(a); const d=document.getElementById('qr-dlg'); if(d) d.remove(); qReset(); try{ toast&&toast('ตีกลับให้สาขาแล้ว'); }catch(e){} openDetail(id); }
 /* ================== INIT ================== */
 loadCustDB();
 loadIncRef();
