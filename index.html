@@ -212,6 +212,9 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 .qchip{border-radius:10px;padding:9px 12px;text-align:center}
 .qchip .n{font-size:20px;font-weight:700;line-height:1}.qchip .l{font-size:10.5px;margin-top:3px}
 /* 0925-J: กลุ่มตัวเลข สนญ./เขต + ปุ่มซ่อนคิวงาน */
+.pw{display:inline-block;border-radius:999px;padding:1px 9px;font-size:11.5px;font-weight:600;margin:1px 2px 1px 0;border:1px solid;white-space:nowrap}.pw.br{background:#fff7ed;color:#c2410c;border-color:#fdba74}.pw.hq{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}.pw.late{background:#fef2f2;color:#b91c1c;border-color:#fca5a5}
+.p1ml{font-weight:400;font-size:10.5px;color:#6b7280;background:#f3f4f6;border-radius:999px;padding:0 7px;margin-left:4px}
+.p1hnote{display:inline-block;margin:4px 0 2px;background:rgba(255,255,255,.16);border-radius:6px;padding:1px 8px}
 .p1grp{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}.p1band{border:1px solid;border-top-width:4px;border-radius:10px;padding:8px 10px;background:#fff;min-width:0}
 .p1band.b1{flex:1 1 150px}.p1band.b2{flex:3.4 1 420px}.p1band.b3{flex:1.6 1 230px}
 .p1band .bh{font-size:12.5px;font-weight:800;margin-bottom:6px}.p1band .bc{display:flex;gap:8px;flex-wrap:wrap}.p1band .bf{font-size:11.5px;margin-top:6px;color:#6b7280}.p1band .bf a{color:#c2410c;font-weight:700}
@@ -447,7 +450,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-J (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-J (เฟส 1 · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง + ตีกลับ/รับทราบ/เลขสัญญา/ป๊อปอัป · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
+      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-M (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-M (เฟส 1 · 💳 ส่วนที่ 4 แบบใหม่ + หลักการขายรายเดือน/หน้าตรวจไฟล์ · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง + ตีกลับ/รับทราบ/เลขสัญญา/ป๊อปอัป · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
     </div>
   </div>
 </div>
@@ -536,7 +539,7 @@ const GUAR = [
  ['none','ไม่มีผู้ค้ำประกัน',40]
 ];
 const PRODUCTS = {
- hp_new:{label:'เช่าซื้อรถใหม่ (Honda)'}, hp_used:{label:'เช่าซื้อรถมือสอง'}, pawn:{label:'จำนำเล่มทะเบียน'}
+ hp_new:{label:'เช่าซื้อรถใหม่ (Honda)'}, hp_used:{label:'เช่าซื้อรถมือสอง'}, pawn:{label:'การขายไฟแนนซ์'}   /* 0925-M: เปลี่ยนชื่อจาก จำนำเล่มทะเบียน (รหัส pawn เดิม) */
 };
 const PAYTYPES = { fixed:'ค่างวดคงที่ (ปกติ)', balloon:'บอลลูน (Balloon)' };
 const ZONE_PRODUCTS = { A:['hp_used','pawn'], M:['hp_new','pawn'] };
@@ -773,7 +776,8 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('vuse',d=>{ if(Array.isArray(d)){ VUSE_PURPOSES=d; localStorage.setItem('moto24_vuse_v1',JSON.stringify(VUSE_PURPOSES)); } });
    ap('recsets',d=>{ REC_SETS=d; localStorage.setItem('moto24_recsets_v1',JSON.stringify(REC_SETS)); });
    ap('cfg',d=>{ CFG=d; localStorage.setItem('moto24_cfg_v3',JSON.stringify(CFG)); try{ newVerCheck(); }catch(e){} });
-   ap('pb',d=>{ PB=d; localStorage.setItem('moto24_pb_v1',JSON.stringify(PB)); });
+   ap('pb',d=>{ localStorage.setItem('moto24_pb_v1',JSON.stringify(d)); if(!PBV.length||(PBV.length===1&&PBV[0].base)){ PB=d; if(PBV[0]) PBV[0].pb=d; } });   /* 0925-M: มีฉบับรายเดือนแล้ว → ใช้ pbv เป็นหลัก */
+   ap('pbv',d=>{ if(d&&d.s){ try{ localStorage.setItem('moto24_pbv_v1',JSON.stringify(d)); }catch(e){} pbvLoadRec(d).then(ok=>{ if(ok){ try{ recalcAll(); }catch(e){} _bgRefresh(); } }).catch(()=>{}); } });
    ap('portsnap',d=>{ PORTSNAP=d; try{localStorage.setItem('moto24_portsnap',JSON.stringify(d));}catch(e){} });
    ap('incref',d=>{ if(d&&d.base){ INCREF=d; try{localStorage.setItem('moto24_incref_v1',JSON.stringify(INCREF));}catch(e){} } });
    ap('doccheck',d=>{ if(d&&d.groups){ DOCCHECK=d; try{localStorage.setItem('moto24_doccheck_v1',JSON.stringify(DOCCHECK));}catch(e){} } });
@@ -782,12 +786,14 @@ function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=
    ap('eom',d=>{ if(d&&typeof d==='object'){ EOM_CLOSED=d; try{ localStorage.setItem('moto24_eom_v1',JSON.stringify(d)); }catch(e){} } });   /* 0925-C */
    ap('snaps',d=>{ if(d&&typeof d==='object'){ PSNAP=d; try{ localStorage.setItem('moto24_snaps',JSON.stringify(PSNAP)); }catch(e){} } });
    try{ const pv=m.portver&&m.portver.data; if(pv&&pv.ver){ try{ localStorage.setItem('moto24_portsrv',JSON.stringify(pv)); }catch(e){} if(String(pv.ver)!==portLocalVer()) loadPortFromCloud(pv); } }catch(e){}
+   try{ pbvRefresh(); }catch(e){}
    saveCloud(); if(changed){ try{recalcAll();}catch(e){} _bgRefresh(); } }); }
 function cloudSyncNow(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ (เปิดหน้า "เชื่อมต่อ Google Sheet" ก่อน)'); return; }
  Promise.all([cloudPullMaster(),cloudPullCases(true)]).then(()=>alert('ซิงก์ล่าสุดแล้ว')).catch(e=>alert('ซิงก์ไม่สำเร็จ: '+e.message)); }
 function cloudPushAll(){ if(!cloudReady()){ alert('ยังไม่ได้เชื่อมต่อ'); return; }
  if(!confirm('อัปโหลดข้อมูลทั้งหมดในเครื่องนี้ขึ้น Google Sheet? (เคส '+APPS.length+' + ข้อมูลหลังบ้าน)')) return;
  const seq=[]; APPS.forEach(a=>{ a.updatedAt=a.updatedAt||Date.now(); seq.push(()=>cloudCall('upsertCase',{'case':_caseWire(a)}).then(r=>_pushDone(a,a._dirtyAt||0,r))); });
+ try{ pbvSave(); }catch(e){}
  [['occ',OCC_LIST],['vuse',VUSE_PURPOSES],['recsets',REC_SETS],['cfg',CFG],['pb',PB],['incref',INCREF],['doccheck',DOCCHECK],['users',USERS.map(u=>Object.assign({},u,{lastLogin:undefined}))]].concat((buildPortSnap&&buildPortSnap())?[['portsnap',buildPortSnap()]]:[]).forEach(kv=>seq.push(()=>cloudCall('setMaster',{key:kv[0],data:kv[1],by:(SESSION&&SESSION.name)||''})));
  (function run(i){ if(i>=seq.length){ alert('อัปโหลดครบแล้ว ('+APPS.length+' เคส + ข้อมูลหลังบ้าน)'); return; } seq[i]().then(()=>run(i+1)).catch(e=>alert('หยุดที่รายการ '+(i+1)+': '+e.message)); })(0); }
 /* ===== 0912-D: ล้างเคสทั้งระบบ (โหมดทดสอบ) =====
@@ -1013,19 +1019,53 @@ function maxInstallPrice(finance, term, down){
 }
 function scoreOf(list,key){ const f=list.find(x=>x[0]===key); return f?f[2]:0; }
 function pbResolve(a){
- if(typeof PB==='undefined'||!PB||!a.pbCode) return null;
+ const P=(typeof pbFor==='function')? pbFor(a) : (typeof PB!=='undefined'?PB:null);
+ if(!P||!P.items||!a.pbCode) return null;
  const t = a.product==='pawn'?'fin': a.product==='hp_used'?((a.payType==='balloon')?'usedbal':'used'):((a.payType==='balloon')?'newbal':'new');
- const gKey = t==='usedbal'?'AB': bpGradeOf(a.branch,t);
- const list=(PB.items[t]&&PB.items[t][gKey])||[];
- const item=list.find(x=>x.code===a.pbCode);
+ const gKey = t==='usedbal'?'AB': bpGradeOf(a.branch,t,P);
+ const list=(P.items[t]&&P.items[t][gKey])||[];
+ const item=list.find(x=>(x.key||x.code)===a.pbCode);
  if(!item) return null;
- const grade = t==='usedbal'? bpGradeOf(a.branch,'used') : gKey;
- return {type:t, grade, item, blocked: t==='usedbal'&&grade==='C'};
+ const grade = t==='usedbal'? bpGradeOf(a.branch,'used',P) : gKey;
+ return {type:t, grade, item, P, blocked: t==='usedbal'&&grade==='C'};
+}
+/* 0925-M: อัตราดอกเบี้ยตามงวด — รายการจากตัวอ่านใหม่มี intMax (ขอบงวดจากหัวตาราง) · รายการเก่าใช้ pbTierIdx เดิม */
+function pbRateFor(it,term){
+ if(!it||!it.ints||!it.ints.length) return null;
+ if(it.intMax&&it.intMax.length===it.ints.length){
+  for(let i=0;i<it.ints.length;i++){ if(term<=it.intMax[i]&&it.ints[i]!=null) return it.ints[i]; }
+  for(let i=it.ints.length-1;i>=0;i--){ if(it.ints[i]!=null) return it.ints[i]; } return null;
+ }
+ const v=it.ints[pbTierIdx(it.ints.length,term)]; return v==null?null:v;
+}
+function pbFinTier(P,amt){
+ const tiers=(P&&P.finTiers&&P.finTiers.length)?P.finTiers:[{rate:0.0039,max:10000},{rate:0.0059,max:15000},{rate:0.0099,max:20000}];
+ let tier=-1; for(let i=0;i<tiers.length;i++){ if(amt<=tiers[i].max){ tier=i; break; } }
+ if(tier<0) tier=tiers.length-1; return {tier, rate:tiers[tier].rate, tiers};
+}
+/* 0925-M: ค่างวด "ตามหลักการ" (ระบบคำนวณ) — ใช้เทียบกับค่างวดที่สาขากรอกตาม H-Capital (สนญ. เห็นเท่านั้น) */
+function pbSysInst(ctx,a,finance,term){
+ if(!ctx||!ctx.item||!(finance>0)) return null;
+ const it=ctx.item;
+ if(ctx.type==='fin'){
+  const ft=pbFinTier(ctx.P,finance); const cover=(it.covers&&it.covers[ft.tier]!=null)?it.covers[ft.tier]:0;
+  const base=finance+cover; const tot=base*(1+ft.rate*term);
+  return {kind:'fixed', rate:ft.rate, cover, base, total:Math.round(tot), inst:Math.ceil((tot/term)/10)*10, long:(it.longs&&it.longs[ft.tier])||null, tier:ft.tier};
+ }
+ if(ctx.type==='newbal'||ctx.type==='usedbal'){
+  const rate=pbRateFor(it,term); if(rate==null||!(it.payMonth>0)) return null;
+  const tot=finance*(1+rate*term); const inst=Math.round(it.payMonth);
+  return {kind:'balloon', rate, base:finance, total:Math.round(tot), inst, last:Math.max(0,Math.round(tot-inst*(term-1)))};
+ }
+ const rate=pbRateFor(it,term); if(rate==null) return null;
+ const tot=finance*(1+rate*term);
+ return {kind:'fixed', rate, base:finance, total:Math.round(tot), inst:Math.ceil((tot/term)/10)*10};
 }
 function calcAll(a){
  const isPawn = a.product==='pawn';
  const ctx=pbResolve(a);
- const condIdx = Math.min(3,Math.max(0,+a.cond||0));
+ const f4 = (+a.f4||0)>=2;   /* 0925-M: ส่วนที่ 4 แบบใหม่ — ราคาขายผ่อนล็อก · ยอดจัด = ราคาขายผ่อน − ดาวน์ · ค่างวดตามที่สาขากรอก (H-Capital) */
+ const condIdx = Math.min((ctx&&ctx.item&&Array.isArray(ctx.item.cash))?ctx.item.cash.length-1:3,Math.max(0,+a.cond||0));
  let price=a.price||0, downMin=null, rateOv=null, instRef=null, gifts=null, cover=null, limit=null;
  let termUsed=a.term||12, payMonthFixed=null;
  if(ctx){
@@ -1033,30 +1073,46 @@ function calcAll(a){
   if(ctx.type==='fin'){
    limit=it.limit;
    const amt=a.finance||0;
-   const tiers=(PB.finTiers&&PB.finTiers.length)?PB.finTiers:[{rate:0.0039,max:10000},{rate:0.0059,max:15000},{rate:0.0099,max:20000}];
+   const tiers=(ctx.P&&ctx.P.finTiers&&ctx.P.finTiers.length)?ctx.P.finTiers:[{rate:0.0039,max:10000},{rate:0.0059,max:15000},{rate:0.0099,max:20000}];
    let tier=-1; for(let i=0;i<tiers.length;i++){ if(amt<=tiers[i].max){ tier=i; break; } }
    if(tier<0) tier=tiers.length-1;
    rateOv=tiers[tier].rate;
-   termUsed=(it.longs&&it.longs[tier]!=null)?it.longs[tier]:24;
+   termUsed=f4? (a.term||12) : ((it.longs&&it.longs[tier]!=null)?it.longs[tier]:24);
    cover=(it.covers&&it.covers[tier]!=null)?it.covers[tier]:null;
   } else if(ctx.type==='used'){
    price=it.cash[condIdx]||0; instRef=it.inst[condIdx]||null; downMin=it.down||0;
+   if(it.intMax){ rateOv=pbRateFor(it,termUsed); } else {
    const uI=(it.ints&&it.ints.length)?it.ints:(it.int12!=null?[it.int12]:[]);
-   rateOv=(uI.length?uI[pbTierIdx(uI.length,termUsed)]:null); if(rateOv==null) rateOv=(it.int12!=null?it.int12:null);
+   rateOv=(uI.length?uI[pbTierIdx(uI.length,termUsed)]:null); if(rateOv==null) rateOv=(it.int12!=null?it.int12:null); }
   } else if(ctx.type==='usedbal'){
    price=it.cash[condIdx]||0; instRef=it.inst[condIdx]||null; downMin=it.down||0; payMonthFixed=it.payMonth||0; termUsed=48;
   } else if(ctx.type==='new'){
    price=it.cash||0; instRef=it.inst||null; downMin=it.down||0; gifts=it.gifts||null;
+   if(it.intMax){ rateOv=pbRateFor(it,termUsed); } else {
    const ti=pbTierIdx((it.ints||[]).length, termUsed);
-   rateOv=(it.ints&&it.ints[ti]!=null)?it.ints[ti]:null;
+   rateOv=(it.ints&&it.ints[ti]!=null)?it.ints[ti]:null; }
   } else {
    price=it.cash||0; instRef=it.inst||null; downMin=it.down||0; gifts=it.gifts||null; payMonthFixed=it.payMonth||0; termUsed=48;
   }
  }
+ let priceCash=price, sys=null;
+ if(f4 && ctx && ctx.type!=='fin' && instRef!=null){ price=instRef; }   /* 0925-M: ราคาใน H-Cap = ราคาขายผ่อนตามหลักการ (เกรดสาขา) */
+ if(f4 && ctx && ctx.type==='fin'){ price=limit||0; priceCash=price; }
  const finance = isPawn ? (a.finance||0) : Math.max(price-(a.down||0),0);
  const rm = rateOv!=null? rateOv : CFG.rates[a.product]/100;
  let payments, installment, balloonAmt=0, totalInterest;
- if(payMonthFixed!=null){
+ if(f4){
+  if(ctx && (ctx.type==='usedbal'||ctx.type==='newbal')) termUsed=48;
+  sys=pbSysInst(ctx,a,finance,termUsed);
+  installment = (+a.instOv>0)? +a.instOv : (sys?sys.inst:0);
+  const isBalF4 = a.payType==='balloon' && !isPawn;
+  balloonAmt = isBalF4? ((+a.balloonOv>0)? +a.balloonOv : (sys&&sys.last!=null?sys.last:0)) : 0;
+  payments=[];
+  if(isBalF4){ for(let i=0;i<termUsed-1;i++) payments.push(installment); payments.push(balloonAmt); }
+  else { for(let i=0;i<termUsed;i++) payments.push(installment); }
+  const finBase = (sys&&sys.base)||finance;
+  totalInterest = Math.max(0, payments.reduce((x,y)=>x+y,0)-finBase);
+ } else if(payMonthFixed!=null){
   installment=Math.round(payMonthFixed);
   const base=(instRef!=null?instRef:price);
   balloonAmt=Math.max(0, Math.round(base-(a.down||0)-installment*(termUsed-1)));
@@ -1074,15 +1130,15 @@ function calcAll(a){
   breakEven={cost:ctx.item.cost, installNo:k, margin:(price-ctx.item.cost)};
  }
  /* override ให้ตรง H-Capital (บอลลูนพิมพ์งวดสุดท้ายได้เสมอ · ค่างวด/ราคาเช่าซื้อเมื่อเปิด override) */
- const bOv=(a.payType==='balloon'&&+a.balloonOv>0);
- const iOv=(a.hpOverride&&+a.instOv>0);
+ const bOv=!f4&&(a.payType==='balloon'&&+a.balloonOv>0);
+ const iOv=!f4&&(a.hpOverride&&+a.instOv>0);
  if(bOv) balloonAmt=+a.balloonOv;
  if(iOv) installment=+a.instOv;
  if(bOv||iOv){ payments=[];
    if(balloonAmt>0){ for(let i=0;i<termUsed-1;i++) payments.push(installment); payments.push(balloonAmt); }  /* 47 งวดปกติ + งวดสุดท้ายเป็นก้อนบอลลูน */
    else { for(let i=0;i<termUsed;i++) payments.push(installment); } }
  let hpTotal = payments.reduce((x,y)=>x+y,0);
- if(a.hpOverride && +a.hpTotalOv>0) hpTotal=+a.hpTotalOv;
+ if(!f4 && a.hpOverride && +a.hpTotalOv>0) hpTotal=+a.hpTotalOv;
  const interestPreVat = Math.max(0,hpTotal-finance)/1.07;
  const vatTotal = hpTotal - hpTotal/1.07;
  /* --- จุดคุ้มทุนกรณียึดรถ / รถหาย (จากตารางวงเงินคุ้มครอง) --- */
@@ -1119,7 +1175,7 @@ function calcAll(a){
    }
   }
  }
- const eir = calcEIR(finance,payments);
+ const eir = calcEIR((f4&&sys&&sys.base)?sys.base:finance,payments);
  const ltv = price>0 ? finance/price*100 : 0;
  /* รายได้เสริม: นับเต็มเฉพาะเมื่อมีภาพหลักฐานแนบ · ไม่มีหลักฐาน นับตามสัดส่วน (ค่าเริ่มต้น 50%) กันแจ้งเกินจริงเพื่อผ่าน DSR */
  const _xf=incExtraFactor(a); const _extraFactor=_xf.factor;   /* 0924-E: ตามที่มา */
@@ -1133,7 +1189,14 @@ function calcAll(a){
  const dsr = incomeTotal>0 ? (installment+debtEff)/incomeTotal*100 : 999;
  const ltvMax = CFG.ltvMax[a.product];
  const dsrMax = incomeTotal>=CFG.dsr.incomeThreshold ? CFG.dsr.limitHigh : CFG.dsr.limitLow;
- const flatMo = payMonthFixed!=null? null : rm*100;
+ const _fb=(f4&&sys&&sys.base)?sys.base:finance;
+ const flatMo = f4? ((_fb>0&&termUsed>0&&installment>0)? (payments.reduce((x,y)=>x+y,0)-_fb)/_fb/termUsed*100 : null) : (payMonthFixed!=null? null : rm*100);
+ /* 0925-M: เทียบค่างวดสาขา (H-Capital) กับค่างวดตามหลักการ — เกณฑ์ส่วนต่าง CFG.instTol (ค่าเริ่มต้น 10 บ.) */
+ const instTol = (CFG&&CFG.instTol!=null)? +CFG.instTol : 10;
+ const instDiff = (f4&&sys&&+a.instOv>0)? (+a.instOv - sys.inst) : null;
+ const lastDiff = (f4&&sys&&sys.last!=null&&a.payType==='balloon'&&+a.balloonOv>0)? (+a.balloonOv - sys.last) : null;
+ const downBad = f4 && downMin!=null && !isPawn && (a.down||0)<downMin;
+ const limitBad = f4 && limit!=null && (a.finance||0)>limit;
  const downPct = price>0 ? (a.down||0)/price*100 : 0;
  const maxPrice = isPawn?0:maxInstallPrice(finance,termUsed,a.down||0);
  const _rCap=CFG.eirCap/100/12;
@@ -1186,7 +1249,7 @@ function calcAll(a){
  add('workYears','อายุงาน / อายุกิจการ', wy>=5?100:wy>=3?80:wy>=1?60:30);
  add('dsr','ภาระหนี้ (DSR)', dsr<=30?100:dsr<=40?80:dsr<=50?55:dsr<=60?25:0);
  const lr = ltvMax>0? ltv/ltvMax:9;
- add('ltv','เงินดาวน์ / LTV', lr<=0.7?100:lr<=0.85?80:lr<=1.0?60:0);
+ add('ltv','เงินดาวน์ / LTV', f4? (downBad||limitBad?0:80) : (lr<=0.7?100:lr<=0.85?80:lr<=1.0?60:0));
  const sub=(a.addrCur&&a.addrCur.sub)||'', dist=(a.addrCur&&a.addrCur.dist)||'';
  const area = findRiskArea(sub,dist);
  add('area','พื้นที่อยู่อาศัย', !area?100:area.level==='watch'?50:0);
@@ -1240,15 +1303,17 @@ function calcAll(a){
    warns.push({t:'warn', m:sug});
   }
  }
- if(ltv>ltvMax) warns.push({t:'bad', hq:true, m:`LTV ${ltv.toFixed(1)}% เกินเกณฑ์ ${ltvMax}% ของ${isPawn?'ราคาประเมิน':'ราคาขายสด'}`});
+ if(!f4 && ltv>ltvMax) warns.push({t:'bad', hq:true, m:`LTV ${ltv.toFixed(1)}% เกินเกณฑ์ ${ltvMax}% ของ${isPawn?'ราคาประเมิน':'ราคาขายสด'}`});
  if(dsr>dsrMax) warns.push({t:'bad', hq:true, m:`DSR ${dsr.toFixed(1)}% เกินเกณฑ์ ${dsrMax}% (รายได้รวม ${fmt(incomeTotal)} บ.)`});
  if(area) warns.push({t:area.level==='high'?'bad':'warn', m:`⚠ พื้นที่${area.level==='high'?'เสี่ยงสูง':'เฝ้าระวัง'}: ต.${area.sub} อ.${area.dist} — ${area.reason}`});
  if(a.history==='old_bad') warns.push({t:'bad', m:'ลูกค้าเคยมีปัญหากับบริษัท (เคยถูกยึดรถ/หนี้สูญ)'});
  if(a.birth){ const ageNow=a.age||ageFrom(a.birth); if(ageNow<20) warns.push({t:'bad', m:'ลูกค้าอายุ '+ageNow+' ปี — ต่ำกว่า 20 ปีบริบูรณ์ ไม่สามารถทำสัญญาได้ (ล็อกการขาย)'}); }
  if(ctx&&ctx.blocked) warns.push({t:'bad', m:'มือสอง Balloon เปิดเฉพาะสาขาเกรด A/B — สาขานี้เกรดมือสอง C ใช้ไม่ได้เดือนนี้'});
- if(downMin!=null&&!isPawn&&(a.down||0)<downMin) warns.push({t:'bad', m:'เงินดาวน์ '+fmt(a.down||0)+' บ. ต่ำกว่าขั้นต่ำตามหลักการ '+fmt(downMin)+' บ. (เกรดสาขา '+(ctx?ctx.grade:'-')+')'});
- if(limit!=null&&(a.finance||0)>limit) warns.push({t:'bad', m:'วงเงินที่ขอ '+fmt(a.finance||0)+' บ. เกินวงเงินสูงสุดของรุ่นนี้ '+fmt(limit)+' บ. (เกรดสาขา '+(ctx?ctx.grade:'-')+')'});
- if(ctx&&ctx.type==='fin'&&(a.finance||0)>25000) warns.push({t:'warn', m:'วงเงินจัดไฟแนนซ์เกิน 25,000 บ. — ต้องขออนุมัติผู้จัดการฝ่ายขาย (เงื่อนไขหลักการ)'});
+ if(downMin!=null&&!isPawn&&(a.down||0)<downMin) warns.push({t:'bad', hq:f4||undefined, m:(f4?'(ภายใน) ':'')+'เงินดาวน์ '+fmt(a.down||0)+' บ. ต่ำกว่าขั้นต่ำตามหลักการ '+fmt(downMin)+' บ. (เกรดสาขา '+(ctx?ctx.grade:'-')+')'});
+ if(limit!=null&&(a.finance||0)>limit) warns.push({t:'bad', hq:f4||undefined, m:(f4?'(ภายใน) ':'')+'วงเงินที่ขอ '+fmt(a.finance||0)+' บ. เกินวงเงินสูงสุดของรุ่นนี้ '+fmt(limit)+' บ. (เกรดสาขา '+(ctx?ctx.grade:'-')+')'});
+ if(f4&&instDiff!=null&&Math.abs(instDiff)>instTol) warns.push({t:'warn', hq:true, m:'(ภายใน) ค่างวดที่สาขากรอก '+fmt(+a.instOv)+' บ. ต่างจากค่างวดตามหลักการ '+fmt(sys.inst)+' บ. ('+(instDiff>0?'+':'')+fmt(instDiff)+' บ. · เกณฑ์ ±'+instTol+') — ตรวจกับ H-Capital'});
+ if(f4&&lastDiff!=null&&Math.abs(lastDiff)>instTol) warns.push({t:'warn', hq:true, m:'(ภายใน) งวดสุดท้าย (บอลลูน) ที่สาขากรอก '+fmt(+a.balloonOv)+' บ. ต่างจากตามหลักการ '+fmt(sys.last)+' บ. ('+(lastDiff>0?'+':'')+fmt(lastDiff)+' บ.)'});
+ if(ctx&&ctx.type==='fin'&&(a.finance||0)>25000) warns.push({t:'warn', hq:f4||undefined, m:'วงเงินจัดไฟแนนซ์เกิน 25,000 บ. — ต้องขออนุมัติผู้จัดการฝ่ายขาย (เงื่อนไขหลักการ)'});
 
  /* วันดิวงวดแรก vs ฤดูกาลรายได้ */
  let dueRisk=null;
@@ -1353,7 +1418,8 @@ function calcAll(a){
  return {noProduct, finance, installment, balloonAmt, totalInterest, eir, ltv, dsr, ltvMax, dsrMax, score, parts, warns, rec, docSuggest, refi:refiInfo,
          flatMo, flatYr:flatMo!=null?flatMo*12:null, downPct, maxPrice, season, lowSeasonIncome, dueRisk, incExtraEff, incExtraPct:_xf.pct, incSrcCls:_xf.cls,
          price, downMin, instRef, gifts, cover, limit, termUsed, hpTotal, interestPreVat, vatTotal, breakEven, recov, salePriceBE, maxInstCap,
-         pb: ctx?{type:ctx.type,grade:ctx.grade,code:ctx.item.code,name:ctx.item.name}:null};
+         f4, sys, priceCash, instDiff, lastDiff, instTol, downBad, limitBad,
+         pb: ctx?{type:ctx.type,grade:ctx.grade,code:ctx.item.code,name:ctx.item.name,month:(ctx.P&&ctx.P.month)||''}:null};
 }
 function findRiskArea(sub,dist){
  if(!sub&&!dist) return null;
@@ -1420,13 +1486,16 @@ function seedData(){
    ก่อนนำไปใช้จริง เปลี่ยนเป็น false บรรทัดนี้บรรทัดเดียว ปุ่มทดสอบจะหายไปทั้งหมด */
 let DEMO_MODE = false;
 let fYear='', fMonth='';
-function inPeriod(a){
- if(fYear && String(a.date||'').slice(0,4)!==fYear) return false;
- if(fMonth && String(a.date||'').slice(5,7)!==fMonth) return false;
+/* 0925-L: เดือนของเคส = เดือนที่สาขาส่งครั้งแรก (เวลาไทย) · ใช้ทุกหน้า (รายการเคส · KPI · รายงาน) · เคสที่ยังไม่ส่ง ใช้วันที่ในฟอร์ม */
+function caseMs(a){ return (a&&(a.firstSubmittedAt||a.submittedAt))||0; }
+function caseYm(a){ const t=caseMs(a); if(t){ const d=new Date(t); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); } return String((a&&a.date)||'').slice(0,7); }
+function inPeriod(a){ const ym=caseYm(a);
+ if(fYear && ym.slice(0,4)!==fYear) return false;
+ if(fMonth && ym.slice(5,7)!==fMonth) return false;
  return true;
 }
 function periodUI(){
- const years=[...new Set(APPS.map(a=>String(a.date||'').slice(0,4)).filter(Boolean))].sort();
+ const years=[...new Set(APPS.map(a=>caseYm(a).slice(0,4)).filter(Boolean))].sort();
  const thisY=new Date().toISOString().slice(0,4);
  if(years.indexOf(thisY)<0) years.push(thisY);
  return '<div class="flex" style="flex-wrap:wrap"><label class="mut" style="font-size:13px">ปี:</label>'
@@ -2402,21 +2471,23 @@ function p1State(a){ if(!a) return 'sent'; if(a.status==='cancelled') return 'ca
  return 'reviewed'; }
 function p1Tag(a){ const s=p1State(a);
  const hqLate=!hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
- const M={sold:['🛒 ขายแล้ว'+(a.sale&&a.sale.beforeSubmit?' (ก่อนส่งเคส)':a.sale&&a.sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''),'#dcfce7','#166534'],notsold:['✋ ไม่ขาย','#e5e7eb','#374151'],cancelled:['🚶 ลูกค้ายกเลิก','#e5e7eb','#374151'],waiting:['⏳ รอลูกค้าตัดสินใจ','#fef9c3','#854d0e'],overdue:['⚠ ค้างบันทึกผลขาย','#fee2e2','#b91c1c'],reviewed:['✅ รับทราบแล้ว · รอบันทึกผลขาย','#dbeafe','#1d4ed8'],ackwait:[(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'⚠ สนญ. ส่งการ์ดแล้ว · สาขายังไม่รับทราบ (ค้างข้ามวัน)':'🧭 สนญ. ส่งการ์ดแล้ว · รอสาขารับทราบ',(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'#fee2e2':'#fef3c7',(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'#b91c1c':'#b45309'],sent:[hqLate?'⚠ รอ สนญ. ตรวจ (เกินวัน)':'👁 รอ สนญ. ตรวจ+แนะนำ',hqLate?'#fee2e2':'#dbeafe',hqLate?'#b91c1c':'#1d4ed8']};
+ const M={sold:['🛒 ขายแล้ว'+(a.sale&&a.sale.beforeSubmit?' (ก่อนส่งเคส)':a.sale&&a.sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''),'#dcfce7','#166534'],notsold:['✋ ไม่ขาย','#e5e7eb','#374151'],cancelled:['🚶 ลูกค้ายกเลิก','#e5e7eb','#374151'],waiting:['⏳ รอลูกค้าตัดสินใจ','#fef9c3','#854d0e'],overdue:['⚠ ค้างบันทึกผลขาย','#fee2e2','#b91c1c'],reviewed:['✅ รับทราบแล้ว · รอบันทึกผลขาย','#dbeafe','#1d4ed8'],ackwait:[ackLateOf(a)?'⚠ สนญ. ส่งการ์ดแล้ว · สาขายังไม่รับทราบ (ค้างข้ามวัน)':'🧭 สนญ. ส่งการ์ดแล้ว · รอสาขารับทราบ',(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'#fee2e2':'#fef3c7',(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'#b91c1c':'#b45309'],sent:[hqLate?'⚠ รอ สนญ. ตรวจ (เกินวัน)':'👁 รอ สนญ. ตรวจ+แนะนำ',hqLate?'#fee2e2':'#dbeafe',hqLate?'#b91c1c':'#1d4ed8']};
  const m=M[s]||M.sent; let extra='';
  if(a.sale&&a.status!=='cancelled'){ if(!hqSent(a)) extra=`<span class="tag" style="background:${hqLateSale(a)?'#fee2e2':'#dbeafe'};color:${hqLateSale(a)?'#b91c1c':'#1d4ed8'};margin-left:4px">👁 ${hqLateSale(a)?'รอ สนญ. ตรวจ (เกินวัน)':'รอ สนญ. ตรวจ+แนะนำ'}</span>`; else if(!a.ack3) extra='<span class="tag" style="background:#fef3c7;color:#b45309;margin-left:4px">🧭 สนญ. ส่งการ์ดแล้ว · กดรับทราบ</span>'; else extra='<span class="tag" style="background:#dcfce7;color:#166534;margin-left:4px">✅ รับทราบแล้ว</span>'; }
  return `<span class="tag" style="background:${m[1]};color:${m[2]}">${m[0]}</span>`+extra; }
 function hqLateSale(a){ return !hqSent(a)&&a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()); }
 function p1Accent(a){ const s=p1State(a); return s==='sold'?'#16a34a':s==='overdue'?'#dc2626':(s==='reviewed'||s==='sent')?'#2563eb':(s==='notsold'||s==='cancelled')?'#9ca3af':'#eab308'; }
+/* 0925-K: ค้างข้ามวัน (รับทราบ) เกณฑ์เดียวทั้งระบบ = วันที่ สนญ. ส่งการ์ด ก่อนวันนี้ (ไม่ใช่วันที่สาขาส่งเคส) */
+function ackLateOf(a){ const t=(a&&a.hqAdvice&&a.hqAdvice.sentAt)||0; return !!t&&_dayKey(t)<_dayKey(Date.now()); }
 function p1Count(list){ const c={total:list.length,cancelled:0,sent:0,ackwait:0,ackLate:0,reviewed:0,overdue:0,sold:0,notsold:0,waiting:0,hqLate:0,beforeSubmit:0,beforeHQ:0,soldAmt:0}; const _td=_dayKey(Date.now());
  list.forEach(a=>{ const st=p1State(a); const late=a.submittedAt&&_dayKey(a.submittedAt)<_td;
   if(st==='sold'){ c.sold++; try{ c.soldAmt+=+((a.calc||{}).finance)||0; }catch(e){} }
   else if(st==='notsold'||st==='cancelled'||st==='cancelled_req'){ c.notsold++; if(a.status==='cancelled') c.cancelled=(c.cancelled||0)+1; }
   else if(st==='overdue') c.overdue++; else if(st==='waiting') c.waiting++; else if(st==='reviewed') c.reviewed++;
-  else if(st==='ackwait'){ c.ackwait++; if(late) c.ackLate++; }
+  else if(st==='ackwait'){ c.ackwait++; if(ackLateOf(a)) c.ackLate++; }
   else { c.sent++; if(late) c.hqLate++; }
   if(a.sale&&a.sale.beforeSubmit) c.beforeSubmit++; else if(a.sale&&a.sale.beforeHQ) c.beforeHQ++; });
- list.forEach(a=>{ if(a.status!=='cancelled'&&hqSent(a)&&!a.ack3){ c.ackAll=(c.ackAll||0)+1; if(a.sale&&a.sale.result&&a.sale.result!=='waiting') c.ackDone=(c.ackDone||0)+1; } if(a.status!=='cancelled'&&a.sale&&a.sale.result==='sold'&&!String(a.sale.contract||'').trim()) c.noCt=(c.noCt||0)+1; }); c.ackAll=c.ackAll||0; c.ackDone=c.ackDone||0; c.noCt=c.noCt||0;   /* 0925-H: ยังไม่รับทราบทั้งหมด (รวมเคสที่บันทึกผลขายแล้ว) */
+ list.forEach(a=>{ if(a.status!=='cancelled'&&hqSent(a)&&!a.ack3){ c.ackAll=(c.ackAll||0)+1; if(ackLateOf(a)) c.ackAllLate=(c.ackAllLate||0)+1; if(a.sale&&a.sale.result&&a.sale.result!=='waiting') c.ackDone=(c.ackDone||0)+1; } if(a.status!=='cancelled'&&a.sale&&a.sale.result==='sold'&&!String(a.sale.contract||'').trim()) c.noCt=(c.noCt||0)+1; }); c.ackAll=c.ackAll||0; c.ackDone=c.ackDone||0; c.noCt=c.noCt||0; c.ackAllLate=c.ackAllLate||0; c.ackLateSent=c.ackLate;   /* 0925-K: ค้างข้ามวัน (หัวน้ำเงิน สนญ./เขต) นับจากวันที่ สนญ. ส่งการ์ด — เกณฑ์เดียวกับกล่อง */   /* 0925-H: ยังไม่รับทราบทั้งหมด (รวมเคสที่บันทึกผลขายแล้ว) */
  c.hqPending=c.sent; c.ackPending=c.ackwait; c.saleWait=c.reviewed+c.waiting+c.overdue; c.pendingSale=c.sent+c.ackwait+c.saleWait; return c; }   /* 0921-B: สูตรเดียวทุกหน้า (เริ่ม/คิว/รายการสาขา/ภาพรวมเขต/ผู้บริหาร): sent+ackwait+saleWait+sold+notsold = total */
 
 /* ===== 0922-A: ตัวกรองสาขา · ป๊อปอัปจากกล่อง · เรียงลำดับ · หัวหน้าลงตัว 3 บทบาท (แสดงผลอย่างเดียว) ===== */
@@ -2447,25 +2518,30 @@ function p1SortApply(list,mode){ const t=a=>a.submittedAt||0;
  const w=list.filter(p1IsWork).sort((x,y)=>t(x)-t(y)), d=list.filter(a=>!p1IsWork(a)).sort((x,y)=>t(y)-t(x)); return w.concat(d); }   /* work: งานถึงคิว มาก่อนอยู่บน แล้วตามด้วยเคสจบแล้ว ใหม่สุดอยู่บน */
 function p1SortBtn(key,def){ const m=p1SortMode(key,def); const other=(m==='new')?(def==='new'?'fifo':def):'new'; const L={fifo:'มาก่อนอยู่บน',new:'ใหม่สุดอยู่บน',work:'งานถึงคิวก่อน · มาก่อนอยู่บน'};
  return `<button class="btn btn-line btn-sm" title="คลิกเพื่อสลับเป็น: ${L[other]}" onclick="p1SortSet('${key}','${other}')">⇅ เรียง: <b>${L[m]}</b></button>`; }
-function p1HeadLine(s,tag){ return 'เฟส 1 · ทั้งหมด '+s.total+' = รอ สนญ. ตรวจ '+s.sent+(s.hqLate?' (เกินวัน '+s.hqLate+')':'')+' · รอสาขารับทราบ '+s.ackwait+(s.ackLate?' (ค้างข้ามวัน '+s.ackLate+')':'')+' · รอบันทึกผลขาย '+s.saleWait+(s.overdue?' (ค้าง '+s.overdue+')':'')+' · ขายแล้ว '+s.sold+' · ไม่ขาย/ยกเลิก '+s.notsold+(s.cancelled?' (ยกเลิกคำขอ '+s.cancelled+')':'')+(tag?' · <span style="background:rgba(255,255,255,.15);border-radius:6px;padding:1px 7px">'+tag+'</span>':''); }
-function p1ScopeList(ctx,brCode){ let L;
- if(ctx==='br') L=myApps().filter(inPeriod);
- else if(ctx==='zone') L=scopedApps().filter(inPeriod).filter(a=>a.status==='pending'||a.status==='cancelled');
- else L=scopedApps().filter(inPeriod).filter(a=>a.status==='pending'||a.status==='cancelled').filter(a=>!fZone||a.zone===fZone);
+/* 0925-K: hq=true (หน้า สนญ./เขต) → ค้างข้ามวันเกณฑ์เดียวกับกล่อง + บรรทัดยังไม่กดรับทราบทั้งหมด · สาขาใช้แบบเดิม */
+/* 0925-L: งานค้าง (รอ สนญ./รอรับทราบ/รอบันทึกผลขาย/เลขสัญญา) นับทุกเดือน · จบแล้ว/ทั้งหมด ตามเดือนที่เลือก */
+const P1_PEND=['sent','hqLate','hqPending','ackwait','ackLate','ackPending','ackAll','ackDone','ackAllLate','saleWait','overdue','reviewed','waiting','noCt'];
+function p1Pend(s,ctx){ if(!ctx) return s; const sp=p1Count(p1ScopeList(ctx,'',true)); const o=Object.assign({},s); P1_PEND.forEach(k=>{ o[k]=sp[k]; }); o._pend=sp; return o; }
+function p1HeadLine(s,tag,hq){ const aL=s.ackLate; return 'เฟส 1 · ทั้งหมด '+s.total+' = รอ สนญ. ตรวจ '+s.sent+(s.hqLate?' (เกินวัน '+s.hqLate+')':'')+' · รอสาขารับทราบ '+s.ackwait+(aL?' (ค้างข้ามวัน '+aL+')':'')+' · รอบันทึกผลขาย '+s.saleWait+(s.overdue?' (ค้าง '+s.overdue+')':'')+' · ขายแล้ว '+s.sold+' · ไม่ขาย/ยกเลิก '+s.notsold+(s.cancelled?' (ยกเลิกคำขอ '+s.cancelled+')':'')+(hq&&hq.ackAll?'<br><span class="p1hnote">🏪 งานค้างฝั่งสาขา (ทุกเดือน): ยังไม่กดรับทราบ <b>'+hq.ackAll+'</b> (รอรับทราบ '+hq.ackwait+' + บันทึกผลขายแล้วแต่ยังไม่รับทราบ '+(hq.ackAll-hq.ackwait)+')'+(hq.ackAllLate?' · ค้างข้ามวัน '+hq.ackAllLate:'')+'</span>':'')+(tag?' · <span style="background:rgba(255,255,255,.15);border-radius:6px;padding:1px 7px">'+tag+'</span>':''); }
+function p1ScopeList(ctx,brCode,all){ const inP=a=>all||inPeriod(a);   /* 0925-L: all=true → งานค้างทุกเดือน */ let L;
+ if(ctx==='br') L=myApps().filter(inP);
+ else if(ctx==='zone') L=scopedApps().filter(inP).filter(a=>a.status==='pending'||a.status==='cancelled');
+ else L=scopedApps().filter(inP).filter(a=>a.status==='pending'||a.status==='cancelled').filter(a=>!fZone||zoneOfBranch(a.branch)===fZone);   /* 0925-L: เขตตามสาขาปัจจุบัน (เหมือนรายงาน) */
  const bc=brCode||((ctx==='hq'||ctx==='zone')?fBranch:''); if(bc) L=L.filter(a=>a.branch===bc); return L; }
 function p1BranchSelect(ctx){ const zone=ctx==='zone'?SESSION.zone:fZone; const brs=BRANCHES.filter(b=>!zone||b.zone===zone).slice().sort((a,b)=>String(a.code).localeCompare(String(b.code)));
  if(fBranch&&!brs.some(b=>b.code===fBranch)) fBranch='';
  return `<div class="flex"><label class="mut" style="font-size:13px">สาขา:</label><select style="width:210px" onchange="fBranch=this.value;go(currentTab)"><option value="">— ${zone?'ทุกสาขาในเขต ('+brs.length+' สาขา)':'ทุกสาขา ('+brs.length+')'} —</option>${brs.map(b=>`<option value="${b.code}" ${fBranch===b.code?'selected':''}>${b.label}</option>`).join('')}</select></div>`; }
 function p1ScopeTag(ctx){ if(ctx==='br') return (typeof fMonth!=='undefined'&&fMonth)?'เดือนที่เลือก':'ช่วงที่เลือก'; const z=ctx==='zone'?(ZONES[SESSION.zone]||{}).name:(fZone?(ZONES[fZone]||{}).name:'ทุกเขต'); const b=fBranch?((BRANCHES.find(x=>x.code===fBranch)||{}).label||fBranch):(ctx==='zone'?'ทุกสาขาในเขต':'ทุกสาขา'); return z+' · '+b; }
-function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p1ScopeList(ctx,brCode).filter(a=>grp==='ack'?(a.status!=='cancelled'&&hqSent(a)&&!a.ack3):p1Group(a)===grp);   /* 0925-H: รอรับทราบ รวมเคสบันทึกผลขายแล้ว */ const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p1ScopeList(ctx,brCode,grp==='sent'||grp==='ack'||grp==='sale').filter(a=>grp==='ack'?(a.status!=='cancelled'&&hqSent(a)&&!a.ack3):p1Group(a)===grp);   /* 0925-H: รอรับทราบ รวมเคสบันทึกผลขายแล้ว */ const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
  const tOf=a=>grp==='sent'?(a.submittedAt||0):grp==='ack'?((a.hqAdvice&&a.hqAdvice.sentAt)||a.submittedAt||0):grp==='sale'?((a.ack3&&a.ack3.at)||(a.hqAdvice&&a.hqAdvice.sentAt)||a.submittedAt||0):grp==='sold'?((a.sale&&a.sale.at)||a.submittedAt||0):((a.cancelledAt||(a.sale&&a.sale.at)||a.submittedAt)||0);
  const list=src.slice().sort((x,y)=>(grp==='sold'||grp==='not')?(tOf(y)-tOf(x)):(tOf(x)-tOf(y)));
  const isBr=ctx==='br', isHQ=ctx==='hq'; const tCol=grp==='sent'?'ยื่นเมื่อ':grp==='ack'?'สนญ. ส่งการ์ด':grp==='sale'?'สาขารับทราบ':grp==='sold'?'ขายเมื่อ':'เมื่อ';
- const late=a=>a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
+ const late=a=>grp==='ack'?ackLateOf(a):(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()));   /* 0925-K: รอรับทราบ นับจากวันที่ สนญ. ส่งการ์ด */
  const advTxt=a=>{ const h=a.hqAdvice||{}; if(!h.sentAt) return '—'; const t=Object.keys(h.text||{}).filter(k=>h.text[k]&&!(h.none||{})[k]); return t.length?t.map(k=>({person:'👤',occ:'💼',income:'💰'}[k]||'')+' '+esc(h.text[k]).slice(0,40)).join(' · '):'ไม่มีข้อเสนอแนะ'; };
  const notTxt=a=>a.status==='cancelled'?'🚫 ยกเลิกคำขอ'+(a.cancelReq&&a.cancelReq.reason?' · '+esc(a.cancelReq.reason):''):(a.sale&&a.sale.result==='notsold'?'✋ ไม่ขาย'+(a.sale.reason?' · '+esc(a.sale.reason):''):'🚶 ลูกค้ายกเลิก');
- const rows=list.map(a=>{ const b=BRANCHES.find(x=>x.code===a.branch); const L=hqSent(a)?(CHK3_LV[lightOf(a)]||CHK3_LV.na):null; const w=p1IsWork(a)?fmtDur(Date.now()-tOf(a)):''; const lt=p1IsWork(a)&&late(a);
-  return `<tr class="click" style="${lt?'background:#fff5f5':''}" onclick="closeModal();openDetail('${a.id}')"><td><b>${esc(a.name)}</b> <span class="mut">· ${a.id}</span></td>${isBr?'':`<td>${b?esc(b.label):esc(a.branch)}</td>`}${isHQ?`<td class="mut">${esc((ZONES[a.zone]||{}).name||a.zone||'')}</td>`:''}<td class="mut">${tOf(a)?fmtDT(tOf(a)):'-'}</td>${p1IsWork(a)?`<td><span class="tag" style="background:${lt?'#fee2e2':'#fef3c7'};color:${lt?'#b91c1c':'#b45309'}">${w}${lt?' · ค้างข้ามวัน':''}</span></td>`:`<td class="mut" style="font-size:12px">${grp==='not'?notTxt(a):(a.sale&&a.sale.contract?'สัญญา '+esc(a.sale.contract):'')}</td>`}<td>${L?L.ic:'<span class="mut">—</span>'}</td><td style="font-size:12px">${advTxt(a)}</td><td><button class="btn btn-sm ${isBr&&(grp==='ack'||grp==='sale')?'btn-primary':'btn-line'}" onclick="event.stopPropagation();closeModal();openDetail('${a.id}')">${isBr&&grp==='ack'?'เปิดเคส → กดรับทราบ':isBr&&grp==='sale'?'เปิดเคส → บันทึกผลขาย':'เปิดเคส →'}</button></td></tr>`; }).join('');
+ const isW=a=>grp==='ack'||p1IsWork(a);   /* 0925-K: รอรับทราบ แสดงเวลารอ/แถวแดงทุกเคส (รวมเคสบันทึกผลขายแล้ว) ให้ตรงกับตัวเลขค้างข้ามวัน */
+ const rows=list.map(a=>{ const b=BRANCHES.find(x=>x.code===a.branch); const L=hqSent(a)?(CHK3_LV[lightOf(a)]||CHK3_LV.na):null; const w=isW(a)?fmtDur(Date.now()-tOf(a)):''; const lt=isW(a)&&late(a);
+  return `<tr class="click" style="${lt?'background:#fff5f5':''}" onclick="closeModal();openDetail('${a.id}')"><td><b>${esc(a.name)}</b> <span class="mut">· ${a.id}</span></td>${isBr?'':`<td>${b?esc(b.label):esc(a.branch)}</td>`}${isHQ?`<td class="mut">${esc((ZONES[a.zone]||{}).name||a.zone||'')}</td>`:''}<td class="mut">${tOf(a)?fmtDT(tOf(a)):'-'}</td>${isW(a)?`<td><span class="tag" style="background:${lt?'#fee2e2':'#fef3c7'};color:${lt?'#b91c1c':'#b45309'}">${w}${lt?' · ค้างข้ามวัน':''}</span></td>`:`<td class="mut" style="font-size:12px">${grp==='not'?notTxt(a):(a.sale&&a.sale.contract?'สัญญา '+esc(a.sale.contract):'')}</td>`}<td>${L?L.ic:'<span class="mut">—</span>'}</td><td style="font-size:12px">${advTxt(a)}</td><td><button class="btn btn-sm ${isBr&&(grp==='ack'||grp==='sale')?'btn-primary':'btn-line'}" onclick="event.stopPropagation();closeModal();openDetail('${a.id}')">${isBr&&grp==='ack'?'เปิดเคส → กดรับทราบ':isBr&&grp==='sale'?'เปิดเคส → บันทึกผลขาย':'เปิดเคส →'}</button></td></tr>`; }).join('');
  const brName=brCode?((BRANCHES.find(x=>x.code===brCode)||{}).label||brCode):'';
  const foot=(isHQ||ctx==='zone')?`<div class="flex sb mt" style="flex-wrap:wrap;gap:8px"><span class="mut" style="font-size:12px">${(grp==='sold'||grp==='not')?'เรียงใหม่สุดอยู่บน':'เรียงจากรอนานสุด · แถวแดง = ค้างข้ามวัน'}</span><div>${list.length?`<button class="btn btn-line btn-sm" onclick="exportCSV(p1ScopeList('${ctx}','${brCode||''}').filter(a=>p1Group(a)==='${grp}'),'MOTO24_${grp}_${brCode||ctx}')">⬇ CSV รายการนี้</button>`:''}${isHQ?` <button class="btn btn-sm btn-primary" onclick="fState='${grp}';closeModal();go(currentTab)">กรองรายการด้านล่างตามนี้</button>`:''}</div></div>`:`<div class="mut mt" style="font-size:12px">${grp==='ack'?'กดรับทราบทำในหน้าเคส (ต้องเห็นการ์ดก่อน) — ป๊อปอัปนี้พาไปให้เร็วขึ้น':grp==='sale'?'บันทึกผลขายทำในหน้าเคส':'เรียงจาก'+((grp==='sold'||grp==='not')?'ใหม่สุด':'รอนานสุด')+'อยู่บน'}</div>`;
  document.getElementById('modal-bg').innerHTML=`<div class="modal" style="width:${isBr?'760px':'920px'};max-width:96vw"><button class="x" onclick="closeModal()">✕</button>
@@ -2475,8 +2551,8 @@ function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p
   ${foot}</div>`;
  document.getElementById('modal-bg').classList.remove('hidden'); }
 /* 0925-J: สนญ./เขต — ตัวเลขสถานะจัดกลุ่มตาม "ถึงคิวใคร" · ตัวเลขฝั่งสาขาอยู่ที่นี่ที่เดียว (ย้ายจากกล่อง 3 ของคิวงาน) · เกณฑ์ค้างข้ามวัน = นับจากวันที่ สนญ. ส่งการ์ด */
-function p1GrpPop(ctx,kind){ window.__qScope=p1ScopeList(ctx).map(a=>a.id); qPop(kind); }
-function p1GroupChips(s,ctx){ const L=p1ScopeList(ctx); const ids={}; L.forEach(a=>{ ids[a.id]=1; });
+function p1GrpPop(ctx,kind){ window.__qScope=p1ScopeList(ctx,'',true).map(a=>a.id); qPop(kind); }
+function p1GroupChips(s,ctx){ const L=p1ScopeList(ctx,'',true); const ids={}; L.forEach(a=>{ ids[a.id]=1; });
  const tk=(typeof qTasks==='function')?qTasks(L):[]; const ackLate=tk.filter(x=>x.T.ack&&x.T.ackLate).length, ctLate=tk.filter(x=>x.T.ct&&x.T.ctLate).length;
  const ret=(typeof qCompute==='function')?qCompute().w.filter(x=>ids[x.id]).length:0; const R='#b91c1c';
  const act=g=>(ctx==='hq'&&fState===g)?' data-act="1"':'';
@@ -2485,22 +2561,22 @@ function p1GroupChips(s,ctx){ const L=p1ScopeList(ctx); const ids={}; L.forEach(
  const pp=g=>`p1ChipPop('${ctx}','${g}')`, qp=k=>`p1GrpPop('${ctx}','${k}')`;
  const nBr=(s.ackAll||0)+(s.saleWait||0)+(s.noCt||0)+ret;
  return `<div class="p1grp">`
-  +band('👁 ถึงคิว สนญ.','#1d4ed8','#bfdbfe',chip(s.hqPending||0,'รอ สนญ. ตรวจ+แนะนำ','#1d4ed8','#dbeafe',s.hqLate?`<span style="color:${R}">เกินวัน ${s.hqLate}</span>`:'',pp('sent'),'sent'),'','b1')
-  +band('🏪 ถึงคิวสาขา (ติดตาม)','#c2410c','#fdba74',
+  +band('👁 ถึงคิว สนญ. <span class="p1ml">งานค้างทุกเดือน</span>','#1d4ed8','#bfdbfe',chip(s.hqPending||0,'รอ สนญ. ตรวจ+แนะนำ','#1d4ed8','#dbeafe',s.hqLate?`<span style="color:${R}">เกินวัน ${s.hqLate}</span>`:'',pp('sent'),'sent'),'','b1')
+  +band('🏪 ถึงคิวสาขา (ติดตาม) <span class="p1ml">งานค้างทุกเดือน</span>','#c2410c','#fdba74',
      chip(s.ackAll||0,'✅ ยังไม่กดรับทราบ','#b45309','#fef3c7',(s.ackDone?`<span class="mut">รวมบันทึกผลขายแล้ว ${s.ackDone}</span>`:'')+(s.ackDone&&ackLate?' · ':'')+(ackLate?`<span style="color:${R}">ค้างข้ามวัน ${ackLate}</span>`:''),pp('ack'),'ack')
     +chip(s.saleWait||0,'⏳ ยังไม่บันทึกผลขาย','#854d0e','#fef9c3',s.overdue?`<span style="color:${R}">ค้าง ${s.overdue}</span>`:'',pp('sale'),'sale')
     +chip(s.noCt||0,'🧾 ยังไม่ใส่เลขสัญญา','#c2410c','#fff7ed',ctLate?`<span style="color:${R}">เกิน ${qCfg().ctDays} วัน ${ctLate}</span>`:'',qp('ct'))
     +chip(ret,'↩ ตีกลับ รอสาขาตอบ','#0f766e','#ecfdf5','',qp('wait')),
     `1 เคสอาจค้างได้หลายงาน${nBr?` · <a href="#" onclick="event.preventDefault();${qp('brall')}">ดูทั้งหมดแยกสาขา →</a>`:''}`,'b2')
-  +band('🏁 จบแล้ว','#166534','#bbf7d0',chip(s.sold||0,'🛒 ขายแล้ว','#166534','#f0fdf4','',pp('sold'),'sold')+chip(s.notsold||0,'✋ ไม่ขาย/ยกเลิก','#374151','#f3f4f6',s.cancelled?`<span class="mut">ยกเลิกคำขอ ${s.cancelled}</span>`:'',pp('not'),'not'),'','b3')
+  +band('🏁 จบแล้ว <span class="p1ml">เดือนที่เลือก</span>','#166534','#bbf7d0',chip(s.sold||0,'🛒 ขายแล้ว','#166534','#f0fdf4','',pp('sold'),'sold')+chip(s.notsold||0,'✋ ไม่ขาย/ยกเลิก','#374151','#f3f4f6',s.cancelled?`<span class="mut">ยกเลิกคำขอ ${s.cancelled}</span>`:'',pp('not'),'not'),'','b3')
   +`</div><div class="mut" style="font-size:11px;margin:-2px 0 8px;text-align:right">คลิกกล่องเพื่อดูรายชื่อเคส · ตัวเลขฝั่งสาขาอยู่ที่นี่ที่เดียว</div>`; }
-function p1Chips(s,ctx){ ctx=ctx||''; if(ctx==='hq'||ctx==='zone') return p1GroupChips(s,ctx); const on=(g)=>ctx?`title="คลิกดูรายชื่อเคส" onclick="p1ChipPop('${ctx}','${g}')" ${(ctx==='hq'&&fState===g)?'data-act="1"':''}`:''; return `<div class="qchips">
+function p1Chips(s,ctx){ ctx=ctx||''; s=p1Pend(s,ctx); if(ctx==='hq'||ctx==='zone') return p1GroupChips(s,ctx); const on=(g)=>ctx?`title="คลิกดูรายชื่อเคส" onclick="p1ChipPop('${ctx}','${g}')" ${(ctx==='hq'&&fState===g)?'data-act="1"':''}`:''; return `<div class="qchips">
   <div class="qchip sent" style="background:#dbeafe" ${on('sent')}><div class="n" style="color:#1d4ed8">${s.hqPending||0}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ+แนะนำ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
-  <div class="qchip ack" style="background:#fef3c7" ${on('ack')}><div class="n" style="color:#b45309">${s.ackAll!=null?s.ackAll:(s.ackPending||0)}</div><div class="l" style="color:#b45309">${ctx==='br'?'👉 ถึงคิวเรา: กดรับทราบ':'🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ'}${s.ackDone?' <span style="color:#6b7280">(รวมเคสบันทึกผลขายแล้ว '+s.ackDone+')</span>':''}${s.ackLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackLate+')</span>':''}</div></div>
+  <div class="qchip ack" style="background:#fef3c7" ${on('ack')}><div class="n" style="color:#b45309">${s.ackAll!=null?s.ackAll:(s.ackPending||0)}</div><div class="l" style="color:#b45309">${ctx==='br'?'👉 ถึงคิวเรา: กดรับทราบ':'🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ'}${s.ackDone?' <span style="color:#6b7280">(รวมเคสบันทึกผลขายแล้ว '+s.ackDone+')</span>':''}${s.ackAllLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackAllLate+')</span>':''}</div></div>
   <div class="qchip sale" style="background:#fef9c3" ${on('sale')}><div class="n" style="color:#854d0e">${s.reviewed+s.waiting+s.overdue}</div><div class="l" style="color:#854d0e">${ctx==='br'?'⏳ ถึงคิวเรา: บันทึกผลขาย':'⏳ รอบันทึกผลขาย'}${s.overdue?' <span style="color:#b91c1c">(ค้าง '+s.overdue+')</span>':''}</div></div>
   <div class="qchip sold" style="background:#f0fdf4" ${on('sold')}><div class="n" style="color:#166534">${s.sold}</div><div class="l" style="color:#166534">🛒 ขายแล้ว</div></div>
   <div class="qchip not" style="background:#f3f4f6" ${on('not')}><div class="n" style="color:#374151">${s.notsold}</div><div class="l" style="color:#374151">✋ ไม่ขาย/ยกเลิก${s.cancelled?' <span class="mut" style="font-size:10.5px">(ยกเลิกคำขอ '+s.cancelled+')</span>':''}</div></div>
- </div>${ctx?'<div class="mut" style="font-size:11px;margin:-4px 0 8px;text-align:right">คลิกกล่องเพื่อดูรายชื่อเคส</div>':''}`; }
+ </div>${ctx?'<div class="mut" style="font-size:11px;margin:-4px 0 8px;text-align:right">'+(ctx==='br'?'รอ สนญ./กดรับทราบ/บันทึกผลขาย = งานค้างทุกเดือน · ขายแล้ว/ไม่ขาย = เดือนที่เลือก · ':'')+'คลิกกล่องเพื่อดูรายชื่อเคส</div>':''}`; }
 function lightOf(a){ try{ const r=(a.check3&&a.check3.overall)||(check3(a,a.calc||calcAll(a)).overall); return r||'na'; }catch(e){ return 'na'; } }
 function lightBadge(a){ const L=CHK3_LV[lightOf(a)]||CHK3_LV.na; return `<span class="tag" style="background:${L.bg};color:${L.col};border:1px solid ${L.bd}">${L.ic} ${L.t}</span>`; }
 /* สนญ. ตรวจดูแล้ว (ไม่ล็อกเคส) */
@@ -2985,7 +3061,7 @@ function fstepRender(){
  const fm=document.querySelector('.form-main'); if(fm&&fm.scrollIntoView) fm.scrollIntoView({behavior:'smooth',block:'start'});
 }
 /* 0912-E: สนญ. ล็อกหัวข้อ 4 (ผลิตภัณฑ์) ไม่ให้สาขากรอกในเฟสนี้ — สาขาทำ 1 2 3 5 */
-function lockProductOn(){ return !!(CFG&&(CFG.lockProductStep!=null?CFG.lockProductStep:p1())); }   /* เฟส 1: ล็อกข้อ 4 เป็นค่าเริ่มต้น */
+function lockProductOn(){ try{ if(typeof sec4From==='function' && thDay()>=sec4From()) return false; }catch(e){} return !!(CFG&&(CFG.lockProductStep!=null?CFG.lockProductStep:p1())); }   /* 0925-M: ตั้งแต่วันบังคับส่วนที่ 4 (1/10/69) เปิดหัวข้อ 4 ให้สาขาเสมอ */   /* เฟส 1: ล็อกข้อ 4 เป็นค่าเริ่มต้น */
 function stepLocked(n){ return n===4 && lockProductOn() && !(SESSION&&SESSION.role==='analyst'); }
 function fstepShow(n, dir){ n=Math.min(FSTEP_MAX,Math.max(1,n)); dir=dir||(n>=FSTEP?1:-1); while(stepLocked(n)&&n>1&&n<FSTEP_MAX) n+=dir; if(stepLocked(n)) n=dir>0?FSTEP_MAX:1; FSTEP=n; fstepRender(); if(n===3){ try{ incExtraSrcLock(); s3Refresh(); }catch(e){} } try{ occSaidPresend(); }catch(e){} }
 function fstepNext(){ if(!fstepValidate(FSTEP)) return; if(FSTEP<FSTEP_MAX) fstepShow(FSTEP+1, 1); }
@@ -3232,7 +3308,8 @@ function viewForm(){
   <p class="pill-note ${showDocsP2()?'':'hidden'}">💡 ถ้ากรอก "รายได้เสริม" ควรระบุที่มาและแนบภาพหลักฐาน (สลิป/บัญชีร้าน/สัญญาเช่า) เพื่อให้ สนญ. เชื่อถือและนับรวมในการประเมินได้ · ถ้าไม่มีหลักฐาน สนญ. อาจไม่นับรายได้ส่วนนี้</p>
  </div>
 
- <div class="card mb fstep hidden" id="fstep-4"><div class="sechead">4. ผลิตภัณฑ์และเงื่อนไข — ราคา/ดาวน์/ดอกเบี้ยล็อกตามหลักการขายของ สนญ. <span class="mut" style="font-weight:400;font-size:12.5px">(เฟส 1: ยังไม่บังคับ — ข้ามได้ ระบบตรวจ 3 มิติก่อน)</span></div>
+ <div class="card mb fstep hidden" id="fstep-4"><div class="sechead">4. ผลิตภัณฑ์และเงื่อนไข <span class="mut" style="font-weight:400;font-size:12.5px" id="sec4-sub"></span></div>
+  <div id="pb-testbar"></div>
   <div class="lockbox" id="pb-lockbox">กำลังโหลดหลักการขาย...</div>
   <!-- อินพุตรีไฟแนนซ์ (ซ่อน) — จัดการทั้งหมดจากกล่องแจ้งเตือนด้านขวา -->
   <div id="refi-holder" style="display:none">
@@ -3248,65 +3325,55 @@ function viewForm(){
    <input id="f-curval" type="number" value="0">
    <input id="f-rollover" type="number" value="0">
   </div>
+  <!-- 0925-M: ช่องเดิมที่โค้ดอื่นยังอ้างถึง (ซ่อน — ไม่แสดงวิธีคำนวณ/คำเตือนในหน้าสาขา) -->
+  <div id="sec4-legacy" style="display:none">
+   <select id="f-saletype"><option value="stock">ตัดสต๊อก (ขายรถ)</option><option value="finance">ไม่ตัดสต๊อก (ไฟแนนซ์)</option></select>
+   <div id="w-downmode"><select id="f-downmode"><option value="custom" selected>custom</option><option value="promo">promo</option></select></div>
+   <div id="w-downpct"><input id="f-downpct"></div><div id="w-downmin"><input id="c-downmin"></div>
+   <div id="w-limit"><input id="c-limit"></div><div id="w-cover"><input id="c-cover"></div>
+   <div id="w-term"></div><div id="w-termauto"><input id="c-termauto"></div>
+   <div id="w-balloon"><input id="f-bpct" type="number" value="25"></div>
+   <div id="w-instref"><input id="c-instref"></div><input id="c-maxprice"><input id="c-maxinst">
+   <input type="checkbox" id="f-hpover"><input id="c-inst"><input id="c-eir"><input id="c-flat"><input id="c-hptotal"><input id="f-hptotalov" type="number">
+   <input id="c-totalint"><input id="c-vat"><div id="w-balamt"><input id="c-balamt"></div><div id="w-gift"><input id="c-gift"></div>
+  </div>
   <div class="fgrid3">
-   <div class="field"><label>ผลิตภัณฑ์ <span class="req">*</span> <span class="mut" style="font-weight:400">(สิทธิ์เขต${zoneGrade(br.zone)==='A'?'เกรดเอ':' MOTO24'})</span></label>
+   <div class="field"><label>ผลิตภัณฑ์ <span class="req">*</span></label>
     <select id="f-product" onchange="onProduct();liveCalc()">
-     ${allowedProducts(SESSION.branch).map(p=>`<option value="${p}">${PRODUCTS[p].label}</option>`).join('')}
+     ${allowedProducts(_formBranch()).map(p=>`<option value="${p}">${PRODUCTS[p].label}</option>`).join('')}
     </select></div>
-   <div class="field"><label>ประเภทการขาย <span class="req">*</span></label>
-    <select id="f-saletype"><option value="stock">ตัดสต๊อก (ขายรถ)</option><option value="finance">ไม่ตัดสต๊อก (ไฟแนนซ์)</option></select></div>
-   <div class="field" id="w-paytype"><label>ประเภทการคำนวณค่างวด (ลูกค้าเลือก)</label>
-    <select id="f-paytype" onchange="onProduct();liveCalc()"><option value="fixed">ค่างวดคงที่ (ปกติ)</option><option value="balloon">บอลลูน (Balloon)</option></select></div>
-   <div class="field" style="grid-column:span 2"><label>รุ่นรถตามหลักการขาย (ชื่อรุ่น — รหัสสินค้า) <span class="mut" style="font-weight:400">(กรอกภายหลังได้)</span></label>
+   <div class="field"><label>ประเภทการผ่อน</label><input class="auto" readonly value="ค่างวดปกติ"></div>
+   <div class="field" id="w-paytype"><label>ประเภทการคำนวณ <span class="req">*</span></label>
+    <select id="f-paytype" onchange="onProduct();liveCalc()"><option value="fixed">ค่างวดคงที่</option><option value="balloon">บอลลูน</option></select></div>
+   <div class="field" style="grid-column:span 2"><label>รุ่นรถ <span class="req">*</span></label>
     <input id="f-modelsearch" placeholder="🔎 พิมพ์ค้นหารุ่น เช่น wave, click, pcx หรือรหัสสินค้า" oninput="onModelSearch()" style="margin-bottom:6px">
     <select id="f-model" onchange="onModelChange()"></select>
     <span id="model-count" class="mut" style="font-size:11.5px"></span>
     <div id="model-code" style="font-size:12.5px;margin-top:4px;font-weight:600"></div></div>
-   <div class="field hidden" id="w-cond"><label>สภาพรถ (สาขาประเมินหน้างาน) <span class="req">*</span></label>
-    <select id="f-cond" onchange="onModelChange()"><option value="0">A+</option><option value="1" selected>A</option><option value="2">B+</option><option value="3">B</option></select></div>
-   <div class="field"><label>สีรถ (เลือกหรือพิมพ์สีจริงตามรุ่น)</label><input id="f-color" list="colorlist" placeholder="เช่น ดำ-แดง / น้ำเงิน-ดำ"><datalist id="colorlist">${COLORS_LIST().map(c=>`<option>${c}</option>`).join('')}</datalist></div>
-   <div class="field hidden" id="w-vehage"><label>อายุรถ (ปี) — ใช้คำนวณมูลค่าคุ้มครอง</label><input id="f-vehage" type="number" value="3" min="0" max="12" oninput="liveCalc()"></div>
-   <div class="field hidden" id="w-mileage"><label>เลขไมล์รถ (กม.) — ตรวจความสอดคล้องกับอายุ</label><input id="f-mileage" type="number" value="0" min="0" placeholder="เช่น 25000" oninput="liveCalc()"><span id="mileage-note" style="font-size:11.5px;font-weight:600"></span></div>
-   <div class="field"><label>เลขตัวถัง (Frame No.)</label><input id="f-frameno" placeholder="เช่น MLHJF8110P5xxxxxx" oninput="liveCalc()"></div>
-   <div class="field hidden" id="w-vehphotos" style="grid-column:1/-1"><label>📸 ภาพยืนยันรถ (สาขาถ่ายตอนลงพื้นที่/รับรถ)</label>
+   <div class="field hidden" id="w-cond"><label>สภาพรถ <span class="req">*</span></label>
+    <select id="f-cond" onchange="onModelChange()"></select></div>
+   <div class="field"><label>สีรถ <span class="req">*</span></label><input id="f-color" list="colorlist" placeholder="เช่น ดำ-แดง / น้ำเงิน-ดำ" oninput="liveCalc()"><datalist id="colorlist">${COLORS_LIST().map(c=>`<option>${c}</option>`).join('')}</datalist></div>
+   <div class="field"><label>เลขตัวถัง <span class="req">*</span></label><input id="f-frameno" placeholder="เช่น MLHJF8110P5xxxxxx" oninput="liveCalc()"></div>
+   <div class="field hidden" id="w-vehage"><label>อายุรถ (ปี) <span class="req">*</span></label><input id="f-vehage" type="number" min="0" max="30" placeholder="เช่น 3" oninput="liveCalc()"></div>
+   <div class="field hidden" id="w-mileage"><label>เลขไมล์ (กม.) <span class="req">*</span></label><input id="f-mileage" type="number" min="0" placeholder="เช่น 25000" oninput="liveCalc()"><span id="mileage-note" style="display:none"></span></div>
+   <div class="field hidden" id="w-vehphotos" style="grid-column:1/-1"><label>📸 ภาพรถ <span class="req">*</span></label>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
-     ${['veh:🏍️ ตัวรถ','mileage:🔢 เลขไมล์','frame:🔩 เลขถัง','plate:🔖 ป้ายทะเบียน'].map(x=>{const k=x.split(':')[0],l=x.split(':')[1];return '<div style="text-align:center"><label class="btn btn-line btn-sm" style="margin:0">'+l+'<input type="file" accept="image/*" capture="environment" style="display:none" onchange="onVehPhoto(\''+k+'\',this)"></label><div id="vp-'+k+'" style="margin-top:4px;min-height:8px"></div></div>';}).join('')}
-    </div>
-    <p class="pill-note" style="margin-top:6px">ถ่ายให้เห็นชัด: เลขไมล์บนหน้าปัด · เลขถังบนตัวรถ · ป้ายทะเบียน — ใช้ยืนยันตัวรถจริง กันสวมรถ/เลขไมล์ปรับ</p></div>
-   <div class="field"><label id="lbl-price">ราคาขายสด (บาท)</label><input id="f-price" type="number" value="0" oninput="onDownMode();liveCalc()"></div>
-   <div class="field" id="w-downmode"><label>เงินดาวน์ (เลือกเป็น % ของราคาขายสด)</label>
-    <select id="f-downmode" onchange="onDownMode();liveCalc()">
-     <option value="promo">ขั้นต่ำตามหลักการขาย</option>
-     <option value="5">5%</option><option value="10">10%</option><option value="15">15%</option><option value="20">20%</option><option value="30">30%</option>
-     <option value="custom">กำหนดเอง (พิมพ์จำนวนเงิน)</option>
-    </select></div>
-   <div class="field" id="w-down"><label>ยอดเงินดาวน์ (บาท) — ต่ำกว่าขั้นต่ำส่งเคสไม่ได้</label><input id="f-down" type="number" value="0" oninput="liveCalc()"></div>
-   <div class="field" id="w-downpct"><label>คิดเป็น % ของราคาสด (อัตโนมัติ)</label><input id="f-downpct" class="auto" readonly></div>
-   <div class="field" id="w-downmin"><label>ดาวน์ขั้นต่ำตามหลักการ (เกรดสาขา)</label><input id="c-downmin" class="auto" readonly></div>
-   <div class="field hidden" id="w-fin"><label>วงเงินที่ขอ (บาท) <span class="req">*</span></label><input id="f-finance" type="number" value="10000" oninput="liveCalc()"></div>
-   <div class="field hidden" id="w-limit"><label>วงเงินสูงสุดของรุ่นนี้ (ตามเกรดสาขา)</label><input id="c-limit" class="auto" readonly></div>
-   <div class="field hidden" id="w-cover"><label>คุ้มครองวงเงิน (ตามขั้นดอกเบี้ย)</label><input id="c-cover" class="auto" readonly></div>
-   <div class="field" id="w-term"><label>จำนวนงวด</label>
-    <select id="f-term" onchange="liveCalc()"><option>12</option><option>18</option><option>24</option><option>30</option><option selected>36</option><option>48</option></select></div>
-   <div class="field hidden" id="w-termauto"><label>ระยะสัญญา (อัตโนมัติตามหลักการ)</label><input id="c-termauto" class="auto" readonly></div>
-   <div class="field"><label>วันดิวงวดแรก (ตามสัญญา)</label><input id="f-firstdue" type="date" onchange="liveCalc()"></div>
-   <div class="field hidden" id="w-balloon"><label>งวดบอลลูนสุดท้าย (% ของราคารถ)</label><input id="f-bpct" type="number" value="25" oninput="liveCalc()"></div>
-   <div class="field" id="w-instref"><label>ราคาขายผ่อนตามหลักการ (อ้างอิง)</label><input id="c-instref" class="auto" readonly></div>
-   <div class="field"><label>ราคาขายผ่อนสูงสุดไม่เกินเพดาน ${DEFAULT_CFG.eirCap}% (ระบบ)</label><input id="c-maxprice" class="auto" readonly></div>
-   <div class="field hqfield"><label>ค่างวดสูงสุดที่ไม่เกินเพดาน ${DEFAULT_CFG.eirCap}%</label><input id="c-maxinst" class="auto" readonly></div>
-   <div class="field" style="grid-column:1/-1"><label style="cursor:pointer;color:var(--orange)"><input type="checkbox" id="f-hpover" onchange="onHpOver()"> ✏️ ปรับค่าเงื่อนไขให้ตรงกับระบบ H-Capital (กรณีตัวเลขปัดเศษต่างกัน — พิมพ์ค่างวด / ราคาเช่าซื้อ / งวดบอลลูนเองได้)</label></div>
-   <div class="field"><label>ค่างวด (บาท/เดือน)</label><input id="c-inst" class="auto" readonly><input id="f-instov" type="number" class="hidden" oninput="liveCalc()" placeholder="ค่างวดตาม H-Capital"></div>
-   <div class="field hqfield"><label>ดอกเบี้ยที่แท้จริง EIR (ต่อปี)</label><input id="c-eir" class="auto" readonly></div>
-   <div class="field"><label>Flat Rate (ต่อเดือน / ต่อปี)</label><input id="c-flat" class="auto" readonly></div>
-   <div class="field"><label>ราคาเช่าซื้อทั้งสัญญา (รวม VAT)</label><input id="c-hptotal" class="auto" readonly><input id="f-hptotalov" type="number" class="hidden" oninput="liveCalc()" placeholder="ราคาเช่าซื้อตาม H-Capital"></div>
-   <div class="field"><label>ดอกผลทั้งสัญญา (ก่อน VAT) — แบบ H-Capital</label><input id="c-totalint" class="auto" readonly></div>
-   <div class="field"><label>ภาษีค่างวดทั้งสัญญา (VAT 7%)</label><input id="c-vat" class="auto" readonly></div>
-   <div class="field" id="w-balamt"><label>งวดบอลลูนสุดท้าย (บาท) — พิมพ์แก้ได้</label><input id="c-balamt" class="auto" readonly><input id="f-balloonov" type="number" class="hidden" oninput="liveCalc()" placeholder="พิมพ์งวดบอลลูนสุดท้าย"></div>
-   <div class="field hidden" id="w-gift"><label>ของแถมตามหลักการ (สด/1-12/13-24)</label><input id="c-gift" class="auto" readonly></div>
+     ${['veh:🏍️ ตัวรถ','mileage:🔢 เลขไมล์','frame:🔩 เลขตัวถัง'].map(x=>{const k=x.split(':')[0],l=x.split(':')[1];return '<div style="text-align:center"><label class="btn btn-line btn-sm" style="margin:0">'+l+'<input type="file" accept="image/*" capture="environment" style="display:none" onchange="onVehPhoto(\''+k+'\',this)"></label><div id="vp-'+k+'" style="margin-top:4px;min-height:8px"></div></div>';}).join('')}
+    </div></div>
+   <div class="field"><label id="lbl-price">ราคาขายผ่อน (รวมภาษี) 🔒</label><input id="f-price" type="number" value="0" class="auto" readonly></div>
+   <div class="field" id="w-down"><label>เงินดาวน์ (บาท) <span class="req">*</span></label><input id="f-down" type="number" min="0" placeholder="พิมพ์จำนวนเงิน" oninput="liveCalc()"></div>
+   <div class="field" id="w-fin4"><label>ยอดจัด (บาท)</label><input id="c-fin4" class="auto" readonly></div>
+   <div class="field hidden" id="w-fin"><label>ยอดจัด (วงเงินที่ขอ) <span class="req">*</span></label><input id="f-finance" type="number" min="0" placeholder="พิมพ์จำนวนเงิน" oninput="liveCalc()"></div>
+   <div class="field" id="w-term4"><label>จำนวนงวด <span class="req">*</span></label>
+    <select id="f-term" onchange="liveCalc()"><option>12</option><option>18</option><option>24</option><option>30</option><option>36</option><option>42</option><option>48</option></select></div>
+   <div class="field"><label>ค่างวด/เดือน (ตาม H-Capital) <span class="req">*</span></label><input id="f-instov" type="number" min="0" placeholder="พิมพ์ค่างวดตามระบบ H-Capital" oninput="liveCalc()"></div>
+   <div class="field hidden" id="w-last4"><label>ค่างวดงวดสุดท้าย (บอลลูน) <span class="req">*</span></label><input id="f-balloonov" type="number" min="0" placeholder="พิมพ์งวดสุดท้ายตาม H-Capital" oninput="liveCalc()"></div>
+   <div class="field"><label>วันดิวงวดแรก <span class="req">*</span></label><input id="f-firstdue" type="date" onchange="liveCalc()"></div>
   </div>
+  <div id="sec4-err" class="mt"></div>
   <div id="calc-warns" class="mt"></div>
+  <div id="pb-testcard"></div>
  </div>
-
  <div class="card mb fstep hidden" id="fstep-5"><div class="sechead">5. ผู้ค้ำประกันและประวัติ</div>
   <div class="fgrid3">
    <div class="field"><label>ผู้ค้ำประกัน / เอกสาร <span class="req">*</span></label><select id="f-guar" onchange="toggleGuar();liveCalc()">${opt(GUAR,'g_doc')}</select></div>
@@ -4023,11 +4090,13 @@ function pbFormType(){
  if(p==='hp_used') return pt==='balloon'?'usedbal':'used';
  return pt==='balloon'?'newbal':'new';
 }
+function pbFormPB(){ return (typeof pbFor==='function')? pbFor(window.__editCase? (APPS.find(x=>x.id===window.__editCase)||{}) : {}) : PB; }   /* 0925-M: ฉบับหลักการของฟอร์ม (เคสแก้ไข = ฉบับของเคส · ใหม่ = ฉบับปัจจุบัน/โหมดทดลอง) */
 function pbModelsList(){
- if(typeof PB==='undefined'||!PB) return [];
+ const P=pbFormPB(); if(!P||!P.items) return [];
  const t=pbFormType();
- const g= t==='usedbal'?'AB': bpGradeOf(SESSION.branch,t);
- return (PB.items[t]&&PB.items[t][g])||[];
+ const g= t==='usedbal'?'AB': bpGradeOf(_formBranch(),t,P);
+ if(t==='usedbal' && bpGradeOf(_formBranch(),'used',P)==='C') return [];
+ return (P.items[t]&&P.items[t][g])||[];
 }
 function populateModels(){
  const sel=document.getElementById('f-model'); if(!sel) return;
@@ -4040,7 +4109,7 @@ function populateModels(){
  if(list.length){
   const fl=q? list.filter(x=>hit(x.name)||hit(x.code)) : list;
   if(fl.length){
-   sel.innerHTML='<option value="">— ยังไม่เลือกรุ่น (เฟส 1: กรอกภายหลังได้) —</option>'+fl.map(x=>'<option value="C:'+x.code+'">'+x.name+' — '+x.code+(t==='fin'?' (วงเงินสูงสุด '+fmt(x.limit)+' บ.)':'')+'</option>').join('');
+   sel.innerHTML='<option value="">— เลือกรุ่น —</option>'+fl.map(x=>'<option value="C:'+(x.key||x.code)+'">'+x.name+' — '+x.code+'</option>').join('');
    let has=false; if(sel.options){ for(const o of sel.options){ if(o.value===prev){has=true;break;} } }
    if(has) sel.value=prev;
   } else { sel.innerHTML='<option value="">— ไม่พบรุ่นที่ตรงกับ "'+(window.__modelQ||'')+'" —</option>'; }
@@ -4048,7 +4117,7 @@ function populateModels(){
  } else {
   const ml=MODELS.concat((CFG&&CFG.extraModels)||[]);
   const fl=q? ml.filter(hit) : ml;
-  sel.innerHTML='<option value="">— ยังไม่นำเข้าหลักการขายประเภทนี้ (โหมดกรอกเอง) —</option>'+fl.map(m=>'<option value="L:'+m+'">'+m+'</option>').join('');
+  sel.innerHTML='<option value="">— ยังไม่มีรุ่นตามหลักการขายสำหรับผลิตภัณฑ์นี้ —</option>';   /* 0925-M: ไม่เปิดโหมดกรอกเอง (ราคาต้องล็อกตามหลักการ) */
   if(cnt) cnt.textContent='';
  }
 }
@@ -4130,19 +4199,21 @@ function onProduct(){
  T('w-cond', p!=='hp_used');
  T('w-vehage', p!=='pawn');      /* อายุรถ: โชว์เฉพาะ "จำนำเล่มทะเบียน" (รถของลูกค้าเอง) */
  T('w-mileage', p!=='pawn');     /* เลขไมล์: โชว์เฉพาะ "จำนำเล่มทะเบียน" */
- T('w-vehphotos', p!=='pawn');   /* ภาพยืนยันรถ: โชว์เฉพาะ "จำนำเล่มทะเบียน" อย่างเดียว */
+ T('w-vehphotos', p!=='pawn' || !imgV5On());   /* 0925-M: ภาพรถไฟแนนซ์ 3 ภาพ — เปิดเมื่อ Apps Script v5 พร้อม */
  /* จำนำเล่มทะเบียน = ไม่ตัดสต๊อก (ไฟแนนซ์) เสมอ → ล็อกช่องประเภทการขาย */
  const st=document.getElementById('f-saletype');
- if(st){ if(isPawn){ st.value='finance'; st.disabled=true; st.title='จำนำเล่มทะเบียนเป็นไฟแนนซ์เสมอ'; } else { st.disabled=false; st.title=''; } }
+ if(st){ st.value=isPawn?'finance':'stock'; }   /* 0925-M: ประเภทการขายกำหนดจากผลิตภัณฑ์ (ไม่ถามสาขา) */
+ { const ptSel=document.getElementById('f-paytype'); if(ptSel){ let noBal=false; try{ noBal = p==='hp_used' && bpGradeOf(_formBranch(),'used',pbFormPB())==='C'; }catch(e){}
+   const ob=[...ptSel.options].find(o=>o.value==='balloon'); if(ob){ ob.disabled=noBal; ob.hidden=noBal; } if(noBal&&ptSel.value==='balloon') ptSel.value='fixed'; } }   /* 0925-M: มือสองบอลลูนเปิดเฉพาะสาขาเกรดมือสอง A/B */
  T('w-paytype', isPawn);
  T('w-down', isPawn); T('w-downmode', isPawn); T('w-downpct', isPawn); T('w-downmin', isPawn); T('w-instref', isPawn);
- T('w-fin', !isPawn); T('w-limit', !isPawn); T('w-cover', !isPawn);
- document.getElementById('lbl-price').innerHTML = isPawn?'ราคาประเมินรถลูกค้า (บาท) <span class="req">*</span>':'ราคาขายสด (บาท) — ล็อกตามหลักการขาย';
+ T('w-fin', !isPawn); T('w-limit', !isPawn); T('w-cover', !isPawn); T('w-fin4', isPawn);
+ document.getElementById('lbl-price').innerHTML = isPawn?'ราคาขาย (วงเงินสูงสุด) 🔒':'ราคาขายผ่อน (รวมภาษี) 🔒';
+ if(isPawn){ const pt0=document.getElementById('f-paytype'); if(pt0) pt0.value='fixed'; }
+ sec4CondOptions();
  window.__modelQ=''; const _ms=document.getElementById('f-modelsearch'); if(_ms)_ms.value='';
  populateModels();
- const bov=document.getElementById('f-balloonov');
- const ptEl=document.getElementById('f-paytype'); const pt=ptEl?ptEl.value:'';
- if((p==='hp_used'||p==='hp_new') && pt==='balloon' && bov && !bov.value){ const cc=calcAll(readForm()); bov.value=cc.balloonAmt; }
+ /* 0925-M: ไม่เติมงวดบอลลูนให้อัตโนมัติ — สาขาพิมพ์ตาม H-Capital */
  onModelChange();
 }
 function onModelChange(){
@@ -4152,7 +4223,7 @@ function onModelChange(){
  /* แสดงรหัสสินค้าของรุ่นที่เลือกให้ชัด */
  const sel=document.getElementById('f-model'), mc=document.getElementById('model-code');
  if(mc&&sel){ const v=sel.value||''; const txt=(sel.options[sel.selectedIndex]||{}).text||'';
-   if(v.indexOf('C:')===0){ const code=v.slice(2); const nm=txt.split(' — ')[0];
+   if(v.indexOf('C:')===0){ const code=v.slice(2).replace(/#\d+$/,''); const nm=txt.split(' — ')[0];
      mc.innerHTML='✅ รุ่นที่เลือก: <b>'+nm+'</b> &nbsp; รหัสสินค้า: <b style="color:var(--orange)">'+code+'</b>'; }
    else if(v.indexOf('L:')===0){ mc.innerHTML='📝 รุ่น (กรอกเอง): <b>'+v.slice(2)+'</b>'; }
    else { mc.textContent=''; } }
@@ -4173,6 +4244,142 @@ function onDownMode(){
  const downEl=document.getElementById('f-down');
  if(md==='promo') downEl.value=c.downMin!=null?c.downMin:0;
  else if(md!=='custom') downEl.value=Math.round(price*(+md)/100);
+}
+/* ===== 0925-M: ส่วนที่ 4 แบบใหม่ (หน้าสาขาไม่แสดงวิธีคำนวณ/คำเตือน/ตัวเลขเกณฑ์) ===== */
+function imgV5On(){ return !!(CFG&&CFG.imgV5); }
+function sec4From(){ return (CFG&&CFG.sec4From)||'2026-10-01'; }
+function sec4Enforced(){ return !!window.__pbTest || thDay()>=sec4From(); }
+function sec4CondOptions(){
+ const el=document.getElementById('f-cond'); if(!el) return;
+ const pt=(document.getElementById('f-paytype')||{}).value;
+ const L=pbCondLabels(pbFormPB(), pt==='balloon'?'usedbal':'used');
+ const prevTxt=(el.selectedIndex>=0&&el.options[el.selectedIndex])?el.options[el.selectedIndex].text:'';
+ const want=window.__condWant!=null?window.__condWant:null;
+ el.innerHTML='<option value="">— เลือกสภาพรถ —</option>'+L.map((l,i)=>'<option value="'+i+'">'+l+'</option>').join('');
+ if(want!=null&&want!==''&&el.querySelector('option[value="'+want+'"]')) el.value=String(want);
+ else if(prevTxt&&L.indexOf(prevTxt)>=0) el.value=String(L.indexOf(prevTxt));
+ window.__condWant=null;
+}
+function sec4TermList(a,c){
+ const t=c&&c.pb?c.pb.type:pbFormType();
+ if(a.payType==='balloon'&&a.product!=='pawn') return [48];
+ if(a.product==='pawn'){
+  const s=c&&c.sys; let lg=s&&s.long;
+  if(!lg){ const it=(pbModelsList()||[]).find(x=>(x.key||x.code)===a.pbCode); lg=it&&it.longs? Math.max(...it.longs.filter(x=>x!=null)) : 24; }
+  const L=[]; for(let n=12;n<=lg;n+=6) L.push(n); if(L.indexOf(lg)<0) L.push(lg); return L.length?L:[lg];
+ }
+ const it=(pbModelsList()||[]).find(x=>(x.key||x.code)===a.pbCode);
+ const mx=(it&&it.tLong)||48; const L=[]; for(let n=12;n<=Math.min(48,mx);n+=6) L.push(n); return L.length?L:[12];
+}
+function sec4TermSync(a,c){
+ const el=document.getElementById('f-term'); if(!el) return;
+ const L=sec4TermList(a,c); const cur=+el.value||0;
+ const now=[...el.options].map(o=>+o.value).join(',');
+ if(now!==L.join(',')){ el.innerHTML='<option value="">— เลือก —</option>'+L.map(n=>'<option value="'+n+'">'+n+'</option>').join(''); }
+ if(L.length===1) el.value=String(L[0]); else if(L.indexOf(cur)>=0) el.value=String(cur); else if(now!==L.join(',')) el.value='';
+ el.disabled=(L.length===1);
+}
+/* สิ่งที่ยังไม่ครบ + ข้อขัดหลักการ (ข้อความไม่มีตัวเลขเกณฑ์) */
+function sec4Check(a,c){
+ const miss=[], block=[];
+ const isFin=a.product==='pawn', isBal=a.payType==='balloon'&&!isFin, isUsed=a.product==='hp_used';
+ if(!a.product) miss.push('ผลิตภัณฑ์');
+ if(!a.pbCode) miss.push('รุ่นรถ');
+ if(isUsed && (document.getElementById('f-cond')||{}).value==='') miss.push('สภาพรถ');
+ if(!String(a.color||'').trim()) miss.push('สีรถ');
+ if(!String(a.frameNo||'').trim()) miss.push('เลขตัวถัง');
+ if(isFin){ if(!(+a.finance>0)) miss.push('ยอดจัด (วงเงินที่ขอ)');
+   if(String((document.getElementById('f-vehage')||{}).value||'')==='') miss.push('อายุรถ (ปี)');
+   if(!(+a.mileage>0)) miss.push('เลขไมล์');
+   if(imgV5On()){ ['veh','mileage','frame'].forEach(k=>{ if(!(a.vehPhotos&&a.vehPhotos[k])) miss.push('ภาพ'+({veh:'ตัวรถ',mileage:'เลขไมล์',frame:'เลขตัวถัง'})[k]); }); } }
+ else if(String((document.getElementById('f-down')||{}).value||'')==='') miss.push('เงินดาวน์');
+ if(!(+((document.getElementById('f-term')||{}).value)>0)) miss.push('จำนวนงวด');
+ if(!(+a.instOv>0)) miss.push('ค่างวด/เดือน (ตาม H-Capital)');
+ if(isBal && !(+a.balloonOv>0)) miss.push('ค่างวดงวดสุดท้าย (บอลลูน)');
+ if(!a.firstDue) miss.push('วันดิวงวดแรก');
+ if(c&&c.f4){ if(c.downBad) block.push('เงินดาวน์ไม่เป็นไปตามหลักการขาย');
+   if(c.limitBad) block.push('ยอดจัดเกินวงเงินตามหลักการขาย');
+   if(isFin && a.pbCode && +a.vehAge>12) block.push('อายุรถไม่เป็นไปตามหลักการขาย'); }
+ if(a.pbCode && !c.pb) block.push('ไม่พบรุ่นนี้ในหลักการขาย — เลือกรุ่นใหม่');
+ return {miss, block};
+}
+function sec4Sync(a,c){
+ const s=(id,v)=>{const e=document.getElementById(id); if(e)e.value=v;};
+ const T=(id,v)=>{const e=document.getElementById(id); if(e)e.classList.toggle('hidden',v);};
+ const isFin=a.product==='pawn', isBal=a.payType==='balloon'&&!isFin;
+ T('w-last4', !isBal); T('w-fin4', isFin); T('w-vehphotos', !isFin || !imgV5On());
+ const iv=document.getElementById('f-instov'); if(iv) iv.classList.remove('hidden');
+ const bv=document.getElementById('f-balloonov'); if(bv) bv.classList.remove('hidden');
+ const pe=document.getElementById('f-price'); if(pe){ pe.readOnly=true; pe.classList.add('auto'); pe.value=(c.pb? (isFin?(c.limit||0):(c.instRef||0)) : 0); if(!c.pb) pe.value=''; }
+ s('c-fin4', (c.pb&&!isFin&&String((document.getElementById('f-down')||{}).value||'')!=='')? fmt(c.finance)+' บาท' : '');
+ sec4TermSync(a,c);
+ const lock=document.getElementById('pb-lockbox');
+ if(lock){ const P=pbFormPB(); const mo=(P&&P.month)||''; const mm=mo?(PB_TH_MONTHS[(+mo.slice(5,7))-1]+' '+((+mo.slice(0,4))+543)):'-';
+   const hasList=pbModelsList().length>0;
+   lock.innerHTML='🔒 ราคาล็อกตามหลักการขายเดือน <b>'+mm+'</b>'+(hasList?'':' — <span style="color:var(--bad)">ยังไม่มีรุ่นตามหลักการสำหรับผลิตภัณฑ์นี้ (แจ้ง สนญ.)</span>'); }
+ if(!document.getElementById('pb-testchk')) sec4TestBar(); sec4SubmitGate();
+ const sub=document.getElementById('sec4-sub'); if(sub) sub.textContent = sec4Enforced()? '(กรอกทุกช่อง)' : '(บังคับกรอกตั้งแต่ '+fmtThaiDate(sec4From())+')';
+ const k=sec4Check(a,c); const er=document.getElementById('sec4-err');
+ if(er) er.innerHTML = k.block.length? k.block.map(m=>'<div class="alert a-bad">❌ '+m+'</div>').join('') : '';
+ sec4TestCard(a,c);
+}
+function fmtThaiDate(d){ try{ const p=String(d).split('-'); return (+p[2])+' '+PB_TH_MONTHS[(+p[1])-1]+' '+((+p[0])+543); }catch(e){ return d; } }
+/* ===== การ์ด "ผลิตภัณฑ์และค่างวด" (เคสแบบใหม่) — สาขาเห็นเฉพาะที่กรอก · สนญ. เห็นการเทียบกับหลักการ ===== */
+function f4CardHTML(a,c,isHQ){
+ const f=v=>(v==null||v==='')?'-':fmt(v)+' บ.';
+ const isFin=a.product==='pawn', isBal=a.payType==='balloon'&&!isFin, isUsed=a.product==='hp_used';
+ const row=(k1,v1,k2,v2)=>'<tr><td class="mut">'+k1+'</td><td>'+v1+'</td>'+(k2!=null?'<td class="mut">'+k2+'</td><td>'+v2+'</td>':'<td></td><td></td>')+'</tr>';
+ const code=String(a.pbCode||'').replace(/#\d+$/,'');
+ let h='<div class="card mb"><h3 class="exhead org">💳 ผลิตภัณฑ์และค่างวด</h3><table>'
+  +row('ผลิตภัณฑ์',PRODUCTS[a.product]?PRODUCTS[a.product].label:'-','ประเภทการคำนวณ',isFin?'ค่างวดคงที่':(isBal?'บอลลูน':'ค่างวดคงที่'))
+  +row('รุ่นรถ',(a.model||'-')+(code?' <span class="mut">('+code+')</span>':''), isUsed?'สภาพรถ':'สีรถ', isUsed?condLabelOf(a):(a.color||'-'))
+  +(isUsed?row('สีรถ',a.color||'-','เลขตัวถัง',a.frameNo||'-'):row('เลขตัวถัง',a.frameNo||'-',isFin?'อายุรถ / เลขไมล์':null,isFin?((a.vehAge!=null&&a.vehAge!==''?a.vehAge+' ปี':'-')+' · '+(a.mileage?fmt(a.mileage)+' กม.':'-')):null))
+  +row(isFin?'ราคาขาย (วงเงินสูงสุด) 🔒':'ราคาขายผ่อน 🔒', f(c.price), isFin?'ยอดจัด (วงเงินที่ขอ)':'เงินดาวน์', isFin?'<b>'+f(a.finance)+'</b>':f(a.down))
+  +row('ยอดจัด','<b>'+f(c.finance)+'</b>','จำนวนงวด',(c.termUsed||a.term||'-')+' งวด')
+  +row('ค่างวด/เดือน (H-Capital)','<b>'+f(a.instOv||null)+'</b>', isBal?'งวดสุดท้าย (บอลลูน)':'วันดิวงวดแรก', isBal?'<b>'+f(a.balloonOv||null)+'</b>':(a.firstDue||'-'))
+  +(isBal?row('วันดิวงวดแรก',a.firstDue||'-',null,null):'')
+  +'</table>';
+ if(isHQ){
+  const s=c.sys, tol=c.instTol!=null?c.instTol:10;
+  const chip=(d)=> d==null?'<span class="mut">—</span>': Math.abs(d)<=tol? '<span class="tag t-ok">✓ ตรง'+(d?' (ต่าง '+(d>0?'+':'')+fmt(d)+')':'')+'</span>' : '<span class="tag t-bad">⚠ ต่าง '+(d>0?'+':'')+fmt(d)+' บ.</span>';
+  const v=(typeof pbvOfCase==='function')?pbvOfCase(a):null;
+  const mo=(c.pb&&c.pb.month)||(v&&v.month)||'';
+  h+='<div style="margin-top:10px;border-top:1px dashed var(--line);padding-top:8px"><div style="font-weight:700;color:var(--navy);margin-bottom:4px">🔍 ตรวจเทียบหลักการขาย <span class="tag t-info">เฉพาะ สนญ.</span></div><table>'
+   +row('หลักการที่ใช้', (mo?'เดือน '+mo:'-')+(v&&!v.base?' · มีผล '+v.eff:'')+(c.pb?' · ชุดเกรด '+c.pb.grade:''), 'เกณฑ์ส่วนต่างค่างวด','± '+fmt(tol)+' บ.')
+   +row('ค่างวดตามหลักการ (ระบบ)', s?'<b>'+f(s.inst)+'</b>':'<span class="mut">ยังคำนวณไม่ได้</span>', 'สาขากรอก vs ระบบ', chip(c.instDiff))
+   +(isBal?row('งวดสุดท้ายตามหลักการ', s&&s.last!=null?'<b>'+f(s.last)+'</b>':'-', 'สาขากรอก vs ระบบ', chip(c.lastDiff)):'')
+   +row('ดอกเบี้ยตามหลักการ', s&&s.rate!=null?(s.rate*100).toFixed(2)+' %/เดือน':'-', isFin?'คุ้มครองวงเงิน (บวกเพิ่มจากวงเงินกู้)':'ราคาขายสด (อ้างอิง)', isFin?f(s&&s.cover):f(c.priceCash))
+   +(isFin? row('วงเงินสูงสุดตามเกรด', f(c.limit)+(c.limitBad?' <span class="tag t-bad">เกิน</span>':' <span class="tag t-ok">✓</span>'), 'ยอดเงินที่คิดดอกเบี้ย', f(s&&s.base)+((+a.finance||0)>25000?' <span class="tag t-warn">เกิน 25,000 — ขออนุมัติ ผจก.ฝ่ายขาย</span>':''))
+          : row('ดาวน์ขั้นต่ำตามหลักการ', f(c.downMin)+(c.downBad?' <span class="tag t-bad">ต่ำกว่า</span>':' <span class="tag t-ok">✓</span>'), 'ราคาเช่าซื้อตามหลักการ', f(s&&s.total)))
+   +row('Flat (จากค่างวดสาขา)', c.flatMo!=null?c.flatMo.toFixed(2)+' %/ด. ('+(c.flatMo*12).toFixed(1)+' %/ปี)':'-', 'EIR (จากค่างวดสาขา)', '<b style="color:'+(c.eir>CFG.eirCap?'var(--bad)':'var(--ok)')+'">'+c.eir.toFixed(2)+'%</b> <span class="mut">(เพดาน '+CFG.eirCap+'%)</span>')
+   +row('ราคาเช่าซื้อทั้งสัญญา (สาขา)', f(c.hpTotal), 'ดอกผล (ก่อน VAT) · VAT', c.interestPreVat.toLocaleString('th-TH',{maximumFractionDigits:0})+' · '+c.vatTotal.toLocaleString('th-TH',{maximumFractionDigits:0})+' บ.')
+   +'</table></div>';
+ }
+ return h+'</div>';
+}
+/* ===== 🧪 โหมดทดลอง (สนญ.) — กรอกด้วยหลักการฉบับล่าสุด (เช่น มีผล 1/10) โดยไม่บันทึกเคส ===== */
+function sec4TestBar(){
+ const el=document.getElementById('pb-testbar'); if(!el) return;
+ if(!(SESSION&&SESSION.role==='analyst')||window.__editCase){ el.innerHTML=''; window.__pbTest=false; return; }
+ const cur=pbvCurrent(), lat=pbvLatest(); const fut=(lat&&cur&&lat!==cur)?lat:null;
+ el.innerHTML='<div style="background:'+(window.__pbTest?'#fff7ed':'#f8fafc')+';border:1.5px '+(window.__pbTest?'solid #f59e0b':'dashed #cbd5e1')+';border-radius:10px;padding:8px 12px;margin-bottom:10px;font-size:13px">'
+  +'<label style="cursor:pointer;font-weight:600"><input type="checkbox" id="pb-testchk" '+(window.__pbTest?'checked':'')+' onchange="setPbTest(this.checked)"> 🧪 โหมดทดลอง (เฉพาะ สนญ.) — '
+  +(fut?'ใช้หลักการเดือน '+fut.month+' ที่มีผล '+fmtThaiDate(fut.eff):'ทดลองกรอกส่วนที่ 4 แบบใหม่')+'</label>'
+  +(window.__pbTest?'<div class="mut" style="margin-top:4px">โหมดทดลอง: ปุ่มส่งเคสปิด · ไม่บันทึกเคส ไม่กระทบคิว/รายงาน · ด้านล่างแสดงตัวอย่างการ์ดฝั่ง สนญ.</div>':'')+'</div>';
+}
+function setPbTest(on){ window.__pbTest=!!on; sec4TestBar(); try{ onProduct(); }catch(e){} try{ liveCalc(); }catch(e){} try{ sec4SubmitGate(); }catch(e){} }
+function sec4SubmitGate(){ document.querySelectorAll('button').forEach(b=>{ if(/submitApp\(\)/.test(b.getAttribute('onclick')||'')){ b.disabled=!!window.__pbTest; b.title=window.__pbTest?'โหมดทดลอง — ไม่บันทึกเคส':''; } }); }
+function sec4TestCard(a,c){
+ const el=document.getElementById('pb-testcard'); if(!el) return;
+ if(!window.__pbTest){ el.innerHTML=''; return; }
+ const k=sec4Check(a,c);
+ el.innerHTML='<div style="margin-top:12px;border:2px dashed #f59e0b;border-radius:12px;padding:10px;background:#fffdf7">'
+  +'<div style="font-weight:700;color:#b45309;margin-bottom:6px">🧪 ตัวอย่างที่ สนญ. จะเห็นในหน้าเคส (โหมดทดลอง)</div>'
+  +(k.miss.length?'<div class="alert a-warn" style="font-size:12.5px">ยังไม่ครบ (ถ้าส่งจริงจะถูกกัน): '+k.miss.join(' · ')+'</div>':'<div class="alert a-ok" style="font-size:12.5px">✓ ส่วนที่ 4 กรอกครบ</div>')
+  +(k.block.length?'<div class="alert a-bad" style="font-size:12.5px">สาขาจะเห็นเพียง: '+k.block.map(x=>'"'+x+'"').join(' · ')+' และส่งเคสไม่ได้</div>':'')
+  +f4CardHTML(Object.assign({},a,{id:'TEST'}),c,true)
+  +(c.warns.filter(w=>w.hq&&/ค่างวด|งวดสุดท้าย|ดาวน์|วงเงิน/.test(w.m)).map(w=>'<div class="alert '+(w.t==='bad'?'a-bad':'a-warn')+'" style="font-size:12.5px">'+w.m+'</div>').join(''))
+  +'</div>';
 }
 /* ===== 0914-B: ร่างฟอร์มอัตโนมัติ (กันข้อมูลหายเมื่อรีเฟรช/ปิดแท็บ/ไฟดับ) — เก็บต่อผู้ใช้ในเครื่องนี้ ===== */
 function fdKey(){ return 'moto24_draft_'+((SESSION&&SESSION.email)||'anon'); }
@@ -4246,6 +4453,7 @@ const _EDIT_LABEL={rai:'จำนวนไร่',head:'จำนวนตัว
 function hqSaveEdit(){
  const a=APPS.find(x=>x.id===window.__editCase); if(!a){ window.__editCase=null; alert('ไม่พบเคส'); return; }
  const n=readForm(); const changed=[];
+ if(!a.f4){ delete n.f4; delete n.condL; n.price=a.price; n.saleType=a.saleType; n.downMode=a.downMode; }   /* 0925-M: เคสแบบเดิม — คงวิธีคำนวณเดิม (ไม่เปลี่ยนเป็นส่วนที่ 4 แบบใหม่เมื่อแก้ช่องอื่น) */
  for(const k in n){ if(_EDIT_KEEP.indexOf(k)>=0) continue; if(JSON.stringify(n[k]==null?null:n[k])!==JSON.stringify(a[k]==null?null:a[k])) changed.push(k); }
  if(!changed.length){ alert('ไม่มีข้อมูลที่เปลี่ยน'); return; }
  const uniq=[...new Set(changed.map(k=>_EDIT_LABEL[k]||k))];
@@ -4357,6 +4565,7 @@ function readForm(){
     if(mv&&mv.indexOf('C:')===0) return {pbCode:mv.slice(2), model:txt.split(' — ')[0]};
     if(mv&&mv.indexOf('L:')===0) return {pbCode:'', model:mv.slice(2)};
     return {pbCode:'', model: mv? (txt||'') : ''}; })(),   /* เฟส 1: ยังไม่เลือกรุ่น → model ว่าง */
+  f4:2, condL:(function(){ const e=document.getElementById('f-cond'); return (product==='hp_used'&&e&&e.selectedIndex>=0&&e.options[e.selectedIndex])? e.options[e.selectedIndex].text : ''; })(),
   cond:+g('f-cond')||0, vehAge:+g('f-vehage')||0, mileage:+g('f-mileage')||0, color:g('f-color'), frameNo:g('f-frameno').trim(),
   price:+g('f-price')||0, downMode:g('f-downmode'),
   down: product==='pawn'?0:+g('f-down')||0,
@@ -4436,8 +4645,9 @@ function liveCalc(){
  const eirEl=document.getElementById('c-eir');
  if(eirEl){ eirEl.value=c.eir.toFixed(2)+'% ต่อปี '+(c.eir<=CFG.eirCap?'(เพดาน '+CFG.eirCap+'% ✓)':'(เกินเพดาน '+CFG.eirCap+'% — ค่างวดไม่ควรเกิน '+fmt(c.maxInstCap)+' บ.)');
    eirEl.style.color=c.eir>CFG.eirCap?'#dc2626':'#15803d'; eirEl.style.fontWeight='700'; }
+ try{ sec4Sync(a,c); }catch(e){ console.error(e); }
  const wEl=document.getElementById('calc-warns');
- if(wEl) wEl.innerHTML = (SESSION&&SESSION.role==='analyst') ? c.warns.map(w=>`<div class="alert ${w.t==='bad'?'a-bad':w.t==='ok'?'a-ok':'a-warn'}">${w.m}</div>`).join('') : '';
+ if(wEl) wEl.innerHTML = (SESSION&&SESSION.role==='analyst'&&!window.__pbTest) ? c.warns.map(w=>`<div class="alert ${w.t==='bad'?'a-bad':w.t==='ok'?'a-ok':'a-warn'}">${w.m}</div>`).join('') : '';
  /* ตรวจเลขบัตร + ค้นลูกค้าเดิม (auto-fill) */
  const hintEl=document.getElementById('cust-hint');
  if(hintEl){
@@ -4510,6 +4720,7 @@ function liveCalc(){
  }
 }
 function submitApp(){
+ if(window.__pbTest){ alert('🧪 โหมดทดลอง — ไม่บันทึกเคส (ปิดโหมดทดลองก่อนส่งเคสจริง)'); return; }
  if(window.__editCase){ hqSaveEdit(); return; }
  try{ if(newVerLocked()){ alert('มีเวอร์ชันใหม่ของระบบ — กรุณากดโหลดหน้าใหม่ก่อนส่งเคส (เครื่องนี้ '+CHK3_BUILD+' · ล่าสุด '+CFG.latestBuild+')'); newVerRender(); return; } }catch(e){}
  const a=readForm();
@@ -4530,11 +4741,10 @@ function submitApp(){
    if(!_ag && (OCC_LIST[a.occupation]||{}).ex && !a.occExtra) missing.push('ข้อมูลเพิ่มเติมอาชีพ: '+OCC_LIST[a.occupation].ex); }
  if(String((OCC_LIST[a.occupation]||{}).ex||'').indexOf('ที่ทำงาน')>=0 && !a.workplace) missing.push('สถานที่ทำงาน/ชื่อกิจการ (จำเป็นสำหรับอาชีพนี้ — ใช้ยืนยันความมั่นคง)');
  /* เฟส 1: ผลิตภัณฑ์ยังไม่บังคับ — ถ้าเริ่มกรอกแล้ว (เลือกรุ่น/ใส่ราคา) ต้องครบ */
- const _noProd = !a.pbCode && !(a.price>0) && !(a.product==='pawn'&&a.finance>0&&a.price>0);
- if(!_noProd){
-  if(a.price<=0) missing.push(a.product==='pawn'?'ราคาประเมิน':'ราคาขายสด');
-  if(a.product==='pawn'&&a.finance<=0) missing.push('วงเงินที่ขอ');
- }
+ /* 0925-M: ส่วนที่ 4 แบบใหม่ — บังคับทุกช่องตั้งแต่ sec4From (1/10/69) · ก่อนวันนั้น ถ้าเริ่มกรอก (เลือกรุ่น) ต้องครบ */
+ const _s4=sec4Enforced() && pbModelsList().length>0; /* ยังไม่มีหลักการของผลิตภัณฑ์นี้ → ไม่บังคับ (กันส่งเคสไม่ได้ทั้งระบบ) */ const _noProd = !_s4 && !a.pbCode && !(+a.instOv>0) && !(a.product==='pawn'&&a.finance>0);
+ let _s4k=null;
+ if(!_noProd && !stepLocked(4)){ _s4k=sec4Check(a,calcAll(a)); _s4k.miss.forEach(m=>missing.push('ส่วนที่ 4: '+m)); }
  if(!a.guarantor) missing.push('ผู้ค้ำประกัน / เอกสาร (เลือก มี/ไม่มีผู้ค้ำ)');   /* 0925-F: ช่องนี้เริ่มว่าง ต้องเลือกเอง */
  if(a.guar){ const G=a.guar, _v=id=>String((document.getElementById(id)||{}).value||'').trim(), _ph=v=>isPlaceholderVal(v);   /* 0925-E: มีผู้ค้ำ → ต้องกรอกทุกช่อง · ไม่รับขีด/"ไม่มี" */
    if(!_v('g-prefix')) missing.push('คำนำหน้าผู้ค้ำ');
@@ -4559,7 +4769,6 @@ function submitApp(){
  if(_rp.length===2 && _rp[0]===_rp[1]) missing.push('เบอร์บุคคลอ้างอิงทั้งสองซ้ำกัน');
  const _cp=[a.phone].concat((a.phones||[]).map(p=>p.no)).map(x=>normDigits(String(x||''))).filter(Boolean);
  _rp.forEach((p,i)=>{ if(_cp.includes(p)) missing.push('เบอร์บุคคลอ้างอิงคนที่ '+(i+1)+' ซ้ำกับเบอร์ผู้ซื้อ'); });
- if(!_noProd && pbModelsList().length && !a.pbCode) missing.push('รุ่นรถตามหลักการขาย');
  if(String(a.marital||'').indexOf('สมรส')>=0){ if(!String((a.spouse||{}).name||'').trim()) missing.push('ชื่อ-นามสกุลคู่สมรส (สถานภาพสมรส)'); if(!String((a.spouse||{}).phone||'').trim()) missing.push('เบอร์โทรคู่สมรส (สถานภาพสมรส)'); }
  { const ss=(document.getElementById('f-salestate')||{}).value||''; if(!ss) missing.push('สถานะการขายตอนส่งเคส (ข้อ 5)'); else if(ss==='sold'&&!String((document.getElementById('f-saledate')||{}).value||'').trim()) missing.push('วันที่ขาย (ข้อ 5)');  try{ const _sc=saleDateCheck(); if(_sc.block) missing.push(_sc.block+' (ข้อ 5)'); }catch(e){} }   /* 0925-C */
  { const dh=(document.getElementById('f-debthas')||{}).value||''; const dv=(document.getElementById('f-debt')||{}).value; if(!dh) missing.push('ภาระผ่อนหนี้เดิม/เดือน (เลือก มี/ไม่มี)'); else if(dh==='has'&&!(+dv>0)) missing.push('ยอดภาระผ่อนหนี้เดิม/เดือน'); else if(dh==='has'&&!(a.debtItems&&a.debtItems.length)) missing.push('ผ่อนรายการอะไรบ้าง (เลือกอย่างน้อย 1 รายการ)'); else if(dh==='has'){ const am=a.debtAmts||{}; const miss=(a.debtItems||[]).filter(k=>!(+am[k]>0)); if(miss.length&&Object.keys(am).length) missing.push('ยอดผ่อน/เดือนของ: '+miss.join(', ')); else if(miss.length&&!(window.__editCase)) missing.push('ยอดผ่อน/เดือนของแต่ละรายการ: '+miss.join(', ')); } if(!(+a.expense>0)) missing.push('ค่าใช้จ่ายส่วนตัว/ครัวเรือน ต่อเดือน');
@@ -4576,6 +4785,8 @@ function submitApp(){
  { const oe=document.getElementById('w-occex'); if(oe&&!oe.classList.contains('hidden')&&oe.style.display!=='none'&&isPlaceholderVal(a.occExtra)) missing.push(((document.getElementById('lbl-occex')||{}).textContent||'ข้อมูลเพิ่มเติมอาชีพ').replace(/\s*\*\s*$/,'').trim()); const wr=document.getElementById('w-rai'); if(wr&&!wr.classList.contains('hidden')&&!(+a.rai>0)) missing.push('จำนวนไร่โดยประมาณ'); }
  if(a.workDur&&a.workDur.set&&a.workYears<0.5){ const pw=a.prevWork||{}; const _wt=workAgeTxt(OCC_LIST[a.occupation]); if(!String(pw.company||'').trim()) missing.push(_wt.row+' — '+_wt.pw1+' (เพิ่งเริ่ม'+_wt.lbl+')'); if(!String(pw.position||'').trim()) missing.push(_wt.row+' — '+_wt.pw2); if(!(+pw.years>0)) missing.push(_wt.row+' — '+_wt.pw3); }
  if(missing.length){ alert('กรุณากรอก:\n• '+missing.join('\n• ')); return; }
+ if(_s4k&&_s4k.block.length){ alert('❌ ส่งเคสไม่ได้\n• '+_s4k.block.join('\n• ')); return; }   /* 0925-M: ข้อความไม่มีตัวเลขเกณฑ์ */
+ try{ const _pv=pbvOfCase(a); if(_pv) a.pbVer=_pv.id; }catch(e){}
  a.calc=calcAll(a);
  a.term=a.calc.termUsed;
  a.submittedAt=Date.now();
@@ -4585,8 +4796,8 @@ function submitApp(){
    if(_noProd && !stepLocked(4) && !confirm('ยังไม่ได้เลือกผลิตภัณฑ์/รุ่นรถ — ส่งเคสเพื่อให้ สนญ. ตรวจข้อมูล 3 มิติก่อน แล้วเติมผลิตภัณฑ์ภายหลัง?\n\nผลตรวจตอนนี้: '+(CHK3_LV[_r3.overall]||{}).ic+' '+(CHK3_LV[_r3.overall]||{}).t+' (กรอกครบ '+_r3.filled+'/3 มิติ)')) return;
  }catch(e){}
  const hard=a.calc.warns.find(w=> w.m.indexOf('ต่ำกว่าขั้นต่ำตามหลักการ')>=0 || w.m.indexOf('เกินวงเงินสูงสุดของรุ่นนี้')>=0 || w.m.indexOf('เปิดเฉพาะสาขาเกรด A/B')>=0 || w.m.indexOf('ต่ำกว่า 20 ปีบริบูรณ์')>=0 );
- if(hard){ alert('❌ ส่งเคสไม่ได้ — ขัดหลักการขาย:\n'+hard.m); return; }
- if(a.calc.eir>CFG.eirCap){
+ if(hard&&!a.calc.f4){ alert('❌ ส่งเคสไม่ได้ — ขัดหลักการขาย:\n'+hard.m); return; }
+ if(a.calc.eir>CFG.eirCap && !(a.calc.f4 && SESSION.role==='branch')){
   const _eirMsg = (SESSION.role==='branch')
     ? 'เงื่อนไขนี้ต้องให้ สนญ. ตรวจเพิ่มก่อนเซ็นสัญญา (อาจต้องปรับเงินดาวน์/จำนวนงวด)\n\nส่งเคสให้ สนญ. พิจารณาต่อ?'
     : '⚠ EIR '+a.calc.eir.toFixed(2)+'% เกินเพดาน ธปท. '+CFG.eirCap+'%\n\nแนวทางให้ผ่านเพดาน:\n• ค่างวดไม่ควรเกิน '+fmt(a.calc.maxInstCap)+' บ./เดือน (ปัจจุบัน '+fmt(a.calc.installment)+')\n• หรือราคาขายผ่อนรวมไม่เกิน '+fmt(a.calc.maxPrice)+' บ.\n• หรือเพิ่มเงินดาวน์ / ลดจำนวนงวด\n\nส่งเคสให้ สนญ. พิจารณาปรับก่อนเซ็นสัญญา?';
@@ -4618,7 +4829,7 @@ function viewBranchList(){
  const _srt=p1()?p1SortApply(list,p1SortMode('brl','work')):list.slice().sort((x,y)=>(y.submittedAt||0)-(x.submittedAt||0)); const _pg=pgApply('brl',_srt,[p1SortMode('brl','work'),fYear+'/'+fMonth].join('|')); const body=(p1()&&_pg.rows.some(a=>a.status==='pending')?p1RowHead():'')+(_pg.rows.map(a=>appCard(a,false)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>')+_pg.bar;   /* 0923-C: แบ่งหน้า */   /* 0922-A: งานถึงคิวก่อน มาก่อนอยู่บน */
  const _pc=p1()?p1Count(list):null;
  return dashHero('📋','รายการ / ติดตามคำขอของสาขา ('+list.length+')',p1()?p1HeadLine(_pc,p1ScopeTag('br')):'คลิกการ์ดเพื่อดูรายละเอียดและหมายเหตุจากฝ่ายวิเคราะห์')
- +`<div class="card">${p1()?p1Chips(_pc,'br'):qChips(s)}${p1()&&(p1Count(list).ackAll||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(list).ackAll}</b> เคส ที่ยังไม่กดรับทราบ${p1Count(list).ackDone?' (รวมเคสที่บันทึกผลขายไปแล้ว '+p1Count(list).ackDone+')':''} — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&(p1Count(list).noCt||0)?`<div style="background:#fff7ed;border:1px solid #fdba74;color:#c2410c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">🧾 ขายแล้วแต่ยังไม่ใส่เลขที่สัญญา <b>${p1Count(list).noCt}</b> เคส — เปิดเคส แล้วกด "เติมเลขที่สัญญา"</div>`:''}${p1()&&p1Count(list).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(list).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap;gap:8px">${periodUI()}${p1()?p1SortBtn('brl','work'):''}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${p1()?qBoard(myApps()):''}${body}</div>`;
+ +`<div class="card">${p1()?p1Chips(_pc,'br'):qChips(s)}${p1()&&(p1Count(p1ScopeList('br','',true)).ackAll||0)?`<div style="background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">📨 สนญ. ส่งการ์ด 3 มิติ + คำแนะนำมาแล้ว <b>${p1Count(p1ScopeList('br','',true)).ackAll}</b> เคส ที่ยังไม่กดรับทราบ${p1Count(p1ScopeList('br','',true)).ackDone?' (รวมเคสที่บันทึกผลขายไปแล้ว '+p1Count(p1ScopeList('br','',true)).ackDone+')':''} — เปิดเคสอ่านคำแนะนำ แล้วกด "รับทราบ"</div>`:''}${p1()&&(p1Count(p1ScopeList('br','',true)).noCt||0)?`<div style="background:#fff7ed;border:1px solid #fdba74;color:#c2410c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">🧾 ขายแล้วแต่ยังไม่ใส่เลขที่สัญญา <b>${p1Count(p1ScopeList('br','',true)).noCt}</b> เคส — เปิดเคส แล้วกด "เติมเลขที่สัญญา"</div>`:''}${p1()&&p1Count(p1ScopeList('br','',true)).overdue?`<div style="background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:13px">⚠ มี <b>${p1Count(p1ScopeList('br','',true)).overdue}</b> เคสที่ยังไม่บันทึกผลการขาย (ต้องบันทึกวันต่อวัน) — เปิดเคสแล้วกด "บันทึกผลการขาย"</div>`:''}<div class="flex sb mb" style="flex-wrap:wrap;gap:8px">${periodUI()}${p1()?p1SortBtn('brl','work'):''}<button class="btn btn-line btn-sm" onclick="exportCSV(myApps().filter(inPeriod),'MOTO24_branch_${SESSION.branch}')">⬇ Export CSV</button></div>${p1()?qBoard(myApps()):''}${body}</div>`;
 }
 function statCount(list){ return {
  total:list.length,
@@ -4778,7 +4989,7 @@ function drawBranchCharts(){
  if(typeof Chart==='undefined') return;
  const list=myApps().filter(inPeriod); const s=statCount(list);
  charts.push(new Chart(document.getElementById('ch-b1'),{type:'doughnut',data:{labels:['อนุมัติ','ปฏิเสธ','ขอข้อมูลเพิ่ม','รอวิเคราะห์'],datasets:[{data:[s.approved,s.rejected,s.moreinfo,s.pending],backgroundColor:['#16a34a','#dc2626','#d97706','#2563eb']}]},options:{maintainAspectRatio:false}}));
- const months={}; list.forEach(a=>{months[monthKey(a.date)]=(months[monthKey(a.date)]||0)+1;});
+ const months={}; list.forEach(a=>{months[caseYm(a)]=(months[caseYm(a)]||0)+1;});
  const keys=Object.keys(months).sort();
  charts.push(new Chart(document.getElementById('ch-b2'),{type:'bar',data:{labels:keys,datasets:[{label:'คำขอ',data:keys.map(k=>months[k]),backgroundColor:'#2b3990'}]},options:{maintainAspectRatio:false}}));
 }
@@ -5237,12 +5448,12 @@ function viewZoneP1(){
  const list=p1ScopeList('zone');   /* 0922-A: กรองสาขาในเขต */
  const c=p1Count(list);   /* 0921-B: สูตรเดียวกับทุกหน้า */
  const lt=a=>hqSent(a)?lightOf(a):null;
- const rows=brs.map(b=>{ const bl=list.filter(a=>a.branch===b.code); const bc=p1Count(bl); const sent=bl.filter(hqSent); const g=sent.filter(a=>lt(a)==='ok').length,y=sent.filter(a=>lt(a)==='warn').length,r=sent.filter(a=>lt(a)==='bad').length; const before=bl.filter(a=>a.sale&&(a.sale.beforeSubmit||a.sale.beforeHQ)).length; const hqP=bc.hqPending; const ackP=bc.ackAll;
+ const _allZ=p1ScopeList('zone','',true); const rows=brs.map(b=>{ const bl=list.filter(a=>a.branch===b.code); const bc=p1Pend(p1Count(bl),null); Object.assign(bc,(()=>{ const q=p1Count(_allZ.filter(a=>a.branch===b.code)); const o={}; P1_PEND.forEach(k=>o[k]=q[k]); return o; })()); const sent=bl.filter(hqSent); const g=sent.filter(a=>lt(a)==='ok').length,y=sent.filter(a=>lt(a)==='warn').length,r=sent.filter(a=>lt(a)==='bad').length; const before=bl.filter(a=>a.sale&&(a.sale.beforeSubmit||a.sale.beforeHQ)).length; const hqP=bc.hqPending; const ackP=bc.ackAll;
   const Z=(g,v)=>v?`<a href="#" style="text-decoration:underline dotted" onclick="event.preventDefault();p1ChipPop('zone','${g}','${b.code}')" title="คลิกดูรายชื่อ">${v}</a>`:v;
-  return `<tr><td class="b">${b.label}</td><td class="num">${bl.length}</td><td class="num" style="color:#1d4ed8">${Z('sent',hqP)}</td><td class="num" style="color:#b45309">${Z('ack',ackP)}${bc.ackLate?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.ackLate+')</span>':''}</td><td class="num" style="color:${bc.overdue?'#b91c1c':'#854d0e'}">${Z('sale',bc.reviewed+bc.waiting+bc.overdue)}${bc.overdue?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.overdue+')</span>':''}</td><td class="num" style="color:#166534">${Z('sold',bc.sold)}</td><td class="num">${Z('not',bc.notsold)}${bc.cancelled?' <span class="mut" style="font-size:10.5px">(ยกเลิก '+bc.cancelled+')</span>':''}</td><td class="num">${sent.length?`<span title="ข้อมูลสอดคล้อง">🟢${g}</span> <span title="ควรตรวจสอบเพิ่มเติม">🟡${y}</span> <span title="ข้อมูลน่าสงสัย">🔴${r}</span>`:'<span class="mut">—</span>'}</td><td class="num" style="color:${before?'#b45309':'#374151'}">${before}</td></tr>`; }).join('')||'<tr><td colspan="9" class="mut">ยังไม่มีเคสในเขตนี้</td></tr>';
+  return `<tr><td class="b">${b.label}</td><td class="num">${bl.length}</td><td class="num" style="color:#1d4ed8">${Z('sent',hqP)}</td><td class="num" style="color:#b45309">${Z('ack',ackP)}${bc.ackAllLate?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.ackAllLate+')</span>':''}</td><td class="num" style="color:${bc.overdue?'#b91c1c':'#854d0e'}">${Z('sale',bc.reviewed+bc.waiting+bc.overdue)}${bc.overdue?' <span class="mut" style="font-size:10.5px">(ค้าง '+bc.overdue+')</span>':''}</td><td class="num" style="color:#166534">${Z('sold',bc.sold)}</td><td class="num">${Z('not',bc.notsold)}${bc.cancelled?' <span class="mut" style="font-size:10.5px">(ยกเลิก '+bc.cancelled+')</span>':''}</td><td class="num">${sent.length?`<span title="ข้อมูลสอดคล้อง">🟢${g}</span> <span title="ควรตรวจสอบเพิ่มเติม">🟡${y}</span> <span title="ข้อมูลน่าสงสัย">🔴${r}</span>`:'<span class="mut">—</span>'}</td><td class="num" style="color:${before?'#b45309':'#374151'}">${before}</td></tr>`; }).join('')||'<tr><td colspan="9" class="mut">ยังไม่มีเคสในเขตนี้</td></tr>';
  const _srt=p1SortApply(list.filter(a=>a.status!=='cancelled'),p1SortMode('zonl','work'));   /* 0922-A: งานถึงคิวก่อน · ไม่ขึ้นแถวเคสยกเลิก */
  const _pg=pgApply('zonl',_srt,[p1SortMode('zonl','work'),fBranch,fYear+'/'+fMonth].join('|')); const body=(_pg.rows.some(a=>a.status==='pending')?p1RowHead():'')+(_pg.rows.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">ยังไม่มีรายการ</div>')+_pg.bar;   /* 0923-C: แบ่งหน้า */
- return `${dashHero('🗺️','ภาพรวมเขต — '+zname,p1HeadLine(c,p1ScopeTag('zone'))+' · <span style="opacity:.8">'+brs.length+' สาขา · ดูอย่างเดียว</span>')}
+ return `${dashHero('🗺️','ภาพรวมเขต — '+zname,p1HeadLine(c,p1ScopeTag('zone'),p1Count(p1ScopeList('zone','',true)))+' · <span style="opacity:.8">'+brs.length+' สาขา · ดูอย่างเดียว</span>')}
   <div class="card mb"><div class="flex sb" style="flex-wrap:wrap;gap:8px">${periodUI()}${p1BranchSelect('zone')}${p1SortBtn('zonl','work')}</div></div>
   ${p1Chips(c,'zone')}
   <div class="card mt"><h3 style="margin:0 0 8px">สรุปรายสาขาในเขต <span class="mut" style="font-weight:400;font-size:12px">— งานที่สาขาต้องทำคือคอลัมน์ "รอรับทราบ" และ "รอบันทึกผลขาย" ควรเป็น 0 ทุกวัน · <b>คลิกตัวเลข</b>เพื่อดูรายชื่อเคส</span></h3>
@@ -5324,7 +5535,7 @@ function viewQueueP1(pendingOnly){
    ${fState?`<span class="tag" style="background:#fff7ed;color:#c2410c;border:1px solid #fdba74;padding:4px 9px">กรอง: ${P1G[fState].ic} ${P1G[fState].t} <a href="#" style="color:#c2410c;margin-left:4px" onclick="event.preventDefault();fState='';go(currentTab)">✕ เลิกกรอง</a></span>`:''}
    <button class="btn btn-line btn-sm" onclick="exportCSV(APPS,'MOTO24_all_apps')">⬇ Export ทั้งหมด (CSV)</button></div>`;
  const _pg=pgApply(sortKey,list,[p1SortMode(sortKey,sortDef),fZone,fBranch,fState,fLight,fYear+'/'+fMonth].join('|')); const body=(list.length?p1RowHead():'')+(_pg.rows.map(a=>appCard(a,true)).join('')||'<div class="mut" style="text-align:center;padding:18px">'+(pendingOnly?'✅ ไม่มีเคสรอตรวจดู':'ยังไม่มี')+'</div>')+_pg.bar;   /* 0923-C: แบ่งหน้า */
- return dashHero(pendingOnly?'👁':'✓', title+' ('+list.length+')', p1HeadLine(s,p1ScopeTag('hq'))+(s.beforeSubmit||s.beforeHQ?' · <span style="opacity:.8">ขายก่อนส่งเคส '+s.beforeSubmit+' · ก่อน สนญ. ตรวจ '+s.beforeHQ+' (นับ "ขายแล้ว" เมื่อ สนญ. ตรวจแล้ว)</span>':''))
+ return dashHero(pendingOnly?'👁':'✓', title+' ('+list.length+')', p1HeadLine(s,p1ScopeTag('hq'),p1Count(p1ScopeList('hq','',true)))+(s.beforeSubmit||s.beforeHQ?' · <span style="opacity:.8">ขายก่อนส่งเคส '+s.beforeSubmit+' · ก่อน สนญ. ตรวจ '+s.beforeHQ+' (นับ "ขายแล้ว" เมื่อ สนญ. ตรวจแล้ว)</span>':''))
   +`<div class="card">${p1Chips(s,'hq')}${filterBar}${pendingOnly?qBoard(SESSION.role==='zone'?APPS.filter(a=>(BRANCHES.find(b=>b.code===a.branch)||{}).zone===SESSION.zone):APPS):''}${body}</div>`;
 }
 function qChips(s){ return `<div class="qchips">
@@ -5620,7 +5831,7 @@ function openDetail(id){ window.__detailId=id;
     </div>`}
    </div>
    <div>
-    <div class="card mb"><h3 class="exhead org">💳 เงื่อนไขสินเชื่อ</h3><table>
+    ${c.f4?f4CardHTML(a,c,isHQ):''}<div class="card mb${c.f4?' hidden':''}"><h3 class="exhead org">💳 เงื่อนไขสินเชื่อ</h3><table>
      <tr><td class="mut">ผลิตภัณฑ์</td><td>${PRODUCTS[a.product].label}</td><td class="mut">งวด</td><td>${PAYTYPES[a.payType]||'-'} · ${c.termUsed||a.term} เดือน</td></tr>
      ${a.pbCode?`<tr><td class="mut">หลักการขาย</td><td colspan="3">รหัสสินค้า ${a.pbCode}${c.pb?' · ชุดเกรด '+c.pb.grade:''}${c.pb&&(c.pb.type==='used'||c.pb.type==='usedbal')?' · สภาพรถ '+COND_LABELS[Math.min(3,+a.cond||0)]:''}${c.instRef!=null?' · ราคาผ่อนอ้างอิง '+fmt(c.instRef)+' บ.':''}${c.cover!=null?' · คุ้มครองวงเงิน '+fmt(c.cover)+' บ.':''}${c.limit!=null?' · วงเงินสูงสุด '+fmt(c.limit)+' บ.':''}</td></tr>`:''}
      <tr><td class="mut">รถ</td><td>${a.model} สี${a.color||'-'}</td><td class="mut">Frame No.</td><td>${a.frameNo||'-'}</td></tr>
@@ -5767,7 +5978,17 @@ function printCase(id){
    +row('ที่ทำงาน',esc(a.guar.workplace)||'-','รายได้',money(a.guar.income))
    +(a.guar.addr?row('ที่อยู่',guarAddrTxt(a.guar.addr)):row('พื้นที่','ต.'+(esc(a.guar.sub)||'-')+' '+(esc(a.guar.dist)||'')))); }
  // เงื่อนไขสินเชื่อ
- const loanRows=
+ const _f4F=a.product==='pawn', _f4B=a.payType==='balloon'&&!_f4F;
+ const loanRows= c.f4 ?   /* 0925-M: เคสส่วนที่ 4 แบบใหม่ — พิมพ์เฉพาะที่สาขากรอก · สนญ. เห็นการเทียบหลักการ */
+   row('ผลิตภัณฑ์',PRODUCTS[a.product].label,'ประเภทการคำนวณ',_f4B?'บอลลูน':'ค่างวดคงที่')
+   +row('รุ่นรถ',esc(a.model)+(a.pbCode?' ('+esc(String(a.pbCode).replace(/#\d+$/,''))+')':''),a.product==='hp_used'?'สภาพรถ':'สีรถ',a.product==='hp_used'?condLabelOf(a):(esc(a.color)||'-'))
+   +row('เลขตัวถัง',esc(a.frameNo)||'-',a.product==='hp_used'?'สีรถ':(_f4F?'อายุรถ / เลขไมล์':''),a.product==='hp_used'?(esc(a.color)||'-'):(_f4F?((a.vehAge!=null&&a.vehAge!==''?a.vehAge+' ปี':'-')+' · '+(a.mileage?fmt(a.mileage)+' กม.':'-')):''))
+   +row(_f4F?'ราคาขาย (วงเงินสูงสุด)':'ราคาขายผ่อน',money(c.price),_f4F?'ยอดจัด (วงเงินที่ขอ)':'เงินดาวน์',money(_f4F?a.finance:a.down))
+   +row('ยอดจัด','<b>'+money(c.finance)+'</b>','จำนวนงวด',(c.termUsed||a.term)+' งวด')
+   +row('ค่างวด/เดือน (H-Capital)','<b>'+money(a.instOv||c.installment)+'</b>',_f4B?'งวดสุดท้าย (บอลลูน)':'วันดิวงวดแรก',_f4B?'<b>'+money(a.balloonOv||c.balloonAmt)+'</b>':(esc(a.firstDue)||'-'))
+   +(_f4B?row('วันดิวงวดแรก',esc(a.firstDue)||'-'):'')
+   +(_prHQ&&c.sys?row('ค่างวดตามหลักการ (ระบบ)',money(c.sys.inst)+(c.instDiff!=null?' · ต่าง '+(c.instDiff>0?'+':'')+fmt(c.instDiff)+' บ.':''),'EIR / Flat (จากค่างวดสาขา)','<b>'+c.eir.toFixed(2)+'%</b>'+(c.flatMo!=null?' · '+c.flatMo.toFixed(2)+'%/ด.':'')):'')
+ :
    row('ผลิตภัณฑ์',PRODUCTS[a.product].label,'งวด',(PAYTYPES[a.payType]||'-')+' · '+(c.termUsed||a.term)+' เดือน')
    +row('รถ',esc(a.model)+' สี'+(esc(a.color)||'-'),'Frame No.',esc(a.frameNo)||'-')
    +row(a.product==='pawn'?'ราคาประเมิน':'ราคาขายสด',money(c.price||a.price),a.product==='pawn'?'วงเงินขอ':'เงินดาวน์',money(a.product==='pawn'?c.finance:a.down)+(a.product!=='pawn'?' ('+c.downPct.toFixed(1)+'%)':''))
@@ -5907,13 +6128,16 @@ function decide(id,status){
 let PB;
 const PB_TYPES={new:'รถใหม่',newbal:'รถใหม่ Balloon',used:'รถมือสอง',usedbal:'มือสอง Balloon',fin:'ไฟแนนซ์'};
 const COND_LABELS=['A+','A','B+','B'];
+/* 0925-M: ป้ายสภาพรถตามฉบับหลักการ (ไฟล์ ต.ค.69 = A+/A/B) · ฉบับเก่า/เคสเก่า = A+/A/B+/B */
+function pbCondLabels(P,type){ const c=P&&P.conds&&(P.conds[type]||P.conds.used); return (c&&c.length)?c:COND_LABELS; }
+function condLabelOf(a){ if(a&&a.condL) return a.condL; const P=(typeof pbFor==='function')?pbFor(a):PB; const L=pbCondLabels(P,a&&a.payType==='balloon'?'usedbal':'used'); return L[+((a&&a.cond)||0)]||'-'; }
 function loadPB(){
  try{ PB=JSON.parse(localStorage.getItem('moto24_pb_v1')); }catch(e){ PB=null; }
  if(!PB||!PB.items) PB={month:'2026-08',updated:'',grades:{},
   items:{used:{A:[],B:[],C:[]},usedbal:{AB:[]},new:{A:[],B:[],C:[]},newbal:{A:[],B:[],C:[]},fin:{A:[],B:[],C:[]}}};
  BRANCHES.forEach(b=>{ PB.grades[b.code]=PB.grades[b.code]||{new:'A',used:'A',fin:'A'}; });
 }
-function savePB(){ try{ localStorage.setItem('moto24_pb_v1',JSON.stringify(PB)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('pb',PB); }
+function savePB(){ try{ localStorage.setItem('moto24_pb_v1',JSON.stringify(PB)); }catch(e){} if(typeof cloudPushMaster==='function')cloudPushMaster('pb',PB); try{ if(typeof pbvSave==='function'&&PBV.length) pbvSave(); }catch(e){} }   /* 0925-M: + ฉบับรายเดือน (pbv) */
 function pbNum(v){ const f=parseFloat(v); return isNaN(f)?null:f; }
 /* แยกคอลัมน์ "ดอกเบี้ย" (ค่า < 0.5 = อัตราทศนิยม เช่น 0.0107) ออกจาก "ของแถม/เงินก้อน" (ค่า ≥ 0.5) อัตโนมัติ
    รองรับไฟล์ที่จำนวนขั้นดอกเบี้ยต่างกันในแต่ละเดือน (เช่น 3 ขั้น vs 4 ขั้น) */
@@ -6055,33 +6279,465 @@ function parsePBWorkbook(wb){
  }
  return found;
 }
+/* ===== 0925-M: อ่านไฟล์หลักการขายแบบอ่านตาม "ชื่อหัวคอลัมน์" + หน้าตรวจก่อนบันทึก + เก็บหลักการรายเดือน (มีผลตามวันที่) =====
+   - ไม่อ่านตามตำแหน่งคอลัมน์ตายตัว · ตัดจุลภาค "46,900" → 46900 · ข้ามชีตซ่อน · แยกประเภทจากหัวตาราง (ไม่ใช่ชื่อชีต)
+   - สภาพรถมือสองอ่านจากหัวตาราง (A+/A/B หรือ A+/A/B+/B) · รหัสซ้ำเก็บครบทุกแถว (แยกด้วยชื่อรุ่น)
+   - เกรดสาขา: รถใหม่ = ติ๊กในชีต · มือสอง = ตาราง "หลักการภาพรวม" · ไฟแนนซ์ = รายชื่อ "สาขาที่ใช้" ท้ายชีต (เทียบกับภาพรวม) */
+function pbN(v){
+ if(v==null||v==='') return null;
+ if(typeof v==='number') return isFinite(v)?v:null;
+ let s=String(v).trim().replace(/[,\s]/g,'').replace(/บาท$/,'');
+ if(!s) return null;
+ let pct=false; if(/%$/.test(s)){ pct=true; s=s.slice(0,-1); }
+ if(!/^-?\d+(\.\d+)?$/.test(s)) return null;
+ const f=parseFloat(s); return pct? f/100 : f;
+}
+function pbIsErrCell(v){ return typeof v==='string' && /^#(REF|VALUE|DIV\/0|N\/A|NAME|NUM|NULL)/.test(v.trim()); }
+const PB_TH_MONTHS=['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+function pbMonthFromText(t){
+ t=String(t||''); let mi=-1; PB_TH_MONTHS.forEach((m,i)=>{ if(mi<0&&t.indexOf(m)>=0) mi=i; });
+ const y=t.match(/(25\d\d)/); if(mi<0||!y) return null;
+ return (+y[1]-543)+'-'+String(mi+1).padStart(2,'0');
+}
+function pbEffFromText(t){   /* "เริ่มใช้หลักการวันที่ 1 ตุลาคม 2569" */
+ t=String(t||''); const m=t.match(/เริ่มใช้[^0-9]*(\d{1,2})\s*([ก-๙]+)\s*(25\d\d)/); if(!m) return null;
+ const mi=PB_TH_MONTHS.indexOf(m[2]); if(mi<0) return null;
+ return (+m[3]-543)+'-'+String(mi+1).padStart(2,'0')+'-'+String(+m[1]).padStart(2,'0');
+}
+function pbNormName(s){ return String(s||'').replace(/\s+/g,'').replace(/^\d{1,2}-/,''); }
+function pbBranchByLabel(label, zoneKind){
+ /* label เช่น "15-บ่อล้อ" / "ระโนด 1" / "31-ท่าศาลา" · zoneKind 'A'|'M'|null */
+ label=String(label||'').trim(); const mm=label.match(/^(\d{1,2})\s*-/);
+ const byCode= mm? BRANCHES.find(b=>b.code===mm[1].padStart(2,'0')) : null;
+ const nm=pbNormName(label);
+ const pool=BRANCHES.filter(b=>!zoneKind||zoneGrade(b.zone)===zoneKind);
+ const byName=pool.find(b=>b.name===nm)||pool.find(b=>b.name===nm+'24')||pool.find(b=>b.name.replace(/24$/,'')===nm);
+ return {byCode, byName};
+}
+function pbReadSheet(ws){ return XLSX.utils.sheet_to_json(ws,{header:1,raw:true,defval:null,blankrows:true}); }
+/* หาแถวหัวตาราง (มี "รหัสสินค้า" คอลัมน์แรก) + แถวข้อมูลแรก · สร้างชื่อคอลัมน์รวมจากหัวหลายชั้น */
+function pbHeader(rows){
+ let hr=-1; for(let i=0;i<Math.min(40,rows.length);i++){ const r=rows[i]||[]; if(String(r[0]==null?'':r[0]).replace(/\s/g,'')==='รหัสสินค้า'){ hr=i; break; } }
+ if(hr<0) return null;
+ let ds=-1; for(let i=hr+1;i<Math.min(hr+8,rows.length);i++){ const r=rows[i]||[]; if(r[0]!=null&&String(r[0]).trim()!==''&&pbN(r[2])!=null){ ds=i; break; } }
+ if(ds<0) return null;
+ const width=Math.max(...rows.slice(hr,ds).map(r=>(r||[]).length),0);
+ const lv=[]; /* lv[k][c] */
+ for(let k=hr;k<ds;k++){
+  const r=rows[k]||[], prev=k>hr? lv[k-hr-1] : null, raw=k>hr? rows[k-1]||[] : null, isLast=(k===ds-1);
+  const out=[]; let fill=null;
+  for(let c=0;c<width;c++){
+   const v=r[c]==null?'':String(r[c]).trim();
+   if(raw && raw[c]!=null && String(raw[c]).trim()!=='') fill=null;   /* กลุ่มใหม่ในแถวบน → หยุดเติม */
+   if(v){ out[c]=v; fill=isLast?null:v; } else out[c]=fill||'';
+  }
+  lv.push(out);
+ }
+ const cols=[]; for(let c=0;c<width;c++) cols.push(lv.map(L=>L[c]||''));
+ let title=''; rows.slice(0,hr).forEach(r=>(r||[]).forEach(v=>{ if(v!=null) title+=' '+v; }));
+ return {hr, ds, cols, title, head:cols.map(x=>x.join('|')).join(' ')};
+}
+const PB_CONDS=['A+','A','B+','B','C'];
+function pbKindOf(H){
+ const h=H.head;
+ if(h.indexOf('คุ้มครองวงเงิน')>=0) return 'fin';
+ const hasCond=H.cols.some(x=>x.some(t=>t==='A+'));
+ if(hasCond) return h.indexOf('ผ่อน/เดือน')>=0?'usedbal':'used';
+ if(h.indexOf('ต่องวด')>=0) return 'newbal';
+ if(h.indexOf('ราคาขายสด')>=0) return 'new';
+ return null;
+}
+function pbTicks(rows,hr){   /* ข้อความ [ P ] / [ü] ในส่วนหัว → {groups:['A'], labels:['15-บ่อล้อ',…]} */
+ const groups=[],labels=[];
+ rows.slice(0,hr).forEach(r=>(r||[]).forEach(v=>{
+  if(v==null) return; const s=String(v); const i=s.indexOf('['), j=s.indexOf(']'); if(i<0||j<=i) return;
+  if(!/[Pü√✓]/.test(s.slice(i,j))) return;
+  const lab=s.slice(j+1).trim(); const g=lab.match(/^กลุ่ม\s*([ABC])/);
+  if(g){ groups.push(g[1]); return; }
+  if(!lab||/มาตรฐาน|เฉพาะรุ่น|โปรโมชั่น/.test(lab)) return;
+  labels.push(lab);
+ }));
+ return {groups,labels};
+}
+function pbSheetGrade(sn, tk){
+ const rest=String(sn).replace(/หลักการ|ขาย|บอลลูน/g,'').replace(/[_\s]/g,'').toUpperCase();
+ const m=rest.match(/^([ABC])$/); const byName=m?m[1]:null;
+ const byTick=tk.groups.length===1?tk.groups[0]:null;
+ return {g: byName||byTick, byName, byTick, groups:tk.groups};
+}
+function pbColIdx(H, test, from){ for(let c=from||0;c<H.cols.length;c++){ if(test(H.cols[c],c)) return c; } return -1; }
+function pbParseItems(kind, rows, H, ctx){
+ const C=H.cols, has=(c,s)=>C[c].some(t=>t.indexOf(s)>=0), top=c=>C[c][0]||'', last=c=>{ const a=C[c]; for(let k=a.length-1;k>=0;k--) if(a[k]) return a[k]; return ''; };
+ const items=[]; const errs=[];
+ const cName=pbColIdx(H,x=>x[0].indexOf('ชื่อ')>=0); const nameCol=cName<0?1:cName;
+ const rangeLab=/^(\d+)\s*-\s*(\d+)$/;
+ let map={};
+ if(kind==='fin'){
+  map.limit=pbColIdx(H,x=>x[0]==='ราคาขาย'||x[0].indexOf('ราคาขาย')===0&&x.length&&x[1]==='');
+  const tiers=[];
+  C.forEach((x,c)=>{ const t=x.find(s=>s.indexOf('อัตราดอกเบี้ย')>=0); if(!t) return;
+   let tier=tiers.find(q=>q.lab===t); if(!tier){ const mm=t.match(/([0-9.]+)\s*%/); const lim=x.find(s=>/กู้/.test(s))||'';
+     const lm=lim.replace(/,/g,'').match(/(\d+)/);
+     tier={lab:t, rate: mm? Math.round(parseFloat(mm[1])*1e4)/1e6 : null, max: lim.indexOf('>')>=0? 999999999 : (lm? +lm[1] : 999999999), cover:-1, short:-1, long:-1}; tiers.push(tier); }
+   const L=last(c); if(L.indexOf('คุ้มครอง')>=0) tier.cover=c; else if(L==='สั้น') tier.short=c; else if(L==='ยาว') tier.long=c; });
+  map.tiers=tiers;
+  if(map.limit<0) errs.push('ไม่พบคอลัมน์ "ราคาขาย"');
+  if(!tiers.length) errs.push('ไม่พบขั้น "อัตราดอกเบี้ย"');
+  tiers.forEach(t=>{ if(t.rate==null) errs.push('อ่านอัตราดอกเบี้ยไม่ได้: '+t.lab); if(t.cover<0||t.long<0) errs.push('ขั้น '+t.lab+' ไม่ครบคอลัมน์ คุ้มครอง/สั้น/ยาว'); });
+ } else {
+  const isUsed=(kind==='used'||kind==='usedbal');
+  if(isUsed){
+   map.cash=[],map.inst=[]; const conds=[];
+   C.forEach((x,c)=>{ const L=last(c)||x[1]||''; const cl=x.find(s=>PB_CONDS.indexOf(s)>=0);
+    if(!cl) return;
+    if(top(c).indexOf('ราคาขายสด')>=0){ map.cash.push(c); conds.push(cl); }
+    else if(top(c).indexOf('ราคาขายผ่อน')>=0) map.inst.push(c); });
+   map.conds=conds;
+   if(!conds.length) errs.push('ไม่พบสภาพรถ (A+/A/B) ใต้ "ราคาขายสด"');
+   if(map.inst.length!==map.cash.length) errs.push('จำนวนสภาพรถ ราคาสด ('+map.cash.length+') ไม่เท่ากับราคาผ่อน ('+map.inst.length+')');
+  } else {
+   map.cash=pbColIdx(H,x=>x[0].indexOf('ราคาขายสด')>=0);
+   map.inst=pbColIdx(H,x=>x[0].indexOf('ราคาขายผ่อน')>=0);
+   if(map.cash<0) errs.push('ไม่พบคอลัมน์ "ราคาขายสด"'); if(map.inst<0) errs.push('ไม่พบคอลัมน์ "ราคาขายผ่อน"');
+  }
+  map.down=pbColIdx(H,x=>x.some(s=>s==='ดาวน์'));
+  if(map.down<0) errs.push('ไม่พบคอลัมน์ "เงินดาวน์"');
+  if(kind==='newbal'||kind==='usedbal'){ map.payMonth=pbColIdx(H,x=>x.some(s=>s.indexOf('ต่องวด')>=0||s.indexOf('ผ่อน/เดือน')>=0)); if(map.payMonth<0) errs.push('ไม่พบคอลัมน์ "ผ่อนต่องวด"'); }
+  map.ints=[]; map.intMax=[]; map.gifts=[]; map.giftLab=[];
+  C.forEach((x,c)=>{ const L=last(c), m=L.match(rangeLab);
+   if(x.some(s=>s.indexOf('ดอกเบี้ย')>=0) && m){ map.ints.push(c); map.intMax.push(+m[2]); }
+   else if(x.some(s=>s.indexOf('ของแถม')>=0)){ map.gifts.push(c); map.giftLab.push(L); } });
+  if(!map.ints.length) errs.push('ไม่พบขั้นดอกเบี้ย (เช่น 1-24 / 25-36)');
+  map.tShort=pbColIdx(H,(x,c)=>last(c)==='สั้น'); map.tLong=pbColIdx(H,(x,c)=>last(c)==='ยาว');
+ }
+ if(errs.length) return {items, errs, map};
+ const S=v=>String(v==null?'':v).trim();
+ const bad=[];
+ for(let i=H.ds;i<rows.length;i++){
+  const r=rows[i]||[]; const code=S(r[0]); if(!code) continue;
+  if(kind==='fin'){ if(pbN(r[map.limit])==null) continue; }
+  else { const c0= Array.isArray(map.cash)? r[map.cash[0]] : r[map.cash]; if(pbN(c0)==null) continue; }
+  const it={code, name:S(r[nameCol]), row:i+1};
+  const num=(c,lab)=>{ const v=r[c]; if(pbIsErrCell(v)) bad.push('แถว '+(i+1)+' '+code+': '+lab+' = '+v); return pbN(v); };
+  if(kind==='fin'){
+   it.limit=num(map.limit,'ราคาขาย');
+   it.covers=map.tiers.map(t=>num(t.cover,'คุ้มครองวงเงิน')); it.shorts=map.tiers.map(t=>t.short>=0?num(t.short,'สั้น'):null); it.longs=map.tiers.map(t=>num(t.long,'ยาว'));
+  } else if(kind==='used'||kind==='usedbal'){
+   it.cash=map.cash.map(c=>num(c,'ราคาสด')); it.inst=map.inst.map(c=>num(c,'ราคาผ่อน')); it.down=num(map.down,'ดาวน์');
+   it.ints=map.ints.map(c=>{ const v=num(c,'ดอกเบี้ย'); return v==null?null:Math.round(v*1e6)/1e6; }); it.intMax=map.intMax.slice();
+   it.int12=it.ints.find(x=>x!=null); if(it.int12===undefined) it.int12=null;
+   if(kind==='usedbal') it.payMonth=num(map.payMonth,'ผ่อนต่องวด');
+   it.gifts=map.gifts.map(c=>pbN(r[c])); it.giftTxt=map.gifts.map(c=>S(r[c]));
+  } else {
+   it.cash=num(map.cash,'ราคาสด'); it.inst=num(map.inst,'ราคาผ่อน'); it.down=num(map.down,'ดาวน์');
+   it.ints=map.ints.map(c=>{ const v=num(c,'ดอกเบี้ย'); return v==null?null:Math.round(v*1e6)/1e6; }); it.intMax=map.intMax.slice();
+   it.gifts=map.gifts.map(c=>pbN(r[c])); it.giftLab=map.giftLab.slice();
+   if(kind==='newbal') it.payMonth=num(map.payMonth,'ผ่อนต่องวด');
+  }
+  if(map.tShort>=0) it.tShort=pbN(r[map.tShort]); if(map.tLong>=0) it.tLong=pbN(r[map.tLong]);
+  items.push(it);
+ }
+ return {items, errs:bad, map, hard:false};
+}
+/* ตาราง "หลักการภาพรวม" → เกรดมือสอง/ไฟแนนซ์ของสาขาเขตเกรดเอ */
+function pbParseOverview(rows, report){
+ let hr=-1; for(let i=0;i<Math.min(10,rows.length);i++){ const r=(rows[i]||[]).map(v=>String(v==null?'':v).trim()); if(r.indexOf('รหัส')>=0&&r.indexOf('สาขา')>=0&&r.indexOf('เกรด')>=0){ hr=i; break; } }
+ if(hr<0) return null;
+ const H=(rows[hr]||[]).map(v=>String(v==null?'':v).trim());
+ const cCode=H.indexOf('รหัส'), cName=H.indexOf('สาขา');
+ const gcols=[]; H.forEach((v,c)=>{ if(v==='เกรด') gcols.push(c); });
+ const kindOf=c=>{ const nx=String(H[c+1]||''); return nx.indexOf('ไฟแนนซ์')>=0?'fin':'used'; };
+ const out={};
+ for(let i=hr+1;i<rows.length;i++){
+  const r=rows[i]||[]; const nm=String(r[cName]==null?'':r[cName]).trim(); if(!nm) continue;
+  const code=String(r[cCode]==null?'':r[cCode]).trim().padStart(2,'0');
+  const hit=pbBranchByLabel(nm,'A'); let b=hit.byName;
+  if(!b){ const bc=BRANCHES.find(x=>x.code===code); if(bc){ b=bc; report.warn.push('ตารางภาพรวม: ชื่อสาขา "'+nm+'" ไม่ตรงกับระบบ — ใช้รหัส '+code); } else { report.warn.push('ตารางภาพรวม: ไม่รู้จักสาขา "'+nm+'" (รหัส '+code+') — ข้าม'); continue; } }
+  else if(b.code!==code) report.warn.push('ตารางภาพรวม: '+nm+' รหัสในไฟล์ '+code+' ไม่ตรงระบบ ('+b.code+') — ใช้ชื่อสาขา');
+  out[b.code]=out[b.code]||{};
+  gcols.forEach(c=>{ const g=String(r[c]==null?'':r[c]).trim().toUpperCase(); if(/^[ABC]$/.test(g)) out[b.code][kindOf(c)]=g; });
+ }
+ return out;
+}
+/* อ่านรายชื่อ "สาขาที่ใช้" ท้ายชีตไฟแนนซ์ เช่น "02-ระโนด, 03-สิงหนคร" */
+function pbFinBranchList(rows){
+ const codes=[];
+ rows.forEach(r=>(r||[]).forEach(v=>{ if(v==null) return; const s=String(v).trim();
+  if(/^(\d{1,2}\s*-\s*[^,]+)(\s*,\s*\d{1,2}\s*-\s*[^,]+)*$/.test(s)) s.split(',').forEach(p=>{ const m=p.trim().match(/^(\d{1,2})\s*-/); if(m){ const c=m[1].padStart(2,'0'); if(codes.indexOf(c)<0) codes.push(c); } }); }));
+ return codes;
+}
+function pbNewStage(){ return {items:{},grades:{},gradeSrc:{},finTiers:null,conds:{},months:[],effs:[],files:[],sheets:[],report:{err:[],warn:[],info:[]}}; }
+/* อ่านไฟล์หนึ่งไฟล์เข้า stage (ยังไม่บันทึก) */
+function pbParseWorkbook2(wb, fname, S){
+ const R=S.report;
+ const meta=(wb.Workbook&&wb.Workbook.Sheets)||[];
+ const hidden=sn=>{ const m=meta.find(x=>x.name===sn); return !!(m&&m.Hidden); };
+ let used=0;
+ wb.SheetNames.forEach(sn=>{
+  const tag=fname+' › '+sn.trim();
+  if(hidden(sn)){ S.sheets.push({tag, st:'skip', why:'ชีตซ่อน'}); return; }
+  const rows=pbReadSheet(wb.Sheets[sn]);
+  const H=pbHeader(rows);
+  if(!H){
+   const ov=pbParseOverview(rows,R);
+   if(ov){ Object.keys(ov).forEach(code=>{ S.gradeSrc[code]=S.gradeSrc[code]||{}; ['used','fin'].forEach(k=>{ if(ov[code][k]) S.gradeSrc[code]['ov_'+k]=ov[code][k]; }); });
+     S.sheets.push({tag, st:'ok', why:'ตารางเกรดสาขา (ภาพรวม) '+Object.keys(ov).length+' สาขา'}); used++; }
+   else S.sheets.push({tag, st:'skip', why:'ไม่ใช่ตารางหลักการ'});
+   return;
+  }
+  const kind=pbKindOf(H);
+  if(!kind){ S.sheets.push({tag, st:'skip', why:'แยกประเภทจากหัวตารางไม่ได้'}); R.warn.push(tag+': มีหัว "รหัสสินค้า" แต่แยกประเภทไม่ได้ — ข้าม'); return; }
+  const mo=pbMonthFromText(H.title); if(mo&&S.months.indexOf(mo)<0) S.months.push(mo);
+  let effTxt=''; rows.forEach(r=>(r||[]).forEach(v=>{ if(v!=null&&String(v).indexOf('เริ่มใช้')>=0) effTxt=String(v); }));
+  const ef=pbEffFromText(effTxt); if(ef&&S.effs.indexOf(ef)<0) S.effs.push(ef);
+  const tk=pbTicks(rows,H.hr);
+  let gk;
+  if(kind==='usedbal'){ gk='AB'; }
+  else { const sg=pbSheetGrade(sn,tk); gk=sg.g;
+   if(!gk){ R.err.push(tag+': หาเกรด (A/B/C) ของชีตไม่ได้'); S.sheets.push({tag,st:'err',why:'ไม่รู้เกรด'}); return; }
+   if(sg.byName&&sg.byTick&&sg.byName!==sg.byTick) R.warn.push(tag+': ชื่อชีตเป็นเกรด '+sg.byName+' แต่ติ๊ก "กลุ่ม '+sg.byTick+'" — ใช้ตามชื่อชีต'); }
+  const P=pbParseItems(kind,rows,H,{});
+  if(P.map&&P.map.conds&&P.map.conds.length){ const prev=S.conds[kind]; if(prev&&prev.join()!==P.map.conds.join()) R.err.push(tag+': สภาพรถไม่ตรงกับชีตอื่น ('+P.map.conds.join('/')+' vs '+prev.join('/')+')'); S.conds[kind]=P.map.conds; }
+  if(!P.items.length&&P.errs.length){ P.errs.forEach(e=>R.err.push(tag+': '+e)); S.sheets.push({tag,st:'err',why:P.errs[0]}); return; }
+  P.errs.forEach(e=>R.err.push(tag+': '+e));
+  if(kind==='fin'&&P.map.tiers){ const ft=P.map.tiers.map(t=>({rate:t.rate,max:t.max}));
+   if(S.finTiers&&JSON.stringify(S.finTiers)!==JSON.stringify(ft)) R.warn.push(tag+': ขั้นดอกเบี้ยไฟแนนซ์ต่างจากชีตก่อนหน้า — ใช้ชุดแรก'); else S.finTiers=ft; }
+  /* รหัสซ้ำ → เก็บครบ แยกด้วย key */
+  const seen={}; P.items.forEach(it=>{ const n=(seen[it.code]||0)+1; seen[it.code]=n; it.key= n===1? it.code : it.code+'#'+n; });
+  Object.keys(seen).filter(c=>seen[c]>1).forEach(c=>{ const nm=P.items.filter(x=>x.code===c).map(x=>x.name.trim()+' (แถว '+x.row+')').join(' / ');
+   R.warn.push(tag+': รหัสซ้ำ '+c+' '+seen[c]+' แถว — เก็บครบทุกแถว แยกด้วยชื่อรุ่น: '+nm); });
+  S.items[kind]=S.items[kind]||{};
+  if(S.items[kind][gk]) R.warn.push(tag+': มีชีต '+PB_TYPES[kind]+' เกรด '+gk+' ซ้ำ — ใช้ชีตล่าสุด');
+  S.items[kind][gk]=P.items;
+  /* เกรดสาขา */
+  if(kind==='new'||kind==='newbal'){ tk.labels.forEach(l=>{ const h=pbBranchByLabel(l,'M'); const b=h.byCode||h.byName; if(!b){ R.warn.push(tag+': ไม่รู้จักสาขาที่ติ๊ก "'+l+'"'); return; }
+    if(h.byCode&&h.byName&&h.byCode.code!==h.byName.code) R.warn.push(tag+': "'+l+'" รหัสกับชื่อไม่ตรงกัน — ใช้รหัส');
+    S.gradeSrc[b.code]=S.gradeSrc[b.code]||{}; const k2=kind==='new'?'tick_new':'tick_newbal';
+    if(S.gradeSrc[b.code][k2]&&S.gradeSrc[b.code][k2]!==gk) R.warn.push(tag+': สาขา '+b.label+' ถูกติ๊กทั้งเกรด '+S.gradeSrc[b.code][k2]+' และ '+gk);
+    S.gradeSrc[b.code][k2]=gk; }); }
+  if(kind==='fin'){ pbFinBranchList(rows).forEach(code=>{ if(!BRANCHES.find(b=>b.code===code)){ R.warn.push(tag+': รหัสสาขา '+code+' ไม่มีในระบบ'); return; }
+    S.gradeSrc[code]=S.gradeSrc[code]||{}; if(S.gradeSrc[code].list_fin&&S.gradeSrc[code].list_fin!==gk) R.warn.push(tag+': สาขา '+code+' อยู่ในรายชื่อไฟแนนซ์ทั้งเกรด '+S.gradeSrc[code].list_fin+' และ '+gk); S.gradeSrc[code].list_fin=gk; }); }
+  S.sheets.push({tag, st:'ok', why:PB_TYPES[kind]+(gk==='AB'?' (กลุ่ม A,B)':' เกรด '+gk)+' · '+P.items.length+' รุ่น'+(P.map&&P.map.conds?' · สภาพ '+P.map.conds.join('/'):'')});
+  used++;
+ });
+ if(!used) R.err.push(fname+': ไม่พบตารางหลักการขายในไฟล์');
+ S.files.push(fname);
+}
+/* ตรวจค่าผิดปกติรายรุ่น */
+function pbAnomalies(S){
+ const R=S.report, add=(t,m)=>{ (t==='err'?R.err:R.warn).push(m); };
+ const pctOk=v=>v==null||(v>0&&v<0.05);
+ Object.keys(S.items).forEach(k=>Object.keys(S.items[k]).forEach(g=>{
+  const lab=PB_TYPES[k]+(g==='AB'?'':' '+g);
+  let nBad=0; const ex=[];
+  S.items[k][g].forEach(it=>{
+   const p=[];
+   if(k==='fin'){ if(!(it.limit>0)) p.push('วงเงิน '+it.limit); if(it.longs.some(x=>x!=null&&(x<1||x>60))) p.push('งวดยาวผิดปกติ'); }
+   else {
+    const cs=[].concat(it.cash), is=[].concat(it.inst);
+    if(cs.some(x=>!(x>0))) p.push('ราคาสดว่าง/0');
+    if(is.some(x=>!(x>0))) p.push('ราคาผ่อนว่าง/0');
+    cs.forEach((c,i)=>{ if(c>0&&is[i]>0&&is[i]<c) p.push('ราคาผ่อน < ราคาสด'); });
+    if(k==='used'||k==='usedbal'){ for(let i=1;i<cs.length;i++) if(cs[i]>cs[i-1]) p.push('ราคาสภาพต่ำกว่าแพงกว่า'); }
+    if(it.down==null||it.down<0) p.push('ดาวน์ว่าง'); else if(it.down>=Math.max(...is.filter(x=>x>0),1)) p.push('ดาวน์ ≥ ราคา');
+    if(it.down!=null&&it.down>0&&it.down<1) p.push('ดาวน์เป็นทศนิยม ('+it.down+') — คอลัมน์อาจเลื่อน');
+    if(!it.ints.some(x=>x!=null)) p.push('ไม่มีอัตราดอกเบี้ย'); if(!it.ints.every(pctOk)) p.push('ดอกเบี้ยผิดปกติ');
+    if((k==='newbal'||k==='usedbal')&&!(it.payMonth>0)) p.push('ผ่อนต่องวดว่าง');
+   }
+   if(p.length){ nBad++; if(ex.length<4) ex.push(it.code+' ('+p.join(', ')+')'); }
+  });
+  if(nBad) add('err', lab+': ค่าผิดปกติ '+nBad+' รุ่น เช่น '+ex.join(' · '));
+ }));
+ if(S.months.length>1) R.warn.push('ไฟล์ระบุเดือนต่างกัน: '+S.months.join(', '));
+ if(S.effs.length>1) R.warn.push('ไฟล์ระบุวันเริ่มใช้ต่างกัน: '+S.effs.join(', '));
+}
+/* รวมเกรดสาขา: ใหม่ = ติ๊กชีตรถใหม่ (ถ้าไม่มี ใช้บอลลูน) · มือสอง = ภาพรวม · ไฟแนนซ์ = รายชื่อท้ายชีต (ถ้าไม่มี ใช้ภาพรวม) */
+function pbResolveGrades(S, prev){
+ const R=S.report; const out={}; const chg=[]; const miss=[];
+ BRANCHES.forEach(b=>{
+  const p=(prev&&prev[b.code])||{new:'A',used:'A',fin:'A'}; const s=S.gradeSrc[b.code]||{}; const zk=zoneGrade(b.zone);
+  const g={new:p.new,used:p.used,fin:p.fin}; const from={};
+  if(zk==='M'){ const nv=s.tick_new||s.tick_newbal; if(nv){ g.new=nv; from.new='ติ๊กในชีตรถใหม่'; } else if(S.items.new) miss.push(b.label+' (รถใหม่)');
+   if(s.tick_new&&s.tick_newbal&&s.tick_new!==s.tick_newbal) R.warn.push(b.label+': เกรดรถใหม่ '+s.tick_new+' ไม่ตรงกับบอลลูน '+s.tick_newbal); }
+  if(zk==='A'){ if(s.ov_used){ g.used=s.ov_used; from.used='ตารางภาพรวม'; } else if(S.items.used) miss.push(b.label+' (มือสอง)'); }
+  if(s.list_fin){ g.fin=s.list_fin; from.fin='รายชื่อท้ายชีตไฟแนนซ์'; if(s.ov_fin&&s.ov_fin!==s.list_fin) R.warn.push(b.label+': เกรดไฟแนนซ์ในรายชื่อท้ายชีต ('+s.list_fin+') ไม่ตรงกับตารางภาพรวม ('+s.ov_fin+') — ใช้รายชื่อท้ายชีต'); }
+  else if(s.ov_fin){ g.fin=s.ov_fin; from.fin='ตารางภาพรวม'; } else if(S.items.fin) miss.push(b.label+' (ไฟแนนซ์)');
+  out[b.code]=g;
+  ['new','used','fin'].forEach(k=>{ if(p[k]!==g[k]&&(k!=='new'||zk==='M')&&(k!=='used'||zk==='A')) chg.push({code:b.code,label:b.label,k,from:p[k],to:g[k]}); });
+ });
+ if(miss.length) R.warn.push('ไม่พบเกรดในไฟล์ — ใช้เกรดเดิม: '+miss.join(', '));
+ S.gradesOut=out; S.gradeChg=chg;
+ return out;
+}
+/* เทียบกับหลักการฉบับก่อน */
+function pbCompare(S, prevPB){
+ const rows=[];
+ Object.keys(S.items).forEach(k=>Object.keys(S.items[k]).forEach(g=>{
+  const cur=S.items[k][g], old=((prevPB&&prevPB.items&&prevPB.items[k])||{})[g]||[];
+  const om={}; old.forEach(x=>om[x.key||x.code]=x); const cm={}; cur.forEach(x=>cm[x.key]=x);
+  const added=cur.filter(x=>!om[x.key]).length, removed=old.filter(x=>!cm[x.key||x.code]).length;
+  let changed=0, big=[];
+  const pv=x=>k==='fin'?x.limit:(Array.isArray(x.inst)?x.inst[0]:x.inst);
+  cur.forEach(x=>{ const o=om[x.key]; if(!o) return; const a=pv(o), b=pv(x); const d0=(o.down!=null&&x.down!=null&&o.down!==x.down);
+   if((a!==b)||d0) changed++;
+   if(a>0&&b>0&&Math.abs(b-a)/a>0.2&&big.length<3) big.push(x.code+' '+fmt(a)+'→'+fmt(b)); });
+  rows.push({k,g,n:cur.length,nOld:old.length,added,removed,changed,big});
+  if(big.length) S.report.warn.push(PB_TYPES[k]+(g==='AB'?'':' '+g)+': ราคาเปลี่ยนเกิน 20% เช่น '+big.join(' · '));
+ }));
+ S.cmp=rows; return rows;
+}
+/* ===== เก็บหลักการรายเดือน (เวอร์ชัน) — มีผลตามวันที่ · เคสใช้หลักการที่มีผล ณ วันส่งครั้งแรก (เคสเก่าไม่เปลี่ยนเมื่อนำเข้าเดือนใหม่) ===== */
+let PBV=[];              /* [{id,eff:'YYYY-MM-DD',month,at,by,off,files,note,pb,base}] */
+const PB_BASE_EFF='2000-01-01';
+function thDay(ms){ return new Date((ms==null?Date.now():ms)+7*3600e3).toISOString().slice(0,10); }
+function pbvActive(){ return PBV.filter(v=>!v.off).slice().sort((x,y)=>x.eff<y.eff?-1:x.eff>y.eff?1:((x.at||0)-(y.at||0))); }
+function pbvAt(day){ const L=pbvActive(); let r=null; L.forEach(v=>{ if(v.eff<=day) r=v; }); return r||L[0]||null; }
+function pbvById(id){ return PBV.find(v=>v.id===id)||null; }
+function pbvLatest(){ const L=pbvActive(); return L.length?L[L.length-1]:null; }
+function pbvCurrent(){ return pbvAt(thDay()); }
+function pbCurrent(){ const v=pbvCurrent(); return v?v.pb:PB; }
+function pbvOfCase(a){
+ if(!PBV.length) return null;
+ if(a&&a.pbVer){ const v=pbvById(a.pbVer); if(v&&!v.off) return v; }
+ const ms=a&&(a.firstSubmittedAt||a.submittedAt);
+ if(!ms) return (window.__pbTest? pbvLatest() : pbvCurrent());
+ return pbvAt(thDay(ms));
+}
+function pbFor(a){ const v=pbvOfCase(a); return v?v.pb:PB; }
+function pbvRefresh(){ try{ const c=pbCurrent(); if(c&&c!==PB){ PB=c; try{ recalcAll(); }catch(e){} } }catch(e){} }
+function pbvSerialize(){ return JSON.stringify(PBV.map(v=>({id:v.id,eff:v.eff,month:v.month,at:v.at,by:v.by,off:!!v.off,files:v.files||[],note:v.note||'',base:!!v.base,rep:v.rep||null,pb:v.pb}))); }
+function pbvSave(){
+ const raw=pbvSerialize();
+ return gzB64(raw).then(z=>{ const rec={v:1,gz:z.gz,s:z.s,n:PBV.length,at:Date.now()};
+  try{ localStorage.setItem('moto24_pbv_v1',JSON.stringify(rec)); }catch(e){}
+  if(typeof cloudPushMaster==='function') cloudPushMaster('pbv',rec); return rec; });
+}
+function pbvLoadRec(rec){
+ if(!rec||!rec.s) return Promise.resolve(false);
+ return ungzB64(rec.s,rec.gz).then(txt=>{ const L=JSON.parse(txt); if(!Array.isArray(L)||!L.length) return false;
+  PBV=L; PB=pbCurrent(); return true; });
+}
+function pbvInit(){
+ let rec=null; try{ rec=JSON.parse(localStorage.getItem('moto24_pbv_v1')||'null'); }catch(e){}
+ const mkBase=()=>{ PBV=[{id:'base',eff:PB_BASE_EFF,month:(PB&&PB.month)||'',at:0,by:'',base:true,files:[],pb:PB}]; };
+ if(!rec){ mkBase(); return Promise.resolve(false); }
+ return pbvLoadRec(rec).then(ok=>{ if(!ok) mkBase(); else { try{ recalcAll(); }catch(e){} } return ok; }).catch(()=>{ mkBase(); return false; });
+}
+/* ===== นำเข้าไฟล์ → หน้าตรวจ → ยืนยันบันทึก ===== */
+let PBSTAGE=null;
+function pbClone(o){ return JSON.parse(JSON.stringify(o)); }
+function pbStageFinish(S){
+ const eff=(S.effs[0])|| (S.months[0]? S.months[0]+'-01' : thDay());
+ S.eff=eff; S.month=S.months[0]||eff.slice(0,7);
+ /* เวอร์ชันก่อนหน้าของวันมีผล = ฉบับที่มีผลวันก่อนหน้า */
+ const d0=new Date(eff+'T00:00:00Z'); d0.setUTCDate(d0.getUTCDate()-1); const pv=pbvAt(d0.toISOString().slice(0,10));
+ S.prevId=pv?pv.id:null; const P0=(pv&&pv.pb)||PB;
+ pbAnomalies(S); pbResolveGrades(S,(P0&&P0.grades)||null); pbCompare(S,P0);
+ S.carried=Object.keys(PB_TYPES).filter(k=>!S.items[k]&&P0&&P0.items&&P0.items[k]&&Object.values(P0.items[k]).some(l=>l&&l.length));
+ return S;
+}
 function importPricebook(inp){
  const files=[...inp.files]; if(!files.length) return;
  inp.value='';
  if(typeof XLSX==='undefined'){ alert('ตัวอ่าน Excel ยังไม่โหลด — ต่ออินเทอร์เน็ตแล้ว Ctrl+F5'); return; }
- let done=0; const all={};
+ const S=pbNewStage(); let done=0;
  files.forEach(f=>{
   const rd=new FileReader();
   rd.onload=e=>{
-   try{
-    const wb=XLSX.read(e.target.result,{type:'array'});
-    Object.assign(all,parsePBWorkbook(wb));
-   }catch(err){ all[f.name]='อ่านไม่สำเร็จ: '+err.message; }
-   done++;
-   if(done===files.length){
-    PB.updated=new Date().toISOString().slice(0,10);
-    savePB();
-    alert('นำเข้าหลักการขายเรียบร้อย ✅\n'+Object.entries(all).map(e=>'• '+e[0]+': '+e[1]+(typeof e[1]==='number'?' รุ่น':'')).join('\n'));
-    go('promo');
-   }
+   try{ const wb=XLSX.read(e.target.result,{type:'array'}); pbParseWorkbook2(wb,f.name,S); }
+   catch(err){ S.report.err.push(f.name+': อ่านไม่สำเร็จ — '+err.message); }
+   done++; if(done===files.length){ PBSTAGE=pbStageFinish(S); pbCheckOpen(); }
   };
   rd.readAsArrayBuffer(f);
  });
 }
+function pbCountTxt(S,k){ const o=S.items[k]; if(!o) return null; const gs=Object.keys(o); if(!gs.length) return null;
+ if(k==='usedbal') return o.AB.length+' รุ่น (กลุ่ม A,B)'; return gs.map(g=>g+' '+o[g].length).join(' · ')+' รุ่น'; }
+function pbCheckOpen(){
+ const S=PBSTAGE; if(!S) return;
+ const E=S.report.err, W=S.report.warn;
+ const esc2=t=>String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+ const gl={new:'รถใหม่',used:'มือสอง',fin:'ไฟแนนซ์'};
+ const kinds=Object.keys(PB_TYPES).map(k=>{ const t=pbCountTxt(S,k); const carried=S.carried.indexOf(k)>=0;
+  return '<tr><td>'+PB_TYPES[k]+'</td><td>'+(t?'<b>'+t+'</b>':carried?'<span class="mut">ไม่มีในไฟล์ — ใช้ของฉบับก่อน</span>':'<span class="mut">ไม่มี</span>')+'</td><td>'+(k==='used'||k==='usedbal'?(S.conds[k]?'สภาพ '+S.conds[k].join(' / '):''):k==='fin'&&S.finTiers?S.finTiers.length+' ขั้นดอกเบี้ย '+S.finTiers.map(t=>(t.rate*100).toFixed(2)+'%').join(' / '):'')+'</td></tr>'; }).join('');
+ const cmp=(S.cmp||[]).map(r=>'<tr><td>'+PB_TYPES[r.k]+(r.g==='AB'?'':' '+r.g)+'</td><td class="num">'+r.nOld+' → <b>'+r.n+'</b></td><td class="num">'+(r.added?'+'+r.added:'-')+'</td><td class="num">'+(r.removed?'−'+r.removed:'-')+'</td><td class="num">'+(r.changed||'-')+'</td></tr>').join('');
+ const gchg=(S.gradeChg||[]);
+ const sheets=S.sheets.map(x=>'<div style="font-size:12px;color:'+(x.st==='ok'?'#15803d':x.st==='err'?'#b91c1c':'#64748b')+'">'+(x.st==='ok'?'✓':x.st==='err'?'✗':'–')+' '+esc2(x.tag)+' — '+esc2(x.why)+'</div>').join('');
+ document.getElementById('modal-bg').innerHTML='<div class="modal" style="width:860px;max-width:96vw" id="pbchk">'
+  +'<button class="x" onclick="PBSTAGE=null;closeModal()">✕</button>'
+  +'<h2 class="pagetitle">🔎 ตรวจไฟล์หลักการขายก่อนบันทึก</h2>'
+  +'<p class="pagesub">'+S.files.map(esc2).join(' · ')+' — ยังไม่บันทึกจนกว่าจะกดยืนยันด้านล่าง</p>'
+  +'<div class="flex mb" style="flex-wrap:wrap;gap:14px">'
+  +'<div><label class="mut" style="font-size:12.5px">หลักการเดือน</label><br><input type="month" id="pbc-month" value="'+S.month+'" style="width:170px"></div>'
+  +'<div><label class="mut" style="font-size:12.5px">มีผลตั้งแต่วันที่ (เคสที่ส่งตั้งแต่วันนี้ใช้ฉบับนี้)</label><br><input type="date" id="pbc-eff" value="'+S.eff+'" style="width:190px"></div>'
+  +'<div style="align-self:flex-end;font-size:12.5px" class="mut">'+(S.effs.length?'อ่านวันเริ่มใช้จากไฟล์: '+S.effs.join(', '):'ไฟล์ไม่ระบุวันเริ่มใช้ — ใช้วันที่ 1 ของเดือน')+'</div></div>'
+  +(E.length?'<div class="alert a-bad"><b>❌ พบข้อผิดพลาด '+E.length+' รายการ</b> — ตรวจก่อนบันทึก<ul style="margin:4px 0 0 18px">'+E.slice(0,30).map(x=>'<li>'+esc2(x)+'</li>').join('')+'</ul></div>':'<div class="alert a-ok">✅ อ่านครบทุกตาราง ไม่พบค่าผิดปกติ</div>')
+  +(W.length?'<div class="alert a-warn"><b>⚠ ข้อควรตรวจ '+W.length+' รายการ</b><ul style="margin:4px 0 0 18px">'+W.slice(0,30).map(x=>'<li>'+esc2(x)+'</li>').join('')+'</ul></div>':'')
+  +'<h3 class="exhead" style="margin-top:10px">📦 สิ่งที่อ่านได้</h3><table class="qtable"><thead><tr><th>ประเภท</th><th>จำนวนรุ่น</th><th>หมายเหตุ</th></tr></thead><tbody>'+kinds+'</tbody></table>'
+  +'<h3 class="exhead" style="margin-top:10px">🔁 เทียบกับฉบับก่อน</h3><table class="qtable"><thead><tr><th>ชุด</th><th class="num">จำนวนรุ่น</th><th class="num">เพิ่ม</th><th class="num">หาย</th><th class="num">ราคา/ดาวน์เปลี่ยน</th></tr></thead><tbody>'+cmp+'</tbody></table>'
+  +'<h3 class="exhead" style="margin-top:10px">🎖️ เกรดสาขาที่เปลี่ยน ('+gchg.length+')</h3>'
+  +(gchg.length?'<table class="qtable"><thead><tr><th>สาขา</th><th>ผลิตภัณฑ์</th><th>เดิม</th><th>ใหม่</th></tr></thead><tbody>'+gchg.map(g=>'<tr><td>'+g.label+'</td><td>'+gl[g.k]+'</td><td>'+g.from+'</td><td><b>'+g.to+'</b></td></tr>').join('')+'</tbody></table>':'<p class="mut">ไม่มีสาขาเปลี่ยนเกรด</p>')
+  +'<details style="margin-top:8px"><summary class="mut" style="cursor:pointer">ชีตที่อ่าน/ข้าม ('+S.sheets.length+')</summary>'+sheets+'</details>'
+  +'<div style="margin-top:14px;padding:10px;border:1px solid var(--line);border-radius:10px;background:#f8fafc">'
+  +(E.length?'<label style="display:block;margin-bottom:8px;color:#b91c1c;font-weight:600"><input type="checkbox" id="pbc-ack"> ตรวจข้อผิดพลาดแล้ว ยืนยันบันทึกทั้งที่มีข้อผิดพลาด</label>':'')
+  +'<div class="mut" style="font-size:12.5px;margin-bottom:8px">บันทึกเป็นฉบับใหม่ · ฉบับเดิมเก็บไว้ ย้อนกลับได้ · เคสที่ส่งก่อนวันมีผลยังใช้ฉบับเดิม (ตัวเลขไม่เปลี่ยน)</div>'
+  +'<button class="btn btn-red" onclick="pbCommitStage()">✅ ยืนยันบันทึกหลักการ</button> <button class="btn btn-line" onclick="PBSTAGE=null;closeModal()">ยกเลิก (ไม่บันทึก)</button></div>'
+  +'</div>';
+ document.getElementById('modal-bg').classList.remove('hidden');
+}
+function pbCommitStage(){
+ const S=PBSTAGE; if(!S) return;
+ if(S.report.err.length){ const ck=document.getElementById('pbc-ack'); if(!ck||!ck.checked){ alert('มีข้อผิดพลาดในไฟล์ — ติ๊ก "ตรวจแล้ว ยืนยันบันทึก" ก่อน หรือแก้ไฟล์แล้วนำเข้าใหม่'); return; } }
+ const eff=(document.getElementById('pbc-eff')||{}).value||S.eff; const month=(document.getElementById('pbc-month')||{}).value||S.month;
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(eff)){ alert('วันที่มีผลไม่ถูกต้อง'); return; }
+ const d0=new Date(eff+'T00:00:00Z'); d0.setUTCDate(d0.getUTCDate()-1); const pv=pbvAt(d0.toISOString().slice(0,10));
+ const P0=(pv&&pv.pb)||PB||{items:{},grades:{}};
+ const np={month, updated:thDay(), grades:pbResolveGrades(S,P0.grades||null), items:pbClone(P0.items||{}), finTiers:S.finTiers||P0.finTiers||null, conds:Object.assign({},P0.conds||{},S.conds)};
+ Object.keys(PB_TYPES).forEach(k=>{ np.items[k]=np.items[k]||{}; });
+ Object.keys(S.items).forEach(k=>Object.keys(S.items[k]).forEach(g=>{ np.items[k][g]=S.items[k][g]; }));
+ if(!S.items.used&&!S.items.usedbal&&P0.conds) np.conds=P0.conds;
+ const same=PBV.filter(v=>!v.off&&v.eff===eff&&!v.base);
+ const now=Date.now();
+ const nv={id:'v'+now, eff, month, at:now, by:(SESSION&&SESSION.name)||'', files:S.files.slice(), pb:np, rep:{err:S.report.err.length,warn:S.report.warn.length}};
+ same.forEach(v=>{ v.off=true; v.replacedBy=nv.id; });
+ PBV.push(nv);
+ /* เก็บไม่เกิน 24 ฉบับ (ตัดฉบับที่ยกเลิกแล้วที่เก่าที่สุดก่อน) */
+ while(PBV.length>24){ const i=PBV.findIndex(v=>v.off&&!v.base); if(i<0) break; PBV.splice(i,1); }
+ PB=pbCurrent(); PBSTAGE=null;
+ savePB(); try{ recalcAll(); }catch(e){}
+ closeModal();
+ alert('✅ บันทึกหลักการเดือน '+month+' แล้ว — มีผลตั้งแต่ '+eff+(eff>thDay()?' (ฉบับที่ใช้อยู่ตอนนี้ยังเป็นฉบับเดิมจนถึงวันนั้น)':''));
+ window.__pbView=nv.id; go('promo');
+}
+/* เวอร์ชันที่หน้า "หลักการขาย" กำลังดู/แก้ */
+function PBX(){ const v=window.__pbView&&pbvById(window.__pbView); return (v&&v.pb)||PB; }
+function pbvCasesOf(v){ return APPS.filter(a=>a.submittedAt&&pbvOfCase(a)===v).length; }
+function pbvToggle(id,off){
+ const v=pbvById(id); if(!v||v.base) return;
+ const n=pbvCasesOf(v);
+ if(off && !confirm('ยกเลิกหลักการฉบับ '+v.month+' (มีผล '+v.eff+')?\n\nเคสที่ใช้ฉบับนี้ '+n+' เคส จะกลับไปใช้ฉบับก่อนหน้า (ตัวเลขในเคสเหล่านั้นจะเปลี่ยน)\nเปิดใช้กลับได้ภายหลัง')) return;
+ if(!off){ const clash=PBV.find(x=>!x.off&&x.eff===v.eff&&x.id!==v.id&&!x.base); if(clash && !confirm('มีฉบับอื่นที่มีผลวันเดียวกัน ('+clash.month+') — ระบบจะยกเลิกฉบับนั้นแทน ตกลง?')) return; if(clash) clash.off=true; }
+ v.off=!!off; PB=pbCurrent(); if(window.__pbView===id&&off) window.__pbView=null;
+ savePB(); try{ recalcAll(); }catch(e){} go('promo');
+}
+function pbvCardHTML(){
+ const cur=pbvCurrent(); const view=pbvById(window.__pbView)||cur;
+ const L=PBV.slice().sort((x,y)=>x.eff<y.eff?1:x.eff>y.eff?-1:((y.at||0)-(x.at||0)));
+ const today=thDay();
+ return '<div class="card mb"><h3 class="exhead">🗂 หลักการรายเดือน (ฉบับ) — เคสใช้ฉบับที่มีผล ณ วันส่งครั้งแรก</h3>'
+  +'<div style="overflow-x:auto"><table class="qtable"><thead><tr><th>มีผลตั้งแต่</th><th>หลักการเดือน</th><th>สถานะ</th><th>ไฟล์</th><th>นำเข้าโดย</th><th class="num">เคสที่ใช้</th><th></th></tr></thead><tbody>'
+  +L.map(v=>{ const st=v.off?'<span class="tag t-bad">ยกเลิกแล้ว</span>': v===cur?'<span class="tag t-ok">ใช้อยู่ตอนนี้</span>': v.eff>today?'<span class="tag t-info">มีผลวันที่ '+v.eff+'</span>':'<span class="tag">ฉบับก่อน</span>';
+   return '<tr'+(v===view?' style="background:#fff7ed"':'')+'><td>'+(v.base?'<span class="mut">ฉบับตั้งต้น</span>':v.eff)+'</td><td>'+(v.month||'-')+'</td><td>'+st+'</td><td style="font-size:12px">'+((v.files||[]).join(', ')||'-')+'</td><td style="font-size:12px">'+(v.by||'-')+(v.at?'<br><span class="mut">'+new Date(v.at).toLocaleString('th-TH')+'</span>':'')+'</td><td class="num">'+pbvCasesOf(v)+'</td>'
+    +'<td style="white-space:nowrap"><button class="btn btn-sm '+(v===view?'btn-red':'btn-line')+'" onclick="window.__pbView=\''+v.id+'\';go(\'promo\')">👁 ดู/แก้</button> '
+    +(v.base?'':v.off?'<button class="btn btn-sm btn-line" onclick="pbvToggle(\''+v.id+'\',false)">↩ เปิดใช้</button>':'<button class="btn btn-sm btn-line" onclick="pbvToggle(\''+v.id+'\',true)">⛔ ยกเลิกฉบับนี้</button>')+'</td></tr>'; }).join('')
+  +'</tbody></table></div>'
+  +'<p class="pill-note" style="margin-top:6px">กำลังดู/แก้: <b>'+(view?(view.base?'ฉบับตั้งต้น':'เดือน '+view.month+' (มีผล '+view.eff+')'):'-')+'</b> — ตาราง เกรด และราคาด้านล่างเป็นของฉบับนี้ · แก้ฉบับที่มีเคสใช้แล้ว ตัวเลขเคสเหล่านั้นจะเปลี่ยนตาม</p></div>';
+}
+
 let pbType='new', pbGrade='A', pbQ='';
 function pbListOf(type,grade,q){
  const g = type==='usedbal' ? 'AB' : grade;
- const list=(PB.items[type]&&PB.items[type][g])||[];
+ const list=(PBX().items[type]&&PBX().items[type][g])||[];
  q=(q||'').trim().toLowerCase();
  return q? list.filter(x=>(x.code+' '+x.name).toLowerCase().includes(q)) : list;
 }
@@ -6092,7 +6748,7 @@ function pbTableHtml(type,grade,q){
  const list=pbListOf(type,grade,q).slice(0,120);
  if(!list.length) return '<p class="mut">ยังไม่มีข้อมูล — อัปโหลดไฟล์หลักการขายด้านบน</p>';
  if(pbType==='fin'){
-  const tiers=(PB.finTiers&&PB.finTiers.length)?PB.finTiers:[{rate:0.0039,max:10000},{rate:0.0059,max:15000},{rate:0.0099,max:20000}];
+  const tiers=(PBX().finTiers&&PBX().finTiers.length)?PBX().finTiers:[{rate:0.0039,max:10000},{rate:0.0059,max:15000},{rate:0.0099,max:20000}];
   return '<table><thead><tr><th>รหัสสินค้า</th><th>รุ่น</th><th class="num">วงเงินสูงสุด</th>'
    +tiers.map(t=>'<th class="num">'+(t.rate*100).toFixed(2)+'% '+(t.max>=999999999?'&gt;25,000':'≤'+t.max.toLocaleString())+'</th>').join('')+'</tr></thead><tbody>'
    +list.map(x=>'<tr><td style="font-size:12px">'+x.code+'</td><td>'+x.name+'</td><td class="num b">'+fmt(x.limit)+'</td>'
@@ -6101,13 +6757,14 @@ function pbTableHtml(type,grade,q){
  if(pbType==='used'){
   const nTu=Math.max(1,...list.map(x=>(x.ints&&x.ints.length)?x.ints.length:1));
   const labu=pbTierLabels(nTu);
-  return '<table><thead><tr><th>รหัส</th><th>รุ่น</th><th class="num" colspan="4">ราคาสด (A+/A/B+/B)</th><th class="num" colspan="4">ราคาผ่อน (A+/A/B+/B)</th><th class="num">ดาวน์</th>'+labu.map((L,i)=>'<th class="num">'+(i===0?'ดบ.':'')+L+'</th>').join('')+'<th>แก้</th></tr></thead><tbody>'
+  const cL=pbCondLabels(PBX(),'used'); const nC=cL.length;
+  return '<table><thead><tr><th>รหัส</th><th>รุ่น</th><th class="num" colspan="'+nC+'">ราคาสด ('+cL.join('/')+')</th><th class="num" colspan="'+nC+'">ราคาผ่อน ('+cL.join('/')+')</th><th class="num">ดาวน์</th>'+labu.map((L,i)=>'<th class="num">'+(i===0?'ดบ.':'')+L+'</th>').join('')+'<th>แก้</th></tr></thead><tbody>'
    +list.map(x=>{const ui=(x.ints&&x.ints.length)?x.ints:(x.int12!=null?[x.int12]:[]);return '<tr><td style="font-size:11px">'+x.code+'</td><td style="font-size:12px">'+x.name.slice(0,26)+'</td>'
     +x.cash.map(v=>'<td class="num">'+fmt(v)+'</td>').join('')+x.inst.map(v=>'<td class="num">'+fmt(v)+'</td>').join('')
     +'<td class="num b">'+fmt(x.down)+'</td>'+labu.map((L,i)=>'<td class="num">'+pctI(ui[i]!=null?ui[i]:null)+'</td>').join('')+'<td><button class="btn btn-sm" style="padding:1px 8px" onclick="openPbEdit(\''+pbType+'\',\''+grade+'\',\''+x.code+'\')">✏️</button></td></tr>';}).join('')+'</tbody></table>';
  }
  if(pbType==='usedbal')
-  return '<table><thead><tr><th>รหัส</th><th>รุ่น</th><th class="num" colspan="4">ราคาสด (A+/A/B+/B)</th><th class="num" colspan="4">ราคาผ่อน</th><th class="num">ดาวน์</th><th class="num">ผ่อน/ด. (48ด.)</th><th>แก้</th></tr></thead><tbody>'
+  return '<table><thead><tr><th>รหัส</th><th>รุ่น</th><th class="num" colspan="'+pbCondLabels(PBX(),'usedbal').length+'">ราคาสด ('+pbCondLabels(PBX(),'usedbal').join('/')+')</th><th class="num" colspan="'+pbCondLabels(PBX(),'usedbal').length+'">ราคาผ่อน</th><th class="num">ดาวน์</th><th class="num">ผ่อน/ด. (48ด.)</th><th>แก้</th></tr></thead><tbody>'
    +list.map(x=>'<tr><td style="font-size:11px">'+x.code+'</td><td style="font-size:12px">'+x.name.slice(0,26)+'</td>'
     +x.cash.map(v=>'<td class="num">'+fmt(v)+'</td>').join('')+x.inst.map(v=>'<td class="num">'+fmt(v)+'</td>').join('')
     +'<td class="num b">'+fmt(x.down)+'</td><td class="num b">'+fmt(x.payMonth)+'</td><td><button class="btn btn-sm" style="padding:1px 8px" onclick="openPbEdit(\''+pbType+'\',\''+grade+'\',\''+x.code+'\')">✏️</button></td></tr>').join('')+'</tbody></table>';
@@ -6124,14 +6781,14 @@ function pbTable(){ return pbTableHtml(pbType,pbGrade,pbQ); }
 /* แก้ราคารายรุ่น (เฉพาะ สนญ.) — แก้ราคาสด/ผ่อน/ดาวน์ โดยไม่ต้องนำเข้า Excel ใหม่ */
 function openPbEdit(type,grade,code){
  const gKey = type==='usedbal'?'AB':grade;
- const it=((PB.items[type]||{})[gKey]||[]).find(x=>x.code===code);
+ const it=((PBX().items[type]||{})[gKey]||[]).find(x=>x.code===code);
  if(!it){ alert('ไม่พบรุ่นนี้ในหลักการขาย'); return; }
  let ov=document.getElementById('pbedit-ov');
  if(!ov){ ov=document.createElement('div'); ov.id='pbedit-ov';
   ov.style.cssText='position:fixed;inset:0;background:rgba(10,12,18,.55);z-index:330;display:flex;align-items:flex-start;justify-content:center;padding:24px 12px;overflow-y:auto';
   ov.onclick=e=>{ if(e.target===ov) ov.remove(); }; document.body.appendChild(ov); }
- const condL=['A+','A','B+','B'];
  const isUsed = type==='used'||type==='usedbal';
+ const condL=isUsed? pbCondLabels(PBX(),type).slice(0,(it.cash||[]).length||4) : [];
  let fields='';
  if(isUsed){
   fields+='<b>ราคาขายสด (บาท)</b><div class="fgrid">'+condL.map((L,i)=>'<div class="field"><label>สภาพ '+L+'</label><input id="pe-cash-'+i+'" type="number" value="'+((it.cash&&it.cash[i])||0)+'"></div>').join('')+'</div>';
@@ -6146,7 +6803,7 @@ function openPbEdit(type,grade,code){
  ov.innerHTML='<div style="background:#fff;border-radius:14px;max-width:560px;width:100%;padding:22px;position:relative">'
   +'<button onclick="document.getElementById(\'pbedit-ov\').remove()" style="position:absolute;top:10px;right:14px;border:none;background:none;font-size:20px;cursor:pointer;color:#888">✕</button>'
   +'<h3 style="margin:0 0 2px">✏️ แก้ราคารายรุ่น</h3>'
-  +'<p class="mut" style="margin:0 0 12px;font-size:13px">'+(it.name||'')+' · รหัส <b>'+code+'</b> · ชุดเกรด '+grade+(isUsed?' · แก้ตามสภาพรถ (A+/A/B+/B)':'')+'</p>'
+  +'<p class="mut" style="margin:0 0 12px;font-size:13px">'+(it.name||'')+' · รหัส <b>'+code+'</b> · ชุดเกรด '+grade+(isUsed?' · แก้ตามสภาพรถ ('+condL.join('/')+')':'')+'</p>'
   +fields
   +'<div class="alert a-warn" style="font-size:12.5px">แก้เฉพาะรุ่นนี้ในชุดเกรด '+grade+' · มีผลกับเคสที่คำนวณใหม่ทันที (บันทึกลงเครื่อง)</div>'
   +'<button class="btn btn-red" style="width:100%" onclick="savePbEdit(\''+type+'\',\''+grade+'\',\''+code+'\')">💾 บันทึกราคา</button>'
@@ -6154,18 +6811,19 @@ function openPbEdit(type,grade,code){
 }
 function savePbEdit(type,grade,code){
  const gKey = type==='usedbal'?'AB':grade;
- const it=((PB.items[type]||{})[gKey]||[]).find(x=>x.code===code); if(!it) return;
+ const it=((PBX().items[type]||{})[gKey]||[]).find(x=>x.code===code); if(!it) return;
  const v=i=>{const e=document.getElementById(i);return e?Math.round(+e.value||0):0;};
  if(type==='used'||type==='usedbal'){
-  it.cash=[0,1,2,3].map(i=>v('pe-cash-'+i));
-  it.inst=[0,1,2,3].map(i=>v('pe-inst-'+i));
+  const _n=(it.cash||[]).length||4;
+  it.cash=[...Array(_n).keys()].map(i=>v('pe-cash-'+i));
+  it.inst=[...Array(_n).keys()].map(i=>v('pe-inst-'+i));
   it.down=v('pe-down');
   if(type==='usedbal') it.payMonth=v('pe-paym');
  } else {
   it.cash=v('pe-cashs'); it.inst=v('pe-insts'); it.down=v('pe-down');
   if(type==='newbal') it.payMonth=v('pe-paym');
  }
- PB.updated=new Date().toISOString().slice(0,10); savePB();
+ PBX().updated=new Date().toISOString().slice(0,10); savePB();
  const ov=document.getElementById('pbedit-ov'); if(ov) ov.remove();
  alert('✅ บันทึกราคารุ่น '+code+' (ชุดเกรด '+grade+') แล้ว');
  go('promo');
@@ -6177,8 +6835,8 @@ function branchTypes(code){
  const zg=zoneGrade(BRANCHES.find(b=>b.code===code).zone);
  return zg==='A' ? ['used','usedbal','fin'] : ['new','newbal','fin'];
 }
-function bpGradeOf(code,type){
- const g=PB.grades[code]||{new:'A',used:'A',fin:'A'};
+function bpGradeOf(code,type,P){
+ const g=((P||PB).grades||{})[code]||{new:'A',used:'A',fin:'A'};
  return type==='fin'?g.fin:(type==='new'||type==='newbal')?g.new:g.used;
 }
 function openBranchPromo(code){
@@ -6188,11 +6846,11 @@ function openBranchPromo(code){
 function switchBP(t){ bpType=t; bpQ=''; renderBP(); }
 function renderBP(){
  const b=BRANCHES.find(x=>x.code===bpBranch);
- const g=PB.grades[bpBranch]||{new:'A',used:'A',fin:'A'};
+ const g=PBX().grades[bpBranch]||{new:'A',used:'A',fin:'A'};
  const types=branchTypes(bpBranch);
  const gradeChip=(l,v)=>'<span class="tag '+(v==='A'?'t-ok':v==='B'?'t-warn':'t-bad')+'">'+l+' เกรด '+v+'</span>';
  const zg=zoneGrade(b.zone);
- const curGrade=bpGradeOf(bpBranch,bpType);
+ const curGrade=bpGradeOf(bpBranch,bpType,PBX());
  const noUB = bpType==='usedbal' && !(g.used==='A'||g.used==='B');
  const btns=types.map(t=>{
   const on=t===bpType;
@@ -6204,7 +6862,7 @@ function renderBP(){
  const n=noUB?0:pbListOf(bpType,curGrade,bpQ).length;
  document.getElementById('modal-bg').innerHTML='<div class="modal">'
   +'<button class="x" onclick="closeModal()">✕</button>'
-  +'<h2 class="pagetitle">📖 โปรของสาขา '+b.label+' — เดือน '+PB.month+'</h2>'
+  +'<h2 class="pagetitle">📖 โปรของสาขา '+b.label+' — เดือน '+PBX().month+'</h2>'
   +'<p class="pagesub">'+ZONES[b.zone].name+' · สิทธิ์การขาย: '+(zg==='A'?'รถมือสอง + ไฟแนนซ์':'รถใหม่ + ไฟแนนซ์')+' · ราคาด้านล่างคือชุดที่สาขานี้ใช้ได้จริงตามเกรดของตัวเอง</p>'
   +'<div class="flex mb" style="flex-wrap:wrap">'
   +(zg==='A'
@@ -6225,24 +6883,25 @@ function renderBP(){
 }
 function viewPromo(){
  const cntChip=t=>{
-  const per=Object.entries(PB.items[t]).filter(e=>e[1].length);
+  const per=Object.entries(PBX().items[t]).filter(e=>e[1].length);
   if(!per.length) return null;
   if(t==='usedbal') return per[0][1].length+' รุ่น (กลุ่ม A,B ใช้ร่วม)';
   return per[0][1].length+' รุ่น × '+per.length+' เกรด';
  };
- const cnt=t=>Object.values(PB.items[t]).reduce((s,a)=>s+a.length,0);
+ const cnt=t=>Object.values(PBX().items[t]).reduce((s,a)=>s+a.length,0);
  return dashHero('🏷️','หลักการขาย &amp; เกรดสาขา — รายเดือน','อัปโหลดไฟล์หลักการขาย 5 ไฟล์ · เกรดสาขาแยกต่อผลิตภัณฑ์ · สาขาเห็นเฉพาะราคา/ดาวน์/ดอกเบี้ยตามเกรดตัวเอง')
  +`<div class="card mb" style="border:1.5px solid var(--orange)"><h3 class="exhead org">⚡ อัปโหลดไฟล์หลักการขาย (.xlsx — เลือกได้หลายไฟล์พร้อมกัน)</h3>
   <p class="pill-note" style="margin-bottom:10px">รองรับไฟล์เดิมทั้ง 5: รถใหม่ · รถใหม่ Balloon · รถมือสอง · มือสอง Balloon · ไฟแนนซ์ — ระบบตรวจประเภทจากโครงชีต (หลักการ_A/B/C, หลักการบอลลูน, หลักการขาย A/B/C) อัตโนมัติ</p>
   <div class="flex" style="flex-wrap:wrap">
    <label class="btn btn-red" style="margin:0">📤 เลือกไฟล์หลักการขาย<input type="file" accept=".xlsx,.xls" multiple class="hidden" onchange="importPricebook(this)"></label>
-   <div class="flex"><label class="mut">เดือน:</label><input type="month" style="width:160px" value="${PB.month}" onchange="PB.month=this.value;savePB()"></div>
-   <span class="mut" style="font-size:12.5px">อัปเดตล่าสุด: ${PB.updated||'-'}</span>
+   <div class="flex"><label class="mut">เดือน:</label><input type="month" style="width:160px" value="${PBX().month}" onchange="PBX().month=this.value;savePB()"></div>
+   <span class="mut" style="font-size:12.5px">อัปเดตล่าสุด: ${PBX().updated||'-'}</span>
   </div>
   <div class="monthchips mt">
    ${Object.keys(PB_TYPES).map(t=>`<span class="mch ${cnt(t)?'hi':'lo'}">${PB_TYPES[t]}: ${cntChip(t)||'ยังไม่นำเข้า'}</span>`).join('')}
   </div>
  </div>
+${pbvCardHTML()}
  <div class="card mb"><h3 class="exhead">🎖️ เกรดสาขาประจำเดือน (แยกต่อผลิตภัณฑ์)
   <span style="margin-left:auto" class="flex">
    <button class="btn btn-sm" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)" onclick="applySuggestedGrades()">ใช้เกรดแนะนำทั้งหมด</button>
@@ -6251,8 +6910,8 @@ function viewPromo(){
   <div style="overflow-x:auto;max-height:420px;overflow-y:auto"><table class="qtable">
    <thead><tr><th>สาขา</th><th>เขต</th><th>แนะนำ</th><th>รถใหม่/Balloon</th><th>มือสอง/Balloon</th><th>ไฟแนนซ์</th><th>โปรที่สาขาใช้</th></tr></thead><tbody>
    ${BRANCHES.slice().sort((a,b)=>a.code.localeCompare(b.code)).map(b=>{
-    const g=PB.grades[b.code]; const sg=suggestGrade(b.code);
-    const sel=(k)=>'<select style="width:70px" onchange="PB.grades[\''+b.code+'\'].'+k+'=this.value">'
+    const g=PBX().grades[b.code]; const sg=suggestGrade(b.code);
+    const sel=(k)=>'<select style="width:70px" onchange="PBX().grades[\''+b.code+'\'].'+k+'=this.value">'
      +['A','B','C'].map(x=>'<option '+(g[k]===x?'selected':'')+'>'+x+'</option>').join('')+'</select>';
     return `<tr><td class="b">${b.label}</td><td class="mut" style="font-size:12px">${ZONES[b.zone].name}</td>
      <td>${sg?'<span class="tag '+(sg==='A'?'t-ok':sg==='B'?'t-warn':'t-bad')+'">'+sg+'</span>':'<span class="mut">-</span>'}</td>
@@ -6273,7 +6932,7 @@ function viewPromo(){
 }
 function applySuggestedGrades(){
  let n=0;
- BRANCHES.forEach(b=>{ const sg=suggestGrade(b.code); if(sg){ PB.grades[b.code]={new:sg,used:sg,fin:sg}; n++; } });
+ BRANCHES.forEach(b=>{ const sg=suggestGrade(b.code); if(sg){ PBX().grades[b.code]={new:sg,used:sg,fin:sg}; n++; } });
  savePB(); go('promo');
  alert(n?'ใช้เกรดแนะนำกับ '+n+' สาขาแล้ว (สาขาที่ไม่มีข้อมูลพอยังคงเกรดเดิม)':'ยังไม่มีข้อมูลแนะนำ — นำเข้าไฟล์ H-Capital ก่อน');
 }
@@ -7947,7 +8606,7 @@ function viewCfg(){
    <div class="card mb"><h3>ดอกเบี้ย Flat ต่อเดือน (%) · เพดาน EIR ${CFG.eirCap}%</h3><div class="fgrid3 fld-tidy">
     <div class="field"><label>เช่าซื้อรถใหม่</label><input type="number" step="0.05" value="${CFG.rates.hp_new}" onchange="CFG.rates.hp_new=+this.value"></div>
     <div class="field"><label>เช่าซื้อรถมือสอง</label><input type="number" step="0.05" value="${CFG.rates.hp_used}" onchange="CFG.rates.hp_used=+this.value"></div>
-    <div class="field"><label>จำนำเล่มทะเบียน</label><input type="number" step="0.05" value="${CFG.rates.pawn}" onchange="CFG.rates.pawn=+this.value"></div>
+    <div class="field"><label>การขายไฟแนนซ์</label><input type="number" step="0.05" value="${CFG.rates.pawn}" onchange="CFG.rates.pawn=+this.value"></div>
    </div>
    <p class="pill-note">แนวเทียบ: Flat ~0.95%/เดือน ที่ 36 งวด ≈ EIR ~23% — ระบบเตือนอัตโนมัติเมื่อ EIR เกินเพดาน</p>
    <div style="background:#fff8ec;border:1px solid #f0d9a8;border-radius:8px;padding:8px 12px;margin-top:8px">
@@ -7969,6 +8628,11 @@ function viewCfg(){
     <div class="field"><label>วงเงินไฟแนนซ์แนะนำ (% ของคุ้มครอง)</label><input type="number" value="${(CFG.recovery||{}).finPct||55}" onchange="CFG.recovery.finPct=+this.value"></div>
    </div><p class="pill-note">ฐานข้อมูล: รถใหม่ ${Object.keys(activeRec().new).length} รุ่น (ปี 1–3) · มือสอง ${Object.keys(activeRec().used).length} รุ่น (ปี 1–8) จากไฟล์ฮอนด้าพลัส</p>${recVersionUI()}</div>
    ${personCfgHTML()}
+  <div class="card mb"><h3>💳 ส่วนที่ 4 ผลิตภัณฑ์ (0925-M)</h3><div class="fgrid3">
+    <div class="field"><label>บังคับกรอกส่วนที่ 4 ตั้งแต่วันที่</label><input type="date" value="${sec4From()}" onchange="CFG.sec4From=this.value||'2026-10-01';saveCfg()"></div>
+    <div class="field"><label>เกณฑ์ส่วนต่างค่างวด สาขากรอก vs ตามหลักการ (บาท)</label><input type="number" min="0" value="${(CFG.instTol!=null?CFG.instTol:10)}" onchange="CFG.instTol=Math.max(0,+this.value||0);saveCfg();recalcAll()"></div>
+    <div class="field"><label>ช่องภาพรถไฟแนนซ์ 3 ภาพ</label><select disabled><option>ปิด — รอ Apps Script v5</option></select></div>
+   </div><p class="pill-note">ตั้งแต่วันบังคับ หัวข้อ 4 เปิดให้สาขาอัตโนมัติ (ไม่ขึ้นกับสวิตช์ล็อกด้านล่าง) · ส่วนต่างเกินเกณฑ์ขึ้นเตือนเฉพาะ สนญ. ในการ์ด "ผลิตภัณฑ์และค่างวด" · สาขาไม่เห็นเกณฑ์/ตัวเลขใด ๆ</p></div>
   <div class="card mb"><h3>🚫 เหตุผลการขอยกเลิกคำขอ (สาขาเลือกจากรายการนี้)</h3>
     <div class="field"><label>รายการเหตุผล — 1 บรรทัดต่อ 1 เหตุผล (สาขาจะเห็นเป็น dropdown)</label>
      <textarea rows="6" onchange="CFG.cancelReasons=this.value.split('\\n').map(s=>s.trim()).filter(Boolean)">${cancelReasonList().join('\n')}</textarea></div>
@@ -8950,7 +9614,7 @@ function drawExecCharts(){
 
 /* ================== BACKUP / RESTORE ================== */
 function backupAll(){
- const data={ver:3, at:new Date().toISOString(), apps:APPS, cfg:CFG, watch:WATCH, pb:PB};
+ const data={ver:3, at:new Date().toISOString(), apps:APPS, cfg:CFG, watch:WATCH, pb:PB, pbv:JSON.parse(pbvSerialize())};   /* 0925-M: + หลักการรายเดือน */
  const blob=new Blob([JSON.stringify(data)],{type:'application/json'});
  const u=URL.createObjectURL(blob); const el=document.createElement('a');
  el.href=u; el.download='MOTO24_backup_'+new Date().toISOString().slice(0,10)+'.json'; el.click(); URL.revokeObjectURL(u);
@@ -8966,6 +9630,7 @@ function restoreAll(inp){
    if(!d.apps||!d.cfg||!d.watch||!d.pb){ alert('ไฟล์สำรองไม่ถูกต้อง'); return; }
    if(!confirm('กู้คืนข้อมูลจากไฟล์สำรอง ('+(d.at||'').slice(0,10)+')?\nข้อมูลปัจจุบันทั้งหมดจะถูกแทนที่:\n• เคส '+d.apps.length+' รายการ\n• เฝ้าระวัง '+(d.watch.custs||[]).length+' คน / '+(d.watch.frames||[]).length+' เลขถัง\n• หลักการขาย + เกรดสาขา + เกณฑ์ทั้งหมด')) return;
    APPS=d.apps; CFG=d.cfg; WATCH=d.watch; PB=d.pb;
+   if(Array.isArray(d.pbv)&&d.pbv.length){ PBV=d.pbv; PB=pbCurrent(); } else { PBV=[{id:'base',eff:PB_BASE_EFF,month:(PB&&PB.month)||'',at:0,by:'',base:true,files:[],pb:PB}]; }
    saveApps(); saveCfg(); saveWatch(); savePB();
    alert('✅ กู้คืนข้อมูลเรียบร้อย'); go(currentTab||'cfg');
   }catch(err){ alert('อ่านไฟล์สำรองไม่สำเร็จ: '+err.message); }
@@ -9017,7 +9682,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0925-J';
+const CHK3_BUILD='0925-M';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -9674,7 +10339,7 @@ function snapLast(a){ const s=PSNAP[a.id]; if(!s) return null; const yms=Object.
 /* ---- แถวข้อมูลต่อเคส ---- */
 function rptCases(){ let L=(APPS||[]).filter(a=>a.status!=='cancelled'&&a.submittedAt&&!eomIsOut(a));   /* 0925-C: ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล */
  if(SESSION&&SESSION.role==='zone'){ L=L.filter(a=>zoneOfBranch(a.branch)===SESSION.zone); }
- if(RPT.zone) L=L.filter(a=>zoneOfBranch(a.branch)===RPT.zone); if(RPT.branch) L=L.filter(a=>a.branch===RPT.branch); if(RPT.ym) L=L.filter(a=>_ymOf(a.submittedAt)===RPT.ym); return L; }
+ if(RPT.zone) L=L.filter(a=>zoneOfBranch(a.branch)===RPT.zone); if(RPT.branch) L=L.filter(a=>a.branch===RPT.branch); if(RPT.ym) L=L.filter(a=>caseYm(a)===RPT.ym); return L; }
 
 /* ===== 0922-B: ประเมินผลผ่อนได้เมื่อผ่านวันดิวแล้ว · ป๊อปอัปรายชื่อเคสที่จับคู่/ไม่จับคู่ ===== */
 function rptMinDue(){ const v=+(CFG&&CFG.rptMinDue); return v>=0?Math.floor(v):1; }
@@ -9765,7 +10430,7 @@ function _nsmall(n){ return n<RPT_MIN_N?` <span class="tag" style="background:#f
 function _rec(t){ return `<div class="rrec">${t}</div>`; }
 function _empty(t){ return `<div class="mut" style="text-align:center;padding:18px">${t}</div>`; }
 function rptGloss(){ return `<div class="card" style="padding:8px 12px;font-size:11.5px;color:#334155"><b>คำที่ใช้ในรายงาน:</b> <b>ค้างเกิน 30 วัน</b> = ค้างชำระตั้งแต่ 30 วันขึ้นไป หรือถูกบอกเลิก/ยึดรถ (นับเป็น "ผ่อนมีปัญหา") · <b>เสี่ยงกว่ากลุ่มดี (เท่า)</b> = อัตราค้างของกลุ่มที่ระบบเตือน หารด้วย อัตราค้างของกลุ่มที่ระบบบอกว่าดี — ยิ่งมากแปลว่าเกณฑ์แยกลูกค้าดี-เสียได้ชัด (เป้า อย่างน้อย 3 เท่า · ใกล้ 1 เท่า = เตือนไปก็ไม่ต่างจากไม่เตือน) · <b>ค่ากลาง</b> = ค่าที่ครึ่งหนึ่งต่ำกว่า ครึ่งหนึ่งสูงกว่า · <b>ต่ำสุด 1 ใน 4 / สูงสุด 1 ใน 4</b> = ค่าที่ลูกค้า 1 ใน 4 ต่ำกว่า / สูงกว่า · <b>ช่วงที่ครอบคลุมลูกค้า 80%</b> = ตัดคนที่ต่ำสุด 10% และสูงสุด 10% ออก · <b>ภาพข้อมูลสิ้นเดือน</b> = สำเนาผลผ่อนจาก H-Cap ที่เก็บไว้ทุกครั้งที่นำเข้า ไม่เขียนทับ · <b>จำนวนเคส</b> น้อยกว่า ${RPT_MIN_N} ถือว่ายังสรุปไม่ได้</div>`; }
-function rptFilterBar(){ const all=(APPS||[]).filter(a=>a.submittedAt&&a.status!=='cancelled'); const yms=[...new Set(all.map(a=>_ymOf(a.submittedAt)))].sort().reverse();
+function rptFilterBar(){ const all=(APPS||[]).filter(a=>a.submittedAt&&a.status!=='cancelled'); const yms=[...new Set(all.map(a=>caseYm(a)))].sort().reverse();
  const zoneSel=SESSION.role==='zone'?`<span class="tag" style="background:#eef2ff;color:#3730a3">${(ZONES[SESSION.zone]||{}).name||'เขต'}</span>`:`<select onchange="RPT.zone=this.value;RPT.branch='';go(RPT.tab)"><option value="">ทุกเขต</option>${Object.keys(ZONES).map(z=>`<option value="${z}" ${RPT.zone===z?'selected':''}>${ZONES[z].name}</option>`).join('')}</select>`;
  const brs=BRANCHES.filter(b=>SESSION.role==='zone'?b.zone===SESSION.zone:(!RPT.zone||b.zone===RPT.zone));
  const meta=PSNAP._meta; const R=rptRows(); const m=R.filter(r=>r.out).length;
@@ -9906,7 +10571,7 @@ function rptWhatIf(){ const keepZone=RPT.zone, keepBr=RPT.branch; RPT.zone=''; R
 /* ---- ส่งออก Excel (CSV) ---- */
 function rptCSV(){ const R=rptRows(); const H=['เลขที่เคส','วันที่ส่ง','เดือน','เขต','สาขา','ลูกค้า','กลุ่มอาชีพ','อาชีพ','คะแนนอาชีพ','รายได้ที่กรอก','รายได้ H-Cap เคยบันทึก','คะแนนเครดิต','ไฟการ์ด','ไฟระบบ (ก่อน สนญ. ปรับ)','สนญ. ปรับไฟ','กฎที่เตือน','สนญ. ส่งคำแนะนำ','จำนวนส่วนที่มีคำแนะนำ','คำแนะนำ สนญ.','ผลขาย','ขายก่อนส่งเคส','ขายทั้งที่ 🔴','เลขสัญญาที่กรอก','เลขสัญญา H-Cap','วิธีจับคู่','วันค้าง','สถานะสัญญา','ผลผ่อน','ภาพข้อมูลเดือน'];
  const q=s=>'"'+String(s==null?'':s).replace(/"/g,'""')+'"';
- const rows=R.map(r=>[r.a.id,fmtDT(r.a.submittedAt),_ymOf(r.a.submittedAt),(ZONES[r.zone]||{}).name||r.zone,(BRANCHES.find(b=>b.code===r.br)||{}).label||r.br,r.a.name,r.occG,r.occS,r.occSc,r.inc,r.hcInc,r.score,RPT_LV[r.light],RPT_LV[r.sysLight],r.ovBy,(r.rules||[]).map(x=>(x.lv==='bad'?'🔴':'🟡')+x.k).join(' | '),r.sent?'ส่งแล้ว':'ยังไม่ส่ง',r.advN,r.advText,r.a.sale?saleLabel(r.a.sale.result):'',r.before?'ใช่':'',r.against?'ใช่':'',(r.a.sale&&r.a.sale.contract)||'',r.ct?r.ct.ct:'',r.ct?(r.ct.how==='contract'?'เลขสัญญา':'เลขบัตร+วัน'):'',r.ct?r.ct.d:'',r.ct?r.ct.st:'',r.out==='bad'?'ค้างเกิน 30 วัน/ยึด':r.out==='late'?'ค้าง 1–29 วัน':r.out==='ok'?'ปกติ':'',r.sn?r.sn.ym:''].map(q).join(','));
+ const rows=R.map(r=>[r.a.id,fmtDT(r.a.submittedAt),caseYm(r.a),(ZONES[r.zone]||{}).name||r.zone,(BRANCHES.find(b=>b.code===r.br)||{}).label||r.br,r.a.name,r.occG,r.occS,r.occSc,r.inc,r.hcInc,r.score,RPT_LV[r.light],RPT_LV[r.sysLight],r.ovBy,(r.rules||[]).map(x=>(x.lv==='bad'?'🔴':'🟡')+x.k).join(' | '),r.sent?'ส่งแล้ว':'ยังไม่ส่ง',r.advN,r.advText,r.a.sale?saleLabel(r.a.sale.result):'',r.before?'ใช่':'',r.against?'ใช่':'',(r.a.sale&&r.a.sale.contract)||'',r.ct?r.ct.ct:'',r.ct?(r.ct.how==='contract'?'เลขสัญญา':'เลขบัตร+วัน'):'',r.ct?r.ct.d:'',r.ct?r.ct.st:'',r.out==='bad'?'ค้างเกิน 30 วัน/ยึด':r.out==='late'?'ค้าง 1–29 วัน':r.out==='ok'?'ปกติ':'',r.sn?r.sn.ym:''].map(q).join(','));
  const csv='﻿'+H.map(q).join(',')+'\n'+rows.join('\n'); const bl=new Blob([csv],{type:'text/csv;charset=utf-8'}); const u=URL.createObjectURL(bl); const el=document.createElement('a'); el.href=u; el.download='MOTO24_รายงานประเมินเกณฑ์_'+(RPT.ym||'ทุกเดือน')+'.csv'; document.body.appendChild(el); el.click(); setTimeout(()=>{ URL.revokeObjectURL(u); el.remove(); },500); }
 /* ---- พิมพ์ฉบับย่อ ---- */
 function rptPrint(){ const R=rptRows(); const S=rptStats(R); let pa=document.getElementById('print-area'); if(!pa){ pa=document.createElement('div'); pa.id='print-area'; document.body.appendChild(pa); }
@@ -9995,7 +10660,7 @@ function eomBrName(c){ return (BRANCHES.find(b=>b.code===c)||{}).label||c||'-'; 
 /* ชุดเคส: ไม่นับเคสนอกช่วง · opt.noMonth = ไม่กรองเดือน · opt.all = ไม่กรองเขต/สาขา */
 function eomBase(opt){ opt=opt||{}; let L=(APPS||[]).filter(a=>a.submittedAt&&!eomIsOut(a));
  if(!opt.all){ if(EOM.zone) L=L.filter(a=>zoneOfBranch(a.branch)===EOM.zone); if(EOM.branch) L=L.filter(a=>a.branch===EOM.branch); }
- const ym=opt.ym!==undefined?opt.ym:EOM.ym; if(!opt.noMonth&&ym) L=L.filter(a=>_ymOf(a.submittedAt)===ym); return L; }
+ const ym=opt.ym!==undefined?opt.ym:EOM.ym; if(!opt.noMonth&&ym) L=L.filter(a=>caseYm(a)===ym); return L; }
 function eomOutList(){ let L=(APPS||[]).filter(a=>a.submittedAt); if(EOM.zone) L=L.filter(a=>zoneOfBranch(a.branch)===EOM.zone); if(EOM.branch) L=L.filter(a=>a.branch===EOM.branch); return L.map(a=>({a,o:eomOutInfo(a)})).filter(x=>x.o); }
 const EOM_CAT=[['occ','อาชีพ / ประเภทย่อย',['occupation','occExtra','occ']],['work','อายุงาน / ที่ทำงาน',['workplace','workYears','workyears']],['income','รายได้',['incomeClaimed','income','incomeExtra','incomeProof']],['debt','ภาระหนี้ / ค่าใช้จ่าย',['debt','housePay','expense']],['guar','ผู้ค้ำ / ผู้ใช้รถ / บุคคลอ้างอิง',['guar','guarType','vehUse','refs']],['addr','ที่อยู่',['addrCard','addrCur']],['person','ข้อมูลผู้ขอ (ชื่อ/บัตร/เบอร์/สถานภาพ)',['name','firstName','lastName','nameOnly','lastNameOnly','nickname','idcard','phone','phones','birth','age','marital','children']],['sale','การขาย / สินเชื่อ',['sale','saleType','product','pbCode','price','down','term']],['ctno','เลขสัญญา (หลังขาย)',[]]];
 function eomCatOf(k){ for(const c of EOM_CAT) if(c[2].indexOf(k)>=0) return c[0]; return null; }
@@ -10021,7 +10686,7 @@ function eomRow(a){ const ck=a.check3||{}; const lv=ck.lv||{}; let light=ck.over
  if(noCt) add('ctno','none'); if(ctBad) add('ctno','notfound');
  const st=p1State(a); const late=a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
  const calc=a.calc||{};
- return {a,id:a.id,ym:_ymOf(a.submittedAt),zone:zoneOfBranch(a.branch)||'',br:a.branch,light,lv,rules,adj,hqAdj,cancelled:a.status==='cancelled',
+ return {a,id:a.id,ym:caseYm(a),zone:zoneOfBranch(a.branch)||'',br:a.branch,light,lv,rules,adj,hqAdj,cancelled:a.status==='cancelled',
   before:!(sale.beforeSubmit),sold,against:!!sale.against,notsoldGreen:(sale.result==='notsold'||sale.result==='cancelled')&&light==='ok',
   occS:o?o.s:'ไม่ระบุ',occG:o?o.g:'ไม่ระบุ',inc,hcInc,rc:!!rc,hcOccMM,hasSaid,saidMM:!!saidMM,saidAck,broad,incOver,guarHas,guarThin,occ2Dup,hqAsk,hcOld:!!ck.hcapFound,
   fix,noCt,ctBad,ct,st,late,acked:!!a.ack3,hqSent:hqSent(a),editReq:!!er,editPending:!!(er&&er.st==='pending'),cancelReq:!!a.cancelReq,cancelPending:!!(a.cancelReq&&a.cancelReq.status==='pending'),
@@ -10055,18 +10720,31 @@ function eomReasons(a){ const r=eomRow(a); const o=[]; const B=(cls,t)=>`<span c
 let EOM_POPSETS={};
 function eomSet(ids){ const k='s'+Object.keys(EOM_POPSETS).length; EOM_POPSETS[k]=ids; return k; }
 function eomNum(n,ids,title){ if(!n) return '0'; const k=eomSet(ids); return `<span class="eom-num" onclick="eomPop('${k}','${String(title||'').replace(/'/g,'').replace(/"/g,'')}')">${n}</span>`; }
-function eomPop(k,title){ const ids=EOM_POPSETS[k]||[]; let ov=document.getElementById('eom-pop'); if(!ov){ ov=document.createElement('div'); ov.id='eom-pop'; ov.onclick=e=>{ if(e.target===ov) eomPopClose(); }; document.body.appendChild(ov); }
+/* 0925-L: ป๊อปอัปงานค้าง — คอลัมน์ "ค้างอะไร" (ทุกงานของเคสในแถวเดียว · ใครต้องทำ · แดง = ค้างข้ามวัน/เกินกำหนด) */
+function pendWhat(a){ if(!a||a.status==='cancelled') return []; const out=[]; const T=(typeof qBrTask==='function')?qBrTask(a):null; const st=p1State(a);
+ const chip=(who,t,late)=>`<span class="pw ${who}${late?' late':''}">${who==='hq'?'สนญ.':'สาขา'}: ${t}${late?' · '+late:''}</span>`;
+ if(!hqSent(a)){ let q=null; try{ q=qCompute().M[a.id]; }catch(e){} if(q&&q.k==='wait') out.push(chip('br','ตอบ สนญ. (ตีกลับ)')); else out.push(chip('hq','ตรวจ + ส่งการ์ด',(a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now()))?'เกินวัน':'')); }
+ if(hqSent(a)&&!a.ack3) out.push(chip('br','กดรับทราบ',ackLateOf(a)?'ค้างข้ามวัน':''));
+ if(st==='reviewed'||st==='waiting'||st==='overdue') out.push(chip('br','บันทึกผลขาย',st==='overdue'?'เกินกำหนด':''));
+ if(T&&T.ct) out.push(chip('br','ใส่เลขสัญญา',T.ctLate?'เกิน '+qCfg().ctDays+' วัน':''));
+ if(a.editReq&&a.editReq.st==='pending') out.push(chip('hq','อนุมัติคำขอแก้ไข'));
+ if(a.cancelReq&&a.cancelReq.status==='pending') out.push(chip('hq','อนุมัติคำขอยกเลิก'));
+ return out; }
+function eomPop(k,title){ const ids=EOM_POPSETS[k]||[]; const isPend=/งานค้าง|รอ สนญ\. ตรวจ|รอสาขารับทราบ|ยังไม่บันทึกผลขาย|ไม่มีเลขสัญญา|คำขอแก้ไข\/ยกเลิก ค้าง/.test(String(title||'')); let ov=document.getElementById('eom-pop'); if(!ov){ ov=document.createElement('div'); ov.id='eom-pop'; ov.onclick=e=>{ if(e.target===ov) eomPopClose(); }; document.body.appendChild(ov); }
  const rows=ids.map(id=>APPS.find(a=>a.id===id)).filter(Boolean).map(a=>{ const r=eomRow(a); const L=CHK3_LV[r.light]||CHK3_LV.na; const days=a.submittedAt?Math.max(0,Math.floor((Date.now()-a.submittedAt)/86400000)):0;
-  return `<tr class="click" onclick="eomPopClose();if(EOM.present)eomPresentClose();openDetail('${a.id}')"><td><b>${_esc(a.name)}</b><br><span class="mut" style="font-size:11px">${a.id}</span></td><td>${_esc(eomBrName(a.branch))}</td><td class="nb">${fmtDT(a.submittedAt)}<br><span class="mut" style="font-size:11px">${days} วันก่อน</span></td><td><span style="color:${L.col}">${L.ic}</span></td><td>${p1Tag(a)}</td><td style="font-size:11.5px;line-height:1.6">${eomReasons(a).join('<br>')||'<span class="mut">—</span>'}</td></tr>`; }).join('');
- ov.innerHTML=`<div class="box"><button onclick="eomPopClose()" style="position:absolute;top:10px;right:14px;border:none;background:none;font-size:20px;cursor:pointer;color:#888">✕</button><h3 style="margin:0 0 8px;color:#1e2761">${_esc(title||'รายชื่อเคส')} (${ids.length})</h3><div style="overflow:auto"><table class="rtb"><tr><th>ลูกค้า / เคส</th><th>สาขา</th><th>ส่งเคส</th><th>ไฟ</th><th>สถานะ</th><th>นับเพราะ</th></tr>${rows||'<tr><td colspan="6" class="mut">ไม่มีเคส</td></tr>'}</table></div><div class="mut" style="margin-top:6px">คลิกแถว = เปิดเคส · Esc / คลิกนอกกรอบ = ปิด</div></div>`;
+  return `<tr class="click" onclick="eomPopClose();if(EOM.present)eomPresentClose();openDetail('${a.id}')"><td><b>${_esc(a.name)}</b><br><span class="mut" style="font-size:11px">${a.id}</span></td><td>${_esc(eomBrName(a.branch))}</td><td class="nb">${fmtDT(a.submittedAt)}<br><span class="mut" style="font-size:11px">${days} วันก่อน</span></td><td><span style="color:${L.col}">${L.ic}</span></td><td>${p1Tag(a)}</td>${isPend?`<td style="line-height:1.9">${pendWhat(a).join(' ')||'<span class="mut">—</span>'}</td>`:''}<td style="font-size:11.5px;line-height:1.6">${eomReasons(a).join('<br>')||'<span class="mut">—</span>'}</td></tr>`; }).join('');
+ ov.innerHTML=`<div class="box"><button onclick="eomPopClose()" style="position:absolute;top:10px;right:14px;border:none;background:none;font-size:20px;cursor:pointer;color:#888">✕</button><h3 style="margin:0 0 8px;color:#1e2761">${_esc(title||'รายชื่อเคส')} (${ids.length})</h3><div style="overflow:auto"><table class="rtb"><tr><th>ลูกค้า / เคส</th><th>สาขา</th><th>ส่งเคส</th><th>ไฟ</th><th>สถานะ</th>${isPend?'<th>ค้างอะไร (ใครต้องทำ)</th>':''}<th>นับเพราะ</th></tr>${rows||'<tr><td colspan="7" class="mut">ไม่มีเคส</td></tr>'}</table></div><div class="mut" style="margin-top:6px">คลิกแถว = เปิดเคส · Esc / คลิกนอกกรอบ = ปิด</div></div>`;
  ov.style.display='block'; }
 function eomPopClose(){ const ov=document.getElementById('eom-pop'); if(ov) ov.style.display='none'; }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ const ov=document.getElementById('eom-pop'); if(ov&&ov.style.display==='block'){ eomPopClose(); e.stopImmediatePropagation(); return; } } if(!EOM.present) return; if(e.key==='Escape') eomPresentClose(); else if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') eomPresent(EOM.pidx+1); else if(e.key==='ArrowLeft'||e.key==='PageUp') eomPresent(EOM.pidx-1); else if(e.key==='+'||e.key==='=') eomZoom(1); else if(e.key==='-') eomZoom(-1); },true);
 const _ids=R=>R.map(r=>r.id);
 /* ---- ส่วนต่าง ๆ ---- */
 function eomSec1(R){ const k=eomKpi(R); const p=eomPrevKpi(); const act=R.filter(r=>!r.cancelled);
+ /* 0925-L: กระทบยอดกับหน้ารายการเคส — ทั้งหมด = เคสส่ง + ยกเลิกคำขอ + นอกช่วง */
+ const _all=(APPS||[]).filter(a=>a.submittedAt&&(!EOM.zone||zoneOfBranch(a.branch)===EOM.zone)&&(!EOM.branch||a.branch===EOM.branch)&&(!EOM.ym||caseYm(a)===EOM.ym)); const _out=_all.filter(eomIsOut), _cx=_all.filter(a=>!eomIsOut(a)&&a.status==='cancelled');
+ const _tot=`<div class="mut" style="font-size:11.5px;margin:0 0 6px">กระทบยอดกับหน้ารายการเคส: ทั้งหมด <b>${_all.length}</b> = เคสส่ง ${act.length} + ยกเลิกคำขอ ${eomNum(_cx.length,_cx.map(a=>a.id),'ยกเลิกคำขอ')} + นอกช่วง (ขาย/ทำสัญญาก่อนวันเริ่ม) ${eomNum(_out.length,_out.map(a=>a.id),'เคสนอกช่วง')}</div>`;
  const box=(v,l,d,cls)=>`<div class="rkpi ${cls||'b5'}"><div class="v">${v}</div><div class="l">${l}</div>${d?`<div class="d">${d}</div>`:''}</div>`;
- return `<div class="rkpis">${box(eomNum(k.n,_ids(act),'เคสที่ส่ง'),'เคสส่ง',eomDelta(k,p,'n',true),'b1')}${box(k.beforePct!=null?k.beforePct+'%':'—','ส่งก่อนขาย',eomDelta(k,p,'beforePct',true,' จุด'),'b3')}${box(`${eomNum(k.ok,_ids(act.filter(r=>r.light==='ok')),'ไฟ 🟢')} / ${eomNum(k.warn,_ids(act.filter(r=>r.light==='warn')),'ไฟ 🟡')} / ${eomNum(k.bad,_ids(act.filter(r=>r.light==='bad')),'ไฟ 🔴')}`,'🟢 / 🟡 / 🔴',k.redPct!=null?'🔴 '+k.redPct+'% '+eomDelta(k,p,'redPct',false,' จุด'):'','b2')}${box(eomNum(k.sold,_ids(act.filter(r=>r.sold)),'ขายแล้ว'),'ขายแล้ว',eomDelta(k,p,'sold',true),'b5')}${box(eomNum(k.against,_ids(act.filter(r=>r.against)),'ขายทั้งที่ 🔴'),'ขายทั้งที่ 🔴',eomDelta(k,p,'against',false),'b4')}${box(eomNum(k.hqAdj,_ids(act.filter(r=>r.hqAdj)),'สนญ. ปรับไฟ'),'สนญ. ปรับไฟ',eomDelta(k,p,'hqAdj',false),'b5')}</div>
+ return _tot+`<div class="rkpis">${box(eomNum(k.n,_ids(act),'เคสที่ส่ง'),'เคสส่ง',eomDelta(k,p,'n',true),'b1')}${box(k.beforePct!=null?k.beforePct+'%':'—','ส่งก่อนขาย',eomDelta(k,p,'beforePct',true,' จุด'),'b3')}${box(`${eomNum(k.ok,_ids(act.filter(r=>r.light==='ok')),'ไฟ 🟢')} / ${eomNum(k.warn,_ids(act.filter(r=>r.light==='warn')),'ไฟ 🟡')} / ${eomNum(k.bad,_ids(act.filter(r=>r.light==='bad')),'ไฟ 🔴')}`,'🟢 / 🟡 / 🔴',k.redPct!=null?'🔴 '+k.redPct+'% '+eomDelta(k,p,'redPct',false,' จุด'):'','b2')}${box(eomNum(k.sold,_ids(act.filter(r=>r.sold)),'ขายแล้ว'),'ขายแล้ว',eomDelta(k,p,'sold',true),'b5')}${box(eomNum(k.against,_ids(act.filter(r=>r.against)),'ขายทั้งที่ 🔴'),'ขายทั้งที่ 🔴',eomDelta(k,p,'against',false),'b4')}${box(eomNum(k.hqAdj,_ids(act.filter(r=>r.hqAdj)),'สนญ. ปรับไฟ'),'สนญ. ปรับไฟ',eomDelta(k,p,'hqAdj',false),'b5')}</div>
  <div class="mut" style="font-size:11.5px">${p?('▲▼ เทียบ '+_ymTh(eomPrevYm(EOM.ym))+(p._live?' (คำนวณสด — เดือนก่อนยังไม่ได้ปิดรอบ)':' (ตัวเลขตอนปิดรอบ)')):(EOM.ym?'ยังไม่มีเดือนก่อนให้เทียบ':'เลือกเดือนเพื่อดูการเทียบเดือนก่อน')}</div>`; }
 function eomZoneTable(R){ const act=R.filter(r=>!r.cancelled); const byZ=EOM.zone?null:true;
  const keyOf=r=>byZ?r.zone:r.br; const G={}; act.forEach(r=>{ const k=keyOf(r); (G[k]=G[k]||[]).push(r); });
@@ -10125,15 +10803,15 @@ function eomSec13(R){ const act=R.filter(r=>!r.cancelled); const row=(lb,L)=>{ c
 function eomSec14(R){ const G={}; R.forEach(r=>{ (G[r.br]=G[r.br]||[]).push(r); }); const keys=Object.keys(G).filter(k=>G[k].some(r=>r.editReq||r.cancelReq)).sort((x,y)=>G[y].filter(r=>r.editReq||r.cancelReq).length-G[x].filter(r=>r.editReq||r.cancelReq).length);
  const tot={e:R.filter(r=>r.editReq),c:R.filter(r=>r.cancelReq)};
  return `<div class="mut" style="font-size:12px;margin-bottom:6px">ขอแก้ไขหลังส่ง ${eomNum(tot.e.length,_ids(tot.e),'ขอแก้ไขหลังส่ง')} · ขอยกเลิก ${eomNum(tot.c.length,_ids(tot.c),'ขอยกเลิก')}</div>${keys.length?`<table class="rtb"><tr><th>สาขา</th><th class="num">เคส</th><th class="num">ขอแก้ไขหลังส่ง</th><th class="num">ขอยกเลิก</th><th>ช่องที่ขอแก้บ่อย</th></tr>${keys.map(k=>{ const L=G[k]; const e=L.filter(r=>r.editReq), c=L.filter(r=>r.cancelReq); const cnt={}; e.forEach(r=>((r.a.editReq||{}).fields||[]).forEach(f=>{ const lb=efLabel(f); cnt[lb]=(cnt[lb]||0)+1; })); return `<tr><td>${_esc(eomBrName(k))}</td><td class="num">${L.length}</td><td class="num">${eomNum(e.length,_ids(e),eomBrName(k)+' · ขอแก้ไข')}</td><td class="num">${eomNum(c.length,_ids(c),eomBrName(k)+' · ขอยกเลิก')}</td><td class="mut" style="font-size:11.5px">${Object.entries(cnt).sort((x,y)=>y[1]-x[1]).slice(0,3).map(x=>_esc(x[0])+' ('+x[1]+')').join(' · ')||'—'}</td></tr>`; }).join('')}</table>`:'<div class="mut">ไม่มีคำขอแก้ไข/ยกเลิก</div>'}`; }
-function eomPendRows(){ let L=(APPS||[]).filter(a=>a.submittedAt&&!eomIsOut(a)); if(EOM.zone) L=L.filter(a=>zoneOfBranch(a.branch)===EOM.zone); if(EOM.branch) L=L.filter(a=>a.branch===EOM.branch); return L.map(eomRow); }
-function eomPendOf(L){ return {hq:L.filter(r=>r.st==='sent'),ack:L.filter(r=>r.st==='ackwait'&&r.late),sale:L.filter(r=>r.st==='overdue'),ct:L.filter(r=>!r.cancelled&&r.noCt),req:L.filter(r=>r.editPending||r.cancelPending)}; }
+function eomPendRows(){ let L=(APPS||[]).filter(a=>a.submittedAt);   /* 0925-L: งานค้าง = ทุกเคสจริง รวมเคสนอกช่วง */ if(EOM.zone) L=L.filter(a=>zoneOfBranch(a.branch)===EOM.zone); if(EOM.branch) L=L.filter(a=>a.branch===EOM.branch); return L.map(eomRow); }
+function eomPendOf(L){ return {hq:L.filter(r=>r.st==='sent'),ack:L.filter(r=>r.a.status!=='cancelled'&&hqSent(r.a)&&!r.a.ack3&&ackLateOf(r.a)),sale:L.filter(r=>r.st==='overdue'),ct:L.filter(r=>!r.cancelled&&r.noCt),req:L.filter(r=>r.editPending||r.cancelPending)}; }
 function eomSec15(){ const R=eomPendRows(); const byZ=!EOM.zone; const G={}; R.forEach(r=>{ const k=byZ?r.zone:r.br; (G[k]=G[k]||[]).push(r); });
  const keys=Object.keys(G).sort(); const tot=eomPendOf(R);
  const row=(k,L)=>{ const P=eomPendOf(L); const all=new Set([].concat(P.ack,P.sale,P.ct,P.req).map(r=>r.id)); const nm=k==null?'<b>รวม</b>':byZ?`<span class="eom-lnk" onclick="EOM.zone='${k}';EOM.branch='';eomRefresh()">${_esc(eomZoneName(k))} ▸</span>`:_esc(eomBrName(k));
   const c=(arr,t,hot)=>`<td class="num${hot&&arr.length?' bad':''}">${eomNum(arr.length,_ids(arr),t)}</td>`;
   return `<tr><td>${nm}</td>${c(P.hq,'รอ สนญ. ตรวจ')}${c(P.ack,'รอสาขารับทราบ (เกินกำหนด)',1)}${c(P.sale,'ยังไม่บันทึกผลขาย (เกินกำหนด)',1)}${c(P.ct,'ขายแล้ว ไม่มีเลขสัญญา')}${c(P.req,'คำขอแก้ไข/ยกเลิก ค้าง')}<td class="num${all.size?' bad':''}">${eomNum(all.size,[...all],'งานค้างของสาขา')}</td></tr>`; };
  return `<table class="rtb"><tr><th>${byZ?'เขต':'สาขา'}</th><th class="num">รอ สนญ. ตรวจ<br><span class="mut" style="font-weight:400">(ฝั่ง สนญ.)</span></th><th class="num">รอสาขารับทราบ<br><span class="mut" style="font-weight:400">เกินกำหนด</span></th><th class="num">ยังไม่บันทึกผลขาย<br><span class="mut" style="font-weight:400">เกินกำหนด</span></th><th class="num">ขายแล้ว<br>ไม่มีเลขสัญญา</th><th class="num">คำขอแก้ไข/ยกเลิก<br>ค้าง</th><th class="num">รวมงานค้าง<br>ของสาขา</th></tr>${keys.map(k=>row(k,G[k])).join('')}${keys.length>1?row(null,R):''}</table>
- <div class="mut" style="font-size:11.5px;margin-top:4px">ณ วันที่เปิดดู · ทุกเดือน (ไม่กรองเดือน) · กติกา "เกินกำหนด" เดียวกับหน้าเริ่ม/รายการเคส · ขายแล้วไม่มีเลขสัญญา = จับคู่ผลชำระไม่ได้</div>`; }
+ <div class="mut" style="font-size:11.5px;margin-top:4px">ณ วันที่เปิดดู · ทุกเดือน (ไม่กรองเดือน) · นับรวมเคสนอกช่วง (งานค้างจริง) · รอสาขารับทราบ = ทุกเคสที่ยังไม่กดรับทราบ รวมเคสบันทึกผลขายแล้ว · เกินกำหนด = สนญ. ส่งการ์ดก่อนวันนี้ · ตัวเลขเดียวกับกล่อง KPI หน้า สนญ. · ขายแล้วไม่มีเลขสัญญา = จับคู่ผลชำระไม่ได้</div>`; }
 /* ---- ส่วน 16 กระบวนการทำงานสาขา ---- */
 function eomFixCount(L){ const out={}; EOM_CAT.forEach(c=>{ out[c[0]]={n:[],br:0,hq:0,said:0,none:0,notfound:0}; }); L.forEach(r=>{ Object.keys(r.fix).forEach(cat=>{ const o=out[cat]; if(!o) return; o.n.push(r); Object.keys(r.fix[cat]).forEach(s=>{ o[s]=(o[s]||0)+1; }); }); }); return out; }
 function eomBeh(L){ const act=L.filter(r=>!r.cancelled); return {n:act.length,broad:act.filter(r=>r.broad),saidAck:act.filter(r=>r.saidMM&&r.saidAck),saidNo:act.filter(r=>r.saidMM&&!r.saidAck),occ2:act.filter(r=>r.occ2Dup),ask:act.filter(r=>r.hqAsk),hcMM:act.filter(r=>r.hcOccMM),hcB:act.filter(r=>r.hcOccMM!=null),guar:act.filter(r=>r.guarThin),guarB:act.filter(r=>r.guarHas),after:act.filter(r=>!r.before)}; }
@@ -10495,6 +11173,7 @@ loadState();
 loadSnaps();
 loadField();
 loadPB();
+try{ pbvInit().then(()=>{ try{ if(typeof currentTab!=='undefined'&&currentTab&&currentTab!=='form') _bgRefresh(); }catch(e){} }); }catch(e){}   /* 0925-M */
 if(typeof Chart!=='undefined'){ Chart.defaults.font.family="'Kanit',sans-serif"; }
 { const _sb=document.getElementById('sel-branch'); if(_sb) _sb.innerHTML = BRANCHES.slice().sort((a,b)=>a.code.localeCompare(b.code)).map(b=>`<option value="${b.code}">${b.label} — ${ZONES[b.zone].name}</option>`).join('');
   const _sz=document.getElementById('sel-zone'); if(_sz) _sz.innerHTML = Object.keys(ZONES).map(z=>`<option value="${z}">${ZONES[z].name}</option>`).join(''); }
