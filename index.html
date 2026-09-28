@@ -211,6 +211,15 @@ tr.click{cursor:pointer}tr.click:hover{background:#f3f5fc}
 .qchips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:11px}
 .qchip{border-radius:10px;padding:9px 12px;text-align:center}
 .qchip .n{font-size:20px;font-weight:700;line-height:1}.qchip .l{font-size:10.5px;margin-top:3px}
+/* 0925-J: กลุ่มตัวเลข สนญ./เขต + ปุ่มซ่อนคิวงาน */
+.p1grp{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}.p1band{border:1px solid;border-top-width:4px;border-radius:10px;padding:8px 10px;background:#fff;min-width:0}
+.p1band.b1{flex:1 1 150px}.p1band.b2{flex:3.4 1 420px}.p1band.b3{flex:1.6 1 230px}
+.p1band .bh{font-size:12.5px;font-weight:800;margin-bottom:6px}.p1band .bc{display:flex;gap:8px;flex-wrap:wrap}.p1band .bf{font-size:11.5px;margin-top:6px;color:#6b7280}.p1band .bf a{color:#c2410c;font-weight:700}
+.p1c{flex:1 1 100px;border-radius:10px;padding:8px 10px;text-align:center;cursor:pointer}.p1c:hover{filter:brightness(.97)}.p1c[data-act]{outline:2px solid #f26522;outline-offset:1px}
+.p1c .n{font-size:20px;font-weight:700;line-height:1}.p1c .l{font-size:11px;margin-top:3px}.p1c .s{font-size:10.5px;margin-top:2px}
+.qtg{margin-left:auto;border:1px solid #d1d5db;background:#fff;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700;color:#374151;cursor:pointer;font-family:inherit;white-space:nowrap}
+.qb h4.qh{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.qb.qmin .qsum{font-size:13px}.qb .g.g2{grid-template-columns:1fr 1fr}@media(max-width:820px){.qb .g.g2{grid-template-columns:1fr}}
+.qb .qlate{margin-top:6px;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;border-radius:8px;padding:5px 10px;font-size:12.5px;cursor:pointer}
 .qcard{display:flex;align-items:center;gap:11px;padding:10px 12px;border:0.5px solid var(--line);border-radius:10px;background:var(--card);margin-bottom:7px;cursor:pointer}
 .qcard:hover{border-color:#c7d2fe;background:#fafbff}
 .qbar{width:7px;height:38px;border-radius:4px;flex-shrink:0}
@@ -438,7 +447,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-I (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-I (เฟส 1 · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง + ตีกลับ/รับทราบ/เลขสัญญา/ป๊อปอัป · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
+      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-J (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-J (เฟส 1 · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง + ตีกลับ/รับทราบ/เลขสัญญา/ป๊อปอัป · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
     </div>
   </div>
 </div>
@@ -2465,7 +2474,27 @@ function p1ChipPop(ctx,grp,brCode){ const G=P1G[grp]; if(!G) return; const src=p
   ${list.length?`<div style="max-height:60vh;overflow:auto"><table><thead><tr><th>ลูกค้า / เคส</th>${isBr?'':'<th>สาขา</th>'}${isHQ?'<th>เขต</th>':''}<th>${tCol}</th><th>${(grp==='sold'||grp==='not')?'หมายเหตุ':'รอมา'}</th><th>ไฟการ์ด</th><th>คำแนะนำ สนญ.</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`:'<p class="mut" style="text-align:center;padding:16px">ไม่มีเคสในสถานะนี้</p>'}
   ${foot}</div>`;
  document.getElementById('modal-bg').classList.remove('hidden'); }
-function p1Chips(s,ctx){ ctx=ctx||''; const on=(g)=>ctx?`title="คลิกดูรายชื่อเคส" onclick="p1ChipPop('${ctx}','${g}')" ${(ctx==='hq'&&fState===g)?'data-act="1"':''}`:''; return `<div class="qchips">
+/* 0925-J: สนญ./เขต — ตัวเลขสถานะจัดกลุ่มตาม "ถึงคิวใคร" · ตัวเลขฝั่งสาขาอยู่ที่นี่ที่เดียว (ย้ายจากกล่อง 3 ของคิวงาน) · เกณฑ์ค้างข้ามวัน = นับจากวันที่ สนญ. ส่งการ์ด */
+function p1GrpPop(ctx,kind){ window.__qScope=p1ScopeList(ctx).map(a=>a.id); qPop(kind); }
+function p1GroupChips(s,ctx){ const L=p1ScopeList(ctx); const ids={}; L.forEach(a=>{ ids[a.id]=1; });
+ const tk=(typeof qTasks==='function')?qTasks(L):[]; const ackLate=tk.filter(x=>x.T.ack&&x.T.ackLate).length, ctLate=tk.filter(x=>x.T.ct&&x.T.ctLate).length;
+ const ret=(typeof qCompute==='function')?qCompute().w.filter(x=>ids[x.id]).length:0; const R='#b91c1c';
+ const act=g=>(ctx==='hq'&&fState===g)?' data-act="1"':'';
+ const chip=(n,l,col,bg,sub,click,g)=>`<div class="p1c" style="background:${bg}" title="คลิกดูรายชื่อ" onclick="${click}"${g?act(g):''}><div class="n" style="color:${col}">${n}</div><div class="l" style="color:${col}">${l}</div>${sub?`<div class="s">${sub}</div>`:''}</div>`;
+ const band=(t,col,bd,inner,foot,cls)=>`<div class="p1band ${cls}" style="border-color:${bd};border-top-color:${col}"><div class="bh" style="color:${col}">${t}</div><div class="bc">${inner}</div>${foot?`<div class="bf">${foot}</div>`:''}</div>`;
+ const pp=g=>`p1ChipPop('${ctx}','${g}')`, qp=k=>`p1GrpPop('${ctx}','${k}')`;
+ const nBr=(s.ackAll||0)+(s.saleWait||0)+(s.noCt||0)+ret;
+ return `<div class="p1grp">`
+  +band('👁 ถึงคิว สนญ.','#1d4ed8','#bfdbfe',chip(s.hqPending||0,'รอ สนญ. ตรวจ+แนะนำ','#1d4ed8','#dbeafe',s.hqLate?`<span style="color:${R}">เกินวัน ${s.hqLate}</span>`:'',pp('sent'),'sent'),'','b1')
+  +band('🏪 ถึงคิวสาขา (ติดตาม)','#c2410c','#fdba74',
+     chip(s.ackAll||0,'✅ ยังไม่กดรับทราบ','#b45309','#fef3c7',(s.ackDone?`<span class="mut">รวมบันทึกผลขายแล้ว ${s.ackDone}</span>`:'')+(s.ackDone&&ackLate?' · ':'')+(ackLate?`<span style="color:${R}">ค้างข้ามวัน ${ackLate}</span>`:''),pp('ack'),'ack')
+    +chip(s.saleWait||0,'⏳ ยังไม่บันทึกผลขาย','#854d0e','#fef9c3',s.overdue?`<span style="color:${R}">ค้าง ${s.overdue}</span>`:'',pp('sale'),'sale')
+    +chip(s.noCt||0,'🧾 ยังไม่ใส่เลขสัญญา','#c2410c','#fff7ed',ctLate?`<span style="color:${R}">เกิน ${qCfg().ctDays} วัน ${ctLate}</span>`:'',qp('ct'))
+    +chip(ret,'↩ ตีกลับ รอสาขาตอบ','#0f766e','#ecfdf5','',qp('wait')),
+    `1 เคสอาจค้างได้หลายงาน${nBr?` · <a href="#" onclick="event.preventDefault();${qp('brall')}">ดูทั้งหมดแยกสาขา →</a>`:''}`,'b2')
+  +band('🏁 จบแล้ว','#166534','#bbf7d0',chip(s.sold||0,'🛒 ขายแล้ว','#166534','#f0fdf4','',pp('sold'),'sold')+chip(s.notsold||0,'✋ ไม่ขาย/ยกเลิก','#374151','#f3f4f6',s.cancelled?`<span class="mut">ยกเลิกคำขอ ${s.cancelled}</span>`:'',pp('not'),'not'),'','b3')
+  +`</div><div class="mut" style="font-size:11px;margin:-2px 0 8px;text-align:right">คลิกกล่องเพื่อดูรายชื่อเคส · ตัวเลขฝั่งสาขาอยู่ที่นี่ที่เดียว</div>`; }
+function p1Chips(s,ctx){ ctx=ctx||''; if(ctx==='hq'||ctx==='zone') return p1GroupChips(s,ctx); const on=(g)=>ctx?`title="คลิกดูรายชื่อเคส" onclick="p1ChipPop('${ctx}','${g}')" ${(ctx==='hq'&&fState===g)?'data-act="1"':''}`:''; return `<div class="qchips">
   <div class="qchip sent" style="background:#dbeafe" ${on('sent')}><div class="n" style="color:#1d4ed8">${s.hqPending||0}</div><div class="l" style="color:#1d4ed8">👁 รอ สนญ. ตรวจ+แนะนำ${s.hqLate?' <span style="color:#b91c1c">(เกินวัน '+s.hqLate+')</span>':''}</div></div>
   <div class="qchip ack" style="background:#fef3c7" ${on('ack')}><div class="n" style="color:#b45309">${s.ackAll!=null?s.ackAll:(s.ackPending||0)}</div><div class="l" style="color:#b45309">${ctx==='br'?'👉 ถึงคิวเรา: กดรับทราบ':'🧭 สนญ. ส่งแล้ว · รอสาขารับทราบ'}${s.ackDone?' <span style="color:#6b7280">(รวมเคสบันทึกผลขายแล้ว '+s.ackDone+')</span>':''}${s.ackLate?' <span style="color:#b91c1c">(ค้างข้ามวัน '+s.ackLate+')</span>':''}</div></div>
   <div class="qchip sale" style="background:#fef9c3" ${on('sale')}><div class="n" style="color:#854d0e">${s.reviewed+s.waiting+s.overdue}</div><div class="l" style="color:#854d0e">${ctx==='br'?'⏳ ถึงคิวเรา: บันทึกผลขาย':'⏳ รอบันทึกผลขาย'}${s.overdue?' <span style="color:#b91c1c">(ค้าง '+s.overdue+')</span>':''}</div></div>
@@ -8988,7 +9017,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0925-I';
+const CHK3_BUILD='0925-J';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -10340,6 +10369,9 @@ function qUnreturn(id){ const a=APPS.find(x=>x.id===id); if(!a||!(SESSION&&SESSI
 function qTasks(scope){ const L=[]; (scope||[]).forEach(a=>{ const T=qBrTask(a); if(T) L.push({a,T}); }); return L; }
 /* แถบคิวด้านบนของรายการ — scope: รายการเคสที่ผู้ใช้เห็น (สาขาตัวเอง / สาขาในเขต / ทั้งหมด)
    0925-I: 3 กล่องทุกฝั่ง · ในกล่องเป็นปุ่มเล็ก (chip) กดแล้วเด้งรายชื่อ · สนญ./เขต กล่องที่ 3 "รอฝั่งสาขา" รวมตีกลับ/ยังไม่รับทราบ/เลขสัญญา (แทนแถบสาขายังค้าง) */
+/* 0925-J: ปุ่มซ่อน/แสดงคิวงาน (สนญ./เขต) — จำต่อเครื่อง แยกตามบทบาท */
+function qHidden(role){ try{ return ((JSON.parse(localStorage.getItem('moto24_qhide')||'{}')||{})[role])===1; }catch(e){ return false; } }
+function qHideSet(role,v){ try{ const o=JSON.parse(localStorage.getItem('moto24_qhide')||'{}')||{}; o[role]=v?1:0; localStorage.setItem('moto24_qhide',JSON.stringify(o)); }catch(e){} go(currentTab); }
 function qBoard(scope){ if(!p1()) return ''; const Q=qCompute(); const role=qRole(); const c=qCfg(); const ids={}; (scope||[]).forEach(a=>{ if(a) ids[a.id]=1; });
  window.__qScope=(scope||[]).map(a=>a.id);
  const q=Q.q.filter(s=>ids[s.id]), w=Q.w.filter(s=>ids[s.id]), r=Q.r.filter(s=>ids[s.id]);
@@ -10352,11 +10384,9 @@ function qBoard(scope){ if(!p1()) return ''; const Q=qCompute(); const role=qRol
  const legend=`<div class="ft"><b>สีเคส:</b>`+[['new','เคสใหม่ · รอ สนญ. ตรวจ'],['back','แก้แล้วส่งกลับ'],['reply','สาขาตอบแล้ว'],['late','รอนานเกิน '+c.late+' นาที'],['wait','ถึงคิวสาขา · ตีกลับ/รับทราบ/เลขสัญญา'],['req','คำขอแก้ไข']].map(([k,t])=>`<span class="lg" style="background:${Q_COL[k][1]};border-color:${Q_COL[k][2]};color:${Q_COL[k][0]}">● ${t}</span>`).join('')+`<span>· เวลาเป็นค่าประมาณ · ${hrs}${open?'':' · <b style="color:#c2410c">ตอนนี้นอกเวลาทำการ</b>'}</span></div>`;
  const nb=L=>new Set(L.map(x=>(x.a||x).branch)).size;
  const lateN=ack.filter(x=>x.T.ackLate).length+ct.filter(x=>x.T.ctLate).length;
- /* กล่อง 3 ของ สนญ./เขต: รอฝั่งสาขา */
- const brBox=()=>{ const n=w.length+ack.length+ct.length; return bx('wait','🏪 รอฝั่งสาขา (ติดตาม)',n,'งาน',
-   chip('wait','wait','⏳ ตีกลับ รอตอบ',w.length)+chip('wait','ack','✅ ยังไม่รับทราบ',ack.length)+chip('wait','ct','🧾 ยังไม่ใส่เลขสัญญา',ct.length)
-   +(n?`<div class="mut" style="font-size:11.5px;margin-top:3px;width:100%">${lateN?`ค้างข้ามวัน/เกินกำหนด <b style="color:#b91c1c">${lateN}</b> · `:''}${nb([...w.map(s=>s.a),...ack.map(x=>x.a),...ct.map(x=>x.a)])} สาขา · ไม่นับในคิว สนญ.</div>`:'<span class="mut">ไม่มีงานค้างฝั่งสาขา</span>'),
-   n?big('wait','ดูทั้งหมดแยกสาขา →',"qPop('brall')"):'',''); };
+ /* 0925-J: กล่อง "รอฝั่งสาขา" ย้ายไปอยู่กลุ่ม "ถึงคิวสาขา" ในแถวตัวเลขด้านบน (สนญ./เขต) */
+ const tg=rl=>`<button type="button" class="qtg" onclick="event.stopPropagation();qHideSet('${rl}',1)" title="ซ่อนคิวงาน (จำไว้ที่เครื่องนี้)">▾ ซ่อนคิวงาน</button>`;
+ const qMini=(t,sum,rl,lateN,f)=>`<div class="qb qmin"><h4 class="qh">${t} <span class="qsum">${sum}</span><button type="button" class="qtg" onclick="qHideSet('${rl}',0)">▸ แสดงคิวงาน</button></h4><div class="mut" style="font-size:11.5px;margin-top:4px">ซ่อนอยู่ · จำไว้ที่เครื่องนี้ · ถ้ามีเคสรอนานเกิน ${c.late} นาที จะแสดงแถบแดงเตือนแม้ซ่อน</div>${lateN?`<div class="qlate" onclick="${f?`openDetail('${f.id}')`:`qPop('q')`}">⏱ มีเคสรอนานเกิน ${c.late} นาที <b>${lateN}</b> เคส — ${f?'คลิกเพื่อเปิดคิวถัดไป →':'คลิกดูรายชื่อ →'}</div>`:''}</div>`;
  let h;
  if(role==='branch'){ const f=q[0]; const nT=ack.length+w.length+ct.length;
   h=`<h4>🎫 คิวงานของสาขากับ สนญ. <small>อัปเดตอัตโนมัติ · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small></h4><div class="g">`
@@ -10367,16 +10397,18 @@ function qBoard(scope){ if(!p1()) return ''; const Q=qCompute(); const role=qRol
   const t0=new Date(); t0.setHours(0,0,0,0); const done=(APPS||[]).filter(a=>hqSent(a)&&((a.hqAdvice||{}).sentAt||0)>=t0.getTime()&&a.submittedAt&&(a.hqAdvice.sentAt-a.submittedAt)<6*3600e3);
   const avg=done.length?Math.round(done.reduce((x,a)=>x+(a.hqAdvice.sentAt-a.submittedAt),0)/done.length/60000):null;
   const r0=r[0];
-  h=`<h4>📥 คิวงาน สนญ. <small>เรียงตามคิว · งานที่สาขาแก้/ตอบกลับได้ขึ้นก่อน · คนตรวจ ${c.rev} คน · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small></h4><div class="g">`
+  if(qHidden('hq')) return qMini('📥 คิวงาน สนญ.',`<span style="color:${Q_COL.new[0]}">🕒 ต้องตรวจ <b>${q.length}</b></span> · <span style="color:${Q_COL.req[0]}">📝 คำขอแก้ไข <b>${r.length}</b></span>`,'hq',lt,f);
+  h=`<h4>📥 คิวงาน สนญ. <small>เรียงตามคิว · งานที่สาขาแก้/ตอบกลับได้ขึ้นก่อน · คนตรวจ ${c.rev} คน · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small>${tg('hq')}</h4><div class="g g2">`
   +bx('new','🕒 ต้องตรวจ (อยู่ในคิว)',q.length,'เคส',q.length?chip('new','q','↩ แก้/ตอบกลับ',pri)+chip('new','q','🆕 เคสใหม่',nw)+chip('new','q','⏱ รอนาน ≥'+c.late+' นาที',lt,true):'<span class="mut">ไม่มีเคสรอตรวจ</span>',f?big('new','เปิดคิวถัดไป #1 →',`openDetail('${f.id}')`):'',q.length?'q':'')
   +bx('req','📝 ต้องอนุมัติคำขอแก้ไข',r.length,'เคส',r.length?chip('req','req','เก่าสุด '+qMinTxt(r0.wait),r0.id)+chip('req','req',nb(r.map(s=>s.a))+' สาขา',null):'<span class="mut">ไม่มีคำขอค้าง</span>',r.length?big('req',`ดูคำขอทั้งหมด (${r.length}) →`,"qPop('req')"):'',r.length?'req':'')
-  +brBox()+`</div>`
+  +`</div>`
   +`<div class="ft2">⏱ รอนานสุด ${old?`<b style="color:${old.late?'#b91c1c':'#374151'}">${qMinTxt(old.wait)}</b> (${old.id})`:'—'} · ⚡ วันนี้ส่งการ์ดแล้ว <b>${done.length}</b> เคส${avg!=null?` · เฉลี่ยส่ง→ได้การ์ด <b>${avg} นาที</b>`:''}</div>`; }
  else { const by={}; q.forEach(s=>{ const b=_qBr(s.a); (by[b]=by[b]||[]).push(s.pos); });
-  h=`<h4>🗂 คิวงานของสาขาในเขตกับ สนญ. <small>เห็นเฉพาะสาขาในเขต · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small></h4><div class="g">`
+  if(qHidden('zone')) return qMini('🗂 คิวงานของสาขาในเขตกับ สนญ.',`<span style="color:${Q_COL.new[0]}">🕒 รอ สนญ. ตรวจ <b>${q.length}</b></span> · <span style="color:${Q_COL.req[0]}">📝 คำขอแก้ไข <b>${r.length}</b></span>`,'zone',q.filter(s=>s.k==='new'&&s.late).length,null);
+  h=`<h4>🗂 คิวงานของสาขาในเขตกับ สนญ. <small>เห็นเฉพาะสาขาในเขต · คลิกกล่อง/ปุ่มเพื่อดูรายชื่อ</small>${tg('zone')}</h4><div class="g g2">`
   +bx('new','🕒 รอ สนญ. ตรวจ',q.length,'เคส',q.length?Object.keys(by).map(b=>chip('new','q',E(b)+' (คิว '+by[b].join(', ')+')',by[b].length)).join(''):'<span class="mut">ไม่มีเคสรอ สนญ. ตรวจ</span>','',q.length?'q':'')
   +bx('req','📝 คำขอแก้ไข',r.length,'เคส',r.length?chip('req','req','รอ สนญ. อนุมัติ · '+nb(r.map(s=>s.a))+' สาขา',null):'<span class="mut">ไม่มีคำขอค้าง</span>','',r.length?'req':'')
-  +brBox()+`</div>`; }
+  +`</div>`; }
  return `<div class="qb">${h}${legend}</div>`; }
 /* 0925-H: ป๊อปอัปรายชื่อ — กดกล่อง/บรรทัด → รายการเคส → กดแถวเพื่อเปิดเคส */
 function qPop(kind,view){ const Q=qCompute(); const role=qRole(); const E=_p1Esc; const ids={}; (window.__qScope||[]).forEach(id=>ids[id]=1); const inS=id=>ids[id];
