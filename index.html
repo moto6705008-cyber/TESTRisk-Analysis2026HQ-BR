@@ -407,6 +407,14 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
 .c3items li.c3-bad{color:#991b1b;font-weight:600}
 .c3items li.c3-warn{color:#92400e}
 .c3items li.c3-ok{color:#374151}
+#nw-bar{display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,#1e3a8a,#2563eb);color:#fff;border-radius:12px;padding:10px 16px;margin:0 0 12px;box-shadow:0 6px 18px rgba(37,99,235,.35)}#nw-bar .nw-ic{font-size:24px}#nw-bar .nw-t{font-weight:700;font-size:15px}#nw-bar .nw-s{font-size:12.5px;opacity:.92;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#nw-bar .nw-go{background:#fff;color:#1e3a8a;border:0;border-radius:9px;padding:7px 14px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}#nw-bar .nw-later{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6);border-radius:9px;padding:6px 12px;cursor:pointer;font-family:inherit;white-space:nowrap}@media(max-width:640px){#nw-bar{flex-wrap:wrap}#nw-bar .nw-s{white-space:normal}}
+#nw-perm{background:#fff;color:#1e2761;border:1px solid #c7d2fe;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;margin-left:14px;margin-right:6px;font-family:inherit}@media(max-width:640px){#nw-perm{padding:3px 8px;font-size:11px;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-left:8px}}@media print{#nw-bar,#nw-perm{display:none!important}}
+.rd-n{color:#1d4ed8;text-decoration:underline;cursor:pointer;font-weight:600}.rd-n.ok{color:#15803d}.rd-n.bad{color:#b91c1c}.rd-n.warn{color:#b45309}.rd-tbl th{text-align:center;line-height:1.3}.rd-tbl td{text-align:center}.rd-tbl td:first-child,.rd-tbl th:first-child{text-align:left}.rd-tbl thead th{background:#f1f5f9!important;color:#334155!important;font-weight:600;font-size:12.5px}.rd-tbl thead th.rd-g1{background:#e0e7ff!important;color:#1e3a8a!important}.rd-tbl thead th.rd-g2{background:#dcfce7!important;color:#166534!important}.rd-tbl thead th.rd-g3{background:#fef3c7!important;color:#92400e!important}.rd-flt select,.rd-flt input{width:auto!important;max-width:200px;margin:0!important}tr.rd-today td{background:#fffbeb}tr.rd-sub td{background:#f8fafc;font-size:12.5px}tr.rd-tot td{font-weight:700;background:#f1f5f9}.rd-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:900px){.rd-two{grid-template-columns:1fr}}
+#fu-bar{display:flex;align-items:center;gap:12px;background:#fff7ed;border:1.5px solid #fdba74;color:#9a3412;border-radius:12px;padding:10px 16px;margin:0 0 12px}#fu-bar.fu-late{background:#fef2f2;border-color:#fca5a5;color:#991b1b}#fu-bar .fu-ic{font-size:24px}#fu-bar .fu-t{font-weight:700;font-size:14.5px}#fu-bar .fu-s{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}#fu-bar .fu-c{background:#fff;border:1px solid currentColor;border-radius:999px;padding:1px 9px;font-size:12px;color:inherit;text-decoration:none}#fu-bar .fu-ok{background:#ea580c;color:#fff;border:0;border-radius:9px;padding:8px 14px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}#fu-bar .fu-lock{font-size:12px;font-weight:600;white-space:nowrap}@media print{#fu-bar{display:none!important}}
+.c3items li.c3-hqw{color:#9a3412;background:#fff7ed;border-radius:6px;padding:3px 6px;margin:2px 0}
+.c3hqw-tag{font-size:11px;font-weight:600;background:#ffedd5;color:#9a3412;border:1px solid #fdba74;border-radius:999px;padding:1px 8px;margin-left:4px;white-space:nowrap}
+.hqtag{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:1px;white-space:nowrap}.hqtag.bad{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}.hqtag.hqw{background:#ffedd5;color:#9a3412;border:1px solid #fdba74}.hqtag.refi{background:#ede9fe;color:#5b21b6;border:1px solid #c4b5fd}
+#ftr-full a{color:#1d4ed8;cursor:pointer;text-decoration:none;font-weight:600;margin-left:4px}
 .c3items li.c3-info{color:#64748b;font-style:italic}
 .c3ref{font-size:11.5px;color:var(--mut);margin-top:6px;border-top:1px solid rgba(0,0,0,.06);padding-top:4px}
 .c3cts{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
@@ -424,6 +432,36 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
 .docchk-it{display:block;font-size:13px;padding:2px 0;cursor:pointer}
 @media print{.c3card{break-inside:avoid}}
 .qchip[onclick]{cursor:pointer;transition:transform .08s}.qchip[onclick]:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}.qchip[data-act]{outline:2px solid #f26522;outline-offset:2px}
+
+/* 0925-V: แถบประกาศ · แชทลอย · จับภาพ · ช่องผิด */
+#ann-bar{position:sticky;top:60px;z-index:60;margin:0 0 12px;background:#fef2f2;border:2px solid #dc2626;border-radius:12px;padding:10px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 4px 14px rgba(220,38,38,.15)}
+#ann-bar .ab-ic{font-size:24px}#ann-bar .ab-tx{flex:1;min-width:0}#ann-bar .ab-h{font-weight:800;color:#b91c1c;font-size:14.5px}#ann-bar .ab-t{font-size:13.5px;color:#111827}#ann-bar .ab-s{font-size:12px;color:#6b7280}#ann-bar .ab-btn{background:#dc2626;color:#fff;font-weight:700;white-space:nowrap;border:0}
+@media(max-width:600px){#ann-bar{flex-wrap:wrap;top:0}#ann-bar .ab-btn{width:100%}}
+body.has-cw #toastwrap{bottom:100px}
+#cw-fab{position:fixed;right:22px;bottom:22px;z-index:450;width:62px;height:62px;border-radius:50%;background:#1e2a5a;border:3px solid #f26522;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 22px rgba(30,42,90,.4);cursor:pointer;user-select:none}
+#cw-fab .cw-n{position:absolute;top:-5px;right:-5px;background:#dc2626;color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:2px 7px;border:2px solid #fff;line-height:1.2}
+#cw-bubble{position:fixed;right:22px;bottom:96px;z-index:451;width:290px;max-width:calc(100vw - 40px);background:#fff;border:1px solid #e5e7eb;border-radius:14px 14px 4px 14px;box-shadow:0 10px 26px rgba(0,0,0,.18);padding:10px 12px;font-size:13px;cursor:pointer}
+#cw-bubble .cwb-h{display:flex;justify-content:space-between;gap:6px;margin-bottom:3px;color:#1e2a5a}#cw-bubble .cwb-h span{color:#9ca3af;font-size:11px;white-space:nowrap}#cw-bubble .cwb-h a{color:#9ca3af;text-decoration:none}
+#cw-bubble .cwb-b{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}#cw-bubble .cwb-go{color:#f26522;font-size:12px;font-weight:700;margin-top:4px}
+#cw-win{position:fixed;right:22px;bottom:96px;z-index:460;width:380px;height:540px;max-height:calc(100vh - 120px);max-width:calc(100vw - 24px);background:#fff;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.25);display:flex;flex-direction:column;overflow:hidden;font-size:13.5px;border:1px solid #e5e7eb}
+#cw-win .cw-head{background:linear-gradient(90deg,#1e2a5a,#2b3a7a);color:#fff;padding:10px 12px;display:flex;align-items:center;gap:8px}#cw-win .cw-av{width:30px;height:30px;border-radius:50%;background:#f26522;display:flex;align-items:center;justify-content:center;flex:none}
+#cw-win .cw-ht{flex:1;line-height:1.25;min-width:0}#cw-win .cw-ht>div{font-size:11px;opacity:.85}#cw-win .cw-ht select{font-size:12px;padding:2px 4px;max-width:230px;color:#111;margin-top:2px}#cw-win .cw-hb{cursor:pointer;font-size:17px;opacity:.85;padding:0 3px}
+#cw-win .cw-ctx{background:#fff7ed;color:#9a3412;font-size:11.5px;padding:5px 12px;border-bottom:1px solid #fed7aa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cw-win .cw-thread{flex:1;overflow-y:auto;padding:8px 10px;background:#eef2f7}
+#cw-win .cw-att{display:none;gap:8px;align-items:center;padding:6px 10px;border-top:1px solid #fed7aa;background:#fff7ed;font-size:12px}#cw-win .cw-att img{width:64px;height:44px;object-fit:cover;border-radius:6px;border:1px solid #fdba74}
+#cw-win .cw-in{border-top:1px solid #e5e7eb;padding:8px 10px;display:flex;gap:6px;align-items:center;background:#fff}#cw-win .cw-ib{width:38px;height:38px;border-radius:50%;border:1px solid #e5e7eb;background:#fff;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none;padding:0}
+#cw-win .cw-cap{border-color:#fed7aa;background:#fff7ed}#cw-win #cw-text{flex:1;border-radius:999px;padding:9px 14px;min-width:0}#cw-win .cw-send{width:40px;height:40px;border-radius:50%;border:0;background:#f26522;color:#fff;font-size:17px;flex:none;cursor:pointer}
+@media(max-width:600px){#cw-win{right:6px;left:6px;width:auto;bottom:84px;height:calc(100vh - 110px)}#cw-fab{right:14px;bottom:14px}#cw-bubble{right:14px;bottom:86px}}
+#cw-cap{position:fixed;inset:0;z-index:900;cursor:crosshair;touch-action:none;user-select:none}#cw-cap .cc-img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}#cw-cap .cc-dim{position:absolute;inset:0;background:rgba(15,23,42,.45)}
+#cw-cap .cc-sel{position:absolute;border:2px dashed #fff;box-shadow:0 0 0 9999px rgba(15,23,42,.55)}
+#cw-cap .cc-bar{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;border-radius:12px;padding:8px 10px;display:flex;gap:8px;align-items:center;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:default;white-space:nowrap}#cw-cap .cc-bar button{background:#374151;color:#fff;border:0;border-radius:8px;padding:5px 10px;cursor:pointer}
+#cw-cap .cc-tog{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:#fff;border-radius:999px;padding:7px 14px;display:flex;gap:8px;align-items:center;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:default;margin:0;white-space:nowrap}#cw-cap .cc-tog input{width:auto}
+#cw-ed{position:fixed;inset:0;z-index:910;background:rgba(15,23,42,.6);display:flex;align-items:center;justify-content:center;padding:10px}#cw-ed .ce-box{background:#fff;border-radius:16px;width:900px;max-width:96vw;max-height:94vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+#cw-ed .ce-h{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e5e7eb;justify-content:space-between}#cw-ed .ce-wrap{padding:12px;background:#f3f4f6;overflow:auto;flex:1;text-align:center}#cw-ed .ce-cv{max-width:100%;max-height:62vh;border-radius:8px;touch-action:none;cursor:crosshair;background:#fff}
+#cw-ed .ce-f{padding:10px 14px;display:flex;gap:6px;align-items:center;border-top:1px solid #e5e7eb;flex-wrap:wrap}#cw-ed .ce-t{border:1px solid #d1d5db;background:#fff}#cw-ed .ce-t.on{border-color:#ef4444;color:#ef4444;font-weight:700}
+.fld-err{outline:3px solid #dc2626;outline-offset:3px;border-radius:8px;background:#fef2f2}.fld-err input,.fld-err select,.fld-err textarea{border-color:#dc2626!important}.fld-err-tip{color:#b91c1c;font-size:12.5px;font-weight:700;margin-top:4px}
+#fj-bar{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:470;background:#7f1d1d;color:#fff;padding:12px 18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:14px;max-width:min(680px,94vw);cursor:pointer}
+@media print{#cw-fab,#cw-win,#cw-bubble,#ann-bar,#fj-bar{display:none!important}}
 </style>
 </head>
 <body>
@@ -450,7 +488,7 @@ footer.note{max-width:1280px;margin:0 auto;padding:0 16px 30px;color:var(--mut);
     <div class="content">
       <div id="backupbar"></div>
       <main id="view"></main>
-      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-U (เฟส 1)</span><span id="ftr-full" class="hidden">Prototype v3 · build 0925-U (เฟส 1 · 💰 มัดจำรอออกรถตามฤกษ์ · 🔔 เด้งเตือนแชท/ตีกลับ + เสียง · 📣 ประกาศถึงสาขา (ป๊อปอัป · อัปเดตระบบ/ข่าวสาร · สถานะรับทราบ) · 📎 ช่องอัปโหลดสำเนาบัตรแบบกะทัดรัด · ⚠ เทียบเงื่อนไขหัวข้อ 4 กับ H-Cap + สรุปสิ้นเดือนส่วนที่ 15 ข้อมูลไม่ตรงรายเขต/สาขา · 📊 สรุปหลักการขาย (ฝ่ายขาย) · 🔗 กระทบยอดรายสาขา + ตัวกรองหลายค่า · 📊 สรุปสิ้นเดือนข้อ 10 อ่านหัวข้อ 4 + ยอดดาวน์ · 🔒 บังคับอัปเดตผลขาย/เลขสัญญา/เลขตัวถัง · 🚶 เหตุผลลูกค้ายกเลิก · 📎 สำเนาบัตร/ทะเบียนบ้าน + 💬 แชท (v5) · 💳 ส่วนที่ 4 แบบใหม่ · ประเภทการขาย + รูปแบบไฟแนนซ์ + หลักการขายรายเดือน/หน้าตรวจไฟล์ · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง + ตีกลับ/รับทราบ/เลขสัญญา/ป๊อปอัป · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ</span></footer>
+      <footer class="note"><span id="ftr-short">Prototype v3 · build 0925-V (เฟส 1)</span><span id="ftr-full" class="hidden"><span id="ftr-sum">Prototype v3 · build 0925-V (เฟส 1) · <a onclick="ftrToggle(true)">▸ ดูรายการอัปเดต</a></span><span id="ftr-det" class="hidden">Prototype v3 · build 0925-V (เฟส 1 · ⏳ นัดติดตามลูกค้า (≤7 วัน/สิ้นเดือน · เลื่อน 1 ครั้ง · เตือนเมื่อเปิดระบบจนรับทราบ · เลยนัด = แดง) · 📎 ตีกลับ/ขอแก้: สำเนาบัตร + ทะเบียนบ้าน · 🛒 ตั้งแต่ 1 ต.ค. 69 ไม่มีตัวเลือก "ขายไปแล้ว — ส่งเคสย้อนหลัง" · 🏢 H-Cap แบบ ข: 🟡 → 🔔 แจ้ง สนญ. ไม่นับไฟ · ป้าย H-Cap บนแถวเคส · 🎚 สนญ. ปรับไฟกล่อง H-Cap · 💑 รายได้คนในบ้าน/เงินโอนไม่นับ เว้นเป็นผู้ค้ำ · 📅 กระทบยอดรายวัน · 🙈 สาขาไม่เห็นตัวเลขเกณฑ์ สนญ. · 🔔 แจ้งเตือนงานเข้า (แถบ · ชื่อแท็บ · Windows) · 📣 แถบประกาศค้างจนรับทราบ · 💬 แชทลอย + ✂️ จับภาพหน้าจอ · ❌ ส่งไม่ผ่านพาไปช่องที่ผิด · 🏍 COSMOS ≤1 ปี แสดงตรงค่าที่บันทึก · 🔢 จำนวนงวดพิมพ์เอง 1–48 (ไฟแนนซ์ตามหลักการ · บอลลูน 48) · 💰 มัดจำรอออกรถตามฤกษ์ · 🔔 เด้งเตือนแชท/ตีกลับ + เสียง · 📣 ประกาศถึงสาขา (ป๊อปอัป · อัปเดตระบบ/ข่าวสาร · สถานะรับทราบ) · 📎 ช่องอัปโหลดสำเนาบัตรแบบกะทัดรัด · ⚠ เทียบเงื่อนไขหัวข้อ 4 กับ H-Cap + สรุปสิ้นเดือนส่วนที่ 15 ข้อมูลไม่ตรงรายเขต/สาขา · 📊 สรุปหลักการขาย (ฝ่ายขาย) · 🔗 กระทบยอดรายสาขา + ตัวกรองหลายค่า · 📊 สรุปสิ้นเดือนข้อ 10 อ่านหัวข้อ 4 + ยอดดาวน์ · 🔒 บังคับอัปเดตผลขาย/เลขสัญญา/เลขตัวถัง · 🚶 เหตุผลลูกค้ายกเลิก · 📎 สำเนาบัตร/ทะเบียนบ้าน + 💬 แชท (v5) · 💳 ส่วนที่ 4 แบบใหม่ · ประเภทการขาย + รูปแบบไฟแนนซ์ + หลักการขายรายเดือน/หน้าตรวจไฟล์ · 🎫 คิวรอ สนญ. ตรวจ 3 ฝั่ง + ตีกลับ/รับทราบ/เลขสัญญา/ป๊อปอัป · 👥 ผู้ค้ำบังคับเลือก มี/ไม่มี + กรอกทุกช่อง + ที่อยู่ผู้ค้ำ · 📅 สรุปสิ้นเดือน (หัวข้อ 1–12 · ป๊อปอัปบอกที่มา · ควรปรับแยกสาขา/สนญ.) · ไม่นับเคสขายก่อนวันเริ่มเก็บข้อมูล · วันดิวจากวันทำสัญญา · ช่วงวันค้าง 1–30/31–89/NPL/ฟ้อง · ข้อมูล ณ วันที่ตอนนำเข้า · ชนิดกุ้ง/ปลาบังคับ + ตารางค่าประเมินแยกชนิด · COSMOS พบประวัติ ≤ 1 ปี = 🔴 + แถวผู้ค้ำสำหรับตรวจ/COSMOS ผู้ค้ำ · การ์ดบุคคล: ซื้อรถไปใช้ · ผู้ใช้รถ · ผู้ค้ำ · 🦐🐟 เลี้ยงกุ้ง/ปลา ถามบ่อ·ไร่·กระชัง · รับจ้างเลี้ยงสัตว์ = ค่าแรงขั้นต่ำ · แจ้งเวอร์ชันใหม่ที่เครื่องสาขา (พักฟอร์มจนโหลดใหม่) + ป้ายบิลด์ต้นทางบนการ์ด · 🔍 อาชีพที่ลูกค้าบอก (บังคับพิมพ์ · คำถามต่อ · กลุ่มล็อก) · เตือนที่สาขา 🟡 ไม่ตรงคำ / 🔴 อาชีพเสริมซ้ำ (ไม่บล็อก) · การ์ด สนญ. เทียบคำที่บอก · 👁 ดูรหัสผู้ใช้ (ผู้ดูแล สนญ. ยืนยันรหัสตัวเอง) · 🗑 ลบเคสทดสอบทีละเคส (เฉพาะเคสที่ สนญ. ส่งเอง) · หัวข้อ 3.2 ติ๊กหลายรายการ+ยอดต่อรายการ · เงินจากรัฐแยกรายการ · บำนาญถามต่อ (จากอะไร/งาน-ตำแหน่งก่อนเกษียณ) · สนญ. เทียบกรมบัญชีกลาง+สิทธิรักษา · การ์ดอาชีพ: แถบสรุปเกษตร (ชนิด·ไร่/ตัว·อายุต้น·ที่ตั้ง·ทำมากี่ปี) ทุกบทบาท · สาขาไม่เห็นตัวเลขเกณฑ์/คำตัดสินอายุต้น-อายุงาน · อาชีพเสริม = ไฟสีบรรทัดเดียว 🟢/🟡/🔴 (🟡 ไม่นับไฟรวม · 🔴 ซ้ำอาชีพหลัก นับ) · CFG occ2YearsMin/occ2Score · รายได้อื่นของครัวเรือนนับใน DSR ตามที่มา (คู่สมรส/เงินโอน 0% เว้นแต่เป็นผู้ค้ำ) · เงินเหลือ/ผลรวม/เกณฑ์ 6 เดือน ซ่อนจากสาขา · หัวข้อ 3 แยก 3.1 รายได้อาชีพหลัก / 3.2 รายได้อาชีพเสริม-อื่นของครัวเรือน / 3.3 ภาระหนี้ (ติ๊ก+ยอดต่อรายการ 10 รายการ สนญ. แก้ได้) · ดึงอาชีพจากหัวข้อ 2 · ตัดค้าขาย/เกษตร/อื่นๆ ออกจากที่มารายได้อื่น · พิมพ์/PDF ฝั่งสาขา-เขต ไม่มีประเมินรายได้/DSR/คะแนน/ประเด็นภายใน · สูตรประเมินรายได้เกษตรเห็นเฉพาะ สนญ. · สรุปสิทธิที่ สนญ. ตรวจในมิติบุคคล · เหตุยกเว้นร่วมจ่ายครบตาม สปสช. + กฎตัวตน (ผู้สูงอายุ/เด็ก ↔ วันเกิด) · สวัสดิการกรมบัญชีกลางติ๊กหลายรายการ (อสม./ผู้สูงอายุ/ความพิการ/เด็กแรกเกิด) · ปุ่มคัดลอกเลขบัตร+เปิดเว็บ · คำใบ้อายุต้นไม่มีตัวเลข · เกษตรถามตรง ปลูก/เลี้ยงอะไร + อายุต้น/จำนวนตัว · อาชีพเสริมบังคับเลือก มี/ไม่มี → รายได้เสริมประเมินเหมือนอาชีพหลัก · ตัดตัวเลือก "อื่นๆ" ในบุคคลอ้างอิง/ผู้ค้ำ · แบ่งหน้ารายการเคส 10 แถว/หน้า (สนญ./สาขา/เขต) · การ์ดเรียง 🟢🟡🔴 แล้ว ℹ️ ล่างสุด · ป้ายอายุงาน/อายุกิจการ+กล่องก่อนหน้าตามกลุ่มอาชีพ · สนญ. ปรับไฟการ์ดต่อมิติพร้อมเหตุผล · สิทธิรักษาแบบละเอียด (ม.33/39-40/ข้าราชการ/บัตรทอง/ยกเว้นร่วมจ่าย) · ตรวจบัตรสวัสดิการแห่งรัฐทุกเคส เทียบรายได้ · รายงาน: ผลผ่อนนับเมื่อผ่านดิวงวดแรก + คลิกดูรายชื่อเคสที่จับคู่/ไม่จับคู่ · ตัวกรองสาขาตามเขต · คลิกกล่องดูรายชื่อเคส (ป๊อปอัป) 3 บทบาท · นับเคสยกเลิกในกล่อง · เรียงงานถึงคิวมาก่อนอยู่บน+ปุ่มสลับ · หัวหน้าลงตัว 3 จอ · ตัวเลขนับงานสูตรเดียวทุกหน้า/ทุกบทบาท · ค้างชำระ H-Cap ไล่สี 30/90 เฉพาะสัญญาที่ผ่อนอยู่ · เจ้าของบ้านลำดับ ≥3 เป็น ℹ️ · ซ่อมหมวดอาชีพพอร์ต (บั๊กที่ทำงานว่าง) · เบอร์คู่สมรสซ้ำเป็น ℹ️ สนญ. · ทะเบียนบ้าน ≥10 คน/ลำดับ ≥8 · เทียบ H-Cap เป็น ℹ️ · หน้าเริ่ม สนญ. นับตามเฟส 1 · กันค่าขีด/ไม่มี ในช่องบังคับ · คำใบ้นายจ้างกลุ่มรับจ้าง · เกณฑ์อายุ/รายได้/ทะเบียนบ้าน ตั้งค่าได้ · ป้ายหน่วยงาน/ตำแหน่ง ตามกลุ่มอาชีพ · ดักเลขบัตรฝั่งสาขา · ขอแก้ข้อมูลหลังส่ง (เลือกช่อง → สนญ. อนุมัติ) · เติมเลขสัญญาย้อนหลัง · COSMOS ไม่พบ/พบ/แบล็คลิสต์ · ปิดบรรทัดพื้นที่เสี่ยง+ความมั่นคงอาชีพ · ข้อความการ์ดไม่ขอแนบเอกสาร (สาขาขอดูจากลูกค้า) · ไม่ขอรูปร้านจนเฟส 2 · เขตเห็นเหมือนสาขา · ช่องข้อความในเคส สาขา/เขต ↔ สนญ. · คอลัมน์ผลวิเคราะห์เบื้องต้นท้ายสุด · ปิดคะแนนเครดิต · ตรวจโดย สนญ. ประกันสังคม+COSMOS · ค่าแรงขั้นต่ำ 77 จังหวัด) — ข้อมูลถูกเก็บถาวรในเบราว์เซอร์ของเครื่องนี้ (ปิด-เปิดใหม่ยังอยู่ แต่ไม่ตามไปเครื่องอื่น) · แนะนำกด "💾 สำรองข้อมูลทั้งระบบ" ในหน้าตั้งค่าเป็นประจำ <a onclick="ftrToggle(false)">▾ ซ่อน</a></span></span></footer>
     </div>
   </div>
 </div>
@@ -722,7 +760,7 @@ function mergeCase(base, other){ const o=Object.assign({}, base); let changed=fa
   /* 0915-F: hqChecks (health/cosmos) แยกต่อรายการ at ใหม่ชนะ */
   try{ if(other.hqChecks){ o.hqChecks=Object.assign({},base.hqChecks||{}); ['health','cosmos','welfare'].forEach(k=>{ const ov=other.hqChecks[k], bv=(base.hqChecks||{})[k]; if(ov&&(ov.at||0)>((bv&&bv.at)||0)){ o.hqChecks[k]=ov; changed=true; if(k==='health'){ o.healthRight=ov.r; o.healthSub=ov.sub||''; } } }); } }catch(e){}
   /* 0923-A: hqOverride (ปรับไฟโดย สนญ.) แยกต่อมิติ at ใหม่ชนะ (รวม tombstone lv=null) */
-  try{ if(other.hqOverride){ o.hqOverride=Object.assign({},base.hqOverride||{}); ['person','occ','income'].forEach(k=>{ const ov=other.hqOverride[k], bv=(base.hqOverride||{})[k]; if(ov&&(ov.at||0)>((bv&&bv.at)||0)){ o.hqOverride[k]=ov; changed=true; } }); } }catch(e){}
+  try{ if(other.hqOverride){ o.hqOverride=Object.assign({},base.hqOverride||{}); ['person','occ','income','hcap'].forEach(k=>{ const ov=other.hqOverride[k], bv=(base.hqOverride||{})[k]; if(ov&&(ov.at||0)>((bv&&bv.at)||0)){ o.hqOverride[k]=ov; changed=true; } }); } }catch(e){}
   if(Array.isArray(other.revisions)){ const br=Array.isArray(base.revisions)?base.revisions.slice():[]; const seen={}; br.forEach(r=>{ seen[(r.at||0)+'|'+(r.type||'')]=1; }); let add=false; other.revisions.forEach(r=>{ const k=(r.at||0)+'|'+(r.type||''); if(!seen[k]){ br.push(r); seen[k]=1; add=true; } }); if(add){ br.sort((x,y)=>(x.at||0)-(y.at||0)); o.revisions=br; changed=true; } }
   if(Array.isArray(other.thread)){ const bth=Array.isArray(base.thread)?base.thread.slice():[]; const seen={}; bth.forEach(t=>{ seen[(t.at||0)+'|'+(t.by||'')]=1; });
     other.thread.forEach(t=>{ const key=(t.at||0)+'|'+(t.by||''); if(!seen[key]){ bth.push(t); seen[key]=1; changed=true; } }); if(bth.length!==(base.thread||[]).length){ bth.sort((x,y)=>(x.at||0)-(y.at||0)); o.thread=bth; } }
@@ -738,11 +776,12 @@ function cloudPushCase(a){ if(!a||!a.id) return; a._dirty=true; a._dirtyAt=Date.
 function cloudPushMaster(key,data){ if(!cloudReady()) return; cloudCall('setMaster',{key,data,by:(SESSION&&SESSION.name)||''})
   .then(j=>{ const c=loadCloud(); c.masterAt[key]=j.updatedAt||Date.now(); saveCloud(); }).catch(()=>{}); }
 /* 0912-G: ดึงแบบเพิ่มเติม — ปกติขอเฉพาะเคสที่ชีตแก้หลังรอบก่อน (เผื่อย้อน 10 นาที) · ดึงเต็มเฉพาะครั้งแรก/ทุก 30 นาที/กดซิงก์เอง → เร็วขึ้นหลายเท่าเมื่อเคสมีรูปแนบ */
-function cloudPullCases(full){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
- const doFull = !!full || !c.lastPull || !c.lastFull || (Date.now()-c.lastFull > 30*60000);
+function cloudPullCases(full,lite){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
+ if(lite&&!c.lastPull) return Promise.resolve();   /* 0925-V: lite = ดึงเฉพาะเคสที่เปลี่ยน (ตอนอยู่แท็บอื่น) ไม่ดึงเต็ม */
+ const doFull = !lite && (!!full || !c.lastPull || !c.lastFull || (Date.now()-c.lastFull > 30*60000));
  const since = doFull ? 0 : Math.max(0, (c.lastPull||0) - 10*60000);
  window.__pullFull = doFull;
- return cloudCall('getCases',{since}, 0, {timeout: doFull?60000:25000}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=3) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
+ return cloudCall('getCases',{since}, lite?9:0, {timeout: doFull?60000:25000}).catch(e=>{ c.failN=(c.failN||0)+1; if(c.failN>=3) c.lastErr=String(e&&e.message||e); saveCloud(); try{ renderSyncChip(); }catch(_){} throw e; }).then(j=>{ let changed=false; const chIds=[];
    (j.cases||[]).forEach(sv=>{ if(!sv||!sv.id) return; if(isPurged(sv)) return;   /* 0912-D: เคสที่ล้างแล้ว — ไม่รับกลับมา */
      delete sv._dirty; delete sv._dirtyAt; delete sv.__pushedAt; const i=APPS.findIndex(x=>x.id===sv.id);
      if(i<0){ APPS.push(sv); changed=true; chIds.push(sv.id); }
@@ -768,7 +807,7 @@ function cloudPullCases(full){ if(!cloudReady()) return Promise.resolve(); const
      else _bgRefresh(); } }); }
 /* 0914-B: รีเฟรชหน้าจอหลังซิงก์เบื้องหลัง — ห้ามวาดทับฟอร์มที่กำลังกรอก (สาเหตุ "ข้อมูลหาย ต้องกรอกใหม่") */
 function _bgRefresh(){ try{ if(!SESSION||typeof currentTab==='undefined'||!currentTab) return;
- if(currentTab==='form'){ window.__formStale=true; try{ renderSyncChip(); }catch(e){} return; }
+ if(currentTab==='form'){ window.__formStale=true; try{ renderSyncChip(); }catch(e){} try{ nwTick(); }catch(e){} return; }   /* 0925-V: แถบงานเข้าแม้กำลังกรอกฟอร์ม (ไม่วาดทับฟอร์ม) */
  const mb=document.getElementById('modal-bg'); if(mb&&!mb.classList.contains('hidden')) return;   /* มีหน้าต่างเปิดอยู่ (กำลังพิมพ์ในกล่อง) ก็ไม่วาดทับ */
  go(currentTab); }catch(e){} }
 function cloudPullMaster(){ if(!cloudReady()) return Promise.resolve(); const c=loadCloud();
@@ -1560,6 +1599,7 @@ function updateBell(){
  window._bellPrev=n; if(SESSION.role==='branch') window._bellPrevC=items.filter(a=>hqSent(a)).length;
  try{ retNotify(); }catch(e){}
  updateQueueBadge();
+ try{ nwTick(); }catch(e){}
 }
 function statusPlain(s){ return ({approved:'อนุมัติ',rejected:'ปฏิเสธ',moreinfo:'ขอข้อมูลเพิ่ม',pending:'รอพิจารณา'})[s]||s; }
 function updateQueueBadge(){
@@ -1577,13 +1617,13 @@ function retNotify(){ if(!(SESSION&&SESSION.role==='branch')||!p1()) return; con
  if(!L.length) return; L.slice(-3).forEach(x=>{ const m=x.m; mx=Math.max(mx,m.at||0); toast('↩️ สนญ. ตีกลับเคส '+x.a.id+' · '+(x.a.name||''), _p1Esc(String(m.msg||'').slice(0,120))+' · ตอบ/แก้ข้อมูลในเคส', x.a.id, '#c2410c', {sticky:true, key:'ret_'+x.a.id}); });
  L.forEach(x=>{ mx=Math.max(mx,x.m.at||0); }); try{ localStorage.setItem(_notKey('ret'),mx); }catch(e){} try{ bellDing(); }catch(e){} }
 function chatNotify(){ if(!SESSION||!v5On()||(SESSION.role!=='branch'&&SESSION.role!=='analyst')) return; const base=_notBase('chat'); const other=SESSION.role==='branch'?'hq':'br'; const side=SESSION.role==='branch'?'readBr':'readHq';
- const c=chatLoad(); const L=Object.values(c.msgs||{}).filter(m=>m.role===other&&!m[side]&&(m.at||0)>base&&chatScopeBranches().indexOf(m.branch)>=0&&!(typeof currentTab!=='undefined'&&currentTab==='chat'&&CHAT_SEL===m.branch&&!document.hidden)).sort((x,y)=>(x.at||0)-(y.at||0));
+ const c=chatLoad(); const L=Object.values(c.msgs||{}).filter(m=>m.role===other&&!m[side]&&(m.at||0)>base&&chatScopeBranches().indexOf(m.branch)>=0&&!(typeof currentTab!=='undefined'&&currentTab==='chat'&&CHAT_SEL===m.branch&&!document.hidden)&&!(typeof CW!=='undefined'&&CW.open&&CW.sel===m.branch&&!document.hidden)).sort((x,y)=>(x.at||0)-(y.at||0));
  if(!L.length) return; const mx=Math.max(base,...L.map(m=>m.at||0)); try{ localStorage.setItem(_notKey('chat'),mx); }catch(e){}
  const open=br=>()=>{ CHAT_SEL=br; go('chat'); };
- if(SESSION.role==='branch'){ const m=L[L.length-1]; toast('💬 สนญ. ตอบข้อความแล้ว'+(L.length>1?' ('+L.length+' ข้อความ)':''), m.text?'"'+_p1Esc(String(m.text).slice(0,100))+'"':'🖼 ส่งภาพ', '', '#f26522', {btn:'เปิดอ่าน →', click:open(m.branch), key:'chat'}); }
+ if(SESSION.role==='branch'){ const m=L[L.length-1]; chatPop('💬 สนญ. ตอบข้อความแล้ว'+(L.length>1?' ('+L.length+' ข้อความ)':''), m.text?'"'+_p1Esc(String(m.text).slice(0,100))+'"':'🖼 ส่งภาพ', '#f26522', {btn:'เปิดอ่าน →', click:open(m.branch), key:'chat'}, m.branch); }
  else { const G={}; L.forEach(m=>{ G[m.branch]=(G[m.branch]||0)+1; }); const brs=Object.keys(G); const nm=br=>(BRANCHES.find(b=>b.code===br)||{}).label||br;
-  if(brs.length===1){ const m=L[L.length-1]; toast('💬 ข้อความใหม่จากสาขา '+nm(brs[0])+(L.length>1?' ('+L.length+')':''), m.text?'"'+_p1Esc(String(m.text).slice(0,100))+'"':'🖼 ส่งภาพ', '', '#1d4ed8', {btn:'เปิดแชท →', click:open(brs[0]), key:'chat'}); }
-  else toast('💬 ข้อความใหม่ '+L.length+' ข้อความ จาก '+brs.length+' สาขา', brs.map(b=>nm(b)+' ('+G[b]+')').join(' · '), '', '#1d4ed8', {btn:'เปิดแชท →', click:open(brs[0]), key:'chat'}); }
+  if(brs.length===1){ const m=L[L.length-1]; chatPop('💬 ข้อความใหม่จากสาขา '+nm(brs[0])+(L.length>1?' ('+L.length+')':''), m.text?'"'+_p1Esc(String(m.text).slice(0,100))+'"':'🖼 ส่งภาพ', '#1d4ed8', {btn:'เปิดแชท →', click:open(brs[0]), key:'chat'}, brs[0]); }
+  else chatPop('💬 ข้อความใหม่ '+L.length+' ข้อความ จาก '+brs.length+' สาขา', brs.map(b=>nm(b)+' ('+G[b]+')').join(' · '), '#1d4ed8', {btn:'เปิดแชท →', click:open(brs[0]), key:'chat'}, brs[0]); }
  try{ bellDing(); }catch(e){} }
 function toast(title, body, goId, color, opt){ opt=opt||{};   /* 0925-U: opt {btn, click, sticky} */
  const wrap=document.getElementById('toastwrap'); if(!wrap) return;
@@ -1625,7 +1665,7 @@ function viewHome(){
    return `<div onclick="openDetail('${a.id}')" style="display:flex;align-items:center;gap:9px;padding:9px 10px;background:#f8fafc;border-radius:8px;cursor:pointer">
      <span style="width:7px;height:7px;border-radius:50%;background:${dot};flex-shrink:0"></span>
      <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${a.name||'-'} · ${a.id}</div>
-       <div style="font-size:11px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">สาขา${b?b.label:a.branch} · ${prod}${wait?' · รอ '+wait:''}</div></div>
+       <div style="font-size:11px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">สาขา${b?b.label:a.branch} · ${prod}${wait?' · รอ '+wait:''}</div>${(function(){ const t=hqRowTags(a); return t?'<div style="margin-top:3px;margin-left:-6px">'+t+'</div>':''; })()}</div>
      ${pill}</div>`; };
  return `<div style="border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px">
   <div style="background:var(--navy);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
@@ -2139,7 +2179,7 @@ function NAVG_(){ return {
    {items:[['exec','ภาพรวมผู้บริหาร','dash'],['chat','แชทสาขา','chat']]},
    {label:p1()?'การ์ดที่สาขาส่ง':'งานพิจารณา', ico:'inbox', items:p1()?[['queue','รอตรวจ + แนะนำ','clock'],['done','ส่งให้สาขาแล้ว','check']]:[['queue','รอพิจารณา','clock'],['done','พิจารณาแล้ว','check']]},
    {label:'การเฝ้าระวัง', ico:'shield', items:[['watch','ลูกค้า/เลขถังเฝ้าระวัง','shield'],['risk','พื้นที่เฝ้าระวัง','pin']]},
-   {label:'รายงานประเมินเกณฑ์ (รายเดือน)', ico:'target', items:[['eom','📅 สรุปสิ้นเดือน','target'],['rpt_month','รายงานประจำเดือน','target'],['rpt_zone','เจาะลึก เขต → สาขา','pin'],['rpt_tune','โต๊ะปรับเกณฑ์ (สนญ.)','sliders'],['recon','กระทบยอด H-Cap','back'],['dq','คุณภาพข้อมูล','db'],['cxstat','สถิติการยกเลิกคำขอ','ban']].concat(p1()?[]:[['acc','ความแม่นเกณฑ์','flask'],['track','ติดตามผล/ทดลอง','flask']])},
+   {label:'รายงานประเมินเกณฑ์ (รายเดือน)', ico:'target', items:[['eom','📅 สรุปสิ้นเดือน','target'],['rpt_month','รายงานประจำเดือน','target'],['rpt_zone','เจาะลึก เขต → สาขา','pin'],['rpt_tune','โต๊ะปรับเกณฑ์ (สนญ.)','sliders'],['recon','กระทบยอด H-Cap','back'],['recday','📅 กระทบยอดรายวัน','back'],['dq','คุณภาพข้อมูล','db'],['cxstat','สถิติการยกเลิกคำขอ','ban']].concat(p1()?[]:[['acc','ความแม่นเกณฑ์','flask'],['track','ติดตามผล/ทดลอง','flask']])},
    {label:'ตั้งค่าระบบ', ico:'sliders', items:[['cfg','ตั้งค่าเกณฑ์','sliders'],['promo','หลักการขาย/เกรดสาขา','tag'],['pbsum','สรุปหลักการขาย (ฝ่ายขาย)','tag'],['sim','ดอกผล/เพดาน','percent'],['agri','ค่าอ้างอิงรายได้เกษตร','plant'],['chk3cfg','การ์ดตรวจ 3 มิติ / ค่าอ้างอิงรายได้','shield']]},
    {label:'ผู้ดูแลระบบ', ico:'users', items:[['users','การจัดการผู้ใช้','users'],['cloud','เชื่อมต่อ Google Sheet','db']]}
  ]
@@ -2165,8 +2205,14 @@ function buildTabs(){
  go(SESSION.role==='branch'?'form':SESSION.role==='zone'?'zov':SESSION.role==='basic'?'me':'home');
  updateQueueBadge(); try{ updateChatBadge(); }catch(e){}
 }
-function ftrApply(){ try{ const hq=!!(SESSION&&SESSION.role==='analyst'); const f=document.getElementById('ftr-full'), t=document.getElementById('ftr-short'); if(f) f.classList.toggle('hidden',!hq); if(t) t.classList.toggle('hidden',hq); }catch(e){} }   /* 0923-D: สาขา/เขต/หน้าล็อกอิน เห็นแค่เลขรุ่น · สนญ. เห็นรายละเอียดเต็ม */
-function go(tab){ ftrApply();
+function ftrApply(){ try{ const hq=!!(SESSION&&SESSION.role==='analyst'); const f=document.getElementById('ftr-full'), t=document.getElementById('ftr-short'); if(f) f.classList.toggle('hidden',!hq); if(t) t.classList.toggle('hidden',hq); let op=false; try{ op=localStorage.getItem('moto24_ftr_open')==='1'; }catch(e){} const su=document.getElementById('ftr-sum'), de=document.getElementById('ftr-det'); if(su) su.classList.toggle('hidden',op); if(de) de.classList.toggle('hidden',!op); }catch(e){} }
+function ftrToggle(open){ try{ localStorage.setItem('moto24_ftr_open',open?'1':'0'); }catch(e){} ftrApply(); }   /* 0925-V: footer สนญ. พับไว้เป็นค่าเริ่มต้น · จำต่อเครื่อง */   /* 0923-D: สาขา/เขต/หน้าล็อกอิน เห็นแค่เลขรุ่น · สนญ. เห็นรายละเอียดเต็ม */
+function hqRecheckPending(){ try{ if(!(SESSION&&SESSION.role==='analyst')||!p1()) return 0; const V=chk3Version(); let n=0;
+ APPS.forEach(a=>{ if(a.status!=='pending'||hqSent(a)||!a.check3||!a.check3.ver||a.check3.ver===V) return;
+  try{ const c=a.calc||calcAll(a); const _n=chk3Snap(check3(a,c)); const ch=_n.overall!==a.check3.overall||JSON.stringify(_n.lv)!==JSON.stringify(a.check3.lv); a.check3=_n; if(ch){ a.updatedAt=Date.now(); n++; try{ cloudPushCase(a); }catch(e){} } }catch(e){} });
+ saveApps(); return n; }catch(e){ return 0; } }   /* 0925-V: เคสรอตรวจที่การ์ดยังไม่ส่ง → ไฟตามเกณฑ์ปัจจุบัน · เคสที่ส่งการ์ดแล้วคงไฟเดิม (สิ่งที่สาขาเห็น) */
+function go(tab){ try{ if(SESSION&&SESSION.role==='analyst'&&CFG&&!CFG.fuFrom){ CFG.fuFrom=thDay(); saveCfg(); } }catch(e){}   /* 0925-V: วันเริ่มใช้นัดติดตาม — เคสรอเดิมได้นัด = วันทำการถัดไป */
+ setTimeout(()=>{ try{ fuBarRender(); if(SESSION&&((SESSION.role==='analyst'&&tab==='home')||(SESSION.role==='zone'&&tab==='zov'))){ const v=document.getElementById('view'); const h=fuSummaryHTML(); if(v&&h&&!v.querySelector('.fu-sum')){ const d=document.createElement('div'); d.innerHTML=h; v.insertBefore(d.firstChild,v.children[1]||null); } } }catch(e){} },0); ftrApply(); try{ if(SESSION&&((tab==='queue'&&SESSION.role==='analyst')||(tab==='list'&&SESSION.role==='branch'))) localStorage.setItem(nwKey(),String(Date.now())); }catch(e){} try{ if(SESSION&&SESSION.role==='analyst'&&window.__hqRechk!==SESSION.email){ window.__hqRechk=SESSION.email; hqRecheckPending(); } }catch(e){}
  if(SESSION&&SESSION.role==='zone'&&(tab==='rpt_zone'||tab==='dq')) tab='zov'; /* 0916-B: ปิดรายงานเขต/คุณภาพข้อมูลสำหรับเขต */
  currentTab=tab; if(tab!=='form') setTimeout(()=>{ try{ annTick(); }catch(e){} },400);   /* 0925-T */
  document.querySelectorAll('.snav-item').forEach(b=>b.classList.toggle('on',b.id==='tab-'+tab));
@@ -2192,6 +2238,7 @@ function go(tab){ ftrApply();
  if(tab==='dq') v.innerHTML=viewDQ();
  if(tab==='cxstat') v.innerHTML=viewCancelStats();
  if(tab==='recon') v.innerHTML=viewRecon();
+ if(tab==='recday') v.innerHTML=viewReconDaily();
  if(tab==='pbsum') v.innerHTML=viewPbSum();   /* 0925-R */
  if(tab==='eom') v.innerHTML=viewEom();   /* 0925-C */
  if(tab==='ann') v.innerHTML=viewAnn();   /* 0925-T */
@@ -2208,6 +2255,7 @@ function go(tab){ ftrApply();
  renderBackupBar();
  renderAgriReminder();
  try{ newVerRender(); }catch(e){}
+ try{ annBarRender(); cwRender(); if(CW.open){ const cx=document.getElementById('cw-ctx'); if(cx) cx.textContent='📍 หน้า: '+cwCtx(); } }catch(e){}   /* 0925-V */
 }
 function renderAgriReminder(){
  const el=document.getElementById('backupbar'); if(!el||!SESSION||SESSION.role!=='analyst'||!AGRI_EST) return;
@@ -2438,8 +2486,13 @@ function welfareAmt(){ const c=(CFG&&CFG.welfareAmt)||{}; return {asm:+c.asm>0?+
 /* 0924-E: รายได้อื่นของครัวเรือน นับใน DSR ตาม "ที่มา" (ไม่มีหลักฐาน) · คู่สมรส/เงินโอน = 0% เว้นแต่คนนั้นเป็นผู้ค้ำ */
 function incSrcFactorCfg(){ const c=(CFG&&CFG.incSrcFactor)||{}; const d=(CFG&&CFG.incExtraNoProofFactor!=null)?Math.round(CFG.incExtraNoProofFactor*100):50; const g=(k,def)=>(c[k]==null||c[k]==='')?def:Math.max(0,Math.min(100,+c[k]||0)); return {occ2:g('occ2',d), gov:g('gov',d), rent:g('rent',d), spouse:g('spouse',0), transfer:g('transfer',0), guar:g('guar',d), other:d}; }
 function incSrcClass(a){ try{ const xf=(a&&Array.isArray(a.incomeExtraItems)&&a.incomeExtraItems.length)?incItemsFactor(a):null; if(xf) return xf.cls; }catch(e){} const s=String((a&&a.incomeExtraSrc)||''); if((a&&a.occ2&&a.occ2.has)||/^อาชีพเสริม/.test(s)) return 'occ2'; if(/คู่สมรส|คนในบ้าน/.test(s)) return 'spouse'; if(/เงินโอน|ลูก\/ญาติ/.test(s)) return 'transfer'; if(/รัฐ|เบี้ย|บำนาญ|อสม|ค่าป่วยการ/.test(s)) return 'gov'; if(/ค่าเช่า|ดอกเบี้ย|ปันผล/.test(s)) return 'rent'; return 'other'; }
-function incSrcGuar(a){ try{ if(!(a&&a.guar)) return false; const g=a.guar; const nm=String(g.firstName||g.nameOnly||g.name||'').trim(); if(!nm) return false; const rel=String(g.relation||''); const cls=incSrcClass(a); if(cls==='spouse') return /คู่สมรส|บิดา|มารดา|บุตร|พี่|น้อง|ญาติ/.test(rel); if(cls==='transfer') return /บุตร|ญาติ|พี่|น้อง|บิดา|มารดา/.test(rel); return false; }catch(e){ return false; } }
+function incSrcGuar(a,_cls){ try{ if(!(a&&a.guar)) return false; const g=a.guar; const nm=String(g.firstName||g.nameOnly||g.name||'').trim(); if(!nm) return false; const rel=String(g.relation||''); const cls=_cls||incSrcClass(a);   /* 0925-V: _cls = ชนิดของรายการ (หลายแหล่ง) */ if(cls==='spouse') return /คู่สมรส|บิดา|มารดา|บุตร|พี่|น้อง|ญาติ/.test(rel); if(cls==='transfer') return /บุตร|ญาติ|พี่|น้อง|บิดา|มารดา/.test(rel); return false; }catch(e){ return false; } }
 function incSrcLabel(cls){ return {multi:'หลายที่มา',occ2:'อาชีพเสริมของลูกค้า',spouse:'คู่สมรส/คนในบ้าน',transfer:'เงินโอนจากลูก/ญาติ',gov:'เงินจากรัฐ',rent:'ค่าเช่า/ดอกเบี้ย',other:'รายได้เสริม (ค่าเดิม)'}[cls]||cls; }
+/* 0925-V: รายได้เสริมของลูกค้าเอง (ไม่รวมคู่สมรส/คนในบ้าน/เงินโอนจากลูก-ญาติ) */
+function incOwnExtra(a){ try{ const it=Array.isArray(a&&a.incomeExtraItems)?a.incomeExtraItems.filter(x=>x&&+x.amt>0):[]; if(it.length) return it.reduce((s,x)=>{ let c=x.cls||(incItemDef(x.k)||{}).cls||'other'; if(x.k==='occ2') c='occ2'; return s+((c==='spouse'||c==='transfer')?0:+x.amt); },0);
+ const c=incSrcClass(a); return (c==='spouse'||c==='transfer')?0:(+a.incomeExtra||0); }catch(e){ return +a.incomeExtra||0; } }
+function incExtraSub(a){ try{ const tot=+a.incomeExtra||0; if(tot<=0) return ''; if(!(SESSION&&SESSION.role==='analyst')) return ' + เสริม '+fmt(tot);   /* สาขา/เขตไม่เห็นการนับ % */ const own=incOwnExtra(a); const oth=tot-own; if(oth<=0) return ' + เสริม '+fmt(tot);
+ const f=incSrcFactorCfg(); const g=incSrcGuar(a,'spouse')||incSrcGuar(a,'transfer'); return (own>0?' + เสริม '+fmt(own):'')+' · คนในบ้าน/เงินโอน '+fmt(oth)+(g?' (ผู้ค้ำ นับ '+f.guar+'%)':' (ไม่นับ)'); }catch(e){ return ' + เสริม '+fmt(+a.incomeExtra||0); } }
 function incExtraFactor(a){ try{ const xf=(a&&Array.isArray(a.incomeExtraItems)&&a.incomeExtraItems.length)?incItemsFactor(a):null; if(xf) return xf; }catch(e){} const f=incSrcFactorCfg(); const cls=incSrcClass(a); let pct=f[cls]!=null?f[cls]:f.other; let via=''; if((cls==='spouse'||cls==='transfer')&&incSrcGuar(a)){ pct=Math.max(pct,f.guar); via='guar'; } return {pct, cls, via, factor:pct/100}; }
 function welfareItems(a){ const wf=(a&&a.hqChecks||{}).welfare||{}; if(Array.isArray(wf.items)) return wf.items.slice(); if(wf.r==='has') return ['card']; return []; }
 function welfareSummary(a){ const wf=(a&&a.hqChecks||{}).welfare||{}; const r=wf.r||'unchecked'; if(r==='unchecked') return 'ยังไม่ได้ตรวจ'; if(r==='error') return 'ค้นไม่ได้ / ระบบล่ม'; const it=welfareItems(a); return it.length? it.map(welfareItemLabel).join(' · ') : 'ไม่พบสวัสดิการจากรัฐ'; }
@@ -2459,7 +2512,7 @@ function setHealthRight(id,val){ const a=APPS.find(x=>x.id===id); if(!a) return;
 function setCosmos(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const g=k=>{ const e=document.getElementById(k); return e?String(e.value||'').trim():''; }; const r=g('cz-r')||'unchecked';
  a.hqChecks=a.hqChecks||{}; a.hqChecks.cosmos={r,date:g('cz-date'),shop:g('cz-shop'),note:g('cz-note'),at:Date.now(),by:(SESSION&&SESSION.name)||''}; _hqCheckSave(a); openDetail(id); }
 function hqChecksPanel(a){ if(!(SESSION&&SESSION.role==='analyst'&&a.status!=='cancelled')) return ''; const hr=occHealthRight(a.occupation); const cz=(a.hqChecks||{}).cosmos||{}; const mo=+((CFG&&CFG.cosmosMonths)||6); const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); const need=hqChecksNeeded(a);
- const _czr=(cz.r==='recent'||cz.r==='old')?'found':(cz.r||'unchecked'); const opt=(v,t,st)=>`<option value="${v}"${st?' style="'+st+'"':''}${_czr===v?' selected':''}>${t}</option>`;   /* 0916-D: ค่าเก่า recent/old แสดงเป็น พบประวัติ */
+ const _czr=(cz.r==='old')?'found':(cz.r||'unchecked');   /* 0925-V: 'recent' (≤12 เดือน) แสดงตามค่าจริง — เดิมแปลงเป็น found ทำให้กดบันทึกซ้ำแล้วลดเป็น 🟡 */ const opt=(v,t,st)=>`<option value="${v}"${st?' style="'+st+'"':''}${_czr===v?' selected':''}>${t}</option>`;   /* 0916-D: ค่าเก่า recent/old แสดงเป็น พบประวัติ */
  return `<div class="card mb noprint" style="border:1.5px dashed #94a3b8;background:#f8fafc"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;align-items:center"><b style="color:var(--navy)">🔎 ตรวจโดย สนญ. <span class="mut" style="font-weight:400;font-size:12px">— ติ๊กก่อนส่งการ์ด มีผลต่อไฟทันที · สาขาไม่เห็นกล่องนี้</span></b>${need.length?`<span class="tag" style="background:#fef9c3;color:#854d0e">ยังไม่ตรวจ: ${need.join(' · ')}</span>`:'<span class="tag t-ok">ตรวจครบแล้ว</span>'}</div>
   <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:#fff;border:1px solid #c7d2fe;border-radius:8px;padding:6px 10px;margin-top:8px;font-size:12px"><span class="mut">ข้อมูลลูกค้าสำหรับตรวจ:</span> <span class="mut">เลขบัตร</span> <b style="font-family:monospace;font-size:13px">${esc(normDigits(a.idcard||''))}</b> <button class="btn btn-line btn-sm" style="padding:1px 7px" onclick="copyTxt('${esc(normDigits(a.idcard||''))}',this)">📋</button> <span class="mut">วันเกิด</span> <b style="font-family:monospace;font-size:13px">${esc(birthBE(a)||'-')}</b> <button class="btn btn-line btn-sm" style="padding:1px 7px" onclick="copyTxt('${esc(birthBE(a))}',this)">📋</button> <span class="mut">ชื่อ-สกุล</span> <b>${esc(((a.firstName||a.nameOnly||'')+' '+(a.lastName||a.lastNameOnly||'')).trim()||a.name||'')}</b> <button class="btn btn-line btn-sm" style="padding:1px 7px" onclick="copyTxt('${esc(((a.firstName||a.nameOnly||'')+' '+(a.lastName||a.lastNameOnly||'')).trim()||a.name||'')}',this)">📋</button> <button class="btn btn-navy btn-sm" onclick="copyTxt('${esc(normDigits(a.idcard||''))}\t${esc(birthBE(a))}\t${esc(((a.firstName||a.nameOnly||'')+' '+(a.lastName||a.lastNameOnly||'')).trim()||a.name||'')}',this)">📋 คัดลอกทั้งชุด</button> <span class="mut" style="font-size:11px">— ปุ่มส้มในแต่ละช่อง = คัดลอกเลขบัตร + เปิดเว็บ แล้ววาง (Ctrl+V)</span></div>
   ${(function(){ try{ const gq=a.guar; if(!gq||!(gq.name||gq.idcard)) return ''; const gid=normDigits(gq.idcard||''); const gb=birthBE({birth:gq.birth}); const gn=String(gq.name||'').trim(); const cg=(a.hqChecks||{}).cosmosGuar||{}; const btn=(k,t)=>`<button class="btn btn-sm ${cg.r===k?'btn-org':'btn-line'}" style="padding:2px 8px;font-size:11.5px;border-radius:999px" onclick="setCosmosGuar('${a.id}','${k}')">${t}${cg.r===k?' ✓':''}</button>`;
@@ -2495,6 +2548,14 @@ const SALE_RESULTS=[['sold','🛒 ขายแล้ว (ทำสัญญา)'
 /* 0925-U: มัดจำรอออกรถ = ผลชั่วคราว (เหมือน 'รอลูกค้าตัดสินใจ') · นัดได้ภายในเดือนที่บันทึกมัดจำ · เลื่อนนัดได้ CFG.depPostpone ครั้ง (ค่าเริ่ม 1) · หลังวันนัดต้องอัปเดตภายใน 1 วันทำการ */
 function saleInterim(sl){ return !!(sl&&(sl.result==='waiting'||sl.result==='deposit')); }
 function depMaxPost(){ const v=CFG&&CFG.depPostpone; return v==null||v===''?1:Math.max(0,+v||0); }
+/* 0925-V: นัดติดตามลูกค้า (ผลขาย 'waiting') — แบบเดียวกับมัดจำ: นัดได้ไม่เกิน fuMaxDays วัน และไม่เกินสิ้นเดือน · เลื่อนได้ fuMaxPost ครั้ง · พ้นนัดต้องอัปเดตภายในวันทำการถัดไป */
+function fuFrom(){ return (CFG&&CFG.fuFrom)||'2026-10-03'; }   /* เคสรอเดิมที่ไม่มีวันนัด → นัด = วันทำการถัดจาก max(วันบันทึก, วันนี้ในรุ่นนี้) */
+function fuMaxDays(){ const v=+(CFG&&CFG.fuMaxDays); return v>0?v:7; }
+function fuMaxPost(){ const v=CFG&&CFG.fuMaxPost; return (v===0||v>0)?+v:1; }
+function fuAppt(a){ const s=a&&a.sale; if(!s||s.result!=='waiting') return ''; if(s.fu&&s.fu.appt) return s.fu.appt; let d=thDay(s.at||Date.now()); if(d<fuFrom()) d=fuFrom(); d=_addDay(d,1); let g=0; while(saleWorkOff(d)&&g++<7) d=_addDay(d,1); return d; }
+function fuLate(a){ const ap=fuAppt(a); if(!ap||thDay()<=ap) return false; return _dayGap(_ymdMs(_addDay(ap,1))+12*3600e3)>=Math.max(1,saleLockDays()); }
+function fuState(a){ const ap=fuAppt(a); if(!ap) return ''; const t=thDay(); if(fuLate(a)) return 'late'; if(t>ap) return 'due'; if(t===ap) return 'today'; if(_addDay(t,1)===ap) return 'tomorrow'; return 'wait'; }
+function fuTxt(a){ const ap=fuAppt(a); const st=fuState(a); return st==='late'?'⚠ เลยนัดติดตาม '+_thDowDm(ap):st==='due'?'⏰ เลยนัด '+_thDowDm(ap)+' · อัปเดตวันนี้':st==='today'?'📅 นัดติดตามวันนี้':'รอลูกค้า · นัด '+_thDowDm(ap); }
 function depMonthEnd(ym){ const [y,m]=String(ym||thDay().slice(0,7)).split('-').map(Number); return y+'-'+String(m).padStart(2,'0')+'-'+String(new Date(y,m,0).getDate()).padStart(2,'0'); }
 function depDueX(a){ const d=a&&a.sale&&a.sale.dep; if(!d||!d.appt) return null; return {a,kind:'dep',t:_ymdMs(_addDay(d.appt,1))+12*3600e3}; }   /* เริ่มนับวันทำการถัดจากวันนัด */
 function depLate(a){ const x=depDueX(a); if(!x||thDay()<=a.sale.dep.appt) return false; return _dayGap(x.t)>=Math.max(1,saleLockDays()); }
@@ -2508,7 +2569,7 @@ function p1State(a){ if(!a) return 'sent'; if(a.status==='cancelled') return 'ca
  if(a.sale&&a.sale.result&&a.sale.result!=='waiting') return a.sale.result;
  const overdue=a.submittedAt&&_dayKey(a.submittedAt)<_dayKey(Date.now());
  if(!a.ack3) return 'ackwait';           /* 0921-B: ยังไม่รับทราบ = รอรับทราบเสมอ (ไม่ย้ายไป 'ค้าง' ตามวัน) */
- if(a.sale&&a.sale.result==='waiting') return overdue?'overdue':'waiting';
+ if(a.sale&&a.sale.result==='waiting') return fuLate(a)?'overdue':'waiting';   /* 0925-V: นับค้างเมื่อพ้นนัดติดตาม */
  if(overdue) return 'overdue';
  return 'reviewed'; }
 function p1Tag(a){ const s=p1State(a);
@@ -2639,15 +2700,22 @@ function openSaleOutcome(id){ const a=APPS.find(x=>x.id===id); if(!a) return;
   +'<button onclick="document.getElementById(\'sale-ov\').remove()" style="position:absolute;top:10px;right:14px;border:none;background:none;font-size:20px;cursor:pointer;color:#888">✕</button>'
   +'<h3 style="margin:0 0 4px;color:#e8541e">🛒 บันทึกผลการขาย — '+a.id+' · '+(a.name||'')+'</h3>'
   +'<div class="mut" style="font-size:12.5px;margin-bottom:10px">การ์ด 3 มิติ: <b style="color:'+L.col+'">'+L.ic+' '+L.t+'</b> · บันทึกวันต่อวัน เพื่อใช้วิเคราะห์ความแม่นยำของระบบ (ไม่ใช่การอนุมัติ)</div>'
-  +'<div class="field"><label>ผลการขาย <span class="req">*</span></label><select id="so-result" onchange="(function(){const r=document.getElementById(\'so-result\').value; document.getElementById(\'so-contract-w\').style.display=r===\'sold\'?\'\':\'none\'; var cw=document.getElementById(\'so-creason-w\'); if(cw) cw.style.display=r===\'cancelled\'?\'\':\'none\'; var dw=document.getElementById(\'so-dep-w\'); if(dw) dw.style.display=r===\'deposit\'?\'\':\'none\'; var rw=document.getElementById(\'so-deprf-w\'); if(rw) rw.style.display=r===\'cancelled\'?\'\':\'none\'; document.getElementById(\'so-reason-req\').style.display=(r===\'sold\'&&\''+lv+'\'===\'bad\')||r===\'notsold\'?\'\':\'none\';})()">'+SALE_RESULTS.filter(s=>!(_upd&&s[0]==='waiting')&&!(_fromDep&&(s[0]==='notsold'||(s[0]==='deposit'&&_depLeft<=0)))).map(s=>'<option value="'+s[0]+'"'+(cur.result===s[0]?' selected':'')+'>'+(_fromDep&&s[0]==='deposit'?'💰 เลื่อนวันนัดออกรถ (เหลือ '+_depLeft+' ครั้ง)':s[1])+'</option>').join('')+'</select>'+(_upd?'<div class="mut" style="font-size:12px;margin-top:4px">'+(_fromDep?'เดิมบันทึก "มัดจำรอออกรถ" · '+depTxt(a.sale)+' (':'เดิมบันทึกไว้ว่า "รอลูกค้าตัดสินใจ" (')+fmtDT(a.sale.at)+') — อัปเดตเป็นผลจริง</div>':'')+'</div>'
+  +'<div class="field"><label>ผลการขาย <span class="req">*</span></label><select id="so-result" onchange="(function(){const r=document.getElementById(\'so-result\').value; document.getElementById(\'so-contract-w\').style.display=r===\'sold\'?\'\':\'none\'; var cw=document.getElementById(\'so-creason-w\'); if(cw) cw.style.display=r===\'cancelled\'?\'\':\'none\'; var dw=document.getElementById(\'so-dep-w\'); if(dw) dw.style.display=r===\'deposit\'?\'\':\'none\'; var rw=document.getElementById(\'so-deprf-w\'); if(rw) rw.style.display=r===\'cancelled\'?\'\':\'none\'; document.getElementById(\'so-reason-req\').style.display=(r===\'sold\'&&\''+lv+'\'===\'bad\')||r===\'notsold\'?\'\':\'none\';})()">'+SALE_RESULTS.filter(s=>!(_upd&&s[0]==='waiting'&&!(a.sale&&a.sale.result==='waiting'&&fuMaxPost()-((a.sale.fu||{}).post||0)>0))&&!(_fromDep&&(s[0]==='notsold'||(s[0]==='deposit'&&_depLeft<=0)))).map(s=>'<option value="'+s[0]+'"'+(cur.result===s[0]?' selected':'')+'>'+(_fromDep&&s[0]==='deposit'?'💰 เลื่อนวันนัดออกรถ (เหลือ '+_depLeft+' ครั้ง)':(_upd&&s[0]==='waiting')?'⏳ เลื่อนนัดติดตามลูกค้า (เหลือ '+(fuMaxPost()-((a.sale.fu||{}).post||0))+' ครั้ง)':s[1])+'</option>').join('')+'</select>'+(_upd?'<div class="mut" style="font-size:12px;margin-top:4px">'+(_fromDep?'เดิมบันทึก "มัดจำรอออกรถ" · '+depTxt(a.sale)+' (':'เดิมบันทึกไว้ว่า "รอลูกค้าตัดสินใจ" (')+fmtDT(a.sale.at)+') — อัปเดตเป็นผลจริง</div>':'')+'</div>'
   +'<div id="so-contract-w" style="display:'+((cur.result||'sold')==='sold'?'':'none')+'">'+'<div class="field"><label>เลขที่สัญญา '+(_req?'<span class="req">*</span>':'(ถ้ามีแล้ว)')+' <span class="mut" style="font-weight:400;font-size:11px">— ใช้จับคู่กับ balance_report</span></label><input id="so-contract" value="'+_p1Esc(cur.contract||'')+'" placeholder="เช่น 2201250404000001">'+(_req?'<label style="display:block;font-size:12.5px;margin-top:4px;cursor:pointer"><input type="checkbox" id="so-ctlater"> เลขที่สัญญายังไม่ออก — จะมาเติมภายหลัง'+(_L?' (ต้องเติม'+(function(){ const d=saleDueBy({kind:'ct',t:Date.now()}); return (d<=thDay()?'ภายในวันนี้':'ภายใน '+_thDowDm(d))+' — ถ้ายังไม่เติม หลังจากนั้นจะส่งเคสใหม่ไม่ได้'; })()+')':'')+'</label>':'')+'</div>'+'<div class="field"><label>เลขตัวถัง '+(_req?'<span class="req">*</span>':'(ถ้ามี)')+'</label><input id="so-frame" value="'+_p1Esc(cur.frameNo||a.frameNo||'')+'" placeholder="เช่น MLHJF8110P5xxxxxx"></div></div>'
   +'<div id="so-dep-w" style="display:'+(cur.result==='deposit'?'':'none')+';border:1.5px solid #fde68a;background:#fffbeb;border-radius:10px;padding:10px 12px;margin-bottom:10px">'+'<div style="display:flex;gap:10px;flex-wrap:wrap"><div class="field" style="flex:1;min-width:140px;margin:0"><label>ยอดมัดจำ (บาท) <span class="req">*</span></label><input id="so-dep-amt" type="number" min="1" value="'+((cur.dep||_dep0||{}).amt||'')+'"'+(_fromDep?' readonly':'')+'></div>'+'<div class="field" style="flex:1;min-width:160px;margin:0"><label>วันนัดออกรถ (ตามฤกษ์) <span class="req">*</span></label><input id="so-dep-appt" type="date" min="'+(_fromDep&&_dep0.appt>=thDay()?_addDay(_dep0.appt,1):thDay())+'" max="'+depMonthEnd(_depYm)+'" value="'+((cur.dep||{}).appt||'')+'"></div></div>'+'<div class="field" style="margin:8px 0 0"><label>เลขใบเสร็จรับเงินมัดจำ <span class="req">*</span></label><input id="so-dep-rc" value="'+_p1Esc((cur.dep||_dep0||{}).rc||'')+'"'+(_fromDep?' readonly':'')+' placeholder="เช่น RC-6910-0123"></div>'+'<div class="mut" style="font-size:12px;margin-top:8px;line-height:1.7">⏰ นัดได้ภายในเดือนขาย (ถึง '+_thDowDm(depMonthEnd(_depYm))+') · ไม่นับค้างจนถึงวันนัด · <b>หลังวันนัด ต้องอัปเดตภายใน 1 วันทำการ</b> (ขายแล้ว + เลขสัญญา/เลขตัวถัง หรือ ลูกค้ายกเลิก) ไม่งั้นล็อกส่งเคสใหม่ · เลื่อนนัดได้ '+depMaxPost()+' ครั้ง'+(_fromDep?' (เหลือ '+_depLeft+')':'')+'</div></div>'
   +(_fromDep?'<div class="field" id="so-deprf-w" style="display:none"><label>เงินมัดจำ <span class="req">*</span></label><div style="display:flex;gap:14px;font-size:13.5px"><label style="font-weight:400;cursor:pointer"><input type="radio" name="so-deprf" value="refund" style="width:auto"> คืนลูกค้า</label><label style="font-weight:400;cursor:pointer"><input type="radio" name="so-deprf" value="forfeit" style="width:auto"> ไม่คืน (ตามเงื่อนไขมัดจำ)</label></div></div>':'')
   +'<div class="field" id="so-creason-w" style="display:'+(cur.result==='cancelled'?'':'none')+'"><label>เหตุผลที่ลูกค้ายกเลิก <span class="req">*</span> <span class="mut" style="font-weight:400;font-size:11px">(เลือก 1 ข้อ · เลือก "อื่น ๆ" ต้องพิมพ์ระบุด้านล่าง)</span></label><div style="display:flex;flex-direction:column;gap:6px">'+CANCEL_REASONS.map(c=>'<label style="display:flex;gap:8px;align-items:center;border:1.5px solid #e5e7eb;border-radius:9px;padding:8px 10px;font-size:13.5px;cursor:pointer;font-weight:400"><input type="radio" name="so-creason" value="'+c[0]+'" style="width:auto;margin:0;flex:none"'+(cur.cancelReason===c[0]?' checked':'')+'><span style="flex:1;text-align:left">'+c[1]+'</span></label>').join('')+'</div></div>'
   +'<div class="field"><label>เหตุผล/หมายเหตุ <span class="req" id="so-reason-req" style="display:'+(((cur.result||'sold')==='sold'&&lv==='bad')||cur.result==='notsold'?'':'none')+'">*</span> <span class="mut" style="font-weight:400;font-size:11px">'+(lv==='bad'?'(การ์ดขึ้น 🔴 — ถ้าขาย ต้องระบุเหตุผลที่สาขามั่นใจ)':'(แนะนำระบุสั้น ๆ)')+'</span></label><textarea id="so-reason" rows="3" style="width:100%">'+(cur.reason||'').replace(/</g,'&lt;')+'</textarea></div>'
   +'<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:6px"><button class="btn btn-line" onclick="document.getElementById(\'sale-ov\').remove()">ยกเลิก</button><button class="btn btn-red" onclick="saveSaleOutcome(\''+a.id+'\')">💾 บันทึกผลการขาย</button></div>'
-  +'</div>'; }
-function saveSaleOutcome(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const r=document.getElementById('so-result').value; const reason=(document.getElementById('so-reason').value||'').trim(); const contract=(document.getElementById('so-contract')||{}).value||''; const lv=lightOf(a);
+  +'</div>'; try{ fuWire(a); }catch(e){} }
+function fuWire(a){ const sel=document.getElementById('so-result'); const rw=document.getElementById('so-reason'); if(!sel||!rw) return; const fld=rw.closest('.field'); const f0=(a.sale&&a.sale.result==='waiting')?(a.sale.fu||{appt:fuAppt(a),post:0,legacy:true}):null; const left=f0?Math.max(0,fuMaxPost()-(f0.post||0)):fuMaxPost();
+ const t=thDay(); let mx=_addDay(t,fuMaxDays()); const me=depMonthEnd(t.slice(0,7)); if(mx>me) mx=me;
+ const w=document.createElement('div'); w.id='so-fu-w'; w.style.cssText='border:1.5px solid #fde68a;background:#fffbeb;border-radius:10px;padding:10px 12px;margin-bottom:10px;display:'+(sel.value==='waiting'?'':'none');
+ w.innerHTML='<div class="field" style="margin:0"><label>📅 วันนัดติดตามลูกค้า <span class="req">*</span> <span class="mut" style="font-weight:400;font-size:11px">(ไม่เกิน '+fuMaxDays()+' วัน · ไม่เกินสิ้นเดือน · ถึงวันนัดระบบเตือนสาขา)</span></label><input id="so-fu-appt" type="date" min="'+t+'" max="'+mx+'" value="" style="max-width:200px"></div>'
+  +(f0?'<div style="font-size:12.5px;margin-top:6px;color:#92400e">นัดเดิม '+_thDowDm(f0.appt)+(f0.legacy?' (ระบบตั้งให้)':'')+' · เลื่อนนัดได้อีก <b>'+left+'</b> ครั้ง'+(left?'':' — ครั้งนี้ต้องเลือกผลจริง: ขายแล้ว / มัดจำ / ไม่ขาย / ลูกค้ายกเลิก')+'</div>':'')
+  +'<div class="mut" style="font-size:11.5px;margin-top:4px">ลูกค้าขอเกินสิ้นเดือน → บันทึก "ลูกค้ายกเลิก — เปลี่ยนใจ ยังไม่ซื้อตอนนี้" แล้วส่งเคสใหม่เมื่อพร้อม</div>';
+ fld.parentNode.insertBefore(w,fld); sel.addEventListener('change',()=>{ w.style.display=sel.value==='waiting'?'':'none'; }); }
+function saveSaleOutcome(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const r=document.getElementById('so-result').value; if(!r){ alert('กรุณาเลือกผลการขาย'); return; } const reason=(document.getElementById('so-reason').value||'').trim(); const contract=(document.getElementById('so-contract')||{}).value||''; const lv=lightOf(a);
  const frame=String((document.getElementById('so-frame')||{}).value||'').trim(); const ctLater=!!(document.getElementById('so-ctlater')||{}).checked;   /* 0925-P */
  if(((r==='sold'&&lv==='bad')||r==='notsold')&&!reason){ alert(r==='sold'?'การ์ดขึ้น 🔴 — กรุณาระบุเหตุผลที่ตัดสินใจขาย':'กรุณาระบุเหตุผลที่ไม่ขาย'); return; }
  const _cr=((document.querySelector('input[name="so-creason"]:checked')||{}).value)||'';
@@ -2666,10 +2734,15 @@ function saveSaleOutcome(id){ const a=APPS.find(x=>x.id===id); if(!a) return; co
   if(_fd){ if((_pv.dep.post||0)>=depMaxPost()){ alert('เลื่อนนัดครบ '+depMaxPost()+' ครั้งแล้ว — อัปเดตเป็นขายแล้ว หรือ ลูกค้ายกเลิก'); return; } if(ap<=_pv.dep.appt){ alert('วันนัดใหม่ต้องหลังวันนัดเดิม ('+_thDowDm(_pv.dep.appt)+')'); return; } }
   _dep={amt,rc,appt:ap,month:ym,post:_fd?(_pv.dep.post||0)+1:0,first:_fd?(_pv.dep.first||_pv.dep.appt):ap,at:_fd?(_pv.dep.at||_pv.at):Date.now(),hist:_fd?(_pv.dep.hist||[]).concat([{appt:_pv.dep.appt,at:Date.now()}]):[]}; }
  if(_fd&&r==='cancelled'){ _rf=((document.querySelector('input[name="so-deprf"]:checked')||{}).value)||''; if(!_rf){ alert('กรุณาเลือกว่าเงินมัดจำ คืนลูกค้า หรือ ไม่คืน'); return; } }
+ let _fu=null; if(r==='waiting'){ const ap=String((document.getElementById('so-fu-appt')||{}).value||''); const t=thDay(); let mx=_addDay(t,fuMaxDays()); const me=depMonthEnd(t.slice(0,7)); if(mx>me) mx=me; const pf=(a.sale&&a.sale.result==='waiting')?(a.sale.fu||{appt:fuAppt(a),post:0,legacy:true}):null;
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(ap)){ alert('กรุณาเลือกวันนัดติดตามลูกค้า'); return; } if(ap<t){ alert('วันนัดติดตามต้องไม่ก่อนวันนี้'); return; } if(ap>mx){ alert('วันนัดติดตามต้องไม่เกิน '+fuMaxDays()+' วัน และไม่เกินสิ้นเดือน (ไม่เกิน '+_thDowDm(mx)+')\nถ้าลูกค้าขอนานกว่านี้ ให้บันทึก "ลูกค้ายกเลิก — เปลี่ยนใจ ยังไม่ซื้อตอนนี้" แล้วส่งเคสใหม่เมื่อพร้อม'); return; }
+  if(pf){ if((pf.post||0)>=fuMaxPost()){ alert('เลื่อนนัดติดตามครบ '+fuMaxPost()+' ครั้งแล้ว — เลือกผลจริง: ขายแล้ว / มัดจำ / ไม่ขาย / ลูกค้ายกเลิก'); return; } if(ap<=pf.appt){ alert('วันนัดใหม่ต้องหลังวันนัดเดิม ('+_thDowDm(pf.appt)+')'); return; } }
+  _fu={appt:ap,post:pf?(pf.post||0)+1:0,first:pf?(pf.first||pf.appt):ap,hist:pf?(pf.hist||[]).concat([{appt:pf.appt,at:Date.now()}]):[]}; }
  const prev=a.sale; const beforeHQ=!hqSent(a); const keepFlags=prev?{beforeSubmit:!!prev.beforeSubmit,beforeHQ:!!prev.beforeHQ,soldDate:prev.soldDate}:{beforeHQ};
  a.sale=Object.assign({at:Date.now(),by:(SESSION&&SESSION.name)||'',role:SESSION&&SESSION.role,result:r,reason,contract:contract.trim(),light:lv,against:(r==='sold'&&lv==='bad')||(r==='notsold'&&lv==='ok'),afterAck:!!a.ack3},keepFlags);
  if(r==='cancelled') a.sale.cancelReason=_cr;
  if(_dep) a.sale.dep=_dep;
+ if(_fu) a.sale.fu=_fu;   /* 0925-V: นัดติดตาม */
  if(_fd&&r!=='deposit') a.sale.fromDeposit={amt:_pv.dep.amt,rc:_pv.dep.rc,appt:_pv.dep.appt,post:_pv.dep.post||0,at:_pv.dep.at||_pv.at,refund:_rf||''};   /* 0925-U */
  if(r==='sold'){ if(frame){ a.sale.frameNo=frame; a.frameNo=frame; try{ if(a._form&&a._form.f) a._form.f['f-frameno']=frame; }catch(e){} } if(ctLater&&!a.sale.contract) a.sale.ctLater=true; }   /* 0925-P */
  if(prev&&prev.result==='waiting'&&SESSION.role!=='analyst') a.sale.fromWaiting=prev.at||0;
@@ -3434,7 +3507,7 @@ function viewForm(){
    <div class="field" id="w-fin4"><label>ยอดจัด (บาท)</label><input id="c-fin4" class="auto" readonly></div>
    <div class="field hidden" id="w-fin"><label>ยอดจัด (วงเงินที่ขอ) <span class="req">*</span></label><input id="f-finance" type="number" min="0" placeholder="พิมพ์จำนวนเงิน" oninput="liveCalc()"></div>
    <div class="field" id="w-term4"><label>จำนวนงวด <span class="req">*</span></label>
-    <select id="f-term" onchange="liveCalc()"><option>12</option><option>18</option><option>24</option><option>30</option><option>36</option><option>42</option><option>48</option></select></div>
+    <input id="f-term" type="number" inputmode="numeric" min="1" max="48" step="1" value="12" placeholder="พิมพ์จำนวนงวด" oninput="liveCalc()"><div class="mut" id="f-term-hint" style="font-size:11.5px;margin-top:3px"></div><div id="f-term-err" style="color:#b91c1c;font-size:12px;margin-top:2px"></div></div>
    <div class="field"><label>ค่างวด/เดือน (ตาม H-Capital) <span class="req">*</span></label><input id="f-instov" type="number" min="0" placeholder="พิมพ์ค่างวดตามระบบ H-Capital" oninput="liveCalc()"></div>
    <div class="field hidden" id="w-last4"><label>ค่างวดงวดสุดท้าย (บอลลูน) <span class="req">*</span></label><input id="f-balloonov" type="number" min="0" placeholder="พิมพ์งวดสุดท้ายตาม H-Capital" oninput="liveCalc()"></div>
    <div class="field"><label>วันดิวงวดแรก <span class="req">*</span></label><input id="f-firstdue" type="date" onchange="liveCalc()"></div>
@@ -3446,7 +3519,7 @@ function viewForm(){
  <div class="card mb fstep hidden" id="fstep-5"><div class="sechead">5. ผู้ค้ำประกันและประวัติ</div>
   <div class="fgrid3">
    <div class="field"><label>ผู้ค้ำประกัน / เอกสาร <span class="req">*</span></label><select id="f-guar" onchange="toggleGuar();liveCalc()">${opt(GUAR,'g_doc')}</select></div>
-   <div class="field" style="grid-column:1/-1;border:1px dashed #fdba74;background:#fff7ed;border-radius:10px;padding:10px 12px"><label>🛒 สถานะการขายตอนส่งเคสนี้ <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:11px">(เฟส 1 ส่งหลังขายได้ แต่ต้องระบุตามจริง — ใช้วิเคราะห์ความแม่นของระบบ)</span></label>
+   ${saleBackOn()?'':`<div class="field" id="f-salestate-note" style="grid-column:1/-1;border:1px solid #bfdbfe;background:#eff6ff;border-radius:10px;padding:10px 12px;font-size:13px;color:#1e3a8a">🛒 <b>ขั้นตอนตั้งแต่ ${thShort(sec4From())}:</b> ส่งเคสให้ สนญ. ตรวจก่อน → รับทราบการ์ด → ทำสัญญาใน H-Cap → บันทึกผลขายในระบบ <span style="color:#64748b">(ไม่รับเคสที่ขายไปแล้วแล้วส่งย้อนหลัง)</span></div>`}<div class="field" id="f-salestate-box" style="grid-column:1/-1;border:1px dashed #fdba74;background:#fff7ed;border-radius:10px;padding:10px 12px;${saleBackOn()?'':'display:none;'}"><label>🛒 สถานะการขายตอนส่งเคสนี้ <span class="req">*</span> <span style="font-weight:400;color:#6b7280;font-size:11px">(เฟส 1 ส่งหลังขายได้ แต่ต้องระบุตามจริง — ใช้วิเคราะห์ความแม่นของระบบ)</span></label>
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
      <select id="f-salestate" style="min-width:260px" onchange="(function(){const v=document.getElementById('f-salestate').value; document.getElementById('f-salesold-w').style.display=v==='sold'?'flex':'none';})()"><option value="">— เลือก —</option><option value="waiting">ยังไม่ขาย — รอผลตรวจ/ลูกค้าตัดสินใจ</option><option value="sold">ขายไปแล้ว — ส่งเคสย้อนหลัง</option></select>
      <div id="f-salesold-w" style="display:none;gap:8px;flex-wrap:wrap;align-items:flex-end"><div class="field" style="margin:0"><label>วันที่ขาย <span class="req">*</span></label><input id="f-saledate" placeholder="วว/ดด/ปปปป" style="width:140px" onblur="smartDate(this)"></div><div class="field" style="margin:0"><label>เลขที่สัญญา ${saleReqOn()?'<span class="req">*</span>':'<span style="font-weight:400;color:#6b7280;font-size:11px">(ถ้ามี)</span>'}</label><input id="f-salecontract" placeholder="เช่น 2201250404000001" style="width:220px"></div><div class="field" style="margin:0"><label>เลขตัวถัง ${saleReqOn()?'<span class="req">*</span>':'<span style="font-weight:400;color:#6b7280;font-size:11px">(ถ้ามี)</span>'}</label><input id="f-frameno" placeholder="เช่น MLHJF8110P5xxxxxx" style="width:220px" oninput="liveCalc()"></div></div>
@@ -3724,6 +3797,7 @@ function personCfgHTML(){ const h=houseCfg(); const N=(lab,get,set,title,w)=>`<l
   <div class="flex" style="gap:8px;flex-wrap:wrap;margin-top:8px">
    <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="รายได้/อาชีพ/จังหวัด ที่แจ้ง ต่างจากที่ H-Cap เคยบันทึก (Customer_report) — off = ไม่แสดง · info = ℹ️ สนญ. เห็น ไฟไม่เปลี่ยน · warn = 🟡">เทียบข้อมูลเดิม H-Cap <select onchange="CFG.hcapCmpMode=this.value;saveCfg()"><option value="info" ${hcapCmpMode()==='info'?'selected':''}>ℹ️ แจ้งเพื่อทราบ (สนญ.)</option><option value="off" ${hcapCmpMode()==='off'?'selected':''}>ปิด</option><option value="warn" ${hcapCmpMode()==='warn'?'selected':''}>🟡 เตือน (เฟส 2)</option></select></label>
    <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="เบอร์คู่สมรสเป็นเบอร์เดียวกับลูกค้า — ปิด = ไม่แสดง · แจ้งเพื่อทราบ = ℹ️ สนญ. เห็น ไฟไม่เปลี่ยน สาขาไม่เห็น · เตือน = 🟡 ทั้งสองฝั่ง (เฟส 2)">เบอร์คู่สมรสซ้ำกับลูกค้า <select onchange="CFG.spousePhoneMode=this.value;saveCfg()"><option value="info" ${spousePhoneMode()==='info'?'selected':''}>ℹ️ แจ้งเพื่อทราบ (สนญ.)</option><option value="off" ${spousePhoneMode()==='off'?'selected':''}>ปิด</option><option value="warn" ${spousePhoneMode()==='warn'?'selected':''}>🟡 เตือน (เฟส 2)</option></select></label>
+   <label class="btn btn-line" style="margin:0;display:inline-flex;align-items:center;gap:6px" title="ตอนผู้ใช้อยู่แท็บอื่น/ย่อ Chrome ระบบเช็กเคสที่เปลี่ยนทุกกี่นาที เพื่อเตือนที่ชื่อแท็บ + แจ้งเตือน Windows (ปิด = ไม่เช็ก)">🔔 เช็กงานเข้าตอนอยู่แท็บอื่น · สนญ. <select onchange="CFG.nwPoll=Object.assign({},nwPollCfg(),{hq:+this.value});saveCfg()">${[1,2,5,10,0].map(v=>`<option value="${v}" ${nwPollCfg().hq===v?'selected':''}>${v?v+' นาที':'ปิด'}</option>`).join('')}</select> · สาขา/เขต <select onchange="CFG.nwPoll=Object.assign({},nwPollCfg(),{br:+this.value});saveCfg()">${[5,10,0].map(v=>`<option value="${v}" ${nwPollCfg().br===v?'selected':''}>${v?v+' นาที':'ปิด'}</option>`).join('')}</select></label>
   </div>
   <p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น: อายุ 20 / 60 · รายได้ 150,000 · ผู้อยู่อาศัย 10 · หอพัก 6 · ลำดับ 8 · เจ้าของลำดับ 3 · "ลำดับมากกว่าจำนวนคน" = 🔴 เสมอ (กรอกผิด)</p></div>`+`<div class="card mb"><h3>🏢 เกณฑ์ประวัติชำระ H-Cap <span class="mut" style="font-weight:400;font-size:12px">— นับเฉพาะสัญญาที่ผ่อนอยู่ · ใช้จำนวนวันค้างชำระ ณ วันข้อมูลพอร์ต · รถยึด/บอกเลิกสัญญา = 🔴 เสมอ</span></h3><div class="flex" style="gap:8px;flex-wrap:wrap">${N('ค้างไม่เกิน',hcapLateCfg().okMax,'CFG.hcapLate=CFG.hcapLate||{};CFG.hcapLate.okMax=+this.value||30','ค้างชำระไม่เกินกี่วัน = 🟢 ปกติ',56)} <span class="mut">วัน = 🟢</span>${N('ค้างตั้งแต่',hcapLateCfg().okMax+1,'CFG.hcapLate=CFG.hcapLate||{};CFG.hcapLate.okMax=Math.max(0,(+this.value||31)-1)','ค้างตั้งแต่กี่วัน = 🟡 (= ค่าเขียว+1)',56)} <span class="mut">วัน = 🟡</span>${N('ค้างตั้งแต่',hcapLateCfg().badMin,'CFG.hcapLate=CFG.hcapLate||{};CFG.hcapLate.badMin=+this.value||90','ค้างตั้งแต่กี่วัน = 🔴',56)} <span class="mut">วัน = 🔴</span>${N('รายงาน: ประเมินผลผ่อนได้เมื่อผ่านดิวแล้ว ≥',rptMinDue(),'CFG.rptMinDue=Math.max(0,+this.value||0)','สัญญาที่ยังไม่ถึงวันดิวงวดแรก (ณ วันข้อมูลพอร์ต) ไม่นับเป็น "ผ่อนปกติ" ในรายงาน · 0 = นับทุกสัญญาแบบเดิม',56)} <span class="mut">งวด</span></div><p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น 30 / 31 / 90 (หัวหน้า 21 ก.ย.) · เคสเก่าคำนวณใหม่เองเมื่อ สนญ. เปิดดู · รายงาน: ค่าเริ่มต้น 1 งวด (22 ก.ย.)</p></div>`+(function(){ const dc=dpdCfg(); return `<div class="card mb"><h3>📅 เฟส 1: วันเริ่มเก็บข้อมูล + ช่วงวันค้าง (0925-C) <span class="mut" style="font-weight:400;font-size:12px">— ใช้ในฟอร์มสาขา (บล็อกเคสขายก่อนวันเริ่ม) · รายงานทุกหน้าไม่นับเคสนอกช่วง · 📅 สรุปสิ้นเดือน</span></h3><div class="flex" style="gap:8px;flex-wrap:wrap;align-items:center"><label class="mut" style="font-size:12.5px">วันเริ่มเก็บข้อมูล <input id="cfg-p1start" value="${p1StartTh()}" placeholder="วว/ดด/ปปปป" style="width:120px" onchange="(function(el){ const ms=_thDateMs(el.value); if(!ms){ alert('รูปแบบวันที่ไม่ถูกต้อง (วว/ดด/ปปปป)'); el.value=p1StartTh(); return; } CFG.p1StartDate=_ymdStr(ms); saveCfg(); el.value=p1StartTh(); })(this)"></label> <span class="mut" style="font-size:12px">ช่วงวันค้าง:</span> ${N('1 ถึง',dc.b1,'CFG.dpdBands=Object.assign({},CFG.dpdBands||{},{b1:Math.max(1,+this.value||30)});saveCfg()','ค้าง 1–N วัน',56)} <span class="mut">วัน ·</span> ${N('ถึง',dc.b2,'CFG.dpdBands=Object.assign({},CFG.dpdBands||{},{b2:Math.max(2,+this.value||89)});saveCfg()','ช่วงที่ 2 ถึงกี่วัน (ถัดไป = NPL)',56)} <span class="mut">วัน · NPL ≥ ${dc.npl} วัน ·</span> ${N('ฟ้อง ≥',dc.legal,'CFG.dpdBands=Object.assign({},CFG.dpdBands||{},{legal:Math.max(3,+this.value||210)});saveCfg()','เข้ากระบวนการฟ้องตั้งแต่กี่วัน',60)} <span class="mut">วัน</span></div><p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น 17/09/2569 · 1–30 / 31–89 / NPL ≥90 / ฟ้อง ≥210 (ผู้ใช้ 25–26 ก.ย.) · วันดิวงวดแรก = วันทำสัญญา + 1 เดือน (พอร์ต › เลขสัญญา › วันดิวที่สาขากรอก) · ค้างวันที่ 1 = วันถัดจากดิว · บอกเลิก/ยึด = NPL ขึ้นไป · เคสเดิมไม่ถูกแก้ แค่รายงานไม่นับ</p></div>`; })()+qCfgCard()+(function(){ const f=incSrcFactorCfg(); const I=(k,lab,tip)=>N(lab,f[k],'CFG.incSrcFactor=CFG.incSrcFactor||{};CFG.incSrcFactor.'+k+'=Math.max(0,Math.min(100,+this.value||0))',tip,56); return `<div class="card mb"><h3>🏠 รายได้อื่นของครัวเรือน — นับใน DSR กี่ % ตามที่มา <span class="mut" style="font-weight:400;font-size:12px">— ไม่มีหลักฐานแนบ (เฟส 1) · ผู้ใช้ 23 ก.ย.: คู่สมรส/เงินโอน ไม่นับ เว้นแต่เป็นผู้ค้ำ (0924-E)</span></h3><div class="flex" style="gap:8px;flex-wrap:wrap;align-items:center">${I('occ2','อาชีพเสริมของลูกค้า','หัวข้อ 2 มีอาชีพเสริม')} <span class="mut">%</span> ${I('gov','เงินจากรัฐ','เบี้ยผู้สูงอายุ/ความพิการ/อสม./บำนาญ')} <span class="mut">%</span> ${I('rent','ค่าเช่า/ดอกเบี้ย','ทรัพย์สินของผู้กู้')} <span class="mut">%</span> ${I('spouse','คู่สมรส/คนในบ้าน','ไม่ใช่คู่สัญญา')} <span class="mut">%</span> ${I('transfer','เงินโอนจากลูก/ญาติ','ไม่ใช่คู่สัญญา')} <span class="mut">%</span> ${I('guar','เมื่อผู้ให้รายได้เป็นผู้ค้ำ','คู่สมรส/ญาติ ที่กรอกเป็นผู้ค้ำในหัวข้อ 5 (ดูจากความสัมพันธ์)')} <span class="mut">%</span></div><p class="mut" style="font-size:12px;margin:6px 0 0">ค่าเริ่มต้น 50 / 50 / 50 / 0 / 0 / 50 · ค่าเดิมของเคสเก่า (ค้าขาย/เกษตร/เบี้ยยังชีพ/อื่นๆ) ใช้ 50% · สาขาไม่เห็นเปอร์เซ็นต์/บรรทัดนี้ · เคสเก่าคำนวณใหม่เมื่อ สนญ. เปิดดู (DSR อาจสูงขึ้นตามความจริง)</p></div>`; })()+(function(){ const l=debtItemList(); return `<div class="card mb"><h3>💳 รายการผ่อนหนี้เดิม (หัวข้อ 3.3) <span class="mut" style="font-weight:400;font-size:12px">— สาขาติ๊ก + กรอกยอดต่อรายการ ระบบรวมให้ (0924-D) · แก้รายการได้ที่นี่ บรรทัดละ 1 รายการ · ซิงก์ไปทุกเครื่อง</span></h3><textarea id="cfg-debtitems" rows="6" style="width:100%;max-width:560px;font-size:13px">${l.join('\n')}</textarea><div class="flex" style="gap:8px;margin-top:6px"><button class="btn btn-navy btn-sm" onclick="(function(){ const t=document.getElementById('cfg-debtitems').value.split(/\\n/).map(s=>s.trim()).filter(Boolean); if(!t.length){ alert('ต้องมีอย่างน้อย 1 รายการ'); return; } CFG.debtItems=t; saveCfg(); alert('บันทึกรายการผ่อน '+t.length+' รายการ'); })()">💾 บันทึกรายการ</button><button class="btn btn-line btn-sm" onclick="CFG.debtItems=null; saveCfg(); go('cfg')">คืนค่าเริ่มต้น (10 รายการ)</button></div><div style="margin-top:12px;border-top:1px dashed #e5e7eb;padding-top:10px"><b>🏠 รายการรายได้อื่นของครัวเรือน (หัวข้อ 3.2 · 0924-G)</b> <span class="mut" style="font-size:12px">— สาขาติ๊กได้หลายรายการ + ยอดต่อรายการ · บรรทัดละ 1 รายการ รูปแบบ <code>ชื่อรายการ | กลุ่ม</code> (กลุ่ม = คู่สมรส / ค่าเช่า / เงินโอน / เงินจากรัฐ — ใช้กำหนด % ที่นับใน DSR ตามตั้งค่าด้านบน) · รายการ "บำนาญ" จะถามต่อว่าบำนาญจากอะไร+งานก่อนเกษียณ</span><textarea id="cfg-incitems" rows="8" style="width:100%;max-width:560px;font-size:13px;margin-top:6px">${incSrcItemList().filter(x=>x.id!=='occ2').map(x=>x.lbl+' | '+(INC_CLS_LBL[x.cls]||x.cls)).join('\n')}</textarea><div class="flex" style="gap:8px;margin-top:6px"><button class="btn btn-navy btn-sm" onclick="(function(){ const M={'คู่สมรส/คนในบ้าน':'spouse','คู่สมรส':'spouse','ค่าเช่า/ดอกเบี้ย':'rent','ค่าเช่า':'rent','เงินโอน':'transfer','เงินจากรัฐ':'gov'}; const t=document.getElementById('cfg-incitems').value.split(/\\n/).map(s=>s.trim()).filter(Boolean).map((ln,i)=>{ const [lb,cl]=ln.split('|').map(x=>(x||'').trim()); const cls=M[cl]||'other'; const d=INC_SRC_DEF.find(x=>x.lbl===lb)||INC_SRC_DEF.find(x=>x.cls===cls&&x.lbl.slice(0,6)===lb.slice(0,6)); const id=d?d.id:(/บำนาญ/.test(lb)?'pension':'c'+i+'_'+lb.replace(/[^a-zA-Z0-9ก-๙]/g,'').slice(0,12)); return {id,lbl:lb,cls}; }); if(!t.length){ alert('ต้องมีอย่างน้อย 1 รายการ'); return; } CFG.incSrcItems=t; saveCfg(); alert('บันทึกรายการรายได้อื่น '+t.length+' รายการ'); })()">💾 บันทึกรายการ</button><button class="btn btn-line btn-sm" onclick="CFG.incSrcItems=null; saveCfg(); go('cfg')">คืนค่าเริ่มต้น (8 รายการ)</button></div><p class="mut" style="font-size:12px;margin:6px 0 0">การ์ด: สนญ. เห็นยอดต่อรายการ + เทียบเบี้ย/อสม. กับกรมบัญชีกลาง + บำนาญเทียบสิทธิรักษา (ปกส. แต่ยัง ม.33 = 🟡 · ข้าราชการแต่สิทธิไม่ใช่ข้าราชการ = 🟡) · สาขาเห็นชื่อรายการและสิ่งที่ต้องทำเท่านั้น · เคสเก่าที่มีที่มาแบบข้อความเดียวยังแสดง/แก้ได้เหมือนเดิม</p></div><p class="mut" style="font-size:12px;margin:6px 0 0">เคสเก่าที่เคยเลือกชื่อรายการเดิม (เช่น "อื่นๆ", "สหกรณ์/กองทุน") ยังแสดงชื่อเดิมบนการ์ด · รายการ "รถยนต์/จักรยานยนต์ (ที่อื่น)" ใช้เทียบกับ COSMOS (ติ๊กแต่ COSMOS ไม่พบ = ℹ️) · "หนี้นอกระบบ" = 🟡 เสมอ</p></div>`; })()+(function(){ const cc=cropAgeCfg(); return `<div class="card mb"><h3>🌳 อายุต้นยาง/ปาล์ม/ไม้ผล <span class="mut" style="font-weight:400;font-size:12px">— สาขากรอก "อายุต้น" ในหัวข้อ 2 (0924-A) · ระบบเทียบวัยให้ผลผลิต · เกษตรรับจ้างไม่บังคับ</span></h3><div class="flex" style="gap:8px;flex-wrap:wrap;align-items:center">${N('ยางพารา: กรีดได้ตั้งแต่',cc.rubberMin,'CFG.cropAge=CFG.cropAge||{};CFG.cropAge.rubberMin=+this.value||6','อายุต้นยางน้อยกว่านี้ = 🟡 ยังไม่ถึงวัยกรีด',56)} <span class="mut">ปี</span> ${N('ให้น้ำยางดีถึง',cc.rubberMax,'CFG.cropAge=CFG.cropAge||{};CFG.cropAge.rubberMax=+this.value||25','เกินนี้ = ℹ️ ต้นแก่',56)} <span class="mut">ปี</span> ${N('ปาล์ม: ให้ผลตั้งแต่',cc.palmMin,'CFG.cropAge=CFG.cropAge||{};CFG.cropAge.palmMin=+this.value||3','น้อยกว่านี้ = 🟡',56)} <span class="mut">ปี</span> ${N('ให้ผลดีถึง',cc.palmMax,'CFG.cropAge=CFG.cropAge||{};CFG.cropAge.palmMax=+this.value||25','เกินนี้ = ℹ️',56)} <span class="mut">ปี</span> ${N('ไม้ผล: ให้ผลตั้งแต่',cc.fruitMin,'CFG.cropAge=CFG.cropAge||{};CFG.cropAge.fruitMin=+this.value||4','น้อยกว่านี้ = 🟡',56)} <span class="mut">ปี</span></div><div class="flex" style="gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px"><span class="mut" style="font-size:12px">อาชีพเสริม (0924-F · บรรทัดเดียวในการ์ดอาชีพ เป็นไฟสี):</span> ${N('ทำมาอย่างน้อย',occ2Cfg().yearsMin,'CFG.occ2YearsMin=+this.value||0','ต่ำกว่านี้ = 🟡 (สาขาเห็น "สนญ. ขอหลักฐานรายได้จากอาชีพเสริม")',56)} <span class="mut">ปี</span> <label class="mut" style="font-size:12px">นับไฟรวม: <select onchange="CFG.occ2Score=this.value;saveCfg()" style="font-size:12px">${[['redOnly','🟡 ไม่นับ · 🔴 นับ (ทาง C)'],['all','นับทุกสี'],['none','แสดงสีอย่างเดียว ไม่นับ']].map(x=>`<option value="${x[0]}" ${occ2Cfg().score===x[0]?'selected':''}>${x[1]}</option>`).join('')}</select></label></div><div style="margin-top:10px;border-top:1px dashed #e5e7eb;padding-top:8px"><b>🔍 อาชีพที่ลูกค้าบอก (0924-I)</b> <span class="mut" style="font-size:12px">— ช่องค้นหาในหัวข้อ 2 · คำที่พิมพ์ติดเคสให้ สนญ. เทียบ</span>
  <div class="flex" style="gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px">
@@ -4330,24 +4404,22 @@ function sec4CondOptions(){
  else if(prevTxt&&L.indexOf(prevTxt)>=0) el.value=String(L.indexOf(prevTxt));
  window.__condWant=null;
 }
-function sec4TermList(a,c){
- const t=c&&c.pb?c.pb.type:pbFormType();
- if(a.payType==='balloon'&&a.product!=='pawn') return [48];
- if(a.product==='pawn'){
-  const s=c&&c.sys; let lg=s&&s.long;
-  if(!lg){ const it=(pbModelsList()||[]).find(x=>(x.key||x.code)===a.pbCode); lg=it&&it.longs? Math.max(...it.longs.filter(x=>x!=null)) : 24; }
-  const L=[]; for(let n=12;n<=lg;n+=6) L.push(n); if(L.indexOf(lg)<0) L.push(lg); return L.length?L:[lg];
- }
+function sec4TermMax(a,c){   /* 0925-U: สาขาพิมพ์จำนวนงวดเอง 1–สูงสุด (ผู้ใช้ 1 ต.ค.) · ไฟแนนซ์ = สูงสุดตามขั้นยอดจัดในหลักการ · บอลลูน = 48 คงที่ */
+ if(a.payType==='balloon'&&a.product!=='pawn') return {max:48, fixed:true};
+ if(a.product==='pawn'){ const s=c&&c.sys; let lg=s&&s.long;
+  if(!lg){ const it=(pbModelsList()||[]).find(x=>(x.key||x.code)===a.pbCode); lg=it&&it.longs&&it.longs.some(x=>x!=null)? Math.max(...it.longs.filter(x=>x!=null)) : 24; }
+  return {max:Math.min(48,+lg||24), fin:true}; }
  const it=(pbModelsList()||[]).find(x=>(x.key||x.code)===a.pbCode);
- const mx=(it&&it.tLong)||48; const L=[]; for(let n=12;n<=Math.min(48,mx);n+=6) L.push(n); return L.length?L:[12];
+ return {max:Math.min(48,(it&&it.tLong)||48)};
 }
+function sec4TermBad(a,c){ const t=+a.term; if(!(t>0)) return ''; const M=sec4TermMax(a,c); if(t!==Math.floor(t)) return 'จำนวนงวดต้องเป็นจำนวนเต็ม'; if(t>M.max) return 'จำนวนงวดต้องไม่เกิน '+M.max+' งวด'; return ''; }
 function sec4TermSync(a,c){
- const el=document.getElementById('f-term'); if(!el) return;
- const L=sec4TermList(a,c); const cur=+el.value||0;
- const now=[...el.options].map(o=>+o.value).join(',');
- if(now!==L.join(',')){ el.innerHTML='<option value="">— เลือก —</option>'+L.map(n=>'<option value="'+n+'">'+n+'</option>').join(''); }
- if(L.length===1) el.value=String(L[0]); else if(L.indexOf(cur)>=0) el.value=String(cur); else if(now!==L.join(',')) el.value='';
- el.disabled=(L.length===1);
+ const el=document.getElementById('f-term'); if(!el) return; const M=sec4TermMax(a,c);
+ el.max=String(M.max); el.min='1';
+ if(M.fixed){ el.value='48'; el.readOnly=true; el.classList.add('auto'); } else { el.readOnly=false; el.classList.remove('auto'); }
+ const h=document.getElementById('f-term-hint'); if(h) h.textContent=M.fixed?'บอลลูน = 48 งวด (คงที่)':'พิมพ์จำนวนงวด 1–'+M.max+' งวด'+(M.fin?' (การขายไฟแนนซ์ ตามหลักการ)':'');
+ const bad=sec4TermBad({term:el.value,product:a.product,payType:a.payType,pbCode:a.pbCode},c); const er=document.getElementById('f-term-err'); if(er) er.textContent=bad?'❌ '+bad:'';
+ el.style.borderColor=bad?'#dc2626':''; el.style.background=bad?'#fef2f2':'';
 }
 /* สิ่งที่ยังไม่ครบ + ข้อขัดหลักการ (ข้อความไม่มีตัวเลขเกณฑ์) */
 function sec4Check(a,c){
@@ -4362,7 +4434,7 @@ function sec4Check(a,c){
    if(!(+a.mileage>0)) miss.push('เลขไมล์');
    }
  else if(String((document.getElementById('f-down')||{}).value||'')==='') miss.push('เงินดาวน์');
- if(!(+((document.getElementById('f-term')||{}).value)>0)) miss.push('จำนวนงวด');
+ if(!(+((document.getElementById('f-term')||{}).value)>0)) miss.push('จำนวนงวด'); else { const _tb=sec4TermBad(a,c); if(_tb) block.push(_tb); }
  if(!(+a.instOv>0)) miss.push('ค่างวด/เดือน (ตาม H-Capital)');
  if(isBal && !(+a.balloonOv>0)) miss.push('ค่างวดงวดสุดท้าย (บอลลูน)');
  if(!a.firstDue) miss.push('วันดิวงวดแรก');
@@ -4547,7 +4619,7 @@ function hqEditFill(){
  try{ editLockApply(); }catch(e){}   /* 0917-A: สาขาแก้เฉพาะช่องที่อนุมัติ */
 }
 const _EDIT_KEEP=['id','branch','zone','status','tl','thread','hqReview','sale','hqAdvice','hqChecks','healthRight','submittedAt','createdBy','date','decidedAt','decisionNote','decisionDate','analyst','ack3','resubmit','revisions','prevDecision','cancelReq','check3','_dirty','_dirtyAt','__pushedAt','updatedAt','_form','calc','term','editReq','idConfirm','lastBranchEditAt','hqAdvicePrev','editedAt','editedBy','hqOverride','healthSub'];
-const _EDIT_LABEL={rai:'จำนวนไร่',head:'จำนวนตัว',cropAge:'อายุต้น',aqua:'บ่อ/กระชัง',occSaid:'อาชีพที่ลูกค้าบอก',occ2:'อาชีพเสริม',name:'ชื่อลูกค้า',firstName:'ชื่อ',lastName:'นามสกุล',nameOnly:'ชื่อ',lastNameOnly:'นามสกุล',nickname:'ชื่อเล่น',idcard:'เลขบัตร',phone:'เบอร์โทร',birth:'วันเกิด',age:'อายุ',addrCard:'ที่อยู่ตามบัตร',addrCur:'ที่อยู่ปัจจุบัน',occupation:'อาชีพ',occExtra:'รายละเอียดอาชีพ',workplace:'ที่ทำงาน',workYears:'อายุงาน',incomeClaimed:'รายได้',incomeExtra:'รายได้เสริม',debt:'ภาระหนี้',incomeProof:'หลักฐานรายได้',doclevel:'เอกสาร',product:'ประเภทการขาย',finType:'รูปแบบไฟแนนซ์',pbCode:'รุ่นรถ',price:'ราคา',down:'เงินดาวน์',term:'จำนวนงวด',guarType:'ผู้ค้ำ',guar:'ข้อมูลผู้ค้ำ',refs:'บุคคลอ้างอิง',phones:'เบอร์โทร',housePay:'ผ่อนบ้าน',vehUse:'ผู้ใช้รถ',housePhotoData:'ภาพบ้าน',workDocData:'ภาพเอกสารงาน',incomeExtraData:'ภาพรายได้เสริม',vehPhotos:'ภาพรถ',saleType:'ประเภทการขาย',marital:'สถานภาพ',children:'จำนวนบุตร',hist:'ประวัติ'};
+const _EDIT_LABEL={idDoc:'สำเนาบัตร + ทะเบียนบ้าน (ภาพ)',idDocWait:'สำเนาบัตร + ทะเบียนบ้าน (ภาพ)',signOk:'ติ๊กลูกค้าเซ็นรับรองสำเนา',rai:'จำนวนไร่',head:'จำนวนตัว',cropAge:'อายุต้น',aqua:'บ่อ/กระชัง',occSaid:'อาชีพที่ลูกค้าบอก',occ2:'อาชีพเสริม',name:'ชื่อลูกค้า',firstName:'ชื่อ',lastName:'นามสกุล',nameOnly:'ชื่อ',lastNameOnly:'นามสกุล',nickname:'ชื่อเล่น',idcard:'เลขบัตร',phone:'เบอร์โทร',birth:'วันเกิด',age:'อายุ',addrCard:'ที่อยู่ตามบัตร',addrCur:'ที่อยู่ปัจจุบัน',occupation:'อาชีพ',occExtra:'รายละเอียดอาชีพ',workplace:'ที่ทำงาน',workYears:'อายุงาน',incomeClaimed:'รายได้',incomeExtra:'รายได้เสริม',debt:'ภาระหนี้',incomeProof:'หลักฐานรายได้',doclevel:'เอกสาร',product:'ประเภทการขาย',finType:'รูปแบบไฟแนนซ์',pbCode:'รุ่นรถ',price:'ราคา',down:'เงินดาวน์',term:'จำนวนงวด',guarType:'ผู้ค้ำ',guar:'ข้อมูลผู้ค้ำ',refs:'บุคคลอ้างอิง',phones:'เบอร์โทร',housePay:'ผ่อนบ้าน',vehUse:'ผู้ใช้รถ',housePhotoData:'ภาพบ้าน',workDocData:'ภาพเอกสารงาน',incomeExtraData:'ภาพรายได้เสริม',vehPhotos:'ภาพรถ',saleType:'ประเภทการขาย',marital:'สถานภาพ',children:'จำนวนบุตร',hist:'ประวัติ'};
 function hqSaveEdit(){
  const a=APPS.find(x=>x.id===window.__editCase); if(!a){ window.__editCase=null; alert('ไม่พบเคส'); return; }
  const n=readForm(); const changed=[];
@@ -4561,7 +4633,7 @@ function hqSaveEdit(){
  const _brG=window.__editGrant; if(_brG){ const _g=idChkGate(); if(!_g.ok) return; }
  const note=_brG?(_brG.reason||'สาขาแก้ตามที่ สนญ. อนุมัติ'):_needReason('เหตุผลที่แก้ไข (บันทึกในประวัติ สาขาเห็น) — จำเป็นต้องระบุ:\n\nช่องที่เปลี่ยน: '+uniq.join(', ')); if(!note){ alert('กรุณาระบุเหตุผล'); return; }
  for(const k in n){ if(_EDIT_KEEP.indexOf(k)>=0) continue; a[k]=n[k]; }
- try{ hqOverrideClearAll(a, _brG?'branch-edit':'hq-edit', uniq); }catch(e){}   /* 0923-A: ข้อมูลเปลี่ยน → ยกเลิกไฟที่ สนญ. ปรับไว้ */
+ try{ hqOverrideClearAll(a, _brG?'branch-edit':'hq-edit', uniq, changed); }catch(e){}   /* 0923-A: ข้อมูลเปลี่ยน → ยกเลิกไฟที่ สนญ. ปรับไว้ */
  try{ a.calc=calcAll(a); a.term=a.calc.termUsed; const _r3=check3(a,a.calc); a.check3=chk3Snap(_r3); }catch(e){}
  try{ const _fd=fdCollect(); a._form={f:_fd.f,phones:_fd.phones}; }catch(e){}
  if(_brG){ brEditFinish(a,uniq,changed); try{ const _g=idChkGate(); if(_g.conf) a.idConfirm=Object.assign({at:Date.now(),by:(SESSION&&SESSION.name)||'',idcard:normDigits(a.idcard||'')},_g.conf); }catch(e){} } else { _revLog(a,'edit',note,{fields:uniq,keys:changed}); a.editedAt=Date.now(); a.editedBy=(SESSION&&SESSION.name)||''; a.updatedBy=a.editedBy; }
@@ -4596,7 +4668,7 @@ function incItemsToggle(){ const n=document.getElementById('f-incomeextra'), w=d
  const nt=document.getElementById('inc-note'); if(nt){ let m=''; if(on){ if(k&&missAmt.length) m='⚠ ยังไม่กรอกยอด/เดือนของ: '+missAmt.join(', '); else if(!k&&+n.value>0&&!window.__editCase) m='⚠ ใส่ยอดแล้ว แต่ยังไม่ได้ติ๊กว่ามาจากรายการอะไร'; else if(k&&sum>0) m='✓ '+k+' รายการ รวม '+fmt(sum)+' บ./เดือน'; } nt.textContent=m; nt.style.color=/^✓/.test(m)?'#16a34a':'#b45309'; }
  try{ s3Sum(); }catch(e){} }
 function incApplyCase(a){ const items=Array.isArray(a&&a.incomeExtraItems)?a.incomeExtraItems:[]; try{ const h=document.getElementById('f-incextrahas'), n=document.getElementById('f-incomeextra'); if(h&&(items.length||+a.incomeExtra>0)){ h.value='has'; if(n) n.style.display=''; document.querySelectorAll('#view .field.incx').forEach(e=>{ e.style.display=(!e.classList.contains('incxdoc')||showDocsP2())?'':'none'; }); } }catch(e){} document.querySelectorAll('#inc-items .inc-item').forEach(e=>{ if(e.id==='f-ii-occ2') return; const it=items.find(x=>x.k===e.value); e.checked=!!it; const x=document.getElementById('f-ia-'+e.value); if(x){ x.disabled=!it; x.value=(it&&+it.amt>0)?String(it.amt):''; } }); const o2i=items.find(x=>x.k==='occ2'); const x2=document.getElementById('f-ia-occ2'); if(x2) x2.value=(o2i&&+o2i.amt>0)?String(o2i.amt):''; const pn=items.find(x=>x.k==='pension'); if(pn&&pn.pension){ const S=(id,v)=>{ const e=document.getElementById(id); if(e) e.value=v||''; }; S('f-pen-from',pn.pension.from); S('f-pen-org',pn.pension.org); S('f-pen-pos',pn.pension.pos); } incItemsToggle(); if(!items.length&&+a.incomeExtra>0){ const n=document.getElementById('f-incomeextra'); if(n){ n.readOnly=false; n.classList.remove('auto'); n.value=String(a.incomeExtra); } } }
-function incItemsFactor(a){ const items=Array.isArray(a&&a.incomeExtraItems)?a.incomeExtraItems.filter(x=>x&&+x.amt>0):[]; if(!items.length) return null; const f=incSrcFactorCfg(); const guar=incSrcGuar(a); let eff=0,tot=0,via=''; const det=items.map(it=>{ let cls=it.cls||(incItemDef(it.k)||{}).cls||'other'; if(it.k==='occ2') cls='occ2'; let pct=f[cls]!=null?f[cls]:f.other; if((cls==='spouse'||cls==='transfer')&&guar){ pct=Math.max(pct,f.guar); via='guar'; } eff+=it.amt*pct/100; tot+=it.amt; return {k:it.k,lbl:incItemLbl(it),amt:it.amt,cls,pct}; }); const clsSet=[...new Set(det.map(d=>d.cls))]; const cls=clsSet.length===1?clsSet[0]:'multi'; const pct=tot>0?Math.round(eff/tot*100):0; return {pct, cls, via, factor:tot>0?eff/tot:0, items:det, eff:Math.round(eff), tot, desc:det.map(d=>d.lbl+' '+fmt(d.amt)+' ['+(INC_CLS_LBL[d.cls]||incSrcLabel(d.cls))+' '+d.pct+'%]').join(' · ')}; }
+function incItemsFactor(a){ const items=Array.isArray(a&&a.incomeExtraItems)?a.incomeExtraItems.filter(x=>x&&+x.amt>0):[]; if(!items.length) return null; const f=incSrcFactorCfg(); let eff=0,tot=0,via=''; const det=items.map(it=>{ let cls=it.cls||(incItemDef(it.k)||{}).cls||'other'; if(it.k==='occ2') cls='occ2'; let pct=f[cls]!=null?f[cls]:f.other; if((cls==='spouse'||cls==='transfer')&&incSrcGuar(a,cls)){ pct=Math.max(pct,f.guar); via='guar'; } eff+=it.amt*pct/100; tot+=it.amt; return {k:it.k,lbl:incItemLbl(it),amt:it.amt,cls,pct}; }); const clsSet=[...new Set(det.map(d=>d.cls))]; const cls=clsSet.length===1?clsSet[0]:'multi'; const pct=tot>0?Math.round(eff/tot*100):0; return {pct, cls, via, factor:tot>0?eff/tot:0, items:det, eff:Math.round(eff), tot, desc:det.map(d=>d.lbl+' '+fmt(d.amt)+' ['+(INC_CLS_LBL[d.cls]||incSrcLabel(d.cls))+' '+d.pct+'%]').join(' · ')}; }
 function incItemsHasCls(a,cls){ const items=Array.isArray(a&&a.incomeExtraItems)?a.incomeExtraItems:[]; return items.some(x=>x&&+x.amt>0&&((x.cls||(incItemDef(x.k)||{}).cls)===cls)); }
 function debtAmtsRead(){ const o={}; document.querySelectorAll('#debt-items .debt-item:checked').forEach(e=>{ const i=e.id.split('-')[2]; const a=document.getElementById('f-da-'+i); const v=a?(+a.value||0):0; if(v>0) o[e.value]=v; }); return o; }
 function debtItemsTxt(a){ const it=Array.isArray(a&&a.debtItems)?a.debtItems:[]; const am=(a&&a.debtAmts)||{}; if(!it.length) return ''; const has=it.some(k=>+am[k]>0); return it.map(k=>k+(has&&+am[k]>0?' '+fmt(am[k]):'')).join(' · ')+(has?'':(it.length&&+a.debt>0?' (รวม '+fmt(a.debt)+' ไม่ได้แยกรายการ)':'')); }
@@ -4875,7 +4947,7 @@ function submitApp(){
  const _cp=[a.phone].concat((a.phones||[]).map(p=>p.no)).map(x=>normDigits(String(x||''))).filter(Boolean);
  _rp.forEach((p,i)=>{ if(_cp.includes(p)) missing.push('เบอร์บุคคลอ้างอิงคนที่ '+(i+1)+' ซ้ำกับเบอร์ผู้ซื้อ'); });
  if(String(a.marital||'').indexOf('สมรส')>=0){ if(!String((a.spouse||{}).name||'').trim()) missing.push('ชื่อ-นามสกุลคู่สมรส (สถานภาพสมรส)'); if(!String((a.spouse||{}).phone||'').trim()) missing.push('เบอร์โทรคู่สมรส (สถานภาพสมรส)'); }
- { const ss=(document.getElementById('f-salestate')||{}).value||''; if(!ss) missing.push('สถานะการขายตอนส่งเคส (ข้อ 5)'); else if(ss==='sold'&&!String((document.getElementById('f-saledate')||{}).value||'').trim()) missing.push('วันที่ขาย (ข้อ 5)');  try{ const _sc=saleDateCheck(); if(_sc.block) missing.push(_sc.block+' (ข้อ 5)'); }catch(e){}
+ { const ss=saleBackOn()?((document.getElementById('f-salestate')||{}).value||''):'waiting'; if(!ss) missing.push('สถานะการขายตอนส่งเคส (ข้อ 5)'); else if(ss==='sold'&&!String((document.getElementById('f-saledate')||{}).value||'').trim()) missing.push('วันที่ขาย (ข้อ 5)');  try{ const _sc=saleDateCheck(); if(_sc.block) missing.push(_sc.block+' (ข้อ 5)'); }catch(e){}
    if(ss==='sold'&&saleReqOn()){ const _ct=String((document.getElementById('f-salecontract')||{}).value||'').trim(), _fr=String((document.getElementById('f-frameno')||{}).value||'').trim();   /* 0925-P */
     if(!_ct) missing.push('เลขที่สัญญา (ข้อ 5)'); else if(normDigits(_ct).length<6) missing.push('เลขที่สัญญาสั้นเกินไป (ข้อ 5)');
     if(!_fr) missing.push('เลขตัวถัง (ข้อ 5)'); else if(normFrame(_fr).length<8) missing.push('เลขตัวถังสั้นเกินไป (ข้อ 5)'); } }   /* 0925-C */
@@ -4893,8 +4965,8 @@ function submitApp(){
  { const oe=document.getElementById('w-occex'); if(oe&&!oe.classList.contains('hidden')&&oe.style.display!=='none'&&isPlaceholderVal(a.occExtra)) missing.push(((document.getElementById('lbl-occex')||{}).textContent||'ข้อมูลเพิ่มเติมอาชีพ').replace(/\s*\*\s*$/,'').trim()); const wr=document.getElementById('w-rai'); if(wr&&!wr.classList.contains('hidden')&&!(+a.rai>0)) missing.push('จำนวนไร่โดยประมาณ'); }
  if(a.workDur&&a.workDur.set&&a.workYears<0.5){ const pw=a.prevWork||{}; const _wt=workAgeTxt(OCC_LIST[a.occupation]); if(!String(pw.company||'').trim()) missing.push(_wt.row+' — '+_wt.pw1+' (เพิ่งเริ่ม'+_wt.lbl+')'); if(!String(pw.position||'').trim()) missing.push(_wt.row+' — '+_wt.pw2); if(!(+pw.years>0)) missing.push(_wt.row+' — '+_wt.pw3); }
  if(v5On()){ const _dv=idDocVal(); if(!_dv) missing.push('สำเนาบัตรประชาชน + ทะเบียนบ้าน (แนบไฟล์ — ส่วนที่ 1)'); if(!a.signOk) missing.push('ติ๊ก "ลูกค้าเซ็นรับรองสำเนาถูกต้องแล้ว" (ส่วนที่ 1)'); }   /* 0925-O */
- if(missing.length){ alert('กรุณากรอก:\n• '+missing.join('\n• ')); return; }
- if(_s4k&&_s4k.block.length){ alert('❌ ส่งเคสไม่ได้\n• '+_s4k.block.join('\n• ')); return; }   /* 0925-M: ข้อความไม่มีตัวเลขเกณฑ์ */
+ if(missing.length){ alert('กรุณากรอก:\n• '+missing.join('\n• ')); formJumpErrors(missing); return; }
+ if(_s4k&&_s4k.block.length){ alert('❌ ส่งเคสไม่ได้\n• '+_s4k.block.join('\n• ')); formJumpErrors(_s4k.block); return; }   /* 0925-M: ข้อความไม่มีตัวเลขเกณฑ์ */
  try{ const _pv=pbvOfCase(a); if(_pv) a.pbVer=_pv.id; }catch(e){}
  a.calc=calcAll(a);
  a.term=a.calc.termUsed;
@@ -4905,7 +4977,7 @@ function submitApp(){
    if(_noProd && !stepLocked(4) && !confirm('ยังไม่ได้เลือกผลิตภัณฑ์/รุ่นรถ — ส่งเคสเพื่อให้ สนญ. ตรวจข้อมูล 3 มิติก่อน แล้วเติมผลิตภัณฑ์ภายหลัง?\n\nผลตรวจตอนนี้: '+(CHK3_LV[_r3.overall]||{}).ic+' '+(CHK3_LV[_r3.overall]||{}).t+' (กรอกครบ '+_r3.filled+'/3 มิติ)')) return;
  }catch(e){}
  const hard=a.calc.warns.find(w=> w.m.indexOf('ต่ำกว่าขั้นต่ำตามหลักการ')>=0 || w.m.indexOf('เกินวงเงินสูงสุดของรุ่นนี้')>=0 || w.m.indexOf('เปิดเฉพาะสาขาเกรด A/B')>=0 || w.m.indexOf('ต่ำกว่า 20 ปีบริบูรณ์')>=0 );
- if(hard&&!a.calc.f4){ alert('❌ ส่งเคสไม่ได้ — ขัดหลักการขาย:\n'+hard.m); return; }
+ if(hard&&!a.calc.f4){ alert('❌ ส่งเคสไม่ได้ — ขัดหลักการขาย:\n'+hard.m); formJumpErrors([hard.m]); return; }
  if(a.calc.eir>CFG.eirCap && !(a.calc.f4 && SESSION.role==='branch')){
   const _eirMsg = (SESSION.role==='branch')
     ? 'เงื่อนไขนี้ต้องให้ สนญ. ตรวจเพิ่มก่อนเซ็นสัญญา (อาจต้องปรับเงินดาวน์/จำนวนงวด)\n\nส่งเคสให้ สนญ. พิจารณาต่อ?'
@@ -4913,7 +4985,7 @@ function submitApp(){
   if(!confirm(_eirMsg)) return;
  }
  try{ const _fd=fdCollect(); a._form={f:_fd.f,phones:_fd.phones}; }catch(e){}   /* 0914-E: เก็บภาพฟอร์มไว้ให้ สนญ. แก้ไขได้ครบทุกช่อง */
- try{ const ss=(document.getElementById('f-salestate')||{}).value; a.saleStateAtSubmit=ss||''; if(ss==='sold'){ const lv=(a.check3&&a.check3.overall)||'na'; a.sale={at:Date.now(),by:(SESSION&&SESSION.name)||'',role:SESSION&&SESSION.role,result:'sold',reason:'ขายก่อนส่งเคส (ส่งย้อนหลัง)',contract:String((document.getElementById('f-salecontract')||{}).value||'').trim(),frameNo:String(a.frameNo||'').trim(),soldDate:String((document.getElementById('f-saledate')||{}).value||'').trim(),light:lv,against:lv==='bad',beforeSubmit:true,beforeHQ:true,afterAck:false}; a.thread=a.thread||[]; a.thread.push({by:'branch',st:'sale',msg:'🛒 ขายไปแล้วก่อนส่งเคส'+(a.sale.soldDate?' ('+a.sale.soldDate+')':'')+(a.sale.contract?' · สัญญา '+a.sale.contract:'')+(a.sale.frameNo?' · เลขถัง '+a.sale.frameNo:''),at:Date.now()}); } }catch(e){}
+ try{ const ss=saleBackOn()?(document.getElementById('f-salestate')||{}).value:'waiting'; a.saleStateAtSubmit=ss||''; if(ss==='sold'){ const lv=(a.check3&&a.check3.overall)||'na'; a.sale={at:Date.now(),by:(SESSION&&SESSION.name)||'',role:SESSION&&SESSION.role,result:'sold',reason:'ขายก่อนส่งเคส (ส่งย้อนหลัง)',contract:String((document.getElementById('f-salecontract')||{}).value||'').trim(),frameNo:String(a.frameNo||'').trim(),soldDate:String((document.getElementById('f-saledate')||{}).value||'').trim(),light:lv,against:lv==='bad',beforeSubmit:true,beforeHQ:true,afterAck:false}; a.thread=a.thread||[]; a.thread.push({by:'branch',st:'sale',msg:'🛒 ขายไปแล้วก่อนส่งเคส'+(a.sale.soldDate?' ('+a.sale.soldDate+')':'')+(a.sale.contract?' · สัญญา '+a.sale.contract:'')+(a.sale.frameNo?' · เลขถัง '+a.sale.frameNo:''),at:Date.now()}); } }catch(e){}
  APPS.unshift(a); saveApps(); if(typeof cloudPushCase==='function')cloudPushCase(a);
  alert('✅ ส่งคำขอ '+a.id+' ไปยัง สนญ. เรียบร้อย');
  try{ fdClear(); }catch(e){}
@@ -5238,6 +5310,65 @@ function viewRecon(){
  +(brRows.length?'<div class="card"><h3 class="exhead">🏢 สาขาที่มีสัญญาไม่พบเคสในระบบ</h3><table class="qtable"><thead><tr><th>สาขา</th><th class="num">ลัดขั้นตอน (ตั้งแต่ '+thShort(D.full)+')</th><th class="num">ช่วงทดลอง (ไม่นับ)</th><th class="num">จากสัญญาใหม่</th></tr></thead><tbody>'
     +brRows.map(([code,v])=>'<tr class="click" onclick="SRCH.recon={q:\'\',from:\'\',to:\'\',br:[\''+code+'\'],rm:[\'byp\']};srchGo(\'recon\')"><td>'+E(bLabel(code))+'</td><td class="num b" style="color:var(--bad)">'+(v.byp||'–')+'</td><td class="num mut">'+(v.tr||'–')+'</td><td class="num mut">/ '+v.tot+'</td></tr>').join('')
     +'</tbody></table><p class="pill-note">คลิกแถวเพื่อดูรายชื่อสัญญา</p></div>':'');
+}
+/* 0925-V: สรุปกระทบยอดรายวัน — ระบบ (ตามวันที่เกิด) · ผลขาย (ตามวันที่ขาย) · H-Cap (ตามวันทำสัญญา) · ใช้ reconData() ชุดเดียวกับหน้ากระทบยอด */
+window.RDAY=window.RDAY||{from:'',to:'',br:'',zone:'',open:{}};
+function _rdDay(ms){ return ms?thDay(ms):''; }
+function _rdSaleDay(a){ const s=a.sale||{}; const d=String(s.soldDate||'').trim(); return /^\d{4}-\d{2}-\d{2}$/.test(d)?d:_rdDay(s.recordedAt||s.at); }
+function _rdGap(d1,d2){ return Math.round((_ymdMs(d2)-_ymdMs(d1))/864e5); }
+function reconDailyData(){ const R=RDAY; const today=thDay(); const to=R.to||today; const from=R.from||thDay(_ymdMs(to)-13*864e5+12*3600e3);
+ const inBr=br=>(!R.br||br===R.br)&&(!R.zone||zoneOfBranch(br)===R.zone);
+ const D=reconData(); const asOfD=D?thDay(D.asOf):'';
+ const live=(APPS||[]).filter(a=>a.submittedAt&&a.status!=='cancelled'&&inBr(a.branch));
+ const days=[]; for(let t=_ymdMs(to);t>=_ymdMs(from);t-=864e5){ days.push(thDay(t+12*3600e3)); }
+ const mk=()=>({sub:[],card:[],ack:[],sold:[],nots:[],wait:[],noct:[],ct:[],ok:[],byp:[],trial:[],g0:[],g1:[],g2:[],pre:[]});
+ const by={}, byB={}; days.forEach(d=>{ by[d]=mk(); byB[d]={}; });
+ const put=(d,k,x,br)=>{ if(!by[d]) return; by[d][k].push(x); const B=byB[d][br]=byB[d][br]||mk(); B[k].push(x); };
+ live.forEach(a=>{ put(_rdDay(a.firstSubmittedAt||a.submittedAt),'sub',a,a.branch); if(a.hqAdvice&&a.hqAdvice.sentAt) put(_rdDay(a.hqAdvice.sentAt),'card',a,a.branch); if(a.ack3&&a.ack3.at) put(_rdDay(a.ack3.at),'ack',a,a.branch);
+  const s=a.sale; if(s&&s.result){ const sd=_rdSaleDay(a); if(s.result==='sold'){ put(sd,'sold',a,a.branch); if(!String(s.contract||'').trim()) put(sd,'noct',a,a.branch); } else if(s.result==='deposit'||s.result==='waiting') put(_rdDay(s.at),'wait',a,a.branch); else put(_rdDay(s.at),'nots',a,a.branch); } });
+ if(D) D.rows.forEach(r=>{ const br=r.o.br||''; if(!inBr(br)) return; const d=_rdDay(r.o.sd); if(!by[d]) return; put(d,'ct',r,br); if(r.a){ put(d,'ok',r,br); const g=_rdGap(_rdDay(r.a.firstSubmittedAt||r.a.submittedAt),d); put(d,g<0?'pre':g===0?'g0':g===1?'g1':'g2',r,br); } else put(d,r.trial?'trial':'byp',r,br); });
+ const pend=D?D.pending.filter(a=>inBr(a.branch)).map(a=>({a,day:_rdSaleDay(a),age:_rdGap(_rdSaleDay(a),today)})).sort((x,y)=>y.age-x.age):[];
+ const byp=D?D.rows.filter(r=>!r.a&&!r.trial&&inBr(r.o.br||'')&&_rdDay(r.o.sd)>=from&&_rdDay(r.o.sd)<=to):[];
+ return {days,by,byB,from,to,today,asOfD,hasH:!!D,pend,byp}; }
+function rdSet(k,v){ RDAY[k]=v; go('recday'); }
+function rdToggle(d){ RDAY.open[d]=!RDAY.open[d]; go('recday'); }
+function rdDrill(d,k,br){ const X=reconDailyData(); const L=br?((X.byB[d]||{})[br]||{})[k]||[]:(d==='*'?[].concat(...X.days.map(x=>X.by[x][k])):X.by[d][k]); const E=_p1Esc; const bl=c=>{ const b=BRANCHES.find(x=>x.code===c); return b?b.label:(c||'-'); };
+ const T={sub:'ส่งเคส',card:'สนญ. ส่งการ์ด',ack:'สาขารับทราบ',sold:'ขายแล้ว',nots:'ไม่ขาย / ยกเลิก',wait:'รอ / มัดจำ',noct:'ขายแล้ว ยังไม่ใส่เลขสัญญา',ct:'สัญญาใหม่ใน H-Cap',ok:'จับคู่เคสได้',byp:'ไม่พบเคส (ลัดขั้นตอน)',trial:'ไม่พบเคส (ช่วงทดลอง)',g0:'ส่งเคสวันเดียวกัน',g1:'ส่งเคสก่อน 1 วัน',g2:'ส่งเคสก่อน ≥2 วัน',pre:'ทำสัญญาก่อนส่งเคส'}[k]||k;
+ const rows=L.map(x=>x.o?`<tr${x.a?` class="click" onclick="closeModal();openDetail('${E(x.a.id)}')"`:''}><td>${E(x.o.ct)}</td><td>${E(x.o.nm||'-')}</td><td>${E(bl(x.o.br))}</td><td>${thShort(_rdDay(x.o.sd))}</td><td>${x.a?'✅ '+E(x.a.id)+' · ส่ง '+thShort(_rdDay(x.a.firstSubmittedAt||x.a.submittedAt)):'<span class="bad">ไม่พบเคส</span>'}</td></tr>`
+  :`<tr class="click" onclick="closeModal();openDetail('${E(x.id)}')"><td>${E(x.id)}</td><td>${E(x.name||'-')}</td><td>${E(bl(x.branch))}</td><td>${thShort(_rdDay(x.firstSubmittedAt||x.submittedAt))}</td><td>${E((x.sale&&x.sale.contract)||'')}</td></tr>`).join('');
+ document.getElementById('modal-bg').innerHTML=`<div class="modal" style="width:760px"><button class="x" onclick="closeModal()">✕</button><h2 class="pagetitle">${T} · ${d==='*'?'ทั้งช่วง':thShort(d)}${br?' · '+E(bl(br)):''} (${L.length})</h2>`
+  +(L.length?`<div style="max-height:60vh;overflow:auto"><table class="qtable"><thead><tr>${L[0].o?'<th>เลขที่สัญญา</th><th>ชื่อ</th><th>สาขา</th><th>ทำสัญญา</th><th>เคสในระบบ</th>':'<th>เคส</th><th>ชื่อ</th><th>สาขา</th><th>ส่งเคส</th><th>เลขสัญญา</th>'}</tr></thead><tbody>${rows}</tbody></table></div>`:'<p class="mut">ไม่มีรายการ</p>')+'</div>';
+ document.getElementById('modal-bg').classList.remove('hidden'); }
+function rdCSV(){ const X=reconDailyData(); const H=['วันที่','ส่งเคส','สนญ.ส่งการ์ด','สาขารับทราบ','ขายแล้ว','ไม่ขาย/ยกเลิก','รอ/มัดจำ','ขายแล้วยังไม่ใส่เลขสัญญา','สัญญาใหม่ H-Cap','จับคู่ได้','ไม่พบเคส','ช่วงทดลอง','ส่งวันเดียวกัน','ส่งก่อน 1 วัน','ส่งก่อน ≥2 วัน','ทำสัญญาก่อนส่งเคส'];
+ const L=[H].concat(X.days.map(d=>{ const b=X.by[d]; const h=X.hasH&&d<=X.asOfD; return [d,b.sub.length,b.card.length,b.ack.length,b.sold.length,b.nots.length,b.wait.length,b.noct.length].concat(h?[b.ct.length,b.ok.length,b.byp.length,b.trial.length,b.g0.length,b.g1.length,b.g2.length,b.pre.length]:['รอนำเข้า','','','','','','','']); }));
+ const csv='﻿'+L.map(r=>r.map(v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"').join(',')).join('\n'); const bl=new Blob([csv],{type:'text/csv;charset=utf-8'}); const u=URL.createObjectURL(bl); const el=document.createElement('a'); el.href=u; el.download='MOTO24_กระทบยอดรายวัน_'+X.from+'_'+X.to+'.csv'; document.body.appendChild(el); el.click(); el.remove(); }
+function viewReconDaily(){
+ if(!(SESSION&&SESSION.role==='analyst')) return dashHero('🔒','เฉพาะสำนักงานใหญ่','หน้ากระทบยอดรายวันเปิดให้เฉพาะ สนญ.');
+ const X=reconDailyData(); const E=_p1Esc; const bl=c=>{ const b=BRANCHES.find(x=>x.code===c); return b?b.label:(c||'-'); };
+ const N=(d,k,n,cls,br)=>n?`<span class="rd-n ${cls||''}" onclick="rdDrill('${d}','${k}'${br?",'"+br+"'":''})">${n}</span>`:'<span class="mut">–</span>';
+ const sumK=k=>X.days.reduce((s,d)=>s+X.by[d][k].length,0); const hDays=X.days.filter(d=>X.hasH&&d<=X.asOfD); const sumH=k=>hDays.reduce((s,d)=>s+X.by[d][k].length,0);
+ const ct=sumH('ct'), ok=sumH('ok'); const gaps=[].concat(...hDays.map(d=>X.by[d].ok.map(r=>_rdGap(_rdDay(r.a.firstSubmittedAt||r.a.submittedAt),d)).filter(g=>g>=0)));
+ const avg=gaps.length?(gaps.reduce((s,g)=>s+g,0)/gaps.length).toFixed(1):'–';
+ const kp=(bg,fg,v,l)=>`<div class="exkpi" style="background:${bg}"><div class="exkpi-n" style="color:${fg}">${v}</div><div class="exkpi-l" style="color:${fg}">${l}</div></div>`;
+ const row=(d,b,br,sub)=>{ const h=X.hasH&&d<=X.asOfD;
+  return `<tr class="${d===X.today&&!br?'rd-today':''}${sub?' rd-sub':''}"><td>${br?'<span style="padding-left:18px">↳ '+E(bl(br))+'</span>':`<a href="javascript:void(0)" onclick="rdToggle('${d}')" title="แตกรายสาขา">${RDAY.open[d]?'▾':'▸'} <b>${thShort(d)}</b>${d===X.today?' (วันนี้)':''}</a>`}</td>`
+  +`<td>${N(d,'sub',b.sub.length,'',br)}</td><td>${N(d,'card',b.card.length,'',br)}</td><td>${N(d,'ack',b.ack.length,'',br)}</td>`
+  +`<td>${N(d,'sold',b.sold.length,'',br)}</td><td>${N(d,'nots',b.nots.length,'',br)}</td><td>${N(d,'wait',b.wait.length,'',br)}</td><td>${N(d,'noct',b.noct.length,'warn',br)}</td>`
+  +(h?`<td>${N(d,'ct',b.ct.length,'',br)}</td><td>${N(d,'ok',b.ok.length,'ok',br)}</td><td>${N(d,'byp',b.byp.length,'bad',br)}${b.trial.length?' <span class="mut" title="ช่วงทดลอง ไม่นับลัดขั้นตอน">+'+b.trial.length+'🧪</span>':''}</td><td>${N(d,'g0',b.g0.length,'',br)} / ${N(d,'g1',b.g1.length,'',br)} / ${N(d,'g2',b.g2.length,'warn',br)}${b.pre.length?' · '+N(d,'pre',b.pre.length,'bad',br)+'<span class="mut" style="font-size:11px"> ก่อนส่ง</span>':''}</td>`
+   :`<td colspan="4" class="mut" style="font-size:12px">${X.hasH?'รอนำเข้า balance_report ของวันที่ '+thShort(d):'ยังไม่มีข้อมูล H-Cap'}</td>`)+`</tr>`; };
+ const body=X.days.map(d=>{ let h=row(d,X.by[d]); if(RDAY.open[d]){ const brs=Object.keys(X.byB[d]).sort(); h+=brs.length?brs.map(br=>row(d,X.byB[d][br],br,true)).join(''):'<tr class="rd-sub"><td colspan="12" class="mut" style="padding-left:30px">ไม่มีรายการ</td></tr>'; } return h; }).join('');
+ const tot=`<tr class="rd-tot"><td>รวมช่วงที่เลือก</td><td>${N('*','sub',sumK('sub'))}</td><td>${N('*','card',sumK('card'))}</td><td>${N('*','ack',sumK('ack'))}</td><td>${N('*','sold',sumK('sold'))}</td><td>${N('*','nots',sumK('nots'))}</td><td>${N('*','wait',sumK('wait'))}</td><td>${N('*','noct',sumK('noct'),'warn')}</td><td>${N('*','ct',sumH('ct'))}</td><td>${N('*','ok',sumH('ok'),'ok')}</td><td>${N('*','byp',sumH('byp'),'bad')}</td><td>${sumH('g0')} / ${sumH('g1')} / ${sumH('g2')}${sumH('pre')?' · '+sumH('pre')+' ก่อนส่ง':''}</td></tr>`;
+ const brOpt=BRANCHES.map(b=>`<option value="${b.code}" ${RDAY.br===b.code?'selected':''}>${E(b.label)}</option>`).join(''); const zOpt=Object.keys(ZONES).map(z=>`<option value="${z}" ${RDAY.zone===z?'selected':''}>${E(ZONES[z].name||z)}</option>`).join('');
+ const pend=X.pend.slice(0,30).map(p=>`<tr class="click" onclick="openDetail('${E(p.a.id)}')"><td>${E(p.a.id)} · ${E(p.a.name||'')}</td><td>${E(bl(p.a.branch))}</td><td>${thShort(p.day)}</td><td>${p.age<=1?p.age+' วัน <span class="tag" style="background:#f1f5f9;color:#475569">ปกติ</span>':p.age<=3?'<b style="color:#b45309">'+p.age+' วัน</b> <span class="tag t-warn">ถามสาขา</span>':'<b style="color:#b91c1c">'+p.age+' วัน</b> <span class="tag t-bad">เลขสัญญาผิด?</span>'}</td></tr>`).join('');
+ const byp=X.byp.slice(0,30).map(r=>`<tr class="click" onclick="reconOpen('${E(r.o.ct)}')"><td>${E(r.o.ct)}</td><td>${E(r.o.nm||'-')}</td><td>${E(bl(r.o.br))}</td><td>${thShort(_rdDay(r.o.sd))}</td></tr>`).join('');
+ return dashHero('📅','สรุปกระทบยอดรายวัน','เทียบงานในระบบกับสัญญาจริงใน H-Cap วันต่อวัน · '+(X.hasH?'ข้อมูล H-Cap ณ '+thShort(X.asOfD):'ยังไม่มีข้อมูล H-Cap (นำเข้า balance_report)')+' · เห็นเฉพาะ สนญ.')
+ +`<div class="card mb"><div class="flex rd-flt" style="gap:10px;flex-wrap:wrap;align-items:center;font-size:13.5px"><b>ช่วงวันที่</b><input type="date" value="${X.from}" onchange="rdSet('from',this.value)" style="max-width:160px"> – <input type="date" value="${X.to}" onchange="rdSet('to',this.value)" style="max-width:160px"><b>เขต</b><select onchange="rdSet('zone',this.value)"><option value="">ทุกเขต</option>${zOpt}</select><b>สาขา</b><select onchange="rdSet('br',this.value)"><option value="">ทุกสาขา</option>${brOpt}</select><button class="btn btn-line btn-sm" style="margin-left:auto" onclick="rdCSV()">⬇ CSV</button></div></div>`
+ +`<div class="exkpis" style="margin-bottom:14px">${kp('#eef1fb','#1e2761',sumK('sub'),'เคสส่งเข้าระบบ')}${kp('#f0fdf4','#166534',ct+(ct?' · จับคู่ '+ok+' ('+Math.round(ok*100/ct)+'%)':''),'สัญญาใหม่ใน H-Cap')}${kp('#fef2f2','#991b1b',sumH('byp'),'⛔ สัญญาไม่พบเคส (ลัดขั้นตอน)')}${kp('#fffbeb','#92400e',X.pend.length,'⏳ ขายในระบบ แต่ยังไม่พบใน H-Cap')}${kp('#f8fafc','#334155',avg+(avg!=='–'?' วัน':''),'ส่งเคส → ทำสัญญา (เฉลี่ย)')}</div>`
+ +`<div class="card mb"><div style="overflow-x:auto"><table class="qtable rd-tbl"><thead><tr><th rowspan="2">วันที่ <span class="mut" style="font-weight:400;font-size:11px">(กด ▸ แตกรายสาขา)</span></th><th colspan="3" class="rd-g1">ในระบบโมโต24 (ตามวันที่เกิด)</th><th colspan="4" class="rd-g3">ผลขายที่สาขาบันทึก</th><th colspan="4" class="rd-g2">H-Cap (ตามวันทำสัญญา)</th></tr>
+   <tr><th class="rd-g1">ส่งเคส</th><th class="rd-g1">สนญ.<br>ส่งการ์ด</th><th class="rd-g1">สาขา<br>รับทราบ</th><th class="rd-g3">ขายแล้ว</th><th class="rd-g3">ไม่ขาย /<br>ยกเลิก</th><th class="rd-g3">รอ /<br>มัดจำ</th><th class="rd-g3">ขายแล้ว<br>ยังไม่ใส่เลขสัญญา</th><th class="rd-g2">สัญญา<br>ใหม่</th><th class="rd-g2">✅ จับคู่<br>เคสได้</th><th class="rd-g2">⛔ ไม่พบ<br>เคส</th><th class="rd-g2">ส่งเคสก่อน<br>วันเดียวกัน / +1 / ≥+2</th></tr></thead><tbody>${body}${tot}</tbody></table></div>
+   <p class="pill-note">• เคสข้ามวัน เช่น ส่งเคส 30/09 → ทำสัญญาใน H-Cap 01/10: นับ "ส่งเคส" ในแถว 30/09 และนับ "สัญญาใหม่ / จับคู่ได้" ในแถว 01/10 (ช่อง +1) — ไม่นับซ้ำ ไม่หาย · ≥+2 วัน และ "ก่อนส่ง" (ทำสัญญาก่อนส่งเคส) ควรตรวจ<br>• ⛔ ไม่พบเคส = สัญญาใน H-Cap ที่ไม่มีเคส (จับคู่เลขสัญญา → เลขบัตร) · 🧪 ช่วงทดลองไม่นับ · ตัวเลขชุดเดียวกับหน้า "กระทบยอด H-Cap" · กดตัวเลข = ดูรายชื่อ</p></div>`
+ +`<div class="rd-two"><div class="card"><h3 class="exhead org">⏳ ขายในระบบ แต่ยังไม่พบใน H-Cap (${X.pend.length})</h3>${X.pend.length?`<table class="qtable"><thead><tr><th>เคส</th><th>สาขา</th><th>บันทึกขาย</th><th>ค้าง</th></tr></thead><tbody>${pend}</tbody></table>`:'<div class="alert a-ok" style="margin:0">✓ ไม่มีค้าง</div>'}<p class="pill-note">1 วัน = ปกติ (ทำสัญญาวันถัดไป) · 2–3 วัน ถามสาขา · เกิน 3 วัน มักใส่เลขสัญญาผิด</p></div>
+   <div class="card"><h3 class="exhead">⛔ สัญญาไม่พบเคสในระบบ (${X.byp.length})</h3>${X.byp.length?`<table class="qtable"><thead><tr><th>เลขที่สัญญา</th><th>ชื่อ</th><th>สาขา</th><th>ทำสัญญา</th></tr></thead><tbody>${byp}</tbody></table>`:'<div class="alert a-ok" style="margin:0">✓ ไม่มีในช่วงที่เลือก</div>'}</div></div>`;
 }
 function reconCmpPop(r){   /* 0925-S: ตารางเทียบ "สาขากรอก" กับ "H-Cap" ทีละช่อง */
  const o=r.o, a=r.a, E=_p1Esc, f0=v=>(v==null||v==='')?'-':(typeof v==='number'?(Math.round(v*100)/100).toLocaleString():E(String(v)));
@@ -5844,7 +5975,7 @@ function p1Steps(a,isBr){
  if(ack) st.push({s:'on',t:'รับทราบ'}); else if(sent) st.push({s:'wait',t:isBr?'กดรับทราบ (ถึงคิวเรา)':'รอสาขารับทราบ'}); else st.push({s:'off',t:'รอรับทราบ'});
  if(_p1SaleDone(a)){ const r=sale.result; st.push({s:'on',t:r==='sold'?'ขายแล้ว'+(sale.beforeSubmit?' (ก่อนส่งเคส)':sale.beforeHQ?' (ก่อน สนญ. ตรวจ)':''):r==='notsold'?'ไม่ขาย':'ลูกค้ายกเลิก'}); }
  else if(sale&&sale.result==='deposit'&&sale.dep) st.push(depLate(a)?{s:'late',t:'เลยนัดออกรถ (ค้างอัปเดต)'}:{s:'wait',t:'มัดจำ · นัดออกรถ '+_thDowDm(sale.dep.appt)});
- else if(sale&&sale.result==='waiting') st.push(late?{s:'late',t:'รอลูกค้าตัดสินใจ (เกินวัน)'}:{s:'wait',t:'รอลูกค้าตัดสินใจ'});
+ else if(sale&&sale.result==='waiting') st.push(fuLate(a)?{s:'late',t:'เลยนัดติดตาม (ค้างอัปเดต)'}:{s:'wait',t:fuTxt(a)});
  else if(ack) st.push(late?{s:'late',t:'ค้างบันทึกผลขาย (เกินวัน)'}:{s:'wait',t:'บันทึกผลขาย'});
  else st.push({s:'off',t:'ผลขาย'});
  return st; }
@@ -5890,14 +6021,20 @@ function p1BrCell(a,isBr){
  if(!sent) return _p1Cell('⏳','#cbd5e1','รอการ์ดจาก สนญ.',isBr?'ยังไม่มีสิ่งที่ต้องทำ':'สาขายังไม่มีสิ่งที่ต้องทำ');
  if(!ack) return isBr?_p1Cell('👉','#f59e0b','กดรับทราบ','เปิดดูการ์ด + คำแนะนำ แล้วกดรับทราบ'):_p1Cell('⏳','#f59e0b','รอสาขารับทราบ','สนญ. ส่งมา '+fmtDur(Date.now()-(a.hqAdvice.sentAt||0))+' แล้ว');
  if(sale&&sale.result==='deposit'&&sale.dep){ const dl=depLate(a); return _p1Cell('💰',dl?'#ef4444':'#d97706',dl?'เลยนัดออกรถ · อัปเดตผลขาย':'มัดจำแล้ว · รอออกรถ',depTxt(sale)); }
- if(sale&&sale.result==='waiting') return _p1Cell('⏳',late?'#ef4444':'#f59e0b','รับทราบแล้ว · รอลูกค้าตัดสินใจ',(late?'⚠ เกินวัน · ':'')+(sale.reason?_p1Esc(sale.reason):fmtDT(sale.at)));
+ if(sale&&sale.result==='waiting'){ const fs=fuState(a); const fu=sale.fu||{}; return _p1Cell('⏳',fs==='late'?'#ef4444':fs==='due'||fs==='today'?'#f97316':'#f59e0b',fs==='late'?'เลยนัดติดตาม · ค้างอัปเดต':'รับทราบแล้ว · '+fuTxt(a),(sale.reason?_p1Esc(sale.reason)+' · ':'')+(fu.post?'เลื่อนนัดแล้ว '+fu.post+' ครั้ง · ':'')+(fu.ackOn===thDay()?'สาขารับทราบนัด '+fmtDT(fu.ackAt):(fs==='today'||fs==='tomorrow'?'<b style="color:#b45309">ยังไม่กดรับทราบนัด</b>':''))); }
  if(late) return _p1Cell('⏰','#ef4444','รับทราบแล้ว · ค้างบันทึกผลขาย','⚠ เกินวัน — '+(isBr?'กดบันทึกผลขายวันนี้':'ต้องบันทึกวันต่อวัน'));
  return _p1Cell('✓','#22c55e','รับทราบแล้ว · รอบันทึกผลขาย','รับทราบ '+fmtDT(a.ack3.at)); }
+/* 0925-V แบบ ข: ป้าย H-Cap บนแถวเคส — เห็นเฉพาะ สนญ. (ไม่ใช่สาขา/เขต) */
+window.__hqTagC=window.__hqTagC||{};
+function hqRowTags(a){ try{ if(!(SESSION&&SESSION.role==='analyst')||!p1()||!a) return '';
+ let t=a.check3&&a.check3.hqTags; if(!t){ const ck=a.id+'|'+(a.updatedAt||0); t=window.__hqTagC[ck]; if(!t){ try{ t=(check3(a,a.calc||calcAll(a)).hcap.tags)||[]; }catch(e){ t=[]; } window.__hqTagC[ck]=t; } }
+ const IC={bad:'🔴',hqw:'🔔',refi:'🔁'};
+ return (t||[]).map(([lv,x])=>`<span class="hqtag ${lv}" title="เห็นเฉพาะ สนญ.">${IC[lv]||''} ${lv==='refi'?x:'H-Cap: '+x}</span>`).join(''); }catch(e){ return ''; } }
 function appCardP1(a,showBranch){
  const b=BRANCHES.find(x=>x.code===a.branch); const isBr=brView();
  const _lt=a.thread&&a.thread.length?a.thread[a.thread.length-1]:null; const reply=(_lt&&!_lt.st&&_lt.by==='branch')?' <span class="tag t-info" style="font-size:10px">↩ สาขาตอบกลับ</span>':(_lt&&!_lt.st&&_lt.by==='zone')?' <span class="tag t-warn" style="font-size:10px">↩ เขตแจ้ง</span>':'';
  return `<div class="p1row" style="border-left-color:${p1RowAccent(a)}" onclick="openDetail('${a.id}')">
-  ${qTicket(a)}<div><div class="p1nm">${a.name}<span class="qid">· ${a.id}</span>${reply}</div>
+  ${qTicket(a)}<div><div class="p1nm">${a.name}<span class="qid">· ${a.id}</span>${reply}${hqRowTags(a)}</div>
    <div class="p1meta">${showBranch&&b?b.label+' · ':''}${prodLabel(a)}${a.idDocWait&&!a.idDoc?' · <span style="color:#b45309">📎 รอภาพ</span>':''} · ยอดจัด ${fmt(a.calc.finance)} · ส่ง ${fmtDT(a.submittedAt)}</div>${p1MiniTL(a,isBr)}</div>
   <div>${p1HqCell(a,isBr)}</div><div>${p1BrCell(a,isBr)}</div>${p1ResultCell(a,isBr)}</div>`; }
 function appCard(a, showBranch){
@@ -5908,7 +6045,7 @@ function appCard(a, showBranch){
  const reply=(a.status==='pending'&&a.thread&&a.thread.length&&a.thread[a.thread.length-1].by==='branch')?' <span class="tag t-info" style="font-size:10px">↩ สาขาตอบกลับ</span>':'';
  const sc=showScore?`<span class="qsc ${scoreCls(a.calc.score)}">${a.calc.score}</span>`:'';
  return `<div class="qcard" onclick="openDetail('${a.id}')"><span class="qbar" style="background:${qAccent(a)}"></span>
-   <div class="qmain"><div class="qname">${a.name} <span class="qid">· ${a.id}</span>${reply}</div>
+   <div class="qmain"><div class="qname">${a.name} <span class="qid">· ${a.id}</span>${reply}${hqRowTags(a)}</div>
    <div class="qsub">${showBranch&&b?b.label+' · ':''}${prodLabel(a)} · ยอดจัด ${fmt(a.calc.finance)}${a.idDocWait&&!a.idDoc?' · <span style="color:#b45309">📎 รอภาพ</span>':''}${waitStr}</div></div>
    ${p1()&&SESSION.role!=='branch'?lightBadge(a):''}${sc}${qPill(a)}</div>`; }
 function qTable(list, showBranch){
@@ -6128,8 +6265,8 @@ function openDetail(id){ window.__detailId=id;
      <tr><td class="mut">${a.product==='pawn'?'ราคาประเมิน':'ราคาขายสด'}</td><td>${fmt(c.price||a.price)} บ.</td><td class="mut">${a.product==='pawn'?'วงเงินขอ':'เงินดาวน์'}</td><td>${fmt(a.product==='pawn'?c.finance:a.down)} บ. ${a.product!=='pawn'?'('+c.downPct.toFixed(1)+'%)':''}</td></tr>
      <tr><td class="mut">ยอดจัด</td><td class="b">${fmt(c.finance)} บ.</td><td class="mut">ค่างวด</td><td class="b">${fmt(c.installment)} บ./ด. ${c.balloonAmt?'+ บอลลูน '+fmt(c.balloonAmt):''}</td></tr>
      <tr><td class="mut">วันดิวงวดแรก</td><td>${a.firstDue||'-'}</td><td class="mut">Flat</td><td>${c.flatMo!=null? c.flatMo.toFixed(2)+'%/ด. ('+c.flatYr.toFixed(1)+'%/ปี)':'Balloon คงที่'}</td></tr>
-     <tr><td class="mut">ราคาเช่าซื้อทั้งสัญญา</td><td class="b">${fmt(c.hpTotal)} บ.</td><td class="mut">ดอกผลทั้งสัญญา (ก่อน VAT)</td><td>${c.interestPreVat.toLocaleString('th-TH',{maximumFractionDigits:2})} บ.</td></tr>
-     <tr><td class="mut">ภาษีค่างวดทั้งสัญญา</td><td>${c.vatTotal.toLocaleString('th-TH',{maximumFractionDigits:2})} บ.</td><td class="mut">ราคาผ่อนสูงสุด (เพดาน ${CFG.eirCap}%)</td><td>${a.product==='pawn'?'-':fmt(c.maxPrice)+' บ.'}</td></tr>
+     <tr><td class="mut">ราคาเช่าซื้อทั้งสัญญา</td><td class="b">${fmt(c.hpTotal)} บ.</td>${isHQ?`<td class="mut">ดอกผลทั้งสัญญา (ก่อน VAT)</td><td>${c.interestPreVat.toLocaleString('th-TH',{maximumFractionDigits:2})} บ.</td>`:'<td></td><td></td>'}</tr>
+     ${isHQ?`<tr><td class="mut">ภาษีค่างวดทั้งสัญญา</td><td>${c.vatTotal.toLocaleString('th-TH',{maximumFractionDigits:2})} บ.</td><td class="mut">ราคาผ่อนสูงสุด (เพดาน ${CFG.eirCap}%)</td><td>${a.product==='pawn'?'-':fmt(c.maxPrice)+' บ.'}</td></tr>`:''}
      ${isHQ?`<tr><td class="mut">LTV</td><td style="color:${c.ltv>c.ltvMax?'var(--bad)':'var(--ok)'}">${pct(c.ltv)} (≤${c.ltvMax}%)</td>
          <td class="mut">DSR</td><td style="color:${c.dsr>c.dsrMax?'var(--bad)':'var(--ok)'}">${pct(c.dsr)} (≤${c.dsrMax}%)</td></tr>
      <tr><td class="mut">EIR</td><td class="b" style="color:${c.eir>CFG.eirCap?'var(--bad)':'var(--ok)'}" colspan="3">${c.eir.toFixed(2)}% (เพดาน ธปท. ${CFG.eirCap}%)</td></tr>`:''}
@@ -6284,8 +6421,8 @@ function printCase(id){
    +row(a.product==='pawn'?'ราคาประเมิน':'ราคาขายสด',money(c.price||a.price),a.product==='pawn'?'วงเงินขอ':'เงินดาวน์',money(a.product==='pawn'?c.finance:a.down)+(a.product!=='pawn'?' ('+c.downPct.toFixed(1)+'%)':''))
    +row('ยอดจัด','<b>'+money(c.finance)+'</b>','ค่างวด','<b>'+money(c.installment)+'/ด.</b>'+(c.balloonAmt?' + บอลลูน '+fmt(c.balloonAmt):''))
    +row('วันดิวงวดแรก',esc(a.firstDue)||'-','Flat',c.flatMo!=null?(c.flatMo.toFixed(2)+'%/ด. ('+c.flatYr.toFixed(1)+'%/ปี)'):'Balloon คงที่')
-   +row('ราคาเช่าซื้อทั้งสัญญา','<b>'+money(c.hpTotal)+'</b>','ดอกผลทั้งสัญญา (ก่อน VAT)',c.interestPreVat.toLocaleString('th-TH',{maximumFractionDigits:2})+' บ.')
-   +row('ภาษีค่างวดทั้งสัญญา',c.vatTotal.toLocaleString('th-TH',{maximumFractionDigits:2})+' บ.','ราคาผ่อนสูงสุด (เพดาน '+CFG.eirCap+'%)',a.product==='pawn'?'-':money(c.maxPrice))
+   +(_prHQ?row('ราคาเช่าซื้อทั้งสัญญา','<b>'+money(c.hpTotal)+'</b>','ดอกผลทั้งสัญญา (ก่อน VAT)',c.interestPreVat.toLocaleString('th-TH',{maximumFractionDigits:2})+' บ.'):row('ราคาเช่าซื้อทั้งสัญญา','<b>'+money(c.hpTotal)+'</b>'))
+   +(_prHQ?row('ภาษีค่างวดทั้งสัญญา',c.vatTotal.toLocaleString('th-TH',{maximumFractionDigits:2})+' บ.','ราคาผ่อนสูงสุด (เพดาน '+CFG.eirCap+'%)',a.product==='pawn'?'-':money(c.maxPrice)):'')
    +(_prHQ?row('LTV',pct(c.ltv)+' (≤'+c.ltvMax+'%)','DSR',pct(c.dsr)+' (≤'+c.dsrMax+'%)'):'')
    +(_prHQ?row('EIR (ดอกเบี้ยแท้จริง)','<b>'+c.eir.toFixed(2)+'% / ปี</b> (เพดาน ธปท. '+CFG.eirCap+'%)'):'');
  // ประเด็นที่ต้องระวัง
@@ -9964,7 +10101,7 @@ function annReport(a,st){ if(!SESSION||SESSION.role!=='branch'||typeof cloudRead
  const steps=annSteps(a,st); const rec={id:a.id, seen:st.seenAt||0, ack:st.ack||0, build:CHK3_BUILD, reload:steps.some(x=>x.k==='reload'&&x.done)?1:0, backup:st.backup||0, done:steps.filter(x=>x.done).length, need:steps.length, by:(SESSION&&SESSION.name)||'', at:Date.now()};
  const sig=[rec.id,rec.seen?1:0,rec.ack?1:0,rec.reload,rec.backup?1:0,rec.build].join('|'); const P=window.__annPush=window.__annPush||{}; if(st.pushed===sig||P[a.id]===sig) return; P[a.id]=sig;
  cloudCall('setMaster',{key:'annack_'+SESSION.branch, data:rec, by:rec.by}).then(()=>{ const s2=annSt(a.id); s2.pushed=sig; annStSet(a.id,s2); }).catch(()=>{}).then(()=>{ if(P[a.id]===sig) delete P[a.id]; }); }
-function annTick(force){ try{ if(!SESSION||SESSION.role!=='branch') return; const a=annCur(); if(!annForMe(a)) return; const st=annSt(a.id);
+function annTick(force){ try{ annBarRender(); }catch(e){} try{ if(!SESSION||SESSION.role!=='branch') return; const a=annCur(); if(!annForMe(a)) return; const st=annSt(a.id);
   if(st.ack){ annReport(a,st); return; }
   if(!st.seenAt){ st.seenAt=Date.now(); annStSet(a.id,st); }
   annReport(a,st);
@@ -9993,7 +10130,7 @@ function annRender(a,preview){ const ov=document.getElementById('ann-ov'); if(!o
  ov.innerHTML='<div style="background:#fff;border-radius:18px;width:min(560px,96vw);overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.3)">'+head+body+foot+'</div>'; }
 function annDoReload(){ const a=annCur(); if(a){ const st=annSt(a.id); st.reloadAt=Date.now(); annStSet(a.id,st); } try{ newVerReload(); }catch(e){ location.reload(); } }
 function annDoBackup(){ const a=annCur(); if(!a) return; try{ backupAll(); }catch(e){ alert('สำรองไม่สำเร็จ: '+e.message); return; } const st=annSt(a.id); st.backup=Date.now(); annStSet(a.id,st); annReport(a,st); annRender(a); }
-function annAck(){ const a=annCur(); if(!a) return; const st=annSt(a.id); if(annSteps(a,st).some(x=>!x.done)) return; st.ack=Date.now(); annStSet(a.id,st); annReport(a,st); annClose(); toast('✅ รับทราบประกาศแล้ว',a.title||'','','#15803d'); if(typeof currentTab!=='undefined'&&currentTab==='ann') go('ann'); }
+function annAck(){ const a=annCur(); if(!a) return; const st=annSt(a.id); if(annSteps(a,st).some(x=>!x.done)) return; st.ack=Date.now(); annStSet(a.id,st); annReport(a,st); annClose(); try{ annBarRender(); }catch(e){} toast('✅ รับทราบประกาศแล้ว',a.title||'','','#15803d'); if(typeof currentTab!=='undefined'&&currentTab==='ann') go('ann'); }
 function annSnooze(){ const a=annCur(); if(!a) return; const st=annSt(a.id); st.snooze=Date.now()+ANN_REPOP; annStSet(a.id,st); annClose(); }
 setInterval(()=>{ try{ annTick(); }catch(e){} }, 30000);   /* เช็กทุก 30 วิ · เด้งซ้ำเมื่อพ้น 2 นาทีหลังกด "ปิดไว้ก่อน" */
 /* ---- หน้า สนญ. ---- */
@@ -10150,7 +10287,7 @@ function chatMsgs(br){ const c=chatLoad(); return Object.values(c.msgs).filter(m
 function chatPoll(){ if(!v5On()||!SESSION) return Promise.resolve(); const c=chatLoad();
  return v5Call('chatList',{since:Math.max(0,(c.since||0)-5000)},{tries:0,timeout:25000}).then(j=>{ let ch=false; const my=chatScopeBranches();
   (j.msgs||[]).forEach(m=>{ if(my.indexOf(m.branch)<0) return; const o=c.msgs[m.id]; if(!o||(o.upd||0)<(m.upd||0)){ c.msgs[m.id]=m; ch=true; } });
-  c.since=Math.max(c.since||0, ...(j.msgs||[]).map(m=>m.upd||0)); chatSave(); updateChatBadge(); if(ch&&currentTab==='chat') chatRenderThread(); if(ch){ try{ chatNotify(); }catch(e){} } }).catch(()=>{}); }
+  c.since=Math.max(c.since||0, ...(j.msgs||[]).map(m=>m.upd||0)); chatSave(); updateChatBadge(); if(ch&&currentTab==='chat') chatRenderThread(); try{ if(ch&&CW.open){ cwRenderThread(); cwMarkRead(); } }catch(e){} if(ch){ try{ chatNotify(); }catch(e){} } }).catch(()=>{}); }
 /* นาทีในเวลาทำการ ระหว่าง t0–t1 (ใช้เวลาเปิด-ปิดจากตั้งค่าคิว) */
 function bizMins(t0,t1){ if(!(t1>t0)) return 0; const c=qCfg(); const hm=s=>{ const p=s.split(':'); return (+p[0])*60+(+p[1]); }; const o=hm(c.open), cl=hm(c.close); let tot=0;
  const d=new Date(t0); d.setHours(0,0,0,0); for(let i=0;i<60&&d.getTime()<t1;i++){ const wd=d.getDay(); if(!((wd===0&&!c.sun)||(wd===6&&!c.sat))){ const a=Math.max(t0,d.getTime()+o*60000), b=Math.min(t1,d.getTime()+cl*60000); if(b>a) tot+=(b-a)/60000; } d.setDate(d.getDate()+1); }
@@ -10160,7 +10297,7 @@ function chatWaitOf(br){ const L=chatMsgs(br); if(!L.length) return null; const 
 function chatUnread(br){ const side=(SESSION&&SESSION.role==='branch')?'readBr':'readHq'; const other=side==='readBr'?'hq':'br'; return chatMsgs(br).filter(m=>m.role===other&&!m[side]).length; }
 function updateChatBadge(){ const t=document.getElementById('tab-chat'); if(t) t.style.display=v5On()?'':'none'; const b=document.getElementById('chatBadge'); if(!b) return;
  let n=0; if(SESSION&&SESSION.role==='branch') n=chatUnread(SESSION.branch); else if(SESSION&&SESSION.role==='analyst') n=chatScopeBranches().filter(br=>chatWaitOf(br)).length;
- b.textContent=n; b.style.display=n&&v5On()?'':'none'; }
+ b.textContent=n; b.style.display=n&&v5On()?'':'none'; try{ cwRender(); }catch(e){} }
 function chatOffBanner(){ if(qOpenNow()) return ''; const c=qCfg(); return '<div style="background:#fff7ed;color:#c2410c;padding:8px 14px;font-size:13px;border-bottom:1px solid #fed7aa">🌙 นอกเวลาทำการ — ส่งข้อความได้ สนญ. จะตอบวันทำการถัดไป '+c.open+' น.</div>'; }
 function chatBubble(m,mine){ const t=new Date(m.at); const tm=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0'); const day=_dayKey(m.at)===_dayKey(Date.now())?'':(t.getDate()+'/'+(t.getMonth()+1)+' ');
  const img=m.fileId?(m.fileGone?'<div class="mut" style="font-size:12px">🖼 ภาพถูกลบตามรอบปิดเดือน</div>':'<img data-v5id="'+m.fileId+'" style="max-width:220px;max-height:220px;border-radius:8px;display:block;margin:4px 0;cursor:zoom-in;opacity:.35;min-width:60px;min-height:40px;background:#e2e8f0" onclick="if(this.src)_zoomData(this.src)"><div class="v5err mut" style="font-size:11px"></div>'):'';
@@ -10289,7 +10426,7 @@ function exportCSV(list,fname){
    หลักการ: ระบบ = ผู้ช่วยตรวจข้อมูล (สนญ. แนะนำ) · สาขาตัดสินใจขายเอง · ผลรวม = แย่ที่สุดชนะ · ซ่อนคะแนนจากสาขา
    ตารางตั้งค่า (สนญ. แก้เอง): INCREF = ค่าอ้างอิงรายได้ 3 ชั้น (ภาคใต้ → จังหวัด → โซน/สาขา) · DOCCHECK = checklist เอกสารตามกลุ่มอาชีพ
    ====================================================================================== */
-const CHK3_BUILD='0925-U';
+const CHK3_BUILD='0925-V';
 
 /* ---------- จังหวัดของสาขา (ใช้เป็นตัวสำรองเมื่อไม่มีจังหวัดลูกค้า) ---------- */
 const BRANCH_PROV={
@@ -10404,7 +10541,7 @@ function hcapNameHits(a){ if(typeof WATCH==='undefined'||!WATCH||!WATCH.payIdx) 
 
 /* ===== 0917-A: ดักเลขบัตรฝั่งสาขา (ก/ข) · ขอแก้ข้อมูลหลังส่ง · เติมเลขสัญญาย้อนหลัง ===== */
 const EDIT_FIELDS=[
- ['s1','หัวข้อ 1 ผู้ขอ',[['idcard','เลขบัตรประชาชน',['#f-idcard','#f-cardtype']],['name','ชื่อ-สกุล/ชื่อเล่น',['#f-prefix','#f-name','#f-lname','#f-nick','#f-gender']],['birth','วันเกิด/อายุ',['#f-birth','#f-age']],['phone','เบอร์โทร',['#phone-list']],['marital','สถานภาพ/คู่สมรส/บุตร',['#f-marital','#spouse-block','#f-children']],['addrCard','ที่อยู่ตามบัตร (1.1)',['[id^=fc-]']],['addrCur','ที่อยู่ปัจจุบัน/ทะเบียนบ้าน (1.2)',['[id^=fp-]','#f-sameaddr','#f-housetype','#w-housepay','#f-tenure','#f-stayyears','#f-houseorder','#f-houseppl','#f-houseloc']],['refs','บุคคลอ้างอิง (1.3)',['[id^=f-ref]']],['vehUse','ผู้ใช้รถ/วัตถุประสงค์ (1.4)',['[id^=f-vu]']]]],
+ ['s1','หัวข้อ 1 ผู้ขอ',[['idcard','เลขบัตรประชาชน',['#f-idcard','#f-cardtype']],['name','ชื่อ-สกุล/ชื่อเล่น',['#f-prefix','#f-name','#f-lname','#f-nick','#f-gender']],['birth','วันเกิด/อายุ',['#f-birth','#f-age']],['phone','เบอร์โทร',['#phone-list']],['marital','สถานภาพ/คู่สมรส/บุตร',['#f-marital','#spouse-block','#f-children']],['addrCard','ที่อยู่ตามบัตร (1.1)',['[id^=fc-]']],['addrCur','ที่อยู่ปัจจุบัน/ทะเบียนบ้าน (1.2)',['[id^=fp-]','#f-sameaddr','#f-housetype','#w-housepay','#f-tenure','#f-stayyears','#f-houseorder','#f-houseppl','#f-houseloc']],['refs','บุคคลอ้างอิง (1.3)',['[id^=f-ref]']],['vehUse','ผู้ใช้รถ/วัตถุประสงค์ (1.4)',['[id^=f-vu]']],['iddoc','📎 สำเนาบัตร + ทะเบียนบ้าน (ภาพ) + ติ๊กลายเซ็น',['#w-iddoc']]]],   /* 0925-V: ปลดให้แนบภาพใหม่ได้ */
  ['s2','หัวข้อ 2 อาชีพ',[['occupation','อาชีพ/ประเภทย่อย',['#f-occg','#f-occ','#w-occex','#w-rai','#f-occex','#f-rai']],['workplace','ชื่อกิจการ/ที่ตั้ง/เบอร์ที่ทำงาน',['#f-workplace','#f-workaddr','#w-workphone','[id^=f-pw-]']],['workyears','อายุงาน',['#f-workyrs','#f-workmos','#f-workstart']]]],
  ['s3','หัวข้อ 3 รายได้',[['income','รายได้หลัก',['#f-income']],['incomeExtra','รายได้เสริม/ที่มา',['#f-incextrahas','.incx','#f-incomeextra','#f-incomeextrasrc','#f-incomeextrasrc-other']],['debt','ภาระหนี้เดิม/รายการ',['#f-debthas','#f-debt','#debt-items-w','#debt-items']],['expense','ค่าใช้จ่ายส่วนตัว',['#f-expense']]]],
  ['s5','หัวข้อ 5 ผู้ค้ำ/การขาย',[['guar','ผู้ค้ำ',['#f-guar','[id^=g-]','[id^=ga-]']],['sale','สถานะการขาย/วันที่ขาย/เลขสัญญาตอนส่ง',['#f-salestate','#f-salesold-w','#f-saledate','#f-salecontract']]]]
@@ -10516,8 +10653,8 @@ function check3(a, c){ try{ custOccFix(); }catch(e){}   /* 0921-A: ซ่อม�
  else if(idN && idN.length!==13 && a.cardType==='บัตรประชาชน') P('person','warn','เลขบัตรไม่ครบ 13 หลัก');
  else if(idN.length===13) P('person','ok','เลขบัตร 13 หลัก ตรวจทานถูกต้อง');
  if(a.birth){ const age=a.age||ageFrom(a.birth); const _hasG=(a.guarantor==='g_doc'||a.guarantor==='g')&&a.guar&&(a.guar.firstName||a.guar.nameOnly); const _aMin=+(CFG&&CFG.ageMin)||20, _aSen=+(CFG&&CFG.ageSenior)||60;
-  if(age<_aMin) P('person','bad','อายุ '+age+' ปี ต่ำกว่า '+_aMin+' ปีบริบูรณ์ — ลูกค้าทำสัญญาเองไม่ได้ ต้องให้ผู้ปกครอง/ผู้ใหญ่ในครอบครัวเป็นผู้ซื้อ และมีผู้ค้ำ');
-  else if(age>=_aSen) P('person', _hasG?'warn':'bad', 'อายุ '+age+' ปี (ตั้งแต่ '+_aSen+' ปี) — '+(_hasG?'มีผู้ค้ำแล้ว ✓ ตรวจแหล่งรายได้ต่อเนื่อง/สุขภาพ':'ต้องหาผู้ค้ำประกันก่อนทำสัญญา (ยังไม่ระบุผู้ค้ำ) และตรวจแหล่งรายได้ต่อเนื่อง')); else P('person','ok','อายุ '+age+' ปี'); }
+  if(age<_aMin) P('person','bad','อายุ '+age+' ปี — ยังไม่บรรลุนิติภาวะ ลูกค้าทำสัญญาเองไม่ได้ ต้องให้ผู้ปกครอง/ผู้ใหญ่ในครอบครัวเป็นผู้ซื้อ และมีผู้ค้ำ', false, 'อายุ '+age+' ปี ต่ำกว่า '+_aMin+' ปีบริบูรณ์ — ลูกค้าทำสัญญาเองไม่ได้ ต้องให้ผู้ปกครอง/ผู้ใหญ่ในครอบครัวเป็นผู้ซื้อ และมีผู้ค้ำ');   /* 0925-V: สาขาไม่เห็นเกณฑ์อายุ */
+  else if(age>=_aSen) P('person', _hasG?'warn':'bad', 'อายุ '+age+' ปี — กลุ่มผู้สูงอายุ '+(_hasG?'มีผู้ค้ำแล้ว ✓ ตรวจแหล่งรายได้ต่อเนื่อง/สุขภาพ':'ต้องหาผู้ค้ำประกันก่อนทำสัญญา (ยังไม่ระบุผู้ค้ำ) และตรวจแหล่งรายได้ต่อเนื่อง'), false, 'อายุ '+age+' ปี (ตั้งแต่ '+_aSen+' ปี) — '+(_hasG?'มีผู้ค้ำแล้ว ✓ ตรวจแหล่งรายได้ต่อเนื่อง/สุขภาพ':'ต้องหาผู้ค้ำประกันก่อนทำสัญญา (ยังไม่ระบุผู้ค้ำ) และตรวจแหล่งรายได้ต่อเนื่อง')); else P('person','ok','อายุ '+age+' ปี'); }
  if(a.cardExpiry){ const ex=new Date(a.cardExpiry); if(!isNaN(ex)&&ex.getTime()<Date.now()) P('person','warn','บัตรหมดอายุ '+a.cardExpiry+' — ขอบัตรใบใหม่/เอกสารยืนยันเพิ่ม'); }
  if(typeof WATCH!=='undefined'&&WATCH&&WATCH.custs){
   WATCH.custs.forEach(w=>{ const wid=normDigits(w.idcard||''), wph=normDigits(w.phone||'');
@@ -10653,7 +10790,7 @@ function check3(a, c){ try{ custOccFix(); }catch(e){}   /* 0921-A: ซ่อม�
      else if(fr==='gov'&&hv!=='unchecked'&&hv!=='gov'&&hv!=='none') P('income','warn','บำนาญข้าราชการ — สนญ. ขอหนังสือรับรองบำนาญจากลูกค้า',false,'บำนาญข้าราชการ/รัฐวิสาหกิจ '+fmt(pn.amt)+' บ./ด. แต่สิทธิรักษาไม่ใช่สิทธิข้าราชการ ('+hv+') — ผู้รับบำนาญข้าราชการปกติคงสิทธิข้าราชการ → ตรวจ/ขอหนังสือรับรองบำนาญ');
      else if(fr==='sso'&&(hv==='m39_40'||hv==='uc')) P('income','ok','บำนาญประกันสังคม — สอดคล้องกับสิทธิรักษา',false,'บำนาญประกันสังคม '+fmt(pn.amt)+' บ./ด. · สิทธิรักษา '+hv+' (ไม่มีนายจ้างส่งแล้ว) สอดคล้องกับผู้เกษียณ');
      else if(fr==='gov'&&hv==='gov') P('income','ok','บำนาญข้าราชการ — สอดคล้องกับสิทธิรักษา',false,'บำนาญข้าราชการ '+fmt(pn.amt)+' บ./ด. · สิทธิรักษาข้าราชการ สอดคล้อง'); } } }catch(e){}   /* 0924-G */
-  { const _o2e=occ2IncEval(a); if(_o2e) P('income',_o2e.lv,_o2e.m,false,_o2e.mh); else if((a.incomeExtra||0)>0&&!(Array.isArray(a.incomeExtraItems)&&a.incomeExtraItems.some(x=>x&&x.k!=='occ2'&&+x.amt>0))){ if(showDocsP2()&&!a.incomeExtraData) P('income','warn','รายได้เสริม '+fmt(a.incomeExtra)+' บ. ยังไม่มีภาพหลักฐาน — แนบเพื่อให้นับเต็ม'); else if(!showDocsP2()) P('income','ok','รายได้เสริม '+fmt(a.incomeExtra)+' บ./เดือน'+(String(a.incomeExtraSrc||'').trim()?' ('+String(a.incomeExtraSrc).trim()+')':'')); } }   /* 0924-A: รายได้เสริมจากอาชีพเสริม ประเมินเหมือนอาชีพหลัก */   /* 0915-F: เฟส 1 ไม่เตือนเรื่องภาพ */
+  { const _o2e=occ2IncEval(a); if(_o2e) P('income',_o2e.lv,_o2e.m,false,_o2e.mh); else if((a.incomeExtra||0)>0&&!(Array.isArray(a.incomeExtraItems)&&a.incomeExtraItems.some(x=>x&&x.k!=='occ2'&&+x.amt>0))){ if(showDocsP2()&&!a.incomeExtraData) P('income','warn','รายได้เสริม '+fmt(a.incomeExtra)+' บ. ยังไม่มีภาพหลักฐาน — แนบภาพหลักฐาน', false, 'รายได้เสริม '+fmt(a.incomeExtra)+' บ. ยังไม่มีภาพหลักฐาน — แนบเพื่อให้นับเต็ม'); else if(!showDocsP2()) P('income','ok','รายได้เสริม '+fmt(a.incomeExtra)+' บ./เดือน'+(String(a.incomeExtraSrc||'').trim()?' ('+String(a.incomeExtraSrc).trim()+')':'')); } }   /* 0924-A: รายได้เสริมจากอาชีพเสริม ประเมินเหมือนอาชีพหลัก */   /* 0915-F: เฟส 1 ไม่เตือนเรื่องภาพ */
   if(/คำบอกกล่าว/.test(a.incomeProof||'')&&!(ref&&ref.slip)) P('income','warn','หลักฐานรายได้ = คำบอกกล่าว — ควรมีภาพหน้างาน/บิลขาย/statement อย่างน้อย 1 อย่าง');
   if(o&&(o.g==='ค้าขาย'||o.g==='เจ้าของกิจการ')&&!a.workDocData&&showDocsP2()) P('income','warn','กลุ่มค้าขาย/กิจการ — แนะนำแนบรูปร้าน/หน้างานประกอบรายได้'); /* 0916-C: ขอรูปเฉพาะเมื่อเปิดสวิตช์เอกสาร (เฟส 2) */
  }
@@ -10672,7 +10809,7 @@ function check3(a, c){ try{ custOccFix(); }catch(e){}   /* 0921-A: ซ่อม�
   if(/ผ่อนอยู่/.test(ht)&&!(+a.housePay>0)) P('person','warn','ระบุบ้านผ่อนอยู่ แต่ไม่ได้กรอกยอดผ่อนบ้าน/เดือน — กรอกเพื่อให้ภาระหนี้ครบ');
   if(/ปลอดภาระ/.test(ht)&&+a.housePay>0) P('person','warn','ระบุบ้านปลอดภาระ แต่กรอกยอดผ่อนบ้าน '+fmt(a.housePay)+' บ. — ขัดกัน ตรวจว่าเป็นค่าเช่า/ผ่อนจริง');
   if(tn==='เช่า'&&/ปลอดภาระ|ผ่อนอยู่/.test(ht)) P('person','warn','การถือครอง "เช่า" แต่ลักษณะที่อยู่ระบุเป็นบ้านตนเอง — แก้ให้ตรง');
-  if(ac.stayYears==='5 ปีขึ้นไป'&&/หอพัก/.test(ht)) P('person','warn','อยู่หอพักนานกว่า 5 ปี — สาขาตรวจว่าที่อยู่จริงคงที่ (สอบถามผู้ให้เช่า)');
+  if(ac.stayYears==='5 ปีขึ้นไป'&&/หอพัก/.test(ht)) P('person','warn','อยู่หอพักมานาน — สาขาตรวจว่าที่อยู่จริงคงที่ (สอบถามผู้ให้เช่า)', false, 'อยู่หอพักนานกว่า 5 ปี — สาขาตรวจว่าที่อยู่จริงคงที่ (สอบถามผู้ให้เช่า)');
   /* สถานภาพ/บุตร */
   const spN=String((a.spouse||{}).name||'').trim();
   if(a.marital==='โสด'&&spN) P('person','warn','ระบุสถานภาพ "โสด" แต่กรอกชื่อคู่สมรส — แก้สถานภาพให้ตรง');
@@ -10711,8 +10848,8 @@ function check3(a, c){ try{ custOccFix(); }catch(e){}   /* 0921-A: ซ่อม�
      if(_xf.pct===0) P('income','info','รายได้'+incSrcLabel(_xf.cls)+' '+fmt(a.incomeExtra)+' บ./เดือน — ไม่นับใน DSR (0% ตามที่มา)'+(ins>0?' · ถ้าคนนั้นเป็นผู้ค้ำ นับ '+g+'% → DSR จาก '+d0.toFixed(1)+'% เหลือ '+d1.toFixed(1)+'%':' · ถ้าคนนั้นเป็นผู้ค้ำ นับ '+g+'%'), true);
      else P('income','info','รายได้'+incSrcLabel(_xf.cls)+' '+fmt(a.incomeExtra)+' บ./เดือน — ผู้ให้รายได้เป็นผู้ค้ำ นับ '+_xf.pct+'% ('+fmt(_xe)+' บ.) ใน DSR', true); } }catch(e){}
    const db=+a.debt||0; if(db>inc) P('income','bad','ภาระผ่อนหนี้เดิม '+fmt(db)+' บ. มากกว่ารายได้ '+fmt(inc)+' บ. — ผ่อนเพิ่มไม่ไหว ตรวจตัวเลข/รายได้ครัวเรือน');
-   else if(db>=inc*0.6) P('income','warn','ภาระผ่อนหนี้เดิม '+fmt(db)+' บ. สูงถึง '+Math.round(db/inc*100)+'% ของรายได้ — ต้องมีผู้ช่วยผ่อน/ผู้ค้ำ หรือรายได้ครัวเรือนรองรับ');
-   if((+a.incomeExtra||0)>inc*1.5) P('income','warn','รายได้เสริม '+fmt(a.incomeExtra)+' บ. มากกว่ารายได้หลักมาก — ตรวจที่มาและหลักฐาน (อาจเป็นรายได้หลักที่แท้จริง)'); }
+   else if(db>=inc*0.6) P('income','warn','ภาระผ่อนหนี้เดิม '+fmt(db)+' บ. สูงเมื่อเทียบกับรายได้ — ต้องมีผู้ช่วยผ่อน/ผู้ค้ำ หรือรายได้ครัวเรือนรองรับ', false, 'ภาระผ่อนหนี้เดิม '+fmt(db)+' บ. สูงถึง '+Math.round(db/inc*100)+'% ของรายได้ — ต้องมีผู้ช่วยผ่อน/ผู้ค้ำ หรือรายได้ครัวเรือนรองรับ');
+   const _own=incOwnExtra(a); if(_own>inc*1.5) P('income','warn','รายได้เสริม '+fmt(_own)+' บ. มากกว่ารายได้หลักมาก — ตรวจที่มาและหลักฐาน (อาจเป็นรายได้หลักที่แท้จริง)'); }
   /* รายได้/อาชีพ/ที่อยู่ ↔ ที่ H-Cap เคยบันทึก (Customer_report) */
   const cr=(typeof CUSTDB!=='undefined'&&CUSTDB&&CUSTDB.recs&&idN.length===13)?CUSTDB.recs[idN]:null;
   if(cr){ const hi=+cr.income||0;
@@ -10737,35 +10874,82 @@ function check3(a, c){ try{ custOccFix(); }catch(e){}   /* 0921-A: ซ่อม�
   try{ if(!hc.weak&&px.nm&&_nmKey(px.nm)!==_nmKey(a.name||'')&&_nmKey(a.name||'').length>=4) P('hcap','info','ชื่อ-สกุลในเคสไม่ตรงกับเจ้าของเลขบัตรนี้ในพอร์ต ('+String(px.nm).trim()+') — ตรวจเลขบัตรที่กรอก'+(a.idConfirm?' · สาขายืนยันแล้ว: '+(a.idConfirm.reason||'')+' ('+(a.idConfirm.by||'')+')':''), true); }catch(e){}   /* 0917-A */
   if(repo) P('hcap','bad','ประวัติรถยึด/รอจำหน่ายกับบริษัท — ควรตรวจสอบก่อนขาย');
   if(term) P('hcap','bad','เคยถูกบอกเลิกสัญญา '+term+' สัญญา');
-  if(!repo&&!term){ const _act=cts.filter(x=>x.st!=='บอกเลิกสัญญา'&&!/ยึด/.test(x.st||'')); if(_act.length){ const _hl=hcapLateCfg(); const aD=Math.max(0,...(_act.map(x=>+x.d||0))); const _sfx=_act.length>1?'สูงสุด ':' ';
-    if(aD>=_hl.badMin) P('hcap','bad','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน (ตั้งแต่ '+_hl.badMin+' วัน) — สาขาปรึกษา สนญ. ก่อนดำเนินการต่อ');
+  if(!repo&&!term){ const _act=cts.filter(x=>x.st!=='บอกเลิกสัญญา'&&!/ยึด/.test(x.st||'')); if(_act.length){ const _hl=hcapLateCfg(); const aD=Math.max(0,...(_act.map(x=>+x.d||0))); hcap.aD=aD; const _sfx=_act.length>1?'สูงสุด ':' ';
+    if(aD>=_hl.badMin) P('hcap','bad','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน — สาขาปรึกษา สนญ. ก่อนดำเนินการต่อ', false, 'สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน (ตั้งแต่ '+_hl.badMin+' วัน) — สาขาปรึกษา สนญ. ก่อนดำเนินการต่อ');
     else if(aD>_hl.okMax) P('hcap','warn','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน ('+(_hl.okMax+1)+'–'+(_hl.badMin-1)+' วัน) — สาขาสอบถามสาเหตุ ดูความสม่ำเสมอช่วงหลัง');
-    else if(aD>0) P('hcap','ok','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน (ไม่เกิน '+_hl.okMax+' วัน) — ปกติ');
+    else if(aD>0) P('hcap','ok','สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน — ปกติ', false, 'สัญญาที่ผ่อนอยู่ค้างชำระ'+_sfx+aD+' วัน (ไม่เกิน '+_hl.okMax+' วัน) — ปกติ');
     else P('hcap','ok','สัญญาที่ผ่อนอยู่ชำระปกติ ไม่มีค้าง'); } }   /* 0921-A: ไล่ระดับตามวันค้าง เฉพาะสัญญาที่ผ่อนอยู่ (เดิม maxD>0 → 🟡 ทุกกรณี) */
   if((hcap.act||0)>=1) P('hcap', hcap.act>=2?'warn':'ok', 'ผ่อนอยู่ '+hcap.act+' สัญญา · ค่างวดรวม ~'+fmt(hcap.ins)+' บ./เดือน'+(hcap.act>=2?' — ภาระซ้อน ตรวจความสามารถผ่อนรวม':''));
-  if((hcap.act||0)>=1&&(hcap.ins||0)>0) P('hcap','ok','ค่างวดกับบริษัท '+fmt(hcap.ins)+' บ./เดือน ถูกนับเป็นภาระหนี้ให้อัตโนมัติแล้ว');
+  if((hcap.act||0)>=1&&(hcap.ins||0)>0) P('hcap','ok','ค่างวดกับบริษัท '+fmt(hcap.ins)+' บ./เดือน ถูกนับเป็นภาระหนี้ให้อัตโนมัติแล้ว', true);   /* 0925-V: เห็นเฉพาะ สนญ. */
  } else { P('hcap','ok','ลูกค้าใหม่ — ไม่พบประวัติในพอร์ต H-Cap'+(WATCH&&WATCH.lastImport?' (ข้อมูล ณ '+WATCH.lastImport+')':''));
   try{ if(a.idConfirm) P('hcap','info','สาขายืนยันแล้วว่าตรวจเลขบัตรกับบัตรจริง ('+(a.idConfirm.by||'')+' · '+fmtDT(a.idConfirm.at)+(a.idConfirm.reason?' · '+a.idConfirm.reason:'')+')', true); }catch(e){}
   try{ const _nm=hcapNameHits(a); if(_nm.length) P('hcap','info','พบชื่อ-สกุลตรงกับลูกค้าเก่า '+_nm.length+' ราย ('+_nm.slice(0,2).map(x=>x.nm+' · เลขบัตร '+x.id.slice(0,4)+'xxxxx'+x.id.slice(-4)+' · สาขา '+(x.br||'-')).join(' / ')+') แต่เลขบัตรที่กรอกไม่ตรง — ตรวจเลขบัตรกับบัตรจริงอีกครั้ง', true); }catch(e){}   /* 0916-D: ตัวช่วยรอง สนญ. เท่านั้น ไฟไม่เปลี่ยน */ }
-  try{ const gh=a.guar&&a.guar.hcap; if(gh&&gh.checked){ const gt=guarHcapText(gh); P('hcap', gt.lv==='na'?'ok':gt.lv, 'ผู้ค้ำ: '+gt.t.replace(/^\S+\s/,'')); } }catch(e){}
+  try{ const gh=a.guar&&a.guar.hcap; if(gh&&gh.checked){ const gt=guarHcapText(gh); const _gl=gt.lv==='na'?'ok':gt.lv; P('hcap', _gl, 'ผู้ค้ำ: '+gt.t.replace(/^\S+\s/,''), false, null, _gl==='warn'); items.hcap[items.hcap.length-1].guar=true; } }catch(e){}   /* 0925-V: ผู้ค้ำ 🟡 สาขาเห็น · ns = สีอย่างเดียว ไม่นับไฟรวม · 🔴 ผู้ค้ำยังนับ */
+ /* 0925-V แบบ ข: H-Cap 🟡 (ผ่อนซ้อน ≥2 · ค้าง 31–89 วัน · กู้ต่อ) → 🔔 แจ้ง สนญ. เท่านั้น ไม่กระทบไฟรวม · H-Cap 🔴 (ยึดรถ/บอกเลิก/ค้าง ≥90) ยังทำให้การ์ดแดง */
+ try{ if(a.product==='pawn'&&a.finType==='cont') P('hcap','warn','เคสกู้ต่อ (รีไฟแนนซ์)'+(hcap.found&&(hcap.act||0)>=1?' — มีสัญญาที่ผ่อนอยู่กับบริษัท '+hcap.act+' สัญญา':'')+' — ตรวจยอดปิดสัญญาเดิม / เงินทอน'); }catch(e){}
+ items.hcap.forEach(x=>{ if(x.lv==='warn'&&!x.guar){ x.hq=true; x.hqw=true; } });
+ const hcTags=[]; try{ const _hl=hcapLateCfg();
+  if(hcap.repo) hcTags.push(['bad','เคยถูกยึดรถ']);
+  if(hcap.term) hcTags.push(['bad','เคยถูกบอกเลิกสัญญา'+(hcap.term>1?' '+hcap.term:'')]);
+  if(!hcap.repo&&!hcap.term&&(hcap.aD||0)>=_hl.badMin) hcTags.push(['bad','ค้าง '+hcap.aD+' วัน']);
+  else if(!hcap.repo&&!hcap.term&&(hcap.aD||0)>_hl.okMax) hcTags.push(['hqw','ค้าง '+hcap.aD+' วัน']);
+  if((hcap.act||0)>=2) hcTags.push(['hqw',hcap.act+' สัญญา']);
+  if(a.product==='pawn'&&a.finType==='cont') hcTags.push(['refi','กู้ต่อ']); }catch(e){}
  const lvOf=(arr,filled)=>{ if(!filled) return 'na'; const l=arr.filter(x=>x.lv!=='info'&&!x.ns).map(x=>x.lv); return l.length? chk3Worst(l) : 'ok'; };   /* 0924-F: ns ไม่นับ */
  const dims={
   person:{key:'person',title:'บุคคล',ic:'👤',filled:pFilled,lv:lvOf(items.person,pFilled),items:items.person,sub:(a.name||'-'),facts:personFacts(a)},
   occ:{key:'occ',title:'อาชีพ / ความมั่นคง',ic:'💼',filled:oFilled,lv:lvOf(items.occ,oFilled),items:items.occ,sub:o?(o.g+' — '+occDisplayName(a.occupation,a.aqua)+(a.occExtra?' ('+a.occExtra+')':'')):'-',strip:o?agriStrip(a):'',said:(function(){ const b=[]; if(String(a.occSaid||'').trim()) b.push('ลูกค้าบอกว่า: "'+String(a.occSaid).trim()+'"'); if(a.occ2&&a.occ2.has&&String(a.occ2Said||'').trim()) b.push('อาชีพเสริมบอก: "'+String(a.occ2Said).trim()+'"'); return b.join(' · '); })()},
-  income:{key:'income',title:'รายได้',ic:'💰',filled:iFilled,lv:lvOf(items.income,iFilled),items:items.income,sub:iFilled?(fmt(inc)+' บ./เดือน'+((a.incomeExtra||0)>0?' + เสริม '+fmt(a.incomeExtra):'')):'-',ref:incRef}
+  income:{key:'income',title:'รายได้',ic:'💰',filled:iFilled,lv:lvOf(items.income,iFilled),items:items.income,sub:iFilled?(fmt(inc)+' บ./เดือน'+incExtraSub(a)):'-',ref:incRef}
  };
- const hlv=items.hcap.filter(x=>x.lv!=='info').length?chk3Worst(items.hcap.filter(x=>x.lv!=='info').map(x=>x.lv)):'ok';
+ const hlv=items.hcap.filter(x=>x.lv!=='info'&&!x.hqw&&!x.ns).length?chk3Worst(items.hcap.filter(x=>x.lv!=='info'&&!x.hqw&&!x.ns).map(x=>x.lv)):'ok';   /* 0925-V แบบ ข: ไม่นับ 🔔 */
  const filled=[dims.person,dims.occ,dims.income].filter(d=>d.filled).length;
  const sysOverall=chk3Worst([dims.person.lv,dims.occ.lv,dims.income.lv,hlv]); const sysLv={person:dims.person.lv,occ:dims.occ.lv,income:dims.income.lv};
  /* 0923-A: สนญ. ปรับไฟต่อมิติ (a.hqOverride) — ไฟระบบเก็บไว้ที่ d.sysLv */
  try{ const ov=a.hqOverride||{}; ['person','occ','income'].forEach(k=>{ const v=ov[k]; dims[k].sysLv=dims[k].lv; if(v&&v.lv&&CHK3_LV[v.lv]&&v.lv!=='na'&&dims[k].filled){ dims[k].lv=v.lv; dims[k].ov=v; } }); }catch(e){}
- const overall=chk3Worst([dims.person.lv,dims.occ.lv,dims.income.lv,hlv]);
- return {dims,hcap:Object.assign(hcap,{lv:hlv,items:items.hcap}),overall,sysOverall,sysLv,filled,ver:chk3Version(),at:Date.now(),
+ let hlvE=hlv, hOv=null; try{ const v=(a.hqOverride||{}).hcap; if(hcap.found&&v&&v.lv&&CHK3_LV[v.lv]&&v.lv!=='na'){ hlvE=v.lv; hOv=v; } }catch(e){}   /* 0925-V: สนญ. ปรับไฟ H-Cap */
+ const overall=chk3Worst([dims.person.lv,dims.occ.lv,dims.income.lv,hlvE]);
+ return {dims,hcap:Object.assign(hcap,{lv:hlvE,sysLv:hlv,ov:hOv,items:items.hcap,note:items.hcap.filter(x=>x.hqw).length,tags:hcTags}),overall,sysOverall,sysLv,filled,ver:chk3Version(),at:Date.now(),
          noProduct:!!(c&&c.noProduct)};
 }
 /* snapshot เล็ก ๆ เก็บติดเคสตอนส่ง (ย้อนตรวจได้) */
-function chk3Snap(r){ const rules=[]; try{ [['person',r.dims.person.items],['occ',r.dims.occ.items],['income',r.dims.income.items],['hcap',r.hcap.items]].forEach(([d,arr])=>(arr||[]).forEach(it=>{ if((it.lv==='warn'||it.lv==='bad')&&!it.ns) rules.push({d,lv:it.lv,k:String(it.k||it.m||'').replace(/[🔴🟡🟢⚪]/g,'').replace(/\s*[—–:(].*$/,'').trim().slice(0,60)}); })); }catch(e){}
- return {overall:r.overall,lv:{person:r.dims.person.lv,occ:r.dims.occ.lv,income:r.dims.income.lv,hcap:r.hcap.lv},filled:r.filled,ver:r.ver,at:r.at,hcapFound:!!r.hcap.found,rules,sys:(r.sysOverall&&r.sysOverall!==r.overall||JSON.stringify(r.sysLv)!==JSON.stringify({person:r.dims.person.lv,occ:r.dims.occ.lv,income:r.dims.income.lv}))?{overall:r.sysOverall,lv:r.sysLv}:undefined}; }
+/* 0925-V: ชื่อกลางของเหตุผล — รวมเคสที่ต่างกันแค่ตัวเลข (อายุ/ยอด/วัน/จำนวน) เป็นแถวเดียวในรายงาน · ใช้ทั้งเคสใหม่ (ตอนบันทึก) และเคสเก่า (ตอนเปิดรายงาน) */
+const RULE_NAMES=[
+ [/ยังไม่บรรลุนิติภาวะ|ปีบริบูรณ์/,'อายุไม่ถึงเกณฑ์ทำสัญญา'],
+ [/^อายุ \d+ ปี( —.*กลุ่มผู้สูงอายุ.*)?$/,'อายุสูง (ผู้สูงอายุ)'],
+ [/^อายุ \d+ ปี เป็นเจ้าบ้านและอยู่คนเดียว/,'เป็นเจ้าบ้านและอยู่คนเดียว'],
+ [/^อายุ \d+ ปี มีบุตร/,'จำนวนบุตรไม่สอดคล้องกับอายุ'],
+ [/^บุตร \d+ คน/,'บุตรหลายคน ภาระครัวเรือนสูง'],
+ [/^ภาระผ่อนหนี้เดิม .*มากกว่ารายได้/,'ภาระหนี้เดิมมากกว่ารายได้'],
+ [/^ภาระผ่อนหนี้เดิม .*(สูงถึง|สูงเมื่อเทียบ)/,'ภาระหนี้เดิมสูงเทียบรายได้'],
+ [/^กรอกภาระผ่อนหนี้เดิม .*ไม่ได้ระบุ/,'หนี้เดิมไม่ระบุรายการ'],
+ [/^ผ่อนพร้อมกัน \d+ รายการ/,'ผ่อนหนี้หลายรายการพร้อมกัน'],
+ [/^สัญญาที่ผ่อนอยู่ค้างชำระ/,(lv)=>lv==='bad'?'H-Cap ค้างชำระเกินเกณฑ์':'H-Cap ค้างชำระ (เฝ้าดู)'],
+ [/^เคยถูกบอกเลิกสัญญา/,'H-Cap เคยถูกบอกเลิกสัญญา'],
+ [/^ผ่อนอยู่ \d+ สัญญา/,'H-Cap ผ่อนซ้อนหลายสัญญา'],
+ [/^รายได้ที่แจ้ง [\d,]+ บ\.\/ด\. สูงผิดปกติมาก/,'รายได้ที่แจ้งสูงผิดปกติมาก'],
+ [/^มีบัตรสวัสดิการแห่งรัฐ แต่รายได้ที่แจ้ง .*เกณฑ์บัตรมาก/,'มีบัตรสวัสดิการ แต่รายได้สูงกว่าเกณฑ์บัตรมาก'],
+ [/^มีบัตรสวัสดิการแห่งรัฐ แต่รายได้ที่แจ้ง .*เกณฑ์บัตร/,'มีบัตรสวัสดิการ แต่รายได้สูงกว่าเกณฑ์บัตร'],
+ [/^รายได้เสริม [\d,]+ บ\. ยังไม่มีภาพหลักฐาน/,'รายได้เสริมยังไม่มีภาพหลักฐาน'],
+ [/^รายได้เสริม [\d,]+ บ\. มากกว่ารายได้หลัก/,'รายได้เสริมมากกว่ารายได้หลักมาก'],
+ [/^กรอกรายได้เสริม .*ที่มาเป็น/,'รายได้เสริมไม่ระบุที่มา'],
+ [/^รายได้อื่น [\d,]+ บ\.\/ด\./,'รายได้อื่นจากรัฐ (ขอหลักฐาน)'],
+ [/^ผู้อยู่อาศัย \d+ คน/,'ผู้อยู่อาศัยมากผิดปกติ'],
+ [/^ลูกค้าอยู่ลำดับที่ \d+/,'อยู่ลำดับท้ายในทะเบียนบ้าน'],
+ [/^ระบุเป็นเจ้าของบ้าน แต่อยู่ลำดับที่/,'เจ้าของบ้านแต่ไม่ใช่ลำดับต้นในทะเบียนบ้าน'],
+ [/^ระบุบ้านปลอดภาระ แต่กรอกยอดผ่อนบ้าน/,'บ้านปลอดภาระแต่มียอดผ่อน'],
+ [/^เอกสารตามกลุ่มอาชีพ \d+\/\d+/,'เอกสารตามกลุ่มอาชีพยังไม่ครบ'],
+ [/ปี แต่ลูกค้าอายุ \d+ ปี/,'อายุงานเกินอายุลูกค้า'],
+ [/ปี เมื่อเทียบอายุ \d+ ปี/,'อายุงานสูงเมื่อเทียบอายุ'],
+ [/^เลขถัง .*ติดบัญชีห้าม/,'เลขถังติดบัญชีห้าม'],
+ [/^พื้นที่เสี่ยงสูง/,'พื้นที่เสี่ยงสูง'],[/^พื้นที่เฝ้าระวัง/,'พื้นที่เฝ้าระวัง'],
+ [/^บัตรหมดอายุ/,'บัตรหมดอายุ'],
+ [/^เคยถูกปฏิเสธในระบบ/,'เคยถูกปฏิเสธในระบบ'] ];
+function ruleKeyNorm(raw,lv){ const s=String(raw||'').replace(/[🔴🟡🟢⚪🔔]/g,'').trim(); for(const [re,nm] of RULE_NAMES){ if(re.test(s)) return typeof nm==='function'?nm(lv):nm; }
+ const t=s.replace(/\s*[—–:(].*$/,'').trim(); for(const [re,nm] of RULE_NAMES){ if(re.test(t)) return typeof nm==='function'?nm(lv):nm; }
+ return t.replace(/\d[\d,.]*/g,'…').slice(0,60); }
+function ruleNormList(arr){ const seen={}; return (arr||[]).map(x=>Object.assign({},x,{k:ruleKeyNorm(x.k,x.lv)})).filter(x=>{ const id=x.d+'|'+x.k; if(seen[id]) return false; seen[id]=1; return true; }); }
+function chk3Snap(r){ const rules=[]; try{ [['person',r.dims.person.items],['occ',r.dims.occ.items],['income',r.dims.income.items],['hcap',r.hcap.items]].forEach(([d,arr])=>(arr||[]).forEach(it=>{ if((it.lv==='warn'||it.lv==='bad')&&!it.ns&&!it.hqw) rules.push({d,lv:it.lv,k:ruleKeyNorm(it.k||it.m,it.lv)});   /* 0925-V: ชื่อกลาง */ })); }catch(e){}
+ return {overall:r.overall,lv:{person:r.dims.person.lv,occ:r.dims.occ.lv,income:r.dims.income.lv,hcap:r.hcap.lv},filled:r.filled,ver:r.ver,at:r.at,hcapFound:!!r.hcap.found,rules,hqTags:(r.hcap.tags||[]),sys:(r.sysOverall&&r.sysOverall!==r.overall||JSON.stringify(r.sysLv)!==JSON.stringify({person:r.dims.person.lv,occ:r.dims.occ.lv,income:r.dims.income.lv}))?{overall:r.sysOverall,lv:r.sysLv}:undefined}; }
 
 /* ======================= UI การ์ด (A2+A3 รวม · Kanit) ======================= */
 /* 0914-C: สาขาเห็นการ์ดเฉพาะบล็อก H-Cap (สวิตช์ HQ ในตั้งค่าเกณฑ์ · ค่าเริ่มต้นเปิด) */
@@ -10794,9 +10978,9 @@ function chk3Card(a, r, opt){
   </div>`; };
  const H=r.hcap; const hl=CHK3_LV[H.lv]||CHK3_LV.ok;
  const hcapBox=`<div class="c3dim c3hcap" style="border-color:${hl.bd};background:${hl.bg}">
-   <div class="c3dim-h"><span class="c3dim-ic">🏢</span><span class="c3dim-t">ประวัติกับบริษัท (H-Cap)</span><span class="c3lv" style="color:${hl.col}">${hl.ic} ${H.found?(H.repo||H.term?'พบประวัติต้องตรวจ':'ลูกค้าเก่า'):'ลูกค้าใหม่'}</span></div>
+   <div class="c3dim-h"><span class="c3dim-ic">🏢</span><span class="c3dim-t">ประวัติกับบริษัท (H-Cap)</span><span class="c3lv" style="color:${hl.col}">${hl.ic} ${H.found?(H.repo||H.term?'พบประวัติต้องตรวจ':'ลูกค้าเก่า'):'ลูกค้าใหม่'}${(isHQ&&H.note)?` <span class="c3hqw-tag" title="เห็นเฉพาะ สนญ. — ไม่กระทบไฟการ์ด">🔔 แจ้ง สนญ. ${H.note} เรื่อง · ไม่กระทบไฟ</span>`:''}${H.ov?' <span class="c3ovtag">ปรับโดย สนญ.</span>':''}${(canOv&&H.found)?` <button type="button" class="btn btn-sm btn-line noprint c3ovbtn" onclick="hqOverrideToggle('${esc(a.id)}','hcap')" title="สนญ. ปรับไฟกล่อง H-Cap (ต้องระบุเหตุผล) — ไฟรวมการ์ดเปลี่ยนตาม">🎚 ปรับไฟ</button>`:''}</span></div>
    ${H.found?`<div class="c3dim-s">${H.n} สัญญา · ผ่อนอยู่ ${H.act||0} · คงเหลือรวม ${fmt(H.exp)} บ.${H.br?' · สาขาเดิม '+esc((BRANCHES.find(b=>b.code===H.br)||{}).label||H.br):''}</div>`:''}
-   <ul class="c3items">${c3Sort(H.items.filter(x=>isHQ||!x.hq)).map(x=>`<li class="c3-${x.lv}">${CHK3_LV[x.lv].ic} ${c3Msg(x)}</li>`).join('')}</ul>
+   <ul class="c3items">${c3Sort(H.items.filter(x=>isHQ||!x.hq)).map(x=>`<li class="c3-${x.hqw?'hqw':x.lv}">${x.hqw?'🔔':CHK3_LV[x.lv].ic} ${c3Msg(x)}</li>`).join('')}</ul>${H.ov?`<div class="c3ovbox">🎚 <b>สนญ. ตรวจแล้วปรับจาก ${(CHK3_LV[H.ov.from]||CHK3_LV.ok).ic} เป็น ${hl.ic} ${hl.t}</b> <span class="mut" style="font-size:11px">(${esc(H.ov.by||'')} · ${fmtDT(H.ov.at)})</span><br>เหตุผล: ${esc(H.ov.reason||'')}${canOv?` <a href="javascript:void(0)" class="noprint" style="margin-left:6px;font-size:12px" onclick="hqOverrideClear('${esc(a.id)}','hcap')">↩ คืนค่าระบบ (${(CHK3_LV[H.sysLv]||CHK3_LV.ok).ic})</a>`:''}</div>`:''}${(canOv&&H.found)?`<div id="ovp-hcap" class="c3ovp noprint hidden"><div style="font-weight:600;margin-bottom:4px">🎚 ปรับไฟ "ประวัติกับบริษัท (H-Cap)" <span class="mut" style="font-weight:400">ระบบให้ ${(CHK3_LV[H.sysLv]||CHK3_LV.ok).ic}${H.note?' · 🔔 '+H.note+' เรื่อง':''}</span></div><div style="font-size:12px;color:#92400e;margin-bottom:6px">ไฟที่ปรับนี้ <b>นับเข้าไฟรวมการ์ด</b> — เช่น 3 มิติเขียว แต่ปรับ H-Cap เป็น 🟡 → การ์ดรวมเป็น 🟡</div><div style="margin-bottom:6px">ปรับเป็น: ${['ok','warn','bad'].map(v=>`<label style="margin-right:10px;cursor:pointer"><input type="radio" name="ovlv-hcap" value="${v}" ${(H.ov?H.ov.lv:H.lv)===v?'checked':''}> ${CHK3_LV[v].ic} ${CHK3_LV[v].t}</label>`).join('')}</div><textarea id="ovr-hcap" rows="2" style="width:100%;box-sizing:border-box" placeholder="เหตุผล (จำเป็น · สาขาเห็น) เช่น ผ่อน 2 สัญญา ภาระรวมสูง ไม่เหมาะกู้ต่อเพิ่ม">${esc(H.ov?H.ov.reason:'')}</textarea><div style="display:flex;gap:6px;justify-content:flex-end;margin-top:6px"><button type="button" class="btn btn-sm btn-line" onclick="hqOverrideToggle('${esc(a.id)}','hcap')">ยกเลิก</button><button type="button" class="btn btn-sm btn-org" onclick="hqOverrideSave('${esc(a.id)}','hcap')">บันทึกการปรับไฟ</button></div></div>`:''}
    ${H.found&&H.cts&&H.cts.length?`<div class="c3cts">${H.cts.slice(0,6).map(ct=>{ const bad=ct.st==='บอกเลิกสัญญา'||(+ct.d||0)>=90; return `<span class="c3ct ${bad?'bad':''}">${esc(ct.ct)} · ${ct.fin?'ไฟแนนซ์':'ขายรถ'}${ct.sd?' · '+esc(ct.sd):''} · ${ct.st==='บอกเลิกสัญญา'?'บอกเลิก':(+ct.d||0)>0?'ค้าง '+ct.d+' วัน':'ปกติ'}</span>`; }).join('')}${H.cts.length>6?'<span class="mut"> …อีก '+(H.cts.length-6)+' สัญญา</span>':''}</div>`:''}
  </div>`;
  const head= live? `<div class="c3head"><div><div class="c3title">🧭 ผลตรวจข้อมูล 3 มิติ <span class="c3tag">ตัวอย่างสด</span></div><div class="c3meta">อัปเดตขณะกรอก · กรอกครบ <b>${r.filled}/3</b> มิติ${buildBadge(a)}</div></div><div class="c3over" style="color:${L.col};background:${L.bg};border-color:${L.bd}">${L.ic} ${r.filled?L.t:'เริ่มกรอกข้อมูล'}</div></div>`
@@ -10804,29 +10988,30 @@ function chk3Card(a, r, opt){
       <div class="c3meta">เลขที่ <b>${esc(a.id)}</b> · สาขา ${esc(br?br.label:a.branch)} · ${a.submittedAt?fmtDT(a.submittedAt):esc(a.date)} · ลูกค้า <b>${esc(a.name)}</b> · โทร ${esc(a.phone||'-')} · ผู้กรอก ${esc(a.updatedBy||a.createdBy||'สาขา')} · กรอกครบ <b>${r.filled}/3</b> มิติ${buildBadge(a)}</div></div>
      <div class="c3over" style="color:${L.col};background:${L.bg};border-color:${L.bd}">${L.ic} ${L.t}</div></div>`;
  const ack=a.ack3; const canAck=!live&&SESSION&&(p1()?(SESSION.role==='branch'&&hqSent(a)):(SESSION.role==='branch'||SESSION.role==='analyst'||SESSION.role==='zone'));
- const foot= live? `<div class="c3foot"><span>เกณฑ์ ${esc(r.ver)}</span><span class="mut">ระบบแนะนำ · สาขาตัดสินใจขายเอง</span></div>`
-  : `<div class="c3foot"><span>ตรวจเมื่อ ${fmtDT(r.at)} · เกณฑ์ <b>${esc(r.ver)}</b>${a.check3&&a.check3.ver&&a.check3.ver!==r.ver?' · <span class="mut">ตอนส่งเคส: '+esc(a.check3.ver)+' ('+(CHK3_LV[a.check3.overall]||{}).ic+')</span>':''}</span>
+ const foot= live? `<div class="c3foot"><span>${isHQ?'เกณฑ์ '+esc(r.ver):''}</span><span class="mut">ระบบแนะนำ · สาขาตัดสินใจขายเอง</span></div>`
+  : `<div class="c3foot"><span>ตรวจเมื่อ ${fmtDT(r.at)}${isHQ?` · เกณฑ์ <b>${esc(r.ver)}</b>`:''}${isHQ&&a.check3&&a.check3.ver&&a.check3.ver!==r.ver?' · <span class="mut">ตอนส่งเคส: '+esc(a.check3.ver)+' ('+(CHK3_LV[a.check3.overall]||{}).ic+')</span>':''}</span>
      <span>${ack?`<span class="c3ack">✓ รับทราบแล้ว — ${esc(ack.by)} · ${fmtDT(ack.at)}</span>`:(canAck?`<button class="btn btn-sm btn-org noprint" onclick="ack3('${esc(a.id)}')">รับทราบแล้ว</button>`:'')}</span></div>`;
- const noP = (r.noProduct&&!(typeof lockProductOn==='function'&&lockProductOn()))? `<div class="c3np">ℹ️ ยังไม่กรอกผลิตภัณฑ์ — DSR / LTV / จุดคุ้มทุน จะคำนวณเมื่อเลือกรุ่นรถและราคา</div>`:'';
+ const noP = (r.noProduct&&!(typeof lockProductOn==='function'&&lockProductOn()))? `<div class="c3np">ℹ️ ยังไม่กรอกผลิตภัณฑ์${isHQ?' — DSR / LTV / จุดคุ้มทุน จะคำนวณเมื่อเลือกรุ่นรถและราคา':' — เลือกรุ่นรถและราคาในหัวข้อประเภทการขาย'}</div>`:'';
  if(hcapOnly){ /* 0914-C: สาขาเห็นเฉพาะประวัติกับบริษัท (H-Cap) · 🔴🟡🟢 3 มิติ ดูได้เฉพาะหลังบ้าน */
   const hmeta=(!live?branchWaitCard(a):'')+`<div class="c3meta" style="margin-bottom:6px">${live?'ตรวจจากเลขบัตร 13 หลักที่กรอก · อัปเดตขณะกรอก':`เลขที่ <b>${esc(a.id)}</b> · ลูกค้า <b>${esc(a.name)}</b> · ${a.submittedAt?fmtDT(a.submittedAt):esc(a.date)}`}</div>`;
   return `<div class="c3card ${live?'c3live':''}" style="border-color:${hl.bd}">${hmeta}${hcapBox}<div class="c3note">ข้อมูลจากพอร์ต H-Capital${WATCH&&WATCH.lastImport?' ณ '+esc(WATCH.lastImport):''} · ใช้ประกอบการพิจารณาของสาขา</div></div>`; }
  return `<div class="c3card ${live?'c3live':''}" style="border-color:${L.bd}">${head}
    <div class="c3grid">${dimBox(r.dims.person)}${dimBox(r.dims.occ)}${dimBox(r.dims.income)}</div>
-   ${hcapBox}${noP}<div class="c3note">การ์ดนี้บอก "ความน่าเชื่อถือของข้อมูล" ที่กรอก ไม่ใช่ผลอนุมัติ/ปฏิเสธ · ผลรวมใช้หลัก "แย่ที่สุดชนะ" เพื่อไม่กลบจุดที่ต้องตรวจ</div>${foot}</div>`;
+   ${hcapBox}${noP}<div class="c3note">การ์ดนี้บอก "ความน่าเชื่อถือของข้อมูล" ที่กรอก ไม่ใช่ผลอนุมัติ/ปฏิเสธ · ผลรวมใช้หลัก "แย่ที่สุดชนะ" เพื่อไม่กลบจุดที่ต้องตรวจ${isHQ?'<br>🧭 <b>ไฟรวม</b> = 👤 บุคคล + 💼 อาชีพ + 💰 รายได้ + 🏢 H-Cap <b>เฉพาะ 🔴</b> (ยึดรถ / บอกเลิก / ค้าง ≥90 วัน) · 🔔 H-Cap = แจ้ง สนญ. ไม่นับไฟ · สาขาไม่เห็น':''}</div>${foot}</div>`;
 }
 /* 0923-A: สนญ. ปรับไฟการ์ดต่อมิติ — a.hqOverride[dim]={lv,from,reason,at,by} · lv=null = ยกเลิก (tombstone ให้ซิงก์) · ซิงก์แบบ hqChecks */
 function hqOverrideToggle(id,dim){ const e=document.getElementById('ovp-'+dim); if(e) e.classList.toggle('hidden'); }
 function hqOverrideSave(id,dim){ const a=APPS.find(x=>x.id===id); if(!a) return; const r=document.querySelector('input[name="ovlv-'+dim+'"]:checked'); const lv=r?r.value:''; const reason=String((document.getElementById('ovr-'+dim)||{}).value||'').trim();
  if(!lv){ alert('เลือกไฟที่ต้องการปรับ'); return; } if(reason.length<4){ alert('กรุณาระบุเหตุผล (สาขาจะเห็นเหตุผลนี้)'); return; }
- const cur=check3(a,a.calc||calcAll(a)); const from=(cur.dims[dim]&&(cur.dims[dim].sysLv||cur.dims[dim].lv))||'na'; if(lv===from&&!(a.hqOverride||{})[dim]){ alert('ไฟที่เลือกเท่ากับที่ระบบให้อยู่แล้ว ('+(CHK3_LV[lv]||{}).t+') ไม่ต้องปรับ'); return; }
+ const cur=check3(a,a.calc||calcAll(a)); const from=dim==='hcap'?(cur.hcap.sysLv||cur.hcap.lv||'ok'):((cur.dims[dim]&&(cur.dims[dim].sysLv||cur.dims[dim].lv))||'na'); if(lv===from&&!(a.hqOverride||{})[dim]){ alert('ไฟที่เลือกเท่ากับที่ระบบให้อยู่แล้ว ('+(CHK3_LV[lv]||{}).t+') ไม่ต้องปรับ'); return; }
  a.hqOverride=a.hqOverride||{}; a.hqOverride[dim]={lv,from,reason,at:Date.now(),by:(SESSION&&SESSION.name)||''}; if(lv===from) a.hqOverride[dim].lv=null;
- const T={person:'บุคคล',occ:'อาชีพ/ความมั่นคง',income:'รายได้'}; a.thread=a.thread||[]; a.thread.push({by:'hq',st:'override',name:(SESSION&&SESSION.name)||'',msg:'🎚 สนญ. ปรับไฟมิติ'+T[dim]+' จาก '+(CHK3_LV[from]||{}).ic+' เป็น '+(CHK3_LV[lv]||{}).ic+' '+(CHK3_LV[lv]||{}).t+' — '+reason,at:Date.now()});
+ const T={person:'บุคคล',occ:'อาชีพ/ความมั่นคง',income:'รายได้',hcap:'ประวัติกับบริษัท (H-Cap)'}; a.thread=a.thread||[]; a.thread.push({by:'hq',st:'override',name:(SESSION&&SESSION.name)||'',msg:'🎚 สนญ. ปรับไฟ'+(dim==='hcap'?'':'มิติ')+T[dim]+' จาก '+(CHK3_LV[from]||{}).ic+' เป็น '+(CHK3_LV[lv]||{}).ic+' '+(CHK3_LV[lv]||{}).t+' — '+reason,at:Date.now()});
  _hqOvSave(a); openDetail(id); }
-function hqOverrideClear(id,dim){ const a=APPS.find(x=>x.id===id); if(!a||!(a.hqOverride||{})[dim]||!a.hqOverride[dim].lv) return; if(!confirm('คืนค่าไฟมิตินี้เป็นค่าที่ระบบให้?')) return; const T={person:'บุคคล',occ:'อาชีพ/ความมั่นคง',income:'รายได้'};
+function hqOverrideClear(id,dim){ const a=APPS.find(x=>x.id===id); if(!a||!(a.hqOverride||{})[dim]||!a.hqOverride[dim].lv) return; if(!confirm('คืนค่าไฟมิตินี้เป็นค่าที่ระบบให้?')) return; const T={person:'บุคคล',occ:'อาชีพ/ความมั่นคง',income:'รายได้',hcap:'ประวัติกับบริษัท (H-Cap)'};
  a.hqOverride[dim]={lv:null,from:a.hqOverride[dim].lv,reason:'คืนค่าระบบ',at:Date.now(),by:(SESSION&&SESSION.name)||''}; a.thread=a.thread||[]; a.thread.push({by:'hq',st:'override',name:(SESSION&&SESSION.name)||'',msg:'↩ สนญ. คืนค่าไฟมิติ'+T[dim]+' เป็นค่าที่ระบบให้',at:Date.now()}); _hqOvSave(a); openDetail(id); }
-function hqOverrideClearAll(a,why,fields){ const ov=a.hqOverride||{}; const ks=['person','occ','income'].filter(k=>ov[k]&&ov[k].lv); if(!ks.length) return false; const now=Date.now(); ks.forEach(k=>{ ov[k]={lv:null,from:ov[k].lv,reason:why==='branch-edit'?'สาขาแก้ข้อมูลเคส':'สนญ. แก้ข้อมูลเคส',at:now,by:(SESSION&&SESSION.name)||''}; }); a.hqOverride=ov;
- a.thread=a.thread||[]; a.thread.push({by:'hq',st:'override',name:'ระบบ',msg:'↩ ยกเลิกไฟที่ สนญ. ปรับไว้ ('+ks.map(k=>({person:'บุคคล',occ:'อาชีพ',income:'รายได้'})[k]).join(', ')+') เพราะข้อมูลเคสถูกแก้'+(why==='branch-edit'?'โดยสาขา':'โดย สนญ.')+(fields&&fields.length?': '+fields.join(', '):'')+' — สนญ. ตรวจแล้วปรับใหม่ได้',at:now}); return true; }
+const HCAP_OV_KEYS=['idcard','name','firstName','lastName','nameOnly','lastNameOnly','product','finType','price','down','finance','term'];   /* 0925-V ทาง 1: ช่องที่ทำให้ไฟ H-Cap ที่ สนญ. ปรับไว้ถูกยกเลิก */
+function hqOverrideClearAll(a,why,fields,keys){ const ov=a.hqOverride||{}; const hcHit=!Array.isArray(keys)||keys.some(k=>HCAP_OV_KEYS.indexOf(k)>=0); const ks=['person','occ','income','hcap'].filter(k=>ov[k]&&ov[k].lv&&(k!=='hcap'||hcHit)); if(!ks.length) return false; const now=Date.now(); ks.forEach(k=>{ ov[k]={lv:null,from:ov[k].lv,reason:why==='branch-edit'?'สาขาแก้ข้อมูลเคส':'สนญ. แก้ข้อมูลเคส',at:now,by:(SESSION&&SESSION.name)||''}; }); a.hqOverride=ov;
+ a.thread=a.thread||[]; a.thread.push({by:'hq',st:'override',name:'ระบบ',msg:'↩ ยกเลิกไฟที่ สนญ. ปรับไว้ ('+ks.map(k=>({person:'บุคคล',occ:'อาชีพ',income:'รายได้',hcap:'H-Cap'})[k]).join(', ')+') เพราะข้อมูลเคสถูกแก้'+(why==='branch-edit'?'โดยสาขา':'โดย สนญ.')+(fields&&fields.length?': '+fields.join(', '):'')+' — สนญ. ตรวจแล้วปรับใหม่ได้',at:now}); return true; }
 function _hqOvSave(a){ try{ a.calc=a.calc||calcAll(a); a.check3=chk3Snap(check3(a,a.calc)); }catch(e){} a.updatedAt=Date.now(); saveApps(); if(typeof cloudPushCase==='function') cloudPushCase(a); }
 function ack3(id){ const a=APPS.find(x=>x.id===id); if(!a) return; a.ack3={by:(SESSION&&SESSION.name)||'',role:SESSION&&SESSION.role,at:Date.now()};
  saveApps(); if(typeof cloudPushCase==='function')cloudPushCase(a); try{ openDetail(id); }catch(e){} }
@@ -10844,8 +11029,8 @@ function chk3Print(a,r){
  const ho=false;
  return `<h2>${ho?'ประวัติกับบริษัท (H-Cap)':'ผลตรวจข้อมูล 3 มิติ — '+T[r.overall]+' · กรอกครบ '+r.filled+'/3'}</h2><table>
   ${ho?'':dim(r.dims.person)+dim(r.dims.occ)+dim(r.dims.income)}
-  ${row('🏢 ประวัติกับบริษัท (H-Cap)<br><span style="font-weight:600">'+T[H.lv]+'</span>', (H.found?'<b>ลูกค้าเก่า</b> '+H.n+' สัญญา · ผ่อนอยู่ '+(H.act||0)+' · คงเหลือ '+fmt(H.exp)+' บ.':'<b>ลูกค้าใหม่</b>')+'<ul style="margin:3px 0 0 14px;padding:0">'+H.items.map(x=>'<li>'+T[x.lv].slice(0,2)+' '+esc(x.m)+'</li>').join('')+'</ul>')}
-  ${row('ตรวจเมื่อ / เกณฑ์', fmtDT(r.at)+' · '+esc(r.ver)+(a.ack3?' · รับทราบโดย '+esc(a.ack3.by)+' '+fmtDT(a.ack3.at):' · ยังไม่กดรับทราบ'))}
+  ${row('🏢 ประวัติกับบริษัท (H-Cap)<br><span style="font-weight:600">'+T[H.lv]+'</span>', (H.found?'<b>ลูกค้าเก่า</b> '+H.n+' สัญญา · ผ่อนอยู่ '+(H.act||0)+' · คงเหลือ '+fmt(H.exp)+' บ.':'<b>ลูกค้าใหม่</b>')+'<ul style="margin:3px 0 0 14px;padding:0">'+H.items.filter(x=>SESSION.role==='analyst'||!x.hq).map(x=>'<li>'+(x.hqw?'🔔':T[x.lv].slice(0,2))+' '+esc(x.m)+'</li>').join('')+'</ul>')}
+  ${row(SESSION.role==='analyst'?'ตรวจเมื่อ / เกณฑ์':'ตรวจเมื่อ', fmtDT(r.at)+(SESSION.role==='analyst'?' · '+esc(r.ver):'')+(a.ack3?' · รับทราบโดย '+esc(a.ack3.by)+' '+fmtDT(a.ack3.at):' · ยังไม่กดรับทราบ'))}
  </table>`;
 }
 
@@ -11008,7 +11193,7 @@ function rptRow(a){ const light=(a.check3&&a.check3.overall)||'na'; const sysLig
   sold:!!(a.sale&&a.sale.result==='sold'),notsold:!!(a.sale&&(a.sale.result==='notsold'||a.sale.result==='cancelled')),
   before:!!(a.sale&&a.sale.beforeSubmit),against:!!(a.sale&&a.sale.against),
   occG:o?o.g:'ไม่ระบุ',occS:o?(o.g+' — '+o.s):'ไม่ระบุ',occSc:o?+o.sc:null,inc:+a.incomeClaimed||0,hcInc:rc?(+rc.income||0):0,hcOcc:rc?rc.occIdx:null,
-  zone:zoneOfBranch(a.branch)||'',br:a.branch,rules:(a.check3&&a.check3.rules)||[],parts:(a.calc&&a.calc.parts)||[]}; }
+  zone:zoneOfBranch(a.branch)||'',br:a.branch,rules:ruleNormList((a.check3&&a.check3.rules)||[]),parts:(a.calc&&a.calc.parts)||[]}; }
 function rptRows(){ return rptCases().map(rptRow); }
 /* ---- คำนวณส่วนต่าง ๆ ---- */
 function rptStats(R){ const M=R.filter(r=>r.out); const by=(f)=>{ const g={}; M.forEach(r=>{ const k=f(r); if(k==null) return; g[k]=g[k]||{n:0,bad:0,late:0,ok:0}; g[k].n++; g[k][r.out]++; }); return g; };
@@ -11283,7 +11468,7 @@ function eomRow(a){ const ck=a.check3||{}; const lv=ck.lv||{}; let light=ck.over
  const rc=(typeof CUSTDB!=='undefined'&&CUSTDB&&CUSTDB.recs)?CUSTDB.recs[normDigits(a.idcard||'')]:null;
  let saidMM=null, broad=false, hasSaid=!!String(a.occSaid||'').trim(); if(hasSaid){ try{ saidMM=occSaidMismatch(a.occSaid,a.occupation); broad=!!occSaidSearch(a.occSaid).broad; }catch(e){} }
  const ack=a.occSaidAck; const saidAck=!!(saidMM&&ack&&ack.chosen===a.occupation);
- const rules=ck.rules||[]; const ov=a.hqOverride||{}; const adj={}; ['person','occ','income'].forEach(k=>{ adj[k]=!!(ov[k]&&ov[k].lv); }); const hqAdj=adj.person||adj.occ||adj.income;
+ const rules=ruleNormList(ck.rules||[]); const ov=a.hqOverride||{}; const adj={}; ['person','occ','income','hcap'].forEach(k=>{ adj[k]=!!(ov[k]&&ov[k].lv); }); const hqAdj=adj.person||adj.occ||adj.income||adj.hcap;   /* 0925-V: รวมปรับไฟ H-Cap */
  const hcOccMM=(rc&&rc.occIdx!=null&&o&&OCC_LIST[rc.occIdx])?(OCC_LIST[rc.occIdx].g!==o.g):null;
  const inc=+a.incomeClaimed||0, hcInc=rc?(+rc.income||0):0;
  const incOver=rules.some(r=>r.d==='income'&&/สูงกว่าค่า|สูงผิดปกติ|ไม่สมกับ|สูงกว่าปกติ|สูงกว่าที่/.test(r.k||''));
@@ -11658,7 +11843,8 @@ function eomCSV(){ const R=eomRows(); const H=['เลขที่เคส','�
   return [a.id,fmtDT(a.submittedAt),r.ym,eomZoneName(r.zone),eomBrName(r.br),a.name,r.occG,r.occS,a.occSaid||'',yn(r.broad),yn(r.saidMM),yn(r.saidAck),r.hcOccMM==null?'':yn(r.hcOccMM),r.inc,r.hcInc||'',LV[r.light]||'',LV[r.lv.person]||'',LV[r.lv.occ]||'',LV[r.lv.income]||'',LV[r.lv.hcap]||'',yn(r.hqAdj),yn(r.before),a.sale?saleLabel(a.sale.result):'',yn(r.against),(a.sale&&a.sale.contract)||'',si.start?thDmy(si.start):'',si.src==='port'?'พอร์ต':si.src==='ctno'?'เลขสัญญา':'',p.due&&p.due.first?thDmy(p.due.first):'',p.due&&p.due.passed!=null?p.due.passed:'',p.d!=null?p.d:'',DPD_KEYS.indexOf(p.k)>=0?dpdLbl(p.k):p.k==='pending'?'ยังไม่ถึงดิว':p.k==='nomatch'?'ยังจับคู่ไม่ได้':'',yn(r.hcOld),yn(r.guarHas),Object.keys(r.fix).map(k=>(EOM_CAT.find(c=>c[0]===k)||[,k])[1]).join(' | '),yn(r.hqAsk),r.st].map(q).join(','); });
  const csv='﻿'+H.map(q).join(',')+'\n'+rows.join('\n'); const bl=new Blob([csv],{type:'text/csv;charset=utf-8'}); const u=URL.createObjectURL(bl); const el=document.createElement('a'); el.href=u; el.download='MOTO24_สรุปสิ้นเดือน_'+(EOM.ym||'ทุกเดือน')+(EOM.zone?'_'+EOM.zone:'')+(EOM.branch?'_'+EOM.branch:'')+'.csv'; document.body.appendChild(el); el.click(); setTimeout(()=>{ URL.revokeObjectURL(u); el.remove(); },500); }
 /* ---- ฟอร์มสาขา ข้อ 5: เคสขายก่อนวันเริ่ม ---- */
-function saleDateCheck(){ const ss=(document.getElementById('f-salestate')||{}).value||''; const out={block:'',warn:''}; if(ss!=='sold'||window.__editCase) return out;
+function saleBackOn(){ try{ const ec=window.__editCase&&APPS.find(x=>x.id===window.__editCase); const d=ec?thDay(ec.firstSubmittedAt||ec.submittedAt):thDay(); return d<sec4From(); }catch(e){ return false; } }   /* 0925-V: เคสส่งตั้งแต่ sec4From (1 ต.ค. 69) ไม่มีตัวเลือก ขายไปแล้ว-ส่งย้อนหลัง · แก้เคสเก่าก่อนวันนั้นยังเห็นของเดิม */
+function saleDateCheck(){ const ss=saleBackOn()?((document.getElementById('f-salestate')||{}).value||''):'waiting'; const out={block:'',warn:''}; if(ss!=='sold'||window.__editCase) return out;
  const sdTxt=String((document.getElementById('f-saledate')||{}).value||'').trim(); const ctTxt=String((document.getElementById('f-salecontract')||{}).value||'').trim(); const st=p1StartMs(); const sd=_thDateMs(sdTxt), cn=ctNoDate(ctTxt);
  const today=new Date(); const tEnd=new Date(today.getFullYear(),today.getMonth(),today.getDate()).getTime();
  if(sd&&sd<st) out.block='วันที่ขาย '+thDmy(sd)+' อยู่ก่อนวันเริ่มเก็บข้อมูลเฟส 1 ('+p1StartTh()+') — เคสที่ขายก่อนวันนี้ไม่ต้องส่งเข้าระบบ · ถ้าพิมพ์ผิด แก้วันที่ให้ถูกต้อง';
@@ -11703,7 +11889,8 @@ function saleDueList(br){ const out=[];
   if(s.result&&s.result!=='waiting') return;
   if(!hqSent(a)) return;
   if(!a.ack3){ const t=(a.hqAdvice||{}).sentAt||a.submittedAt; out.push({a,kind:'ack',what:'กดรับทราบการ์ด แล้วบันทึกผลขาย',t,d:_dayGap(t)}); return; }
-  const t=s.result==='waiting'?(s.at||0):((a.hqAdvice||{}).sentAt||a.submittedAt); out.push({a,kind:'sale',what:s.result==='waiting'?'อัปเดตผลขาย (เดิม: รอลูกค้าตัดสินใจ)':'บันทึกผลขาย',t,d:_dayGap(t)}); });
+  if(s.result==='waiting'){ const ap=fuAppt(a); if(ap&&thDay()>=ap){ const t=_ymdMs(_addDay(ap,1))+12*3600e3; out.push({a,kind:'fu',what:'อัปเดตผลขาย (รอลูกค้า · นัดติดตาม '+_thDowDm(ap)+')',t,d:_dayGap(t)}); } return; }   /* 0925-V */
+  const t=((a.hqAdvice||{}).sentAt||a.submittedAt); out.push({a,kind:'sale',what:'บันทึกผลขาย',t,d:_dayGap(t)}); });
  return out.sort((x,y)=>y.d-x.d||(x.t-y.t)); }
 function saleUnlocked(br){ return !!br && ((CFG&&CFG.saleUnlock)||{})[br]===thDay(); }
 function saleCtLim(){ return Math.max(1,qCfg().ctDays); }   /* 0925-P: เลขสัญญา/เลขถัง ต้องเติมภายในวัน (ผู้ใช้ 29 ก.ย.) — ค่าเดียวกับ 'เลขสัญญาค้าง (แดง)' */
@@ -11938,6 +12125,184 @@ function qReturnDo(id){ const a=APPS.find(x=>x.id===id); if(!a) return; const k=
  a.thread.push({by:'hq',name:nm,msg:(k==='edit'?'✏️ ตีกลับให้แก้ข้อมูล ('+fields.map(efLabel).join(', ')+'): ':'❓ ตีกลับ ขอข้อมูลเพิ่ม: ')+msg,ret:true,rk:k,at:now});
  if(k==='edit'){ a.editReq={fields,reason:msg,at:now,by:nm,st:'granted',hqInit:true,grant:{at:now,by:nm,until:now+24*3600*1000,used:false}}; }
  a.updatedAt=now; saveApps(); if(typeof cloudPushCase==='function')cloudPushCase(a); const d=document.getElementById('qr-dlg'); if(d) d.remove(); qReset(); try{ toast&&toast('ตีกลับให้สาขาแล้ว'); }catch(e){} openDetail(id); }
+/* ================== 0925-V: 📣 แถบประกาศค้างบนจอ · 💬 แชทลอย (A3) + ✂️ จับภาพหน้าจอ · ❌ ส่งไม่ผ่าน → พาไปช่องที่ผิด ==================
+   ไม่แก้ Apps Script · แชทใช้ v5 เดิม (chatSend/fileUp) · ประกาศใช้ ANN/annSt เดิม */
+function annBarRender(){ try{
+ let bar=document.getElementById('ann-bar'); const a=annCur();
+ const show=!!(SESSION&&SESSION.role==='branch'&&a&&annForMe(a)&&!annSt(a.id).ack);
+ if(!show){ if(bar) bar.remove(); return; }
+ const st=annSt(a.id); const steps=annSteps(a,st); const done=steps.filter(x=>x.done).length; const E=_p1Esc;
+ if(!bar){ bar=document.createElement('div'); bar.id='ann-bar'; const v=document.getElementById('view'); if(!v) return; v.parentElement.insertBefore(bar,v); }
+ bar.innerHTML='<span class="ab-ic">📣</span><div class="ab-tx"><div class="ab-h">ประกาศจาก สนญ. ที่ยังไม่รับทราบ</div><div class="ab-t">'+(a.type==='update'?'🔄 อัปเดตระบบ · ':'📰 ')+E(a.title||'')+'</div><div class="ab-s">'+(steps.length?'ทำแล้ว '+done+' / '+steps.length+' ขั้น · ':'')+'แถบนี้ปิดไม่ได้ — จะหายเมื่อกดรับทราบ</div></div><button type="button" class="btn ab-btn" onclick="annBarOpen()">📣 อ่านและรับทราบ</button>';
+}catch(e){} }
+function annBarOpen(){ const a=annCur(); if(!a) return; const st=annSt(a.id); delete st.snooze; annStSet(a.id,st); annShow(a); }
+/* ---------- 💬 แชทลอย ---------- */
+const CW={open:false,sel:null,img:null,ctx:'',bubbleT:0};
+function cwOn(){ try{ return !!(SESSION&&v5On()&&(SESSION.role==='branch'||SESSION.role==='analyst')); }catch(e){ return false; } }
+function cwUnread(){ if(!SESSION) return 0; if(SESSION.role==='branch') return chatUnread(SESSION.branch); return chatScopeBranches().reduce((n,br)=>n+chatUnread(br),0); }
+function cwRender(){ try{
+ let f=document.getElementById('cw-fab'); const on=cwOn()&&currentTab!=='chat';
+ document.body.classList.toggle('has-cw',on);
+ if(!on){ if(f) f.remove(); cwClose(); const b=document.getElementById('cw-bubble'); if(b) b.remove(); return; }
+ if(!f){ f=document.createElement('div'); f.id='cw-fab'; f.className='noprint'; f.title=SESSION.role==='branch'?'ถาม สนญ. (ไม่ต้องออกจากหน้านี้)':'แชทสาขา'; f.onclick=()=>{ CW.open?cwClose():cwOpen(); }; document.body.appendChild(f); }
+ const n=cwUnread(); f.innerHTML='💬'+(n?'<span class="cw-n">'+(n>99?'99+':n)+'</span>':'');
+ if(CW.open) cwHead();
+}catch(e){} }
+function cwCtx(){ try{ const b=document.getElementById('tab-'+currentTab); let s=b?(b.textContent||'').replace(/\d+$/,'').trim():currentTab;
+ if(currentTab==='form'){ const nm=['ข้อมูลลูกค้า','อาชีพและการทำงาน','รายได้และภาระหนี้','ประเภทการขายและเงื่อนไข','ผู้ค้ำประกันและประวัติ']; s+=' › หัวข้อ '+FSTEP+' '+(nm[FSTEP-1]||'')+(window.__editCase?' · แก้เคส '+window.__editCase:' · เคสใหม่ (ยังไม่ส่ง)'); }
+ const md=document.querySelector('#modal-bg .modal'); if(md&&document.getElementById('modal-bg').style.display!=='none'){ const m=/\b[A-Z]\d{6}\b/.exec(md.innerText||''); if(m) s+=' · เคส '+m[0]; }
+ return s; }catch(e){ return ''; } }
+function cwBrLabel(br){ return (BRANCHES.find(b=>b.code===br)||{}).label||br||''; }
+function cwHead(){ const h=document.getElementById('cw-head'); if(!h) return; const isBr=SESSION.role==='branch'; const c=qCfg();
+ if(isBr){ h.innerHTML='<div class="cw-av">🏢</div><div class="cw-ht"><b>ถาม สนญ.</b><div>'+(qOpenNow()?'🟢 ฝ่ายวิเคราะห์ · ตอบ '+c.open+'–'+c.close:'🌙 นอกเวลาทำการ · ตอบ '+c.open+' น. วันทำการถัดไป')+'</div></div><span class="cw-hb" title="ย่อ" onclick="cwClose()">—</span><span class="cw-hb" onclick="cwClose()">✕</span>'; return; }
+ const brs=chatScopeBranches().slice().sort((x,y)=>{ const wx=chatWaitOf(x)?1:0, wy=chatWaitOf(y)?1:0; if(wx!==wy) return wy-wx; const lx=chatMsgs(x), ly=chatMsgs(y); return ((ly[ly.length-1]||{}).at||0)-((lx[lx.length-1]||{}).at||0); });
+ h.innerHTML='<div class="cw-av">💬</div><div class="cw-ht"><b>แชทสาขา</b><div><select id="cw-sel" onchange="CW.sel=this.value||null;cwRenderThread();cwMarkRead()">'+(CW.sel?'':'<option value="">— เลือกสาขา —</option>')+brs.map(br=>{ const u=chatUnread(br), w=chatWaitOf(br); return '<option value="'+br+'"'+(br===CW.sel?' selected':'')+'>'+_p1Esc(cwBrLabel(br))+(u?' ('+u+' ใหม่)':w?' · รอตอบ':'')+'</option>'; }).join('')+'</select></div></div><span class="cw-hb" title="เปิดหน้าแชทเต็ม" onclick="CHAT_SEL=CW.sel;cwClose();go(\'chat\')">⤢</span><span class="cw-hb" onclick="cwClose()">✕</span>'; }
+function cwOpen(br){ if(!cwOn()) return; const isBr=SESSION.role==='branch';
+ CW.sel=isBr?SESSION.branch:(br||CW.sel||(chatScopeBranches().find(b=>chatUnread(b))||chatScopeBranches().find(b=>chatWaitOf(b))||null));
+ CW.open=true; const bb=document.getElementById('cw-bubble'); if(bb) bb.remove();
+ let w=document.getElementById('cw-win'); if(!w){ w=document.createElement('div'); w.id='cw-win'; w.className='noprint'; document.body.appendChild(w); }
+ w.innerHTML='<div id="cw-head" class="cw-head"></div>'+(isBr?'<div id="cw-ctx" class="cw-ctx"></div>':'')+'<div id="cw-thread" class="cw-thread"></div><div id="cw-att" class="cw-att"></div>'
+  +'<div class="cw-in"><button type="button" class="cw-ib cw-cap" title="จับภาพหน้าจอ" onclick="cwCapture()">✂️</button><label class="cw-ib" title="แนบรูป" style="margin:0;cursor:pointer">🖼️<input type="file" accept="image/*,application/pdf" style="display:none" onchange="cwPickImg(this)"></label>'
+  +'<input id="cw-text" placeholder="'+(isBr?'พิมพ์ข้อความถึง สนญ.…':'ตอบสาขา…')+'" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();cwSend();}"><button type="button" id="cw-send" class="cw-send" onclick="cwSend()">➤</button></div>';
+ cwHead(); const cx=document.getElementById('cw-ctx'); if(cx) cx.textContent='📍 หน้า: '+cwCtx(); cwAttRender(); cwRenderThread(); cwMarkRead(); try{ chatPoll(); }catch(e){}
+ setTimeout(()=>{ const t=document.getElementById('cw-text'); if(t) t.focus(); },50); }
+function cwClose(){ CW.open=false; const w=document.getElementById('cw-win'); if(w) w.remove(); }
+function cwRenderThread(){ const th=document.getElementById('cw-thread'); if(!th) return; if(!CW.sel){ th.innerHTML='<div class="mut" style="text-align:center;margin-top:30px;font-size:13px">เลือกสาขาด้านบน</div>'; return; }
+ const side=SESSION.role==='branch'?'br':'hq'; const L=chatMsgs(CW.sel);
+ th.innerHTML=L.length?L.map(m=>chatBubble(m,m.role===side)).join(''):'<div class="mut" style="text-align:center;margin-top:30px;font-size:13px">'+(side==='br'?'พิมพ์คำถาม หรือกด ✂️ จับภาพหน้าจอที่ติดปัญหาส่งได้เลย':'ยังไม่มีข้อความ')+'</div>';
+ th.scrollTop=th.scrollHeight; try{ v5FillImgs(th); }catch(e){} }
+function cwMarkRead(){ if(!CW.sel) return; const prev=CHAT_SEL; CHAT_SEL=CW.sel; try{ chatMarkRead(); }catch(e){} CHAT_SEL=prev; cwRender(); }
+function cwAttRender(){ const a=document.getElementById('cw-att'); if(!a) return; if(!CW.img){ a.innerHTML=''; a.style.display='none'; return; } a.style.display='';
+ a.innerHTML='<img src="'+CW.img+'"><div style="flex:1;min-width:0"><b>📸 แนบภาพ '+Math.round(_b64len(CW.img)/1024)+' KB</b>'+(CW.ctx?'<div class="mut" style="font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">📍 '+_p1Esc(CW.ctx)+'</div>':'')+'<div class="mut" style="font-size:10.5px">ภาพเก็บใน Drive บริษัท · ลบเมื่อปิดรอบเดือน</div></div><span class="cw-hb" style="color:#64748b" onclick="CW.img=null;CW.ctx=\'\';cwAttRender()">✕</span>'; }
+function cwPickImg(inp){ const f=inp.files&&inp.files[0]; inp.value=''; if(!f) return; v5FileToJpeg(f).then(r=>{ CW.img=r.data; CW.ctx=''; cwAttRender(); }).catch(e=>alert(e.message)); }
+function cwSend(){ const ta=document.getElementById('cw-text'); let text=String((ta||{}).value||'').trim(); if(!text&&!CW.img) return; if(!CW.sel){ alert('เลือกสาขาก่อน'); return; }
+ const btn=document.getElementById('cw-send'); if(btn){ btn.disabled=true; btn.textContent='…'; }
+ const role=SESSION.role==='branch'?'br':'hq'; const name=(SESSION&&SESSION.name)||''; const img=CW.img; const br=CW.sel;
+ if(img&&CW.ctx&&role==='br') text=(text?text+'\n':'')+'📍 '+CW.ctx;
+ const up=img? v5Call('fileUp',{name:'chat_'+Date.now()+'.jpg',mime:'image/jpeg',data:img,kind:'chat',caseId:'chat-'+br,ym:_curYm(),by:name},{timeout:60000}).then(j=>{ _v5ImgMem[j.id]=img; try{ v5ImgCache(j.id,img); }catch(e){} return j.id; }) : Promise.resolve('');
+ up.then(fid=>v5Call('chatSend',{branch:br,role,name,text,fileId:fid})).then(j=>{ const c=chatLoad(); c.msgs[j.msg.id]=j.msg; chatSave(); if(ta) ta.value=''; CW.img=null; CW.ctx=''; cwAttRender(); cwRenderThread(); updateChatBadge(); })
+  .catch(e=>alert('ส่งไม่สำเร็จ: '+e.message+' — ลองใหม่อีกครั้ง')).then(()=>{ if(btn){ btn.disabled=false; btn.textContent='➤'; } }); }
+function cwBubble(title,body,click,brCode){ let b=document.getElementById('cw-bubble'); if(!b){ b=document.createElement('div'); b.id='cw-bubble'; b.className='noprint'; document.body.appendChild(b); }
+ const t=new Date(); const tm=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+ b.innerHTML='<div class="cwb-h"><b>'+title+'</b><span>'+tm+' · <a href="javascript:void(0)" class="cwb-x">✕</a></span></div><div class="cwb-b">'+body+'</div><div class="cwb-go">ตอบกลับ →</div>';
+ b.querySelector('.cwb-x').onclick=e=>{ e.stopPropagation(); b.remove(); }; b.onclick=()=>{ b.remove(); try{ click(); }catch(e){} };
+ clearTimeout(CW.bubbleT); CW.bubbleT=setTimeout(()=>{ const x=document.getElementById('cw-bubble'); if(x) x.remove(); },30000); }
+function chatPop(title,body,color,opt,br){ if(cwOn()&&document.getElementById('cw-fab')){ cwBubble(title,body,()=>cwOpen(br),br); return; } toast(title,body,'',color,opt); }
+/* ---------- ✂️ จับภาพหน้าจอ (แบบ LINE) ---------- */
+const H2C_URL='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+function cwHidePref(){ try{ return localStorage.getItem('moto24_cw_hide')!=='0'; }catch(e){ return true; } }
+function cwLoadH2C(){ if(window.html2canvas) return Promise.resolve(); return new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=H2C_URL; s.onload=()=>res(); s.onerror=()=>rej(new Error('โหลดตัวจับภาพไม่ได้ — ตรวจอินเทอร์เน็ต')); document.head.appendChild(s); setTimeout(()=>{ if(!window.html2canvas) rej(new Error('โหลดตัวจับภาพนานเกินไป — ลองใหม่')); },20000); }); }
+function cwCapture(){ const hide=cwHidePref(); const ctx=cwCtx(); const ids=['cw-win','cw-fab','cw-bubble','cw-cap','cw-ed','toastwrap'];
+ const btn=document.querySelector('#cw-win .cw-cap'); if(btn){ btn.disabled=true; btn.textContent='⏳'; }
+ cwLoadH2C().then(()=>{ if(hide){ ids.forEach(id=>{ const e=document.getElementById(id); if(e) e.style.visibility='hidden'; }); }
+   return window.html2canvas(document.body,{x:window.scrollX,y:window.scrollY,width:window.innerWidth,height:window.innerHeight,windowWidth:document.documentElement.clientWidth,scale:Math.min(window.devicePixelRatio||1,1.5),logging:false,useCORS:true,backgroundColor:'#f3f4f6',ignoreElements:el=>el.id==='cw-cap'||el.id==='cw-ed'||(hide&&ids.indexOf(el.id)>=0)}); })
+  .then(cv=>{ ids.forEach(id=>{ const e=document.getElementById(id); if(e) e.style.visibility=''; }); cwSelect(cv,ctx); })
+  .catch(e=>{ ids.forEach(id=>{ const el=document.getElementById(id); if(el) el.style.visibility=''; }); alert('จับภาพไม่สำเร็จ: '+e.message+'\nใช้ปุ่ม 🖼️ แนบรูปแทนได้'); })
+  .then(()=>{ const b=document.querySelector('#cw-win .cw-cap'); if(b){ b.disabled=false; b.textContent='✂️'; } }); }
+function cwSelect(cv,ctx){ const W=window.innerWidth,H=window.innerHeight; const k=cv.width/W;
+ let o=document.getElementById('cw-cap'); if(o) o.remove(); o=document.createElement('div'); o.id='cw-cap';
+ o.innerHTML='<img src="'+cv.toDataURL('image/png')+'" class="cc-img"><div class="cc-dim"></div><div class="cc-sel" style="display:none"></div>'
+  +'<div class="cc-bar">✂️ ลากเพื่อเลือกพื้นที่ที่จะส่ง <button type="button" data-a="all">🖥 ทั้งหน้าจอ</button><button type="button" data-a="x">ยกเลิก (Esc)</button></div>'
+  +'<label class="cc-tog"><input type="checkbox" '+(cwHidePref()?'checked':'')+'> ซ่อนหน้าต่างแชทเมื่อจับภาพหน้าจอ</label>';
+ document.body.appendChild(o); const sel=o.querySelector('.cc-sel'), dim=o.querySelector('.cc-dim'); let p0=null;
+ const done=r=>{ document.removeEventListener('keydown',esc); o.remove(); if(!r) return; const c=document.createElement('canvas'); c.width=Math.max(1,Math.round(r.w*k)); c.height=Math.max(1,Math.round(r.h*k)); c.getContext('2d').drawImage(cv,Math.round(r.x*k),Math.round(r.y*k),c.width,c.height,0,0,c.width,c.height); cwEdit(c,ctx); };
+ const esc=e=>{ if(e.key==='Escape') done(null); }; document.addEventListener('keydown',esc);
+ o.querySelector('[data-a="all"]').onclick=e=>{ e.stopPropagation(); done({x:0,y:0,w:W,h:H}); }; o.querySelector('[data-a="x"]').onclick=e=>{ e.stopPropagation(); done(null); };
+ o.querySelector('.cc-tog input').onchange=e=>{ try{ localStorage.setItem('moto24_cw_hide',e.target.checked?'1':'0'); }catch(_){} };
+ const rect=(a,b)=>({x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),w:Math.abs(a.x-b.x),h:Math.abs(a.y-b.y)});
+ o.addEventListener('pointerdown',e=>{ if(e.target.closest('.cc-bar,.cc-tog')) return; p0={x:e.clientX,y:e.clientY}; sel.style.display=''; dim.style.background='transparent'; try{ o.setPointerCapture(e.pointerId); }catch(_){} });
+ o.addEventListener('pointermove',e=>{ if(!p0) return; const r=rect(p0,{x:e.clientX,y:e.clientY}); Object.assign(sel.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'}); });
+ o.addEventListener('pointerup',e=>{ if(!p0) return; const r=rect(p0,{x:e.clientX,y:e.clientY}); p0=null; if(r.w<16||r.h<16){ sel.style.display='none'; dim.style.background=''; return; } done(r); });
+ window.__cwSelectDone=done; }
+function cwEdit(src,ctx){ let ed=document.getElementById('cw-ed'); if(ed) ed.remove(); ed=document.createElement('div'); ed.id='cw-ed';
+ ed.innerHTML='<div class="ce-box"><div class="ce-h"><b>✂️ ภาพที่จะส่งถึง '+(SESSION.role==='branch'?'สนญ.':'สาขา')+'</b><span class="mut" style="font-size:12px">วาดวง/ขีดเน้นจุดที่มีปัญหาได้</span></div><div class="ce-wrap"><canvas class="ce-cv"></canvas></div>'
+  +'<div class="ce-f"><button type="button" class="btn btn-sm ce-t on" data-t="pen">🖊 ปากกา</button><button type="button" class="btn btn-sm ce-t" data-t="circle">⭕ วงกลม</button><button type="button" class="btn btn-line btn-sm" data-a="undo">↩ ย้อน</button><span style="flex:1"></span><button type="button" class="btn btn-line btn-sm" data-a="again">ถ่ายใหม่</button><button type="button" class="btn btn-line btn-sm" data-a="x">ยกเลิก</button><button type="button" class="btn btn-org btn-sm" data-a="ok">➤ แนบในแชท</button></div></div>';
+ document.body.appendChild(ed); const cv=ed.querySelector('.ce-cv'); cv.width=src.width; cv.height=src.height; const g=cv.getContext('2d'); g.drawImage(src,0,0);
+ const hist=[]; let tool='pen', p0=null, snap=null; const lw=Math.max(3,Math.round(cv.width/220));
+ const pt=e=>{ const r=cv.getBoundingClientRect(); return {x:(e.clientX-r.left)*cv.width/r.width, y:(e.clientY-r.top)*cv.height/r.height}; };
+ ed.querySelectorAll('.ce-t').forEach(b=>b.onclick=()=>{ tool=b.dataset.t; ed.querySelectorAll('.ce-t').forEach(x=>x.classList.toggle('on',x===b)); });
+ cv.addEventListener('pointerdown',e=>{ e.preventDefault(); p0=pt(e); hist.push(g.getImageData(0,0,cv.width,cv.height)); if(hist.length>20) hist.shift(); snap=hist[hist.length-1]; g.strokeStyle='#ef4444'; g.lineWidth=lw; g.lineCap='round'; g.lineJoin='round'; if(tool==='pen'){ g.beginPath(); g.moveTo(p0.x,p0.y); } try{ cv.setPointerCapture(e.pointerId); }catch(_){} });
+ cv.addEventListener('pointermove',e=>{ if(!p0) return; const p=pt(e); if(tool==='pen'){ g.lineTo(p.x,p.y); g.stroke(); } else { g.putImageData(snap,0,0); g.beginPath(); g.ellipse((p0.x+p.x)/2,(p0.y+p.y)/2,Math.abs(p.x-p0.x)/2||1,Math.abs(p.y-p0.y)/2||1,0,0,Math.PI*2); g.stroke(); } });
+ cv.addEventListener('pointerup',()=>{ p0=null; });
+ ed.querySelector('[data-a="undo"]').onclick=()=>{ const s=hist.pop(); if(s) g.putImageData(s,0,0); };
+ ed.querySelector('[data-a="x"]').onclick=()=>ed.remove();
+ ed.querySelector('[data-a="again"]').onclick=()=>{ ed.remove(); cwCapture(); };
+ ed.querySelector('[data-a="ok"]').onclick=()=>{ _imgToJpeg(cv.toDataURL('image/png'),1600,0.8).then(d=>{ CW.img=d; CW.ctx=ctx||''; ed.remove(); if(!CW.open) cwOpen(); else cwAttRender(); }).catch(e=>alert(e.message)); };
+ window.__cwEd={cv,g}; }
+/* ---------- ❌ ส่งไม่ผ่าน → พาไปช่องที่ผิด ---------- */
+const FJ_MAP=[[/ยอดจัด/,'f-finance'],[/เงินดาวน์/,'f-down'],[/จำนวนงวด/,'f-term'],[/อายุรถ/,'f-vehage'],[/เลขไมล์/,'f-mileage'],[/สภาพรถ/,'f-cond'],[/ไม่พบรุ่น|รุ่นรถ/,'f-model'],[/ค่างวดงวดสุดท้าย|บอลลูน\)/,'f-balloonov'],[/ค่างวด\/เดือน/,'f-instov'],[/วันดิว/,'f-firstdue'],[/ประเภทการขาย/,'f-product'],[/รูปแบบไฟแนนซ์/,'f-fintype'],[/สำเนาบัตร/,'w-iddoc'],[/ขายอะไร|ข้อมูลเพิ่มเติมอาชีพ/,'f-occex'],[/เลขบัตร/,'f-idcard'],[/เบอร์โทรลูกค้า/,'phone-list']];
+function fjHidden(el,stopId){ let n=el; while(n&&n.id!==stopId){ if(n.classList&&(n.classList.contains('hidden')||n.classList.contains('edlock'))) return true; if(n.style&&n.style.display==='none') return true; n=n.parentElement; } return false; }
+function fjClear(){ document.querySelectorAll('.fld-err').forEach(f=>{ f.classList.remove('fld-err'); const t=f.querySelector(':scope > .fld-err-tip'); if(t) t.remove(); }); const b=document.getElementById('fj-bar'); if(b) b.remove(); }
+function formJumpErrors(msgs){ try{ if(currentTab!=='form') return 0; fjClear(); msgs=(msgs||[]).map(String); const hit=new Map();
+ const mark=(f,msg)=>{ if(!f||hit.has(f)) return; const st=f.closest('.fstep'); if(!st) return; if(stepLocked(+st.id.split('-')[1])) return; if(fjHidden(f,st.id)) return; hit.set(f,msg); };
+ const fieldOf=id=>{ const e=document.getElementById(id); if(!e) return null; return e.classList.contains('field')?e:(e.closest('.field')||e); };
+ msgs.forEach(m=>{ FJ_MAP.forEach(([re,id])=>{ if(re.test(m)) mark(fieldOf(id),m); }); });
+ msgs.forEach(m=>{ const mm=m.replace(/\s+/g,' '); document.querySelectorAll('#view .fstep .field').forEach(f=>{ const lb=f.querySelector('label'); if(!lb) return; const t=(lb.textContent||'').replace(/\*/g,'').replace(/\(.*?\)/g,'').replace(/\s+/g,' ').trim(); if(t.length>=6&&mm.indexOf(t)===0) mark(f,m); }); });
+ document.querySelectorAll('#view .fstep').forEach(box=>{ const n=+box.id.split('-')[1]; if(stepLocked(n)) return; box.querySelectorAll('.field').forEach(f=>{ const rq=f.querySelector('.req'); if(!rq||rq.style.display==='none') return; if(fjHidden(f,box.id)) return; const inp=f.querySelector('input,select,textarea'); if(!inp||inp.type==='file'||inp.type==='radio'||inp.type==='checkbox') return; const v=String(inp.value||'').trim(); if(!v||(PLACEHOLDER_FIELDS[inp.id]&&isPlaceholderVal(v))) mark(f,'กรอกช่องนี้ให้ครบ'); }); });
+ if(!hit.size) return 0;
+ const L=[...hit.keys()].map(f=>{ const st=f.closest('.fstep'); return {f,n:st?+st.id.split('-')[1]:99}; }).sort((a,b)=>a.n-b.n||(a.f.compareDocumentPosition(b.f)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1));
+ L.forEach(({f})=>{ f.classList.add('fld-err'); const tip=document.createElement('div'); tip.className='fld-err-tip'; const _m=hit.get(f).replace(/^กรุณา/,''); tip.textContent='❌ '+(_m.length<=14?'กรอกช่องนี้ให้ครบ':_m); f.appendChild(tip);
+   const off=()=>{ f.classList.remove('fld-err'); const t=f.querySelector(':scope > .fld-err-tip'); if(t) t.remove(); f.removeEventListener('input',off,true); f.removeEventListener('change',off,true); };
+   f.addEventListener('input',off,true); f.addEventListener('change',off,true); });
+ const first=L[0]; const nm=['ข้อมูลลูกค้า','อาชีพและการทำงาน','รายได้และภาระหนี้','ประเภทการขายและเงื่อนไข','ผู้ค้ำประกันและประวัติ'];
+ if(first.n<99&&first.n!==FSTEP) fstepShow(first.n);
+ setTimeout(()=>{ try{ first.f.scrollIntoView({block:'center',behavior:'smooth'}); const i=first.f.querySelector('input:not([type=hidden]),select,textarea'); if(i&&i.focus) i.focus({preventScroll:true}); }catch(e){} },60);
+ const bar=document.createElement('div'); bar.id='fj-bar'; bar.className='noprint'; const inStep=L.filter(x=>x.n===first.n).length;
+ bar.innerHTML='❌ <b>ส่งเคสไม่ได้</b> — พาไปที่ <b>หัวข้อ '+first.n+' '+(nm[first.n-1]||'')+'</b> · ช่องที่ต้องแก้มีกรอบแดง ('+inStep+' ช่อง'+(L.length>inStep?' · หัวข้ออื่นอีก '+(L.length-inStep):'')+')'; bar.onclick=()=>bar.remove(); document.body.appendChild(bar); setTimeout(()=>{ if(bar.parentElement) bar.remove(); },9000);
+ return L.length; }catch(e){ console.error(e); return 0; } }
+/* ======================= 0925-V: แจ้งเตือนงานเข้า (ก. แถบค้างทุกหน้า · ข. ชื่อแท็บ+จุดแดง · ค. แจ้งเตือน Windows) ======================= */
+function nwPollCfg(){ const c=(CFG&&CFG.nwPoll)||{}; const n=(v,d)=>(v===0||v==='0')?0:((+v>0)?+v:d); return {hq:n(c.hq,1), br:n(c.br,5)}; }
+const NW={baseTitle:null,blink:null,lastN:0,notif:null,lastHidPull:0};
+function nwRole(){ return SESSION?(SESSION.role==='analyst'?'hq':SESSION.role==='zone'?'zone':'br'):''; }
+function nwKey(){ return 'moto24_nwseen_'+nwRole()+'_'+((SESSION&&(SESSION.branch||SESSION.zone||SESSION.email))||''); }
+function nwSeen(){ try{ return +localStorage.getItem(nwKey())||0; }catch(e){ return 0; } }
+function nwMarkSeen(){ try{ localStorage.setItem(nwKey(),String(Date.now())); }catch(e){} NW.lastN=0; nwRender(); }
+function nwAt(a){ if(nwRole()==='br'){ const r=(typeof retOpen==='function')?retOpen(a):null; return Math.max((a.hqAdvice&&a.hqAdvice.sentAt)||0,(r&&r.at)||0); } return a.submittedAt||0; }
+function nwItems(){ try{ if(!SESSION) return []; const s=nwSeen(); return bellItems().filter(a=>nwAt(a)>s).sort((x,y)=>nwAt(x)-nwAt(y)); }catch(e){ return []; } }
+function nwText(items){ const r=nwRole(), n=items.length, L=items[n-1]; const b=L?BRANCHES.find(x=>x.code===L.branch):null; const E=s=>String(s==null?'':s).replace(/[<&>"]/g,c=>({'<':'&lt;','&':'&amp;','>':'&gt;','"':'&quot;'})[c]);
+ if(r==='br'){ const ret=items.filter(a=>retOpen(a)).length, card=n-ret; return {ic:'📨',t:[card?'สนญ. ส่งการ์ด 3 มิติมาแล้ว '+card+' เคส':'',ret?'↩ สนญ. ตีกลับให้แก้ '+ret+' เคส':''].filter(Boolean).join(' · '),s:L?E(L.id+' · '+(L.name||''))+' — เปิดดูแล้วกดรับทราบ/ตอบกลับ':'',btn:'เปิดดู →',go:'list'}; }
+ if(r==='zone'){ const by={}; items.forEach(a=>{ const k=(BRANCHES.find(x=>x.code===a.branch)||{}).label||a.branch; by[k]=(by[k]||0)+1; }); return {ic:'📊',t:'เคสใหม่ในเขต '+n+' เคส',s:E(Object.entries(by).map(([k,v])=>k+' '+v).join(' · ')),btn:'ดูรายการ →',go:null}; }
+ return {ic:'📥',t:'มีเคสใหม่เข้าคิว '+n+' เคส — รอ สนญ. ตรวจ',s:L?'ล่าสุด '+E(L.id+' · '+(L.name||'')+(b?' · สาขา '+b.label:''))+' · '+fmtDur(Date.now()-nwAt(L))+'ที่แล้ว':'',btn:'เปิดคิว →',go:'queue'}; }
+function nwOpen(){ const T=nwText(nwItems()); nwMarkSeen(); if(T.go) go(T.go); else if(typeof currentTab!=='undefined') go(currentTab); }
+function nwLater(){ NW.snooze=Date.now()+10*60000; nwRender(); }
+function nwPermBtn(){ try{ return ('Notification' in window)&&Notification.permission==='default'; }catch(e){ return false; } }
+function nwAskPerm(){ try{ Notification.requestPermission().then(()=>nwRender()); }catch(e){} }
+function nwRender(){ try{ const items=SESSION?nwItems():[]; const view=document.getElementById('view'); let el=document.getElementById('nw-bar');
+ const show=items.length&&!(NW.snooze&&Date.now()<NW.snooze);
+ if(!show){ if(el) el.remove(); } else { const T=nwText(items); if(!el){ el=document.createElement('div'); el.id='nw-bar'; const ab=document.getElementById('ann-bar'); (ab&&ab.parentNode===view.parentNode?ab:view).insertAdjacentElement(ab&&ab.parentNode===view.parentNode?'afterend':'beforebegin',el); }
+  el.innerHTML=`<span class="nw-ic">${T.ic}</span><div style="flex:1;min-width:0"><div class="nw-t">${T.t}</div><div class="nw-s">${T.s}</div></div><button type="button" class="nw-go" onclick="nwOpen()">${T.btn}</button><button type="button" class="nw-later" onclick="nwLater()">ดูทีหลัง</button>`; }
+ /* ปุ่มขออนุญาตแจ้งเตือน Windows (ครั้งแรกต่อเครื่อง) */
+ let pb=document.getElementById('nw-perm'); const bell=document.getElementById('bellN'); const host=bell&&bell.parentNode&&bell.parentNode.parentNode;
+ if(SESSION&&nwPermBtn()&&host){ if(!pb){ pb=document.createElement('button'); pb.id='nw-perm'; pb.type='button'; pb.className='noprint'; pb.textContent='🔔 เปิดแจ้งเตือนบนเครื่องนี้'; pb.title='ให้ระบบแจ้งเตือนที่มุมจอ Windows เมื่อมีงานเข้า แม้ย่อ Chrome ไว้ (กดอนุญาต 1 ครั้งต่อเครื่อง)'; pb.onclick=nwAskPerm; host.insertBefore(pb,bell.parentNode.nextSibling); } } else if(pb) pb.remove();
+ nwTitle(items.length); }catch(e){} }
+function nwFavicon(n){ try{ let l=document.getElementById('nw-fav'); if(!n){ if(l) l.remove(); return; } const c=document.createElement('canvas'); c.width=c.height=64; const g=c.getContext('2d'); g.fillStyle='#1e2761'; g.beginPath(); g.roundRect?g.roundRect(0,6,58,58,12):g.rect(0,6,58,58); g.fill(); g.fillStyle='#fff'; g.font='bold 26px sans-serif'; g.textAlign='center'; g.textBaseline='middle'; g.fillText('24',29,36); g.fillStyle='#ef4444'; g.beginPath(); g.arc(46,18,18,0,Math.PI*2); g.fill(); g.fillStyle='#fff'; g.font='bold 22px sans-serif'; g.fillText(n>9?'9+':String(n),46,19);
+ if(!l){ l=document.createElement('link'); l.id='nw-fav'; l.rel='icon'; document.head.appendChild(l); } l.href=c.toDataURL('image/png'); }catch(e){} }
+function nwTitle(n){ if(NW.baseTitle==null) NW.baseTitle=document.title; clearInterval(NW.blink); NW.blink=null; nwFavicon(n);
+ if(!n){ document.title=NW.baseTitle; return; } const lab='('+n+') '+(nwRole()==='br'?'📨 การ์ดจาก สนญ.':'📥 งานใหม่')+' — โมโต24'; document.title=lab;
+ if(document.hidden){ let t=0; NW.blink=setInterval(()=>{ t^=1; document.title=t?NW.baseTitle:lab; if(!document.hidden){ clearInterval(NW.blink); document.title=lab; } },1500); } }
+function nwNotify(items){ try{ if(!('Notification' in window)||Notification.permission!=='granted') return; if(!document.hidden&&document.hasFocus&&document.hasFocus()) return; const T=nwText(items); const L=items[items.length-1];
+ const n=new Notification(T.ic+' '+T.t.replace(/<[^>]+>/g,''),{body:String(T.s||'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')+'\nคลิกเพื่อเปิด',tag:'moto24-new',renotify:true});
+ n.onclick=()=>{ try{ window.focus(); n.close(); if(items.length===1&&L) { nwMarkSeen(); openDetail(L.id); } else nwOpen(); }catch(e){} }; NW.notif=n; }catch(e){} }
+function nwTick(){ if(!SESSION) return; const items=nwItems(); if(items.length>NW.lastN){ nwNotify(items); NW.snooze=0; } NW.lastN=items.length; nwRender(); }
+/* เช็กตอนอยู่แท็บอื่น — ดึงเฉพาะเคสที่เปลี่ยน ตามความถี่ที่ สนญ. ตั้ง */
+setInterval(function(){ try{ if(!SESSION||!document.hidden||!cloudReady()) return; const P=nwPollCfg(); const m=nwRole()==='hq'?P.hq:P.br; if(!m) return; if(Date.now()-NW.lastHidPull<m*60000-5000) return; NW.lastHidPull=Date.now(); cloudPullCases(false,true).catch(function(){}); }catch(e){} }, 60000);
+document.addEventListener('visibilitychange',function(){ try{ if(SESSION) nwTitle(nwItems().length); }catch(e){} });
+/* ======================= 0925-V: เตือนนัดติดตามลูกค้า ======================= */
+function fuMine(){ if(!(SESSION&&SESSION.role==='branch')) return []; return APPS.filter(a=>a.branch===SESSION.branch&&a.status!=='cancelled'&&a.sale&&a.sale.result==='waiting'); }
+function fuAck(){ const t=thDay(); const now=Date.now(); fuMine().forEach(a=>{ const s=fuState(a); if(s==='today'||s==='tomorrow'||s==='due'){ a.sale.fu=Object.assign({appt:fuAppt(a),post:0,legacy:!a.sale.fu},a.sale.fu||{},{ackOn:t,ackAt:now,ackBy:(SESSION&&SESSION.name)||''}); a._dirty=true; a._dirtyAt=now; try{ cloudPushCase(a); }catch(e){} } }); saveApps(); fuBarRender(); }
+function fuBarRender(){ try{ let el=document.getElementById('fu-bar'); const L=fuMine(); const t=thDay(); const late=L.filter(a=>fuState(a)==='late'); const need=L.filter(a=>['today','due','tomorrow'].indexOf(fuState(a))>=0&&((a.sale.fu||{}).ackOn!==t));
+ if(!late.length&&!need.length){ if(el) el.remove(); return; }
+ const view=document.getElementById('view'); if(!view) return; if(!el){ el=document.createElement('div'); el.id='fu-bar'; view.parentNode.insertBefore(el,view); }
+ const E=_p1Esc; const li=x=>x.map(a=>`<a href="javascript:void(0)" onclick="openDetail('${E(a.id)}')" class="fu-c">${E(a.name||a.id)} · ${_thDowDm(fuAppt(a))}</a>`).join('');
+ const td=need.filter(a=>fuState(a)!=='tomorrow'), tm=need.filter(a=>fuState(a)==='tomorrow');
+ el.className=late.length?'fu-late':'';
+ el.innerHTML=late.length?`<span class="fu-ic">⚠</span><div style="flex:1;min-width:0"><div class="fu-t">เลยนัดติดตามลูกค้า ${late.length} ราย — อัปเดตผลวันนี้ (ขายแล้ว / มัดจำ / ไม่ขาย / ลูกค้ายกเลิก)</div><div class="fu-s">${li(late)}</div></div><span class="fu-lock" title="หายเมื่ออัปเดตผลครบ">🔒 กดรับทราบไม่ได้ — อัปเดตผลเคส</span>`
+  :`<span class="fu-ic">📅</span><div style="flex:1;min-width:0"><div class="fu-t">${td.length?'วันนี้นัดติดตามลูกค้า '+td.length+' ราย':''}${td.length&&tm.length?' · ':''}${tm.length?'พรุ่งนี้นัด '+tm.length+' ราย':''} — โทรถามลูกค้าแล้วอัปเดตผลการขาย</div><div class="fu-s">${li(td.concat(tm))}</div></div><button type="button" class="fu-ok" onclick="fuAck()">✓ รับทราบ</button>`; }catch(e){} }
+function fuSummaryHTML(){ try{ const isZ=SESSION&&SESSION.role==='zone'; const L=APPS.filter(a=>a.status!=='cancelled'&&a.sale&&a.sale.result==='waiting'&&(!isZ||zoneOfBranch(a.branch)===SESSION.zone)); if(!L.length) return ''; const t=thDay();
+ const by={}; L.forEach(a=>{ const s=fuState(a); const b=by[a.branch]=by[a.branch]||{today:0,noack:0,late:0,wait:0}; if(s==='late') b.late++; else if(s==='today'||s==='due'){ b.today++; if((a.sale.fu||{}).ackOn!==t) b.noack++; } else b.wait++; });
+ const rows=Object.entries(by).sort((x,y)=>(y[1].late-x[1].late)||(y[1].today-x[1].today)); const tot=k=>rows.reduce((s,[,v])=>s+v[k],0); const bl=c=>{ const b=BRANCHES.find(x=>x.code===c); return b?b.label:c; };
+ return `<div class="card mb fu-sum"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px"><b style="font-size:15px">📅 นัดติดตามลูกค้า (รอลูกค้าตัดสินใจ)</b><span class="tag" style="background:#ffedd5;color:#9a3412">วันนี้ ${tot('today')}</span><span class="tag t-warn">ยังไม่รับทราบ ${tot('noack')}</span><span class="tag t-bad">เลยนัด ${tot('late')}</span><span class="tag" style="background:#f1f5f9;color:#475569">รอนัด ${tot('wait')}</span></div>`
+  +`<table class="qtable"><thead><tr><th>สาขา</th><th class="num">นัดวันนี้</th><th class="num">ยังไม่รับทราบ</th><th class="num">เลยนัด</th><th class="num">รอนัดวันอื่น</th></tr></thead><tbody>${rows.map(([c,v])=>`<tr><td>${_p1Esc(bl(c))}</td><td class="num">${v.today||'–'}</td><td class="num"${v.noack?' style="color:#b45309;font-weight:700"':''}>${v.noack||'–'}</td><td class="num"${v.late?' style="color:#b91c1c;font-weight:700"':''}>${v.late||'–'}</td><td class="num">${v.wait||'–'}</td></tr>`).join('')}</tbody></table></div>`; }catch(e){ return ''; } }
 /* ================== INIT ================== */
 loadCustDB();
 loadIncRef();
@@ -11987,7 +12352,7 @@ setInterval(function(){
  try{ if(typeof cloudReady==='function' && cloudReady()){ cloudPullCases().catch(function(){}); if(window.__syncTick%2===0) cloudPullMaster().catch(function(){}); } }catch(_){}
  try{ if(typeof v5On==='function'&&v5On()){ chatPoll(); v5RetryPending(); } }catch(_){}   /* 0925-O */
 }, 30000);
-setInterval(function(){ try{ if(SESSION&&!document.hidden&&currentTab==='chat'&&v5On()) chatPoll(); }catch(_){} }, 8000);
+setInterval(function(){ try{ if(SESSION&&!document.hidden&&(currentTab==='chat'||CW.open)&&v5On()) chatPoll(); }catch(_){} }, 8000);
 document.addEventListener('visibilitychange', function(){ if(!document.hidden && SESSION){ try{ if(cloudReady()){ cloudPullCases().catch(function(){}); cloudPullMaster().catch(function(){}); } }catch(_){} } });
 </script>
 <div id="print-area"></div>
