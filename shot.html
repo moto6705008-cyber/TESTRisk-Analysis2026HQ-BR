@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MOTO24 · ถ่ายภาพหน้างาน</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:'IBM Plex Sans Thai','Sarabun',system-ui,sans-serif;background:#eef1f6;color:#1e293b;font-size:15px}
+.hd{background:#1e2761;color:#fff;padding:14px 16px 12px}.hd b{font-size:17px}.hd .s{font-size:13px;opacity:.85;margin-top:3px;line-height:1.5}
+.bar{height:8px;background:#e2e8f0;border-radius:6px;margin:8px 0 2px;overflow:hidden}.bar i{display:block;height:100%;background:#ea580c;transition:width .3s}
+.wrap{padding:12px}.box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:12px;margin-bottom:10px}
+.it{display:flex;gap:10px;align-items:center;border:1px solid #e2e8f0;border-radius:12px;padding:10px;margin:8px 0;background:#fff}
+.it.on{border:2px solid #ea580c}.it.ok{background:#f0fdf4;border-color:#86efac}
+.ic{font-size:26px;width:34px;text-align:center}.tx{flex:1;line-height:1.4}.tx small{display:block;color:#64748b;font-size:12.5px}
+.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:700;font-size:14px;font-family:inherit}
+.b-o{background:#ea580c;color:#fff}.b-g{background:#e2e8f0;color:#334155}.b-ok{background:#15803d;color:#fff}
+.tag{white-space:nowrap;display:inline-block;border-radius:7px;padding:2px 7px;font-size:11.5px;font-weight:700}.req{background:#fff1e6;color:#c2410c}.opt{background:#f1f5f9;color:#475569}
+.gps{font-size:13px;padding:8px 10px;border-radius:10px;margin-bottom:8px}.g-ok{background:#dcfce7;color:#166534}.g-wt{background:#fef3c7;color:#92400e}.g-bad{background:#fee2e2;color:#991b1b}
+.err{background:#fee2e2;color:#991b1b;border-radius:12px;padding:14px;line-height:1.6}
+.mut{color:#64748b;font-size:12.5px}.thumb{width:54px;height:54px;object-fit:cover;border-radius:8px}
+#ov{position:fixed;inset:0;background:rgba(15,23,42,.6);display:none;align-items:center;justify-content:center;z-index:9}#ov div{background:#fff;border-radius:14px;padding:18px 20px;max-width:86%;text-align:center;line-height:1.6}
+</style></head><body>
+<div class="hd"><b>📷 ถ่ายภาพหน้างาน</b><div class="s" id="hs">กำลังโหลด…</div><div class="bar"><i id="pg" style="width:0"></i></div><div class="s" id="hc"></div></div>
+<div class="wrap"><div id="gps" class="gps g-wt">📍 กำลังหาตำแหน่ง GPS…</div><div id="main"></div>
+<div class="mut" style="text-align:center;margin:14px 0 30px">ถ่ายจากกล้องเท่านั้น · ระบบบันทึกพิกัดและเวลาตอนถ่าย · ภาพเข้าระบบ MOTO24 อัตโนมัติ</div></div>
+<input type="file" id="cam" accept="image/*" capture="environment" style="display:none">
+<div id="ov"><div id="ovt"></div></div>
+<script>
+/* ตั้งค่าตอนติดตั้ง: ใส่ Web app URL ของ Apps Script "MOTO24 P2Photo" */
+const API='https://script.google.com/macros/s/AKfycbxxhUbrlM_6sbUYzR2xzSmbufhTN43q3WND56atZzUybzOgCSonURs5wAOiTa_QyFiO/exec';
+const ACC_MAX=50, MAX_W=1600, Q=0.82, FRESH_MS=5*60e3;
+const T=new URLSearchParams(location.search).get('t')||'';
+let D=null, pos=null, cur=null, tries={};
+const $=id=>document.getElementById(id), E=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function ov(t){ $('ovt').innerHTML=t; $('ov').style.display=t?'flex':'none'; }
+async function call(o){ if(window.__mockApi) return window.__mockApi(o); const r=await fetch(API,{method:'POST',body:JSON.stringify(o)}); return r.json(); }
+function fmtT(ms){ const d=new Date(ms); return d.toLocaleDateString('th-TH',{day:'numeric',month:'numeric'})+' '+d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'}); }
+/* GPS: เปิดค้างไว้ตั้งแต่เข้าหน้า ให้แม่นขึ้นก่อนกดถ่าย */
+function gpsStart(){ if(!navigator.geolocation){ gpsShow('bad','เครื่องนี้ไม่รองรับ GPS'); return; }
+ navigator.geolocation.watchPosition(p=>{ pos={lat:p.coords.latitude,lng:p.coords.longitude,acc:Math.round(p.coords.accuracy),t:Date.now()}; gpsShow(pos.acc<=ACC_MAX?'ok':'wt'); },
+  e=>{ pos=null; gpsShow('bad',e.code===1?'ไม่ได้อนุญาตตำแหน่ง — กดอนุญาต "ตำแหน่ง" ให้เบราว์เซอร์ แล้วรีเฟรชหน้านี้':'หาตำแหน่งไม่ได้ — ออกไปที่โล่ง/เปิด GPS แล้วรอสักครู่'); },
+  {enableHighAccuracy:true,maximumAge:0,timeout:30000}); }
+function gpsShow(k,msg){ const g=$('gps'); g.className='gps '+(k==='ok'?'g-ok':k==='wt'?'g-wt':'g-bad');
+ g.innerHTML=k==='ok'?'📍 GPS พร้อม (คลาดเคลื่อน ±'+pos.acc+' ม.)':k==='wt'?'📍 GPS ยังไม่แม่น (±'+(pos?pos.acc:'?')+' ม.) — รอสักครู่ หรือออกไปที่โล่ง':'⚠ '+E(msg); }
+function render(){ const it=D.items, done=D.done||{}; const need=it.filter(x=>x.req), ok=need.filter(x=>done[x.k]).length;
+ $('hs').innerHTML='เคส <b>'+E(D.caseId)+'</b> · '+E(D.info.name||'')+'<br>'+E(D.info.br||'')+' · อาชีพ: '+E(D.info.occ||'-');
+ $('pg').style.width=(need.length?Math.round(ok*100/need.length):100)+'%';
+ const left=D.exp-Date.now(); $('hc').innerHTML='ภาพบังคับ <b>'+ok+' / '+need.length+'</b> · ลิงก์ใช้ได้ถึง '+fmtT(D.exp)+' (เหลือ '+Math.max(0,Math.floor(left/3600e3))+' ชม.)';
+ let h=''; let grp='';
+ it.forEach(x=>{ const g=x.pin==='ghome'||x.k==='g_home'?'🏡 ผู้ค้ำประกัน — บ้าน':(x.pin==='home'||x.k==='home'||x.k==='selfie'?'👤 มิติบุคคล — บ้าน':'💼 มิติอาชีพ'); if(g!==grp){ h+='<div style="font-weight:700;margin:12px 2px 2px">'+g+'</div>'; grp=g; }
+  const d=done[x.k];
+  h+='<div class="it'+(d?' ok':'')+'" id="it-'+E(x.k)+'"><div class="ic">'+E(x.ic||'📷')+'</div><div class="tx"><b>'+E(x.lab)+'</b> <span class="tag '+(x.req?'req">บังคับ':'opt">ถ้ามี')+'</span>'
+   +(x.gps?' <span class="tag opt">📍 พิกัด</span>':'')+(x.hint?'<small>'+E(x.hint)+'</small>':'')+(d?'<small style="color:#15803d">✓ ส่งแล้ว '+fmtT(d.at)+'</small>':'')+'</div>'
+   +'<button class="btn '+(d?'b-g':'b-o')+'" onclick="shoot(\''+E(x.k)+'\')">'+(d?'ถ่ายใหม่':'📷 ถ่าย')+'</button></div>'; });
+ if(ok===need.length&&need.length) h='<div class="box" style="background:#dcfce7;border-color:#86efac;color:#166534"><b>✅ ภาพบังคับครบแล้ว</b> — สนญ. ตรวจและให้ผลต่อได้ · ถ่ายภาพ "ถ้ามี" เพิ่มได้</div>'+h;
+ $('main').innerHTML=h; }
+function shoot(k){ cur=k; const x=D.items.find(y=>y.k===k); if(x&&x.gps&&!pos){ alert('ยังไม่ได้ตำแหน่ง GPS — เปิดตำแหน่งแล้วรอสักครู่'); return; } $('cam').value=''; $('cam').click(); }
+$('cam').addEventListener('change',async ev=>{ const f=ev.target.files&&ev.target.files[0]; if(!f||!cur) return; const x=D.items.find(y=>y.k===cur); let flag='';
+ if(f.lastModified&&Date.now()-f.lastModified>FRESH_MS){ alert('ภาพนี้ไม่ได้ถ่ายตอนนี้ (อาจเลือกจากคลังภาพ)\nกรุณากดถ่ายใหม่จากกล้อง'); return; }
+ const p=pos?Object.assign({},pos):null;
+ if(x.gps){ if(!p){ alert('ไม่มีพิกัด GPS — ถ่ายใหม่หลังได้ตำแหน่ง'); return; }
+  if(p.acc>ACC_MAX){ tries[cur]=(tries[cur]||0)+1; if(tries[cur]<2){ alert('GPS ยังไม่แม่น (±'+p.acc+' ม.)\nรอ 10–20 วินาที หรือออกไปที่โล่ง แล้วถ่ายใหม่'); return; } flag='acc'; } }
+ try{ ov('⏳ กำลังส่งภาพ…'); const data=await shrink(f,p); const r=await call({a:'up',t:T,item:cur,data,lat:p&&p.lat,lng:p&&p.lng,acc:p&&p.acc,ts:Date.now(),ua:navigator.userAgent,flag});
+  if(!r.ok) throw r.err||'ส่งไม่สำเร็จ'; D.done=D.done||{}; D.done[cur]={at:Date.now()}; ov(''); render(); const el=$('it-'+cur); if(el) el.scrollIntoView({block:'center'}); }
+ catch(e){ ov(''); alert('ส่งภาพไม่สำเร็จ: '+(e.message||e)+'\nลองใหม่อีกครั้ง (ภาพยังไม่ถูกบันทึก)'); } });
+/* ย่อภาพ + พิมพ์เลขเคส/เวลา/พิกัดที่มุมภาพ (หลักฐาน) */
+function shrink(f,p){ return new Promise((ok,no)=>{ const u=URL.createObjectURL(f); const im=new Image(); im.onload=()=>{ const s=Math.min(1,MAX_W/Math.max(im.width,im.height));
+  const c=document.createElement('canvas'); c.width=Math.round(im.width*s); c.height=Math.round(im.height*s); const g=c.getContext('2d'); g.drawImage(im,0,0,c.width,c.height);
+  const txt=D.caseId+' · '+fmtT(Date.now())+(p?' · '+p.lat.toFixed(6)+','+p.lng.toFixed(6)+' ±'+p.acc+'ม.':''); const fs=Math.max(14,Math.round(c.width/48));
+  g.font='bold '+fs+'px sans-serif'; const w=g.measureText(txt).width; g.fillStyle='rgba(0,0,0,.55)'; g.fillRect(0,c.height-fs*1.8,w+fs,fs*1.8); g.fillStyle='#fff'; g.fillText(txt,fs/2,c.height-fs*0.55);
+  URL.revokeObjectURL(u); ok(c.toDataURL('image/jpeg',Q)); }; im.onerror=()=>no(new Error('เปิดภาพไม่ได้')); im.src=u; }); }
+async function boot(){ if(!T){ $('main').innerHTML='<div class="err">ลิงก์ไม่ครบ — เปิดจาก QR หรือลิงก์ในหน้าเคสอีกครั้ง</div>'; $('hs').textContent=''; return; }
+ if(/Line\//i.test(navigator.userAgent)&&!/openExternalBrowser=1/.test(location.search)){ location.replace(location.href+(location.search?'&':'?')+'openExternalBrowser=1'); return; }
+ gpsStart();
+ try{ const r=await call({a:'get',t:T}); if(!r.ok) throw r.err; D=r; render(); }
+ catch(e){ $('hs').textContent=''; $('main').innerHTML='<div class="err">⚠ '+E(e.message||e)+'</div>'; } }
+boot();
+</script>
+</body></html>
