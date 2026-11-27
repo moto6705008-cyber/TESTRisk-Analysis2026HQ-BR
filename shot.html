@@ -29,6 +29,9 @@
 #cf{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:10;display:none;align-items:flex-end}#cf>div{background:#fff;width:100%;border-radius:18px 18px 0 0;padding:16px}
 #cf .cb{display:flex;gap:8px;margin-top:12px}#cf .cb .btn{flex:1;padding:13px 8px}
 #ts{position:fixed;left:12px;right:12px;bottom:16px;background:#111827;color:#fff;border-radius:12px;padding:12px 14px;display:none;justify-content:space-between;align-items:center;z-index:11;font-size:14px}#ts u{color:#fdba74;text-decoration:none;font-weight:700;padding:4px 6px}
+#rv{position:fixed;inset:0;background:#0b0f19;z-index:12;display:none;flex-direction:column;color:#fff}
+#rv .vt{padding:12px 14px;font-size:15px;text-align:center}#rv .vi{flex:1;overflow:auto;display:flex;align-items:center;justify-content:center;padding:0 8px}#rv .vi img{max-width:100%;max-height:100%}
+#rv .ck{margin:8px 12px 0;background:#1c2333;border-radius:10px;padding:8px 11px;font-size:13px;line-height:1.6}#rv .vb{display:flex;gap:8px;padding:12px}#rv .vb .btn{flex:1;padding:14px 8px;font-size:15px}
 </style></head><body>
 <div class="hd"><b>📷 ถ่ายภาพหน้างาน</b><div class="s" id="hs">กำลังโหลด…</div><div class="bar"><i id="pg" style="width:0"></i></div><div class="s" id="hc"></div></div>
 <div class="wrap"><div id="gps" class="gps g-wt">📍 กำลังหาตำแหน่ง GPS…</div><div id="main"></div>
@@ -37,6 +40,9 @@
 <div id="ov"><div id="ovt"></div></div>
 <div id="vw"><div class="vt"><span onclick="vwClose()" style="padding:4px 6px">‹ กลับ</span><b id="vwt"></b><span style="width:40px"></span></div><div class="vi" id="vwi"></div><div class="vm" id="vwm"></div><div class="vb" id="vwb"></div></div>
 <div id="cf"><div><b id="cft" style="font-size:16px"></b><div class="mut" style="margin-top:4px;font-size:13.5px">รายการนี้จะกลับเป็น "ยังไม่ถ่าย" และต้องถ่ายใหม่ก่อนส่งคำขอ</div><div class="cb"><button class="btn b-g" onclick="cfClose()">ไม่ลบ</button><button class="btn" style="background:#dc2626;color:#fff" onclick="delGo()">ลบ</button></div></div></div>
+<div id="rv"><div class="vt"><b id="rvt"></b><div class="mut" style="color:#cbd5e1">ตรวจภาพก่อนส่ง · ยังไม่ได้ส่งเข้าระบบ</div></div><div class="vi" id="rvi"></div><div class="ck" id="rvc"></div>
+<div class="vb"><button class="btn b-rd" onclick="rvPick('retake')">🗑 ลบ ถ่ายใหม่</button><button class="btn b-ok" onclick="rvPick('use')">✓ ใช้ภาพนี้</button></div>
+<div style="text-align:center;padding:0 0 12px"><span onclick="rvPick('cancel')" class="mut" style="color:#94a3b8;padding:6px 12px">ยกเลิก (ไม่ส่งภาพนี้)</span></div></div>
 <div id="ts"><span id="tst"></span><u onclick="delUndo()">เลิกทำ (<span id="tsn">5</span>)</u></div>
 <script>
 /* ตั้งค่าตอนติดตั้ง: ใส่ Web app URL ของ Apps Script "MOTO24 P2Photo" */
@@ -77,7 +83,9 @@ $('cam').addEventListener('change',async ev=>{ const f=ev.target.files&&ev.targe
  const p=pos?Object.assign({},pos):null;
  if(x.gps){ if(!p){ alert('ไม่มีพิกัด GPS — ถ่ายใหม่หลังได้ตำแหน่ง'); return; }
   if(p.acc>ACC_MAX){ tries[cur]=(tries[cur]||0)+1; if(tries[cur]<2){ alert('GPS ยังไม่แม่น (±'+p.acc+' ม.)\nรอ 10–20 วินาที หรือออกไปที่โล่ง แล้วถ่ายใหม่'); return; } flag='acc'; } }
- try{ ov('⏳ กำลังส่งภาพ…'); const code=mkCode(); const data=await shrink(f,p,code,x.lab); const r=await call({a:'up',t:T,item:cur,data,lat:p&&p.lat,lng:p&&p.lng,acc:p&&p.acc,ts:Date.now(),ua:navigator.userAgent,flag,code});
+ try{ ov('⏳ กำลังเตรียมภาพ…'); const code=mkCode(), ts0=Date.now(); const data=await shrink(f,p,code,x.lab); ov('');
+  const ch=await review(data,x); if(ch!=='use') return;   /* รุ่น 4.1: ส่งเข้าระบบเมื่อกด "ใช้ภาพนี้" เท่านั้น */
+  ov('⏳ กำลังส่งภาพ…'); const r=await call({a:'up',t:T,item:cur,data,lat:p&&p.lat,lng:p&&p.lng,acc:p&&p.acc,ts:ts0,ua:navigator.userAgent,flag,code});
   if(!r.ok) throw r.err||'ส่งไม่สำเร็จ'; D.done=D.done||{}; D.done[cur]={at:Date.now(),code}; TH[cur]=data; FULL[cur]=data; ov(''); render(); const el=$('it-'+cur); if(el) el.scrollIntoView({block:'center'}); }
  catch(e){ ov(''); alert('ส่งภาพไม่สำเร็จ: '+(e.message||e)+'\nลองใหม่อีกครั้ง (ภาพยังไม่ถูกบันทึก)'); } });
 /* ย่อภาพ + ตราประทับหลักฐาน (โลโก้บริษัท · ลายน้ำทแยงเลขเคส · แถบข้อมูล 3 บรรทัด · รหัสภาพ) */
@@ -136,6 +144,13 @@ async function delFlush(keep){ if(!PD) return; const p=PD; PD=null; clearInterva
  try{ ov('⏳ กำลังลบภาพ…'); const r=await call({a:'del',t:T,item:p.k}); ov(''); if(!r.ok) throw r.err||'ลบไม่สำเร็จ'; }
  catch(e){ ov(''); D.done[p.k]=p.d; if(p.th) TH[p.k]=p.th; if(p.full) FULL[p.k]=p.full; render(); alert('ลบภาพไม่สำเร็จ: '+(e.message||e)+'\nภาพเดิมยังอยู่ในระบบ'); } }
 window.addEventListener('pagehide',()=>{ if(PD&&!window.__mockApi) delFlush(true); });   // ปิดหน้าระหว่างนับถอยหลัง → ส่งคำสั่งลบไปเลย
+/* รุ่น 4.1: หน้าตรวจภาพก่อนส่ง · ลบ ถ่ายใหม่ = ทิ้งภาพในเครื่อง ไม่มีอะไรไป Drive */
+let _rv=null;
+function review(data,x){ $('rvt').textContent=x.lab; $('rvi').innerHTML='<img src="'+data+'" alt="">';
+ $('rvc').innerHTML='<b>เช็กก่อนกดใช้</b><br>☐ ภาพชัด ไม่เบลอ ไม่มืด'+(x.hint?'<br>☐ '+E(x.hint):'')+'<br>☐ ข้อความล่างภาพ (เวลา/พิกัด/รหัสภาพ) อ่านได้';
+ $('rv').style.display='flex'; return new Promise(r=>{ _rv=r; }); }
+function rvPick(c){ $('rv').style.display='none'; $('rvi').innerHTML=''; const r=_rv; _rv=null; if(r) r(c);
+ if(c==='retake'){ $('cam').value=''; $('cam').click(); } }   // เปิดกล้องในจังหวะกดปุ่ม (เบราว์เซอร์มือถือบังคับ)
 async function boot(){ if(!T){ $('main').innerHTML='<div class="err">ลิงก์ไม่ครบ — เปิดจาก QR หรือลิงก์ในหน้าเคสอีกครั้ง</div>'; $('hs').textContent=''; return; }
  if(/Line\//i.test(navigator.userAgent)&&!/openExternalBrowser=1/.test(location.search)){ location.replace(location.href+(location.search?'&':'?')+'openExternalBrowser=1'); return; }
  gpsStart();
