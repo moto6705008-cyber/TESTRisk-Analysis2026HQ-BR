@@ -71,7 +71,7 @@ function gpsShow(k,msg){ const g=$('gps'); g.className='gps '+(k==='ok'?'g-ok':k
  g.innerHTML=k==='ok'?'📍 GPS พร้อม (คลาดเคลื่อน ±'+pos.acc+' ม.)':k==='wt'?'📍 GPS ยังไม่แม่น (±'+(pos?pos.acc:'?')+' ม.) — รอสักครู่ หรือออกไปที่โล่ง':'⚠ '+E(msg); }
 /* ล็อกภาพ (28 พ.ย. 69 · ใช้คู่ P2Photo รุ่น 5): กดเสร็จสิ้นแล้ว = ล็อก · ถ่ายได้เฉพาะภาพที่ สนญ. ขอเพิ่มหลังล็อก (ยังไม่ถ่าย) · ปลดล็อกโดย สนญ. / ผจก.สาขา (ตอนร่าง) */
 function isLk(){ return D&&D.lock===true; }
-function isOpen(x){ return !isLk()||(!(D.done||{})[x.k]&&+x.add>+D.fin); }
+function isOpen(x){ return !isLk()||(!(D.done||{})[x.k]&&(x.req||+x.add>+D.fin)); }   /* ภาพบังคับที่ยังไม่มี = สนญ. ขอเพิ่มหลังกดเสร็จสิ้น */
 function labOf(x){ let l=String(x.lab||''); if(/^(home|selfie)$/.test(x.k)) l=l.replace(/^หน้าบ้าน/,'หน้าบ้านผู้ซื้อ').replace(/^ลูกค้าถ่ายคู่/,'ผู้ซื้อถ่ายคู่'); l=l.replace(/^🧑‍🔧\s*ผู้ค้ำ:\s*/,'ผู้ค้ำ: '); return l; }
 function render(){ const it=D.items, done=D.done||{}; const need=it.filter(x=>x.req), ok=need.filter(x=>done[x.k]).length;
  $('hs').innerHTML=(String(D.caseId).charAt(0)==='~'?'<b>ร่างคำขอ (ยังไม่ส่ง สนญ.)</b>':'เคส <b>'+E(D.caseId)+'</b>')+' · '+E(D.info.name||'')+'<br>'+E(D.info.br||'')+' · อาชีพ: '+E(D.info.occ||'-');
