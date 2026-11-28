@@ -35,6 +35,7 @@
 #fin{position:fixed;inset:0;background:#f0fdf4;z-index:7;display:none;flex-direction:column;align-items:center;padding:28px 18px;overflow:auto;text-align:center}
 #fin .big{font-size:56px;line-height:1}#fin h2{margin:10px 0 4px;color:#166534}#fin .ls{background:#fff;border:1px solid #bbf7d0;border-radius:14px;padding:6px 14px;margin:14px 0;width:100%;max-width:420px;text-align:left}
 #fin .ls div{padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14px}#fin .ls div:last-child{border:0}#fin .btn{width:100%;max-width:420px;padding:14px;font-size:15px;margin-top:8px}
+.whb{border:2px solid;border-radius:16px;margin:12px 0;overflow:hidden}.whh{display:flex;align-items:center;gap:8px;padding:9px 12px;color:#fff}.whh b{font-size:16px}.whc{margin-left:auto;background:#fff;border-radius:99px;padding:1px 10px;font-size:12.5px;font-weight:800;white-space:nowrap}.whi{padding:0 9px 6px}
 </style></head><body>
 <div class="hd"><b>📷 ถ่ายภาพหน้างาน</b><div class="s" id="hs">กำลังโหลด…</div><div class="bar"><i id="pg" style="width:0"></i></div><div class="s" id="hc"></div></div>
 <div class="wrap"><div id="gps" class="gps g-wt">📍 กำลังหาตำแหน่ง GPS…</div><div id="main"></div>
@@ -67,19 +68,32 @@ function gpsStart(){ if(!navigator.geolocation){ gpsShow('bad','เครื่�
   {enableHighAccuracy:true,maximumAge:0,timeout:30000}); }
 function gpsShow(k,msg){ const g=$('gps'); g.className='gps '+(k==='ok'?'g-ok':k==='wt'?'g-wt':'g-bad');
  g.innerHTML=k==='ok'?'📍 GPS พร้อม (คลาดเคลื่อน ±'+pos.acc+' ม.)':k==='wt'?'📍 GPS ยังไม่แม่น (±'+(pos?pos.acc:'?')+' ม.) — รอสักครู่ หรือออกไปที่โล่ง':'⚠ '+E(msg); }
+function labOf(x){ let l=String(x.lab||''); if(/^(home|selfie)$/.test(x.k)) l=l.replace(/^หน้าบ้าน/,'หน้าบ้านผู้ซื้อ').replace(/^ลูกค้าถ่ายคู่/,'ผู้ซื้อถ่ายคู่'); l=l.replace(/^🧑‍🔧\s*ผู้ค้ำ:\s*/,'ผู้ค้ำ: '); return l; }
 function render(){ const it=D.items, done=D.done||{}; const need=it.filter(x=>x.req), ok=need.filter(x=>done[x.k]).length;
  $('hs').innerHTML=(String(D.caseId).charAt(0)==='~'?'<b>ร่างคำขอ (ยังไม่ส่ง สนญ.)</b>':'เคส <b>'+E(D.caseId)+'</b>')+' · '+E(D.info.name||'')+'<br>'+E(D.info.br||'')+' · อาชีพ: '+E(D.info.occ||'-');
  $('pg').style.width=(need.length?Math.round(ok*100/need.length):100)+'%';
  const left=D.exp-Date.now(); $('hc').innerHTML='ภาพบังคับ <b>'+ok+' / '+need.length+'</b> · ลิงก์ใช้ได้ถึง '+fmtT(D.exp)+' (เหลือ '+Math.max(0,Math.floor(left/3600e3))+' ชม.)';
- let h=''; let grp='';
- it.forEach(x=>{ const g=x.pin==='ghome'||x.k==='g_home'?'🏡 ผู้ค้ำประกัน — บ้าน':(x.pin==='home'||x.k==='home'||x.k==='selfie'?'👤 มิติบุคคล — บ้าน':'💼 มิติอาชีพ'); if(g!==grp){ h+='<div style="font-weight:700;margin:12px 2px 2px">'+g+'</div>'; grp=g; }
+ /* S1 (28 พ.ย. 69): แยกกล่องตาม "คน" — ผู้ซื้อ (น้ำเงิน) · ผู้ค้ำ (ม่วง) · ผู้ใช้รถ (เขียวอมฟ้า) · ในกล่องแบ่งย่อย บ้าน / อาชีพ-รายได้ · หัวกล่องมีตัวนับภาพบังคับ */
+  const card=(x,multi)=>{ let h=''; const lab=multi?labOf(x):x.lab;
   const d=done[x.k], k=E(x.k);
-  const head='<b>'+E(x.lab)+'</b> <span class="tag '+(x.req?'req">บังคับ':'opt">ถ้ามี')+'</span>'+(x.gps?' <span class="tag opt">📍 พิกัด</span>':'');
+  const head='<b>'+E(lab)+'</b> <span class="tag '+(x.req?'req">บังคับ':'opt">ถ้ามี')+'</span>'+(x.gps?' <span class="tag opt">📍 พิกัด</span>':'');
   if(d){ const t=TH[x.k]; h+='<div class="it ok dn" id="it-'+k+'"><div class="row"><button class="pv" onclick="vwOpen(\''+k+'\')" style="'+(t?'background-image:url('+t+')':'')+'">'+(t?'':(t===false?'แตะเพื่อโหลดภาพ':'⏳ กำลังโหลดภาพ'))+'</button>'
     +'<div class="tx">'+head+'<small style="color:#15803d">✓ ส่งแล้ว '+fmtT(d.at)+'</small>'+(d.code?'<small>รหัสภาพ '+E(d.code)+'</small>':'')+'<small>🔍 แตะภาพเพื่อดูใหญ่</small></div></div>'
     +'<div class="acts"><button class="btn b-g" onclick="shoot(\''+k+'\')">📷 ถ่ายใหม่</button>'+(D.canDel?'<button class="btn b-rd" onclick="cfOpen(\''+k+'\')">🗑 ลบ</button>':'')+'</div></div>'; }
   else h+='<div class="it" id="it-'+k+'"><div class="ic">'+E(x.ic||'📷')+'</div><div class="tx">'+head+(x.hint?'<small>'+E(x.hint)+'</small>':'')+'</div>'
-   +'<button class="btn b-o" onclick="shoot(\''+k+'\')">📷 ถ่าย</button></div>'; });
+   +'<button class="btn b-o" onclick="shoot(\''+k+'\')">📷 ถ่าย</button></div>'; return h; };
+ const who=x=>/^g_/.test(x.k)||/^g/.test(x.pin||'')?'g':/^u_/.test(x.k)||/^u/.test(x.pin||'')?'u':'b';
+ const sub=x=>/^(home|selfie|g_home|u_home)$/.test(x.k)||/^(home|ghome|uhome)$/.test(x.pin||'')||/^xp_/.test(x.k)?'h':'w';
+ const P={b:['🧑','ผู้ซื้อ','#2563eb','#eff6ff'],g:['🤝','ผู้ค้ำประกัน','#7c3aed','#f5f3ff'],u:['🛵','ผู้ใช้รถ','#0d9488','#f0fdfa']};
+ const ws=['b','g','u'].filter(w=>it.some(x=>who(x)===w)); const multi=ws.length>1; let h='';
+ ws.forEach((w,wi)=>{ const L=it.filter(x=>who(x)===w); const rq=L.filter(x=>x.req), rd=rq.filter(x=>done[x.k]).length; const nm=P[w][1];
+  const sh=(t,list)=>list.length?'<div style="font-weight:700;margin:10px 2px 0;font-size:14px;color:#334155">'+t+'</div>'+list.map(x=>card(x,multi)).join(''):'';
+  const hs=L.filter(x=>sub(x)==='h'), ws2=L.filter(x=>sub(x)==='w');
+  const inner=sh(w==='b'?(multi?'🏠 บ้านผู้ซื้อ':'👤 มิติบุคคล — บ้าน'):'🏠 บ้าน'+nm.replace('ประกัน',''),hs)+sh(w==='b'?(multi?'💼 อาชีพ / 💰 รายได้ของผู้ซื้อ':'💼 มิติอาชีพ / 💰 รายได้'):'💼 อาชีพ / ทรัพย์'+nm.replace('ประกัน',''),ws2);
+  if(!multi){ h+=inner; return; }
+  h+='<div class="whb" style="border-color:'+P[w][2]+';background:'+P[w][3]+'"><div class="whh" style="background:'+P[w][2]+'"><span style="font-size:22px">'+P[w][0]+'</span><div><b>ส่วนที่ '+(wi+1)+' · '+nm+'</b>'+(w==='b'&&D.info.name?'<div style="font-size:12px;opacity:.9">'+E(D.info.name)+'</div>':'')+'</div>'
+   +(rq.length?'<span class="whc" style="color:'+P[w][2]+'">'+rd+'/'+rq.length+(rd===rq.length?' ✓':'')+'</span>':'<span class="whc" style="color:'+P[w][2]+'">ถ้ามี</span>')+'</div><div class="whi">'
+   +(w!=='b'?'<div style="font-size:12.5px;color:'+P[w][2]+';margin:7px 2px 0">⚠ ถ่ายที่บ้าน/ที่ทำงาน<b>ของ'+nm.replace('ประกัน','')+'</b> ไม่ใช่ของผู้ซื้อ</div>':'')+inner+'</div></div>'; });
  const fs=D.fin?(D.chg>D.fin?'edit':'done'):'';
  if(fs==='done') h='<div class="box" style="background:#dcfce7;border-color:#86efac;color:#166534"><b>✅ คุณกดเสร็จสิ้นแล้ว '+fmtT(D.fin)+'</b><br><span style="font-size:13px">ภาพเข้าระบบครบ · แก้ภาพได้ถ้าจำเป็น (แก้แล้วต้องกดเสร็จสิ้นอีกครั้ง)</span></div>'+h;
  else if(fs==='edit') h='<div class="box" style="background:#fef3c7;border-color:#fcd34d;color:#92400e"><b>✏️ มีการแก้ภาพหลังกดเสร็จสิ้น</b><br><span style="font-size:13px">ตรวจภาพแล้วกด "เสร็จสิ้น" ด้านล่างอีกครั้งเพื่อยืนยันภาพชุดใหม่</span></div>'+h;
