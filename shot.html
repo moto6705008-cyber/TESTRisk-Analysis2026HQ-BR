@@ -36,6 +36,7 @@
 #fin .big{font-size:56px;line-height:1}#fin h2{margin:10px 0 4px;color:#166534}#fin .ls{background:#fff;border:1px solid #bbf7d0;border-radius:14px;padding:6px 14px;margin:14px 0;width:100%;max-width:420px;text-align:left}
 #fin .ls div{padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:14px}#fin .ls div:last-child{border:0}#fin .btn{width:100%;max-width:420px;padding:14px;font-size:15px;margin-top:8px}
 .whb{border:2px solid;border-radius:16px;margin:12px 0;overflow:hidden}.whh{display:flex;align-items:center;gap:8px;padding:9px 12px;color:#fff}.whh b{font-size:16px}.whc{margin-left:auto;background:#fff;border-radius:99px;padding:1px 10px;font-size:12.5px;font-weight:800;white-space:nowrap}.whi{padding:0 9px 6px}
+body.lk{background:#e5e7eb}body.lk .hd{background:#475569}body.lk .it.ok{background:#f1f5f9;border-color:#cbd5e1}.lkb{background:#f1f5f9!important;border:2px solid #94a3b8!important;color:#334155}.lkn{margin-top:6px;font-size:12.5px;color:#64748b;text-align:center;background:#e2e8f0;border-radius:8px;padding:6px}.it.lkx{background:#f1f5f9;opacity:.75}.it.ask{border:2px solid #a78bfa;background:#faf5ff}
 </style></head><body>
 <div class="hd"><b>📷 ถ่ายภาพหน้างาน</b><div class="s" id="hs">กำลังโหลด…</div><div class="bar"><i id="pg" style="width:0"></i></div><div class="s" id="hc"></div></div>
 <div class="wrap"><div id="gps" class="gps g-wt">📍 กำลังหาตำแหน่ง GPS…</div><div id="main"></div>
@@ -48,7 +49,7 @@
 <div class="vb"><button class="btn b-rd" onclick="rvPick('retake')">🗑 ลบ ถ่ายใหม่</button><button class="btn b-ok" onclick="rvPick('use')">✓ ใช้ภาพนี้</button></div>
 <div style="text-align:center;padding:0 0 12px"><span onclick="rvPick('cancel')" class="mut" style="color:#94a3b8;padding:6px 12px">ยกเลิก (ไม่ส่งภาพนี้)</span></div></div>
 <div id="fin"><div class="big">✅</div><h2>ถ่ายภาพเสร็จสิ้นแล้ว</h2><div class="mut" id="fint" style="font-size:14px;line-height:1.6"></div><div class="ls" id="finl"></div>
-<div class="mut" style="font-size:13.5px;line-height:1.6" id="finn"></div><button class="btn b-g" onclick="finClose()">← กลับไปแก้ไขภาพ</button></div>
+<div class="mut" style="font-size:13.5px;line-height:1.6" id="finn"></div><button class="btn b-g" id="finbk" onclick="finClose()">← กลับไปแก้ไขภาพ</button></div>
 <div id="ts"><span id="tst"></span><u onclick="delUndo()">เลิกทำ (<span id="tsn">5</span>)</u></div>
 <script>
 /* ตั้งค่าตอนติดตั้ง: ใส่ Web app URL ของ Apps Script "MOTO24 P2Photo" */
@@ -68,6 +69,9 @@ function gpsStart(){ if(!navigator.geolocation){ gpsShow('bad','เครื่�
   {enableHighAccuracy:true,maximumAge:0,timeout:30000}); }
 function gpsShow(k,msg){ const g=$('gps'); g.className='gps '+(k==='ok'?'g-ok':k==='wt'?'g-wt':'g-bad');
  g.innerHTML=k==='ok'?'📍 GPS พร้อม (คลาดเคลื่อน ±'+pos.acc+' ม.)':k==='wt'?'📍 GPS ยังไม่แม่น (±'+(pos?pos.acc:'?')+' ม.) — รอสักครู่ หรือออกไปที่โล่ง':'⚠ '+E(msg); }
+/* ล็อกภาพ (28 พ.ย. 69 · ใช้คู่ P2Photo รุ่น 5): กดเสร็จสิ้นแล้ว = ล็อก · ถ่ายได้เฉพาะภาพที่ สนญ. ขอเพิ่มหลังล็อก (ยังไม่ถ่าย) · ปลดล็อกโดย สนญ. / ผจก.สาขา (ตอนร่าง) */
+function isLk(){ return D&&D.lock===true; }
+function isOpen(x){ return !isLk()||(!(D.done||{})[x.k]&&+x.add>+D.fin); }
 function labOf(x){ let l=String(x.lab||''); if(/^(home|selfie)$/.test(x.k)) l=l.replace(/^หน้าบ้าน/,'หน้าบ้านผู้ซื้อ').replace(/^ลูกค้าถ่ายคู่/,'ผู้ซื้อถ่ายคู่'); l=l.replace(/^🧑‍🔧\s*ผู้ค้ำ:\s*/,'ผู้ค้ำ: '); return l; }
 function render(){ const it=D.items, done=D.done||{}; const need=it.filter(x=>x.req), ok=need.filter(x=>done[x.k]).length;
  $('hs').innerHTML=(String(D.caseId).charAt(0)==='~'?'<b>ร่างคำขอ (ยังไม่ส่ง สนญ.)</b>':'เคส <b>'+E(D.caseId)+'</b>')+' · '+E(D.info.name||'')+'<br>'+E(D.info.br||'')+' · อาชีพ: '+E(D.info.occ||'-');
@@ -79,8 +83,9 @@ function render(){ const it=D.items, done=D.done||{}; const need=it.filter(x=>x.
   const head='<b>'+E(lab)+'</b> <span class="tag '+(x.req?'req">บังคับ':'opt">ถ้ามี')+'</span>'+(x.gps?' <span class="tag opt">📍 พิกัด</span>':'');
   if(d){ const t=TH[x.k]; h+='<div class="it ok dn" id="it-'+k+'"><div class="row"><button class="pv" onclick="vwOpen(\''+k+'\')" style="'+(t?'background-image:url('+t+')':'')+'">'+(t?'':(t===false?'แตะเพื่อโหลดภาพ':'⏳ กำลังโหลดภาพ'))+'</button>'
     +'<div class="tx">'+head+'<small style="color:#15803d">✓ ส่งแล้ว '+fmtT(d.at)+'</small>'+(d.code?'<small>รหัสภาพ '+E(d.code)+'</small>':'')+'<small>🔍 แตะภาพเพื่อดูใหญ่</small></div></div>'
-    +'<div class="acts"><button class="btn b-g" onclick="shoot(\''+k+'\')">📷 ถ่ายใหม่</button>'+(D.canDel?'<button class="btn b-rd" onclick="cfOpen(\''+k+'\')">🗑 ลบ</button>':'')+'</div></div>'; }
-  else h+='<div class="it" id="it-'+k+'"><div class="ic">'+E(x.ic||'📷')+'</div><div class="tx">'+head+(x.hint?'<small>'+E(x.hint)+'</small>':'')+'</div>'
+    +(isLk()?'<div class="lkn">🔒 ล็อกแล้ว · ดูภาพได้อย่างเดียว</div></div>':'<div class="acts"><button class="btn b-g" onclick="shoot(\''+k+'\')">📷 ถ่ายใหม่</button>'+(D.canDel?'<button class="btn b-rd" onclick="cfOpen(\''+k+'\')">🗑 ลบ</button>':'')+'</div></div>'); }
+  else if(!isOpen(x)) h+='<div class="it lkx" id="it-'+k+'"><div class="ic">'+E(x.ic||'📷')+'</div><div class="tx">'+head+'<small>'+(x.req?'ยังไม่ได้ถ่าย':'ไม่ได้ถ่าย (ไม่บังคับ)')+' · 🔒 ล็อกแล้ว</small></div></div>';
+  else h+='<div class="it'+(isLk()?' ask':'')+'" id="it-'+k+'"><div class="ic">'+E(x.ic||'📷')+'</div><div class="tx">'+(isLk()?'<span class="tag" style="background:#ede9fe;color:#5b21b6">📷 สนญ. ขอเพิ่ม</span><br>':'')+head+(x.hint?'<small>'+E(x.hint)+'</small>':'')+'</div>'
    +'<button class="btn b-o" onclick="shoot(\''+k+'\')">📷 ถ่าย</button></div>'; return h; };
  const who=x=>/^g_/.test(x.k)||/^g/.test(x.pin||'')?'g':/^u_/.test(x.k)||/^u/.test(x.pin||'')?'u':'b';
  const sub=x=>/^(home|selfie|g_home|u_home)$/.test(x.k)||/^(home|ghome|uhome)$/.test(x.pin||'')||/^xp_/.test(x.k)?'h':'w';
@@ -95,13 +100,17 @@ function render(){ const it=D.items, done=D.done||{}; const need=it.filter(x=>x.
    +(rq.length?'<span class="whc" style="color:'+P[w][2]+'">'+rd+'/'+rq.length+(rd===rq.length?' ✓':'')+'</span>':'<span class="whc" style="color:'+P[w][2]+'">ถ้ามี</span>')+'</div><div class="whi">'
    +(w!=='b'?'<div style="font-size:12.5px;color:'+P[w][2]+';margin:7px 2px 0">⚠ ถ่ายที่บ้าน/ที่ทำงาน<b>ของ'+nm.replace('ประกัน','')+'</b> ไม่ใช่ของผู้ซื้อ</div>':'')+inner+'</div></div>'; });
  const fs=D.fin?(D.chg>D.fin?'edit':'done'):'';
- if(fs==='done') h='<div class="box" style="background:#dcfce7;border-color:#86efac;color:#166534"><b>✅ คุณกดเสร็จสิ้นแล้ว '+fmtT(D.fin)+'</b><br><span style="font-size:13px">ภาพเข้าระบบครบ · แก้ภาพได้ถ้าจำเป็น (แก้แล้วต้องกดเสร็จสิ้นอีกครั้ง)</span></div>'+h;
+ const nOpen=isLk()?it.filter(x=>!done[x.k]&&isOpen(x)).length:0; document.body.classList.toggle('lk',isLk()&&!nOpen);
+ if(isLk()) h='<div class="box lkb"><b>🔒 ล็อกภาพแล้ว</b> — กดเสร็จสิ้นเมื่อ '+fmtT(D.fin)+'<br><span style="font-size:13px">ถ่ายใหม่ / ลบ / ถ่ายเพิ่มไม่ได้ · ถ้าต้องแก้ภาพ '+(String(D.caseId).charAt(0)==='~'?'ให้สาขากด "📨 ขอ สนญ. ปลดล็อกภาพ" ในหน้าฟอร์มบน PC แล้วรอ สนญ. อนุมัติ':'ติดต่อ สนญ. ให้กด "อนุญาตให้สาขาแก้ภาพ"')+'</span>'
+  +(nOpen?'<div style="margin-top:6px;background:#f5f3ff;border:1px solid #c4b5fd;color:#5b21b6;border-radius:9px;padding:6px 9px;font-size:13px">📷 <b>สนญ. ขอภาพเพิ่ม '+nOpen+' ภาพ</b> — ถ่ายได้เฉพาะรายการสีม่วง แล้วกดเสร็จสิ้นอีกครั้ง</div>':'')+'</div>'+h;
+ else if(D.fin&&+D.unl>+D.fin&&fs!=='edit') h='<div class="box" style="background:#e0f2fe;border-color:#7dd3fc;color:#075985"><b>🔓 ปลดล็อกให้แก้ภาพแล้ว</b><br><span style="font-size:13px">แก้ภาพที่ต้องการ แล้วกด "เสร็จสิ้น" อีกครั้ง ภาพจะล็อกตามเดิม</span></div>'+h;
+ else if(fs==='done') h='<div class="box" style="background:#dcfce7;border-color:#86efac;color:#166534"><b>✅ คุณกดเสร็จสิ้นแล้ว '+fmtT(D.fin)+'</b><br><span style="font-size:13px">ภาพเข้าระบบครบ</span></div>'+h;
  else if(fs==='edit') h='<div class="box" style="background:#fef3c7;border-color:#fcd34d;color:#92400e"><b>✏️ มีการแก้ภาพหลังกดเสร็จสิ้น</b><br><span style="font-size:13px">ตรวจภาพแล้วกด "เสร็จสิ้น" ด้านล่างอีกครั้งเพื่อยืนยันภาพชุดใหม่</span></div>'+h;
  if(ok===need.length&&need.length){ if(!fs) h='<div class="box" style="background:#dcfce7;border-color:#86efac;color:#166534"><b>✅ ภาพบังคับครบแล้ว</b> — ถ่ายภาพ "ถ้ามี" เพิ่มได้ · ตรวจภาพเรียบร้อยแล้วกด <b>เสร็จสิ้น</b> ด้านล่าง</div>'+h;
    h+='<button class="btn b-ok" style="width:100%;padding:15px;font-size:16px;margin-top:6px" onclick="finOpen()">✓ เสร็จสิ้น — '+(fs==='done'?'ดูสรุปอีกครั้ง':'ส่งภาพครบแล้ว')+'</button>'; }
  else if(need.length) h+='<button class="btn b-g" style="width:100%;padding:15px;font-size:15px;margin-top:6px;opacity:.6" onclick="alert(\'ยังขาดภาพบังคับ '+(need.length-ok)+' ภาพ — ถ่ายให้ครบก่อนกดเสร็จสิ้น\')">เสร็จสิ้น (ยังขาดภาพบังคับ '+(need.length-ok)+' ภาพ)</button>';
  $('main').innerHTML=h; }
-function shoot(k){ if(PD&&PD.k===k) delP=delFlush(); cur=k; const x=D.items.find(y=>y.k===k); if(x&&x.gps&&!pos){ alert('ยังไม่ได้ตำแหน่ง GPS — เปิดตำแหน่งแล้วรอสักครู่'); return; } $('cam').value=''; $('cam').click(); }
+function shoot(k){ const x0=D.items.find(y=>y.k===k); if(x0&&!isOpen(x0)){ alert('🔒 ภาพถูกล็อกแล้ว (กดเสร็จสิ้นแล้ว)\nถ้าต้องแก้ภาพ ต้องได้รับอนุญาตก่อน'); return; } if(PD&&PD.k===k) delP=delFlush(); cur=k; const x=D.items.find(y=>y.k===k); if(x&&x.gps&&!pos){ alert('ยังไม่ได้ตำแหน่ง GPS — เปิดตำแหน่งแล้วรอสักครู่'); return; } $('cam').value=''; $('cam').click(); }
 $('cam').addEventListener('change',async ev=>{ const f=ev.target.files&&ev.target.files[0]; if(!f||!cur) return; const x=D.items.find(y=>y.k===cur); let flag=''; if(delP){ await delP; delP=null; }
  if(f.lastModified&&Date.now()-f.lastModified>FRESH_MS){ alert('ภาพนี้ไม่ได้ถ่ายตอนนี้ (อาจเลือกจากคลังภาพ)\nกรุณากดถ่ายใหม่จากกล้อง'); return; }
  const p=pos?Object.assign({},pos):null;
@@ -149,7 +158,7 @@ async function loadThumbs(){ const ks=Object.keys(D.done||{}).filter(k=>TH[k]===
  await Promise.all([one(),one(),one()]); }
 async function vwOpen(k){ const x=D.items.find(y=>y.k===k), d=(D.done||{})[k]; if(!x||!d) return;
  $('vwt').textContent=x.lab; $('vwm').textContent='ส่งแล้ว '+fmtT(d.at)+(d.code?' · รหัสภาพ '+d.code:'')+' · ซูมด้วยสองนิ้วเพื่อเช็กรายละเอียด';
- $('vwb').innerHTML=(D.canDel?'<button class="btn b-rd" onclick="vwClose();cfOpen(\''+E(k)+'\')">🗑 ลบภาพนี้</button>':'')+'<button class="btn b-o" onclick="vwClose();shoot(\''+E(k)+'\')">📷 ถ่ายใหม่แทน</button>';
+ $('vwb').innerHTML=isLk()?'<button class="btn b-g" onclick="vwClose()">🔒 ล็อกแล้ว · กลับ</button>':(D.canDel?'<button class="btn b-rd" onclick="vwClose();cfOpen(\''+E(k)+'\')">🗑 ลบภาพนี้</button>':'')+'<button class="btn b-o" onclick="vwClose();shoot(\''+E(k)+'\')">📷 ถ่ายใหม่แทน</button>';
  $('vw').style.display='flex'; const show=u=>{ $('vwi').innerHTML='<img src="'+u+'" alt="">'; };
  if(FULL[k]) show(FULL[k]); else { if(TH[k]) show(TH[k]); else $('vwi').innerHTML='<div class="mut">⏳ กำลังโหลดภาพ…</div>';
   try{ const r=await call({a:'th',t:T,item:k,full:1}); if(!r.ok) throw r.err; FULL[k]='data:'+r.mime+';base64,'+r.b64; if(!TH[k]){ TH[k]=FULL[k]; render(); } if($('vw').style.display==='flex') show(FULL[k]); }
@@ -177,13 +186,14 @@ function rvPick(c){ $('rv').style.display='none'; $('rvi').innerHTML=''; const r
  if(c==='retake'){ $('cam').value=''; $('cam').click(); } }   // เปิดกล้องในจังหวะกดปุ่ม (เบราว์เซอร์มือถือบังคับ)
 /* รุ่น 4.2: หน้าเสร็จสิ้น (บนมือถือ · ให้สาขารู้ว่าจบงานแล้ว) */
 async function finOpen(){ if(PD) await delFlush(); const done=D.done||{}, dr=String(D.caseId).charAt(0)==='~';
- try{ ov('⏳ กำลังบันทึก…'); const r=await call({a:'fin',t:T}); ov(''); if(!r.ok) throw r.err; D.fin=r.fin; render(); }
+ try{ ov('⏳ กำลังบันทึก…'); const r=await call({a:'fin',t:T}); ov(''); if(!r.ok) throw r.err; D.fin=r.fin; if('lock' in D||r.fin) D.lock=!(+D.unl>+r.fin); render(); }
  catch(e){ ov(''); alert('บันทึกสถานะเสร็จสิ้นไม่สำเร็จ: '+(e.message||e)+'\nลองกดอีกครั้ง'); return; }
  $('fint').innerHTML=(dr?'ร่างคำขอ · '+E(D.info.name||''):'เคส <b>'+E(D.caseId)+'</b> · '+E(D.info.name||''))+'<br>'+fmtT(Date.now());
  $('finl').innerHTML=D.items.map(x=>{ const d=done[x.k]; return '<div>'+(d?'✅':(x.req?'❌':'➖'))+' <b>'+E(x.lab)+'</b>'+(d?'<br><span class="mut">ส่งแล้ว '+fmtT(d.at)+(d.code?' · รหัส '+E(d.code):'')+'</span>':'<br><span class="mut">'+(x.req?'ยังไม่ถ่าย':'ไม่ได้ถ่าย (ไม่บังคับ)')+'</span>')+'</div>'; }).join('');
  $('finn').innerHTML='ภาพทั้งหมดเข้าระบบแล้ว ปิดหน้านี้ได้เลย<br>'+(dr?'<b>ขั้นต่อไป:</b> กลับไปที่ฟอร์มคำขอในเครื่อง PC แล้วกดส่งคำขอให้ สนญ.':'สนญ. จะตรวจภาพต่อ · ถ้า สนญ. ขอภาพเพิ่ม เปิดลิงก์เดิมได้');
- $('fin').style.display='flex'; window.scrollTo(0,0); }
+ finBk(); $('fin').style.display='flex'; window.scrollTo(0,0); }
 function finClose(){ $('fin').style.display='none'; }
+function finBk(){ const b=$('finbk'); if(b) b.textContent=isLk()?'← กลับไปดูภาพ':'← กลับไปแก้ไขภาพ'; }
 async function boot(){ if(!T){ $('main').innerHTML='<div class="err">ลิงก์ไม่ครบ — เปิดจาก QR หรือลิงก์ในหน้าเคสอีกครั้ง</div>'; $('hs').textContent=''; return; }
  if(/Line\//i.test(navigator.userAgent)&&!/openExternalBrowser=1/.test(location.search)){ location.replace(location.href+(location.search?'&':'?')+'openExternalBrowser=1'); return; }
  gpsStart();
